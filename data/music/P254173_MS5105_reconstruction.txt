@@ -1,0 +1,7 @@
+P254173 MS 5105 reconstruction (modern pitch labels)
+Tuning open: C3  G3  D4  A4
+
+Open strings: C3 G3 D4 A4
+Scale 1 (C heptatonic): C D E F G A B C | C B A G F E D C
+Scale 2 (D heptatonic in C collection): D E F G A Bb C D | D C Bb A G F E D
+Close: C3 G3 D4 A4 + long C3

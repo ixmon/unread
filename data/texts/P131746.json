@@ -1,0 +1,3151 @@
+{
+  "id": "P131746",
+  "designation": "TCL 05, 5675",
+  "genre": "Administrative",
+  "subgenre": "metro-mathematical",
+  "language": "Sumerian",
+  "period": "Ur III (ca. 2100-2000 BC)",
+  "year": -2050,
+  "provenience": "Umma (mod. Tell Jokha)",
+  "site": "Umma (mod. Tell Jokha)",
+  "lat": 31.67,
+  "lon": 45.89,
+  "content_lines": 310,
+  "chars": 12069,
+  "font": "NotoSansCuneiform",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/131746",
+  "museum_no": "AO 05675",
+  "primary_publication": "TCL 05, 5675",
+  "atf_source": "Dahl, Jacob L.; Englund, Robert K.",
+  "math_hunt": true,
+  "math_blurb": "Multiplication / a-rá table",
+  "math_score": 212.5,
+  "atf": "&P131746 = TCL 05, 5675\n#atf: lang sux\n@tablet\n@obverse\n@column 1\n1. 2(u) 4(disz) gurusz engar# [...]\n2. iti 1(u) 3(disz)-[sze3]\n3. iti sze-sag11-ku5-ta\n4. iti diri-sze3\n5. a2-bi u4 2(szar2) 3(gesz'u) 6(gesz2)-kam\n# calculation: 24 × 13 × 30 = 9360\n6. 5(asz) 2(barig) 4(ban2) sze gur\n7. a2 7(disz) sila3-ta\n8. a2-bi u4 3(gesz2) 5(u) 7(disz)-kam\n# calculation: 1660 ÷ 7 ≈ 237\n9. 7(asz) 4(barig) 1(ban2) 8(disz) sila3 gur\n10. a2 6(disz) sila3-ta\n11. a2-bi u4 6(gesz2) 3(u) 3(disz)\n# calculation: 2358 ÷ 6 = 393\n12. a2 lu2 hun-ga2\n13. ki ARAD2-ta\n14. 6(gesz2) 2(u) 4(disz) gurusz u4 1(disz)-sze3\n15. ki i7-pa-e3-ta\n16. 1(u) 1/2(disz) gurusz ki {gesz}guzza-ni-ta\n17. 1(u)? [n] gurusz ki inim-{d}inanna-ta\n18. 1(gesz2) 1(u) gurusz lugal-a2-zi-da-ta\n19. 3(u) 5(disz) ki ur-{d}suen-ta\n20. 5(gesz2) 3(u) 5(disz) 1/2(disz) gurusz\n21. [ki] lu2-giri17-zal-ta\n22. 5(gesz2) 1(u) gurusz ki lugal-mu-ma-ag2-ta\n23. 1(gesz2) 2(disz) 1/3(disz) gurusz ki ur-{d}szul-pa-e3-ta\n24. 1(gesz2) 1(u) 2(disz) gurusz ki a-gu-du-ta\n25. 1(gesz2) 9(disz) gurusz ki ur-{d}a-szar2-ta\n26. 1(gesz2) 1(disz) gurusz ki ba-sa6-ta\n27. 1(gesz2) 8(disz) gurusz ki lu2-gi-na-ta\n28. [n] 2(u)? 3(disz) gurusz ki in-sa6-sa6-ta\n29. [n] 4(disz)? gurusz ki lugal-mudra5-ta\n@column 2\n1. [...]\n2. [...]-saga-ta\n3. 1(gesz2) 1(u) 2(disz) gurusz ki lu2-kur-ku-ta\n4. 1(u) 6(disz) gurusz ki na-ba-sa6-ta\n5. 2(u) 5(disz) 1/2(disz) gurusz ki ur-ge6-par4-ta\n6. 1(gesz2) 1(u) 2(disz) gurusz ki lugal-ma2-gur8-re-ta\n7. 1(gesz2) 2(u) ug3-[IL2]\n8. ki a-szi-an-ta\n9. 3(gesz2) 5(u) ug3-IL2\n10. ki ur-{d}iszkur-ta\n11. 4(gesz2) 1(u) 9(disz) 1/3(disz) ug3-IL2\n12. ki na-ba-<sa6>-ta\n13. 1(gesz2) la2 1(disz) ug3-[IL2]\n14. ki lugal-me-a-ta\n15. 4(u) 8(disz) gurusz u4 1(disz)-sze3\n16. ki a-ab-ba-ta\n$ blank space\n17. szunigin 3(szar2) 1(gesz'u) 9(gesz2) 2(u) 6(disz) 5/6(disz) gurusz u4 1(disz)-sze3\n# calculation: partial summanda\n18. szunigin 1(gesz'u) 2(u) 8(disz) 1/3(disz) ug3-IL2 u4 1(disz)-sze3\n# calculation: 80 + 230 + 259 1/3 + 59 = 628 1/3\n19. sag-nig2-gur11-ra-kam\n20. sza3-bi-ta\n21. 7(gesz2) 2(u) 3(disz) gurusz u4 1(disz)-sze3\n22. sze gurx(|SZE.KIN|)-a\n23. 3(gesz2) 5(disz) gurusz u4 1(disz)-sze3\n24. zar tab-ba szu ur3-ra\n25. 5(gesz2) 3(u) 6(disz) gurusz u4 1(disz)-sze3\n26. ki-su7-ka gub-ba\n27. a-sza3 ka-ma-ri2{ki} u3 a-sza3 lugal\n@column 3\n1. [kiszib3] szesz-kal-la\n2. 5(gesz2) 4(u) 5(disz) gurusz u4 1(disz)-sze3\n3. sze gurx(|SZE.KIN|)-a zar tab-ba a-sza3 {d}szara2 u3 a-sza3 la2-mah\n4. kiszib3 lugal-e2-mah-e\n5. szesz# lugal-{gesz}[kiri6]\n$ blank space\n6. sza3 buru14\n7. 3(bur3) 2(esze3) [1/2(iku) 1/4(iku) GAN2] tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-ta\n8. a2 erin2-na-bi u4 5(gesz2)\n# calculation: ((66 3/4 × 3) ÷ 1) + ((66 3/4 × 3 × 3) ÷ 6) = 200.25 + 100.125 ≈ 300 [300.375]\n# ploughmen always 3 erin2, seeding ploughs always 4 erin2:\n# d = (a ÷ b/3) + (a ÷ c/3 x 3/2/1) = (a/b x 3) + ((a/c x 3) x 3/2/1)\n# if plough type1 . plough type2, then:\n# d = 2(a ÷ b/3) + (a ÷ c/3 x 3/2/1) etc.\n9. 2(bur3) 1(esze3) GAN2# gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2!(DU)-ta\n10. a2 erin2-na-bi u4 1(gesz2) 1(u)! 2(disz)\n# calculation: ((48 × 3 × 3) ÷ 6) = 72\n11. 1(bur3) GAN2 gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta\n12. a2 erin2-na-bi u4 1(u) 8(disz)\n# calculation: ((18 × 2 × 3) ÷ 6) = 18\n13. GAN2-gu4\n14. 5(iku) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta szuku [...]\n15. a2 erin2-na-bi u4 2(disz) 1/2(disz)\n# calculation: ((5 × 1 × 3) ÷ 6) = 2 1/2\n16. a-sza3 sza-ra-hu-um-ma\n17. kiszib3 ab-ba-gi-na\n18. 3(bur3) 2(esze3) 1/2(iku) GAN2 tug2-gur8 1(gesz2) 2(u) sar-ta gesz-ur3-ra a-ra2 3(disz) 4(iku) 1/2(iku) GAN2-ta\n19. a2 erin2-na-bi u4 6(gesz2) 2(u) 5(disz)\n# calculation: ((66 1/2 × 3) ÷ 80/100) + ((66 1/2 × 3 × 3) ÷ 4 1/2) = 249.375 + 133 ≈ 385 [382.375]\n20. 2(bur3) 1(esze3) 2(iku) 1/2(iku) GAN2 tug2-gur8 1(gesz2) 2(u) sar-ta gesz-ur3-ra a-ra2 3(disz) 4(iku) 1/2(iku) GAN2-ta\n21. a2-[erin2-na-bi u4 4(gesz2) 1(u) 6(disz)?]\n# calculation: ((44 1/2 × 3) ÷ 80/100) + ((44 1/2 × 3 × 3) ÷ 4 1/2) = 166.875 + 89 ≈ 256 [255.875]\n@column 4\n1. [n GAN2 gesz-ur3]-ra a-ra2 3(disz) [...] GAN2-ta\n2. a2 erin2-na-bi u4 5(u)\n# calculation: ((x × 3 × 3) ÷ y) = 50\n3. a-sza3 ki-gam-ma\n4. 2(bur3) 1(esze3) 2(iku) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-ta\n5. a2 erin2-na-bi u4 3(gesz2) 2(u)\n# calculation: ((44 1/2 × 3) ÷ 1) + ((44 1/2 × 3 × 3) ÷ 6) = 133.5 + 66.75 ≈ 200 [200.25]\n6. 1(bur3) 2(esze3) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta\n7. a2 erin2-na-bi u4 2(gesz2) 2(disz)\n# calculation: ((30 1/2 × 3) ÷ 1) + ((30 1/2 × 3 × 2) ÷ 6) = 91.5 + 30.5 = 122\n8. 1(bur3) 1(esze3) 1/2(iku) tug2-gur8 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-[ta]\n9. a2 erin2-na-bi u4 1(gesz2) 5(u)\n# calculation: ((24 1/2 × 3) ÷ 1) + ((44 1/2 × 3 × 3) ÷ 6) = 73.5 + 66.75 ≈ 140 [140.25]\n10. 4(bur3) 2(esze3) 4(iku) GAN2 gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta\n11. a2 erin2-na-bi u4 1(gesz2) 3(u) la2 2(disz)\n# calculation: ((88 × 3 × 2) ÷ 6) = 88\n12. 3(bur3) 1(esze3) 4(iku) 1/4(iku) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta\n13. a2 erin2-na-bi u4 3(u) 2(disz)\n# calculation: ((64 1/4 × 3 × 1) ÷ 6) ≈ 32 [32.125]\n14. GAN2-gu4\n15. 1(esze3) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta\n16. szuku engar\n17. a2 erin2-na-bi u4 3(disz)\n# calculation: ((6 × 3 × 1) ÷ 6) = 3\n$ blank space\n18. a-sza3 a-gesztin\n19. 2(esze3) 4(iku) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta\n20. [a2 erin2-na]-bi# u4 1(gesz2) 6(disz)\n# calculation: ((16 1/2 × 3) ÷ 1) + ((16 1/2 × 3 × 2) ÷ 6) = 49.5 + 16.5 = 66\n21. [... gesz]-ur3-ra a-ra2 [...] GAN2-ta\n@column 5\n1. a2 erin2-na-bi u4 1(gesz2) 2(u) la2 1(disz)\n# calculation: ((x × 3 × y) ÷ z) = 79\n2. a-sza3 lugal\n3. kiszib3 szesz-kal-la\n$ blank space\n4. a2 gesz-ur3-ra\n5. 2(bur'u) 2(bur3) [1(esze3)] 3(iku) 1/2(iku) GAN2 a-sza3 uru4-a 2(iku) GAN2-ta\n6. a-sza3 a-gesztin\n7. 5(bur3) 1(esze3) 2(iku) GAN2 uru4-a 2(iku) GAN2-ta\n8. a-sza3 sza-ra-hu-um-ma\n9. 5(bur3) 1(esze3) 5(iku) GAN2 uru4-a 2(iku) GAN2-ta\n10. a-sza3 lugal\n11. 1(bur3) 5(iku) GAN2 uru4-a 2(iku) GAN2-ta\n12. a-sza3 e2-lugal\n13. a2 erin2-na-bi 2(gesz'u) 5(u) 5(disz)\n# calculation: ((405 1/2 + 98 + 101 + 23) ÷ 2) × 4 = 1255\n14. GAN2-gu4\n15. 1(esze3) GAN2 szuku uru4-a 2(iku) GAN2-ta\n16. a2 erin2-na-bi u4 1(u) 2(disz)\n# calculation: (6 ÷ 2) × 4 = 12\n17. a-sza3 a-gesztin\n$ blank space\n18. a2-numun-na\n19. 5(gesz2) 5(u) 5(disz) sar al 6(disz)! sar-ta\n20. a2-bi 1(gesz2) la2 1(disz)\n# calculation: 355 ÷ 6 ≈ 59 [59 1/6]\n21. 2(gesz'u) 3(gesz2) 1(u) 1(disz) sar al 6(disz) sar\n22. a2-bi u4 3(gesz2) 5(u) 1(disz) 5/6(disz)\n# calculation: 1391 ÷ 6 = 231 5/6\n23. 2(gesz'u) 9(gesz2) sar hirinx(KWU318)-na 1(u) 5(disz)! sar-ta\n24. a2-bi u4 1(gesz2) 5(u) 6(disz)\n# calculation: 1740 ÷ 15 = 116\n25. 8(gesz2) sar hirinx(KWU318)-na 1(u) 2(disz) sar-ta\n26. a2-bi u4 4(u)-kam\n# calculation: 480 ÷ 12 = 40\n27. 4(gesz'u) 5(gesz2) 5(u) sar hirinx(KWU318)-na 1(u) sar-ta\n28. a2-bi u4 4(gesz2) 3(u) 5(disz)\n# calculation: 2750 ÷ 10 = 275\n29. 5(gesz'u) 3(gesz2) 8(disz) sar hirinx(KWU318)-na 1(u) 6(disz) sar-ta?\n30. a2-bi u4 6(gesz2) 3(u) 8(disz) 1/2(disz)\n# calculation: 3188 ÷ 16 = 199.25 (? × 2 = 398.5)\n31. 3(gesz2) sar hirinx(KWU318)-na 2(u) sar-ta\n32. a2-bi u4 9(disz)\n# calculation: 180 ÷ 20 = 9\n@reverse\n@column 1\n1. 3(u) sar hirinx(KWU318)-na 3(u) sar-ta\n2. a2-bi u4 1(disz)\n# calculation: 30 ÷ 30 = 1\n3. 1(szar2) 2(gesz'u) 9(gesz2) 3(u) sar gi zex(SIG7)-a 3(u) sar-ta\n4. a2-bi u4 3(gesz2) la2 1(disz)\n# calculation: 5370 ÷ 30 = 179\n5. 4(szar2) 2(gesz2) 2(u) 6(disz) 2/3(disz) sar gi zex(SIG7)-a 2(u) sar-ta\n6. a2-bi u4 1(gesz'u) 2(gesz2) 7(disz) 1/3(disz)\n# calculation: 14546 2/3 ÷ 20 = 727 1/3\n7. 1(szar2) 4(gesz'u) 1(gesz2) 5(u) 2(disz)? 1/2(disz) sar gi zex(SIG7)-a 1(u) 5(disz) sar-ta\n8. a2-bi u4 6(gesz2) 4(u) 7(disz) 1/2(disz)\n# calculation: 6112.5 ÷ 15 = 407.5\n9. 4(gesz2) 2(u) 5(disz) sar gi zex(SIG7)-a 1(u) sar-ta\n10. a2-bi u4 2(u) 6(disz) 1/2(disz)\n# calculation: 265 ÷ 10 = 26.5\n11. 4(gesz'u) 9(gesz2) 2(u) 2(disz) 1/2(disz) sar gi ku5-ra2 1(u) 5(disz) sar\n12. a2-bi u4 3(gesz2) 1(u) 7(disz) 1/2(disz)\n# calculation: 2962.5 ÷ 15 = 197.5\n13. 4(gesz2) 5(disz) sar gi ku5-ra2 1(u) sar-ta\n14. a2-bi u4 2(u) 4(disz) 1/2(disz)\n# calculation: 245 ÷ 10 = 24.5\n15. 4(gesz'u) 3(gesz2) 1(u) sar {gesz}dih3 ku5-ra 2(u) sar-ta\n16. a2-bi u4 2(gesz2) 1(u) la2 1/2(disz)\n# calculation: 2590 ÷ 20 = 129.5\n17. 7(gesz2) 1(u) 5(disz) sar {u2}kiszi17 hirinx(KWU318)-na\n18. u2 {gesz}haszhur {gesz}dih3 1(u) 5(disz) sar-ta\n19. a2-bi u4 3(u) la2 1(disz)\n# calculation: 435 ÷ 15 = 29\n20. 5(u) la2 2(disz) sar {u2}kiszi17 ku5-ra2 1(u) 2(disz) sar-ta\n21. a2-bi u4 4(disz)\n# calculation: 48 ÷ 12 = 4\n22. 4(u) 2(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur 1(u) la2 1(disz) sar-ta\n23. a2-bi u4 4(disz) 2/3(disz)\n# calculation: 42 ÷ 9 = 4.67\n24. 1(gesz'u) 2(gesz2) 4(u) 5(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur 1(u) sar-ta\n25. a2-bi u4 1(gesz2) 1(u) 6(disz) 1/2(disz)\n# calculation: 765 ÷ 10 = 76.5\n26. 2(gesz2) 3(u) sar u2 {gesz}haszhur 1(u) sar-ta\n27. a2-bi u4 1(u) 5(disz)\n# calculation: 150 ÷ 10 = 15\n28. 3(gesz2) 2(u) 5(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur GIN2 kiszi17 {gesz}dih3 2(u) sar-ta\n29. a2-bi u4 1(u) 1/3(disz)\n# calculation: 205 ÷ 20 = 10.25\n30. 3(u) 2(disz) sar {u2}kiszi17 ku5-ra2 1(u)# 6(disz) sar-ta\n31. a2-bi u4 2(disz)\n# calculation: 32 ÷ 16 = 2\n@column 2\n1. 2(u)# [szar] hirinx(KWU318)-na u2 {gesz}[haszhur] 1(u) 2(disz)-ta\n2. a2-bi u4 1(disz) 2/3(disz)\n# calculation: 20 ÷ 12 = 1.67\n3. 4(gesz2) 4(u) 5(disz) sar u2 gi ku5-ra2 1(u) 5(disz)-ta\n4. a2-bi u4 2(u) la2 1(disz)\n# calculation: 285 ÷ 15 = 19\n5. 1(u) sar {u2}kiszi17 ku5-ra2 2(u) sar-ta\n6. a2-bi u4 1/2(disz)\n# calculation: 10 ÷ 20 = 0.5\n7. 4(gesz2) 5(disz) sar {u2}kiszi17 ku5-ra2 1(u) sar-ta\n8. a2-bi u4 2(u) 4(disz) 1/2(disz)\n# calculation: 245 ÷ 10 = 24.5\n9. 1(gesz'u) 1(gesz2) 2(u) sar {u2}gug4 2(u) sar-ta\n10. a2-bi u4 3(u) 4(disz)\n11. 7(gesz2) 2(u) sar {u2}gug4 1(u) sar-ta\n12. a2-bi u4 4(u) 4(disz)\n# calculation: 440 ÷ 10 = 44\n13. 1(gesz'u) 1(gesz2) 5(u) la2 2(disz) sar hirinx(KWU318)-na 4(disz) sar-ta\n14. a2 ug3-IL2-bi u4 2(gesz2) 5(u) 7(disz)\n# calculation: 708 ÷ 4 = 177\n15. 1(gesz2) 2(u) 4(disz) sar hirinx(KWU318)-na 6(disz) sar-ta\n16. a2 ug3-IL2-bi u4 1(u) 4(disz)\n# calculation: 84 ÷ 6 = 14\n17. 1(gesz2) 5(disz) sar {u2}kiszi17 ku5-ra2 5(disz) sar-ta\n18. a2 ug3-IL2-bi u4 1(u) 3(disz)!\n# calculation: 65 ÷ 5 = 13\n19. 3(gesz2) sar {u2}kiszi17 ku5-ra2 1(u) 5(disz) sar-ta\n20. a2 ug3-IL2-bi u4 1(u) 2(disz)\n# calculation: 180 ÷ 15 = 12\n21. 4(gesz2) 4(u) la2 2(disz) sar {u2}kiszi17 ku5-ra2 6(disz) sar-ta\n22. a2 ug3-IL2-bi u4 4(u) 6(disz) 1/3(disz)\n# calculation: 278 ÷ 6 = 46.33\n23. 1(gesz2) 5(u) 2(disz) sar {u2}kiszi17 ku5-ra2 7(disz) sar-ta\n24. a2 ug3-IL2-bi u4 1(u) 6(disz)\n# calculation: 112 ÷ 7 = 16\n25. 4(gesz2) 6(disz) 5/6(disz) gurusz u4 1(disz)-sze3\n26. 5(gesz2) 5(u) ug3-IL2\n27. gi kesz2-ra2\n28. 4(u) 4(disz) gurusz sza3-gu4 igi-du\n29. 8(disz) gurusz ka-us2-sa2 gar\n30. [...] sila3-ta?\n@column 3\n1. [...]\n2. [...]\n3. 7(gesz2) 2(u) sar u2 {gesz}haszhur 1(u) sar-ta\n4. a2-bi u4 4(u) 4(disz)\n# calculation: 440 ÷ 10 = 44\n5. 7(gesz2) 5(disz) sar gi zex(SIG7)-a 1(u) sar-ta\n6. a2-bi u4 4(u) 2(disz) 1/2(disz)\n# calculation: 425 ÷ 10 = 42.5\n7. 4(gesz2) sar al 5(disz) sar-ta\n8. a2-bi u4 4(u) 8(disz)\n# calculation: 240 ÷ 5 = 48\n9. 4(u) sar al 4(disz) sar-ta\n10. a2-bi u4 1(u)\n# calculation: 40 ÷ 4 = 10\n11. 4(gesz2) sar {gesz}dih3 ku5-ra2 2(u) sar-ta\n12. a2-bi u4 1(u) 2(disz)\n# calculation: 240 ÷ 20 = 12\n13. a-sza3 sza-ra-hu-um-ma kiszib3 ab-ba-gi-na\n14. 4(gesz'u) 3(gesz2) 2(u) sar {u2}kiszi17 ku5-a 1(gesz2) sar-ta\n15. a2-bi u4 4(u) 3(disz) 1/3(disz)\n# calculation: 2600 ÷ 60 = 43.33\n16. a2 7(disz) sila3-ta\n17. a-sza3 e2-lugal\n18. kiszib3 lugal-a2-zi-da\n19. 3(gesz'u) 8(gesz2) 4(u) sar {u2}kiszi17 2(u) sar-ta\n20. a2-bi u4 1(gesz2) 5(u) 6(disz)\n# calculation: 2320 ÷ 116 = 9\n21. 1(gesz2) 1(u) sar al 5(disz) sar-ta\n22. a2-bi u4 1(u) 4(disz)\n# calculation: 70 ÷ 5 = 14\n23. 3(gesz2) 4(u) 5(disz) sar {u2}kiszi17 1(u)# 5(disz) sar-ta\n24. a2-bi u4 1(u) 5(disz)\n# calculation: 225 ÷ 15 = 15\n25. 4(gesz2) 5(u) sar {gesz}dih3 1(u) sar-ta\n26. a2-bi u4 3(u) la2 1(disz)\n# calculation: 290 ÷ 10 = 29\n27. 4(gesz2) sar u2 zex(SIG7)-a 2(u) sar-ta\n28. a2-bi u4 1(u) 2(disz)\n# calculation: 240 ÷ 20 = 12\n29. 2(gesz2) 3(u) sar hirinx(KWU318)#-na 1(u) 5(disz) sar-ta\n30. a2-bi u4 1(u)\n# calculation: 150 ÷ 15 = 10\n31. 2(gesz2) 2(u) sar hirinx(KWU318)-na 1(u) sar-ta\n32. a2-bi u4 1(u) 4(disz)\n# calculation: 140 ÷ 10 = 14\n33. a-sza3 ki-gam-ma\n@column 4\n1. kiszib3 [...]\n2. 1(u) 5(disz) [...]\n3. kun#-[zi-da ...]\n4. 2(gesz2) 5(u) 3(disz) [...]\n5. a e3-a a-sza3 lugal gub-ba\n6. kiszib3 szesz-kal-la\n7. 1(disz)? gurusz iti 2(disz)-sze3\n# appears to be 2(disz)\n8. iti nesag-ta\n# some text moved to next line\n9. iti dal-sze3\n10. a2-bi u4 1(gesz2)\n# calculation: 1 × 2 × 30 = 60\n11. kab2-ku5 ki-sur gub-ba\n12. 2(disz) 2/3(disz) sar kin sahar\n#P107318 obv. 1: 2(disz) 2/3(disz) kin sahar-ra\n13. a-ga-am a-sza3 la2-mah-ka si-ga\n#P107318 obv. 2: a-ga-am3 a-sza3 la2-mah si-ga\n14. a2-bi u4 1(u) 6(disz)\n# calculation: 2 2/3 ÷ 1/6 = 16\n15. 3(u) 3(disz) gurusz u4 1(disz)-sze3\n#P107318 obv. 3: 1(u) 1(disz) gurusz u4 3(disz)-sze3\n# calculation: 11 × 3 = 33\n16. gi ga6-ga2\n#P107318 obv. 4: gi ga6-ga2\n17. kiszib3 a-kal-la nu-banda3\n#P107318 rev. 2: giri3 ur-lu2\n#P107318 rev. 3: kiszib3 a-kal-la\n#P107318 seal: 1. a-kal-[la] 2. dub-[sar] 3. dumu ur-nigar[{gar}]\n18. 4(u) 4(disz) gurusz u4 1(disz)-sze3\n19. a e3-a la2-mah nu-ti gub-ba\n20. kiszib3 szesz-kal-la dumu tir-gu\n21. 1(u) gurusz u4 1(disz)-sze3\n22. a e3-a dub-la2-{d}utu gub-ba\n23. 2(u) 4(disz) gurusz u4 1(disz)-sze3\n24. a e3-a ka-ma-ri2#?{ki} gub-ba\n25. 2(u) 4(disz) gurusz u4 1(disz)-sze3\n26. kiszib3 gu-u2-gu-a\n27. 2(u) 5(disz) gurusz u4 1(disz)-sze3\n28. gi ga6-ga2 u3 szu ur3-ra\n29. 1(disz) ARAD2-{d}szara2 tu-ra u4 4(u) 5(disz)\n30. 1(gesz'u) 1(gesz2) 5(u) sa gi\n31. gu-nigin2-ba 1(u) 2(disz) sa-ta\n32 gu-nigin2-bi 5(u) 9(disz) 1(u) gin2\n# calculation: 710 ÷ 12 = 59.167\n33. gurusz-e gu-nigin2 2(disz) 1/2(disz)-ta\n34. a2-bi u4 2(u) 3(disz) 2/3(disz)\n# calculation: 59.167 ÷ 2.5 = 23.67\n35. ga2-nun kar-<<masz>>-ra kux(KWU147)-ra\n36. kiszib3 lugal-e2-mah-e\n37. 1(u) la2 1(disz) gurusz u4 1(disz)-sze3\n38. sze bala-a\n39. giri3 ur-{d}lamma dub-sar lugal\n40. kiszib3 ur-{d}szul-pa-e3\n41. 4(gesz2) 3(u) gurusz u4 1(disz)-sze3\n42. en-du8-du-ta gu2 idigna u3 gu2 i7 ma2-gur8-ra-sze3 gi ga6-ga2\n@column 5\n1. kiszib3 a-kal-la dumu lu2-saga\n2. 1(u) 5(disz) gurusz u4 1(disz)-sze3\n3. dub-la2-{d}utu-ka gub-ba\n4. kiszib3 ur-lugal\n5. 1(disz) lugal-zi-mu\n6. iti 4(disz)-sze3\n7. a2-bi u4 2(gesz2)\n# calculation: 1 × 4 × 30 = 120\n8. en-nun-ga2 ti-la\n9. kiszib3 lu2-dingir-ra\n10. 6(disz) gurusz gu4 us2-sa\n11. 6(disz) gurusz a-sza3-da tusz-a\n12. iti 4(disz)-sze3\n13. a2-bi u4 2(gesz'u)! 4(gesz2)-kam\n# calculation: 12 × 30 × 4 = 1440\n# text has 1(gesz'u) 4(gesz2)-kam\n14. 1/2(disz) ARAD2-hu-la\n15. 1/2(disz) lu2-{d}nin-ur4-ra\n16. 1/2(disz) lu2-{d}szara2\n17. 1/2(disz) lu2-{d}inanna\n18. 1/2(disz) lu2-gi-na szu-i\n19. 1/2(disz) lugal-nesag-e\n20. iti 4(disz)-sze3\n21. a2-bi u4 6(gesz2) a2 u4-du8-a dumu-gi7\n# calculation: 1/2 × 6 × 4 × 30 = 360\n22. 1(gesz2) 1(u) 2(disz) gurusz u4 1(disz)-sze3\n23. a2 u4-du8-ha ug3-IL2\n24. iti 4(disz)-kam\n25. iti ezem-{d}szul-gi-ta\n# some text moved to next line\n26. iti diri-sze3\n27. 1(u) 2(disz) gurusz u4 1(disz)-sze3\n28. kiszib3 lugal-mu-ma-an-ag2\n29. 3(gesz'u) 7(gesz2) 3(u) sar sa gi\n30. gu-nigin2-ba 1(u) 2(disz)! sa-ta\n31. gu-nigin2-bi 3(gesz2)! 7(disz) 1/2(disz)\n# calculation: 2250 ÷ 12 = 187.5\n32. gurusz-e gu-nigin2 2(disz)-ta\n33. a2-bi u4 <1(gesz2)> 3(u) 3(disz) 2/3(disz)\n# calculation: 187.5 ÷ 2 = 93.75\n34. en-du8-<du>-ta ga2-nun kux(KWU147)-ra\n35. kiszib3 a? lugal-a2-zi-da\n36. 1(u) 4(disz) gurusz u4 5(u) 6(disz)-sze3\n37. a2-bi u4 1(gesz'u) 3(gesz2) 4(disz)!\n# calculation: 14 × 56 = 784\n# text has 4(u)\n38. umma{ki}-ta nibru{ki}-sze3 ma2-la2-a de6-a da-ab-ru-um-ta nibru{ki}-sze3 ma2-la2-a de6-a u3 bala-a gub-ba\n39. kiszib3 ur-{d}nu-musz-da\n@column 6\n$ blank space\n1. szunigin 3(szar2)# 1(gesz'u) 9(gesz2) 2(u) 6(disz) [5/6(disz) gurusz] u4 1(disz)-sze3\n2. [szunigin] 1(gesz'u)# 2(u) 8(disz) 1/3(disz) ug3-IL2# u4 1(disz)-sze3\n3. [zi-ga]-am3\n$ blank space\n4. nig2-ka9-ak\n5. lugal-gu4-e# nu-banda3-gu4\n#P107318 rev. 1: ugula lugal-gu4-e\n6. mu en-mah-gal-an-na en {d}nanna ba-hun\n#P107318 rev. 4: mu en-unu6-gal {d}inanna ba-hun\n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "2(u) 4(disz) gurusz engar# [...]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "iti 1(u) 3(disz)-[sze3]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "iti sze-sag11-ku5-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "iti diri-sze3",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a2-bi u4 2(szar2) 3(gesz'u) 6(gesz2)-kam",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 24 × 13 × 30 = 9360",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "5(asz) 2(barig) 4(ban2) sze gur",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a2 7(disz) sila3-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2-bi u4 3(gesz2) 5(u) 7(disz)-kam",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1660 ÷ 7 ≈ 237",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "7(asz) 4(barig) 1(ban2) 8(disz) sila3 gur",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2 6(disz) sila3-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a2-bi u4 6(gesz2) 3(u) 3(disz)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2358 ÷ 6 = 393",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2 lu2 hun-ga2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ki ARAD2-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "6(gesz2) 2(u) 4(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "ki i7-pa-e3-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "1(u) 1/2(disz) gurusz ki {gesz}guzza-ni-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "1(u)? [n] gurusz ki inim-{d}inanna-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "1(gesz2) 1(u) gurusz lugal-a2-zi-da-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "3(u) 5(disz) ki ur-{d}suen-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "5(gesz2) 3(u) 5(disz) 1/2(disz) gurusz",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[ki] lu2-giri17-zal-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "5(gesz2) 1(u) gurusz ki lugal-mu-ma-ag2-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "1(gesz2) 2(disz) 1/3(disz) gurusz ki ur-{d}szul-pa-e3-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "1(gesz2) 1(u) 2(disz) gurusz ki a-gu-du-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "1(gesz2) 9(disz) gurusz ki ur-{d}a-szar2-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "1(gesz2) 1(disz) gurusz ki ba-sa6-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "1(gesz2) 8(disz) gurusz ki lu2-gi-na-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[n] 2(u)? 3(disz) gurusz ki in-sa6-sa6-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[n] 4(disz)? gurusz ki lugal-mudra5-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]-saga-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "1(gesz2) 1(u) 2(disz) gurusz ki lu2-kur-ku-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "1(u) 6(disz) gurusz ki na-ba-sa6-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "2(u) 5(disz) 1/2(disz) gurusz ki ur-ge6-par4-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(gesz2) 1(u) 2(disz) gurusz ki lugal-ma2-gur8-re-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "1(gesz2) 2(u) ug3-[IL2]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ki a-szi-an-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "3(gesz2) 5(u) ug3-IL2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ki ur-{d}iszkur-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "4(gesz2) 1(u) 9(disz) 1/3(disz) ug3-IL2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "ki na-ba-<sa6>-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "1(gesz2) la2 1(disz) ug3-[IL2]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ki lugal-me-a-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "4(u) 8(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "ki a-ab-ba-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "szunigin 3(szar2) 1(gesz'u) 9(gesz2) 2(u) 6(disz) 5/6(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: partial summanda",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "szunigin 1(gesz'u) 2(u) 8(disz) 1/3(disz) ug3-IL2 u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 80 + 230 + 259 1/3 + 59 = 628 1/3",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "sag-nig2-gur11-ra-kam",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "sza3-bi-ta",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "7(gesz2) 2(u) 3(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "sze gurx(|SZE.KIN|)-a",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "3(gesz2) 5(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "zar tab-ba szu ur3-ra",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "5(gesz2) 3(u) 6(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "ki-su7-ka gub-ba",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "a-sza3 ka-ma-ri2{ki} u3 a-sza3 lugal",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[kiszib3] szesz-kal-la",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "5(gesz2) 4(u) 5(disz) gurusz u4 1(disz)-sze3",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "sze gurx(|SZE.KIN|)-a zar tab-ba a-sza3 {d}szara2 u3 a-sza3 la2-mah",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "kiszib3 lugal-e2-mah-e",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "szesz# lugal-{gesz}[kiri6]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "sza3 buru14",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "3(bur3) 2(esze3) [1/2(iku) 1/4(iku) GAN2] tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2 erin2-na-bi u4 5(gesz2)",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((66 3/4 × 3) ÷ 1) + ((66 3/4 × 3 × 3) ÷ 6) = 200.25 + 100.125 ≈ 300 [300.375]",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "raw",
+      "text": "# ploughmen always 3 erin2, seeding ploughs always 4 erin2:",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "raw",
+      "text": "# d = (a ÷ b/3) + (a ÷ c/3 x 3/2/1) = (a/b x 3) + ((a/c x 3) x 3/2/1)",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "raw",
+      "text": "# if plough type1 . plough type2, then:",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "raw",
+      "text": "# d = 2(a ÷ b/3) + (a ÷ c/3 x 3/2/1) etc.",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "2(bur3) 1(esze3) GAN2# gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2!(DU)-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2 erin2-na-bi u4 1(gesz2) 1(u)! 2(disz)",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((48 × 3 × 3) ÷ 6) = 72",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "1(bur3) GAN2 gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2 erin2-na-bi u4 1(u) 8(disz)",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((18 × 2 × 3) ÷ 6) = 18",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "GAN2-gu4",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "5(iku) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta szuku [...]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "a2 erin2-na-bi u4 2(disz) 1/2(disz)",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((5 × 1 × 3) ÷ 6) = 2 1/2",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a-sza3 sza-ra-hu-um-ma",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "kiszib3 ab-ba-gi-na",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "3(bur3) 2(esze3) 1/2(iku) GAN2 tug2-gur8 1(gesz2) 2(u) sar-ta gesz-ur3-ra a-ra2 3(disz) 4(iku) 1/2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "a2 erin2-na-bi u4 6(gesz2) 2(u) 5(disz)",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((66 1/2 × 3) ÷ 80/100) + ((66 1/2 × 3 × 3) ÷ 4 1/2) = 249.375 + 133 ≈ 385 [382.375]",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "2(bur3) 1(esze3) 2(iku) 1/2(iku) GAN2 tug2-gur8 1(gesz2) 2(u) sar-ta gesz-ur3-ra a-ra2 3(disz) 4(iku) 1/2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "a2-[erin2-na-bi u4 4(gesz2) 1(u) 6(disz)?]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((44 1/2 × 3) ÷ 80/100) + ((44 1/2 × 3 × 3) ÷ 4 1/2) = 166.875 + 89 ≈ 256 [255.875]",
+      "surface": "obverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[n GAN2 gesz-ur3]-ra a-ra2 3(disz) [...] GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a2 erin2-na-bi u4 5(u)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((x × 3 × 3) ÷ y) = 50",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a-sza3 ki-gam-ma",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "2(bur3) 1(esze3) 2(iku) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a2 erin2-na-bi u4 3(gesz2) 2(u)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((44 1/2 × 3) ÷ 1) + ((44 1/2 × 3 × 3) ÷ 6) = 133.5 + 66.75 ≈ 200 [200.25]",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(bur3) 2(esze3) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a2 erin2-na-bi u4 2(gesz2) 2(disz)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((30 1/2 × 3) ÷ 1) + ((30 1/2 × 3 × 2) ÷ 6) = 91.5 + 30.5 = 122",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "1(bur3) 1(esze3) 1/2(iku) tug2-gur8 1(iku) GAN2-ta gesz-ur3-ra a-ra2 3(disz) 1(esze3) GAN2-[ta]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a2 erin2-na-bi u4 1(gesz2) 5(u)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((24 1/2 × 3) ÷ 1) + ((44 1/2 × 3 × 3) ÷ 6) = 73.5 + 66.75 ≈ 140 [140.25]",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "4(bur3) 2(esze3) 4(iku) GAN2 gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a2 erin2-na-bi u4 1(gesz2) 3(u) la2 2(disz)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((88 × 3 × 2) ÷ 6) = 88",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "3(bur3) 1(esze3) 4(iku) 1/4(iku) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a2 erin2-na-bi u4 3(u) 2(disz)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((64 1/4 × 3 × 1) ÷ 6) ≈ 32 [32.125]",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "GAN2-gu4",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(esze3) GAN2 gesz-ur3-ra a-ra2 1(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "szuku engar",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "a2 erin2-na-bi u4 3(disz)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((6 × 3 × 1) ÷ 6) = 3",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "a-sza3 a-gesztin",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "2(esze3) 4(iku) 1/2(iku) GAN2 tug2-gurx(|SZE.KIN|) 1(iku) GAN2-ta gesz-ur3-ra a-ra2 2(disz) 1(esze3) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[a2 erin2-na]-bi# u4 1(gesz2) 6(disz)",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((16 1/2 × 3) ÷ 1) + ((16 1/2 × 3 × 2) ÷ 6) = 49.5 + 16.5 = 66",
+      "surface": "obverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[... gesz]-ur3-ra a-ra2 [...] GAN2-ta",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a2 erin2-na-bi u4 1(gesz2) 2(u) la2 1(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((x × 3 × y) ÷ z) = 79",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a-sza3 lugal",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "kiszib3 szesz-kal-la",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2 gesz-ur3-ra",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "2(bur'u) 2(bur3) [1(esze3)] 3(iku) 1/2(iku) GAN2 a-sza3 uru4-a 2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a-sza3 a-gesztin",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "5(bur3) 1(esze3) 2(iku) GAN2 uru4-a 2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a-sza3 sza-ra-hu-um-ma",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "5(bur3) 1(esze3) 5(iku) GAN2 uru4-a 2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a-sza3 lugal",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "1(bur3) 5(iku) GAN2 uru4-a 2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a-sza3 e2-lugal",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a2 erin2-na-bi 2(gesz'u) 5(u) 5(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: ((405 1/2 + 98 + 101 + 23) ÷ 2) × 4 = 1255",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "GAN2-gu4",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(esze3) GAN2 szuku uru4-a 2(iku) GAN2-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a2 erin2-na-bi u4 1(u) 2(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: (6 ÷ 2) × 4 = 12",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "a-sza3 a-gesztin",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "a2-numun-na",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "5(gesz2) 5(u) 5(disz) sar al 6(disz)! sar-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a2-bi 1(gesz2) la2 1(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 355 ÷ 6 ≈ 59 [59 1/6]",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "2(gesz'u) 3(gesz2) 1(u) 1(disz) sar al 6(disz) sar",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "a2-bi u4 3(gesz2) 5(u) 1(disz) 5/6(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1391 ÷ 6 = 231 5/6",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "2(gesz'u) 9(gesz2) sar hirinx(KWU318)-na 1(u) 5(disz)! sar-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a2-bi u4 1(gesz2) 5(u) 6(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1740 ÷ 15 = 116",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "8(gesz2) sar hirinx(KWU318)-na 1(u) 2(disz) sar-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "a2-bi u4 4(u)-kam",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 480 ÷ 12 = 40",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "4(gesz'u) 5(gesz2) 5(u) sar hirinx(KWU318)-na 1(u) sar-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "a2-bi u4 4(gesz2) 3(u) 5(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2750 ÷ 10 = 275",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "5(gesz'u) 3(gesz2) 8(disz) sar hirinx(KWU318)-na 1(u) 6(disz) sar-ta?",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "a2-bi u4 6(gesz2) 3(u) 8(disz) 1/2(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 3188 ÷ 16 = 199.25 (? × 2 = 398.5)",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "3(gesz2) sar hirinx(KWU318)-na 2(u) sar-ta",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "a2-bi u4 9(disz)",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 180 ÷ 20 = 9",
+      "surface": "obverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "3(u) sar hirinx(KWU318)-na 3(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a2-bi u4 1(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 30 ÷ 30 = 1",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "1(szar2) 2(gesz'u) 9(gesz2) 3(u) sar gi zex(SIG7)-a 3(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2-bi u4 3(gesz2) la2 1(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 5370 ÷ 30 = 179",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "4(szar2) 2(gesz2) 2(u) 6(disz) 2/3(disz) sar gi zex(SIG7)-a 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a2-bi u4 1(gesz'u) 2(gesz2) 7(disz) 1/3(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 14546 2/3 ÷ 20 = 727 1/3",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "1(szar2) 4(gesz'u) 1(gesz2) 5(u) 2(disz)? 1/2(disz) sar gi zex(SIG7)-a 1(u) 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2-bi u4 6(gesz2) 4(u) 7(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 6112.5 ÷ 15 = 407.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "4(gesz2) 2(u) 5(disz) sar gi zex(SIG7)-a 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2-bi u4 2(u) 6(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 265 ÷ 10 = 26.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "4(gesz'u) 9(gesz2) 2(u) 2(disz) 1/2(disz) sar gi ku5-ra2 1(u) 5(disz) sar",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2-bi u4 3(gesz2) 1(u) 7(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2962.5 ÷ 15 = 197.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "4(gesz2) 5(disz) sar gi ku5-ra2 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a2-bi u4 2(u) 4(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 245 ÷ 10 = 24.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "4(gesz'u) 3(gesz2) 1(u) sar {gesz}dih3 ku5-ra 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a2-bi u4 2(gesz2) 1(u) la2 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2590 ÷ 20 = 129.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "7(gesz2) 1(u) 5(disz) sar {u2}kiszi17 hirinx(KWU318)-na",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "u2 {gesz}haszhur {gesz}dih3 1(u) 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "a2-bi u4 3(u) la2 1(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 435 ÷ 15 = 29",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "5(u) la2 2(disz) sar {u2}kiszi17 ku5-ra2 1(u) 2(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "a2-bi u4 4(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 48 ÷ 12 = 4",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "4(u) 2(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur 1(u) la2 1(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "a2-bi u4 4(disz) 2/3(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 42 ÷ 9 = 4.67",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "1(gesz'u) 2(gesz2) 4(u) 5(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "a2-bi u4 1(gesz2) 1(u) 6(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 765 ÷ 10 = 76.5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "2(gesz2) 3(u) sar u2 {gesz}haszhur 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "a2-bi u4 1(u) 5(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 150 ÷ 10 = 15",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "3(gesz2) 2(u) 5(disz) sar hirinx(KWU318)-na u2 {gesz}haszhur GIN2 kiszi17 {gesz}dih3 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "a2-bi u4 1(u) 1/3(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 205 ÷ 20 = 10.25",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "3(u) 2(disz) sar {u2}kiszi17 ku5-ra2 1(u)# 6(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "a2-bi u4 2(disz)",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 32 ÷ 16 = 2",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "2(u)# [szar] hirinx(KWU318)-na u2 {gesz}[haszhur] 1(u) 2(disz)-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a2-bi u4 1(disz) 2/3(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 20 ÷ 12 = 1.67",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "4(gesz2) 4(u) 5(disz) sar u2 gi ku5-ra2 1(u) 5(disz)-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2-bi u4 2(u) la2 1(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 285 ÷ 15 = 19",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(u) sar {u2}kiszi17 ku5-ra2 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a2-bi u4 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 10 ÷ 20 = 0.5",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "4(gesz2) 5(disz) sar {u2}kiszi17 ku5-ra2 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2-bi u4 2(u) 4(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 245 ÷ 10 = 24.5",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "1(gesz'u) 1(gesz2) 2(u) sar {u2}gug4 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2-bi u4 3(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "7(gesz2) 2(u) sar {u2}gug4 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2-bi u4 4(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 440 ÷ 10 = 44",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "1(gesz'u) 1(gesz2) 5(u) la2 2(disz) sar hirinx(KWU318)-na 4(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a2 ug3-IL2-bi u4 2(gesz2) 5(u) 7(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 708 ÷ 4 = 177",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(gesz2) 2(u) 4(disz) sar hirinx(KWU318)-na 6(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a2 ug3-IL2-bi u4 1(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 84 ÷ 6 = 14",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "1(gesz2) 5(disz) sar {u2}kiszi17 ku5-ra2 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "a2 ug3-IL2-bi u4 1(u) 3(disz)!",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 65 ÷ 5 = 13",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "3(gesz2) sar {u2}kiszi17 ku5-ra2 1(u) 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a2 ug3-IL2-bi u4 1(u) 2(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 180 ÷ 15 = 12",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "4(gesz2) 4(u) la2 2(disz) sar {u2}kiszi17 ku5-ra2 6(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "a2 ug3-IL2-bi u4 4(u) 6(disz) 1/3(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 278 ÷ 6 = 46.33",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "1(gesz2) 5(u) 2(disz) sar {u2}kiszi17 ku5-ra2 7(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a2 ug3-IL2-bi u4 1(u) 6(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 112 ÷ 7 = 16",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "4(gesz2) 6(disz) 5/6(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "5(gesz2) 5(u) ug3-IL2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "gi kesz2-ra2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "4(u) 4(disz) gurusz sza3-gu4 igi-du",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "8(disz) gurusz ka-us2-sa2 gar",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[...] sila3-ta?",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "7(gesz2) 2(u) sar u2 {gesz}haszhur 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2-bi u4 4(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 440 ÷ 10 = 44",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "7(gesz2) 5(disz) sar gi zex(SIG7)-a 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a2-bi u4 4(u) 2(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 425 ÷ 10 = 42.5",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "4(gesz2) sar al 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2-bi u4 4(u) 8(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 240 ÷ 5 = 48",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "4(u) sar al 4(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2-bi u4 1(u)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 40 ÷ 4 = 10",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "4(gesz2) sar {gesz}dih3 ku5-ra2 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2-bi u4 1(u) 2(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 240 ÷ 20 = 12",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a-sza3 sza-ra-hu-um-ma kiszib3 ab-ba-gi-na",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "4(gesz'u) 3(gesz2) 2(u) sar {u2}kiszi17 ku5-a 1(gesz2) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "a2-bi u4 4(u) 3(disz) 1/3(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2600 ÷ 60 = 43.33",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a2 7(disz) sila3-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "a-sza3 e2-lugal",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "kiszib3 lugal-a2-zi-da",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "3(gesz'u) 8(gesz2) 4(u) sar {u2}kiszi17 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a2-bi u4 1(gesz2) 5(u) 6(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2320 ÷ 116 = 9",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "1(gesz2) 1(u) sar al 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "a2-bi u4 1(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 70 ÷ 5 = 14",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "3(gesz2) 4(u) 5(disz) sar {u2}kiszi17 1(u)# 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a2-bi u4 1(u) 5(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 225 ÷ 15 = 15",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "4(gesz2) 5(u) sar {gesz}dih3 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "a2-bi u4 3(u) la2 1(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 290 ÷ 10 = 29",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "4(gesz2) sar u2 zex(SIG7)-a 2(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "a2-bi u4 1(u) 2(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 240 ÷ 20 = 12",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "2(gesz2) 3(u) sar hirinx(KWU318)#-na 1(u) 5(disz) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "a2-bi u4 1(u)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 150 ÷ 15 = 10",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "2(gesz2) 2(u) sar hirinx(KWU318)-na 1(u) sar-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "a2-bi u4 1(u) 4(disz)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 140 ÷ 10 = 14",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "a-sza3 ki-gam-ma",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "kiszib3 [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "1(u) 5(disz) [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "kun#-[zi-da ...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "2(gesz2) 5(u) 3(disz) [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a e3-a a-sza3 lugal gub-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "kiszib3 szesz-kal-la",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "1(disz)? gurusz iti 2(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# appears to be 2(disz)",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "iti nesag-ta",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# some text moved to next line",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "iti dal-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2-bi u4 1(gesz2)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1 × 2 × 30 = 60",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "kab2-ku5 ki-sur gub-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "2(disz) 2/3(disz) sar kin sahar",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 obv. 1: 2(disz) 2/3(disz) kin sahar-ra",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a-ga-am a-sza3 la2-mah-ka si-ga",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 obv. 2: a-ga-am3 a-sza3 la2-mah si-ga",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a2-bi u4 1(u) 6(disz)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2 2/3 ÷ 1/6 = 16",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "3(u) 3(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 obv. 3: 1(u) 1(disz) gurusz u4 3(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 11 × 3 = 33",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "gi ga6-ga2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 obv. 4: gi ga6-ga2",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "kiszib3 a-kal-la nu-banda3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 rev. 2: giri3 ur-lu2",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 rev. 3: kiszib3 a-kal-la",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 seal: 1. a-kal-[la] 2. dub-[sar] 3. dumu ur-nigar[{gar}]",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "4(u) 4(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "a e3-a la2-mah nu-ti gub-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "kiszib3 szesz-kal-la dumu tir-gu",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "1(u) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "a e3-a dub-la2-{d}utu gub-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "2(u) 4(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a e3-a ka-ma-ri2#?{ki} gub-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "2(u) 4(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "kiszib3 gu-u2-gu-a",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "2(u) 5(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "gi ga6-ga2 u3 szu ur3-ra",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "1(disz) ARAD2-{d}szara2 tu-ra u4 4(u) 5(disz)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "1(gesz'u) 1(gesz2) 5(u) sa gi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "gu-nigin2-ba 1(u) 2(disz) sa-ta",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "32 gu-nigin2-bi 5(u) 9(disz) 1(u) gin2",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 710 ÷ 12 = 59.167",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "gurusz-e gu-nigin2 2(disz) 1/2(disz)-ta",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "a2-bi u4 2(u) 3(disz) 2/3(disz)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 59.167 ÷ 2.5 = 23.67",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "ga2-nun kar-<<masz>>-ra kux(KWU147)-ra",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "kiszib3 lugal-e2-mah-e",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "1(u) la2 1(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "sze bala-a",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "giri3 ur-{d}lamma dub-sar lugal",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "kiszib3 ur-{d}szul-pa-e3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "4(gesz2) 3(u) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "en-du8-du-ta gu2 idigna u3 gu2 i7 ma2-gur8-ra-sze3 gi ga6-ga2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "kiszib3 a-kal-la dumu lu2-saga",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "1(u) 5(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dub-la2-{d}utu-ka gub-ba",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "kiszib3 ur-lugal",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(disz) lugal-zi-mu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "iti 4(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a2-bi u4 2(gesz2)",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1 × 4 × 30 = 120",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "en-nun-ga2 ti-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "kiszib3 lu2-dingir-ra",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "6(disz) gurusz gu4 us2-sa",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "6(disz) gurusz a-sza3-da tusz-a",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "iti 4(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a2-bi u4 2(gesz'u)! 4(gesz2)-kam",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 12 × 30 × 4 = 1440",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "raw",
+      "text": "# text has 1(gesz'u) 4(gesz2)-kam",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "1/2(disz) ARAD2-hu-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1/2(disz) lu2-{d}nin-ur4-ra",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "1/2(disz) lu2-{d}szara2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "1/2(disz) lu2-{d}inanna",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "1/2(disz) lu2-gi-na szu-i",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "1/2(disz) lugal-nesag-e",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "iti 4(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "a2-bi u4 6(gesz2) a2 u4-du8-a dumu-gi7",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1/2 × 6 × 4 × 30 = 360",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "1(gesz2) 1(u) 2(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "a2 u4-du8-ha ug3-IL2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "iti 4(disz)-kam",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "iti ezem-{d}szul-gi-ta",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# some text moved to next line",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "iti diri-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "1(u) 2(disz) gurusz u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "kiszib3 lugal-mu-ma-an-ag2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "3(gesz'u) 7(gesz2) 3(u) sar sa gi",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "gu-nigin2-ba 1(u) 2(disz)! sa-ta",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "gu-nigin2-bi 3(gesz2)! 7(disz) 1/2(disz)",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2250 ÷ 12 = 187.5",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "gurusz-e gu-nigin2 2(disz)-ta",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "a2-bi u4 <1(gesz2)> 3(u) 3(disz) 2/3(disz)",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 187.5 ÷ 2 = 93.75",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "en-du8-<du>-ta ga2-nun kux(KWU147)-ra",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "kiszib3 a? lugal-a2-zi-da",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "1(u) 4(disz) gurusz u4 5(u) 6(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "a2-bi u4 1(gesz'u) 3(gesz2) 4(disz)!",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 14 × 56 = 784",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "raw",
+      "text": "# text has 4(u)",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "umma{ki}-ta nibru{ki}-sze3 ma2-la2-a de6-a da-ab-ru-um-ta nibru{ki}-sze3 ma2-la2-a de6-a u3 bala-a gub-ba",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "kiszib3 ur-{d}nu-musz-da",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "reverse",
+      "column": "column 6"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szunigin 3(szar2)# 1(gesz'u) 9(gesz2) 2(u) 6(disz) [5/6(disz) gurusz] u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[szunigin] 1(gesz'u)# 2(u) 8(disz) 1/3(disz) ug3-IL2# u4 1(disz)-sze3",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[zi-ga]-am3",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space",
+      "surface": "reverse",
+      "column": "column 6"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "nig2-ka9-ak",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "lugal-gu4-e# nu-banda3-gu4",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 rev. 1: ugula lugal-gu4-e",
+      "surface": "reverse",
+      "column": "column 6"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "mu en-mah-gal-an-na en {d}nanna ba-hun",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#P107318 rev. 4: mu en-unu6-gal {d}inanna ba-hun",
+      "surface": "reverse",
+      "column": "column 6"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "math_kind": "multiplication"
+}

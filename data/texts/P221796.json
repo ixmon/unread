@@ -1,0 +1,765 @@
+{
+  "id": "P221796",
+  "designation": "BiMes 03, 26",
+  "genre": "Literary",
+  "subgenre": "riddles",
+  "language": "Sumerian",
+  "period": "ED IIIb (ca. 2500-2340 BC)",
+  "year": -2420,
+  "provenience": "Lagash (mod. El-Hiba)",
+  "site": "Lagash (mod. El-Hiba)",
+  "lat": 31.42,
+  "lon": 46.41,
+  "content_lines": 79,
+  "chars": 2191,
+  "font": "SantakkuM",
+  "known_elsewhere": false,
+  "cdli_url": "https://cdli.earth/artifacts/221796",
+  "museum_no": "IM—",
+  "primary_publication": "BiMes 03, 26",
+  "atf_source": "cdlistaff",
+  "atf": "&P221796 = BiMes 03, 26 \n#atf: lang sux \n@tablet \n@column 1 \n1. i7-bi NINA-du \n2. dingir-bi {d}nansze nin uru16 \n3. ku6#-bi lu2:u18 gu7-gu7 \n4. musz#-bi [x] x \n5. [i7-bi] AN [...] \n6. [dingir-bi ...] x [x] \n7. ku6-bi x musz#-bi bar GAM#-GAM# \n8. i7-bi en a ME#? dingir-bi {d}hendur-sag# gal-nimgir abzu \n9. [ku6]-bi musz{ku6} musz#-bi si mu2 \n10. [i7-bi] x x [...] \n@column 2 \n1. [dingir-bi {d}]nin#-nu-nir \n2. ku6-bi sag x x \n3. musz-bi TAR-luh \n4. i7-bi en libisz-sze3#? nu-DU \n5. dingir-bi {d}nin-guru7 nu nunuz u2 gal \n6. ku6-bi MUNUS-MUNUS \n7. musz-bi su3-a \n8. i7-bi pa5 {d}samanx(|SZE.NUN.SZE3.BU|) kas4 \n9. dingir-bi {d}nin-gir2-su ur-sag gal en-lil2-la2 \n10. ku6-bi MUNUS [x] musz#-bi# x [x x] \n$ rest of column missing \n@column 3 \n1. lugal-ne AN-ta#? \n2. ku6-bi x gid2 musz-bi musz gur8 \n3. i7-bi e3 pirig \n4. dingir-bi ama-tu-da umma{ki} {d}nin-ur4 \n5. ku6-bi ur4 musz-bi pirig dar \n6. i7-bi |LAGABxMUSZ@90| dingir-bi {d}|LAGABxGAL| EN DI ba \n7. ku6-bi MUN musz-bi a-sza3 tur3 \n8. i7-bi DU zabala5{ki} \n$ rest of column missing \n@column 4 \n1. [musz-bi a?]-sza3 tur3 \n2. i7-bi en gir2 gal \n3. dingir-bi igi zi gal an-na \n4. {d}nin-girimx(A.BU.HA.DU)\n5. ku6-bi esztub{ku6} \n6. musz-bi musz ki e2? \n7. i7-bi en zalag gal \n8. dingir-bi pisan sanga2 unu{ki} ensi2 gal {d}inanna \n9. ku6-bi a-dar-tun2 musz-bi KA gesztin \n10. i7-bi [x x] \n$ rest of column missing \n@column 5 \n1. ku6-bi KA# sur musz-bi musz an \n2. i7-bi {d}lamma igi-bar \n3. dingir-bi {d}lamma-sza6-ga \n4. u8 ganun tur nun \n5. ku6-bi nig2-sag-la2 \n6. musz-bi musz tag \n7. i7-bi i7 dumu lu2 \n8. dingir-bi en {d}x [x x] \n$ rest of column missing \n@column 6 \n1. [i7-bi] ma2-gin2 UD x \n2. dingir-bi {d}nansze#? {d}nin-dub#? \n3. ku6-bi gug2 musz-bi x \n4. i7-bi an-ne2 pa3-da \n5. dingir-bi lugal e2-a la2 x \n6. ku6-bi# [x] musz#-[bi] x [x] \n$ rest of column missing \n@reverse \n@column 1 \n$ n lines missing \n1. dingir-bi [{d}ig]-alim \n2. ku6-bi# [x x] \n$ rest of column missing \n@column 2 \n$ n lines missing \n1. ku6-bi# suhur musz#-bi musz a \n2. i7-bi i7 nun \n3. dingir-bi# [x x] \n$ n lines missing \n1. i7# EN [...] \n@column 3 \n$ n lines missing \n1. musz-bi musz kas4 \n2. i7-bi NINA gar \n3. dingir-bi {d}nin-gublaga \n4. ku6-bi gir2 \n5. musz-bi [x] x [x x] \n6. i7-bi x x bi \n7. dingir-bi {d}iszkur# amar# banda3#{da} \n8. [ku6-bi] x [musz]-bi x \n$ rest of column missing \n@column 4 \n$ n lines missing \n1. ku6-bi sumasz musz-bi musz dagal \n2. i7-bi masz ti HAR \n3. dingir-bi {d}pa-bil3-sag ur-sag {d}en-lil2-la2 \n4. ku6-bi du3 musz-bi KU \n5. i7-bi x ra GAN# NE# \n6. dingir-bi {d}nin-tu nin-an-ki \n7. ku6-bi kin musz-bi [x x] \n$ rest of column missing \n@column 5 \n$ n lines missing \n1. [ku6-bi] x musz#-bi [x]-tag \n2. i7-bi uri-ri dingir-bi {d}nin-ur4 DU \n3. u2-ka e2-kur-ra \n4. ku6-bi nun sal4 me? musz-bi igi gun3 \n5. i7-bi i7 kesz3{ki} \n6. [dingir]-bi# {d}{asz11}aszgi{gi4} lugal# ki# AB \n$ rest of column missing \n@column 6 \n$ column missing\n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "i7-bi NINA-du",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "dingir-bi {d}nansze nin uru16",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ku6#-bi lu2:u18 gu7-gu7",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "musz#-bi [x] x",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[i7-bi] AN [...]",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[dingir-bi ...] x [x]",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ku6-bi x musz#-bi bar GAM#-GAM#",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "i7-bi en a ME#? dingir-bi {d}hendur-sag# gal-nimgir abzu",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[ku6]-bi musz{ku6} musz#-bi si mu2",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[i7-bi] x x [...]",
+      "surface": "tablet",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[dingir-bi {d}]nin#-nu-nir",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ku6-bi sag x x",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "musz-bi TAR-luh",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "i7-bi en libisz-sze3#? nu-DU",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "dingir-bi {d}nin-guru7 nu nunuz u2 gal",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ku6-bi MUNUS-MUNUS",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "musz-bi su3-a",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "i7-bi pa5 {d}samanx(|SZE.NUN.SZE3.BU|) kas4",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "dingir-bi {d}nin-gir2-su ur-sag gal en-lil2-la2",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ku6-bi MUNUS [x] musz#-bi# x [x x]",
+      "surface": "tablet",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "tablet",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "lugal-ne AN-ta#?",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ku6-bi x gid2 musz-bi musz gur8",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "i7-bi e3 pirig",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "dingir-bi ama-tu-da umma{ki} {d}nin-ur4",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ku6-bi ur4 musz-bi pirig dar",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "i7-bi |LAGABxMUSZ@90| dingir-bi {d}|LAGABxGAL| EN DI ba",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ku6-bi MUN musz-bi a-sza3 tur3",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "i7-bi DU zabala5{ki}",
+      "surface": "tablet",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "tablet",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[musz-bi a?]-sza3 tur3",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi en gir2 gal",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dingir-bi igi zi gal an-na",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{d}nin-girimx(A.BU.HA.DU)",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ku6-bi esztub{ku6}",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "musz-bi musz ki e2?",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "i7-bi en zalag gal",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "dingir-bi pisan sanga2 unu{ki} ensi2 gal {d}inanna",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "ku6-bi a-dar-tun2 musz-bi KA gesztin",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "i7-bi [x x]",
+      "surface": "tablet",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "tablet",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ku6-bi KA# sur musz-bi musz an",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi {d}lamma igi-bar",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dingir-bi {d}lamma-sza6-ga",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "u8 ganun tur nun",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ku6-bi nig2-sag-la2",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "musz-bi musz tag",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "i7-bi i7 dumu lu2",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "dingir-bi en {d}x [x x]",
+      "surface": "tablet",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "tablet",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[i7-bi] ma2-gin2 UD x",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "dingir-bi {d}nansze#? {d}nin-dub#?",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ku6-bi gug2 musz-bi x",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "i7-bi an-ne2 pa3-da",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "dingir-bi lugal e2-a la2 x",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ku6-bi# [x] musz#-[bi] x [x]",
+      "surface": "tablet",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "tablet",
+      "column": "column 6"
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "dingir-bi [{d}ig]-alim",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ku6-bi# [x x]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ku6-bi# suhur musz#-bi musz a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi i7 nun",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dingir-bi# [x x]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "i7# EN [...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "musz-bi musz kas4",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi NINA gar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dingir-bi {d}nin-gublaga",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ku6-bi gir2",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "musz-bi [x] x [x x]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "i7-bi x x bi",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "dingir-bi {d}iszkur# amar# banda3#{da}",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[ku6-bi] x [musz]-bi x",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ku6-bi sumasz musz-bi musz dagal",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi masz ti HAR",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "dingir-bi {d}pa-bil3-sag ur-sag {d}en-lil2-la2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ku6-bi du3 musz-bi KU",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "i7-bi x ra GAN# NE#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "dingir-bi {d}nin-tu nin-an-ki",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ku6-bi kin musz-bi [x x]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": "$ n lines missing ",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[ku6-bi] x musz#-bi [x]-tag",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i7-bi uri-ri dingir-bi {d}nin-ur4 DU",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "u2-ka e2-kur-ra",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ku6-bi nun sal4 me? musz-bi igi gun3",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "i7-bi i7 kesz3{ki}",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[dingir]-bi# {d}{asz11}aszgi{gi4} lugal# ki# AB",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest of column missing ",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "note",
+      "text": "$ column missing",
+      "surface": "reverse",
+      "column": "column 6"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate when the local/HF model is wired.",
+  "status": "atf_only",
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

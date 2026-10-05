@@ -1,0 +1,237 @@
+{
+  "id": "P348480",
+  "designation": "SpTU 1, 059",
+  "genre": "Scientific",
+  "subgenre": "therapeutic recipes",
+  "language": "Akkadian",
+  "period": "Hellenistic (323-63 BC)",
+  "year": null,
+  "provenience": "Uruk (mod. Warka)",
+  "site": "Uruk (mod. Warka)",
+  "lat": 31.32,
+  "lon": 45.64,
+  "content_lines": 18,
+  "chars": 1068,
+  "font": "Esagil",
+  "cdli_url": "https://cdli.earth/artifacts/348480",
+  "museum_no": "IM —",
+  "primary_publication": "SpTU 1, 059",
+  "atf_source": "Johnson, J. Cale",
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "known_elsewhere": false,
+  "herbal_remedy": true,
+  "herbal_blurb": "Women's / head heat extract (SpTU 1, 059)",
+  "atf": "&P348480 = SpTU 1, 059\n#atf: lang akk \n@tablet \n@obverse \n$ missing\n@reverse\n$ beginning missing\n1'. [...] _szim#_ [...]\n2'. [...] x ba-lu pa#-[tan ...]\n$ single ruling\n3'. [... {szim}]li# {u2}har-har_ x [...]\n4'. [...] _illu# {szim}HAL diri_-ma GAM [...]\n5'. [...] ina _kasz_ ina {uruda}szen-tur szeg6_-szal _sed#_ [...]\n6'. [... u5] argab#{muszen} ana _sza3-tur3_-sza2 _dub_-ma sza2 KU# [...]\n$ single ruling\n7'. [...] am? _{u2}igi_-lim _disz_-nisz ta-mar-raq ina _kasz_ la pa-tan _nag_ x [...]\n$ single ruling\n8'. [...] _{u2}eme ur-gi7 disz_-nisz ta-mar-raq ina _kasz_ ina [...]\n$ single ruling\n9'. [... {u2}]igi_-lim {u2}igi#-nisz# [{u2}]har#-har {u2}kur-kur ukusz2-hab#_ [...]\n10'. [...] x KU-sza2 ar2-hisz [...]\n$ single ruling\n11'. [...] x tu pa x [x x] tara#-sa3-an [x] ku tara-kas ana _sza3-tur3#_-[sza2 ...]\n$ single ruling\n12'. [x x] sza _gig_ sza2 _nu_ im-mar ana sza2 _gig_ sza2 im#-mar _{u2}igi-nisz suhusz#_ [...]\n13'. {u2}s,a-s,u-un-tu2 _disz_-nisz ta-mar-raq# ina _i3 kasz#_ u _a-gesztin-na#_ [...]\n$ single ruling\n14'. _DISZ munus mud2_-sza2 KUD-ma _mud2_-sza2 _nu_ [...]\n15'. _dub# 4(u) 1(disz)?-kam2 DISZ na ugu_-[szu2] _kum2_ u2-kal bul-t,u _e2_ [...]\n16'. _gaba-ri unug#{ki#} [gin7 sumun]-szu2# {m}{d}1(gesz2)-ik-s,ur _a_-szu2 sza2 {m}[x ...]\n17'. _in-sar_-ma ib-ru2 _im {m}{d}utu-mu_ x [...]\n18'. pa-lih {d}a-nu# [u] {d}1(u) 5(disz) _nu_ i11-tab#-[bal]\n\n",
+  "lines": [
+    {
+      "type": "note",
+      "text": "$ missing",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "note",
+      "text": "$ beginning missing",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "[...] _szim#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[...] x ba-lu pa#-[tan ...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "[... {szim}]li# {u2}har-har_ x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "[...] _illu# {szim}HAL diri_-ma GAM [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "[...] ina _kasz_ ina {uruda}szen-tur szeg6_-szal _sed#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "[... u5] argab#{muszen} ana _sza3-tur3_-sza2 _dub_-ma sza2 KU# [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "[...] am? _{u2}igi_-lim _disz_-nisz ta-mar-raq ina _kasz_ la pa-tan _nag_ x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "[...] _{u2}eme ur-gi7 disz_-nisz ta-mar-raq ina _kasz_ ina [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "[... {u2}]igi_-lim {u2}igi#-nisz# [{u2}]har#-har {u2}kur-kur ukusz2-hab#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "[...] x KU-sza2 ar2-hisz [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "[...] x tu pa x [x x] tara#-sa3-an [x] ku tara-kas ana _sza3-tur3#_-[sza2 ...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "[x x] sza _gig_ sza2 _nu_ im-mar ana sza2 _gig_ sza2 im#-mar _{u2}igi-nisz suhusz#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "{u2}s,a-s,u-un-tu2 _disz_-nisz ta-mar-raq# ina _i3 kasz#_ u _a-gesztin-na#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "_DISZ munus mud2_-sza2 KUD-ma _mud2_-sza2 _nu_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_dub# 4(u) 1(disz)?-kam2 DISZ na ugu_-[szu2] _kum2_ u2-kal bul-t,u _e2_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_gaba-ri unug#{ki#} [gin7 sumun]-szu2# {m}{d}1(gesz2)-ik-s,ur _a_-szu2 sza2 {m}[x ...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_in-sar_-ma ib-ru2 _im {m}{d}utu-mu_ x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "pa-lih {d}a-nu# [u] {d}1(u) 5(disz) _nu_ i11-tab#-[bal]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate for a draft.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

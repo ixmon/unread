@@ -1,0 +1,2888 @@
+{
+  "id": "P227751",
+  "designation": "OIP 011, 179",
+  "genre": "Lexical",
+  "subgenre": "Obv: Metrological table or list; Rev: OB Hh4  (stones, plants, fish, birds, clot",
+  "language": "Sumerian",
+  "period": "Old Babylonian (ca. 1900-1600 BC)",
+  "year": -1750,
+  "provenience": "Nippur (mod. Nuffar)",
+  "site": "Nippur (mod. Nuffar)",
+  "lat": 32.13,
+  "lon": 45.23,
+  "content_lines": 200,
+  "chars": 4197,
+  "font": "Santakku",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/227751",
+  "museum_no": "CBS 13935",
+  "primary_publication": "OIP 011, 179",
+  "atf_source": "Veldhuis, Niek (dcclt)",
+  "math_hunt": true,
+  "math_blurb": "Metrological table / list",
+  "math_score": 121.7,
+  "atf": "&P227751 = SLT 179\n#atf: use lexical\n#link: def A = Q000041 = OB Nippur ur5-ra 4\n#CBS 13935\n@reverse\n# columns on reverse left to right\n@column 1\n1. {na4}ka#-gi-na\n>>A Seg.1, 1\n2. {na4}kiszib ka-gi-na\n>>A Seg.1, 2\n3. {na4}lagab ka-gi-na\n>>A Seg.1, 3\n4. {na4}esi#\n>>A Seg.1, 4\n5. {na4}nu11-gal#\n>>A Seg.1, 5\n6. {na4}kiszib nu11-gal\n>>A Seg.1, 6\n7. {na4}lagab-nu11-gal\n>>A Seg.1, 7\n8. [...] szuba(|ZA.MUSZ3|)#\n>>A Seg.1, 8\n9. [...] a2#-szuba\n>>A Seg.1, 9\n10. [...] lagab# a2-szuba\n>>A Seg.1, 10\n11. {na4#}algamesz\n>>A Seg.1, 11\n12. {na4}kiszib algamesz\n>>A Seg.1, 12\n13. {na4}lagab algamesz\n>>A Seg.1, 13\n14. {na4#}duh-szi-a\n>>A Seg.1, 14\n15. {na4}kiszib duh-szi-a\n>>A Seg.1, 15\n16. {na4}lagab duh-szi-a\n>>A Seg.1, 16\n17. {na4}ellag2 duh-szi-a\n>>A Seg.1, 17\n18. {na4}da-gaz!(GUM) duh-szi-a\n>>A Seg.1, 18\n19. {na4}duh-szi-a mar-ha-szi\n>>A Seg.1, 19\n20. {na4}za-gin3\n>>A Seg.1, 20\n21. {na4}za-gin3 duru5\n>>A Seg.1, 21\n22. {na4}za-gin3 dili\n>>A Seg.1, 22\n23. {na4}za-gin3 za-la2-la2\n>>A Seg.1, 23\n24. {na4}za-gin3 gu2 tu{muszen}\n>>A Seg.1, 24\n25. {na4}za-gin3 gu2 bir5{muszen}\n>>A Seg.1, 25\n26. {na4}za-gin3 lu-ub2{sar#}-da#\n>>A Seg.1, 26\n27. {na4}ad za-gin3\n>>A Seg.1, 27\n28. {na4}ad-gu2 za-gin3\n>>A Seg.1, 28\n29. {na4}ad-tab za-gin3\n>>A Seg.1, 29\n30. {na4}nig2-tag-ga za-gin3\n>>A Seg.1, 30\n31. {na4}mu-lu-ug2 za#-gin3#\n>>A Seg.1, 31\n32. {na4}{d}lamma za-gin3\n>>A Seg.1, 32\n33. {na4}alan za-gin3\n>>A Seg.1, 33\n34. {na4}igi za-gin3\n>>A Seg.1, 34\n35. {na4#}ugur2 igi za-gin3\n>>A Seg.1, 35\n36. {na4#}sun4 za-gin3\n>>A Seg.1, 36\n37. [{na4}]bi2-za-za za-gin3\n>>A Seg.1, 37\n38. [{na4}]bibra(|AN.HUL2|)# za-gin3\n>>A Seg.1, 38\n39. [{na4}]kiszib# za-gin3\n>>A Seg.1, 39\n40. [...] za-gin3\n>>A Seg.1, 40\n41. [...] za-gin3\n>>A Seg.1, 41\n42. [...] x# za#-gin3#\n>>A Seg.1, 42\n@column 2\n1. {na4#}gug(|ZA.GUL|)#\n>>A Seg.1, 44\n2. {na4}gug gazi\n>>A Seg.1, 45\n3. {na4#}gug me-luh-ha\n>>A Seg.1, 46\n4. {na4#}gug gid2-da\n>>A Seg.1, 47\n5. {na4}gug lugud#-da\n>>A Seg.1, 48\n6. {na4}gug buru3#-buru3-da\n>>A Seg.1, 49\n7. {na4}kiszib gug\n>>A Seg.1, 50\n8. {na4}lagab gug\n>>A Seg.1, 51\n9. {na4}ellag2 gug\n>>A Seg.1, 52\n10. {na4}nir2\n>>A Seg.1, 53\n11. {na4}nir2 ziz\n>>A Seg.1, 54\n12. {na4}nir2 igi\n>>A Seg.1, 55\n13. {na4}nir2 pa muszen-na\n>>A Seg.1, 56\n14. {na4}nir2 a-la-x#\n>>A Seg.1, 57\n15. {na4}nir2 a-la-x#\n>>A Seg.1, 58\n16. {na4}nir2 babbar-1(asz)\n>>A Seg.1, 59\n17. {na4}nir2 babbar-2(asz)\n>>A Seg.1, 60\n18. {na4}nir2 musz-gir2\n>>A Seg.1, 61\n19. {na4}kiszib nir2\n>>A Seg.1, 62\n20. {na4}lagab nir2\n>>A Seg.1, 63\n21. {na4}ellag2 nir2\n>>A Seg.1, 64\n22. {na4}szuba(|ZA.MUSZ3|)\n>>A Seg.1, 65\n23. {na4}szuba gal\n>>A Seg.1, 66\n24. {na4}szuba tur\n>>A Seg.1, 67\n25. {na4}szuba gun3-a\n>>A Seg.1, 68\n26. {na4}szuba a2 zi-da\n>>A Seg.1, 69\n27. {na4}szuba a2 gab2-bu\n>>A Seg.1, 70\n28. {na4}amasz# [pa] e3-a\n>>A Seg.1, 71\n29. {na4}dur-gi6 an-na\n>>A Seg.1, 72\n30. {na4}dur-gi6 ban3-da\n>>A Seg.1, 73\n31. {na4}e-gu2#-en-sag9\n>>A Seg.1, 74\n32. {na4}e-gi-za3-ga\n>>A Seg.1, 75\n33. {na4}gi-rim hi-li-e\n>>A Seg.1, 76\n34. {na4}an-ta szur-ra\n>>A Seg.1, 77\n35. {na4}TA-ba\n>>A Seg.1, 78\n36. {na4}hu-ri2-zum\n>>A Seg.1, 79\n37. {na4}babbar\n>>A Seg.1, 80\n38. {na4}kukku5#\n>>A Seg.1, 81\n39. {na4#}su4#-a\n>>A Seg.1, 82\n40. {na4#}sig7-sig7\n>>A Seg.1, 83\n41. {na4#}gun3-a\n>>A Seg.1, 84\n42. {na4#}izi\n>>A Seg.1, 85\n43. [{na4}]ze2#\n>>A Seg.1, 86\n@column 3\n# first 2 lines now broken\n1. {na4}tesz2\n>>A Seg.1, 87\n2. {na4}arhusz\n>>A Seg.1, 88\n3. {na4}a-ur4-a\n>>A Seg.1, 89\n4. {na4}hudusz\n>>A Seg.1, 90\n5. {na4}u3-tu\n>>A Seg.1, 91\n6. {na4}u3 nu-tu\n>>A Seg.1, 92\n7. {na4}hasz2-bar\n>>A Seg.1, 93\n8. {na4}naga\n>>A Seg.1, 94\n9. {na4}musz\n>>A Seg.1, 95\n10. {na4}igi musz\n>>A Seg.1, 96\n11. {na4}igi-ku6\n>>A Seg.1, 97\n12. {na4}sag-gar\n>>A Seg.1, 98\n13. {na4}sag-kal\n>>A Seg.1, 99\n14. {na4}gul-gul\n>>A Seg.1, 100\n15. {na4}sag-gul-gul\n>>A Seg.1, 101\n16. {na4}sag-du\n>>A Seg.1, 102\n17. {na4}kinkin\n>>A Seg.1, 103\n18. {na4}kinkin zi-bi\n>>A Seg.1, 104\n19. {na4}kinkin bahar2(|DUG.BUR|)\n>>A Seg.1, 105\n20. {na4}kinkin ad-bar\n>>A Seg.1, 106\n21. {na4}kinkin sze-gesz-i3\n>>A Seg.1, 107\n22. {na4}kinkin {gesz}mu-sur-ru#\n>>A Seg.1, 108\n23. {na4}kinkin zi gu\n>>A Seg.1, 109\n24. {na4}kinkin ninda-gir15(ESZ2)-ra\n>>A Seg.1, 110\n25. {na4}kinkin szu si3-ga\n>>A Seg.1, 111\n26. {na4}szu#-x-x\n>>A Seg.1, 112\n27. {na4}[mar]-ha#-lum#\n>>A Seg.1, 113\n28. {na4}mar-hu-sza\n>>A Seg.1, 114\n29. {na4}bur\n>>A Seg.1, 115\n30. {na4}bur i3 za3-ga\n>>A Seg.1, 116\n31. {na4}bur-szu\n>>A Seg.1, 117\n32. {na4}bur mar-ha-lum\n>>A Seg.1, 118\n33. {na4}bur mar-hu-sza\n>>A Seg.1, 119\n34. {na4}bur# babbar\n>>A Seg.1, 120\n35. {na4}bur kukku5\n>>A Seg.1, 121\n36. {na4}im#-babbar2\n>>A Seg.1, 122\n37. {na4}kiszib# im-babbar2\n>>A Seg.1, 123\n38. {na4}lagab# im-babbar2\n>>A Seg.1, 124\n39. {na4}an-zu2-gul#-me#\n>>A Seg.1, 125\n40. {na4}kiszib# an-zu2-gul-me\n>>A Seg.1, 126\n@column 4\n1. {na4}dur-ul3\n>>A Seg.1, 128\n2. {na4}hasz2!(TUM)-tum\n>>A Seg.1, 129\n3. {na4}kiszib hasz2!(TUM)-tum\n>>A Seg.1, 130\n4. {na4}lagab hasz2!(TUM)-tum\n>>A Seg.1, 131\n5. {na4}im-an-na\n>>A Seg.1, 132\n6. {na4}al-li2-ga\n>>A Seg.1, 133\n7. {na4}e-lal3-la\n>>A Seg.1, 134\n8. {na4}sikil-la-ta\n>>A Seg.1, 135\n9. {na4}sag-nu-sikil\n>>A Seg.1, 136\n10. {na4}mu-pad3-da\n>>A Seg.1, 137\n11. {na4}kadra(|GAR.SZA3.A|)\n# check cg form SZAG4!(KAR2)\n>>A Seg.1, 138\n12. {na4}nuz\n>>A Seg.1, 139\n13. {na4}nuz tab-ba\n>>A Seg.1, 140\n14. {na4}nuz gu2\n>>A Seg.1, 141\n15. {na4}iszkila(|SZA3xA|)\n>>A Seg.1, 142\n16. {na4}iszkila ab-ba\n>>A Seg.1, 143\n17. {na4}iszkila ansze\n>>A Seg.1, 144\n18. {na4}iszkila-iszkila\n>>A Seg.1, 145\n19. {na4}na\n>>A Seg.1, 146\n20. {na4}na-ru2-a\n>>A Seg.1, 147\n21. {na4}na za3-hi-li\n>>A Seg.1, 148\n22. {na4}na szu za3-hi-li\n# sic! Copy in SLT 179 has AN instead of ZAG (incorrect)\n>>A Seg.1, 149\n23. {na4#}na dub-ba-an\n>>A Seg.1, 150\n24. {na4}na gu2-bi2-na\n>>A Seg.1, 151\n25. {na4}gir2 zu2 gal#\n>>A Seg.1, 152\n26. {na4}sag zu2\n>>A Seg.1, 153\n27. {na4}{d#}dim3#-me\n>>A Seg.1, 154\n28. {na4}ka musz gu7-a\n>>A Seg.1, 155\n29. {na4}u2\n>>A Seg.1, 156\n30. {na4}u2 buru3-buru3\n>>A Seg.1, 157\n31. {na4}zi-ib-tum\n>>A Seg.1, 158\n32. {na4}szu-hu-um\n>>A Seg.1, 159\n33. {na4}ka#-pa-zum\n>>A Seg.1, 160\n34. {na4}a#-ar#-tum#\n>>A Seg.1, 161\n35. {na4}amar-gul\n>>A Seg.1, 162\n36. {na4}ki-masz\n>>A Seg.1, 163\n$ 3 lines traces\n40. [...]-gun3\n>>A Seg.1, 167\n@column 5\n$ 1 line traces\n2. {na4#}zi-ummu3(|SU.A.EDIN.LAL|)#\n>>A Seg.1, 170\n3. {na4}x# x# [...]\n>>A Seg.1, 171\n4. {na4}ka-szur-[ra]\n>>A Seg.1, 172\n5. {na4}kur-ga-ra-nu#-[um]\n>>A Seg.1, 173\n6. {na4}sag-gir-mud\n>>A Seg.1, 174\n7. {na4}kiszib sag-gir-mud\n>>A Seg.1, 175\n8. {na4}lagab sag-gir-mud\n>>A Seg.1, 176\n9. {na4}a-bala-e\n>>A Seg.1, 177\n10. na4 1(asz) gu2\n>>A Seg.1, 178\n11. na4 5(u) ma-na\n>>A Seg.1, 179\n12. na4 4(u) ma-na\n>>A Seg.1, 180\n13. na4 3(u) ma-na\n>>A Seg.1, 181\n14. na4 2(u) ma-na\n>>A Seg.1, 182\n15. na4 1(u) 5(disz) ma-na\n>>A Seg.1, 183\n16. na4 1(u) ma-na\n>>A Seg.1, 184\n17. na4 5(disz) ma-na\n>>A Seg.1, 185\n18. na4 3(disz) ma-na\n>>A Seg.1, 186\n19. na4 2(disz) ma-na\n>>A Seg.1, 187\n20. na4 1(disz) ma-na\n>>A Seg.1, 188\n21. na4 23(disz)# ma#-na\n>>A Seg.1, 189\n22. na4 12(disz)# ma#-na\n>>A Seg.1, 190\n23. na4 13(disz)# ma#-na\n>>A Seg.1, 191\n24. na4 1(u) gin2#\n>>A Seg.1, 192\n25. na4 5(disz) gin2\n>>A Seg.1, 193\n26. na4 3(disz) gin2\n>>A Seg.1, 194\n27. na4 2(disz) gin2\n>>A Seg.1, 195\n28. na4 1(disz) gin2\n>>A Seg.1, 196\n29. na4 23(disz)# gin2\n>>A Seg.1, 197\n30. na4 12(disz)# gin2\n>>A Seg.1, 198\n31. na4 13(disz)# gin2\n>>A Seg.1, 199\n32. {na4}igi-4(disz)-gal2-la\n>>A Seg.1, 200\n33. {na4}igi-6(disz)-gal2-la\n>>A Seg.1, 201\n34. na4 2(u) 2(disz) 1/2(disz)# sze\n>>A Seg.1, 202\n35. na4 2(u)# sze\n>>A Seg.1, 203\n36. na4 1(u) 5(disz) sze\n>>A Seg.1, 204\n37. na4 1(u) sze#\n>>A Seg.1, 205\n38. na4 5(disz)# sze#\n>>A Seg.1, 206\n$ ruling\n39. u2#\n>>A Seg.1, 207\n\n",
+  "lines": [
+    {
+      "type": "raw",
+      "text": "#CBS 13935",
+      "surface": "",
+      "column": ""
+    },
+    {
+      "type": "raw",
+      "text": "# columns on reverse left to right",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "{na4}ka#-gi-na",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 1",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{na4}kiszib ka-gi-na",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 2",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{na4}lagab ka-gi-na",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 3",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4}esi#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 4",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}nu11-gal#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 5",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}kiszib nu11-gal",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 6",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{na4}lagab-nu11-gal",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 7",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[...] szuba(|ZA.MUSZ3|)#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 8",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[...] a2#-szuba",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 9",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[...] lagab# a2-szuba",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 10",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{na4#}algamesz",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 11",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{na4}kiszib algamesz",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 12",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{na4}lagab algamesz",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 13",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{na4#}duh-szi-a",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 14",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{na4}kiszib duh-szi-a",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 15",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "{na4}lagab duh-szi-a",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 16",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{na4}ellag2 duh-szi-a",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 17",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "{na4}da-gaz!(GUM) duh-szi-a",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 18",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{na4}duh-szi-a mar-ha-szi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 19",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{na4}za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 20",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{na4}za-gin3 duru5",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 21",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{na4}za-gin3 dili",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 22",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "{na4}za-gin3 za-la2-la2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 23",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{na4}za-gin3 gu2 tu{muszen}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 24",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "{na4}za-gin3 gu2 bir5{muszen}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 25",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "{na4}za-gin3 lu-ub2{sar#}-da#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 26",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "{na4}ad za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 27",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "{na4}ad-gu2 za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 28",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "{na4}ad-tab za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 29",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "{na4}nig2-tag-ga za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 30",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "{na4}mu-lu-ug2 za#-gin3#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 31",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{na4}{d}lamma za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 32",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "{na4}alan za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 33",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "{na4}igi za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 34",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "{na4#}ugur2 igi za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 35",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "{na4#}sun4 za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 36",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "[{na4}]bi2-za-za za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 37",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "[{na4}]bibra(|AN.HUL2|)# za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 38",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "[{na4}]kiszib# za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 39",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "[...] za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 40",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "[...] za-gin3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 41",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "[...] x# za#-gin3#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 42",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "{na4#}gug(|ZA.GUL|)#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 44",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{na4}gug gazi",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 45",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{na4#}gug me-luh-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 46",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4#}gug gid2-da",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 47",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}gug lugud#-da",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 48",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}gug buru3#-buru3-da",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 49",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{na4}kiszib gug",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 50",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{na4}lagab gug",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 51",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{na4}ellag2 gug",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 52",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{na4}nir2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 53",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{na4}nir2 ziz",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 54",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{na4}nir2 igi",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 55",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{na4}nir2 pa muszen-na",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 56",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{na4}nir2 a-la-x#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 57",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{na4}nir2 a-la-x#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 58",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "{na4}nir2 babbar-1(asz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 59",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{na4}nir2 babbar-2(asz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 60",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "{na4}nir2 musz-gir2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 61",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{na4}kiszib nir2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 62",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{na4}lagab nir2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 63",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{na4}ellag2 nir2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 64",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{na4}szuba(|ZA.MUSZ3|)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 65",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "{na4}szuba gal",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 66",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{na4}szuba tur",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 67",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "{na4}szuba gun3-a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 68",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "{na4}szuba a2 zi-da",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 69",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "{na4}szuba a2 gab2-bu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 70",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "{na4}amasz# [pa] e3-a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 71",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "{na4}dur-gi6 an-na",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 72",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "{na4}dur-gi6 ban3-da",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 73",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "{na4}e-gu2#-en-sag9",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 74",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{na4}e-gi-za3-ga",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 75",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "{na4}gi-rim hi-li-e",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 76",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "{na4}an-ta szur-ra",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 77",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "{na4}TA-ba",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 78",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "{na4}hu-ri2-zum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 79",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "{na4}babbar",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 80",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "{na4}kukku5#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 81",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "{na4#}su4#-a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 82",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "{na4#}sig7-sig7",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 83",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "{na4#}gun3-a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 84",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "{na4#}izi",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 85",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "[{na4}]ze2#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 86",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "raw",
+      "text": "# first 2 lines now broken",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "{na4}tesz2",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 87",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{na4}arhusz",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 88",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{na4}a-ur4-a",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 89",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4}hudusz",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 90",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}u3-tu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 91",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}u3 nu-tu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 92",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{na4}hasz2-bar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 93",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{na4}naga",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 94",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{na4}musz",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 95",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{na4}igi musz",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 96",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{na4}igi-ku6",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 97",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{na4}sag-gar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 98",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{na4}sag-kal",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 99",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{na4}gul-gul",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 100",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{na4}sag-gul-gul",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 101",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "{na4}sag-du",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 102",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{na4}kinkin",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 103",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "{na4}kinkin zi-bi",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 104",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{na4}kinkin bahar2(|DUG.BUR|)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 105",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{na4}kinkin ad-bar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 106",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{na4}kinkin sze-gesz-i3",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 107",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{na4}kinkin {gesz}mu-sur-ru#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 108",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "{na4}kinkin zi gu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 109",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{na4}kinkin ninda-gir15(ESZ2)-ra",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 110",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "{na4}kinkin szu si3-ga",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 111",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "{na4}szu#-x-x",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 112",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "{na4}[mar]-ha#-lum#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 113",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "{na4}mar-hu-sza",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 114",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "{na4}bur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 115",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "{na4}bur i3 za3-ga",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 116",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "{na4}bur-szu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 117",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{na4}bur mar-ha-lum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 118",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "{na4}bur mar-hu-sza",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 119",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "{na4}bur# babbar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 120",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "{na4}bur kukku5",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 121",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "{na4}im#-babbar2",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 122",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "{na4}kiszib# im-babbar2",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 123",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "{na4}lagab# im-babbar2",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 124",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "{na4}an-zu2-gul#-me#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 125",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "{na4}kiszib# an-zu2-gul-me",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 126",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "{na4}dur-ul3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 128",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{na4}hasz2!(TUM)-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 129",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{na4}kiszib hasz2!(TUM)-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 130",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4}lagab hasz2!(TUM)-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 131",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}im-an-na",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 132",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}al-li2-ga",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 133",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{na4}e-lal3-la",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 134",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{na4}sikil-la-ta",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 135",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{na4}sag-nu-sikil",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 136",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{na4}mu-pad3-da",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 137",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{na4}kadra(|GAR.SZA3.A|)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# check cg form SZAG4!(KAR2)",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 138",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{na4}nuz",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 139",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{na4}nuz tab-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 140",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{na4}nuz gu2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 141",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{na4}iszkila(|SZA3xA|)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 142",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "{na4}iszkila ab-ba",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 143",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{na4}iszkila ansze",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 144",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "{na4}iszkila-iszkila",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 145",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{na4}na",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 146",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{na4}na-ru2-a",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 147",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{na4}na za3-hi-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 148",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{na4}na szu za3-hi-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# sic! Copy in SLT 179 has AN instead of ZAG (incorrect)",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 149",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "{na4#}na dub-ba-an",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 150",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{na4}na gu2-bi2-na",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 151",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "{na4}gir2 zu2 gal#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 152",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "{na4}sag zu2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 153",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "{na4}{d#}dim3#-me",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 154",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "{na4}ka musz gu7-a",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 155",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "{na4}u2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 156",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "{na4}u2 buru3-buru3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 157",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "{na4}zi-ib-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 158",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{na4}szu-hu-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 159",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "{na4}ka#-pa-zum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 160",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "{na4}a#-ar#-tum#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 161",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "{na4}amar-gul",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 162",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "{na4}ki-masz",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 163",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": "$ 3 lines traces",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "[...]-gun3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 167",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "note",
+      "text": "$ 1 line traces",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{na4#}zi-ummu3(|SU.A.EDIN.LAL|)#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 170",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{na4}x# x# [...]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 171",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4}ka-szur-[ra]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 172",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}kur-ga-ra-nu#-[um]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 173",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}sag-gir-mud",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 174",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{na4}kiszib sag-gir-mud",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 175",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{na4}lagab sag-gir-mud",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 176",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{na4}a-bala-e",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 177",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "na4 1(asz) gu2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 178",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "na4 5(u) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 179",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "na4 4(u) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 180",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "na4 3(u) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 181",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "na4 2(u) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 182",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "na4 1(u) 5(disz) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 183",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "na4 1(u) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 184",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "na4 5(disz) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 185",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "na4 3(disz) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 186",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "na4 2(disz) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 187",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "na4 1(disz) ma-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 188",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "na4 23(disz)# ma#-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 189",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "na4 12(disz)# ma#-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 190",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "na4 13(disz)# ma#-na",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 191",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "na4 1(u) gin2#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 192",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "na4 5(disz) gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 193",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "na4 3(disz) gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 194",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "na4 2(disz) gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 195",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "na4 1(disz) gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 196",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "na4 23(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 197",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "na4 12(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 198",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "na4 13(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 199",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{na4}igi-4(disz)-gal2-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 200",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "{na4}igi-6(disz)-gal2-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 201",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "na4 2(u) 2(disz) 1/2(disz)# sze",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 202",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "na4 2(u)# sze",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 203",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "na4 1(u) 5(disz) sze",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 204",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "na4 1(u) sze#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 205",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "na4 5(disz)# sze#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 206",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "note",
+      "text": "$ ruling",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "u2#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 207",
+      "surface": "reverse",
+      "column": "column 5"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

@@ -1,0 +1,309 @@
+{
+  "id": "P348655",
+  "designation": "SpTU 2, 050",
+  "genre": "Scientific",
+  "subgenre": "therapeutic recipes",
+  "language": "Akkadian",
+  "period": "Hellenistic (323-63 BC)",
+  "year": null,
+  "provenience": "Uruk (mod. Warka)",
+  "site": "Uruk (mod. Warka)",
+  "lat": 31.32,
+  "lon": 45.64,
+  "content_lines": 27,
+  "chars": 1949,
+  "font": "Esagil",
+  "cdli_url": "https://cdli.earth/artifacts/348655",
+  "museum_no": "IM —",
+  "primary_publication": "SpTU 2, 050",
+  "atf_source": "Johnson, J. Cale",
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "known_elsewhere": false,
+  "herbal_remedy": true,
+  "herbal_blurb": "Eye salves, \"tested\" recipes (SpTU 2, 050)",
+  "atf": "&P348655 = SpTU 2, 50\n#atf: lang akk \n@tablet \n@obverse \n1. _{na4}za-gin3 {na4}asz-gi3-gi3 {na4}ugu-asz-gi3-gi3 {na4}szim-bi-zi-da im-sig7-sig7_\n2. [{na4}pu]-us-ma-tu4 mal2-ma-lisz ina szi?-ri-szu! _szeg6_-szal _egir_ ina _ga_ _szeg6_-szal\n3. _im-sig7-sig7 {na4}pu-us-mat _szum_-ah _luh_-si _egir_ gab-bi-szu2-nu\n4. _szum_-ah ina _i3 egir_ u _duh-lal3_ tu-la-ma te-qit la-tik2-tu4 sza2 bir-rat\n$ single ruling\n5. 2(disz) _gir2_-e im-sig7-sig7 2(disz) gir2_-e kur-ru-ku-um-mu _gir2_-u2 _u2 babbar_\n6. _gir2_-u2 _ka_ tam-tim _disz_-nisz _szum_-ah ina _mud2 buru4-habrud-da{muszen} nita2_ u _munus_\n7. _ta_ si-ih-hu te-qit sza2 bir-rat _igi-min ki-min_ ta-bi-lu _igi-min_-szu2 _mar_\n8. ina _u4_-mu 4(disz)-szu2 _ga_ ina _kum2_-mi-szu2 a-na _igi-min_-szu2 _szub_-di _egir bi_\n9. {na4}as-har ta-bi-lu _igi-min_-szu2 _mar_\n$ single ruling\n10. 1/2(disz) _gin2 u5 argab{muszen} 1/2(disz) gin2 u2 babbar 1(u) 5(disz) sze mun_ eme-sal-lim\n11. _{u2}si-<sa2>_ ina _gissu had2-ra2_ tu-lam szum-ma _kum2-mesz_ ina _i3_ hal-s,a\n12. szum-ma _en-te-na_ ina _i3-nun sud2 mar-mar u4_ 4(disz) sza2 {m}ha-mu-ra-bi\n13. la-tik2-tu2 e-nu-ma _du3_-szu2 _kasz {lu2}kurun-na_ la i-szi\n14. li-te-qi2 ina _ge6 ge6_ li-sip\n$ single ruling\n15. _DISZ na igi-min_-szu2 i-bar-ru-ra 1/2(disz) gin2 u2 babbar 2(disz) gin2 u5 argab{muszen}_\n16. 1(u) 5(disz) sze_ {na4}gab-u2 _1(u) 5(disz) sze mun_ eme-sal-lim bit-qa _i3-udu {szim}gig_\n@reverse\n1. _[disz]_-nisz ina _i3_ gu-un-nu _sud2 igi-min_-szu2 _mar_\n$ single ruling\n2. _[DISZ na] igi-min_-szu2 i-bar-ru-ra u a-szi u2-kal-la _u2 babbar lal3_\n3. _[{u2}]kur-ra_ ina _i3 sud2 mar_\n$ single ruling\n4. _DISZ na igi-min_-szu2 i-bar-ru-ra _szim-szesz u2 babbar u5 argab{muszen}_\n5. ina _i3-nun-na sud2 igi-min_-szu2 _mar_\n$ single ruling\n6. _DISZ na igi-min_-szu2 a-szi u2-kal-la sah-le10 t,e4-ne2-e-tu2 ina _ga sila11_-asz / _igi-min_-szu2 _la2_-id\n$ single ruling\n7. _DISZ na igi-min_-szu2 _lu3-lu3_-ha _lal3 i3-nun-na i3-sag_ : hal-s,a _disz_-nisz _kum2-kum2_-am ta-sza2-hal ana _igi-min_-szu2 _szub_\n$ single ruling\n9. _DISZ na eme_-szu2 _gig im-kal-la-gug uruda sumun_ ina _i3-nun-na hi-hi_\n10. _szesz2_-su sza _inim_ lat-ku\n$ single ruling\n11. _a-gar5_ ina _a-mesz sze-gig-ba_ ta-sal-laq _sud2_ ina _gub mud2_ sza2 gi-ru-szu2\n12. a-na _dagal esz igi-min sig5_\n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{na4}za-gin3 {na4}asz-gi3-gi3 {na4}ugu-asz-gi3-gi3 {na4}szim-bi-zi-da im-sig7-sig7_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{na4}pu]-us-ma-tu4 mal2-ma-lisz ina szi?-ri-szu! _szeg6_-szal _egir_ ina _ga_ _szeg6_-szal",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_im-sig7-sig7 {na4}pu-us-mat _szum_-ah _luh_-si _egir_ gab-bi-szu2-nu",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_szum_-ah ina _i3 egir_ u _duh-lal3_ tu-la-ma te-qit la-tik2-tu4 sza2 bir-rat",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "2(disz) _gir2_-e im-sig7-sig7 2(disz) gir2_-e kur-ru-ku-um-mu _gir2_-u2 _u2 babbar_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_gir2_-u2 _ka_ tam-tim _disz_-nisz _szum_-ah ina _mud2 buru4-habrud-da{muszen} nita2_ u _munus_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_ta_ si-ih-hu te-qit sza2 bir-rat _igi-min ki-min_ ta-bi-lu _igi-min_-szu2 _mar_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ina _u4_-mu 4(disz)-szu2 _ga_ ina _kum2_-mi-szu2 a-na _igi-min_-szu2 _szub_-di _egir bi_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{na4}as-har ta-bi-lu _igi-min_-szu2 _mar_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "1/2(disz) _gin2 u5 argab{muszen} 1/2(disz) gin2 u2 babbar 1(u) 5(disz) sze mun_ eme-sal-lim",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_{u2}si-<sa2>_ ina _gissu had2-ra2_ tu-lam szum-ma _kum2-mesz_ ina _i3_ hal-s,a",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "szum-ma _en-te-na_ ina _i3-nun sud2 mar-mar u4_ 4(disz) sza2 {m}ha-mu-ra-bi",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "la-tik2-tu2 e-nu-ma _du3_-szu2 _kasz {lu2}kurun-na_ la i-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "li-te-qi2 ina _ge6 ge6_ li-sip",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_DISZ na igi-min_-szu2 i-bar-ru-ra 1/2(disz) gin2 u2 babbar 2(disz) gin2 u5 argab{muszen}_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "1(u) 5(disz) sze_ {na4}gab-u2 _1(u) 5(disz) sze mun_ eme-sal-lim bit-qa _i3-udu {szim}gig_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[disz]_-nisz ina _i3_ gu-un-nu _sud2 igi-min_-szu2 _mar_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_[DISZ na] igi-min_-szu2 i-bar-ru-ra u a-szi u2-kal-la _u2 babbar lal3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_[{u2}]kur-ra_ ina _i3 sud2 mar_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_DISZ na igi-min_-szu2 i-bar-ru-ra _szim-szesz u2 babbar u5 argab{muszen}_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ina _i3-nun-na sud2 igi-min_-szu2 _mar_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_DISZ na igi-min_-szu2 a-szi u2-kal-la sah-le10 t,e4-ne2-e-tu2 ina _ga sila11_-asz / _igi-min_-szu2 _la2_-id",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_DISZ na igi-min_-szu2 _lu3-lu3_-ha _lal3 i3-nun-na i3-sag_ : hal-s,a _disz_-nisz _kum2-kum2_-am ta-sza2-hal ana _igi-min_-szu2 _szub_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_DISZ na eme_-szu2 _gig im-kal-la-gug uruda sumun_ ina _i3-nun-na hi-hi_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_szesz2_-su sza _inim_ lat-ku",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_a-gar5_ ina _a-mesz sze-gig-ba_ ta-sal-laq _sud2_ ina _gub mud2_ sza2 gi-ru-szu2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a-na _dagal esz igi-min sig5_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate for a draft.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

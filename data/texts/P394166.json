@@ -1,0 +1,668 @@
+{
+  "id": "P394166",
+  "designation": "TBP 38a",
+  "genre": "Omen",
+  "subgenre": "",
+  "language": "Akkadian",
+  "period": "Neo-Assyrian (ca. 911-612 BC)",
+  "year": -761,
+  "provenience": "Nineveh (mod. Kuyunjik)",
+  "site": "Nineveh (mod. Kuyunjik)",
+  "lat": 36.36,
+  "lon": 43.15,
+  "content_lines": 69,
+  "chars": 3350,
+  "font": "Assurbanipal",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/394166",
+  "museum_no": "BM —",
+  "primary_publication": "TBP 38a",
+  "atf_source": "cdlistaff (check)",
+  "omen_hunt": true,
+  "omen_blurb": "Physiognomy / body omens",
+  "omen_score": 126.9,
+  "atf": "&P394166 = K 2063 + K 4059 (TBP 38a, Šumma pendû, Ms A)\n#atflang akk\n@tablet\n@obverse\n1. _DISZ_ pi-in-du-u2 ina _sag-du lu2 gar_ ni-s,ir-tam _igi_-[mar]\n2. _DISZ sag-du lu2_ ma-lu-u2 i-lap-pi-[in]\n3. _DISZ_ ina _sag-du na zag gar_ mu-s,al-[li ...]\n4. _DISZ_ ina _sag-du na gub3 gar_ usz-ta-mat,-[t,a]\n5. _DISZ sag-du na zag_ ma-lu-u2 mim-mu-szu2 ana _igi_-szu2 _gen_-ak [...]\n6. sa-dir-szu2 ana ni-me-li-szu ma-an-nu-um-ma ki ia-a-ti-ma i-qab-bi ni-[x ...]\n7. _DISZ sag-du na gub3_ ma-lu-u2 ma-la _tuku_-u2 [ana _igi_-szu2 _gen_]\n8. _DISZ_ ina _ha-la sag-du_-szu2 _gar_ mim-ma la _ur5_-tu2 _szu_-[su? _kur_-ad2]\n9. _DISZ_ ina nak-kap-ti-szu2 _zag gar_ mim-ma ina _uru_ asz2-bu _szu_ [...]\n10. _DISZ_ ina nak-kap-ti-<szu2> _gub3 gar_ mim-ma _tuku_-u2 [ana _igi_-szu2 _gen_]\n11. _DISZ_ ina _sig7-igi_-szu2 _zag gar_ ina _uru_ asz2-bu i-szar2-ru3 x [...]\n12. _DISZ_ ina _sig7-igi_-szu2 _gub3 gar_ ina _uru_ asz2-bu _[uku2_-in]\n13. [_DISZ_] ina _ki-ta sig7-igi-szu2 _zag gar im-ri-a_ [...]\n14. _DISZ_ ina _ki-ta sig7-igi_-szu2 _gub3 gar sza3 hul us2-us2#_-[szu2?]\n15. _DISZ_ ina ka-kul-ti _igi_-szu2 _zag gar na bi nig2-tuku_ [...]\n16. _DISZ_ ina ka-kul-ti _igi_-szu2 _gub3 gar e2_-su [...]\n17. _DISZ_ [...] x x x-szu2# _zag gar_ e-tel-lu-tu# [...]\n18. _DISZ_ [...] _gar_ ina _{gisz}[tukul gaz]_\n19. _DISZ_ [...] u2-s,a-am#-[ma-ru ...]\n20. _DISZ_ [...] _sza3 hul_ [...]\n21. _DISZ_ [...] mim#-ma _tuku#_ [...]\n22. _DISZ_# [...] x\n23. [...] x\n24. [... x]-szi\n25. [... i]-nam#-mar\n26. [...] _gu7_\n27. [...] _gen-gen_\n28. [...] _e3_\n29. [...] ul#-tab-bar\n30. [... _x]-mesz tuku_-szi\n31. [... x]-szu2 _dumu-munus tuku_-szi\n32. _DISZ#_ [...] id#-dal-lah\n33. _DISZ_ [...] _sza3-bi nu du10#-[ga]_\n34. _DISZ_ [... x]-ah ud\n35. _DISZ_ [...] _sza3-bi nu du10#-[ga]_\n36. _DISZ_ [...] _nu tuku_-szi#\n37. _DISZ_ [...] x _zah2_\n38. _DISZ_ [...] _nu# tuku_-szi\n39. _DISZ_ [...] _gu7# diri_-ar2\n40. _DISZ_ [...] _gu7 nu diri_-ar2\n41. _DISZ_ [...] ud-ma ana _gen-me_\n42. _DISZ_ [...] _tuku_-szi\n43. _DISZ_ [... _sza3-bi] nu du10-ga_\n44. [_DISZ_ ...] _tuku_-szi\n45. [_DISZ_ ... x]-ri#? _gen-gen_\n46. [...] x _gen#-gen#_\n$ rest missing\n@reverse\n$ beginning missing\n1'. _DISZ_ [ina kin-s,i-szu2 _zag gar_ ...]\n2'. _DISZ_ ina kin-s,i-szu2 _gub3# gar_ [...]\n3'. _DISZ_ ina sza-pu-li-szu2 _zag gar_ [...]\n4'. _DISZ_ ina sza-pu-li-szu2 _gub3 gar_ [...]\n5'. _DISZ_ ina a-si-di-szu2 _zag gar_ [...]\n6'. _DISZ_ ina a-si-di-szu3 _gub3 gar_ [...]\n7'. _DISZ_ ina ki-s,il-li-szu2 _zag gar_ x [...]\n8'. _DISZ_ ina ki-s,il-li-szu2 _gub3 gar nam_ x x [...]\n9'. _DISZ_ ina _gir3_-szu2 _zag gar_ ana gaba:ri-szu2 _szu_-su _[la2]_-as,\n10'. _DISZ_ ina _gir3_-szu2 1(u) 5(disz) _gar e ti_ he-pi2 _asz_\n11'. _DISZ_ ina _murgu gir3_-u2 _zag# gar_ ina te-ir-ti-u2! _{du}du10 sza3-bi gar_-szu2\n12'. _DISZ_ ina _murgu gir3_-szu2 2(gesz2) 3(u) _gar ka_-szu2 _idim_-ma _szesz-mesz_-szu2 u2-za-qa2-ru-szu2\n13'. _DISZ_ pi-in-du-u2 ka-la _gir3_-szu2 _ta_ gisz-szi-szu2 _en murgu gir3_-szu2 1(u) 5(disz) _diri_ i-tar-ra-as, ina _sig5_ i-kal-la\n14'. _DISZ kimin gub3 diri-mesz_ uh-tam-mar ul i-tar-ra-as,\n15'. _DISZ_ pi-in-du-u2 s,a-ar-pu-ti ka-la pag-ri-szu2# _diri-mesz_ ma-lu-u2\n16'. _u4-mesz_-szu2 _gid2-da-mesz_ ul-tab-bar\n17'. _DISZ sa5-mesz diri ibila_-szu2 _ug7_\n18'. _DISZ sig7-mesz diri kur_-ti _szu tuku_-szi\n19'. _DISZ ge6-mesz diri_ tam-t,a-a-tum\n20'. _DISZ_ du-'-mu-ti _diri sza3 hul_\n21'. _DISZ_ bu-ru-mu-ti ka-s,a-ru!-ti _diri sza3-bi nu du10-ga_\n$ single ruling\n22'. _DISZ_ ina _sag-du lu2 ib szub-mesz na bi_ ki-a-am _nig2-tuku_ ki-a-am _uku2_\n23'. _kur {m}an-szar2-du3-a man szu2 man kur an-szar2{ki}_\n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ_ pi-in-du-u2 ina _sag-du lu2 gar_ ni-s,ir-tam _igi_-[mar]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the top of a man's head: he will experience a famine."
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_DISZ sag-du lu2_ ma-lu-u2 i-lap-pi-[in]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the head of a man is swollen:"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_DISZ_ ina _sag-du na zag gar_ mu-s,al-[li ...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the top of the 'finger' of the lung..."
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_DISZ_ ina _sag-du na gub3 gar_ usz-ta-mat,-[t,a]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation stands in the top of a man's head: he will die."
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_DISZ sag-du na zag_ ma-lu-u2 mim-mu-szu2 ana _igi_-szu2 _gen_-ak [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the top of the'station' is surrounded by a 'weapon'-mark: he will go before him...."
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "sa-dir-szu2 ana ni-me-li-szu ma-an-nu-um-ma ki ia-a-ti-ma i-qab-bi ni-[x ...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "He is a sadiru-spirit for his people. Nobody..."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_DISZ sag-du na gub3_ ma-lu-u2 ma-la _tuku_-u2 [ana _igi_-szu2 _gen_]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the head of the man is surrounded by a halo, as many as there will be, he will go before him."
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_DISZ_ ina _ha-la sag-du_-szu2 _gar_ mim-ma la _ur5_-tu2 _szu_-[su? _kur_-ad2]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on his head: he will conquer everything that is not his."
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_DISZ_ ina nak-kap-ti-szu2 _zag gar_ mim-ma ina _uru_ asz2-bu _szu_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a 'weapon'-mark on his right shoulder: anything will be present in the city...."
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_DISZ_ ina nak-kap-ti-<szu2> _gub3 gar_ mim-ma _tuku_-u2 [ana _igi_-szu2 _gen_]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation stands in its left ear: everything that has a detrimental effect on it will come into view."
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_DISZ_ ina _sig7-igi_-szu2 _zag gar_ ina _uru_ asz2-bu i-szar2-ru3 x [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation is located on its right side: in the city, there will be a rebellion......."
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_DISZ_ ina _sig7-igi_-szu2 _gub3 gar_ ina _uru_ asz2-bu _[uku2_-in]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation stands on its left side: in the city, there will be famine."
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[_DISZ_] ina _ki-ta sig7-igi-szu2 _zag gar im-ri-a_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the right side of the gall bladder is located on the right side of the gall bladder...."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_DISZ_ ina _ki-ta sig7-igi_-szu2 _gub3 gar sza3 hul us2-us2#_-[szu2?]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the left side of his eye: evil for him."
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_DISZ_ ina ka-kul-ti _igi_-szu2 _zag gar na bi nig2-tuku_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation is located on the right of his face: that man will acquire property...."
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_DISZ_ ina ka-kul-ti _igi_-szu2 _gub3 gar e2_-su [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a Perforation stands in its front: his house..."
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_DISZ_ [...] x x x-szu2# _zag gar_ e-tel-lu-tu# [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If......... is located on the right: rebellion...."
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_DISZ_ [...] _gar_ ina _{gisz}[tukul gaz]_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... is located...: he will kill with weapons."
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_DISZ_ [...] u2-s,a-am#-[ma-ru ...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... they are bright:..."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_DISZ_ [...] _sza3 hul_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... the heart of evil...."
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_DISZ_ [...] mim#-ma _tuku#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... anything...."
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_DISZ_# [...] x",
+      "surface": "obverse",
+      "column": "",
+      "english": "If......."
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[...] x",
+      "surface": "obverse",
+      "column": "",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[... x]-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "..."
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[... i]-nam#-mar",
+      "surface": "obverse",
+      "column": "",
+      "english": "he will see..."
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[...] _gu7_",
+      "surface": "obverse",
+      "column": "",
+      "english": "... he will die."
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[...] _gen-gen_",
+      "surface": "obverse",
+      "column": "",
+      "english": "... went"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[...] _e3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "... emerges."
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[...] ul#-tab-bar",
+      "surface": "obverse",
+      "column": "",
+      "english": "... he smote"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[... _x]-mesz tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "... they have...."
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "[... x]-szu2 _dumu-munus tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "... his.. he is a daughter."
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "_DISZ#_ [...] id#-dal-lah",
+      "surface": "obverse",
+      "column": "",
+      "english": "If....... he is ill."
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_DISZ_ [...] _sza3-bi nu du10#-[ga]_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... its midst is not good"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_DISZ_ [... x]-ah ud",
+      "surface": "obverse",
+      "column": "",
+      "english": "If.........."
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_DISZ_ [...] _sza3-bi nu du10#-[ga]_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... its midst is not good"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "_DISZ_ [...] _nu tuku_-szi#",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... he does not have..."
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_DISZ_ [...] x _zah2_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If...... is covered in...."
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "_DISZ_ [...] _nu# tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... he does not have..."
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "_DISZ_ [...] _gu7# diri_-ar2",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... he eats...."
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_DISZ_ [...] _gu7 nu diri_-ar2",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... he eats...: he will not become more plentiful."
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "_DISZ_ [...] ud-ma ana _gen-me_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If......."
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "_DISZ_ [...] _tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... she has..."
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_DISZ_ [... _sza3-bi] nu du10-ga_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... its midst is not good."
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "[_DISZ_ ...] _tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "If... she has..."
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "[_DISZ_ ... x]-ri#? _gen-gen_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If...... goes...."
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "[...] x _gen#-gen#_",
+      "surface": "obverse",
+      "column": "",
+      "english": "... went..."
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "note",
+      "text": "$ beginning missing",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "_DISZ_ [ina kin-s,i-szu2 _zag gar_ ...]",
+      "surface": "reverse",
+      "column": "",
+      "english": "If the right side of the 'finger' of the lung is located...."
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "_DISZ_ ina kin-s,i-szu2 _gub3# gar_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": "If a Perforation stands in its position...."
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_DISZ_ ina sza-pu-li-szu2 _zag gar_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_DISZ_ ina sza-pu-li-szu2 _gub3 gar_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_DISZ_ ina a-si-di-szu2 _zag gar_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_DISZ_ ina a-si-di-szu3 _gub3 gar_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_DISZ_ ina ki-s,il-li-szu2 _zag gar_ x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "_DISZ_ ina ki-s,il-li-szu2 _gub3 gar nam_ x x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_DISZ_ ina _gir3_-szu2 _zag gar_ ana gaba:ri-szu2 _szu_-su _[la2]_-as,",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "_DISZ_ ina _gir3_-szu2 1(u) 5(disz) _gar e ti_ he-pi2 _asz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_DISZ_ ina _murgu gir3_-u2 _zag# gar_ ina te-ir-ti-u2! _{du}du10 sza3-bi gar_-szu2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "_DISZ_ ina _murgu gir3_-szu2 2(gesz2) 3(u) _gar ka_-szu2 _idim_-ma _szesz-mesz_-szu2 u2-za-qa2-ru-szu2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "_DISZ_ pi-in-du-u2 ka-la _gir3_-szu2 _ta_ gisz-szi-szu2 _en murgu gir3_-szu2 1(u) 5(disz) _diri_ i-tar-ra-as, ina _sig5_ i-kal-la",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "_DISZ kimin gub3 diri-mesz_ uh-tam-mar ul i-tar-ra-as,",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_DISZ_ pi-in-du-u2 s,a-ar-pu-ti ka-la pag-ri-szu2# _diri-mesz_ ma-lu-u2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_u4-mesz_-szu2 _gid2-da-mesz_ ul-tab-bar",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_DISZ sa5-mesz diri ibila_-szu2 _ug7_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "_DISZ sig7-mesz diri kur_-ti _szu tuku_-szi",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_DISZ ge6-mesz diri_ tam-t,a-a-tum",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_DISZ_ du-'-mu-ti _diri sza3 hul_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "_DISZ_ bu-ru-mu-ti ka-s,a-ru!-ti _diri sza3-bi nu du10-ga_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "_DISZ_ ina _sag-du lu2 ib szub-mesz na bi_ ki-a-am _nig2-tuku_ ki-a-am _uku2_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "_kur {m}an-szar2-du3-a man szu2 man kur an-szar2{ki}_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    }
+  ],
+  "english": [
+    "If there is a mole on the top of a man's head: he will experience a famine.",
+    "If the head of a man is swollen:",
+    "If there is a mole on the top of the 'finger' of the lung...",
+    "If a Perforation stands in the top of a man's head: he will die.",
+    "If the top of the'station' is surrounded by a 'weapon'-mark: he will go before him....",
+    "He is a sadiru-spirit for his people. Nobody...",
+    "If the head of the man is surrounded by a halo, as many as there will be, he will go before him.",
+    "If there is a mole on his head: he will conquer everything that is not his.",
+    "If there is a 'weapon'-mark on his right shoulder: anything will be present in the city....",
+    "If a Perforation stands in its left ear: everything that has a detrimental effect on it will come into view.",
+    "If a Perforation is located on its right side: in the city, there will be a rebellion.......",
+    "If a Perforation stands on its left side: in the city, there will be famine.",
+    "If the right side of the gall bladder is located on the right side of the gall bladder....",
+    "If there is a mole on the left side of his eye: evil for him.",
+    "If a Perforation is located on the right of his face: that man will acquire property....",
+    "If a Perforation stands in its front: his house...",
+    "If......... is located on the right: rebellion....",
+    "If... is located...: he will kill with weapons.",
+    "If... they are bright:...",
+    "If... the heart of evil....",
+    "If... anything....",
+    "If.......",
+    "......",
+    "...",
+    "he will see...",
+    "... he will die.",
+    "... went",
+    "... emerges.",
+    "... he smote",
+    "... they have....",
+    "... his.. he is a daughter.",
+    "If....... he is ill.",
+    "If... its midst is not good",
+    "If..........",
+    "If... its midst is not good",
+    "If... he does not have...",
+    "If...... is covered in....",
+    "If... he does not have...",
+    "If... he eats....",
+    "If... he eats...: he will not become more plentiful.",
+    "If.......",
+    "If... she has...",
+    "If... its midst is not good.",
+    "If... she has...",
+    "If...... goes....",
+    "... went...",
+    "If the right side of the 'finger' of the lung is located....",
+    "If a Perforation stands in its position...."
+  ],
+  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "status": "partial_english",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "translation_meta": {
+    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
+    "device": "cuda",
+    "prompt": "translate Akkadian to English: ",
+    "lines_translated": 48,
+    "lines_total": 69,
+    "source": "local_api"
+  },
+  "omen_kind": "physiognomy"
+}

@@ -1,0 +1,1127 @@
+{
+  "id": "P229294",
+  "designation": "MSL 10, 054 V33",
+  "genre": "Lexical; Mathematical",
+  "subgenre": "Obv: OB Hh4  (stones, plants, fish, birds, clothing: Hh 16-19); Rev: Metrologica",
+  "language": "Sumerian",
+  "period": "Old Babylonian (ca. 1900-1600 BC)",
+  "year": -1750,
+  "provenience": "Nippur (mod. Nuffar)",
+  "site": "Nippur (mod. Nuffar)",
+  "lat": 32.13,
+  "lon": 45.23,
+  "content_lines": 120,
+  "chars": 2344,
+  "font": "Santakku",
+  "known_elsewhere": false,
+  "translation_status": "print_edition",
+  "translation_label": "Print edition (no CDLI English)",
+  "translation_short": "Print: MSL",
+  "translation_detail": "Published series match (MSL) — scholars have almost certainly translated this (often IT/DE/FR/EN in print), but CDLI has no English text",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": true,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/229294",
+  "museum_no": "Ist Ni 04840 + UM 29-13-711",
+  "primary_publication": "MSL 10, 054 V33",
+  "atf_source": "Veldhuis, Niek (dcclt)",
+  "math_hunt": true,
+  "math_blurb": "Metrology + stones/plants lexical (Nippur)",
+  "math_score": 157.9,
+  "atf": "&P229294 = MSL 10, 54 V33\n#atf: use lexical\n#link: def A = Q000041 = OB Nippur ur5-ra 4\n# Ni 4840 + UM 29-13-711\n@tablet\n@obverse\n@column 1\n1'. {na4#}na# dub#-ba-na\n>>A Seg.1, 150\n2'. {na4}na gu2-bi-na\n>>A Seg.1, 151\n3'. {na4#}na la2-a\n>>A Seg.1, 151a\n4'. {na4#}gir2 zu2 gal\n>>A Seg.1, 152\n5'. {na4#}KA# zu2\n>>A Seg.1, 153\n6'. {na4#}{d#}dim3-me\n>>A Seg.1, 154\n7'. {na4}ka musz-e gu7#-a\n>>A Seg.1, 155\n8'. {na4#}u2\n>>A Seg.1, 156\n9'. {na4}zi-ib-tum\n>>A Seg.1, 158\n10'. {na4}szu-hu-um\n>>A Seg.1, 159\n11'. {na4#}ka-[pa-zum]\n>>A Seg.1, 160\n12'. {na4}a-a-ar-[tum]\n>>A Seg.1, 161\n@reverse\n@column 1\n1'. [3(disz)] gin2\n2'. 4(disz)# gin2\n3'. 5(disz)# gin2\n4'. [6(disz)] gin2\n5'. [7(disz)] gin2\n6'. 8(disz)# gin2\n7'. 9(disz) gin2\n8'. 1(u) gin2\n9'. [1(u)] 1(disz) gin2# \n# 3 lines lost\n10'. 1(u) 5(disz) [gin2]\n11'. 1(u) 6(disz) gin2#\n12'. 1(u) 7(disz) gin2#\n13'. 1(u) 8(disz) gin2#\n14'. 1(u) 9(disz) gin2#\n15'. 1/3(disz) sila3\n16'. 1/2(disz) sila3\n17'. 2/3(disz) sila3\n18'. 5/6(disz) sila3\n19'. 1(disz) sila3\n@column 2\n1'. 1(disz) [.]\n2'. 1(disz) sila3\n3'. 2(disz) sila3#\n4'. 3(disz) [sila3]\n5'. 4(disz) [sila3]\n6'. 5(disz) sila3\n7'. 6(disz) sila3\n8'. 7#(disz) sila3#\n9'. 8(disz) sila3\n10'. 9#(disz) [sila3]\n# 2 lines lost\n11'. 1(ban2) 2(disz)\n12'. 1(ban2) 3(disz) sze#\n13'. 1(ban2) 4(disz)\n14'. 1(ban2) 5(disz) sze#\n15'. 1(ban2) 6(disz) sze\n16'. 1(ban2) 7(disz) sze\n17'. 1(ban2) 8(disz) sze\n18'. 1(ban2) 9(disz) sze#\n19'. 2(ban2) sze\n20'. 3(ban2) sze\n21'. 4(ban2) sze\n22'. [5(ban2)] sze\n23'. 1(barig) sze\n24'. 1(barig) 1(ban2) sze\n@column 3\n1'. 1(barig) 5#(ban2) sze\n2'. 2(barig) sze#\n3'. 2(barig) 1(ban2) [.]\n4'. 2(barig) 2(ban2)\n5'. 2(barig) 3#(ban2) sze\n6'. 2(barig) 4#(ban2) sze\n7'. 2(barig) 5(ban2) sze\n8'. 3(barig) sze\n9'. 3(barig) 1(ban2) sze\n10'. 3(barig) 2(ban2) sze\n11'. 3(barig) 3(ban2) sze\n12'. 3(barig) 4#(ban2) sze#\n13'. 3(barig) 5#(ban2) sze#\n# 1 line lost\n14'. 4(barig) 1(ban2) sze\n15'. 4(barig) 2(ban2) sze\n16'. 4(barig) 3(ban2) sze\n17'. 4(barig) 4(ban2) sze\n18'. 4(barig) 5(ban2) sze\n19'. 1(asz) gur\n20'. 1(asz) 1(barig) gur\n21'. 1(asz) 2(barig) gur\n22'. 1(asz) 3(barig) gur\n23'. 1(asz) 4(barig) gur\n24'. 1(asz) 5(barig) gur\n#note 5(barig) written in error\n25'. 2(asz) gur#\n@column 4\n1'. [..] gur\n2'. [..] gur\n3'. [..] gur#\n4'. 7(asz) gur#\n5'. 8(asz) gur#\n6'. 9(asz) gur#\n# 10 gur omited\n7'. 1(u) 1(asz) gur#\n8'. 1(u) 2(asz) gur#\n9'. 1(u) 3(asz) gur#\n10'. 1(u) 4(asz) gur\n11'. [1(u)] 5(asz) gur\n12'. 1(u) 6#(asz) gur\n13'. 1(u) 7(asz) gur#\n14'. [..] gur\n# missing line(s)\n15'. 1(gesz2) 1(u) [.]\n16'. 1(gesz2) 2#(u) gur\n17'. 1(gesz2) 3#(u) gur\n18'. 1(gesz2) 4(u) gur\n19'. 1(gesz2) 5(u) gur\n20'. 2(gesz2)\n21'. 3(gesz2) \n22'. 4(gesz2) \n23'. 5(gesz2) gur \n24'. 6#(gesz2) gur#\n25'. 7(gesz2) gur\n26'. 8(gesz2) gur#\n27'. 9#(gesz2) [gur]\n@column 5\n1'. 1(szar2) gur\n2'. 2(szar2) gur#\n3'. 3(szar2) gur#\n4'. 4(szar2) [gur]\n5'. 5(szar2) gur\n6'. 6#(szar2) gur\n7'. 7#(szar2) gur\n# several lines illegible\n8'. [..] gur\n9'. [..] gur\n10'. [..]\n11'. 1#(szar2) gur\n12'. gal-la\n13'. szu-nu-tag?\n#or szu-nu-gi4\n\n",
+  "lines": [
+    {
+      "type": "raw",
+      "text": "# Ni 4840 + UM 29-13-711",
+      "surface": "",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "{na4#}na# dub#-ba-na",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 150",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "{na4}na gu2-bi-na",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 151",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "{na4#}na la2-a",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 151a",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "{na4#}gir2 zu2 gal",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 152",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "{na4#}KA# zu2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 153",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "{na4#}{d#}dim3-me",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 154",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "{na4}ka musz-e gu7#-a",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 155",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "{na4#}u2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 156",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "{na4}zi-ib-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 158",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "{na4}szu-hu-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 159",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "{na4#}ka-[pa-zum]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 160",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "{na4}a-a-ar-[tum]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": ">>A Seg.1, 161",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "[3(disz)] gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "4(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "5(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "[6(disz)] gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "[7(disz)] gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "8(disz)# gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "9(disz) gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "1(u) gin2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "[1(u)] 1(disz) gin2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# 3 lines lost",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "1(u) 5(disz) [gin2]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "1(u) 6(disz) gin2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "1(u) 7(disz) gin2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "1(u) 8(disz) gin2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "1(u) 9(disz) gin2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "1/3(disz) sila3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "1/2(disz) sila3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "2/3(disz) sila3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "5/6(disz) sila3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "1(disz) sila3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "1(disz) [.]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "1(disz) sila3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "2(disz) sila3#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "3(disz) [sila3]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "4(disz) [sila3]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "5(disz) sila3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "6(disz) sila3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "7#(disz) sila3#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "8(disz) sila3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "9#(disz) [sila3]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# 2 lines lost",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "1(ban2) 2(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "1(ban2) 3(disz) sze#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "1(ban2) 4(disz)",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "1(ban2) 5(disz) sze#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "1(ban2) 6(disz) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "1(ban2) 7(disz) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "1(ban2) 8(disz) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "1(ban2) 9(disz) sze#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "2(ban2) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "3(ban2) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "4(ban2) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "[5(ban2)] sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "1(barig) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "1(barig) 1(ban2) sze",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "1(barig) 5#(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "2(barig) sze#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "2(barig) 1(ban2) [.]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "2(barig) 2(ban2)",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "2(barig) 3#(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "2(barig) 4#(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "2(barig) 5(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "3(barig) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "3(barig) 1(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "3(barig) 2(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "3(barig) 3(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "3(barig) 4#(ban2) sze#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "3(barig) 5#(ban2) sze#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# 1 line lost",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "4(barig) 1(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "4(barig) 2(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "4(barig) 3(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "4(barig) 4(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "4(barig) 5(ban2) sze",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "1(asz) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "1(asz) 1(barig) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "1(asz) 2(barig) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "1(asz) 3(barig) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "1(asz) 4(barig) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "1(asz) 5(barig) gur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#note 5(barig) written in error",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "2(asz) gur#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "[..] gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[..] gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "[..] gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "7(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "8(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "9(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# 10 gur omited",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "1(u) 1(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "1(u) 2(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "1(u) 3(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "1(u) 4(asz) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "[1(u)] 5(asz) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "1(u) 6#(asz) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "1(u) 7(asz) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "[..] gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# missing line(s)",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "1(gesz2) 1(u) [.]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "1(gesz2) 2#(u) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "1(gesz2) 3#(u) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "1(gesz2) 4(u) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "1(gesz2) 5(u) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "2(gesz2)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "3(gesz2)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "4(gesz2)",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "5(gesz2) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "6#(gesz2) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "7(gesz2) gur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26'",
+      "atf": "8(gesz2) gur#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27'",
+      "atf": "9#(gesz2) [gur]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "1(szar2) gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "2(szar2) gur#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "3(szar2) gur#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "4(szar2) [gur]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "5(szar2) gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "6#(szar2) gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "7#(szar2) gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# several lines illegible",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "[..] gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "[..] gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "[..]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "1#(szar2) gur",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "gal-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "szu-nu-tag?",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#or szu-nu-gi4",
+      "surface": "reverse",
+      "column": "column 5"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "math_kind": "metrology"
+}

@@ -1,0 +1,5431 @@
+{
+  "id": "P293400",
+  "designation": "YOS 10, 31",
+  "genre": "Omen",
+  "subgenre": "",
+  "language": "Akkadian",
+  "period": "Old Babylonian (ca. 1900-1600 BC)",
+  "year": -1750,
+  "provenience": "",
+  "site": null,
+  "lat": null,
+  "lon": null,
+  "content_lines": 673,
+  "chars": 12030,
+  "font": "Santakku",
+  "known_elsewhere": false,
+  "cdli_url": "https://cdli.earth/artifacts/293400",
+  "museum_no": "YBC 04638",
+  "primary_publication": "YOS 10, 31",
+  "atf_source": "cdlistaff (check)",
+  "atf": "&P293400 = YOS 10, 31 \n#atf: lang akk \n@tablet \n@obverse \n@column 1 \n1. [szum]-ma# mar-tum# \n2. li#-ib-ba-sza \n3. li#-pi-a-am# ma-li \n4. _{gesz}tukul_ szar-ru-ki-in \n5. szum#-ma mar#-tum \n6. [ki]-ma# s,u2-ri#-ri-tim \n7. ib#-ba-asz#-szi \n8. _{gesz#}tukul#_ szar-ru-kinx(GI) \n9. szum-ma mar-tum \n10. na#-ah-sa2-at \n11. na#-ah#-ka-at \n12. szum#-ma mar-tum \n13. na#-as-ha-at-ma \n14. [a?]-na# _ka2 e2-gal_-im \n15. [ka?]-si#?-a-at \n16. [nu]-ku-ur2-tum \n17. isz#-sza#-ak-ka-an \n18. szum-ma mar-tum \n19. e#-le#-nu-usz-sza \n20. [x]-x \n21. i#-ta#-ad-du-u2 \n22. szar#-ru-um \n23. sza#-na#-i-szu \n24. ib#-ta-na-al-la-ah \n25. szum#-ma mar-tum \n26. na-as,!(AK)-ra-ab-tam \n27. i-te-ed-da2-am \n28. ma-a-tum ka-lu-sza \n29. _ka_-sza a-na we-di-im \n30. it-ta-ak-ka-an \n31. ni-ku-ur2-tum \n32. szum-ma mar-tum \n33. i-szi-is-sa2 \n34. a-na e-le-nu-um \n35. _ka_-sza a-na sza-ap-la-nu-um \n36. szar-ru-um \n37. i-na a-li-szu \n38. pi-el-sza-am \n39. i-pa-la-asz-sza \n40. us,-s,i# \n41. szum-ma i-na bi#-ri#-it \n42. mar-tum# \n43. szi-lum sza-ki-in# \n44. szar-ra-am# \n45. i-na pa-ni# pi#-el#-szi-im# \n46. i-du-uk-ku#-szu \n47. szum-ma ma-ra-[tum] 2(disz)-ta \n48. a-na szar#-ri-im# \n49. di#-ik-szum# \n50. ib#-ba-asz-szi \n51. szum#-ma ma-ra-tum# 3(disz)-asz \n52. a#-hu#-u2 \n53. [a?]-na# _{gesz}gu-za_-s,i2 \n54. [a]-bi#-szu#-nu \n55. isz#-ta#-na-nu \n56. x [...] \n57. [...] \n@column 2 \n1. szum#-ma \n2. um-mu-um ra-bi-tum \n3. i-ta-ri-ik \n4. ap-lu-um \n5. ra-bu-u2-um \n6. _{gesz}gu-za_-am# \n7. i-s,a-ba-at \n8. szum-ma s,e-eh-er-tum \n9. i-ta-ri-ik \n10. ap-lu-um# s,e-eh-er-ru-um \n11. _{gesz}gu-za_-am \n12. i-s,a-ba-at \n13. szum-ma ma-ra-tum 5(disz)-isz \n14. szar-ru ha-am-me-e \n15. i-te-eb-bu-u2-nim \n16. szum-ma mar-tum \n17. ap-pa-sza \n18. ki-ma s,i-il#-li-im \n19. e-ed \n20. szar-ru-um \n21. ma-ta-am na-ka-ar-tam \n22. u2-pa-al-la-asz-ma \n23. i-s,a-ab-ba-at \n24. szum-ma mar-tum \n25. is-hu-ur-ma \n26. u2-ba-na-am il-ta-we-e \n27. szar-ru-um \n28. ma-ta#-am \n29. na-ka-ar-ta#-am# \n30. i-[s,a]-ab-ba-at# \n31. szum-ma# mar-tum \n32. is-hu-ur-ma \n33. mu-uh2-ha-am \n34. sza u2-ba-ni-im# \n35. il#-ta-we \n36. szar-ru-um \n37. _sukkal-mah_-szu i-na-as-sa2-ah# \n38. szum-ma mar-tum \n39. me-e li-ib-ba-sza# \n40. sa2-hi?-ir \n41. mi-lu-um i-il-la-kam \n42. szum-ma mar-tum \n43. pa-nu-u2-sza \n44. a-na szu-me-li-im \n45. sza-ak-nu-u2 \n46. _digir_-szu e-li a-wi-li-im# \n47. sza-bu-us \n48. szum-ma mar-tum \n49. ap-pa-sza \n50. a-na _ka2 e2-gal_-im \n51. sza-ki-in \n52. t,a2-ri-du-u2-um \n53. sza ku-usz-szu-du \n54. a-na e-li-szu \n55. i-ta-ar \n@column 3 \n1. szum-ma mar-[tum] \n2. qa-ab-la-sza \n3. a-na szu-me-li-im \n4. sza-ak-na \n5. _{gesz2}tukul_ szar-ru-kin \n6. szum-ma mar-tum \n7. _ka_-sza mu-s,-an-am \n8. la i-szu \n9. um-ma-an szar-ru-im \n10. i-na ha-ra-nim \n11. s,u-mu-um \n12. i-s,a-ab-ba-at \n13. szum-ma mar-tum \n14. _ka_-sza# szi-lu i-szi-iz-za \n15. s,a-bi-it \n16. szar-ru-um \n17. i-na a-li-szu \n18. li-ib-ba-szu \n19. u2-la i-t,i-a-ab \n20. szum-ma mar-tum \n21. li-ib-ba-sza \n22. da-ma-an ma-li \n23. ni-ip-ha-at \n24. _masz2-szu-gid2-gid2_ \n25. mi-qi-it-ti \n26. um-ma-nim \n27. szum-ma mar-tum \n28. i-szi-iz-za \n29. le-ti \n30. [x] i-na ma-tim \n31. i-te#-[eb-bi]-a-am \n32. szum-ma mar#-tum \n33. li-pi-a-am \n34. ku-us,-s,a-a-at \n35. ku-us,-um i-ba-asz-szi-i \n36. sum-ma mar-tum \n37. ha-ar-t,a-at \n38. lu-mu-un li-bi-im \n39. i-bi-us,-s,u2 \n40. u3-mu-ur-s,u \n41. szum-ma mar-tum \n42. na-as,-ha-at-ma \n43. it-ta-na-ak-ra-ar \n44. _{gesz2}tukul_ mi-it-ha-ar \n45. szum-ma mar-tum \n46. _ka_-sza da-ma-am \n47. la-pi-it \n48. _sukkal mah_ \n49. im-ma-ha-as, \n50. szum-ma mar-tum \n51. qa-ab-la-sza \n52. da-ma-am \n53. la-ap-ta \n54. _masz2 szu gid2 gid2_ \n@column 4 \n1. szum-ma mar#-tum \n2. sza-ap-as-sa \n3. da-ma-am \n4. la-pi-it \n5. _zabar-dab5_ \n6. im-ma-ha-as, \n7. szum-ma mar-tum \n8. ta-a-a-ra-tim \n9. i#-szu-u2 \n10. a-na szar-ri-im \n11. da-mi-iq \n12. szum-ma mar-tum \n13. qa-ab-la-sza \n14. id-ha-a \n15. i-na s,e-ri-im \n16. i-na da-na-tim \n17. szar-ru-um \n18. us,#-s,i \n19. szum-ma mar-tum \n20. qa-ab-la-szu! \n21. s,a-ab-ta-a \n22. szar-ra-am \n23. szu-ut re-szi-i-szu \n24. i-du-uk-ku-szu \n25. szum-ma mar-tum \n26. i-szi-id-za \n27. szi-ra-a-am ka-ti-im \n28. ta-a-a-ra-at a-li-szu \n29. szum-ma mar-tum \n30. [x] \n31. im-ta#-na-al#-la-ma \n32. us-sa-[ka]-al# \n33. szu-lu-um \n34. ru#-bu# \n35. szum-[ma mar-tum] \n36. _ka#_-szu# \n37. mi-gi#-[ir] \n38. ru-be \n39. szum-ma# [mar-tum] \n40. sze-er-ha-[ni] \n41. ud-du-ha-[at] \n42. um-ma-[nu]-um# \n43. i-na ta-ha-zi#-im \n44. im-ta-na-aq#-qu-ut \n45. szum-ma mar-tum \n46. it,-bu-u-ma \n47. it-ta-s,i \n48. ru-bu-u2-um \n49. i-na da-an-na-tim \n50. us,-s,i \n51. szum-ma mar-tum \n52. li-pi-a-am \n53. ta-ra-ha-a-sza \n54. u2-ka-al-la \n55. qa-[x] \n@column 5 \n1. um-ma-ni-im# \n2. pa-ar-s,a-at# \n3. szum-ma mar-tum# \n4. i-mi-it-tam ta-ar \n5. re-szu#-[szu] \n6. im-ta#-na-aq-[qu-ut] \n7. szu-ma mar#-[tum] \n8. a-na li-ib-[bi] \n9. _e2-gal_-im i-[...] \n10. szar-ru-um \n11. i-na li-bi _e2-gal_-li-szu \n12. i-du-ak \n13. szu-ma mar-tum \n14. szi-szi-ta-am \n15. u2-ka-al \n16. a-na be-el im-me-ri-im \n17. mu-ur-s,a-am u2-ka-al \n18. szu-ma mar-tum \n19. ap-pa-as-sa3 \n20. u3 i-szi-is-sa3 \n21. ki-na-a-ma \n22. qa2-ab-la-a-sza na-as-h,a \n23. mi-il-kum \n24. s,a-pi-ih, \n25. szu-ma mar-tum \n26. ze-eh,-h,u-um \n27. i-ta-ad-du \n28. szar-ru-um \n29. um-ma-an-szu \n30. te-szi-tam i-li-it-te \n31. szu-ma mar-tum \n32. i-na qa2-ab-li-sza \n33. na-ak-sa-at \n34. gi#-il-la-tum \n35. i-na ma-a-tim \n36. i-ba-asz-szi \n37. szu-ma mar-tum \n38. h,a-al-qa2-at \n39. da-am-qa2-at \n40. szu-ma mar-tum \n41. s,a-al-ma-at \n42. um-szum ib-ba-asz-szi \n43. szu-ma mar-tum \n44. u2-ba-nam \n45. il-ta-wi!-ma \n46. wa-ar-ka-at a-mu-tim \n47. sza#-ak-na-at \n48. szar#-ru-um \n49. [sze]-er# sze20-er-ri-szu \n@column 6 \n1. a-di h,a-am-szi#-[szu] \n2. i#-na _{gisz}gu-za_-im \n3. [x]-sza-ab \n4. [szu]-ma mar-tum \n5. [x]-ru#-ra-at-ma \n6. [x]-ri-ip-sza \n7. [...]-ri-ki-im \n8. [...]-szi \n9. [...] \n10. szu#-ma# [mar-tum] \n11. i-szi-[is-sa2] \n12. szu-s,a-[...] \n13. a-na ma-a-[tim] \n14. i-te-eb-bi-a-am \n15. szu-ma mar#-tum \n16. ap-pa-sza \n17. u3 i-szi-is-sa2 \n18. ki-na-2(disz)-ma \n19. qa2-ab-la-a-sza \n20. na-as-h,a \n21. mi-lik ma-a-tim \n22. i-sza-an-ni \n23. szu-ma mar-tum \n24. lu-ub-bu-ka-at \n25. mi-il-um i-la-ka-am \n26. szu-ma mar-tum \n27. nu-h,u-ta-at \n28. mi-lu-um \n29. i-na na-ri-[im] \n30. it-ta-za-az#-[zu] \n31. szu-ma [mar-tum] \n32. wa-s,i-a-at#-[ma] \n33. nu-h,u-ta-at# \n34. lu#-up-nu-um \n35. a-na [...] \n36. szu-ma mar-tum# \n37. ik-ta-ri \n38. le-mi-in a-wi-lim \n39. szu-ma mar-tum \n40. a-na i-mi-it-tim \n41. pa-nu-u2-sza \n42. i-lu szar-ri-im \n43. szu-ma mar-tum \n44. li-ib-ba-sza \n45. da-ma-am ma-li \n46. ni-ip-ha-a-at ba-ri#-[im] \n@column 7 \n1. [...] \n2. szu-[ma mar-tum] \n3. i-te-eb#-[...] \n4. pa#-[...] \n5. za-[...] \n6. a-[...] \n7. szar#-[ru?-um? ...] \n8. [...] \n9. [...] \n10. [...] \n11. [...] \n12. [...] \n13. [...] \n14. [...] \n15. [...] \n16. [...] \n17. [...] \n18. e-li# [...] \n19. i-[...] \n20. szu-ma# [mar-tum] \n21. u4-[...]-at \n22. szar-[ru]-um# \n23. ra#-[...] \n24. i-is,#-[...]-u2-szu \n25. szu-ma mar#-tum# \n26. UD-gu-[...] \n27. um-ma-an-im# \n28. ma-hi-ra [...] \n29. [...] \n30. [...] \n31. ki#-ma# [...] \n32. bu-[...] \n33. ma-[...] \n34. [...] \n35. [...] \n36. [...]-RI \n37. [szu]-ma# mar#-[tum] \n38. [...]-ik#-ti \n39. ma-li-a#-at# \n40. [...] hu \n41. um-ma-nu-um# \n42. i-ik-[asz-sza-ad] \n43. szu-ma# [mar-tum] \n44. in-na-[as-ha-am-ma] \n45. i-na [...] \n46. ap-pa-[sza] \n47. [...] \n48. [...] \n49. [...] \n@reverse \n@column 1 \n1. [...] \n2. [...] \n3. x [...] \n4. da-x-[...] \n5. la-u2-[x] \n6. mu-ut a-wi-li-im# \n7. szum-ma mar-tum \n8. ib-lu-usz-ma \n9. it-ta-s,i \n10. a-wi-lum it-ta-as,-s,i \n11. szum-ma mar-tum \n12. in-na-as-ha-am-ma \n13. i-na ba-ab _e2-gal_-im \n14. iq-tu-un \n15. szar-ra-am \n16. u2-ka#-asz-szu-du-szu#-u2-ma \n17. i-na pa-di-szu i-da-an#-ni-in \n18. szum-ma mar-tum \n19. in-na-as-ha-am-ma \n20. u2-ba-an-na-am \n21. i-t,e-er-ma \n22. u3# i-na ma-a-a-li-sza \n23. it-ta-t,i2-il \n24. a-wi-la-am \n25. i-na a-wi-li-im \n26. u2-sze-s,u2-u2-ma \n27. i-tu-ur2-ra-am-ma \n28. _{gesz}gu-za_-s,i2 a-bi-szu \n29. i-s,a-ab-ba-at \n30. szum-ma mar-tum \n31. it-be-e-ma \n32. mu-uh2-hi u2-ba-ni-im \n33. is,-s,a-ab-ba-at \n34. szar-ru-um a-la-am \n35. na-ak-ra-am \n36. qa2-as-su2-u2 \n37. i-ka-asz-sza-at# \n38. szum-ma qu3-u2-[um] \n39. it#-ru#-us,-ma# \n40. mu-uh2-hi mar-tum \n41. is,-s,a-ba-at \n42. sza i-na pa-ni [u2]-ba-ni-im \n43. i-la-ku \n44. i-x-[...] x \n45. i-[...] \n46. x [...] x-im-ma \n47. [...] x \n48. x [...] x x al-an#?-ni \n49. szum#-[ma] mar-tum \n50. x [...]-tim \n51. [...]-im \n52. [...] \n@column 2 \n1. szum-ma GIN2-x \n2. _szagina_ \n3. sza-ki-im-ma \n4. s,a-ri-ip \n5. mi-ki-it-ti \n6. ri-di-im we-di#?-im \n7. szum-ma mar-tum \n8. bu-usz-sza \n9. tu-ku-pa-a-ma \n10. s,u#-ur-ru-pa \n11. mi-ki-it-ti \n12. ra-sza-szi-im \n13. szum-ma mar-tum \n14. mu-uh2-ha-sza \n15. sza-ki-im-ma \n16. s,a-ri-ip \n17. mi-ki-it-ti \n18. _masz-szu-gid2-gid2_ \n19. szum-ma mar-tum \n20. i-na na-ap-sza-at \n21. mar-tim \n22. ti-ki-ip-ta-an \n23. 2(disz)-ta-ma \n24. s,u-ur-ru-pa \n25. qar-ra-da-an \n26. 2(disz)-na \n27. i-mu-ut-ta-nim \n28. szum-ma mar-tum \n29. i-mi-ta-sza \n30. da-ma-am \n31. bu-ul-la-am \n32. pa-szi-isz \n33. _e2-gal_-la-am \n34. i-sza-tu-um \n35. i-ka-al \n36. szum-ma mar-tum \n37. szu-me-el-sza \n38. da-ma-am \n39. sza-bu-la#-am \n40. pa-szi-isz \n41. i-na a-wi-li-im \n42. bi-it a-wi-li-im \n43. i-sza-tum \n44. i-ka-al \n45. szum-ma mar-tum \n46. bu-da-sza \n47. da-ma-am \n48. bu-ul-la-am \n49. pa-asz-sza \n50. di-pa-ar ni-ku-ur2-tim \n51. i-sza-tu-um \n52. i-na ma-tim \n53. it-ta-na-an-pa-ah \n54. szum-ma-mar-tum# \n55. ap-pa-[sza] \n@column 3 \n1. [ki]-ma hu#-ba-szi-im \n2. [ke]-pa-at \n3. x x x ru-bi-im \n4. szum#-ma mar-tum \n5. ap#-pa-sza \n6. ki#-ma# s,u2-ri-ri-tim \n7. _{gesz}tukul_ szar-ru-ki-in \n8. szum-ma mar-tum \n9. i-na hi-im-s,e \n10. ma-asz-ru-um \n11. szum-ma mar-tum \n12. li-pi2-a-am \n13. ku-s,a-at \n14. ma-asz-ru-um \n15. szum-ma mar-tum \n16. ma-li-a-at-ma \n17. zi2-ih-hu \n18. hu-ul-lu-la-at \n19. sza-mu-um \n20. i-za-an-nu-un \n21. szum-ma mar-tum \n22. ma-li-at-ma \n23. mu-sza-wa-ar-ku \n24. ra-du-um \n25. i-la-ak \n26. szum-ma mar-tum \n27. mu-sza a-na szi-na zi-i-zu \n28. a-lu-um a-na szi-na \n29. el-li#-te# \n30. szum-ma mar-tum \n31. mu-sza a-na e-li-nu-um \n32. KI-e-ru-um \n33. asz-ku-la-lu-um \n34. szum-ma mar-tum \n35. mu-[sza] a#-na ki-di-im \n36. ha-al#-s,u \n37. ra-bi2-a#-na \n38. i-na a-li-szu \n39. u2-szi-s,u-u2-szu \n40. szum-ma mar-tum \n41. u3 u2-ba-nu-um \n42. szi-it-nu-na-a \n43. pu-uh2-ru-um \n44. u2-la im-ta-ga-ar \n45. szum-ma ma-ra-tum \n46. 2(disz)-ta \n47. di-ik-szu-um \n48. szum-ma ma-ra-tum \n49. 3(disz)-asz \n50. di-ik-sza-an \n51. szi-na \n52. i-te-bu-szu-um \n53. szum-ma mar-tum \n54. ma-li-a-at \n55. ba-ru-um \n@column 4 \n1. szum-ma mar-tum \n2. is-hu-ra-am-ma \n3. szu-me-la-am \n4. iz#-za-az \n5. szar#-ru-um \n6. ma-ta-am# na#-ka-ar-tam# \n7. i-ta-ab-ba-al# \n8. szum#-ma ka-ak#-kum# \n9. sza na#-ak-ri#?-[im?] \n10. mar-ta-[am?] \n11. i-ti-qa2-[ma?] \n12. i-na i-szi-id# \n13. i-mi-tim \n14. na-as-ha \n15. na-ak#-ru-um# i-na ma-tim \n16. i-ra#-bi#-is, \n17. szum-ma# mar#-tum \n18. a-na e#?-le#?-nu-um \n19. KA-x-at \n20. na#-ak#-ru-um \n21. isz-id-2(disz)-szu da-an-na \n22. szum-ma x mar-tum \n23. s,a-bi-it \n24. be-el ma-a-tim \n25. i-ma-a-at \n26. [szum]-ma# da-ap-pu-um \n27. sza da-mi-im \n28. _ka#_ mar-tim s,a-bi-it \n29. ba-ru-u2#-um i-ma-a-at \n30. szum-ma mar-tum \n31. ki#-ma zi-ib-ba-at \n32. hu-mu-us,-s,i2-ri#-im \n33. da#-an-na-at \n34. na-ak-ru-um \n35. sza-al-la-ta-am \n36. u2-sze20-es,-s,e2 \n37. szum-ma i-na i-szi-id \n38. szu-me-li-im \n39. ka-ak-kum sza-ki-in \n40. a-hi#-sza#-am \n41. na#-ak-ru-um \n42. it-ta-at,-t,a-al \n43. szum-ma mar-tum \n44. i-na a-bu-ul-lim \n45. na-di-a-at \n46. ni-ku-ur2-tum \n47. da-an#-na-tum \n@column 5 \n1. sum-ma mar-ta-am \n2. szi-ru-um iq-ta-ta-am \n3. na-ak-ru-um# \n4. _{gesz}gu-za_-am \n5. i-s,a-ab-ba-at \n6. szum-ma mar-tum \n7. i-szi-id-sa2 le-ti \n8. ma#-ta#-a#?-an# \n9. it#-ta-ak#-ki-ra \n10. szum#-ma# mar#-tum \n11. da-ma-am la-ab-sza-at \n12. ra-bi si2-ik-ka-tum \n13. i-ma-a-at \n14. szum-ma mar-tum \n15. i-na qa2-ab-li-sza# \n16. na-ak-sa2-at \n17. gi-li-it-tum \n18. i-na ma-a-tim \n19. ib-ba-asz-szi \n20. szum-ma mar-tum \n21. i-szi#-is#-sa2 sa#?-hi-ir \n22. sza#-at# x-[x]-x-ni#? \n23. [x x] ha#-nu-szu \n24. da#-ma-am ma-lu-u2 \n25. a-la-am \n26. i-sza-a-tum i-ik-ka-al \n27. szum-ma i#-na# <i?>-szi-id mar-tim \n28. pi-it,-ru-um \n29. sza-ki-im-ma \n30. a-na zu-um-ri-sza \n31. t,u3-uh2-hu \n32. a-wi-lum \n33. i-na la la-ma-di-szu \n34. ma-ru-usz-tum \n35. i-ma-aq-qu2-ta-asz-szum \n36. szum-ma mar-tum \n37. ma-as,-ra-ah-sza \n38. ta-ri-ik \n39. mi-qi2-it-ti \n40. _masz2-szu-gid2-gid2_ \n41. szum-ma mar-tum \n42. i-na qa2-ab-li-sza \n43. ta#-ar-ka-at \n44. da-mu isz-sza-ak-ka-nu \n45. szum-ma mar-tum \n46. qa2-qa2-ad s,e-ri-im \n47. u2-ba-nu-um \n48. qa2-qa2-ad \n49. er#-bi-im \n@column 6 \n1. ib#-ta-ni \n2. te-er-tum szi-i \n3. sza?-sza?-ah \n4. ma-AZ-ti \n5. i-bi-{d}suen \n6. szum#-ma mar-tum \n7. iq-ru-ur-ma \n8. pi-it,-ra-am \n9. ba-ba-am la i-szu \n10. ba-ab _e2-gal_-im \n11. mar-tum \n12. u3 u2-ba-nu-um \n13. la i-ba-asz-szi \n14. ma-a-tum ka-lu-u2-sza \n15. a-na a-li-im isz-te-en \n16. i-pa-hu-ur \n17. i-na isz-ri-isz-sza-a-ma \n18. ik-ka-sa2-as \n19. szum-ma ma-ra-a-tum \n20. 7(disz)-e \n21. _lugal kisz_ \n22. szum-ma mar-tum \n23. i-na qa2-ab-li-sza \n24. s,a-ab-ta-at# \n25. ru-bu-[ut?]-tam#? \n26. i-sa2-ap#?-[pa?]-hu \n27. szum-ma# mar#-tum \n28. ik#-ta#-ri \n29. na#-[ak]-ru-um _{gesz}gu-za_-am \n30. [i?]-be2#-el \n31. szum-ma mar-tum \n32. i-szi-is-sa2 \n33. ra-ah-is, \n34. ku-s,u2-um ma-du-um \n35. i-ba-asz-szi \n36. szum-ma mar-tum \n37. it-be2-e-ma \n38. iz-zi-iz \n39. ru-bu-um \n40. i-na da-an-na-tim \n41. u2-s,i2-am# \n42. szum-ma# mar-tum \n43. s,u2-ri-ri#-tum \n44. i-ba-asz-szi \n45. _{gesz}tukul_ szar#-ru#-ki-in \n46. szum#-ma mar-tum \n47. [a]-na szu-me-li-im \n48. [pa]-nu-sza \n49. [ki?]-ma#? na-ak-ri-im# \n50. szar-ri-im \n@column 7 \n$ blank space \n \n \n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[szum]-ma# mar-tum#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "li#-ib-ba-sza",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "li#-pi-a-am# ma-li",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_{gesz}tukul_ szar-ru-ki-in",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "szum#-ma mar#-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[ki]-ma# s,u2-ri#-ri-tim",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ib#-ba-asz#-szi",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_{gesz#}tukul#_ szar-ru-kinx(GI)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "na#-ah-sa2-at",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "na#-ah#-ka-at",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "szum#-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "na#-as-ha-at-ma",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[a?]-na# _ka2 e2-gal_-im",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[ka?]-si#?-a-at",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[nu]-ku-ur2-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "isz#-sza#-ak-ka-an",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "e#-le#-nu-usz-sza",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[x]-x",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "i#-ta#-ad-du-u2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "szar#-ru-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "sza#-na#-i-szu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "ib#-ta-na-al-la-ah",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "szum#-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "na-as,!(AK)-ra-ab-tam",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "i-te-ed-da2-am",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "ma-a-tum ka-lu-sza",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_ka_-sza a-na we-di-im",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "it-ta-ak-ka-an",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "ni-ku-ur2-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "i-szi-is-sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "a-na e-le-nu-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_ka_-sza a-na sza-ap-la-nu-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "i-na a-li-szu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "pi-el-sza-am",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "i-pa-la-asz-sza",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "us,-s,i#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "szum-ma i-na bi#-ri#-it",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "mar-tum#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "szi-lum sza-ki-in#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "szar-ra-am#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "i-na pa-ni# pi#-el#-szi-im#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "i-du-uk-ku#-szu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "szum-ma ma-ra-[tum] 2(disz)-ta",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "a-na szar#-ri-im#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "di#-ik-szum#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "ib#-ba-asz-szi",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "szum#-ma ma-ra-tum# 3(disz)-asz",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "a#-hu#-u2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "[a?]-na# _{gesz}gu-za_-s,i2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "[a]-bi#-szu#-nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "55",
+      "atf": "isz#-ta#-na-nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "56",
+      "atf": "x [...]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "57",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szum#-ma",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "um-mu-um ra-bi-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "i-ta-ri-ik",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ap-lu-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ra-bu-u2-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_{gesz}gu-za_-am#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "i-s,a-ba-at",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "szum-ma s,e-eh-er-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "i-ta-ri-ik",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ap-lu-um# s,e-eh-er-ru-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_{gesz}gu-za_-am",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "i-s,a-ba-at",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "szum-ma ma-ra-tum 5(disz)-isz",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "szar-ru ha-am-me-e",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "i-te-eb-bu-u2-nim",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "ap-pa-sza",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ki-ma s,i-il#-li-im",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "e-ed",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "ma-ta-am na-ka-ar-tam",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "u2-pa-al-la-asz-ma",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "i-s,a-ab-ba-at",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "is-hu-ur-ma",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "u2-ba-na-am il-ta-we-e",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "ma-ta#-am",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "na-ka-ar-ta#-am#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "i-[s,a]-ab-ba-at#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "szum-ma# mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "is-hu-ur-ma",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "mu-uh2-ha-am",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "sza u2-ba-ni-im#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "il#-ta-we",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_sukkal-mah_-szu i-na-as-sa2-ah#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "me-e li-ib-ba-sza#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "sa2-hi?-ir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "mi-lu-um i-il-la-kam",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "pa-nu-u2-sza",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "a-na szu-me-li-im",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "sza-ak-nu-u2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "_digir_-szu e-li a-wi-li-im#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "sza-bu-us",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "ap-pa-sza",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "a-na _ka2 e2-gal_-im",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "sza-ki-in",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "t,a2-ri-du-u2-um",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "sza ku-usz-szu-du",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "a-na e-li-szu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "55",
+      "atf": "i-ta-ar",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szum-ma mar-[tum]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "qa-ab-la-sza",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a-na szu-me-li-im",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "sza-ak-na",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{gesz2}tukul_ szar-ru-kin",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_ka_-sza mu-s,-an-am",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "la i-szu",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "um-ma-an szar-ru-im",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "i-na ha-ra-nim",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "s,u-mu-um",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "i-s,a-ab-ba-at",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_ka_-sza# szi-lu i-szi-iz-za",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "s,a-bi-it",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "i-na a-li-szu",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "li-ib-ba-szu",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "u2-la i-t,i-a-ab",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "li-ib-ba-sza",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "da-ma-an ma-li",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ni-ip-ha-at",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_masz2-szu-gid2-gid2_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "mi-qi-it-ti",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "um-ma-nim",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "i-szi-iz-za",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "le-ti",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[x] i-na ma-tim",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "i-te#-[eb-bi]-a-am",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "szum-ma mar#-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "li-pi-a-am",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "ku-us,-s,a-a-at",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "ku-us,-um i-ba-asz-szi-i",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "sum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "ha-ar-t,a-at",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "lu-mu-un li-bi-im",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "i-bi-us,-s,u2",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "u3-mu-ur-s,u",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "na-as,-ha-at-ma",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "it-ta-na-ak-ra-ar",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "_{gesz2}tukul_ mi-it-ha-ar",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "_ka_-sza da-ma-am",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "la-pi-it",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "_sukkal mah_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "im-ma-ha-as,",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "qa-ab-la-sza",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "da-ma-am",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "la-ap-ta",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "_masz2 szu gid2 gid2_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szum-ma mar#-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "sza-ap-as-sa",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "da-ma-am",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "la-pi-it",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_zabar-dab5_",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "im-ma-ha-as,",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ta-a-a-ra-tim",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "i#-szu-u2",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a-na szar-ri-im",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "da-mi-iq",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "qa-ab-la-sza",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "id-ha-a",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "i-na s,e-ri-im",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "i-na da-na-tim",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "us,#-s,i",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "qa-ab-la-szu!",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "s,a-ab-ta-a",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "szar-ra-am",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "szu-ut re-szi-i-szu",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "i-du-uk-ku-szu",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "i-szi-id-za",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "szi-ra-a-am ka-ti-im",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "ta-a-a-ra-at a-li-szu",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[x]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "im-ta#-na-al#-la-ma",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "us-sa-[ka]-al#",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "szu-lu-um",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "ru#-bu#",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "szum-[ma mar-tum]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "_ka#_-szu#",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "mi-gi#-[ir]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "ru-be",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "szum-ma# [mar-tum]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "sze-er-ha-[ni]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "ud-du-ha-[at]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "um-ma-[nu]-um#",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "i-na ta-ha-zi#-im",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "im-ta-na-aq#-qu-ut",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "it,-bu-u-ma",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "it-ta-s,i",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "ru-bu-u2-um",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "i-na da-an-na-tim",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "us,-s,i",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "szum-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "li-pi-a-am",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "ta-ra-ha-a-sza",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "u2-ka-al-la",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "55",
+      "atf": "qa-[x]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "um-ma-ni-im#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "pa-ar-s,a-at#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "szum-ma mar-tum#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "i-mi-it-tam ta-ar",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "re-szu#-[szu]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "im-ta#-na-aq-[qu-ut]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "szu-ma mar#-[tum]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a-na li-ib-[bi]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_e2-gal_-im i-[...]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "i-na li-bi _e2-gal_-li-szu",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "i-du-ak",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "szi-szi-ta-am",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "u2-ka-al",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a-na be-el im-me-ri-im",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "mu-ur-s,a-am u2-ka-al",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "ap-pa-as-sa3",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "u3 i-szi-is-sa3",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "ki-na-a-ma",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "qa2-ab-la-a-sza na-as-h,a",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "mi-il-kum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "s,a-pi-ih,",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "ze-eh,-h,u-um",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "i-ta-ad-du",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "szar-ru-um",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "um-ma-an-szu",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "te-szi-tam i-li-it-te",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "i-na qa2-ab-li-sza",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "na-ak-sa-at",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "gi#-il-la-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "i-na ma-a-tim",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "i-ba-asz-szi",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "h,a-al-qa2-at",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "da-am-qa2-at",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "s,a-al-ma-at",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "um-szum ib-ba-asz-szi",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "u2-ba-nam",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "il-ta-wi!-ma",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "wa-ar-ka-at a-mu-tim",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "sza#-ak-na-at",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "szar#-ru-um",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "[sze]-er# sze20-er-ri-szu",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a-di h,a-am-szi#-[szu]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "i#-na _{gisz}gu-za_-im",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[x]-sza-ab",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[szu]-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[x]-ru#-ra-at-ma",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[x]-ri-ip-sza",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[...]-ri-ki-im",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[...]-szi",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "szu#-ma# [mar-tum]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "i-szi-[is-sa2]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "szu-s,a-[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a-na ma-a-[tim]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "i-te-eb-bi-a-am",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "szu-ma mar#-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "ap-pa-sza",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "u3 i-szi-is-sa2",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ki-na-2(disz)-ma",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "qa2-ab-la-a-sza",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "na-as-h,a",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "mi-lik ma-a-tim",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "i-sza-an-ni",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "lu-ub-bu-ka-at",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "mi-il-um i-la-ka-am",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "nu-h,u-ta-at",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "mi-lu-um",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "i-na na-ri-[im]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "it-ta-za-az#-[zu]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "szu-ma [mar-tum]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "wa-s,i-a-at#-[ma]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "nu-h,u-ta-at#",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "lu#-up-nu-um",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "a-na [...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szu-ma mar-tum#",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "ik-ta-ri",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "le-mi-in a-wi-lim",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "a-na i-mi-it-tim",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "pa-nu-u2-sza",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "i-lu szar-ri-im",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "szu-ma mar-tum",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "li-ib-ba-sza",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "da-ma-am ma-li",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "ni-ip-ha-a-at ba-ri#-[im]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "szu-[ma mar-tum]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "i-te-eb#-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "pa#-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "za-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "szar#-[ru?-um? ...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "e-li# [...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "i-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "szu-ma# [mar-tum]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "u4-[...]-at",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "szar-[ru]-um#",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ra#-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "i-is,#-[...]-u2-szu",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "szu-ma mar#-tum#",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "UD-gu-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "um-ma-an-im#",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "ma-hi-ra [...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "ki#-ma# [...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "bu-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "ma-[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "[...]-RI",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "[szu]-ma# mar#-[tum]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "[...]-ik#-ti",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "ma-li-a#-at#",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "[...] hu",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "um-ma-nu-um#",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "i-ik-[asz-sza-ad]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "szu-ma# [mar-tum]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "in-na-[as-ha-am-ma]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "i-na [...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "ap-pa-[sza]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "da-x-[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "la-u2-[x]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "mu-ut a-wi-li-im#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ib-lu-usz-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "it-ta-s,i",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a-wi-lum it-ta-as,-s,i",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "in-na-as-ha-am-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "i-na ba-ab _e2-gal_-im",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "iq-tu-un",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "szar-ra-am",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "u2-ka#-asz-szu-du-szu#-u2-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "i-na pa-di-szu i-da-an#-ni-in",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "in-na-as-ha-am-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "u2-ba-an-na-am",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "i-t,e-er-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "u3# i-na ma-a-a-li-sza",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "it-ta-t,i2-il",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a-wi-la-am",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "i-na a-wi-li-im",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "u2-sze-s,u2-u2-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "i-tu-ur2-ra-am-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_{gesz}gu-za_-s,i2 a-bi-szu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "i-s,a-ab-ba-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "it-be-e-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "mu-uh2-hi u2-ba-ni-im",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "is,-s,a-ab-ba-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "szar-ru-um a-la-am",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "na-ak-ra-am",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "qa2-as-su2-u2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "i-ka-asz-sza-at#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "szum-ma qu3-u2-[um]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "it#-ru#-us,-ma#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "mu-uh2-hi mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "is,-s,a-ba-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "sza i-na pa-ni [u2]-ba-ni-im",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "i-la-ku",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "i-x-[...] x",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "i-[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "x [...] x-im-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "[...] x",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "x [...] x x al-an#?-ni",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "szum#-[ma] mar-tum",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "x [...]-tim",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "[...]-im",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szum-ma GIN2-x",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_szagina_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "sza-ki-im-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "s,a-ri-ip",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "mi-ki-it-ti",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ri-di-im we-di#?-im",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "bu-usz-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "tu-ku-pa-a-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "s,u#-ur-ru-pa",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "mi-ki-it-ti",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "ra-sza-szi-im",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "mu-uh2-ha-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "sza-ki-im-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "s,a-ri-ip",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "mi-ki-it-ti",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_masz-szu-gid2-gid2_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "i-na na-ap-sza-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "mar-tim",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ti-ki-ip-ta-an",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "2(disz)-ta-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "s,u-ur-ru-pa",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "qar-ra-da-an",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "2(disz)-na",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "i-mu-ut-ta-nim",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "i-mi-ta-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "da-ma-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "bu-ul-la-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "pa-szi-isz",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_e2-gal_-la-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "i-sza-tu-um",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "i-ka-al",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "szu-me-el-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "da-ma-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "sza-bu-la#-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "pa-szi-isz",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "i-na a-wi-li-im",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "bi-it a-wi-li-im",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "i-sza-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "i-ka-al",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "bu-da-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "da-ma-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "bu-ul-la-am",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "pa-asz-sza",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "di-pa-ar ni-ku-ur2-tim",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "i-sza-tu-um",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "i-na ma-tim",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "it-ta-na-an-pa-ah",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "szum-ma-mar-tum#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "55",
+      "atf": "ap-pa-[sza]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[ki]-ma hu#-ba-szi-im",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[ke]-pa-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "x x x ru-bi-im",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "szum#-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ap#-pa-sza",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ki#-ma# s,u2-ri-ri-tim",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_{gesz}tukul_ szar-ru-ki-in",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "i-na hi-im-s,e",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ma-asz-ru-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "li-pi2-a-am",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ku-s,a-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ma-asz-ru-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "ma-li-a-at-ma",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "zi2-ih-hu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "hu-ul-lu-la-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "sza-mu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "i-za-an-nu-un",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ma-li-at-ma",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "mu-sza-wa-ar-ku",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "ra-du-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "i-la-ak",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "mu-sza a-na szi-na zi-i-zu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "a-lu-um a-na szi-na",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "el-li#-te#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "mu-sza a-na e-li-nu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "KI-e-ru-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "asz-ku-la-lu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "mu-[sza] a#-na ki-di-im",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "ha-al#-s,u",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "ra-bi2-a#-na",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "i-na a-li-szu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "u2-szi-s,u-u2-szu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "u3 u2-ba-nu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "szi-it-nu-na-a",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "pu-uh2-ru-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "u2-la im-ta-ga-ar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "szum-ma ma-ra-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "2(disz)-ta",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "di-ik-szu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "szum-ma ma-ra-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "3(disz)-asz",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "di-ik-sza-an",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "szi-na",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "i-te-bu-szu-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "53",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "54",
+      "atf": "ma-li-a-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "55",
+      "atf": "ba-ru-um",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "is-hu-ra-am-ma",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "szu-me-la-am",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "iz#-za-az",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "szar#-ru-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ma-ta-am# na#-ka-ar-tam#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "i-ta-ab-ba-al#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "szum#-ma ka-ak#-kum#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "sza na#-ak-ri#?-[im?]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "mar-ta-[am?]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "i-ti-qa2-[ma?]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "i-na i-szi-id#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "i-mi-tim",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "na-as-ha",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "na-ak#-ru-um# i-na ma-tim",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "i-ra#-bi#-is,",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "szum-ma# mar#-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "a-na e#?-le#?-nu-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "KA-x-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "na#-ak#-ru-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "isz-id-2(disz)-szu da-an-na",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "szum-ma x mar-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "s,a-bi-it",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "be-el ma-a-tim",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "i-ma-a-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[szum]-ma# da-ap-pu-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "sza da-mi-im",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_ka#_ mar-tim s,a-bi-it",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "ba-ru-u2#-um i-ma-a-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "ki#-ma zi-ib-ba-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "hu-mu-us,-s,i2-ri#-im",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "da#-an-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "na-ak-ru-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "sza-al-la-ta-am",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "u2-sze20-es,-s,e2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "szum-ma i-na i-szi-id",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "szu-me-li-im",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "ka-ak-kum sza-ki-in",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "a-hi#-sza#-am",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "na#-ak-ru-um",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "it-ta-at,-t,a-al",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "i-na a-bu-ul-lim",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "na-di-a-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "ni-ku-ur2-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "da-an#-na-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "sum-ma mar-ta-am",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "szi-ru-um iq-ta-ta-am",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "na-ak-ru-um#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_{gesz}gu-za_-am",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "i-s,a-ab-ba-at",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "i-szi-id-sa2 le-ti",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ma#-ta#-a#?-an#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "it#-ta-ak#-ki-ra",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "szum#-ma# mar#-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "da-ma-am la-ab-sza-at",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "ra-bi si2-ik-ka-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "i-ma-a-at",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "i-na qa2-ab-li-sza#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "na-ak-sa2-at",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "gi-li-it-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "i-na ma-a-tim",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "ib-ba-asz-szi",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "i-szi#-is#-sa2 sa#?-hi-ir",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "sza#-at# x-[x]-x-ni#?",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[x x] ha#-nu-szu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "da#-ma-am ma-lu-u2",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "a-la-am",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "i-sza-a-tum i-ik-ka-al",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "szum-ma i#-na# <i?>-szi-id mar-tim",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "pi-it,-ru-um",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "sza-ki-im-ma",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "a-na zu-um-ri-sza",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "t,u3-uh2-hu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "a-wi-lum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "i-na la la-ma-di-szu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "ma-ru-usz-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "i-ma-aq-qu2-ta-asz-szum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "ma-as,-ra-ah-sza",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "ta-ri-ik",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "mi-qi2-it-ti",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_masz2-szu-gid2-gid2_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "i-na qa2-ab-li-sza",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "ta#-ar-ka-at",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "da-mu isz-sza-ak-ka-nu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "qa2-qa2-ad s,e-ri-im",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "u2-ba-nu-um",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "qa2-qa2-ad",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "er#-bi-im",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ib#-ta-ni",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "te-er-tum szi-i",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "sza?-sza?-ah",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ma-AZ-ti",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "i-bi-{d}suen",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "szum#-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "iq-ru-ur-ma",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "pi-it,-ra-am",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "ba-ba-am la i-szu",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ba-ab _e2-gal_-im",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "u3 u2-ba-nu-um",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "la i-ba-asz-szi",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ma-a-tum ka-lu-u2-sza",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "a-na a-li-im isz-te-en",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "i-pa-hu-ur",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "i-na isz-ri-isz-sza-a-ma",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ik-ka-sa2-as",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "szum-ma ma-ra-a-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "7(disz)-e",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_lugal kisz_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "i-na qa2-ab-li-sza",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "s,a-ab-ta-at#",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "ru-bu-[ut?]-tam#?",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "i-sa2-ap#?-[pa?]-hu",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "szum-ma# mar#-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "ik#-ta#-ri",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "na#-[ak]-ru-um _{gesz}gu-za_-am",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[i?]-be2#-el",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "i-szi-is-sa2",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "ra-ah-is,",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "ku-s,u2-um ma-du-um",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "i-ba-asz-szi",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "szum-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "it-be2-e-ma",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "iz-zi-iz",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "ru-bu-um",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "i-na da-an-na-tim",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "u2-s,i2-am#",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "szum-ma# mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "s,u2-ri-ri#-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "i-ba-asz-szi",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "_{gesz}tukul_ szar#-ru#-ki-in",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "szum#-ma mar-tum",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "[a]-na szu-me-li-im",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "[pa]-nu-sza",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "[ki?]-ma#? na-ak-ri-im#",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "szar-ri-im",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ blank space ",
+      "surface": "reverse",
+      "column": "column 7"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate when the local/HF model is wired.",
+  "status": "atf_only",
+  "translation_status": "print_edition",
+  "translation_label": "Print edition (no CDLI English)",
+  "translation_short": "Print: YOS 10",
+  "translation_detail": "Published series match (YOS 10) — scholars have almost certainly translated this (often IT/DE/FR/EN in print), but CDLI has no English text",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": true,
+  "untranslated_open": true,
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "omen_hunt": true,
+  "omen_blurb": "Large OB omen tablet (YOS 10, 31)",
+  "omen_score": 200.5,
+  "omen_kind": "series"
+}

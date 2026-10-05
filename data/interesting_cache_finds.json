@@ -1,0 +1,4286 @@
+{
+  "note": "Refined hunt: narrative/hero markers, lexical lists downranked",
+  "count": 169,
+  "items": [
+    {
+      "id": "P262784",
+      "score": 329.4,
+      "lines": 217,
+      "chars": 6869,
+      "des": "Gilgamesh II 001-003 CBS 07771",
+      "genre": "Literary",
+      "sub": "Gilgamesh Epic nn (witness)",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "gilgamesh": 18,
+        "enkidu": 13,
+        "enki": 13,
+        "ninsun": 1,
+        "speech": 9,
+        "dream": 2,
+        "mother_speech": 5,
+        "uruk": 5
+      },
+      "narr": 16,
+      "hero": 32,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "it-bi-e-ma {d}gesz szu-na-tam i-pa-asz-szar",
+        "iz-za-kar3-am a-na um-mi-szu",
+        "um-mi i-na sza-at mu-szi-ti-ia"
+      ]
+    },
+    {
+      "id": "P429856",
+      "score": 236.7,
+      "lines": 121,
+      "chars": 36929,
+      "des": "CDLI RIAI 001a (Behistun Akkadian)",
+      "genre": "Royal/Monumental",
+      "sub": "",
+      "lang": "Akkadian; Elamite; Persian",
+      "period": "Achaemenid (547-331 BC)",
+      "site": "uncertain (mod. Behistun)",
+      "hits": {
+        "speech": 55
+      },
+      "narr": 55,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[a-na-ku {disz}da-ri-ia-musz _lugal gal_-u2 _lugal kur-kur_] a_-szu2 sza2 {disz}usz-ta-as-pi a-ha-ma-ni-isz-szi-i' _lugal-lugal-mesz_ {lu2}par-sa-a-a _lugal_ {kur}par-su {disz}da-ri-ia-musz _lugal_ ki-a-am i-qab-bi at-tu-u-a _ad_-u-a {disz}usz-ta-as-pi _ad_ sza2 {disz}usz-ta-as-pi",
+        "{disz}ar-sza2-am-ma-a' _ad_ sza2 {disz}ar-sza2-am-ma-a' {disz}ar-ia-ra-am-na-a' _ad_ sza2 {disz}ar-ia-ra-am-na-a' {disz}szi-isz-pi-isz _ad_ sza2 {disz}szi-isz-pi-isz {disz}a-ha-ma-ni-isz-i' {disz}da-ra-ia-musz _lugal_ ki-a-am i-qab-bi a-na lib3-bi a-ga-a",
+        "_numun#_ sza2# a-ha-ma-ni-isz-szi _mesz_ a-ni-ni ni-qab-bi ul#-tu _suhusz# dumu-du3-mesz#_ a-ni-ni ul-tu _suhusz#-numun#_-u2#-ni _lugal-mesz_-szu2-nu {disz}da-ri-ia-musz _lugal_ ki-a-am i-qab-bi 8(disz) ina _sza3 numun_-ia at-tu-u-a ina pa-na-tu-u-a _lugal_-tu i-te-ep-szu2"
+      ]
+    },
+    {
+      "id": "P270855",
+      "score": 123.7,
+      "lines": 71,
+      "chars": 4869,
+      "des": "EA 356",
+      "genre": "Literary",
+      "sub": "Adapa",
+      "lang": "Akkadian",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {
+        "gilgamesh": 4,
+        "adapa": 10
+      },
+      "narr": 0,
+      "hero": 14,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "e-pu#-[usz? ...]",
+        "szu-u2-tu :r: x [...]",
+        "a-na pi2-i tu#? [x] ia# u2#-sza#-am-s,i i x [...]"
+      ]
+    },
+    {
+      "id": "P273203",
+      "score": 109.8,
+      "lines": 123,
+      "chars": 5133,
+      "des": "Gilgamesh II 036-040, B",
+      "genre": "Literary",
+      "sub": "Gilgamesh Epic 01 (witness)",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enkidu": 6,
+        "enlil": 1,
+        "enki": 6,
+        "dream": 2,
+        "mother_speech": 1,
+        "uruk": 4,
+        "friend": 1
+      },
+      "narr": 3,
+      "hero": 6,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]-a#-ti",
+        "[...] has#?-su#",
+        "szit-tin-szu2 _dingir_-ma [...]"
+      ]
+    },
+    {
+      "id": "P241509",
+      "score": 74.0,
+      "lines": 834,
+      "chars": 12693,
+      "des": "ARET 03, 394 + 617 + 604 + ARET 11, 2 + unp. frag.",
+      "genre": "Literary",
+      "sub": "Ritual",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {
+        "friend": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(asz@c) gu3-li-lum _ku3-sig17_",
+        "[ni-gu2]",
+        "[ma-lik-tum]"
+      ]
+    },
+    {
+      "id": "P241396",
+      "score": 72.0,
+      "lines": 788,
+      "chars": 13072,
+      "des": "ARET 03, 112 + ARET 03, 187 + ARET 11, 01 + frags.",
+      "genre": "Literary",
+      "sub": "Ritual",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "wa-ma-sa",
+        "a-a-da-ga-si",
+        "[ma]-lik-[tum]"
+      ]
+    },
+    {
+      "id": "P469673",
+      "score": 68.2,
+      "lines": 422,
+      "chars": 19261,
+      "des": "CDLI Literary 000368 (Lugalbanda and Anzu) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.02.02 Lugalbanda and Anzu (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "lugalbanda": 33,
+        "enmerkar": 5,
+        "inanna": 18,
+        "enlil": 3,
+        "enki": 3,
+        "hymn_end": 1,
+        "mother_speech": 4,
+        "uruk": 8
+      },
+      "narr": 4,
+      "hero": 38,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "lugal-ban3-da kur ki su3-ra2 ga2-la ba-ni-in-dag",
+        "iszi za-bu{ki}-a nir ba-ni-in-gal2",
+        "ama nu-mu-un-da-an-ti na nu-mu-un-de5-de5"
+      ]
+    },
+    {
+      "id": "P480190",
+      "score": 66.4,
+      "lines": 324,
+      "chars": 15761,
+      "des": "CDLI Literary 000365 (Gilgamesh and Huwawa A) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05 Gilgamesh and Huwawa A ('Decad no. 10') (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 16,
+        "huwawa": 13,
+        "lugalbanda": 9,
+        "enlil": 8,
+        "enki": 1,
+        "speech": 6,
+        "hymn_end": 2,
+        "uruk": 1
+      },
+      "narr": 6,
+      "hero": 38,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "en-e kur lu2 ti-la-sze3 gesztu2-ga-ni na-an-gub",
+        "en {d}gilgames2-e kur lu2 ti-la-sze3 gesztu2-ga-ni na-an-gub",
+        "arad-da-ni en-ki-du10-ra gu3 mu-un-na-de2-e"
+      ]
+    },
+    {
+      "id": "P365742",
+      "score": 64.7,
+      "lines": 246,
+      "chars": 22206,
+      "des": "BAM 5, 480",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "mother_speech": 7,
+        "friend": 1
+      },
+      "narr": 7,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na ugu_-szu2 _kum2_ u2-kal _sa zi sag-ki tuku_-ma _igi-min_-szu2 i-_bar3_",
+        "_igi-min_-szu2 bir-ra-ta5 i-pi-ta5 i-szi-ta5 mur-din-na qu3-qa-na a-sza2-a",
+        "u3 _er2 szub-szub_-a 1/3(disz) _sila3 za3-hi-li_ bu-t,u-ta5 ina _{na4}ur5 ar3_–en _sim_"
+      ]
+    },
+    {
+      "id": "P010263",
+      "score": 60.9,
+      "lines": 61,
+      "chars": 1259,
+      "des": "OIP 099, 327",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIa (ca. 2600-2500 BC)",
+      "site": "uncertain (mod. Abu Salabikh)",
+      "hits": {
+        "ninsun": 4
+      },
+      "narr": 0,
+      "hero": 4,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "{d}lamma nin-sun2 agarin",
+        "mu-DU-DU",
+        "[{d}]lamma nin#-sun2-ke4 gal in-zu"
+      ]
+    },
+    {
+      "id": "P243647",
+      "score": 54.6,
+      "lines": 345,
+      "chars": 4678,
+      "des": "ARET 13, 14 + unp. frag.",
+      "genre": "Literary",
+      "sub": "chronicle",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_dub_",
+        "_lu2_",
+        "[u3]-szu-ri2"
+      ]
+    },
+    {
+      "id": "P270858",
+      "score": 54.1,
+      "lines": 64,
+      "chars": 5651,
+      "des": "EA 359",
+      "genre": "Literary",
+      "sub": "szar tamhari",
+      "lang": "",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {
+        "enlil": 2,
+        "speech": 5
+      },
+      "narr": 5,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] il {d}esz18-dar a-szu-ri _iri_ ak#-[ka3-di3]",
+        "[...] x u2 tam-ha-ri _lugal_ qe2-re-eb#",
+        "[...] x i-qab2-bi qab2-la lugal-ke3#-[en]"
+      ]
+    },
+    {
+      "id": "P241245",
+      "score": 53.8,
+      "lines": 173,
+      "chars": 2173,
+      "des": "ARET 11, 3",
+      "genre": "Literary",
+      "sub": "Ritual",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(asz@c) DIB _ku3-sig17 szanapi{pi}",
+        "1(asz@c) _zara6{tug2} u2-hab2_",
+        "1(asz@c) _gid2{tug2}_ GESZ#-MA-_ir_"
+      ]
+    },
+    {
+      "id": "P241484",
+      "score": 53.5,
+      "lines": 356,
+      "chars": 4592,
+      "des": "ARET 13, 01",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_kaskal_",
+        "_gibil_",
+        "zi-lu-um"
+      ]
+    },
+    {
+      "id": "P251564",
+      "score": 53.2,
+      "lines": 353,
+      "chars": 7241,
+      "des": "CUSAS 43, 38",
+      "genre": "School",
+      "sub": "model contract",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 2,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[1(disz) sag]-munus",
+        "[{disz}a]-na-isz8-tar2-tak2#-la-ku",
+        "mu#-ni-im"
+      ]
+    },
+    {
+      "id": "P010064",
+      "score": 53.0,
+      "lines": 444,
+      "chars": 7655,
+      "des": "OIP 104, 015",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIa (ca. 2600-2500 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "enlil": 1,
+        "enki": 4,
+        "flood": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(bur3@c) GAN2",
+        "GAN2 e2-gu4",
+        "1/2(asz@c) ku3 ma-na"
+      ]
+    },
+    {
+      "id": "P355698",
+      "score": 53.0,
+      "lines": 188,
+      "chars": 6277,
+      "des": "Manchester Memoirs 48 pl.1-7",
+      "genre": "Literary",
+      "sub": "liturgy",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "inanna": 15,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x ki-ri me-me ba-ni-DU",
+        "[...] ka#-sza-me-en me-a-si lu2-me-en",
+        "[...]-da ki-ri-a me-me ba-ni-DU"
+      ]
+    },
+    {
+      "id": "P384843",
+      "score": 51.6,
+      "lines": 133,
+      "chars": 5341,
+      "des": "OECT 01, pl. 42-45, David Prism",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "",
+      "period": "",
+      "site": "",
+      "hits": {
+        "enlil": 6,
+        "hymn_end": 4
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "disz {d}nisaba",
+        "ege-nun-e ege-nun-e e2-ta# nam-ta-ab-e3",
+        "{d}en-lil2 ege-nun-e e2-ta nam-ta-ab-e3"
+      ]
+    },
+    {
+      "id": "P241831",
+      "score": 51.5,
+      "lines": 331,
+      "chars": 4038,
+      "des": "ARET 13, 15",
+      "genre": "Literary",
+      "sub": "chronicle",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_dub_",
+        "u3-szu-ri2",
+        "ma-[ri2{ki}]"
+      ]
+    },
+    {
+      "id": "P393743",
+      "score": 48.5,
+      "lines": 269,
+      "chars": 27873,
+      "des": "BAM 6, 575",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "etana": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na sza3_-szu2 _gig ga {gu4}ab2 ku3-ga i3-nun u4 2(disz)-kam2 nag#?_ [...]",
+        "_DISZ na sza3_-szu2 _gig {u2}gesztin ka5-a sud2_ ina _kasz nag {u2}im-[du_ ...]",
+        "{u2}sziz-ba-nam _sud2_ ina _kasz# nag 1/2(disz) sila3_ x [x x x x _naga] si_"
+      ]
+    },
+    {
+      "id": "P372658",
+      "score": 47.9,
+      "lines": 74,
+      "chars": 2612,
+      "des": "VS 09, 144 & 145",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "enlil": 2,
+        "underworld": 3,
+        "mother_speech": 4
+      },
+      "narr": 4,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_1(disz) sag-nita2_ {d}utu-na-ah-ra-ri",
+        "_1(disz) sag-geme2_ {d}nin-[gal]-um-mi",
+        "_1(disz) gu4_ AN-[{d}]lamma"
+      ]
+    },
+    {
+      "id": "P223265",
+      "score": 47.5,
+      "lines": 106,
+      "chars": 3622,
+      "des": "TIM 04, 01",
+      "genre": "Legal",
+      "sub": "inheritance",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "lugalbanda": 2,
+        "inanna": 1,
+        "enlil": 2,
+        "ninsun": 2,
+        "underworld": 1
+      },
+      "narr": 0,
+      "hero": 4,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "5/6(disz) sar e2 du3-a",
+        "da e2 ha-la-ba-na",
+        "1(bur3) GAN2 2(u) sar a-sza3 mar-ra"
+      ]
+    },
+    {
+      "id": "P343019",
+      "score": 47.2,
+      "lines": 278,
+      "chars": 7757,
+      "des": "VS 10, 214",
+      "genre": "Literary",
+      "sub": "Agušaya A",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "lu-na-i-id szu-ur-bu-ta",
+        "i-ni-li qa2-ra-at-ta",
+        "bu-uk-ra-at {d}nin-gal ($ erasure $)"
+      ]
+    },
+    {
+      "id": "P386501",
+      "score": 46.8,
+      "lines": 60,
+      "chars": 2315,
+      "des": "TCL 01, 065",
+      "genre": "Legal",
+      "sub": "contract",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Kish (mod. Tell Uhaimir)",
+      "hits": {
+        "underworld": 8
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(disz) _sag-ARAD2_ ARAD2-e2-a _mu-ni-im_",
+        "{disz}a-pil2-i3-li2-szu",
+        "{disz}esz18-dar-la-ma-si2"
+      ]
+    },
+    {
+      "id": "P213189",
+      "score": 46.0,
+      "lines": 1544,
+      "chars": 35406,
+      "des": "OIP 104, 040 (Manistusu obelisk)",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "Susa (mod. Shush)",
+      "hits": {
+        "enlil": 1,
+        "enki": 1,
+        "mother_speech": 2
+      },
+      "narr": 2,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] KI#",
+        "[...] gi#",
+        "[...] x gal#?"
+      ]
+    },
+    {
+      "id": "P345443",
+      "score": 45.8,
+      "lines": 47,
+      "chars": 1826,
+      "des": "CT 15, pl. 01-02, BM 087535",
+      "genre": "Literary",
+      "sub": "OB hymn to Belet-ili/Mama",
+      "lang": "",
+      "period": "",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "inanna": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "za#-ma-ar {d}be-le-et-i3-li2 a-za-ma-ar",
+        "ib-ru us,-s,i-ra-ma qu2-ra-du szi-me-a",
+        "{d}ma-ma za-ma-ra-sza-ma e-li di-isz-pi-i-im u3 ka-ra-ni-im t,a-bu"
+      ]
+    },
+    {
+      "id": "P469674",
+      "score": 45.4,
+      "lines": 643,
+      "chars": 28374,
+      "des": "CDLI Literary 000369 (Enmerkar and the Lord of Aratta) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.02.03 Enmerkar and Lord of Aratta (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enmerkar": 11,
+        "inanna": 27,
+        "enlil": 6,
+        "enki": 5,
+        "speech": 1,
+        "flood": 2,
+        "hymn_end": 3,
+        "mother_speech": 4,
+        "uruk": 20,
+        "friend": 1
+      },
+      "narr": 5,
+      "hero": 11,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "iri gu4 husz {d}tesz2 ni2 gal gur3-ru",
+        "kul-aba4{ki} kesz2 [...]",
+        "gaba u4-da ki nam tar-re-da"
+      ]
+    },
+    {
+      "id": "P343020",
+      "score": 44.7,
+      "lines": 59,
+      "chars": 2699,
+      "des": "VS 10, 215",
+      "genre": "Literary",
+      "sub": "OB hymn to Nanaya",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "il-ta-am sza-ma-asz ni-szi2#-i-sza#",
+        "{d}na-na-a su2-up-pi-a szu-UB-BA na-az-za#-as#-[sa3]",
+        "sza-tu ki-ma ar-hi-im a-na-t,a-li-im"
+      ]
+    },
+    {
+      "id": "P221796",
+      "score": 44.3,
+      "lines": 79,
+      "chars": 2191,
+      "des": "BiMes 03, 26",
+      "genre": "Literary",
+      "sub": "riddles",
+      "lang": "Sumerian",
+      "period": "ED IIIb (ca. 2500-2340 BC)",
+      "site": "Lagash (mod. El-Hiba)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "i7-bi NINA-du",
+        "dingir-bi {d}nansze nin uru16",
+        "ku6#-bi lu2:u18 gu7-gu7"
+      ]
+    },
+    {
+      "id": "P271202",
+      "score": 43.1,
+      "lines": 289,
+      "chars": 21567,
+      "des": "EA 025",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {
+        "flood": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...]",
+        "[...]"
+      ]
+    },
+    {
+      "id": "P270856",
+      "score": 42.5,
+      "lines": 81,
+      "chars": 5340,
+      "des": "EA 357",
+      "genre": "Literary",
+      "sub": "Nergal and Ereshkigal",
+      "lang": "Akkadian",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "i-nu-ma i-lu :r: isz-ku-nu qe2-e-re-e-ta",
+        "a-na a-ha-ti-szu-nu :r: e-re-esz-ki-i-ga-a-al :r:",
+        "isz-pu-u2-ru :r: ma-a-ar :r: szi-i-ip-ri :r:"
+      ]
+    },
+    {
+      "id": "P481729",
+      "score": 42.3,
+      "lines": 146,
+      "chars": 6647,
+      "des": "CDLI Literary 002873.05 (Gilgamesh epic 05) composite",
+      "genre": "Literary",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 13,
+        "huwawa": 12,
+        "enlil": 2,
+        "enki": 13,
+        "speech": 1,
+        "uruk": 1,
+        "friend": 11
+      },
+      "narr": 1,
+      "hero": 25,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "iz-zi-zu-ma i-nap-pa-at-tu _{gesz}tir_",
+        "sza2 _{gesz}eren_ it-ta-nap-la-su mi-la-a-szu",
+        "sza2 _{gesz}tir_ it-ta-nap-la-su2 ne2-reb-szu"
+      ]
+    },
+    {
+      "id": "P481725",
+      "score": 42.3,
+      "lines": 146,
+      "chars": 6647,
+      "des": "CDLI Literary 002873 (SB Gilgamesh epic) composite",
+      "genre": "Literary",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 13,
+        "huwawa": 12,
+        "enlil": 2,
+        "enki": 13,
+        "speech": 1,
+        "uruk": 1,
+        "friend": 11
+      },
+      "narr": 1,
+      "hero": 25,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "iz-zi-zu-ma i-nap-pa-at-tu _{gesz}tir_",
+        "sza2 _{gesz}eren_ it-ta-nap-la-su mi-la-a-szu",
+        "sza2 _{gesz}tir_ it-ta-nap-la-su2 ne2-reb-szu"
+      ]
+    },
+    {
+      "id": "P510222",
+      "score": 42.2,
+      "lines": 65,
+      "chars": 2246,
+      "des": "MHET 2/6, 846",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "underworld": 6
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "2/3(disz) sar e2 ki-gal2 da e2 dumu-er-s,e-tim",
+        "da e2 ip-qa2-tum dumu e-tel-lum",
+        "sag-bi# [... sila dagal] {d}bu-ne2-ne2"
+      ]
+    },
+    {
+      "id": "P357096",
+      "score": 41.7,
+      "lines": 71,
+      "chars": 4422,
+      "des": "OECT 06, pl. 18, K 04615",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian; Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[iri-zu larsa{ki}-ma sza3-ge pa3-da-zu nig2-gig-ga im-ma-an-ak]",
+        "_[x] [al-ka ba-ab]-i3#-li2 i-tu-ut ku-un lib3#-[bi-ka] [x]_",
+        "[sila] x eszemen2-ta#? [u4] zal#-[zal-la si-ga im-ma-an-si]"
+      ]
+    },
+    {
+      "id": "P469672",
+      "score": 41.0,
+      "lines": 510,
+      "chars": 22997,
+      "des": "CDLI Literary 000367 (Lugalbanda and Mountain Cave) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.02.01 Lugalbanda and Mountain Cave (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "lugalbanda": 15,
+        "enmerkar": 3,
+        "inanna": 15,
+        "enlil": 9,
+        "enki": 2,
+        "flood": 1,
+        "mother_speech": 1,
+        "uruk": 5
+      },
+      "narr": 1,
+      "hero": 18,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "u4 ul an ki-ta ba9-ra2-a-ba",
+        "[...] ul-e suh10 kesz2-da [...]",
+        "[...] ul? buru14 ul-e sze |KAxX|-x-a-ba"
+      ]
+    },
+    {
+      "id": "P500443",
+      "score": 40.3,
+      "lines": 104,
+      "chars": 5890,
+      "des": "UF 13, 201-268",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Alalakh (mod. Tell Açana)",
+      "hits": {
+        "inanna": 1,
+        "flood": 1,
+        "underworld": 2,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku {disz}id-ri-mi _dumu_ {disz}dingir-i-lim-ma",
+        "_arad_ {d}iszkur# {d}he2-bat u3 {d}isz8-tar2 _nin_ {iri}a-la-la-ah _nin nin_-ia",
+        "i-na {iri}ha-la-ab{ki} _e2_ a-bi-ia"
+      ]
+    },
+    {
+      "id": "P365744",
+      "score": 40.1,
+      "lines": 189,
+      "chars": 16219,
+      "des": "BAM 5, 482",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "inanna": 1,
+        "mother_speech": 4
+      },
+      "narr": 4,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na sag-ki-dab-ba tuku-tuku_-szi _numun {u2}ukusz2-hab numun {u2}⌈ukusz2-ti-gi-la⌉_",
+        "_numun {u2}eme ur-gi7 numun {u2}hur-sag numun hab! numun {u2}dili numun_ kisz-sza2-ni _gaz# [sim]_ mal2-ma-lisz",
+        "_hi-hi_ ina _a-gesztin-na_ tara-bak _zi3 sze3-sa-a zi3 imgaga_ a-na _igi_ ta-szap#-pah"
+      ]
+    },
+    {
+      "id": "P252226",
+      "score": 39.9,
+      "lines": 49,
+      "chars": 1635,
+      "des": "CUSAS 10, 010",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[e-ze]-e#-er la mu#-se2-ep#-[pi-tam]",
+        "u2#-ul# a-ha-asz-szi-ih la mu-ka-zi#-ib-tam",
+        "u2-ul a-na-ad-di-isz-szi-im i-ri-mi"
+      ]
+    },
+    {
+      "id": "P393782",
+      "score": 39.3,
+      "lines": 229,
+      "chars": 18567,
+      "des": "BAM 6, 574",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enlil": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na_ su-a-lam _gig_ ana ki-is _sza3 gur_-<szu> szu-ru-usz _{gesz}nam-tar_ szu-ru#-usz# {gesz}szu-sze",
+        "_{u2}tar-musz _{u2}igi_-lim _{u2}igi-nisz_ {u2}tu-lal _{u2}szakira 7(disz) _u2-hi-a szesz tesz2-bi sud2_",
+        "ina _kasz szub_-di ina _mul_ tusz-bat ina _a2-gu2-zi-ga nu_ pa-tan _nag-mesz_-ma ina-esz"
+      ]
+    },
+    {
+      "id": "P397304",
+      "score": 39.0,
+      "lines": 138,
+      "chars": 7935,
+      "des": "BAM 6, 580",
+      "genre": "Ritual",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enlil": 3,
+        "speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x x [...]",
+        "[... ina {uruda}]szen-tur_ tara#-bak# ina# _kusz#-[edin sur_-ri] : ina _{tug2}gada_ [...]",
+        "_[DISZ] kimin#_ i-ha-mat, i-s,ar-rap i-re-esz-szi-szu i [... ana] _zi#_-szu2# 2(disz)# _sila3# naga# si#_"
+      ]
+    },
+    {
+      "id": "P242098",
+      "score": 38.6,
+      "lines": 170,
+      "chars": 1950,
+      "des": "ARET 13, 19",
+      "genre": "Literary",
+      "sub": "itinerary including dialogues",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "su-wa-ma-wa-ba-ar",
+        "ma-ri2{ki}",
+        "wa"
+      ]
+    },
+    {
+      "id": "P254031",
+      "score": 37.9,
+      "lines": 286,
+      "chars": 6748,
+      "des": "CUSAS 17, 037",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "enlil": 4,
+        "enki": 4,
+        "hymn_end": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "u4 an-ne2 {d}en#-lil2#",
+        "{d}en-ki#-ke4#",
+        "sag-ki zalag"
+      ]
+    },
+    {
+      "id": "P285108",
+      "score": 37.7,
+      "lines": 209,
+      "chars": 15797,
+      "des": "BAM 1, 003",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "inanna": 1,
+        "mother_speech": 3
+      },
+      "narr": 3,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na ugu_-szu2 _kum2 dab_-al _sa [sag-ki]_-szu2 _zi-[zi_-bi?]",
+        "_igi-min_-szu2 i#-x _igi-min_-szu2 bir-rat i-pi#-[ta5] i#-szi-ta5 mur-din-na#",
+        "qu3-qa#-na u3# _er2 szub-mesz_-a [bu?-t,u?-tam?] 1/3(disz) _sila3_ sah-le2-e"
+      ]
+    },
+    {
+      "id": "P241853",
+      "score": 37.4,
+      "lines": 155,
+      "chars": 1833,
+      "des": "ARET 13, 13",
+      "genre": "Literary",
+      "sub": "chronicle",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[dub]_",
+        "[u3]-su-ri2",
+        "ib-al6{ki}"
+      ]
+    },
+    {
+      "id": "P369362",
+      "score": 37.4,
+      "lines": 92,
+      "chars": 3276,
+      "des": "KAR 395",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[DISZ sig7]-igi_-szu _zag_ ka-bar a-na _munus_ a-[s,i]",
+        "_[DISZ] zag sig nig2-tuku tuku_-szi#",
+        "_[DISZ] zag_ he-si i-na-an-ziq2 it-ta-na-ad-[di]"
+      ]
+    },
+    {
+      "id": "P255673",
+      "score": 37.4,
+      "lines": 42,
+      "chars": 1056,
+      "des": "JCS 72, 135-138 02",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "enlil": 3,
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1’. en [...]",
+        "2’. {ulu3}uru16-[bi-im a-da-ab ...-kam]",
+        "3’. esz3 abzu [...]"
+      ]
+    },
+    {
+      "id": "P393807",
+      "score": 37.1,
+      "lines": 226,
+      "chars": 10882,
+      "des": "BAM 5, 434",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "⸢x x⸣ [...]",
+        "_DISZ na sag sza3_-szu2 [...]",
+        "mim3-ma _gu7_ u _nag_ x [...]"
+      ]
+    },
+    {
+      "id": "P213190",
+      "score": 37.0,
+      "lines": 417,
+      "chars": 8636,
+      "des": "OIP 104, 041",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[a]-ga-de3{ki}",
+        "[1(u@c)] _la2_ 1(asz@c) _gur GAN2_ 3(ban2@c)",
+        "_nig2-sa10_-su"
+      ]
+    },
+    {
+      "id": "P293400",
+      "score": 37.0,
+      "lines": 673,
+      "chars": 12030,
+      "des": "YOS 10, 31",
+      "genre": "Omen",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[szum]-ma# mar-tum#",
+        "li#-ib-ba-sza",
+        "li#-pi-a-am# ma-li"
+      ]
+    },
+    {
+      "id": "P429857",
+      "score": 37.0,
+      "lines": 515,
+      "chars": 42577,
+      "des": "CDLI RIAI 001b (Behistun Old Persian)",
+      "genre": "Royal/Monumental",
+      "sub": "",
+      "lang": "Akkadian; Elamite; Persian",
+      "period": "Achaemenid (547-331 BC)",
+      "site": "uncertain (mod. Behistun)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        ": a-d-m : d-a-r-y-v-u-$ : x-$-a-y-t'-i-y : v-z-r-k : x-$-a-y-t'-i-[y : x-$-a-y]-t'-i-y-",
+        "a-n-a-m : x-$-a-y-t'-i-y [:] p-a-r-s-i-y : x-$-a-y-t'-i-y : d-h-[y-u-n-a-m :] vi-$-t-",
+        "a-s-p-h-y-a : p-u-c, : a-r-$-a-m-h-y-a : n-p-a : h-x-a-m-n-i-$-[i-y : t']-a-t-i-y :"
+      ]
+    },
+    {
+      "id": "P461173",
+      "score": 37.0,
+      "lines": 62,
+      "chars": 4376,
+      "des": "AfO Beih 27, pl. 28-29",
+      "genre": "Literary",
+      "sub": "commentaries",
+      "lang": "Akkadian",
+      "period": "",
+      "site": "",
+      "hits": {
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] _ad#_-szu2 _bir_-ah _usz2_ a-ga-nu# [...]",
+        "_[u3]-tu#_ sza2 _u-mesz_-szu2 sza2-qa3-ma a-na# [...]",
+        "[... _x]-tab gar_ ina-ziq _usz2_ a-ga-nu-til-la# [...]"
+      ]
+    },
+    {
+      "id": "P305845",
+      "score": 36.5,
+      "lines": 56,
+      "chars": 3045,
+      "des": "JAOS 088, 082ff",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "{d}en-ki en za3 dib an-ki-a nam-ma-ni za3 nu-di",
+        "u3-na-a-du11",
+        "{d}nu-dim-mud nu gesztu2 dagal-la an-da nam ba-an-tar"
+      ]
+    },
+    {
+      "id": "P469675",
+      "score": 36.1,
+      "lines": 295,
+      "chars": 14781,
+      "des": "CDLI Literary 000370 (Enmerkar and En-suhgir-ana) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.02.04 Enmerkar and En-suhgir-ana (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enmerkar": 9,
+        "inanna": 14,
+        "enlil": 7,
+        "speech": 1,
+        "hymn_end": 1,
+        "mother_speech": 4,
+        "uruk": 18
+      },
+      "narr": 5,
+      "hero": 9,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "szeg12 kur szuba-ta e3-a",
+        "kul-aba4{ki} iri{ki} an ki-da mu2-a",
+        "unu{ki}-ga mu-bi {d}tir-an-na-gin7"
+      ]
+    },
+    {
+      "id": "P495757",
+      "score": 35.8,
+      "lines": 48,
+      "chars": 1746,
+      "des": "RA 024, 002",
+      "genre": "Literary",
+      "sub": "OB Epic of Etana 2",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Susa (mod. Shush)",
+      "hits": {
+        "friend": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "li-ih-li-iq-szu t,u#-u2-du a-iu-u2-ta _kaskal_",
+        "li-ik-la-szu ne-re-eb-ta-szu sza3-du-u2",
+        "ka-ak-ku-um mu-ur2#-ta-ap-pi-du e-li-szu li-sze-er"
+      ]
+    },
+    {
+      "id": "P267251",
+      "score": 35.8,
+      "lines": 48,
+      "chars": 1311,
+      "des": "OIP 015, 075",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC) ?",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "inanna": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "ki#? gesztin#-a [...]",
+        "in-ga2-bulug3 in-ga2#-bulug3# x [...]",
+        "{gisz}haszhur lal-a in-ga2-bulug3# [...]"
+      ]
+    },
+    {
+      "id": "P285687",
+      "score": 35.5,
+      "lines": 81,
+      "chars": 2269,
+      "des": "CT 45, 001",
+      "genre": "Legal",
+      "sub": "litigation",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "lugalbanda": 2,
+        "inanna": 2,
+        "enki": 1,
+        "dream": 1
+      },
+      "narr": 1,
+      "hero": 2,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "a-na _{gesz}kiri6 {gesz}geszimmar_",
+        "sza i-ti a-li-kum",
+        "_dumu_ ar-wi-um"
+      ]
+    },
+    {
+      "id": "P492501",
+      "score": 35.2,
+      "lines": 128,
+      "chars": 8603,
+      "des": "RA 015, 001-0051",
+      "genre": "Royal/Monumental",
+      "sub": "year names",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Larsa (mod. Tell as-Senkereh) ?",
+      "hits": {
+        "inanna": 3,
+        "enlil": 12,
+        "enki": 10,
+        "ninsun": 1,
+        "uruk": 2
+      },
+      "narr": 0,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[2(u) 1(disz)] mu na-ap-la-nu-um#",
+        "[2(u) 8(disz)] mu e-mi-szum2?",
+        "[3(u) 5(disz)] mu sa-mu-u2-um"
+      ]
+    },
+    {
+      "id": "P491500",
+      "score": 35.0,
+      "lines": 138,
+      "chars": 4525,
+      "des": "CUSAS 27, 001",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "",
+      "hits": {
+        "gilgamesh": 2,
+        "enlil": 5
+      },
+      "narr": 0,
+      "hero": 2,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "sag-apin#? [...]",
+        "1(bur3@c) 1(esze3@c) 3(iku@c) [GAN2 x sar] 4(disz) 3(disz) tuku#",
+        "szuku szu-i3-li2-su"
+      ]
+    },
+    {
+      "id": "P221797",
+      "score": 34.2,
+      "lines": 52,
+      "chars": 1479,
+      "des": "BiMes 03, 27",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIb (ca. 2500-2340 BC)",
+      "site": "Lagash (mod. El-Hiba)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(asz@c) e2#-u6-e",
+        "1(asz@c) szitim-me eridu{ki}-ga",
+        "1(asz@c)# du11-ga-ni"
+      ]
+    },
+    {
+      "id": "P394325",
+      "score": 34.2,
+      "lines": 265,
+      "chars": 15242,
+      "des": "BAM 6, 543",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[DISZ na_ gi-mir _zu2-mesz_-szu2] i#-na-asz2 u ri-szu-tu4# [x x x x] x _na4_ ga#-be2#-e#",
+        "[x x x x] x ana _ugu zu2-mesz_-szu2 _en mud2 e3_-ni# [x x x x x] szum4-ma _i3-udu ka5-a gu7_",
+        "_[DISZ na] zu2-mesz_-szu2 i-na-asz2 u lu _mud2#_ [i-hi-il-la x] x dab-al"
+      ]
+    },
+    {
+      "id": "P241801",
+      "score": 34.0,
+      "lines": 426,
+      "chars": 5650,
+      "des": "ARET 13, 09",
+      "genre": "Letter",
+      "sub": "dossier",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "4(asz@c) mi-at _udu udu_",
+        "4(u@c) _gu4 gu4_",
+        "[x] mi-at _la-ha i3-gesz_"
+      ]
+    },
+    {
+      "id": "P221798",
+      "score": 33.5,
+      "lines": 44,
+      "chars": 1217,
+      "des": "BiMes 03, 28",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIb (ca. 2500-2340 BC)",
+      "site": "Lagash (mod. El-Hiba)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(asz@c) e2-u6",
+        "1(asz@c) kingal",
+        "1(asz@c) du-du pirig-tur-gin7"
+      ]
+    },
+    {
+      "id": "P413974",
+      "score": 33.4,
+      "lines": 42,
+      "chars": 2212,
+      "des": "LKA 062",
+      "genre": "Literary",
+      "sub": "Ishtar's descent (witness)",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[la-a]-it,# a-a-bi da-a-isz na-ki-ri-i-szu",
+        "[sze-'i]-i# i-me-ri _kur_-i da-li-hi bu-lu _edin_",
+        "[et,-lu] sza# {d}a-asz-szur tuk-lat-su {d}iszkur re-s,u-szu"
+      ]
+    },
+    {
+      "id": "P257340",
+      "score": 33.4,
+      "lines": 55,
+      "chars": 1809,
+      "des": "SAOC 44, 72",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "enlil": 2,
+        "underworld": 4
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[nam-gudu4 nam]-{lu2}lunga(SZIM) nam-ugula-e2",
+        "nam#-bur#-su-ma nam-i3-du8 nam-kisal-[luh]",
+        "e2 {d}utu-ka mu-a u4 5(disz)-[kam]"
+      ]
+    },
+    {
+      "id": "P305850",
+      "score": 33.4,
+      "lines": 43,
+      "chars": 1935,
+      "des": "YOS 11, 24",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]-tim# sza-tim a-ri-a-tum it-ba-la hi-ib-szi",
+        "[x x]-ma-am zi-ib-ba-su2 il-te-qe2 mu-di-tum",
+        "[...]-it-mu-rum hi-ta-pu-ut e-li-ia"
+      ]
+    },
+    {
+      "id": "P213250",
+      "score": 33.3,
+      "lines": 41,
+      "chars": 661,
+      "des": "Fs Sjöberg  035",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "uncertain (mod. Umm el-Hafriyat)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "x-ru?-ti hu? zu#?",
+        "ba-ra-sa-ti-im",
+        "ka#-si-nu-ti hu zu"
+      ]
+    },
+    {
+      "id": "P393735",
+      "score": 33.3,
+      "lines": 229,
+      "chars": 19857,
+      "des": "BAM 6, 578",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na sag sza3_-szu2 _gu7_-szu2 ina ge-szi-szu _ze2_ im-ta-na-' _na bi_ qer-be2-na _gig_",
+        "_sum{sar} ga-rasz{sar} uzu gu4 uzu szah kasz {lu2}kurun2-na nu_ usz-ta-mah-har ana _ti_-szu2",
+        "1/2(disz) _sila3 za3-hi-li 1/2(disz) sila3 {szim}li 1/2(disz) sila3 {szim}gur2-gur2 1/2(disz) sila3 numun gada 1/2(disz) sila3_ pa-pa-si _munu6 1/2(disz) sila3 {szim}im-di_"
+      ]
+    },
+    {
+      "id": "P342806",
+      "score": 33.2,
+      "lines": 227,
+      "chars": 6779,
+      "des": "Nisaba 11, 60",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Umma (mod. Tell Jokha)",
+      "hits": {
+        "inanna": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "4(disz) gesz 3(ban2)",
+        "4(disz) gesz 1(barig)",
+        "5(disz) gesz 1(ban2)"
+      ]
+    },
+    {
+      "id": "P373080",
+      "score": 33.2,
+      "lines": 77,
+      "chars": 2862,
+      "des": "VS 18, 017",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "underworld": 5
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_1(disz) 1/2(disz) sar e2-kislah_",
+        "_da e2_ sza i-na _mu alan {gesz}tukul# sag3#-ge_",
+        "_ki iri#[{ki}_] i-sza-mu"
+      ]
+    },
+    {
+      "id": "P241971",
+      "score": 32.0,
+      "lines": 600,
+      "chars": 7935,
+      "des": "ARET 13, 05",
+      "genre": "Legal",
+      "sub": "treaty",
+      "lang": "Eblaite",
+      "period": "Ebla (ca. 2350-2250 BC)",
+      "site": "Ebla (mod. Tell Mardikh)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[u3 bad3]-bad3#{ki}",
+        "in _szu_"
+      ]
+    },
+    {
+      "id": "P400233",
+      "score": 32.0,
+      "lines": 213,
+      "chars": 16256,
+      "des": "BAM 5, 503",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "friend": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_na#? bi gidim_ im#? [...]",
+        "_{szim}sze-li babbar {szim#}[x ...]",
+        "{u2}tar-musz {gesz}si-ha# [...]"
+      ]
+    },
+    {
+      "id": "P432416",
+      "score": 31.8,
+      "lines": 110,
+      "chars": 7450,
+      "des": "BAM 6, 516",
+      "genre": "Letter",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "adapa": 1,
+        "speech": 2
+      },
+      "narr": 2,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na igi-mesz_-szu2 _lu3-lu3 lal3# babbar_ ina _i3#_ [...]",
+        "e#-nu-ma _igi-min_-szu2 bu-ur-s,a id-da-nag-ga-la _szu-gidim#-[ma_ ...]",
+        "ana# _ti#_-szu2 _{na4}ka-gi-na-dab-ba {na4}an-na {na4}an-zah#-[ge6_ ...]"
+      ]
+    },
+    {
+      "id": "P512387",
+      "score": 31.6,
+      "lines": 83,
+      "chars": 2446,
+      "des": "Suurmeijer diss. Di 1435",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Amnanum (mod. Tell ed-Der)",
+      "hits": {
+        "ninsun": 3
+      },
+      "narr": 0,
+      "hero": 3,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_3(disz) sar e2 kislah_ i-na zimbir{ki}",
+        "li-te-er li-im-t,i3-ma",
+        "_da e2_ nu-ur2-{d}nin-szubur? u3 a-bu#-wa#-qar#?"
+      ]
+    },
+    {
+      "id": "P394104",
+      "score": 31.2,
+      "lines": 202,
+      "chars": 14767,
+      "des": "BAM 6, 515",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[... mur]-din#-ni _diri_ sah-le2-e _zi3 sze-sa-a_ ina _kasz_ tara-bak _la2 u4 3(disz)-kam2 igi-min_-szu2# [nu du8]",
+        "[ka-la] _u4#_-me# 3(disz)#-szu2# _kesz2_ ina 4(disz) _u4_-mi ina _{szim}man-du_ er-ri _igi-min_-szu2 ta-kad-da-ad _a_ ina _sza3# [igi-min_-szu2 _szub]_",
+        "_[igi-min_-szu2] tu#-szak-kal qer-sza2 em-ma 1(disz)-szu2 2(disz)-szu2 3(disz)-szu2 _igi-min_-szu2 _kesz2 i3-udu_ kur-sin-ni _masz-da igi#-[min_-szu2 x] x-pap?"
+      ]
+    },
+    {
+      "id": "P404959",
+      "score": 31.2,
+      "lines": 203,
+      "chars": 10366,
+      "des": "Iraq 65, 222",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Babylonian (626-539 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[ana] _kum2# sag-du zi_-hi sah-le2-e _gaz_",
+        "[ina] _a# gazi{sar} sila11_-asz _sar_-ab _lal2_-id",
+        "[ana _ki-min]_ sah#-le-e _zi3 sze-bar-sa-a_ ina _a gazi{sar}"
+      ]
+    },
+    {
+      "id": "P285333",
+      "score": 31.1,
+      "lines": 226,
+      "chars": 11313,
+      "des": "BAM 3, 248",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "enlil": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...]",
+        "[...]"
+      ]
+    },
+    {
+      "id": "P342805",
+      "score": 30.5,
+      "lines": 131,
+      "chars": 3214,
+      "des": "Nisaba 11, 22",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Umma (mod. Tell Jokha)",
+      "hits": {
+        "nergal_eresh": 1,
+        "enlil": 2,
+        "enki": 2
+      },
+      "narr": 0,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] GAN2",
+        "sza3#?-gal",
+        "[x] x ur3"
+      ]
+    },
+    {
+      "id": "P386566",
+      "score": 30.4,
+      "lines": 68,
+      "chars": 2579,
+      "des": "TCL 01, 130 & 131",
+      "genre": "Legal",
+      "sub": "contract",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "enlil": 4,
+        "flood": 2,
+        "uruk": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_5(iku) GAN2 a-sza3_ i-na ba!-ni-a-ta-an{ki}",
+        "_us2-sa-du a-sza3_ {d}utu-{d}en-lil2-i3-li2",
+        "u3 _us2-sa-du a-sza3_ lu2-{d}mar-tu"
+      ]
+    },
+    {
+      "id": "P110905",
+      "score": 30.1,
+      "lines": 76,
+      "chars": 1769,
+      "des": "ITT 2, 01036",
+      "genre": "Prayer/Incantation",
+      "sub": "enuru",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC) ?",
+      "site": "Girsu (mod. Tello)",
+      "hits": {
+        "inanna": 1,
+        "enki": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "enuru#{+e2-nu-[ru]}",
+        "anzu{muszen#} babbar2 edin-na-la2",
+        "pirig musz-eme6 ab sza3-ga lul-ga"
+      ]
+    },
+    {
+      "id": "P394418",
+      "score": 30.1,
+      "lines": 189,
+      "chars": 13473,
+      "des": "BAM 6, 523",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[DISZ na]_ mi-szit-ti pa-ni ma-szid-ma ta-lam-ma-szu2 i-szam-ma-am-szu2 _kin_ [mi]-szit#-ti",
+        "_[DISZ na]_ mi-szit-tu im-szid-su-ma lu _zag_ lu _gub3 sig3_-is, _mud# [a2_-szu2] _nu_ pa-t,ir",
+        "_[szu]-si-mesz_-szu2 _nir-nir_-as, _szu_-su u2-szaq-qa2 u _nir_-as, _giri3_-[szu2 i]-qan#-na-an"
+      ]
+    },
+    {
+      "id": "P386534",
+      "score": 30.1,
+      "lines": 76,
+      "chars": 2753,
+      "des": "TCL 01, 098 & 099",
+      "genre": "Legal",
+      "sub": "contract",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "enlil": 3,
+        "underworld": 2,
+        "mother_speech": 2
+      },
+      "narr": 2,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_2(disz) sar e2_ szi-ki-it-tum",
+        "_da e2_ sin-e-ri-ba-am _dumu_ ARAD-i3-li2-szu",
+        "_sag-bi sila za3-e2-a_"
+      ]
+    },
+    {
+      "id": "P216168",
+      "score": 30.0,
+      "lines": 62,
+      "chars": 1691,
+      "des": "OSP 2, 016",
+      "genre": "Literary",
+      "sub": "",
+      "lang": "",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[2(asz@c) _dumu-nita dub-sar_]",
+        "2(asz@c)#? _tibira_",
+        "3(asz@c) _dam-gar3_"
+      ]
+    },
+    {
+      "id": "P498200",
+      "score": 29.9,
+      "lines": 149,
+      "chars": 6793,
+      "des": "TS 044",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Kutalla (mod. Tell Sifr)",
+      "hits": {
+        "inanna": 2,
+        "enlil": 4,
+        "enki": 1,
+        "underworld": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(disz) _sar e2 du3-a_ a-sza-ar is-qu2-um",
+        "sza {disz}u-bar-{d}suen i-ma-qu2-tu",
+        "i-na _sza3-ba igi-4(disz)-gal2 sar 5(disz) sze e2 du3-a_"
+      ]
+    },
+    {
+      "id": "P424004",
+      "score": 29.7,
+      "lines": 59,
+      "chars": 1443,
+      "des": "AOAT 267, 169-195",
+      "genre": "Literary",
+      "sub": "song",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. Babylonia)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "e#?-esz#? ra-a-mi-i szu-qu2-ur2",
+        "u#! na-szi i-ni!-ib-szu-u2",
+        "szu#?-x [...] ul# u2?-ma#?"
+      ]
+    },
+    {
+      "id": "P418341",
+      "score": 29.6,
+      "lines": 207,
+      "chars": 5632,
+      "des": "BAM 5, 430",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[x x x x] x a",
+        "[x x x] _eme# ur-gi7_",
+        "[x x x] x _had2-a_"
+      ]
+    },
+    {
+      "id": "P112975",
+      "score": 29.5,
+      "lines": 106,
+      "chars": 2211,
+      "des": "Mesopotamia 8, 067-075",
+      "genre": "uncertain",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIb (ca. 2500-2340 BC)",
+      "site": "Adab (mod. Bismaya) ?",
+      "hits": {
+        "enlil": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "3(gesz2@c) sze gur",
+        "e2-mug-si",
+        "2(gesz2@c) sze gur"
+      ]
+    },
+    {
+      "id": "P272783",
+      "score": 29.4,
+      "lines": 42,
+      "chars": 631,
+      "des": "CDLB 2006/002",
+      "genre": "Prayer/Incantation",
+      "sub": "enuru",
+      "lang": "Sumerian",
+      "period": "ED IIIa (ca. 2600-2500 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 1,
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "enuru{+e2-nu-ru}",
+        "an-na IM mu-zi",
+        "ki sahar mu-zi"
+      ]
+    },
+    {
+      "id": "P271097",
+      "score": 29.3,
+      "lines": 266,
+      "chars": 14329,
+      "des": "EA 014",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[an-nu-te u2-nu-te-_mesz_ sza {disz}na-ap-hu-ru]-ri-a _lugal gal_",
+        "[_lugal kur_ mi-is,-ri-i a-na _szesz_-szu {disz}bur-na]-bu-ra-ri-ia-asz",
+        "[_lugal gal lugal kur_ ka-ra-{d}du-ni-ia-asz] ul#-te-bi-il"
+      ]
+    },
+    {
+      "id": "P469671",
+      "score": 29.2,
+      "lines": 174,
+      "chars": 6511,
+      "des": "CDLI Literary 000366 (Gilgamesh and Huwawa B) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05.01 Gilgamesh and Huwawa B (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 5,
+        "huwawa": 3,
+        "lugalbanda": 5,
+        "enki": 5,
+        "speech": 2,
+        "uruk": 2
+      },
+      "narr": 2,
+      "hero": 13,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "i3-a lum-lum u3-luh-ha su3-su3",
+        "dumu-gi7 giri17-zal dingir-re-e-ne",
+        "gu4 lipisz-tuku me3-a gub-ba"
+      ]
+    },
+    {
+      "id": "P395248",
+      "score": 28.9,
+      "lines": 124,
+      "chars": 5185,
+      "des": "TBP 06",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ sag-ki nu tuku#_ [...]",
+        "_DISZ tur_ {d}[x ...]",
+        "_DISZ_ e-bi-it, [...]"
+      ]
+    },
+    {
+      "id": "P365131",
+      "score": 28.4,
+      "lines": 192,
+      "chars": 7570,
+      "des": "CT 06, pl. 09-10, Bu 1891-05-09, 0284",
+      "genre": "Royal/Monumental",
+      "sub": "list of year-names",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "inanna": 6,
+        "enlil": 4,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[mu su-mu-a-bu lugal-e bad3 gal ka2-dingir-ra{ki} ba-du3]",
+        "[mu us2-sa bad3 gal ka2-dingir-ra{ki} ba-du3]",
+        "mu bad3# ki#-bala#-masz-da3{ki} ba#-[dib]"
+      ]
+    },
+    {
+      "id": "P394759",
+      "score": 28.2,
+      "lines": 190,
+      "chars": 11601,
+      "des": "BAM 6, 514 +",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x [...]",
+        "[...] x te-qi2#",
+        "[... ana] _{dug#}bur#-zi sur#_"
+      ]
+    },
+    {
+      "id": "P281823",
+      "score": 27.9,
+      "lines": 161,
+      "chars": 9169,
+      "des": "BAM 3, 316",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "",
+      "period": "Middle Assyrian (ca. 1400-1000 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "inanna": 1,
+        "speech": 1,
+        "underworld": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[x x] _sze-na-a ki-lu2#_ [...]",
+        "[x x] _nu dab-ba {u2}lal_ {u2#}[x ...]",
+        "[x] _dingir#_ u {d}isz8-tar2 ze-nu-ti# [...]"
+      ]
+    },
+    {
+      "id": "P271213",
+      "score": 27.8,
+      "lines": 247,
+      "chars": 15387,
+      "des": "EA 022",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_ansze#-kur-ra-mesz_ ba-nu-tu4 sza i-la-as-su2-mu-u2-ni#",
+        "1(disz) _{gesz}gigir_ du-le-e-mi-szu mar-szi-szu u3 si-ih-bi-szu gab2-ba2",
+        "_ku3-sig17_ 3(disz) me 2(u) _su ku3-sig17_ sza i-na _sza3_-szu na-du-u2"
+      ]
+    },
+    {
+      "id": "P479895",
+      "score": 27.6,
+      "lines": 416,
+      "chars": 12574,
+      "des": "CDLI Literary 000371 (Sumerian King List) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 2.01.01 Sumerian King List (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "gilgamesh": 2,
+        "etana": 2,
+        "enlil": 2,
+        "flood": 2,
+        "uruk": 16
+      },
+      "narr": 0,
+      "hero": 4,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "nam-lugal an-ta e11-de3-a-ba",
+        "eridu{ki} nam-lugal-la",
+        "eridu{ki} a2-lu-lim lugal"
+      ]
+    },
+    {
+      "id": "P398254",
+      "score": 27.6,
+      "lines": 183,
+      "chars": 6306,
+      "des": "BAM 5, 431",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...] gisz?",
+        "[...] x sze?"
+      ]
+    },
+    {
+      "id": "P393804",
+      "score": 27.6,
+      "lines": 107,
+      "chars": 4468,
+      "des": "BAM 5, 508",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enlil": 1,
+        "enki": 2,
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_en2# bur#_ [...]",
+        "ki in x [...]",
+        "KU sipa [...]"
+      ]
+    },
+    {
+      "id": "P497322",
+      "score": 27.4,
+      "lines": 125,
+      "chars": 7233,
+      "des": "CDLI Literary Descent of Ishtar (composite)",
+      "genre": "Literary",
+      "sub": "Ishtar's descent (composite)",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat) ?",
+      "hits": {
+        "nergal_eresh": 7,
+        "inanna": 12,
+        "speech": 3,
+        "underworld": 7
+      },
+      "narr": 3,
+      "hero": 7,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "a-na _kur-nu-gi4-a_ qaq-qa-ri {d}eresz-ki-gal",
+        "{d}inanna _dumu-munus_ {d}sin u2-zu-un-sza2 isz-kun",
+        "isz-kun-ma _dumu-munus_ {d}sin u2-zu-un-sza2"
+      ]
+    },
+    {
+      "id": "P400331",
+      "score": 27.2,
+      "lines": 178,
+      "chars": 13367,
+      "des": "BAM 5, 494",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x-su _szesz2_-ma# _ti#?_",
+        "[... kal]-ma#-tu4 ul i-sa-niq-[szu2]",
+        "[...] x x [...] x _ku6? nu gal2 szub tu5_–szu2–ma _uh nu te#_-[szu2]"
+      ]
+    },
+    {
+      "id": "P396196",
+      "score": 27.2,
+      "lines": 177,
+      "chars": 11172,
+      "des": "BAM 6, 579",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na sza3_-szu2 _kum2 dab pa_ {gesz}szu-sze _zi3-kum hi-hi_ ina _a gazi{sar} [sila11]_-asz# _lal2_-du",
+        "_{u2}gesztin ka5-a had2-ra2 gaz sim_ ina _a gazi{sar#} [sila11]_-asz# _lal2_-du",
+        "_numun_ {u2}qut-ra-te _gaz_ ina _a gazi{sar}_ ta-la3-asz _la2_ ina _a gazi{sar#} x [...] _lal2_"
+      ]
+    },
+    {
+      "id": "P213192",
+      "score": 26.8,
+      "lines": 248,
+      "chars": 5034,
+      "des": "OIP 104, 043 + MAD 1, 054 + 055",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "Ešnunna (mod. Tell Asmar)",
+      "hits": {
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[2(bur3@c)] _GAN2_",
+        "_sa10#_-su",
+        "1/3(asz@c){sza} 4(asz@c) _gin2 ku3-babbar_"
+      ]
+    },
+    {
+      "id": "P342807",
+      "score": 26.6,
+      "lines": 120,
+      "chars": 3427,
+      "des": "Nisaba 11, 61",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Umma (mod. Tell Jokha)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "($ blank space $) gesz",
+        "8(disz) gesz",
+        "2(u) x 4(disz) gesz"
+      ]
+    },
+    {
+      "id": "P384786",
+      "score": 26.5,
+      "lines": 380,
+      "chars": 11433,
+      "des": "CDLI Literary 000371, ex. 006",
+      "genre": "Literary",
+      "sub": "ETCSL 2.01.01 Sumerian King List (witness)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "gilgamesh": 2,
+        "etana": 2,
+        "enlil": 1,
+        "flood": 2,
+        "uruk": 14
+      },
+      "narr": 0,
+      "hero": 4,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "[nam]-lugal an-ta e11-de3-a-ba",
+        "eridu#{ki} nam-lugal-la",
+        "eridu{ki} a2-lu-lim lugal"
+      ]
+    },
+    {
+      "id": "P313317",
+      "score": 26.5,
+      "lines": 44,
+      "chars": 1925,
+      "des": "CT 43, 027",
+      "genre": "Letter",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "mother_speech": 4
+      },
+      "narr": 4,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "a-na be-le-su-nu qi2-bi2-ma",
+        "um-ma a-wi-il-_{d}iszkur_-ma",
+        "be-el-ki u3 be-le-et-ki li-ba-li-t,u2-ki"
+      ]
+    },
+    {
+      "id": "P512410",
+      "score": 26.5,
+      "lines": 69,
+      "chars": 1888,
+      "des": "Suurmeijer diss. Di 2113",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Amnanum (mod. Tell ed-Der)",
+      "hits": {
+        "enlil": 2,
+        "ninsun": 2
+      },
+      "narr": 0,
+      "hero": 2,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_e2_ li-[ib-bi] _iri{ki}_",
+        "_da e2_ sin-be-el#-ap-lim",
+        "_dumu_ sin-i-din#-nam#"
+      ]
+    },
+    {
+      "id": "P449274",
+      "score": 26.4,
+      "lines": 92,
+      "chars": 2978,
+      "des": "Nisaba 15, 0128",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Irisagrig (mod. uncertain)",
+      "hits": {
+        "enlil": 1,
+        "enki": 1,
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "5(disz) sila3 kasz 5(disz) sila3 ninda",
+        "i3-li2-ki-ib-ri2 lu2 kin-gi4-a lugal",
+        "u4 erin2 udu ur4-de3 zi-zi-de3 im-gen-na-a"
+      ]
+    },
+    {
+      "id": "P394523",
+      "score": 26.4,
+      "lines": 167,
+      "chars": 11846,
+      "des": "BAM 6, 510",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[ku3]-gan u5# argab#{muszen#} i3#-udu giri3-pad-da lugud2-da_ sza _[udu . . . sud2_ . . .]",
+        "_szim#-bi-ku3-gi sud2_ ina _{gi#}[sag-kud_ ana _sza3 igi-min_-szu2 _bun2]_",
+        "_kun#_-sza25 _sag-du_-su _keszda 1(u) gazi i3+gisz# 1/2(disz)# gazi#_ x [...]"
+      ]
+    },
+    {
+      "id": "P461325",
+      "score": 26.2,
+      "lines": 77,
+      "chars": 3620,
+      "des": "KAL 01, 051",
+      "genre": "Ritual",
+      "sub": "divination",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...] _x-min_ [...]",
+        "[...] x x-szu2 1(u) 5(disz) ana x [...]"
+      ]
+    },
+    {
+      "id": "P258910",
+      "score": 26.2,
+      "lines": 103,
+      "chars": 5448,
+      "des": "OB Legal 095 & 096",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "inanna": 1,
+        "enlil": 7,
+        "mother_speech": 3
+      },
+      "narr": 3,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x x [...]",
+        "[a-na _2(esze3) GAN2 a-sza3]_ {iri}hu-ba{ki} _a-gar3#_ [puzur4-la-ba]",
+        "[_1/3(disz) sar e2_ ga-gi]-im sza be-le-su2-nu _dumu-munus_ i-din-{d}utu"
+      ]
+    },
+    {
+      "id": "P480691",
+      "score": 26.1,
+      "lines": 326,
+      "chars": 5099,
+      "des": "MDP 11, pl. 001-011",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Elamite",
+      "period": "Old Akkadian (ca. 2340-2200 BC)",
+      "site": "Susa (mod. Shush)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[ha-ap]-ti#?",
+        "{d#}[bi]-ni-kir#",
+        "{d}ba-ha ki-ki-ip"
+      ]
+    },
+    {
+      "id": "P395345",
+      "score": 26.0,
+      "lines": 88,
+      "chars": 3991,
+      "des": "CT 37, pl. 38, K 06214+",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "dream": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[e?]-nu#?-ma#? _dingir-[mesz_ ra]-bi#-u2-tum sza2 a-me-lu-ti za-qi2-iq-sza2#",
+        "ana il-li-lu-ti _gar_-nu u3 _ka-ta-du11-ga_-sza2 ana re-te-id-di-sza2 u2-kin-nu",
+        "_DISZ_ lu-mu-ut-mi ul i-ma-at#"
+      ]
+    },
+    {
+      "id": "P256177",
+      "score": 26.0,
+      "lines": 50,
+      "chars": 2197,
+      "des": "OrNS 44, 054",
+      "genre": "Prayer/Incantation",
+      "sub": "astronomical",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "enki": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[enuru{+e2]-nu-ru}",
+        "[munus-e] e2-tur3 amasz-ku3-ga ninda2#-zi ba-u5",
+        "[numun]-zi# nam-lu2-ulu3 sza2-ga ba-ni-in-ri-ga ri-a ka kesz2-re lu2-ra isim3! szum2-mu"
+      ]
+    },
+    {
+      "id": "P365404",
+      "score": 25.9,
+      "lines": 136,
+      "chars": 4718,
+      "des": "CT 19, pl. 23-24, Sm 0012 + CT 51, 160, 1932-12-12, 527",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "inanna": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "|PA.SZA6|# = %a ki-sal-luh-hu",
+        "[kisal]-luh = %a ki-sal-luh-hu",
+        "[MUNUS] kisal#-luh = %a ki-sal-lu-ha-tu"
+      ]
+    },
+    {
+      "id": "P510235",
+      "score": 25.6,
+      "lines": 45,
+      "chars": 1474,
+      "des": "MHET 2/6, 859",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "underworld": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_1(disz) 1/2(disz) sar e2 du3-a_",
+        "_da e2_ szu-mi-er-s,e-tim",
+        "u3 _da e2_ geme2-{d}ma-mu"
+      ]
+    },
+    {
+      "id": "P223269",
+      "score": 25.6,
+      "lines": 45,
+      "chars": 1381,
+      "des": "TIM 04, 05",
+      "genre": "Legal",
+      "sub": "court decision",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "underworld": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "{disz}s,i-li2-esz18-dar a-na {d}nin-urta-ga-mil",
+        "um-ma szu-ma hu-sa-tam _szesz-a-ni_",
+        "e-li-ka i-szu"
+      ]
+    },
+    {
+      "id": "P396370",
+      "score": 25.6,
+      "lines": 70,
+      "chars": 4836,
+      "des": "AMT pl. 087 02 (K 06172) +",
+      "genre": "Prayer/Incantation",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na zi-ku5-ru-da_ e-pu-us#-[su]-ma",
+        "_igi-du8_ u2-pi!(IGI)-szi szu2-nu-ti sza in-nam-ru _szu-ti_-qi2 _igi {d}utu gar#_-an#",
+        "mu-ru-us, _sza3_-ka ana _{d}utu du11#-ga#_"
+      ]
+    },
+    {
+      "id": "P281812",
+      "score": 25.5,
+      "lines": 206,
+      "chars": 14180,
+      "des": "BAM 2, 124",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "enlil": 1,
+        "friend": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[_DISZ na gig_ ka-bar-tim _gig_-ma szi-kin _uzu]-mesz_-szu2 _babbar ge6 szub_",
+        "[_gig bi pa {gesz}ge6-par3] pa# gi-zu2-lum-ma_",
+        "_pa {gesz}pesz3 pa {gesz#}[haszhur?] pa# {gesz#}[x] gi szul-hi_"
+      ]
+    },
+    {
+      "id": "P285254",
+      "score": 25.5,
+      "lines": 294,
+      "chars": 16912,
+      "des": "BAM 2, 159",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "",
+      "period": "",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "friend": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_[DISZ na .. ina] _a_ {gesz}szu-nim",
+        "[x x] u# _kasz#-sag# szub#-szub# {szim}szesz {u2}hab_",
+        "_illu# {szim#}buluh# numun# {u2#}[an-ki]-nu!-te {u2}tar-musz8"
+      ]
+    },
+    {
+      "id": "P468953",
+      "score": 25.5,
+      "lines": 81,
+      "chars": 3009,
+      "des": "RIMB 2.06.32.14, ex. 001",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Borsippa (mod. Birs Nimrud)",
+      "hits": {
+        "gilgamesh": 2
+      },
+      "narr": 0,
+      "hero": 2,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku an#-szar2-du3-a",
+        "_man# gal man_ dan-nu _man szu2 man kur_ asz-szur",
+        "_man#_ kib-rat _limmu2_-ti _lugal-lugal-mesz_"
+      ]
+    },
+    {
+      "id": "P514720",
+      "score": 25.4,
+      "lines": 1301,
+      "chars": 68750,
+      "des": "RINAP 5/1 Ashurbanipal 011 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 14,
+        "inanna": 1,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 14,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "a-na-ku {disz}an-szar2-du3-a bi-nu-tu an-szar2 u {d}nin-lil2",
+        "_dumu lugal gal_-u2 sza _e2_ ri-du-u-ti",
+        "sza an-szar2 u {d}sin _en aga_ ul-tu _u4-mesz su3-mesz_"
+      ]
+    },
+    {
+      "id": "P206119",
+      "score": 25.2,
+      "lines": 65,
+      "chars": 1844,
+      "des": "LDAS 08, 013 2",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Girsu (mod. Tello)",
+      "hits": {
+        "inanna": 3,
+        "flood": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(disz) lu2-us2-gi-na dumu x-gin7",
+        "1(disz) ur-{d}da-mu dumu a-tu",
+        "1(disz) ba-la-la"
+      ]
+    },
+    {
+      "id": "P509795",
+      "score": 25.2,
+      "lines": 40,
+      "chars": 1339,
+      "des": "MHET 2/3, 408",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "underworld": 4
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_1(disz) sar e2 ki-gal2_",
+        "_da e2_ a-hu-ni",
+        "u3 _da e2_ er-s,e-ti-ia"
+      ]
+    },
+    {
+      "id": "P394434",
+      "score": 25.2,
+      "lines": 152,
+      "chars": 5586,
+      "des": "BAM 6, 538",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_DISZ na zu2-mesz_-szu2 _gig musz-dim2-gurun-na#_ [...]",
+        "_babbar?_ sza2 _sza3_-szu2 _{sig2}aka3 nigin_-mi ni [...]",
+        "_suhusz {gesz}nam-tar nita2 suhusz {u2}kur-ra#_ [...]"
+      ]
+    },
+    {
+      "id": "P393994",
+      "score": 25.2,
+      "lines": 771,
+      "chars": 30285,
+      "des": "RINAP 5/1 Ashurbanipal 011, ex. 005",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 13,
+        "enlil": 1,
+        "flood": 1
+      },
+      "narr": 0,
+      "hero": 13,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku {disz}an#-[...]",
+        "_dumu lugal gal#-[...]_",
+        "sza an-szar2 u {d}[...]"
+      ]
+    },
+    {
+      "id": "P479892",
+      "score": 25.1,
+      "lines": 183,
+      "chars": 6366,
+      "des": "CDLI Literary 000407 (Shulgi O) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 2.04.02.15 Šulgi O (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "gilgamesh": 10,
+        "huwawa": 1,
+        "enlil": 5,
+        "hymn_end": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 11,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "iri mu-bi-gin7 me-a tum2-ma",
+        "esz3 uri2{ki} u4 husz ki-en-gi-ra me3 ki us2-sa",
+        "numun i-i suhusz kalam-ma gi-ne2 he2-gal2 ki us2-sa"
+      ]
+    },
+    {
+      "id": "P412444",
+      "score": 24.9,
+      "lines": 107,
+      "chars": 4941,
+      "des": "CDLI Literary 000365, ex. 005",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05 Gilgamesh and Huwawa A ('Decad no. 10') (witness)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Kish (mod. Tell Uhaimir)",
+      "hits": {
+        "enkidu": 4,
+        "huwawa": 2,
+        "lugalbanda": 1,
+        "enlil": 3,
+        "enki": 4,
+        "ninsun": 3,
+        "speech": 3
+      },
+      "narr": 3,
+      "hero": 10,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "[...] i7# ib2-diri#-ge igi# [...]",
+        "[x x]-e ur5-gim nam-ba#-[...]",
+        "[...] an#-sze3 nu-mu-un-da#-[x]"
+      ]
+    },
+    {
+      "id": "P230799",
+      "score": 24.8,
+      "lines": 297,
+      "chars": 12893,
+      "des": "CDLI Literary 000373, ex. 005 & 000561, ex. 018 & 000562, ex. 005 & 000563, ex. 005 & 000564, ex. 006 & 000565, ex. 003 & 000573, ex. 015 & 000574, ex. 011 & 000575, ex. 010 & 000576, ex. 005 & 000577, ex. 003 & 000578, ex. 005 & 000579, ex. 005 & 000580,",
+      "genre": "Literary",
+      "sub": "ETCSL 2.01.03 History of the Tummal (witness); ETCSL 3.01.21 Letter from Aba-ind",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "inanna": 3,
+        "enlil": 8,
+        "enki": 1,
+        "flood": 8,
+        "mother_speech": 4,
+        "uruk": 1
+      },
+      "narr": 4,
+      "hero": 0,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "1’. […] mi-ni-ib-tu5#-[…] sahar# igi-ga2? […]",
+        "2’. [ur]-e# ad6 i-ib2-gu7 gaba#-[…]",
+        "3’. uszumgal-e sag gesz um-mi-ib2-ra#-[…]"
+      ]
+    },
+    {
+      "id": "P322208",
+      "score": 24.6,
+      "lines": 58,
+      "chars": 2105,
+      "des": "NABU 2014/065",
+      "genre": "uncertain",
+      "sub": "\"Literary or Legal?\"",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "flood": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...]",
+        "[...] x x [...]"
+      ]
+    },
+    {
+      "id": "P240201",
+      "score": 24.5,
+      "lines": 56,
+      "chars": 2430,
+      "des": "Rm 2, 290",
+      "genre": "Prayer/Incantation",
+      "sub": "to Utu/Shamash ?",
+      "lang": "Sumerian; Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "a. [...]",
+        "b. [re-es, e-t,em-me mur-tap-pi-di sza2] du#-u2-[tu2 la paq-du]",
+        "a. [a-pa4 ki-se3-ga pa3-da] za3 ki-a-[nag-ga2-mu]"
+      ]
+    },
+    {
+      "id": "P411937",
+      "score": 24.5,
+      "lines": 69,
+      "chars": 2323,
+      "des": "Nisaba 15, 0877",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Irisagrig (mod. uncertain) ?",
+      "hits": {
+        "inanna": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1/3(disz) ma-na 1/2(disz) gin2 nig2-sza-ar",
+        "7(disz) 1/2(disz) ma-na 1/3(disz) gin2 lal3-HAR",
+        "7(disz) GISZ-PI-GAN sig4 mu-sar"
+      ]
+    },
+    {
+      "id": "P421807",
+      "score": 24.4,
+      "lines": 1302,
+      "chars": 67966,
+      "des": "RINAP 5/1 Ashurbanipal 011, ex. 001",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 14,
+        "inanna": 1,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 14,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku {disz}an-szar2-du3-a# [...] an#-szar2 u {d}nin-lil2",
+        "_dumu lugal gal_-u2# [x] _e2#_ ri-du-u-ti",
+        "sza an-szar2 u {d}sin _en#_ [x x]-tu# _u4-mesz su3-mesz_"
+      ]
+    },
+    {
+      "id": "P260800",
+      "score": 24.3,
+      "lines": 66,
+      "chars": 3168,
+      "des": "ZA 073, 059",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+      "hits": {
+        "enlil": 1,
+        "underworld": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "asz-szum _1(disz) sar e2 du3-a ha-la_ [i3-li2-e-ri-ba-am]",
+        "_nar-sa_-tim is-qi2-im u3 te-er#-[tim x? x?]",
+        "_e2_ {d}lugal-gu2-du8-a{ki} u3 {d}x-[x?]-x-x"
+      ]
+    },
+    {
+      "id": "P411938",
+      "score": 24.0,
+      "lines": 63,
+      "chars": 2637,
+      "des": "Nisaba 15, 0918",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Irisagrig (mod. uncertain) ?",
+      "hits": {
+        "inanna": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "4(szar2) 2(bur'u) 8(bur3) 5(iku) 1/2(iku) GAN2",
+        "2(gesz'u) 6(gesz2) 4(asz) 5(ban2) sze ziz2 gig ga-ba-tab gur",
+        "2(asz) 3(barig) 5(ban2) 3(disz) sila3 gu2 hi-a gur"
+      ]
+    },
+    {
+      "id": "P395273",
+      "score": 23.9,
+      "lines": 136,
+      "chars": 7906,
+      "des": "TBP 03b",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x x x x x x [...]",
+        "[...] pa#-ni _gid2_ za-qip za-qir# [...] _gid2-da-mesz uku2_-in",
+        "[... _sag]-du#_-szu2 _kimin_-ma pa-ni _lugud2-da u4-mesz_-szu2 _lugud2-da nig2-tuku sig5_"
+      ]
+    },
+    {
+      "id": "P237456",
+      "score": 23.7,
+      "lines": 109,
+      "chars": 5401,
+      "des": "Geers Heft J p. 032, 034 (K.03125); AnBi 12, pl. 21-22 (photo)",
+      "genre": "",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "inanna": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_enuru{+e2-nu-ru}_ x x x [...]",
+        "_mul#_ [...] x [...]",
+        "{d}x [...]"
+      ]
+    },
+    {
+      "id": "P386593",
+      "score": 23.7,
+      "lines": 109,
+      "chars": 4141,
+      "des": "TCL 01, 157",
+      "genre": "Legal",
+      "sub": "contract",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Kish (mod. Tell Uhaimir)",
+      "hits": {
+        "uruk": 4
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...]",
+        "[...]",
+        "[asz-szum _1(disz) sar e2 sza3 2(disz) sar e2]_"
+      ]
+    },
+    {
+      "id": "P394428",
+      "score": 23.6,
+      "lines": 45,
+      "chars": 2098,
+      "des": "BAM 7, 045",
+      "genre": "Prayer/Incantation",
+      "sub": "incantations, prayers and ceremonies",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "u2#? [...]",
+        "ina x [...]",
+        "_DISZ na sig7# [... x]-szu2"
+      ]
+    },
+    {
+      "id": "P510250",
+      "score": 23.4,
+      "lines": 55,
+      "chars": 2180,
+      "des": "MHET 2/6, 874",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "enlil": 2,
+        "underworld": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_1(disz) 1/2(disz) sar e2 du3-a_ qa2-du _2(disz) {gesz}ig _",
+        "_da e2_ u-bar-lu-lu _dumu_ nu-ur2-i3-li2-szu",
+        "u3 _da e2_ geme2-{d}utu _dumu-munus_ li-pi2-it-esz18-dar"
+      ]
+    },
+    {
+      "id": "P283641",
+      "score": 23.4,
+      "lines": 55,
+      "chars": 1777,
+      "des": "OECT 08, 10",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "enlil": 14,
+        "underworld": 3
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "nam-i3-du8 kisal-la2 sza3 e2-kur-igi-gal2",
+        "ka2 a2-mi2-a ub-szu-ukken-na",
+        "ka2 {d}lamma-lamma sza3 e2-kur-ra"
+      ]
+    },
+    {
+      "id": "P411935",
+      "score": 23.2,
+      "lines": 53,
+      "chars": 2037,
+      "des": "Nisaba 15, 0731",
+      "genre": "",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "Ur III (ca. 2100-2000 BC)",
+      "site": "Irisagrig (mod. uncertain) ?",
+      "hits": {
+        "inanna": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1(disz) udu sze6-ga2 5(disz) sila3 tu7 5(disz) sila3 tu7",
+        "nu-ur2-{d}utu ra2-gaba lu2 kin-gi4-a lugal",
+        "1(disz) sila3 tu7 1(disz) ku6 szu-esz18-dar sagi"
+      ]
+    },
+    {
+      "id": "P418301",
+      "score": 23.2,
+      "lines": 102,
+      "chars": 7218,
+      "des": "BAM 5, 471",
+      "genre": "",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "enki": 1
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] ana _dur2_-szu2 _dub_-ak ina# _i3#-gesz# szesz2#_-su# [...]",
+        "_DISZ 4(disz) kasz3_ ru-sze-e-ti _ga u8 babbar-mesz lal3-kur-ra gesztin a_ [x x x x]",
+        "_kasz-sag i3-gesz disz_-nisz _hi-hi_ ana _dur2_-szu2 _dub_-ak-ma ina-esz#"
+      ]
+    },
+    {
+      "id": "P251751",
+      "score": 23.1,
+      "lines": 76,
+      "chars": 1427,
+      "des": "CUSAS 35, 470",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Sumerian",
+      "period": "ED IIIa (ca. 2600-2500 BC)",
+      "site": "Šuruppak (mod. Fara)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 2,
+        "enki": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "7(asz@c) ku3 luh-ha gin2",
+        "sa10 e2",
+        "2(asz@c) e2-bi sar gin2 1(u@c)"
+      ]
+    },
+    {
+      "id": "P365167",
+      "score": 23.1,
+      "lines": 51,
+      "chars": 2072,
+      "des": "CT 08, pl. 04, Bu 1888-05-12, 014",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+      "hits": {
+        "ninsun": 1,
+        "mother_speech": 1
+      },
+      "narr": 1,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "_e2 du3-a_ ma-la ma-s,u2-u2 szu-ba-at",
+        "lu2-{d}nin-szubur-ka",
+        "qa2-du-um pa-pa-hi-szu u3 _e2_-szu#?"
+      ]
+    },
+    {
+      "id": "P271184",
+      "score": 23.0,
+      "lines": 188,
+      "chars": 20461,
+      "des": "EA 029",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Middle Babylonian (ca. 1400-1100 BC)",
+      "site": "Akhetaten (mod. el-Amarna)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[a-na {disz}nap-hu-u-ri-ia _lugal kur_ mi-is,-ri-i _szesz_]-ia# ha-ta-ni-ia sza a-[ra]-am#-mu-u2-usz u3 sza i-ra-['a-ma-an-ni]",
+        "[qi2-bi2-ma um-ma {disz}du-usz-rat-ta _lugal] kur_ mi-it-ta-an-ni# _szesz#_-ka-ma e-mi-ka sza i-ra-'a-mu-ka a-na ia-szi szul-mu# [a-na ka-a-sza]",
+        "[lu-u2 szul-mu a-na] {munus}te-i-e lu#-[u2] szul#-mu# [a]-na {munus}ta-a-du-he2-e-pa _dumu-munus_-ia# _dam_-ka lu-u2 szul#-[mu]"
+      ]
+    },
+    {
+      "id": "P498212",
+      "score": 23.0,
+      "lines": 87,
+      "chars": 3032,
+      "des": "TS 057",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Kutalla (mod. Tell Sifr)",
+      "hits": {
+        "inanna": 1,
+        "enlil": 2,
+        "underworld": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "1/3(disz) _sar e2 du3-a_",
+        "_da e2_ s,i-li2-isz8-tar2",
+        "u3 _da e2_ mi-na-ni"
+      ]
+    },
+    {
+      "id": "P360149",
+      "score": 22.9,
+      "lines": 61,
+      "chars": 2186,
+      "des": "KTS 2, 07",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Old Assyrian (ca. 1950-1850 BC)",
+      "site": "Kanesh (mod. Kültepe)",
+      "hits": {
+        "mother_speech": 2
+      },
+      "narr": 2,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "2(disz) ne2-pi2-sza-an",
+        "1(u) 6(disz) _ma-na ku3-babbar_",
+        "sza a-szur3-re-s,i2"
+      ]
+    },
+    {
+      "id": "P348742",
+      "score": 22.8,
+      "lines": 185,
+      "chars": 8916,
+      "des": "SpTU 4, 149",
+      "genre": "",
+      "sub": "",
+      "lang": "",
+      "period": "Hellenistic (323-63 BC)",
+      "site": "Uruk (mod. Warka)",
+      "hits": {},
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x [...]",
+        "[...] i-[...]",
+        "[... a]-bat [...]"
+      ]
+    },
+    {
+      "id": "P274785",
+      "score": 22.8,
+      "lines": 73,
+      "chars": 7378,
+      "des": "CT 05, pl. 04-06, BM 022446",
+      "genre": "Legal",
+      "sub": "",
+      "lang": "Akkadian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "underworld": 2
+      },
+      "narr": 0,
+      "hero": 0,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[_disz] i3-gesz_ a-na me-e ad-di-i-ma _i3-gesz_ it,-bu i-li-ma u3 <<u3>> me-e-szu ha-pi2{pi}-ir [a-na ha-ra-nim ti-bi] le-mu-ut-tim a-na mar-s,i-im qa2-ti i-lu-tim qa2-tum da-[an-na-at]",
+        "_disz i3_ a#-[na szi]-na# ra-ma-an-szu i-zu#-uz a-na ha-ra-nim szu-ub-ta-an i-ne2-[szi-ra] a-na ma-ar-s,i-im e-pe-esz-ma i-ma-a-at",
+        "_disz_ i-na qa2-ab-li-a-at _i3-gesz_ tu-ut-ru a-na s,i-it {d}szam-szi u2-s,i-ma i-zi-iz a-na ha-ra-nim e-ep-pu-usz zi-it-tam a-ka-al a-na mar-s,i-im i-ba-al-lu-ut,"
+      ]
+    },
+    {
+      "id": "P285395",
+      "score": 22.7,
+      "lines": 96,
+      "chars": 7243,
+      "des": "BAM 3, 311",
+      "genre": "Scientific",
+      "sub": "medical",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Assur (mod. Qalat Sherqat)",
+      "hits": {
+        "gilgamesh": 1,
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 1,
+      "open_en": false,
+      "etcsl": false,
+      "sample": [
+        "[...] x [x x] x x x [...]",
+        "[...] _{u2}igi_-lim ina _kasz sud2_ [...]",
+        "[x x] {u2}[x x x] _numun#_ {gesz}bi-ni ina _kasz_ x [x x]"
+      ]
+    },
+    {
+      "id": "P469668",
+      "score": 22.3,
+      "lines": 309,
+      "chars": 11873,
+      "des": "CDLI Literary 000362 (Gilgamesh and the Bull of Heaven) composite",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.02 Gilgamesh and Bull of Heaven (composite)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 5,
+        "inanna": 22,
+        "enki": 4,
+        "hymn_end": 1,
+        "uruk": 7
+      },
+      "narr": 0,
+      "hero": 5,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "szul me3-ka szul me3-ka en-du-ni ga-an-du11",
+        "en {d}gilgames2 szul me3-ka en-du-ni ga-an-du11",
+        "a2-ur2 sa6-sa6 szul me3-ka en-du-ni ga-an-du11"
+      ]
+    },
+    {
+      "id": "P397673",
+      "score": 21.6,
+      "lines": 1068,
+      "chars": 54666,
+      "des": "RINAP 5/1 Ashurbanipal 011, ex. 002",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 10,
+        "inanna": 1,
+        "flood": 1
+      },
+      "narr": 0,
+      "hero": 10,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku {disz#}an#-szar2-du3-a bi-nu-tu an-szar2 u {d}nin-lil2",
+        "_dumu lugal gal_-u2 sza _e2 usz_-u2-ti",
+        "sza an-szar2 u {d}sin _en aga#_ ul-tu _u4-mesz su3-mesz_"
+      ]
+    },
+    {
+      "id": "P345843",
+      "score": 21.5,
+      "lines": 105,
+      "chars": 4246,
+      "des": "CDLI Literary 000365, ex. 020",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05 Gilgamesh and Huwawa A ('Decad no. 10') (witness)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "",
+      "hits": {
+        "enkidu": 5,
+        "huwawa": 3,
+        "enlil": 5,
+        "enki": 3,
+        "ninsun": 1,
+        "hymn_end": 1
+      },
+      "narr": 0,
+      "hero": 9,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "[...] ka uszum-gal-la-kam",
+        "[x]-ni# igi pirig-ga2-kam",
+        "|GISZ.GABA|#-a-ni a-gi6 du7#-du7#-dam"
+      ]
+    },
+    {
+      "id": "P256690",
+      "score": 20.8,
+      "lines": 101,
+      "chars": 4237,
+      "des": "CDLI Literary 000365, ex. 016",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05 Gilgamesh and Huwawa A ('Decad no. 10') (witness)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "Nippur (mod. Nuffar)",
+      "hits": {
+        "enkidu": 5,
+        "huwawa": 2,
+        "ninsun": 3
+      },
+      "narr": 0,
+      "hero": 10,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "lu2# [...]",
+        "bad3-da [...]",
+        "ad6 a i7 [...]"
+      ]
+    },
+    {
+      "id": "P514713",
+      "score": 19.8,
+      "lines": 687,
+      "chars": 38027,
+      "des": "RINAP 5/1 Ashurbanipal 004 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 9,
+        "inanna": 2,
+        "enlil": 1,
+        "friend": 1
+      },
+      "narr": 0,
+      "hero": 9,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "a-na-ku {disz}an-szar2-du3-a _lugal gal lugal_ dan-nu",
+        "_lugal szu2 lugal kur_ an-szar2{ki} _lugal_ kib-rat _limmu2_-tim",
+        "s,i-it lib3-bi {disz}an-szar2-pap-asz _lugal kur_ asz-szur{ki}"
+      ]
+    },
+    {
+      "id": "P514712",
+      "score": 19.4,
+      "lines": 737,
+      "chars": 41190,
+      "des": "RINAP 5/1 Ashurbanipal 003 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 9,
+        "inanna": 3,
+        "enlil": 2
+      },
+      "narr": 0,
+      "hero": 9,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "a-na-ku {disz}an-szar2-du3-a _lugal gal lugal_ dan-nu",
+        "_lugal szu2 lugal kur_ an-szar2{ki} _lugal_ kib-rat _limmu2_-tim",
+        "s,i-it lib3-bi {disz}an-szar2-pap-asz _lugal kur_ asz-szur{ki}"
+      ]
+    },
+    {
+      "id": "P357186",
+      "score": 19.2,
+      "lines": 62,
+      "chars": 2957,
+      "des": "CDLI Literary 000365, ex. 078",
+      "genre": "Literary",
+      "sub": "ETCSL 1.08.01.05 Gilgamesh and Huwawa A ('Decad no. 10') (witness)",
+      "lang": "Sumerian",
+      "period": "Old Babylonian (ca. 1900-1600 BC)",
+      "site": "uncertain (mod. uncertain)",
+      "hits": {
+        "enkidu": 4,
+        "huwawa": 1,
+        "lugalbanda": 1,
+        "ninsun": 1,
+        "speech": 1,
+        "hymn_end": 1
+      },
+      "narr": 1,
+      "hero": 7,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "[...]-la#-sze3 gesztu2-ka-ni na-an-gub",
+        "[...]-e# kur lu2 ti-la-sze3 gesztu2-ka-ni na-an-gub",
+        "[...] en#-ki-du10-ra gu3 mu-un-na-de2-e"
+      ]
+    },
+    {
+      "id": "P418052",
+      "score": 17.8,
+      "lines": 475,
+      "chars": 19811,
+      "des": "RINAP 5/1 Ashurbanipal 011, ex. 017",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 8,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 8,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "[...] 1(u) 5(disz)#?",
+        "[...]-ma",
+        "_[...]-mesz_-szu2"
+      ]
+    },
+    {
+      "id": "P514718",
+      "score": 19.2,
+      "lines": 464,
+      "chars": 27393,
+      "des": "RINAP 5/1 Ashurbanipal 009 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 7,
+        "inanna": 5,
+        "enlil": 1,
+        "flood": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 7,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "a-na-ku {disz}an-szar2-du3-a bi-nu-ut an-szar2 u {d}nin-lil2",
+        "_dumu lugal gal_-u sza _e2 usz_-u2-ti",
+        "sza {d}sin ul-tu _u4-mesz su3-mesz_"
+      ]
+    },
+    {
+      "id": "P313081",
+      "score": 17.6,
+      "lines": 500,
+      "chars": 28428,
+      "des": "RINAP 3/1 Sennacherib 022, ex. 001",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 4,
+        "underworld": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "{disz}{d}en-zu-szesz-mesz-eri-ba _lugal gal_-u2",
+        "_lugal_ dan-nu _lugal_ kisz-sza2-ti _lugal kur_ asz-szur{ki}",
+        "_lugal_ kib-rat _limmu2_-tim _re-e2-um_ it-pe-szu"
+      ]
+    },
+    {
+      "id": "P421809",
+      "score": 17.6,
+      "lines": 485,
+      "chars": 28561,
+      "des": "RINAP 3/1 Sennacherib 022, ex. 002",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 4,
+        "underworld": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "{disz}{d}en-zu-szesz-mesz-eri-ba _lugal gal lugal_ dan-nu",
+        "_lugal_ kisz-sza2-ti _lugal kur_ asz-szur{ki} _lugal_ kib-rat _limmu2_-tim",
+        "_re-e2-um_ it-pe-szu2 mi-gir _dingir-mesz gal-mesz_"
+      ]
+    },
+    {
+      "id": "P462830",
+      "score": 17.6,
+      "lines": 500,
+      "chars": 28873,
+      "des": "RINAP 3/1 Sennacherib 022 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 4,
+        "underworld": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "{disz}{d}suen-szesz-mesz-eri-ba _lugal gal_-u2",
+        "_lugal_ dan-nu _lugal_ kisz-sza2-ti _lugal kur_ asz-szur{ki}",
+        "_lugal_ kib-rat _limmu2_-tim _re-e2-um_ it-pe-szu"
+      ]
+    },
+    {
+      "id": "P462831",
+      "score": 17.6,
+      "lines": 448,
+      "chars": 27811,
+      "des": "RINAP 3/1 Sennacherib 023 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 4,
+        "underworld": 1,
+        "uruk": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "{disz}{d}en-zu-szesz-mesz-eri-ba _lugal gal lugal_ dan-nu",
+        "_lugal_ kisz-sza2-ti _lugal kur_ asz-szur{ki} _lugal_ kib-rat _limmu2_-tim",
+        "_re-e2-um_ it-pe-szu2 mi-gir _dingir-mesz gal-mesz_"
+      ]
+    },
+    {
+      "id": "P430082",
+      "score": 16.8,
+      "lines": 448,
+      "chars": 28370,
+      "des": "RINAP 3/1 Sennacherib 023, ex. 001",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 2,
+        "underworld": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "{disz}{d}en-zu-szesz-mesz-eri-ba _lugal gal lugal#_ [dan-nu]",
+        "_lugal_ kisz-sza2-ti _lugal kur#_ asz-szur{ki} _lugal_ kib-rat _limmu2_-[tim]",
+        "_re-e2-um_ it-pe-szu2 mi-gir _dingir-mesz gal-[mesz_]"
+      ]
+    },
+    {
+      "id": "P423051",
+      "score": 16.2,
+      "lines": 466,
+      "chars": 25238,
+      "des": "RINAP 5/1 Ashurbanipal 009, ex. 001",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 5,
+        "enlil": 1,
+        "flood": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "a-na-ku {disz}an#-[...]",
+        "_dumu lugal_ [...]",
+        "sza {d}sin [...]"
+      ]
+    },
+    {
+      "id": "P514715",
+      "score": 15.8,
+      "lines": 927,
+      "chars": 44829,
+      "des": "RINAP 5/1 Ashurbanipal 006 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 2,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "kul-lat t,up-szar-ru-ti u2-sza2-hi-zu ka-ra-szi",
+        "e-li _lugal-mesz_ a-szib pa-rak-ki",
+        "zi-kir _mu_-ia u2-szar-ri-hu"
+      ]
+    },
+    {
+      "id": "P392265",
+      "score": 15.1,
+      "lines": 355,
+      "chars": 15891,
+      "des": "RINAP 5/1 Ashurbanipal 009, ex. 042",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 3,
+        "enlil": 1
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "[...]-ku#?",
+        "[...] ger#-ri-ia",
+        "[...]-ra# har-ra-nu"
+      ]
+    },
+    {
+      "id": "P467061",
+      "score": 12.0,
+      "lines": 164,
+      "chars": 22631,
+      "des": "RINAP 3/2 Sennacherib 046 composite",
+      "genre": "Royal/Monumental",
+      "sub": "composite",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 6,
+        "inanna": 3,
+        "friend": 3
+      },
+      "narr": 0,
+      "hero": 6,
+      "open_en": true,
+      "etcsl": true,
+      "sample": [
+        "_e2-gal {disz}{d}suen-szesz-mesz_-eri-ba _lugal gal lugal_ dan-nu _lugal szu2 lugal kur_ asz-szur _lugal_ kib-rat _limmu2_-tim mi-gir _dingir-mesz gal-mesz_ er-szu it-pe-szu2 zi-ka-ru qar-du a-sza2-red kal mal-ki",
+        "rap-pu la-'i-it, la ma-gi-ri mu-szab-ri-qu za-ma-a-ni {d}asz-szur _kur gal lugal_-ut la sza2-na-an u2-szat-li-ma-an-ni-ma _ugu_ gi-mir a-szib pa-rak-ki u2-szar-ba-a _{gesz}tukul-mesz_-ia",
+        "ul-tu _a-ab-ba_ e-le-ni-ti sza szul-mu _{d}utu_-szi a-di tam-tim szap-li-ti sza s,i-it _{d}utu_-szi gim-ri ma-al-ki sza kib-ra-a-ti u2-szak-nisz sze-pu-u-a i-na mah-ri-i"
+      ]
+    },
+    {
+      "id": "P393986",
+      "score": 14.6,
+      "lines": 482,
+      "chars": 20097,
+      "des": "RINAP 5/1 Ashurbanipal 011, ex. 003",
+      "genre": "Royal/Monumental",
+      "sub": "witness",
+      "lang": "Akkadian",
+      "period": "Neo-Assyrian (ca. 911-612 BC)",
+      "site": "Nineveh (mod. Kuyunjik)",
+      "hits": {
+        "gilgamesh": 5,
+        "inanna": 1,
+        "enlil": 2
+      },
+      "narr": 0,
+      "hero": 5,
+      "open_en": true,
+      "etcsl": false,
+      "sample": [
+        "{disz#}ep#-ti#-mur#-t,e#-e#-[...]",
+        "{disz}na-ah-ti-hu-ru-an-si-ni# _man_ {iri#}pi#-szap#-di#-'a#?-[x]",
+        "{disz}bu-kur-ni-ni-ip _man_ {iri}pa-ah-nu-ti"
+      ]
+    }
+  ],
+  "gilgamesh_cluster": [
+    "P262784",
+    "P480190",
+    "P481729",
+    "P481725",
+    "P514720",
+    "P421807",
+    "P393994",
+    "P273203",
+    "P469671",
+    "P479892",
+    "P469668",
+    "P397673",
+    "P345843",
+    "P256690",
+    "P514713",
+    "P514712",
+    "P412444",
+    "P357186",
+    "P418052",
+    "P514718",
+    "P313081",
+    "P421809",
+    "P462830",
+    "P462831",
+    "P430082",
+    "P423051",
+    "P514715",
+    "P392265",
+    "P467061",
+    "P393986",
+    "P514716",
+    "P392152",
+    "P514717",
+    "P424582",
+    "P466655",
+    "P270855",
+    "P422273",
+    "P450362",
+    "P462825",
+    "P519586"
+  ],
+  "literary_gap": [
+    "P262784",
+    "P270855",
+    "P273203",
+    "P241509",
+    "P241396",
+    "P010263",
+    "P243647",
+    "P270858",
+    "P241245",
+    "P241484",
+    "P355698",
+    "P384843",
+    "P241831",
+    "P343019",
+    "P221796",
+    "P270856",
+    "P357096",
+    "P242098",
+    "P241853",
+    "P369362",
+    "P461173",
+    "P216168"
+  ]
+}

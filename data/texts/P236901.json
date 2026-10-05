@@ -1,0 +1,612 @@
+{
+  "id": "P236901",
+  "designation": "TBP 44",
+  "genre": "Omen",
+  "subgenre": "",
+  "language": "Akkadian",
+  "period": "Neo-Assyrian (ca. 911-612 BC)",
+  "year": -761,
+  "provenience": "Nineveh (mod. Kuyunjik)",
+  "site": "Nineveh (mod. Kuyunjik)",
+  "lat": 36.36,
+  "lon": 43.15,
+  "content_lines": 62,
+  "chars": 4580,
+  "font": "Assurbanipal",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/236901",
+  "museum_no": "BM —",
+  "primary_publication": "TBP 44",
+  "atf_source": "cdlistaff (check)",
+  "omen_hunt": true,
+  "omen_blurb": "Physiognomy (TBP 44)",
+  "omen_score": 181.7,
+  "atf": "&P236901 = K 8730 + 79-7-8, 107 (TBP 44, Šumma kittabru, Ms A)\n#atf: lang akk \n@tablet\n@obverse\n1. _DISZ sze_ ina _ugu sag-du lu2 gar szu {d}iszkur nu kala zarah2 dib_-su#\n2. _DISZ sze_ ina _sag-du na_ lu ina 1(u) 5(disz) lu ina 2(gesz2) 3(u) _gar na bi ti-la_ la pa-<sza2>-ha _igi_-mar\n3. _DISZ sze_ ina _sag-du na_\n4. _DISZ sze_ ina _sag-du na sag gesztu 1(u) 5(disz) gar sza3-bi du10-ga_\n5. _DISZ sze_ ina _sa gu2 na gar sza3-bi du10-ga_\n6. _DISZ sze_ ina _sag-ki_-szu2 1(u) 5(disz) _gar an-dul7 na il2_-szi\n7. _DISZ sze_ ina _sag-ki_-szu2 2(gesz2) 3(u) _gar szu-bi-asz-am3_\n8. _DISZ sze_ ina _dilib2# sag#-du_-szu2 _gar_ _szu {d}utu_ ina _pap-hal {munus}kalag-ga e3_\n9. _DISZ sze_ ina _sag-ki_-szu2 1(u) 5(disz) _gar_ at-mu-szu2 _ugu dingir_ u _lugal du10-ga_ i-szar2-ru3\n10. _DISZ sze_ ina _sag-ki-min_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar szu-bi-asz-am3_\n11. _DISZ sze_ ina ku-tal2 _gu2_-szu2 _gar nu kala_\n12. _DISZ sze_ ina _sur_-szu2 1(u) 5(disz) _gar dingir_ ana _na arhusz tuku_-szi\n13. _DISZ sze_ ina _sur_-szu2 2(gesz2) 3(u) _gar dingir_ ana _na arhusz nu tuku#_-szi#\n14. _DISZ sze_ ina _gesztu_-szu2 sza2 1(u) 5(disz) lu qer-bi-nu lu ki-da-a-nu sza2 lu 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar ka_ [...] _du10-ga_\n15. _DISZ sze_ ina _kimin_ sza2 2(gesz2) 3(u) _gar gig_ dan-nu _dib_-su\n16. _DISZ sze_ ina _te_ 1(u) 5(disz)-szu2 _gar sig5_ pa-sza2-ha _igi_-mar\n17. _DISZ sze_ ina _te_ 2(gesz2) 3(u)-szu2 _gar dingir te na sig3_-as,\n18. _DISZ sze_ ina _sig7-igi-min_ 1(u) 5(disz)-szu2 _gar sag-mesz_-szu2 i-szap-pi-la\n19. _DISZ sze_ ina _sig7-igi-min_ 2(gesz2) 3(u)-szu2 _gar szu#-bi#-asz-am3_\n20. _DISZ sze_ ina _ub igi_ 1(u) 5(disz)-szu2 lu ina qu2-lip-ti lu ina kib-ri _gar ki-hul igi_-mar!\n21. _DISZ sze_ ina _kimin_-ma 2(gesz2) 3(u) _gar szu-bi-asz-am3_\n22. _DISZ sze_ ina _pa igi_ 1(u) 5(disz) lu _an-ta_ lu _ki-ta gar an-dul7 dingir ugu# na# gal2_\n23. _DISZ sze_ ina _kimin_-ma 2(gesz2) 3(u) _gar szu#-bi-asz-am3_\n24. _DISZ sze_ ina _sag-du kir4_-szu2 _gar im dingir du10-ga_ ana _na_ i-za-aq\n25. _DISZ sze_ ina KIR4-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar ugu en inim_-szu2 _gub_-az\n26. _DISZ sze_ ina _sza3_ na-ḫi-ri-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar im dingir du10-ga_ ana! _na_ i-za-aq\n27. _DISZ sze_ ina _nundum_-szu2 _an-ta_ lu qer-bi-nu lu ki-da-a-nu _gar dingir ninda_ nap-sza2 _gu7_\n28. _DISZ sze_ ina _nundum-min_-szu2 _an-ta_ u _ki-ta gar ka-dib-be2-da_-su\n29. _DISZ sze_ ina _ugu_ li-iq _ka_-szu2 sza2? lu 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar ninda_ nap-⌈sza2⌉ _gu7_\n30. _DISZ sze_ ina _ugu_ su-uq-ti-szu _an-ta gar nig2-gur11 dagal_-asz2\n31. _DISZ sze_ ina _murub4#_ su#-uq-ti-szu2 _gar szu {d}iszkur sig5# gar_-szu2\n32. [... x]-ti-szu2 _gar szu-bi-asz-am3_\n33. [...] _gar#_ x [ ] x x _us2-mesz_-szu2\n34. [...] _sza3-bi du10-ga#_ [...]\n35. [...] x-ma _szu_-su [...]\n$ rest missing\n@reverse\n$ beginning missing\n1'. [...] x x x\n2'. [...] _hul# dib_-su\n3'. _DISZ sze# szu# nig2-gur11 tuku_-szi\n4'. _DISZ sze# ga#_-szu2 i-rap-pisz\n5'. _DISZ sze# [nig2]-gur11_-szu2 _bir_-ah\n6'. _DISZ sze# [u4]-mesz_-szu2 _lugud2-da-mesz_ \n7'. _DISZ sze# u4#-mesz_-szu2 _gid2-da-mesz_\n8'. _DISZ sze#_ at#-mu#-szu2 _ugu dingir_ u _lugal du10_-ab\n9'. _DISZ sze# uku2#_-in\n10'. _DISZ sze# uku2#_-in\n11'. _DISZ sze_ ina ki#-[x ...] x x [...] x x [...] _amasz? dagal_-esz\n12'. _DISZ sze_ ina [ ] x x [...] x GA _dib_-su\n13'. _DISZ sze_ [...] lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) [...] 2(gesz2)# 3(u) lu _igi#_ lu _egir_ lu 2 lu 3\n14'. lu 4(disz) _gar_-nu _{munus}kalag-ga dib_-su\n15'. _DISZ sze_ ina [...] x 1(u) 5(disz) lu sza2 2(gesz2) 3(u) 1(u) 5(disz) u 2(gesz2) 3(u) _gar_-nu tal2#-lak-ti _kusz_-ir _gen-gen_-ak\n16'. _DISZ sze_ ina [...] lu sza2 2(gesz2) 3(u) _an-ta_-nu _gar_ e-ma _gen_-ku _sze-ga_\n17'. _DISZ sze_ ina [...] _sag# szu-si tur_-ti _gar ninda_ i-szeb#-bi _u4-mesz_-szu2 _gid2-da-mesz_\n18'. _DISZ sze_ ina x [...] _kimin gar_ ina# _la#_-szu2 _ba-ug7_\n19'. _DISZ sze_ ina _suhusz# [x]-mesz gir3-min-mesz_ lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) ina _murub4_ sza2 _gir2-min_-szu2 lu he#-pi# esz-<szu2>\n20'. _ugu en inim_-szu _gub dingir_ pa-sza2-ha _sum_-su\n21'. _DISZ sze-mesz sag#-[du] na#_ lu# _igi#-mesz#_-szu lu _gu2_-su _diri-mesz_ x _nig2-gur11_-szu2 _bir_-ah#\n22'. _DISZ sze-mesz_ [... x]-szu2 u 2(gesz2) 3(u)-szu2 _diri-mesz na bi nig2-gur11_-szu2 _bir#_-[ah]\n23'. _DISZ sze-mesz_ [...] lu x x _dib-mesz_ x _gar_-nu lu _nig2-tuku uku2_-in lu [...]\n24'. _DISZ sze-mesz_ [...] _diri-mesz szu-bi-asz-am3_\n25'. _DISZ sze-mesz sa5#_ [...] _su_-szu2 _diri-mesz dugud_ [...] _mu#_-szu2 _sig5_-iq _u4-mesz_-szu2 _gid2-da-mesz_\n26'. _DISZ sze-mesz babbar#-mesz# du3# su#_-szu2 _diri-mesz zarah2 nu du10_-ub _uzu gar_-szu2\n27'. _DISZ sze-mesz ge6#-mesz# du3 su#_-szu2 _diri-mesz dumu-mesz_ u _dumu-munus-mesz nu tuku_-szi\n$ single ruling\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ sze_ ina _ugu sag-du lu2 gar szu {d}iszkur nu kala zarah2 dib_-su#",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located on the head of a man: hand of Adad, he will not reach the highest rank."
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_DISZ sze_ ina _sag-du na_ lu ina 1(u) 5(disz) lu ina 2(gesz2) 3(u) _gar na bi ti-la_ la pa-<sza2>-ha _igi_-mar",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located on the head of a man either on the right or on the left: that man will experience no life."
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_DISZ sze_ ina _sag-du na_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in the head of a man"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_DISZ sze_ ina _sag-du na sag gesztu 1(u) 5(disz) gar sza3-bi du10-ga_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the top of the na na-gauge, there will be a favorable heart for it."
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_DISZ sze_ ina _sa gu2 na gar sza3-bi du10-ga_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located on the neck of a man's neck: his heart will be happy."
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_DISZ sze_ ina _sag-ki_-szu2 1(u) 5(disz) _gar an-dul7 na il2_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in his temple is 15: he will raise a dais."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_DISZ sze_ ina _sag-ki_-szu2 2(gesz2) 3(u) _gar szu-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley in his temple is 190, he will recover."
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_DISZ sze_ ina _dilib2# sag#-du_-szu2 _gar_ _szu {d}utu_ ina _pap-hal {munus}kalag-ga e3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on his head: hand of ama will come out in the paphal of a strong woman."
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_DISZ sze_ ina _sag-ki_-szu2 1(u) 5(disz) _gar_ at-mu-szu2 _ugu dingir_ u _lugal du10-ga_ i-szar2-ru3",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in his temple is located 15 times his anger is favourable on god and king."
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_DISZ sze_ ina _sag-ki-min_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar szu-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley on his forehead is either of 15 or of 140, it is favourable."
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_DISZ sze_ ina ku-tal2 _gu2_-szu2 _gar nu kala_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley in the back of its neck is not present; all day"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_DISZ sze_ ina _sur_-szu2 1(u) 5(disz) _gar dingir_ ana _na arhusz tuku_-szi",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on his right thighs: the god will have mercy on him."
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_DISZ sze_ ina _sur_-szu2 2(gesz2) 3(u) _gar dingir_ ana _na arhusz nu tuku#_-szi#",
+      "surface": "obverse",
+      "column": "",
+      "english": "If barley is located in its horn: the god will not have mercy on an evil person."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_DISZ sze_ ina _gesztu_-szu2 sza2 1(u) 5(disz) lu qer-bi-nu lu ki-da-a-nu sza2 lu 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar ka_ [...] _du10-ga_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in his ears, which is 15 or a kidnu-measure of 15 or of 150 GAR... is good."
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_DISZ sze_ ina _kimin_ sza2 2(gesz2) 3(u) _gar gig_ dan-nu _dib_-su",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located on the bank of the River which is surrounded by a strong illness: he will die."
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_DISZ sze_ ina _te_ 1(u) 5(disz)-szu2 _gar sig5_ pa-sza2-ha _igi_-mar",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located on its right side: good fortune."
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_DISZ sze_ ina _te_ 2(gesz2) 3(u)-szu2 _gar dingir te na sig3_-as,",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located on the left side of the gall bladder: the god will be happy."
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_DISZ sze_ ina _sig7-igi-min_ 1(u) 5(disz)-szu2 _gar sag-mesz_-szu2 i-szap-pi-la",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located on its right side: his heads will be scattered."
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_DISZ sze_ ina _sig7-igi-min_ 2(gesz2) 3(u)-szu2 _gar szu#-bi#-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located on its right side: he will recover."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_DISZ sze_ ina _ub igi_ 1(u) 5(disz)-szu2 lu ina qu2-lip-ti lu ina kib-ri _gar ki-hul igi_-mar!",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is seen in the left side of the gall bladder or in the street: evil will be established."
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_DISZ sze_ ina _kimin_-ma 2(gesz2) 3(u) _gar szu-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the left side and it is surrounded by a mole on the left side."
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_DISZ sze_ ina _pa igi_ 1(u) 5(disz) lu _an-ta_ lu _ki-ta gar an-dul7 dingir ugu# na# gal2_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley-skin is located on the top of the right side of the gall bladder or on the left side of the gall bladder: the god will be over the man."
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_DISZ sze_ ina _kimin_-ma 2(gesz2) 3(u) _gar szu#-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If there is a mole on the left side and it is surrounded by a mole on the left side."
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_DISZ sze_ ina _sag-du kir4_-szu2 _gar im dingir du10-ga_ ana _na_ i-za-aq",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located on the top of its nose: a favorable wind will be set towards a man."
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_DISZ sze_ ina KIR4-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar ugu en inim_-szu2 _gub_-az",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located on its right and left side: against its owner will stand."
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_DISZ sze_ ina _sza3_ na-ḫi-ri-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar im dingir du10-ga_ ana! _na_ i-za-aq",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in its nru (barley) or 15 or 150 (barley) is located: a favorable tablet of the god will be given to a person."
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_DISZ sze_ ina _nundum_-szu2 _an-ta_ lu qer-bi-nu lu ki-da-a-nu _gar dingir ninda_ nap-sza2 _gu7_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley in its nanny, either above or below, is located: the god will eat food."
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_DISZ sze_ ina _nundum-min_-szu2 _an-ta_ u _ki-ta gar ka-dib-be2-da_-su",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley in his lips is located above and below, his kadibbû-offerings"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_DISZ sze_ ina _ugu_ li-iq _ka_-szu2 sza2? lu 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar ninda_ nap-⌈sza2⌉ _gu7_",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley on top of its mouth is either a 15th or a 150th person eats bread"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_DISZ sze_ ina _ugu_ su-uq-ti-szu _an-ta gar nig2-gur11 dagal_-asz2",
+      "surface": "obverse",
+      "column": "",
+      "english": "If a barley is located above its base: property will expand."
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_DISZ sze_ ina _murub4#_ su#-uq-ti-szu2 _gar szu {d}iszkur sig5# gar_-szu2",
+      "surface": "obverse",
+      "column": "",
+      "english": "If the barley is located in the middle of its 'finger': hand of Adad will be good."
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "[... x]-ti-szu2 _gar szu-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": "... its... is located. Its reeds"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "[...] _gar#_ x [ ] x x _us2-mesz_-szu2",
+      "surface": "obverse",
+      "column": "",
+      "english": "... is located...... its foundations"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "[...] _sza3-bi du10-ga#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "... its midst is good..."
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "[...] x-ma _szu_-su [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": "...... and his hand..."
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "note",
+      "text": "$ beginning missing",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "[...] x x x",
+      "surface": "reverse",
+      "column": "",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[...] _hul# dib_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": "... evil will seize him."
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_DISZ sze# szu# nig2-gur11 tuku_-szi",
+      "surface": "reverse",
+      "column": "",
+      "english": "If a barley has a possession"
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_DISZ sze# ga#_-szu2 i-rap-pisz",
+      "surface": "reverse",
+      "column": "",
+      "english": "If the barley of his milk is large"
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_DISZ sze# [nig2]-gur11_-szu2 _bir_-ah",
+      "surface": "reverse",
+      "column": "",
+      "english": "If the barley of its property is scattered"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_DISZ sze# [u4]-mesz_-szu2 _lugud2-da-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": "If his days are long:"
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_DISZ sze# u4#-mesz_-szu2 _gid2-da-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": "If his days are long:"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "_DISZ sze#_ at#-mu#-szu2 _ugu dingir_ u _lugal du10_-ab",
+      "surface": "reverse",
+      "column": "",
+      "english": "If he has a barley, he will be satisfied with god and king."
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_DISZ sze# uku2#_-in",
+      "surface": "reverse",
+      "column": "",
+      "english": "If he sees a barley"
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "_DISZ sze# uku2#_-in",
+      "surface": "reverse",
+      "column": "",
+      "english": "If he sees a barley"
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_DISZ sze_ ina ki#-[x ...] x x [...] x x [...] _amasz? dagal_-esz",
+      "surface": "reverse",
+      "column": "",
+      "english": "If a barley in.................. there will be a broad wind."
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "_DISZ sze_ ina [ ] x x [...] x GA _dib_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": "If barley............."
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "_DISZ sze_ [...] lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) [...] 2(gesz2)# 3(u) lu _igi#_ lu _egir_ lu 2 lu 3",
+      "surface": "reverse",
+      "column": "",
+      "english": "If a barley... of 15 or of 153... or before or after or after or after or 3"
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "lu 4(disz) _gar_-nu _{munus}kalag-ga dib_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_DISZ sze_ ina [...] x 1(u) 5(disz) lu sza2 2(gesz2) 3(u) 1(u) 5(disz) u 2(gesz2) 3(u) _gar_-nu tal2#-lak-ti _kusz_-ir _gen-gen_-ak",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_DISZ sze_ ina [...] lu sza2 2(gesz2) 3(u) _an-ta_-nu _gar_ e-ma _gen_-ku _sze-ga_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_DISZ sze_ ina [...] _sag# szu-si tur_-ti _gar ninda_ i-szeb#-bi _u4-mesz_-szu2 _gid2-da-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "_DISZ sze_ ina x [...] _kimin gar_ ina# _la#_-szu2 _ba-ug7_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_DISZ sze_ ina _suhusz# [x]-mesz gir3-min-mesz_ lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) ina _murub4_ sza2 _gir2-min_-szu2 lu he#-pi# esz-<szu2>",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_ugu en inim_-szu _gub dingir_ pa-sza2-ha _sum_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "_DISZ sze-mesz sag#-[du] na#_ lu# _igi#-mesz#_-szu lu _gu2_-su _diri-mesz_ x _nig2-gur11_-szu2 _bir_-ah#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "_DISZ sze-mesz_ [... x]-szu2 u 2(gesz2) 3(u)-szu2 _diri-mesz na bi nig2-gur11_-szu2 _bir#_-[ah]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "_DISZ sze-mesz_ [...] lu x x _dib-mesz_ x _gar_-nu lu _nig2-tuku uku2_-in lu [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "_DISZ sze-mesz_ [...] _diri-mesz szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "_DISZ sze-mesz sa5#_ [...] _su_-szu2 _diri-mesz dugud_ [...] _mu#_-szu2 _sig5_-iq _u4-mesz_-szu2 _gid2-da-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26'",
+      "atf": "_DISZ sze-mesz babbar#-mesz# du3# su#_-szu2 _diri-mesz zarah2 nu du10_-ub _uzu gar_-szu2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27'",
+      "atf": "_DISZ sze-mesz ge6#-mesz# du3 su#_-szu2 _diri-mesz dumu-mesz_ u _dumu-munus-mesz nu tuku_-szi",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": ""
+    }
+  ],
+  "english": [
+    "If a barley is located on the head of a man: hand of Adad, he will not reach the highest rank.",
+    "If a barley is located on the head of a man either on the right or on the left: that man will experience no life.",
+    "If a barley in the head of a man",
+    "If there is a mole on the top of the na na-gauge, there will be a favorable heart for it.",
+    "If a barley is located on the neck of a man's neck: his heart will be happy.",
+    "If a barley in his temple is 15: he will raise a dais.",
+    "If the barley in his temple is 190, he will recover.",
+    "If there is a mole on his head: hand of ama will come out in the paphal of a strong woman.",
+    "If a barley in his temple is located 15 times his anger is favourable on god and king.",
+    "If a barley on his forehead is either of 15 or of 140, it is favourable.",
+    "If the barley in the back of its neck is not present; all day",
+    "If there is a mole on his right thighs: the god will have mercy on him.",
+    "If barley is located in its horn: the god will not have mercy on an evil person.",
+    "If a barley in his ears, which is 15 or a kidnu-measure of 15 or of 150 GAR... is good.",
+    "If the barley is located on the bank of the River which is surrounded by a strong illness: he will die.",
+    "If the barley is located on its right side: good fortune.",
+    "If the barley is located on the left side of the gall bladder: the god will be happy.",
+    "If the barley is located on its right side: his heads will be scattered.",
+    "If the barley is located on its right side: he will recover.",
+    "If a barley is seen in the left side of the gall bladder or in the street: evil will be established.",
+    "If there is a mole on the left side and it is surrounded by a mole on the left side.",
+    "If a barley-skin is located on the top of the right side of the gall bladder or on the left side of the gall bladder: the god will be over the man.",
+    "If there is a mole on the left side and it is surrounded by a mole on the left side.",
+    "If a barley is located on the top of its nose: a favorable wind will be set towards a man.",
+    "If a barley is located on its right and left side: against its owner will stand.",
+    "If a barley in its nru (barley) or 15 or 150 (barley) is located: a favorable tablet of the god will be given to a person.",
+    "If a barley in its nanny, either above or below, is located: the god will eat food.",
+    "If the barley in his lips is located above and below, his kadibbû-offerings",
+    "If the barley on top of its mouth is either a 15th or a 150th person eats bread",
+    "If a barley is located above its base: property will expand.",
+    "If the barley is located in the middle of its 'finger': hand of Adad will be good.",
+    "... its... is located. Its reeds",
+    "... is located...... its foundations",
+    "... its midst is good...",
+    "...... and his hand...",
+    "......",
+    "... evil will seize him.",
+    "If a barley has a possession",
+    "If the barley of his milk is large",
+    "If the barley of its property is scattered",
+    "If his days are long:",
+    "If his days are long:",
+    "If he has a barley, he will be satisfied with god and king.",
+    "If he sees a barley",
+    "If he sees a barley",
+    "If a barley in.................. there will be a broad wind.",
+    "If barley.............",
+    "If a barley... of 15 or of 153... or before or after or after or after or 3"
+  ],
+  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "status": "partial_english",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "translation_meta": {
+    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
+    "device": "cuda",
+    "prompt": "translate Akkadian to English: ",
+    "lines_translated": 48,
+    "lines_total": 62,
+    "source": "local_api"
+  },
+  "omen_kind": "physiognomy"
+}

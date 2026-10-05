@@ -1,0 +1,2980 @@
+{
+  "id": "P480691",
+  "designation": "MDP 11, pl. 001-011",
+  "genre": "Royal/Monumental",
+  "subgenre": "witness",
+  "language": "Elamite",
+  "period": "Old Akkadian (ca. 2340-2200 BC)",
+  "year": -2270,
+  "provenience": "Susa (mod. Shush)",
+  "site": "Susa (mod. Shush)",
+  "lat": 32.19,
+  "lon": 48.25,
+  "content_lines": 326,
+  "chars": 5099,
+  "font": "SantakkuM",
+  "known_elsewhere": false,
+  "cdli_url": "https://cdli.earth/artifacts/480691",
+  "museum_no": "Sb 08833",
+  "primary_publication": "MDP 11, pl. 001-011",
+  "atf_source": "Foxvog, Daniel A.",
+  "atf": "&P480691 = MDP 11, xxx  \n#atf: lang elx \n@tablet \n@obverse \n@column 1 \n1. [ha-ap]-ti#? \n2. {d#}[bi]-ni-kir#  \n3. {d}ba-ha ki-ki-ip \n4. {d}hu-ba-an \n5. {d}a-ba4# \n6. {d}zi-it \n7. {d}na-hi-ti \n8. {d}nin-szuszin \n9. {d}si#-mu#-ut  \n0. [{d}]si#-ir-na-bi2#-ir \n11. [{d}]hu#-sa \n12. [{d}]ug#-gab-na \n13. [{d}]im#-it#-[ki] \n14. [{d}x]-x-(x) \n15. [{d}]tul#-la-at# \n16. [{d}]hu-ur-bi \n17. [{d}]hu-ut-ra#-[an] \n18. [{d}nin-urta] \n19. [{d}si]-a-szum \n20. [{d}]ma-si#-at# \n21. {d}nin-kar-ak# \n22. {d}na-ru14-de3 \n23. {d}gu#-[(x)]-gu#-mu-uk-ti-ir\n24. {d}hu-um-ga5-at \n25. {d}ru-hu-isz#-na#  \n26. {d#}ru#-hu#-sa#-[ak] \n27. [{d}...]-x \n@column 2 \n1. [{d}...] \n2. [{d}...] \n3. {d#}ni-ar-zi-na \n4. {d}la-am3-ba-ni \n5. {d}kir-PI-si-ir \n6. {d}hu-ur-ba-hi-ir \n7. {d}asz2-ha-ra \n8. {d}ni-tu-ti-ir \n9. {d}ti-u2-uk \n10. [{d}]si#-im-it#-sa#-ra-ar# \n11. {d}[...] \n12. [{d}]su#-[si]-ib#?-ba\n13. [ni-ka tah]-ah-asz2#  \n14. na#-bi2#-ip \n15. gi#-ri-ip \n16. zu-ki-ip \n17. {d}na-hi-ti \n18. ha-ti-ir zu-kir \n19. {d}nin-szuszin \n20. hu-ur#-[tu-ur] \n21. zu-kir# \n22. {d}si-a#-[szum] \n23. [{d}]na-ap#-[ir] \n24. [{d}]na#-ru14-de3 \n25. gi#-da#-ar zu-kir#  \n26. [...] \n27. [...]\n@column 3 \n1. [...] \n2. [...] \n3. si#-im#-[it] \n4. a-ga-[de3{ki}] \n5. in?-gi tu#-[un] \n6. usz-hi#-[u3-ri] \n7. si-im-[it] \n8. PI-il-[bi-ti] \n9. ni-gi#-[si-ba-an] \n10. bi-ti-[ir] \n11. na-ra-am-[{d}suen]-ni-ra# \n12. [bi]-ti#-it \n13. u3-ri \n14. lut-ti-ir \n15. na-ra-am-{d}suen-ni-ra# \n16. lut-ti-ir \n17. u3#-ri \n18. li#-e11 \n19. lut li#-e11 \n20. hu#-ur#-tu2 \n21. da-ri2#-ip \n22. na-ra-am-{d}suen#-ib-ba \n23. [ni]-gi-si-ba-an \n24. bi#-ti#-ir# \n25. [na-ra-am]-{d}suen-[ni-ra] \n@column 4 \n1. [bi-ti-ir] \n2. [u3-ri] \n3. [lut-ti-ir] \n4. [na-ra-am-{d}suen-ni-ra] \n5. [lut-ti-ir] \n6. [u3-ri] \n7. [li-e11] \n8. [lut li-e11] \n9. [hu-ur-tu2] \n10. [da-ri2-ip] \n11. [na-ra-am-{d}suen-ib-ba] \n12. [ni-gi-si-ba-an] \n13. [...] \n14. [...]-in \n15. [pu-ti]-ik?-ra? \n16. [in]-gi tu-un \n17. [a]-gi \n18. usz#-hi-u3-ri \n19. PI#-il-bi-ti \n20. de3#-pi-ir \n21. [a-ga-de3]{ki} \n22. ha-ap#-[hu] \n23. in-ri#? [...] \n24. [na-bi2-ip]\n25. [(...)] \n@column 5 \n1. [zu-ki-ip] \n2. [{d}na-hi-ti] \n3. [ha-ti-ir zu-kir] \n4. [{d}nin-szuszin] \n5. [hu-ur-tu-ur] \n6. [zu-kir] \n7. [{d}si-a-szum] \n8. [{d}na-ap-ir] \n9. [{d}na-ru14-de3] \n10. [gi-da-ar zu-kir] \n11. [esz-hi-u3-ri] \n12. [su-de3-it] \n13. sa-[de3-it] \n14. [ba-la-ni] \n15. in-[ri] \n16. hu-da#-ra# \n17. PI-il-ga-ni \n18. su-de3-it \n19. sa-de3-it \n20. hu-da-ra \n21. ha-ap-hu# \n22. gu2-li#-ir#\n23. na#-ra-am-{d}suen \n24. [ir] me-ri# \n25. [pu]-bi2#-szu-ra \n26. [ir in]-gi \n27. [ha-ni]-in# \n28. na-[bi2-ip] \n@column 6 \n1. [gi-ri-ip] \n2. [zu-ki-ip] \n3. [{d}na-hi-ti] \n4. [ha-ti-ir zu-kir] \n5. [{d}nin-szuszin] \n6. [hu-ur-tu-ur] \n7. [zu-kir] \n8. [{d}si-a-szum] \n9. [{d}na-pi-ir] \n10. [{d}na-ru14-de3] \n11. [gi-da-ar zu-kir] \n12. [...] \n13. [...] \n14. [...] \n15. [...] \n16. [...] \n17. a-ba-[...] \n18. ha-[...] \n19. [...] \n20. ba-la a-ga-de3{ki} \n21. [usz-hi]-u3#-[ri] \n22. hi-it# \n23. zi-hi-[in] \n24. hu-tu-[un] \n25. hu-ur-[tu2] \n26. bi-ti-ir# \n27. in-[ri] \n28. [...]-me-[in]  \n@reverse \n@column 1 \n1. [ha-ap-hu] \n2. [ba]-la# a-[ga]-de3{ki} \n3. ha-dam#-[ti] \n4. in-gi# tu-un# \n5. a-gi# \n6. [...] \n7. [...] \n8. [hi]-it#? \n9. gi#-gu# \n10. si#-in-gu2# \n11. ir [x]-hu-[x] \n12. in-[gi] \n13. gu2-li#-[ir] \n14. na-ra-[am-{d}suen] \n15. ir me#-[ri] \n16. pu-[bi2-szu-ra] \n17. ir [in-gi] \n18. ha-[ni-in] \n19. na-[bi2-ip] \n20. [gi-ri-ip] \n21. [zu-ki-ip] \n22. [{d}na-hi-ti] \n23. [ha-ti-ir zu-kir] \n24. [{d}nin-szuszin]\n25. [hu-ur-tu-ur] \n26. [zu-kir] \n@column 2 \n1. [{d}si-a-szum] \n2. [{d}na-ap-ir] \n3. [{d}na-ru14-de3] \n4. [gi-da-ar] \n5. [zu-ki]-ir \n6. li#-e11 \n7. hu-ur#-tu2\n8. [da-ri2]-ip# \n9. [na-ra-am-{d}suen-ib-ba] \n10. [ni-gi-si]-ba-an# \n11. [zi]-la#-ni-[e] \n12. [hu-ut]-ti-li \n13. [na-bi2]-ip# \n14. [{d}su-si-ib]-ba \n15. [...] \n16. [...] \n17. [...] \n18. ha-al ma#-si#-li \n19. ma-an \n20. a-ni a-ha hu-ra#-in \n21. gi#-li \n22. zi-la-ni-e-ip \n23. [a]-ti#-in \n24. a-x-x \n25. si-ha-ar# \n26. zi-la-[ni-e] \n27. hu-[ut-ti-li] \n28. [...] \n29. [...] \n30. [na-bi2-ip] \n@column 3 \n1. [gi-ri-ip] \n2. [zu-ki-ip] \n3. [{d}na-hi-ti] \n4. ha#-ti#-ir# zu-kir# \n5. {d}nin-szuszin \n6. hu-ur-tu-ur \n7. zu-kir# \n8. {d}si-a-szum \n9. {d}na-pi-ir# \n10. {d}[na-ru14-de3]  \n11. gi-[da-ar zu-kir] \n12. {d}[...] \n13. hu-[...] \n14. na-[...] \n15. hu-ur#-[tu-ur] \n16. da-ri2#-[ir] \n17. na-ra-am-[{d}suen]-ni-ra# \n18. li-e11 \n19. a-ha-ar \n20. si-ba lut \n21. lu-gi-li ki-ti \n22. ki-lu a-ni a-ha-ar ha-in \n23. zi-la-ni-e \n24. a-si11-in \n25. a-ha-ar ha-asz2-ak-li \n26. si11-lut-[li] \n27. ba-x-[x] \n28. [...] \n@column 4 \n1. [...] \n2. [...] \n3. na#?-[...] \n4. bi-[ir-ra]-ak#-li \n5. hu-ut nu-uk-li \n6. hu-ra-ak-li \n7. ba-la-ni-bi \n8. ma-an \n9. su-ri-ni-in \n10. in-ni-ip \n11. li-ih \n12. a-ni ze2#-hi-in \n13. ru14#-tu#-ni-ri\n14. gu4-si-li \n15. [{d}si]-mu#-ut \n16. a-ka-da ba-ah-si-li \n17. bi-ti-ir \n18. na-ra-am-{d}suen-ni-ra \n19. li-ti-bi2 \n20. gu2-lu lik-li \n21. ha-ni-ni-e \n22. pil2-ga-li \n23. ru14-tu-ni-ri \n24. ru-hu-ur \n25. zi-ga-lu-gu-ra \n26. gu2-si-isz-li \n27. ki-ri-ir-ri \n28. la#-[an?] \n29. [...] \n@column 5 \n1. [...] \n2. [...] \n3. gu-gu# \n4. a-ha# ku-ru-uk-li \n5. na-bi2-ip \n6. gi-ri-ip \n7. zu-ki-ip \n8. gu2-la \n9. sa-an \n10. sa-mi-in \n11. [ha]-al-hi \n12. bi-ir#-ga-an \n13. zi-la-ni-e-pe \n14. ha-asz2-ak-li \n15. ha-ar \n16. a-ni a-ha-at ti-ga-an \n17. hu-ur-ti-pe \n18. ni-ka \n19. PI-ti-in \n20. a-ha-an ha-asz2-ak-li \n21. pe-il-mi-in \n22. hu-ni-bi2-in \n23. si11-ma \n24. a-ha-an ha-asz2-ak-li \n25. na-bi2-ip \n26. gi-ri-ip  \n27. zu-ki-ip \n28. {[d]}na-hi-ti \n29. [ha]-ti-e zu-kir \n30. [{d}nin-szuszin] \n31. [hu-ur-tu-ur zu-kir] \n@column 6 \n1. [{d}si-a-szum] \n2. [{d}na-ap-ir] \n3. [{d}na-ru14-de3] \n4. [gi-da-ar zu]-kir# \n5. a-ga-ra \n6. pe-il \n7. na-ra-am-{d}suen \n8. bi-ir-ti-ir \n9. {d}nin-szuszin \n10. mu-ut-hu-ha \n11. na-bi2-ip \n12. [(x)] x-ba-[x] \n13. [...]-pe \n14. [ti/de3]-la#-ak-na \n15. [du-ni-ik]-li \n16. [zi]-la#-ni-e \n17. [ku-tu]-usz-li \n18. [ru]-hu-[sa]-ak \n19. [hu-ut]-ti-ik-li \n20. [ru14-tu]-ni-ri \n21. [gu4-si]-li \n22. ni-bi [pil2]-ga-li \n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[ha-ap]-ti#?",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of the lips"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{d#}[bi]-ni-kir#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Banikir"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{d}ba-ha ki-ki-ip",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Baa, the kikip priest"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{d}hu-ba-an",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "uban"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}a-ba4#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Aba"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{d}zi-it",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Zit"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{d}na-hi-ti",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Naiti,"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{d}nin-szuszin",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}si#-mu#-ut",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of Simut"
+    },
+    {
+      "type": "line",
+      "n": "0",
+      "atf": "[{d}]si#-ir-na-bi2#-ir",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Sin-nbir"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[{d}]hu#-sa",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For usa"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[{d}]ug#-gab-na",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Uggabna"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[{d}]im#-it#-[ki]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of Imitki"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[{d}x]-x-(x)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[{d}]tul#-la-at#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "for Tullat"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[{d}]hu-ur-bi",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "urbi"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[{d}]hu-ut-ra#-[an]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "utran"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[{d}nin-urta]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Ninurta"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[{d}si]-a-szum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of Si’aum"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[{d}]ma-si#-at#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of the goddess Madt"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{d}nin-kar-ak#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Ninkarak"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{d}na-ru14-de3",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "of Narude"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "{d}gu#-[(x)]-gu#-mu-uk-ti-ir",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Gumuktir"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{d}hu-um-ga5-at",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "umgat"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "{d}ru-hu-isz#-na#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Runa"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "{d#}ru#-hu#-sa#-[ak]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "Rusak"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[{d}...]-x",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[{d}...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{d}...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{d#}ni-ar-zi-na",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For Niarzina"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{d}la-am3-ba-ni",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For Lamma-bani,"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}kir-PI-si-ir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Kir-PIsir"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{d}hu-ur-ba-hi-ir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Hur-bair"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{d}asz2-ha-ra",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For Aara"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{d}ni-tu-ti-ir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Nitutir"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}ti-u2-uk",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Ti’uk"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[{d}]si#-im-it#-sa#-ra-ar#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Simit-sarar"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{d}[...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[{d}]su#-[si]-ib#?-ba",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Susibba"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[ni-ka tah]-ah-asz2#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "your own command"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "na#-bi2#-ip",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Nabip"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "gi#-ri-ip",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "zu-ki-ip",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "to break, break"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}na-hi-ti",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Naiti,"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ha-ti-ir zu-kir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "the one who removes the incantation"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{d}nin-szuszin",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "hu-ur#-[tu-ur]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "hurtur"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "zu-kir#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{d}si-a#-[szum]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "of Si’aum"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[{d}]na-ap#-[ir]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Napir"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[{d}]na#-ru14-de3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "To Narude"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "gi#-da#-ar zu-kir#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "reed mat for slinging"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "si#-im#-[it]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a-ga-[de3{ki}]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "of Agade"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "in?-gi tu#-[un]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he has repaid"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "usz-hi#-[u3-ri]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "si-im-[it]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "PI-il-[bi-ti]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "PI-ilbiti"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "ni-gi#-[si-ba-an]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Nigisiban"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "bi-ti-[ir]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he dedicated it."
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "na-ra-am-[{d}suen]-ni-ra#",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[bi]-ti#-it",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he conquered"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "u3-ri",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he brought."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "lut-ti-ir",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "let me live."
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "na-ra-am-{d}suen-ni-ra#",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "lut-ti-ir",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "let me live."
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "u3#-ri",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he brought."
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "li#-e11",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "may he bring."
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "lut li#-e11",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he may go out."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "hu#-ur#-tu2",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of flying insect)"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "da-ri2#-ip",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Erip"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "na-ra-am-{d}suen#-ib-ba",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Naram-Sin-ibba"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[ni]-gi-si-ba-an",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Nigisiban"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "bi#-ti#-ir#",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he dedicated it."
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[na-ra-am]-{d}suen-[ni-ra]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[bi-ti-ir]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he created"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[u3-ri]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he brought."
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[lut-ti-ir]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "let me live."
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[na-ra-am-{d}suen-ni-ra]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[lut-ti-ir]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "let me live."
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[u3-ri]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he brought."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[li-e11]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "may he bring."
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[lut li-e11]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "let him go out."
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[hu-ur-tu2]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[da-ri2-ip]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[na-ra-am-{d}suen-ib-ba]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "Naram-Sin-ibba"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[ni-gi-si-ba-an]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "Nigisiban"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[...]-in",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "...-in"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[pu-ti]-ik?-ra?",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he entrusted"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[in]-gi tu-un",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he has repaid"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[a]-gi",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "agi"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "usz#-hi-u3-ri",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he smote,"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "PI#-il-bi-ti",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "PI-ilbiti"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "de3#-pi-ir",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[a-ga-de3]{ki}",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "of Agade"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ha-ap#-[hu]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "in-ri#? [...]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "Inri..."
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[na-bi2-ip]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[(...)]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "..."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[zu-ki-ip]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "to cut off"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{d}na-hi-ti]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "Naiti"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[ha-ti-ir zu-kir]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "the one who removes the inscription"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[{d}nin-szuszin]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[hu-ur-tu-ur]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "a kind of flying insect"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[zu-kir]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[{d}si-a-szum]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "To Siaum"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[{d}na-ap-ir]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "Nebuchadnezzar"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[{d}na-ru14-de3]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "To Narude"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[gi-da-ar zu-kir]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "reed basket for a banquet"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[esz-hi-u3-ri]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[su-de3-it]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "he caused to die"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "sa-[de3-it]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "a saditu"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[ba-la-ni]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "Balani"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "in-[ri]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "he built."
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "hu-da#-ra#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "to uda"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "PI-il-ga-ni",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "PI-ilgani,"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "su-de3-it",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "to be abandoned,"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "sa-de3-it",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "a sade"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "hu-da-ra",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "to uda"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "ha-ap-hu#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "gu2-li#-ir#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "na#-ra-am-{d}suen",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[ir] me-ri#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[pu]-bi2#-szu-ra",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "I made for him"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[ir in]-gi",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "... of Ingi"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[ha-ni]-in#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "he fashioned."
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "na-[bi2-ip]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": "he smote."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[gi-ri-ip]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[zu-ki-ip]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "to cut off"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{d}na-hi-ti]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "Naiti"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[ha-ti-ir zu-kir]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "the one who removes the inscription"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[{d}nin-szuszin]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[hu-ur-tu-ur]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "a kind of flying insect"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[zu-kir]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[{d}si-a-szum]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "To Siaum"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[{d}na-pi-ir]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "Napir"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[{d}na-ru14-de3]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "To Narude"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[gi-da-ar zu-kir]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "reed basket for a banquet"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "a-ba-[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "Aba-"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ha-[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "may he"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "ba-la a-ga-de3{ki}",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "Bala of Agade"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[usz-hi]-u3#-[ri]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "he caused to rise."
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "hi-it#",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "a curse"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "zi-hi-[in]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "pomegranate"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "hu-tu-[un]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "utun"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "hu-ur-[tu2]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "(a kind of flying insect)"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "bi-ti-ir#",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "he dedicated it."
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "in-[ri]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "he built."
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[...]-me-[in]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": "... are..."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[ha-ap-hu]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[ba]-la# a-[ga]-de3{ki}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "of the cities of Agade"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ha-dam#-[ti]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "adamti"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "in-gi# tu-un#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "he has restored,"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a-gi#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "A-gi"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[hi]-it#?",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "robber"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "gi#-gu#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "reed mat"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "si#-in-gu2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "(an anatomical part of the head)"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "ir [x]-hu-[x]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "in-[gi]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "Ingi"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "gu2-li#-[ir]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "Gulir"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "na-ra-[am-{d}suen]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "ir me#-[ri]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "pu-[bi2-szu-ra]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "of his mouth"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "ir [in-gi]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "... of Ingi"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ha-[ni-in]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "he fashioned it."
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "na-[bi2-ip]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "he smote."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[gi-ri-ip]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[zu-ki-ip]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "to cut off"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "[{d}na-hi-ti]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "Naiti"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[ha-ti-ir zu-kir]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "the one who removes the inscription"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[{d}nin-szuszin]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[hu-ur-tu-ur]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "a kind of flying insect"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[zu-kir]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[{d}si-a-szum]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "To Siaum"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{d}na-ap-ir]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "Nebuchadnezzar"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{d}na-ru14-de3]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "To Narude"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[gi-da-ar]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "reed mat"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[zu-ki]-ir",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "to smite"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "li#-e11",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "may he bring."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "hu-ur#-tu2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "(a kind of flying insect)"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[da-ri2]-ip#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[na-ra-am-{d}suen-ib-ba]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "Naram-Sin-ibba"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[ni-gi-si]-ba-an#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "Nigisiban"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[zi]-la#-ni-[e]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "to be taken away"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[hu-ut]-ti-li",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "uttili"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[na-bi2]-ip#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "he smote."
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[{d}su-si-ib]-ba",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "Susiba"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ha-al ma#-si#-li",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "the cult center of Asili,"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "ma-an",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "man"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a-ni a-ha hu-ra#-in",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "his brother, he sat down."
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "gi#-li",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "reed"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "zi-la-ni-e-ip",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[a]-ti#-in",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "Atin"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a-x-x",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "A-,"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "si-ha-ar#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "zi-la-[ni-e]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "and his life"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "hu-[ut-ti-li]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "uttili"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[na-bi2-ip]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[gi-ri-ip]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[zu-ki-ip]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "to cut off"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{d}na-hi-ti]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "Naiti"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "ha#-ti#-ir# zu-kir#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "the one who removes the incantation"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}nin-szuszin",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "hu-ur-tu-ur",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "hurtur,"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "zu-kir#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{d}si-a-szum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "of Si’aum"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}na-pi-ir#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "Napir"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{d}[na-ru14-de3]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "of Narude"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "gi-[da-ar zu-kir]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "reed mat for the reed mat"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{d}[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "For the god"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "hu-[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "na-[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "Na-"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "hu-ur#-[tu-ur]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "hurtur"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "da-ri2#-[ir]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "eternal"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "na-ra-am-[{d}suen]-ni-ra#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "li-e11",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "may he bring."
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "a-ha-ar",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "to take away"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "si-ba lut",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "the horns of humanity"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "lu-gi-li ki-ti",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "Lu-gili of the earth"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ki-lu a-ni a-ha-ar ha-in",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "he is a liar, he is a lion,"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "zi-la-ni-e",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "and his life"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a-si11-in",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "he erected"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "a-ha-ar ha-asz2-ak-li",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "before aakl"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "si11-lut-[li]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "ba-x-[x]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "..."
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "na#?-[...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Na-"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "bi-[ir-ra]-ak#-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Birrak-li"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "hu-ut nu-uk-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "rejoicing of the nukulti priest"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "hu-ra-ak-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "urakl"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ba-la-ni-bi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "and his own life"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ma-an",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "man"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "su-ri-ni-in",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "in-ni-ip",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "li-ih",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "may he rejoice."
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a-ni ze2#-hi-in",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "his father who begot him"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ru14#-tu#-ni-ri",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Rtuniri"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "gu4-si-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "(a kind of bull)"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[{d}si]-mu#-ut",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "of Simut"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a-ka-da ba-ah-si-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "at the mouth of Basili"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "bi-ti-ir",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "he dedicated it."
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "na-ra-am-{d}suen-ni-ra",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "li-ti-bi2",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "may he live."
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "gu2-lu lik-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "may he be glad."
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "ha-ni-ni-e",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Hanini"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "pil2-ga-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Pilgali,"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ru14-tu-ni-ri",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Rtuniri"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "ru-hu-ur",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "ruur,"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "zi-ga-lu-gu-ra",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Zigalugu"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "gu2-si-isz-li",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "Gusili"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "ki-ri-ir-ri",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "of the lands"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "la#-[an?]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "gu-gu#",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a-ha# ku-ru-uk-li",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "together with Kurukli"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "na-bi2-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "Nabip"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "gi-ri-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "zu-ki-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "to break, break"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "gu2-la",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "Gula"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "sa-an",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "a kind of grass"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "sa-mi-in",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "of Samin,"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[ha]-al-hi",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "bi-ir#-ga-an",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "he smote,"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "zi-la-ni-e-pe",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "to strew"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ha-asz2-ak-li",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "aakl"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "ha-ar",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a-ni a-ha-at ti-ga-an",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "to the side of the tigan"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "hu-ur-ti-pe",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ni-ka",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "of your own"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "PI-ti-in",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "PI-tin"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a-ha-an ha-asz2-ak-li",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "together with aakl"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "pe-il-mi-in",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "he fashioned."
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "hu-ni-bi2-in",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "he built for him."
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "si11-ma",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "a kind of profession"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "a-ha-an ha-asz2-ak-li",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "together with aakl"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "na-bi2-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "Nabip"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "gi-ri-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "reed basket"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "zu-ki-ip",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "to break, break"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "{[d]}na-hi-ti",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "Naiti"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[ha]-ti-e zu-kir",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "he swore."
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[{d}nin-szuszin]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "[hu-ur-tu-ur zu-kir]",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": "a reed hut, a tree"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[{d}si-a-szum]",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "To Siaum"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{d}na-ap-ir]",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Nebuchadnezzar"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{d}na-ru14-de3]",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "To Narude"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[gi-da-ar zu]-kir#",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "reed basket for a banquet"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a-ga-ra",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "of Aga"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "pe-il",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "na-ra-am-{d}suen",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Naram-Sin"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "bi-ir-ti-ir",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "he smote,"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}nin-szuszin",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "For Ninuina"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "mu-ut-hu-ha",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Utua"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "na-bi2-ip",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Nabip"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[(x)] x-ba-[x]",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "...-ba..."
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[...]-pe",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[ti/de3]-la#-ak-na",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "may he not live."
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[du-ni-ik]-li",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "a cupbearer"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[zi]-la#-ni-e",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "to make rise and depart"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[ku-tu]-usz-li",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Kutuli"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[ru]-hu-[sa]-ak",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Rushusak"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[hu-ut]-ti-ik-li",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "he smote"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[ru14-tu]-ni-ri",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "Rtuniri"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[gu4-si]-li",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "a kind of bull"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ni-bi [pil2]-ga-li",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": "whose fearsomeness is diminished"
+    }
+  ],
+  "english": [
+    "of the lips",
+    "For Banikir",
+    "Baa, the kikip priest",
+    "uban",
+    "For Aba",
+    "Zit",
+    "Naiti,",
+    "For Ninuina",
+    "of Simut",
+    "Sin-nbir",
+    "For usa",
+    "For Uggabna",
+    "of Imitki",
+    "For the god",
+    "for Tullat",
+    "urbi",
+    "utran",
+    "For Ninurta",
+    "of Si’aum",
+    "of the goddess Madt",
+    "For Ninkarak",
+    "of Narude",
+    "Gumuktir",
+    "umgat",
+    "Runa",
+    "Rusak",
+    "For the god",
+    "For the god",
+    "For the god",
+    "For Niarzina",
+    "For Lamma-bani,",
+    "Kir-PIsir",
+    "Hur-bair",
+    "For Aara",
+    "Nitutir",
+    "Ti’uk",
+    "Simit-sarar",
+    "For the god",
+    "Susibba",
+    "your own command",
+    "Nabip",
+    "reed basket",
+    "to break, break",
+    "Naiti,",
+    "the one who removes the incantation",
+    "For Ninuina",
+    "hurtur",
+    "(a kind of insect)",
+    "of Si’aum",
+    "Napir",
+    "To Narude",
+    "reed mat for slinging",
+    "....",
+    "....",
+    "....",
+    "....",
+    "(a kind of profession)",
+    "of Agade",
+    "he has repaid",
+    "he smote",
+    "(a kind of profession)",
+    "PI-ilbiti",
+    "Nigisiban",
+    "he dedicated it.",
+    "Naram-Sin",
+    "he conquered",
+    "he brought.",
+    "let me live.",
+    "Naram-Sin",
+    "let me live.",
+    "he brought.",
+    "may he bring.",
+    "he may go out.",
+    "(a kind of flying insect)",
+    "Erip",
+    "Naram-Sin-ibba",
+    "Nigisiban",
+    "he dedicated it.",
+    "Naram-Sin",
+    "he created",
+    "he brought.",
+    "let me live.",
+    "Naram-Sin",
+    "let me live.",
+    "he brought.",
+    "may he bring.",
+    "let him go out.",
+    "(a kind of insect)",
+    "(a kind of profession)",
+    "Naram-Sin-ibba",
+    "Nigisiban",
+    "....",
+    "...-in",
+    "he entrusted",
+    "he has repaid",
+    "agi",
+    "he smote,",
+    "PI-ilbiti",
+    "(a kind of profession)",
+    "of Agade",
+    "(a kind of insect)",
+    "Inri...",
+    "he smote",
+    "...",
+    "to cut off",
+    "Naiti",
+    "the one who removes the inscription",
+    "For Ninuina",
+    "a kind of flying insect",
+    "(a kind of insect)",
+    "To Siaum",
+    "Nebuchadnezzar",
+    "To Narude",
+    "reed basket for a banquet",
+    "(a kind of profession)",
+    "he caused to die",
+    "a saditu",
+    "Balani",
+    "he built.",
+    "to uda",
+    "PI-ilgani,",
+    "to be abandoned,",
+    "a sade",
+    "to uda",
+    "(a kind of insect)",
+    "(a kind of profession)",
+    "Naram-Sin",
+    "......",
+    "I made for him",
+    "... of Ingi",
+    "he fashioned.",
+    "he smote.",
+    "reed basket",
+    "to cut off",
+    "Naiti",
+    "the one who removes the inscription",
+    "For Ninuina",
+    "a kind of flying insect",
+    "(a kind of insect)",
+    "To Siaum",
+    "Napir",
+    "To Narude",
+    "reed basket for a banquet",
+    "....",
+    "....",
+    "....",
+    "....",
+    "....",
+    "Aba-",
+    "may he",
+    "....",
+    "Bala of Agade",
+    "he caused to rise.",
+    "a curse",
+    "pomegranate",
+    "utun",
+    "(a kind of flying insect)",
+    "he dedicated it.",
+    "he built.",
+    "... are...",
+    "(a kind of insect)",
+    "of the cities of Agade",
+    "adamti",
+    "he has restored,",
+    "A-gi",
+    "....",
+    "....",
+    "robber",
+    "reed mat",
+    "(an anatomical part of the head)",
+    "......",
+    "Ingi",
+    "Gulir",
+    "Naram-Sin",
+    "......",
+    "of his mouth",
+    "... of Ingi",
+    "he fashioned it.",
+    "he smote.",
+    "reed basket",
+    "to cut off",
+    "Naiti",
+    "the one who removes the inscription",
+    "For Ninuina",
+    "a kind of flying insect",
+    "(a kind of insect)",
+    "To Siaum",
+    "Nebuchadnezzar",
+    "To Narude",
+    "reed mat",
+    "to smite",
+    "may he bring.",
+    "(a kind of flying insect)",
+    "(a kind of profession)",
+    "Naram-Sin-ibba",
+    "Nigisiban",
+    "to be taken away",
+    "uttili",
+    "he smote.",
+    "Susiba",
+    "....",
+    "....",
+    "....",
+    "the cult center of Asili,",
+    "man",
+    "his brother, he sat down.",
+    "reed",
+    "he smote",
+    "Atin",
+    "A-,",
+    "(a kind of insect)",
+    "and his life",
+    "uttili",
+    "....",
+    "....",
+    "he smote",
+    "reed basket",
+    "to cut off",
+    "Naiti",
+    "the one who removes the incantation",
+    "For Ninuina",
+    "hurtur,",
+    "(a kind of insect)",
+    "of Si’aum",
+    "Napir",
+    "of Narude",
+    "reed mat for the reed mat",
+    "For the god",
+    "......",
+    "Na-",
+    "hurtur",
+    "eternal",
+    "Naram-Sin",
+    "may he bring.",
+    "to take away",
+    "the horns of humanity",
+    "Lu-gili of the earth",
+    "he is a liar, he is a lion,",
+    "and his life",
+    "he erected",
+    "before aakl",
+    "(a kind of profession)",
+    "...",
+    "....",
+    "....",
+    "....",
+    "Na-",
+    "Birrak-li",
+    "rejoicing of the nukulti priest",
+    "urakl",
+    "and his own life",
+    "man",
+    "he smote",
+    "he smote",
+    "may he rejoice.",
+    "his father who begot him",
+    "Rtuniri",
+    "(a kind of bull)",
+    "of Simut",
+    "at the mouth of Basili",
+    "he dedicated it.",
+    "Naram-Sin",
+    "may he live.",
+    "may he be glad.",
+    "Hanini",
+    "Pilgali,",
+    "Rtuniri",
+    "ruur,",
+    "Zigalugu",
+    "Gusili",
+    "of the lands",
+    "(a kind of profession)",
+    "....",
+    "....",
+    "....",
+    "(a kind of profession)",
+    "together with Kurukli",
+    "Nabip",
+    "reed basket",
+    "to break, break",
+    "Gula",
+    "a kind of grass",
+    "of Samin,",
+    "(a kind of insect)",
+    "he smote,",
+    "to strew",
+    "aakl",
+    "(a kind of insect)",
+    "to the side of the tigan",
+    "(a kind of insect)",
+    "of your own",
+    "PI-tin",
+    "together with aakl",
+    "he fashioned.",
+    "he built for him.",
+    "a kind of profession",
+    "together with aakl",
+    "Nabip",
+    "reed basket",
+    "to break, break",
+    "Naiti",
+    "he swore.",
+    "For Ninuina",
+    "a reed hut, a tree",
+    "To Siaum",
+    "Nebuchadnezzar",
+    "To Narude",
+    "reed basket for a banquet",
+    "of Aga",
+    "(a kind of insect)",
+    "Naram-Sin",
+    "he smote,",
+    "For Ninuina",
+    "Utua",
+    "Nabip",
+    "...-ba...",
+    "......",
+    "may he not live.",
+    "a cupbearer",
+    "to make rise and depart",
+    "Kutuli",
+    "Rushusak",
+    "he smote",
+    "Rtuniri",
+    "a kind of bull",
+    "whose fearsomeness is diminished"
+  ],
+  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "status": "english",
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "translation_meta": {
+    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
+    "device": "cuda",
+    "prompt": "translate Akkadian to English: ",
+    "lines_translated": 326,
+    "lines_total": 326,
+    "source": "local_api"
+  }
+}

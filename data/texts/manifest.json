@@ -1,0 +1,366 @@
+[
+  {
+    "id": "P213189",
+    "designation": "OIP 104, 040 (Manistusu obelisk)",
+    "genre": "Royal/Monumental",
+    "lines": 1544,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P241509",
+    "designation": "ARET 03, 394 + 617 + 604 + ARET 11, 2 + unp. frag.",
+    "genre": "Literary",
+    "lines": 834,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P241396",
+    "designation": "ARET 03, 112 + ARET 03, 187 + ARET 11, 01 + frags.",
+    "genre": "Literary",
+    "lines": 788,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P293400",
+    "designation": "YOS 10, 31",
+    "genre": "Omen",
+    "lines": 673,
+    "font": "Santakku"
+  },
+  {
+    "id": "P518915",
+    "designation": "RINBE 2, Nabonidus 03, ex. 01",
+    "genre": "Royal/Monumental",
+    "lines": 504,
+    "font": "Esagil"
+  },
+  {
+    "id": "P241801",
+    "designation": "ARET 13, 09",
+    "genre": "Letter",
+    "lines": 426,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P241484",
+    "designation": "ARET 13, 01",
+    "genre": "Literary",
+    "lines": 356,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P243647",
+    "designation": "ARET 13, 14 + unp. frag.",
+    "genre": "Literary",
+    "lines": 345,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P241831",
+    "designation": "ARET 13, 15",
+    "genre": "Literary",
+    "lines": 331,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P480691",
+    "designation": "MDP 11, pl. 001-011",
+    "genre": "Royal/Monumental",
+    "lines": 326,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P285254",
+    "designation": "BAM 2, 159",
+    "genre": "Scientific",
+    "lines": 294,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P254031",
+    "designation": "CUSAS 17, 037",
+    "genre": "Royal/Monumental",
+    "lines": 286,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P343019",
+    "designation": "VS 10, 214",
+    "genre": "Literary",
+    "lines": 278,
+    "font": "OBFreie"
+  },
+  {
+    "id": "P285397",
+    "designation": "BAM 3, 313",
+    "genre": "Scientific",
+    "lines": 267,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P285333",
+    "designation": "BAM 3, 248",
+    "genre": "Scientific",
+    "lines": 226,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P285106",
+    "designation": "BAM 1, 001",
+    "genre": "Scientific",
+    "lines": 225,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P262784",
+    "designation": "Gilgamesh II 001-003 CBS 07771",
+    "genre": "Literary",
+    "lines": 217,
+    "font": "OBFreie"
+  },
+  {
+    "id": "P479380",
+    "designation": "RINBE 2, Nabonidus 27, ex. 02",
+    "genre": "Royal/Monumental",
+    "lines": 216,
+    "font": "Esagil"
+  },
+  {
+    "id": "P285108",
+    "designation": "BAM 1, 003",
+    "genre": "Scientific",
+    "lines": 209,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P281812",
+    "designation": "BAM 2, 124",
+    "genre": "Scientific",
+    "lines": 206,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P281811",
+    "designation": "BAM 2, 161",
+    "genre": "Scientific",
+    "lines": 195,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P285398",
+    "designation": "BAM 3, 315",
+    "genre": "Scientific",
+    "lines": 195,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P519004",
+    "designation": "RINBE 2, Nabonidus 28, ex. 17",
+    "genre": "Royal/Monumental",
+    "lines": 194,
+    "font": "Esagil"
+  },
+  {
+    "id": "P365131",
+    "designation": "CT 06, pl. 09-10, Bu 1891-05-09, 0284",
+    "genre": "Royal/Monumental",
+    "lines": 192,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P355698",
+    "designation": "Manchester Memoirs 48 pl.1-7",
+    "genre": "Literary",
+    "lines": 188,
+    "font": "OBFreie"
+  },
+  {
+    "id": "P221796",
+    "designation": "BiMes 03, 26",
+    "genre": "Literary",
+    "lines": 79,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P404959",
+    "designation": "Iraq 65, 222",
+    "genre": "Scientific",
+    "lines": 203,
+    "font": "Esagil"
+  },
+  {
+    "id": "P348485",
+    "designation": "SpTU 1, 064",
+    "genre": "Scientific",
+    "lines": 102,
+    "font": "Esagil"
+  },
+  {
+    "id": "P498964",
+    "designation": "BM 078963",
+    "genre": "School",
+    "lines": 91,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P348465",
+    "designation": "SpTU 1, 044",
+    "genre": "Scientific",
+    "lines": 86,
+    "font": "Esagil"
+  },
+  {
+    "id": "P348480",
+    "designation": "SpTU 1, 059",
+    "genre": "Scientific",
+    "lines": 18,
+    "font": "Esagil"
+  },
+  {
+    "id": "P338416",
+    "designation": "STT 1, 096",
+    "genre": "Scientific",
+    "lines": 28,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P348655",
+    "designation": "SpTU 2, 050",
+    "genre": "Scientific",
+    "lines": 27,
+    "font": "Esagil"
+  },
+  {
+    "id": "P480113",
+    "designation": "TBP 63",
+    "genre": "Omen",
+    "lines": 59,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P365915",
+    "designation": "CT 28, pl. 25-27, K 03985 +",
+    "genre": "Omen",
+    "lines": 107,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P480106",
+    "designation": "AfO Beih 27, pl. 18, 19 BM 057612 +",
+    "genre": "Omen",
+    "lines": 97,
+    "font": "Esagil"
+  },
+  {
+    "id": "P394166",
+    "designation": "TBP 38a",
+    "genre": "Omen",
+    "lines": 69,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P236901",
+    "designation": "TBP 44",
+    "genre": "Omen",
+    "lines": 62,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P464229",
+    "designation": "AoF 39, 222",
+    "genre": "Mathematical",
+    "lines": 95,
+    "font": "SantakkuM"
+  },
+  {
+    "id": "P227751",
+    "designation": "OIP 011, 179",
+    "genre": "Lexical",
+    "lines": 200,
+    "font": "Santakku"
+  },
+  {
+    "id": "P229294",
+    "designation": "MSL 10, 054 V33",
+    "genre": "Lexical; Mathematical",
+    "lines": 120,
+    "font": "Santakku"
+  },
+  {
+    "id": "P131747",
+    "designation": "TCL 05, 5676",
+    "genre": "Administrative",
+    "lines": 306,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P131746",
+    "designation": "TCL 05, 5675",
+    "genre": "Administrative",
+    "lines": 310,
+    "font": "NotoSansCuneiform"
+  },
+  {
+    "id": "P396376",
+    "designation": "CT 37, pl. 41, K 08627 +",
+    "genre": "Omen",
+    "lines": 181,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P480105",
+    "designation": "AfO Beih 27, pl. 17 BM 050498",
+    "genre": "Omen",
+    "lines": 60,
+    "font": "Esagil"
+  },
+  {
+    "id": "P395248",
+    "designation": "TBP 06",
+    "genre": "",
+    "lines": 124,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P257557",
+    "designation": "TMN Ist Ni 00374",
+    "genre": "Mathematical",
+    "lines": 68,
+    "font": "Santakku"
+  },
+  {
+    "id": "P368713",
+    "designation": "TMN Ist Ni 01599",
+    "genre": "Mathematical",
+    "lines": 38,
+    "font": "Santakku"
+  },
+  {
+    "id": "P493017",
+    "designation": "JCS 72, 110-111",
+    "genre": "Mathematical",
+    "lines": 25,
+    "font": "Santakku"
+  },
+  {
+    "id": "P452591",
+    "designation": "CT 28, pl. 28-29, 1882-05-22, 0196a",
+    "genre": "Omen",
+    "lines": 50,
+    "font": "Assurbanipal"
+  },
+  {
+    "id": "P479385",
+    "designation": "CT 33, pl. 01-08, BM 086378",
+    "genre": "Astronomical",
+    "lines": 182,
+    "font": "Esagil"
+  },
+  {
+    "id": "P453398",
+    "designation": "Babyloniaca 03, 141-142 pl. 9",
+    "genre": "Omen",
+    "lines": 18,
+    "font": "Santakku"
+  }
+]

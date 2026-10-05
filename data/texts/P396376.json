@@ -1,0 +1,1636 @@
+{
+  "id": "P396376",
+  "designation": "CT 37, pl. 41, K 08627 +",
+  "genre": "Omen",
+  "subgenre": "",
+  "language": "Akkadian",
+  "period": "Neo-Assyrian (ca. 911-612 BC)",
+  "year": -761,
+  "provenience": "Nineveh (mod. Kuyunjik)",
+  "site": "Nineveh (mod. Kuyunjik)",
+  "lat": 36.36,
+  "lon": 43.15,
+  "content_lines": 181,
+  "chars": 6604,
+  "font": "Assurbanipal",
+  "known_elsewhere": false,
+  "translation_status": "print_edition",
+  "translation_label": "Print edition (no CDLI English)",
+  "translation_short": "Print: CT 37",
+  "translation_detail": "Published series match (CT 37) — scholars have almost certainly translated this (often IT/DE/FR/EN in print), but CDLI has no English text",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": true,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/396376",
+  "museum_no": "BM —",
+  "primary_publication": "CT 37, pl. 41, K 08627 +",
+  "atf_source": "cdlistaff (check)",
+  "omen_hunt": true,
+  "omen_blurb": "Omen series",
+  "omen_score": 227.2,
+  "atf": "&P396376 = CT 37, pl. 41, K 08627+ \n#atf: lang akk \n@tablet \n@obverse \n$ broken \n@reverse \n@column 1 \n$ beginning broken \n1'. x x x \n2'. mu x x x s,i [...] \n3'. _DISZ_ 2(gesz2) 3(u) _kimin_ mu-s,al-lat mu-pah-hi-rat# \n4'. _DISZ gesztug_ 1(u) 5(disz)-sza2 _samag sa5 gar_-at musz-te-na-at \n5'. mu-sap-pi-at \n6'. _DISZ_ 2(gesz2) 3(u) _min_ musz-te-na-at [ta]-ar-s,a-at \n7'. _DISZ gesztug_ 1(u) 5(disz)-sza2 _samag sig7 gar_-at musz-te-na-at \n8'. u mu-sap-ha-at \n9'. _DISZ gub3 min_ bi-szit _gesztug_-sza2 _zah2_ \n10'. _DISZ gesztug_ 1(u) 5(disz)-sza2 _samag gar_-at x x x-u2 \n11'. u la ma-ga-ru _gar_-szi \n12'. _DISZ gub3 min_ x x u2 u ma-ga-ru _gar_-szi \n13'. _DISZ sza3 gesztu_ 1(u) 5(disz)-sza2 x x x [...] \n14'. _DISZ gub3 min#_ [...] \n15'. _DISZ_ x x x [...] \n16'. la ma-ga#-[ru _gar_-szi ...] \n17'. _DISZ gub3 min_ szu-lu-[u2 u (la) ka-s,a-ru _gar_-szi] \n18'. _DISZ munus_ suq-tam _tuku_ [...] \n19'. _DISZ gid2-da_ [...] \n20'. _DISZ lugud2-da_ x [...] \n21'. _DISZ dagal_ u x [...] \n22'. _nig2_ x x [...] \n23'. _DISZ dagal_ u _lugud2#_ [...] \n24'. _DISZ_ bi-rit suq-[ti ...] \n25'. _DISZ nu [tuku?_ ...] \n$ several lines missing \n33'. _DISZ_ [...] \n34'. _DISZ_ [...] \n35'. [...] \n36'. _DISZ_ [...] \n37'. _DISZ_ [...] \n38'. x [...] \n39'. _DISZ_ x [...] \n40'. _DISZ_ rip-[hi ...] \n41'. _DISZ_ rip-hi# [...] \n42'. _DISZ_ rip-hi [...] \n43'. _DISZ szu-min_-sza2 \n44'. _DISZ szu-min#_-[sza2? ...] \n$ rest missing \n@column 2 \n$ beginning broken \n1'. [... _x]-mes [dingir]_-na-at \n2'. [_DISZ_] _tur-mesz dingir_-na-at \n3'. _DISZ_ sap-pa-at na-a-a-kat3 \n$ single ruling \n4'. _DISZ munus_ x x x-sza2 kab-ba-ra _dingir_-na-at \n5'. _DISZ sig-mesz sza3-bi nu du10-ga_ \n6'. _DISZ_ up-pi a-hi-sza2 bi-ni-tam _tuku_ szam-ma-hat \n7'. _DISZ lugud2-mesz_ szam-ma-hat \n8'. _DISZ_ kab-ba-ra _dingir_-na-at \n9'. _DISZ#_ qat-ta-na ina-an-ziq \n10'. [_DISZ_] a-hi-szu kab-ba-ra _dingir_-na-at \n11'. _DISZ sig-mesz_ ina-an-ziq \n12'. _DISZ sa_ a-hi-sza2 _babbar-mesz_ ina-an-ziq \n13'. [_DISZ] zi-mesz dingir_-na-at \n14'. _DISZ munus_ am-ma-tu-sza2 _sig2_ lah3-ma ina-an-ziq \n15'. _DISZ munus sa_ am-ma-ti-sza2 _zi_ me gar kur \n16'. _DISZ munus szu-min_-sza2 ba-'-la _e2_ dul-li _du3_ \n17'. _DISZ sig-mesz_ musz-tam-ri-s,a#-at \n18'. _DISZ gid2-da-mesz_ \n19'. _DISZ lugud2-da-mesz_ i-szar2-ru3 _dingir_-na#-at \n20'. _DISZ sza3_-szu2 u2-kal-la _nu si-sa2#-[si-sa2]_-at \n21'. _DISZ_ he-pi2 _ug7_ \n22'. _DISZ gisz-hur-mesz szu-min_-sza2 sza-ta-a a-hi-is-sa u2-x x \n23'. _DISZ_ ku-um-mu-da _zarah2_ sad-rat-su \n24'. _DISZ_ pe-ta-a _munus-bi_ nam-risz# _[gen-mesz]_ \n25'. _DISZ_ ma-'-da a-hi-is-sa u2-[lap-pan?] \n26'. _DISZ gal_-a _dingir ti_ [...] \n27'. _DISZ_ kur-ra-a a-hi-is-sa u2-lap#-[pan] \n28'. _DISZ_ ma-gal# _lugud2-mesz zarah2_ sad-rat-su# \n29'. _DISZ_ sza2 1(u) 5(disz) pe-ta-a sza2 _gub3_ sza-la-a \n30'. a-hi-is-sa mar-s,a ina-ziq \n31'. _DISZ_ sza2 2(gesz2) 3(u) pe-ta-a sza2 1(u) 5(disz) sza-la-a ek-let-it nam-rat \n32'. _DISZ zag_ u _gub3_ pe-ta-a nam-risz _gen-mesz_ \n33'. _sza3 e2_ asz-bat _du10_-ab \n34'. _DISZ kur2-mesz diri-mesz kimin u4-mesz diri-mesz_ \n35'. e-nu-a _igi_-sza2 _gar_-nu _kur_-ad2 \n36'. _DISZ_ ka-an-ni _diri-me ti_ ur-rak \n37'. _DISZ zag_ u _gub3_ ed-la _zarah2_ sad-rat-su \n$ single ruling \n38'. [_DISZ] munus# szu-si szu-min_-sza2 _gid2-da-mesz sza3-bi du10-ga gar_-szi \n39'. [...] _gir2#-min-mesz#_ [...] _da#-mesz_ ul i-tar-ra-aṣ \n40'. [...] _igi_-mar \n41'. _DISZ_ [...] _e2 ku4_-bu _uku2_ \n42'. _DISZ_ [... i]-tar-ra-as, _ti_ \n$ rest missing \n@column 3 \n1. _DISZ munus gisz#_ [...] \n2. _DISZ munus_ hu-[x ...] \n3. _DISZ murub4#_ [...] \n4. _DISZ murub4_ [...] \n5. im-t,u2# [...] \n6. _DISZ munus ubur-mesz_-sza2 [...] \n7. _DISZ tur-mesz_ [...] \n$ single ruling \n8. _DISZ_ ma-aq-ta [...] \n9. _DISZ_ zaq-pa la [...] \n10. _DISZ ki gaba_-sza2 szam-t,a# [...] \n11. _DISZ ubur_-sza2 sza2 _zag gid2_ [...] \n12. _DISZ_ sza2 _gub3 gid2 u3-[tu]_ \n13. _DISZ kir4 ubur_-sza2 _babbar-mesz_ la mu# [...] \n14. _DISZ sig7-mesz nu min_ : [...] \n15. _DISZ_ da-'-mu [...] \n16. _DISZ ge6_ u da-'-mu la [...] \n17. _DISZ tur-mesz_ [...] \n18. _DISZ_ s,a-pi-ir [...] \n19. _DISZ samag-mesz diri_ [...] \n20. _DISZ_ du-'-u2-[...] \n21. _DISZ munus sa [kir4_ ...] _sza3_ [...] \n22. _DISZ munus_ qab!-[x ...] \n$ single ruling \n23. _DISZ#_ [...] \n24. _DISZ_ [...] \n25. _DISZ_ [...] \n26. _DISZ_ [...] \n27. _DISZ_ [...] \n28. _DISZ_ [...] \n29. _DISZ munus_ ina im#-[x ...] \n30. _DISZ gub3#_ [...] \n31. _DISZ munus_ ina im-szi-sza2# [...] \n32. _DISZ sig2 sa5 gar_-at# [...] \n33. _DISZ sig2 ge6 gar_-at _egir#_ [...] \n34. _DISZ munus_ im-szi-sza2 sza2 ana _ugu gal4-la gar#_ [...] \n35. _DISZ munus_ a-bu-un-na-as-sa hab-szat mu-lam-mi#-[x ...] \n36. _DISZ_ nar-bat mu-szal-li-[x ...] \n37. _DISZ_ kas,-rat la mu-szal-li-mat# \n38. _DISZ_ 1(u) 5(disz) kap-s,a#-at2 la mu-szal-li-mat# \n39. _DISZ_ ana _gub3_ kap#-s,a-at mu-szal-li-mat \n40. _DISZ_ szap-[x ...] a-li-da-at# \n41. _DISZ_ ku-up-pu-da-at a-li-da-at \n42. _DISZ_ im-szi-sza2 ru-up-pu-szat a-li-da-at \n43. _DISZ_ ana _an-ta_-nu sza2-qa-at la a-li-da-at# \n44. _DISZ samag babbar gar_-at _munus-bi giskim_-sza2 lem-ne-et# \n45. _DISZ samag ge6 gar_-at _min sig5_-at \n46. _DISZ giskim_-at a-bu-un-na-ti-sza2 _samag-mesz diri#-[mesz]_ \n47. _zarah2_ sad-rat-su# \n48. _DISZ_ ina _ugu_ a-bu-un-na-ti-sza2 _samag sa5 gar_-[at] \n49. _zarah2#_ sad-rat-su# \n50. [... x]-na-at# \n$ rest missing \n@column 4 \n1. _DISZ munus_ ar-ka-ta-sza2 kab-ba-ra [...] \n2. _DISZ_ qat-ta-na [...] \n3. _DISZ_ ar-ka-as-sa kap-s,a-at [...] \n4. _DISZ munus nundum-mesz_-sza2 kab-ba-ra# [... x]-at \n$ single ruling \n5. _DISZ_ qat-ta-na mu-lam#-[mi]-na#-at \n6. [_DISZ] munus_ kin-s,a-sza2 ba-'-la# [... x]-na-at \n7. _DISZ# tur-mesz_ [...] x ina-ziq \n8. _DISZ#_ szad-da mu#-[x ... x]-na#-at \n9. [_DISZ munus_ sza2]-pu-la-sza2 x [... x]-da#-at \n10. [... x]-a-kat3 \n11. [... _zarah2_ sad]-rat#-su \n$ single ruling \n12. [... x]-lam \n13. [...] _du10-ga_ \n14. [... x]-si# \n15. [...] _du10#-ga_ \n16. [...] mu-lap#-pi#-at \n17. [...] lum-mu-na-at \n$ single ruling \n18. [...] _gid2-da-mesz_ lum-mu-na-at : ep-pe-szet \n19. [...] _pesz4_-at mu-szal-li-mat \n20. [... x]-at# : ep-pe-szet na-a-a-kat3 \n21. [...] _dingir_-na-at \n22. [...] _sza3 hul tuku_-szi \n23. [...] asz#-bat _bir_-ah \n24. [...] _usz2_ ar2-ni _ug7_ \n25. [...] _zi# tuku : _zi_-at \n26. [... x]-la a-hi-is-sa u2-szam#-t,a# \n27. [...] a-s,a-a-at \n28. [... x]-as _dam_-sa3 _dam na_ it-ta-na-a-a-ak \n29. [... x]-at# ina ki-li i-qat-ti \n30. [...] _x-mesz e2 du3 sumun_-bar _dingir_-na-at \n31. [... _x]-mesz# sza3-bi nu du10-ga_ \n32. [... x]-pa#-szet ina la ku-UZU _gen-mesz_ \n33. [... x]-ma# _sza3 hul tuku_-szi \n34. [... x]-ra# _sza3-bi nu du10-ga_ \n35. [... x]-na# lum-mu-na-at \n36. [... x]-t,a# _uku2_-in \n37. [...] _umbin# szu-si-mesz gir3-min_-sza2 ur-ru-ra _til u4_-mi \n38. [... _x]-mesz_ ad-di-ra-na-at \n39. [...] _kimin : DISZ lugud2-da-mesz sza3-bi du10-ga_ \n40. [...] _dib_-si ib-ri re-s,a _nu tuku_ \n41. [...] _kimin : DISZ babbar-mesz nu du10 sza3 tuku_-szi \n42. [... _sza3]-bi# du10-ga : DISZ sa5-mesz libir-ra_ \n43. [... _x]-mesz# til u4_-mi \n44. [... x]-la#-at szi-in-ni a-s,a-at _kir4_ zaq-pat \n45. [... x]-ta#-na <<la>> su-uq-tu s,ep-rat \n46. [...] um-s,a-ti _diri_-at \n47. [...] qer#-bet nam-rat \n48. [... _x]-babbar tuku_-szi _u4-me_-sza2 _gid2-da-mesz_ \n49. [...] _igi#_-sza2 ul ina-asz-szi \n50. [...] x x-na-at ap-pa-szu usz-szu-rat \n51. [...] mi#-na-a-at \n52. [... x]-a?-at? \n$ rest missing \n \n\n",
+  "lines": [
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "note",
+      "text": "$ beginning broken ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "x x x",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "[......]"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "mu x x x s,i [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "year: “...”"
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_DISZ_ 2(gesz2) 3(u) _kimin_ mu-s,al-lat mu-pah-hi-rat#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If the coils of the colon are 120, he will die."
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_DISZ gesztug_ 1(u) 5(disz)-sza2 _samag sa5 gar_-at musz-te-na-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If (the Well-being) is located on the right side of the Finger (has) a red head: she is a hero"
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "mu-sap-pi-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "who enlarges"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_DISZ_ 2(gesz2) 3(u) _min_ musz-te-na-at [ta]-ar-s,a-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If ditto he is ill: he will die."
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_DISZ gesztug_ 1(u) 5(disz)-sza2 _samag sig7 gar_-at musz-te-na-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If its ears are yellow-green: she will die."
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "u mu-sap-ha-at",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "and the one who destroys"
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_DISZ gub3 min_ bi-szit _gesztug_-sza2 _zah2_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If it stands on the left side of the gall bladder: her ears will be destroyed."
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "_DISZ gesztug_ 1(u) 5(disz)-sza2 _samag gar_-at x x x-u2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If there is a mole on the right hand,..."
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "u la ma-ga-ru _gar_-szi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "and is not favourable."
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "_DISZ gub3 min_ x x u2 u ma-ga-ru _gar_-szi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If there is a mole on the left side of the... and the left side of the...:"
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "_DISZ sza3 gesztu_ 1(u) 5(disz)-sza2 x x x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If the heart of its 15th..."
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "_DISZ gub3 min#_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If it stands on the left side of the gall bladder:...."
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_DISZ_ x x x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If......."
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "la ma-ga#-[ru _gar_-szi ...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "It is not favourable..."
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_DISZ gub3 min_ szu-lu-[u2 u (la) ka-s,a-ru _gar_-szi]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If there is a mole on the left side of the 'finger': there will be famine and famine."
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "_DISZ munus_ suq-tam _tuku_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If a woman has a suqtu-plant..."
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_DISZ gid2-da_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If the length..."
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_DISZ lugud2-da_ x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If a solar disk......."
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "_DISZ dagal_ u x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "... wide and......."
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "_nig2_ x x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "_DISZ dagal_ u _lugud2#_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If there is a mole on the right and the left..."
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "_DISZ_ bi-rit suq-[ti ...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If between the thighs..."
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "_DISZ nu [tuku?_ ...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If he does not have..."
+    },
+    {
+      "type": "note",
+      "text": "$ several lines missing ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "33'",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If...."
+    },
+    {
+      "type": "line",
+      "n": "34'",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If...."
+    },
+    {
+      "type": "line",
+      "n": "35'",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "...."
+    },
+    {
+      "type": "line",
+      "n": "36'",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If...."
+    },
+    {
+      "type": "line",
+      "n": "37'",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If...."
+    },
+    {
+      "type": "line",
+      "n": "38'",
+      "atf": "x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "39'",
+      "atf": "_DISZ_ x [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If......."
+    },
+    {
+      "type": "line",
+      "n": "40'",
+      "atf": "_DISZ_ rip-[hi ...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If a sorcery..."
+    },
+    {
+      "type": "line",
+      "n": "41'",
+      "atf": "_DISZ_ rip-hi# [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If a sow..."
+    },
+    {
+      "type": "line",
+      "n": "42'",
+      "atf": "_DISZ_ rip-hi [...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If a sow..."
+    },
+    {
+      "type": "line",
+      "n": "43'",
+      "atf": "_DISZ szu-min_-sza2",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If her hands"
+    },
+    {
+      "type": "line",
+      "n": "44'",
+      "atf": "_DISZ szu-min#_-[sza2? ...]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": "If her hands..."
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ beginning broken ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "[... _x]-mes [dingir]_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "... of the gods,"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[_DISZ_] _tur-mesz dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If he is surrounded by a halo of the gods:"
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_DISZ_ sap-pa-at na-a-a-kat3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If there is a mole on the left side of the gall bladder:"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_DISZ munus_ x x x-sza2 kab-ba-ra _dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If a woman... is full of...: her divinity."
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_DISZ sig-mesz sza3-bi nu du10-ga_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If the slabs of the heart are not good"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_DISZ_ up-pi a-hi-sza2 bi-ni-tam _tuku_ szam-ma-hat",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If the veins of her brother are swollen: she will die."
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_DISZ lugud2-mesz_ szam-ma-hat",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If the lungs are swollen:"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "_DISZ_ kab-ba-ra _dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If it is thick: she is a god."
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_DISZ#_ qat-ta-na ina-an-ziq",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If a dog is seized by a knife:"
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "[_DISZ_] a-hi-szu kab-ba-ra _dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If his brother is weak: the gods will..."
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_DISZ sig-mesz_ ina-an-ziq",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": "If the bricks become dilapidated"
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "_DISZ sa_ a-hi-sza2 _babbar-mesz_ ina-an-ziq",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "[_DISZ] zi-mesz dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "_DISZ munus_ am-ma-tu-sza2 _sig2_ lah3-ma ina-an-ziq",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_DISZ munus sa_ am-ma-ti-sza2 _zi_ me gar kur",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_DISZ munus szu-min_-sza2 ba-'-la _e2_ dul-li _du3_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_DISZ sig-mesz_ musz-tam-ri-s,a#-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "_DISZ gid2-da-mesz_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_DISZ lugud2-da-mesz_ i-szar2-ru3 _dingir_-na#-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_DISZ sza3_-szu2 u2-kal-la _nu si-sa2#-[si-sa2]_-at",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "_DISZ_ he-pi2 _ug7_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "_DISZ gisz-hur-mesz szu-min_-sza2 sza-ta-a a-hi-is-sa u2-x x",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "_DISZ_ ku-um-mu-da _zarah2_ sad-rat-su",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "_DISZ_ pe-ta-a _munus-bi_ nam-risz# _[gen-mesz]_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "_DISZ_ ma-'-da a-hi-is-sa u2-[lap-pan?]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26'",
+      "atf": "_DISZ gal_-a _dingir ti_ [...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27'",
+      "atf": "_DISZ_ kur-ra-a a-hi-is-sa u2-lap#-[pan]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28'",
+      "atf": "_DISZ_ ma-gal# _lugud2-mesz zarah2_ sad-rat-su#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29'",
+      "atf": "_DISZ_ sza2 1(u) 5(disz) pe-ta-a sza2 _gub3_ sza-la-a",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30'",
+      "atf": "a-hi-is-sa mar-s,a ina-ziq",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31'",
+      "atf": "_DISZ_ sza2 2(gesz2) 3(u) pe-ta-a sza2 1(u) 5(disz) sza-la-a ek-let-it nam-rat",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32'",
+      "atf": "_DISZ zag_ u _gub3_ pe-ta-a nam-risz _gen-mesz_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33'",
+      "atf": "_sza3 e2_ asz-bat _du10_-ab",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34'",
+      "atf": "_DISZ kur2-mesz diri-mesz kimin u4-mesz diri-mesz_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35'",
+      "atf": "e-nu-a _igi_-sza2 _gar_-nu _kur_-ad2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36'",
+      "atf": "_DISZ_ ka-an-ni _diri-me ti_ ur-rak",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37'",
+      "atf": "_DISZ zag_ u _gub3_ ed-la _zarah2_ sad-rat-su",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "38'",
+      "atf": "[_DISZ] munus# szu-si szu-min_-sza2 _gid2-da-mesz sza3-bi du10-ga gar_-szi",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39'",
+      "atf": "[...] _gir2#-min-mesz#_ [...] _da#-mesz_ ul i-tar-ra-aṣ",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40'",
+      "atf": "[...] _igi_-mar",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41'",
+      "atf": "_DISZ_ [...] _e2 ku4_-bu _uku2_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42'",
+      "atf": "_DISZ_ [... i]-tar-ra-as, _ti_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ munus gisz#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_DISZ munus_ hu-[x ...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_DISZ murub4#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_DISZ murub4_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "im-t,u2# [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_DISZ munus ubur-mesz_-sza2 [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_DISZ tur-mesz_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_DISZ_ ma-aq-ta [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_DISZ_ zaq-pa la [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_DISZ ki gaba_-sza2 szam-t,a# [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_DISZ ubur_-sza2 sza2 _zag gid2_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_DISZ_ sza2 _gub3 gid2 u3-[tu]_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_DISZ kir4 ubur_-sza2 _babbar-mesz_ la mu# [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_DISZ sig7-mesz nu min_ : [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_DISZ_ da-'-mu [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_DISZ ge6_ u da-'-mu la [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_DISZ tur-mesz_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_DISZ_ s,a-pi-ir [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_DISZ samag-mesz diri_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_DISZ_ du-'-u2-[...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_DISZ munus sa [kir4_ ...] _sza3_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_DISZ munus_ qab!-[x ...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_DISZ#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_DISZ_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_DISZ munus_ ina im#-[x ...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_DISZ gub3#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_DISZ munus_ ina im-szi-sza2# [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "_DISZ sig2 sa5 gar_-at# [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_DISZ sig2 ge6 gar_-at _egir#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_DISZ munus_ im-szi-sza2 sza2 ana _ugu gal4-la gar#_ [...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_DISZ munus_ a-bu-un-na-as-sa hab-szat mu-lam-mi#-[x ...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "_DISZ_ nar-bat mu-szal-li-[x ...]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_DISZ_ kas,-rat la mu-szal-li-mat#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "_DISZ_ 1(u) 5(disz) kap-s,a#-at2 la mu-szal-li-mat#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "_DISZ_ ana _gub3_ kap#-s,a-at mu-szal-li-mat",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_DISZ_ szap-[x ...] a-li-da-at#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "_DISZ_ ku-up-pu-da-at a-li-da-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "_DISZ_ im-szi-sza2 ru-up-pu-szat a-li-da-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_DISZ_ ana _an-ta_-nu sza2-qa-at la a-li-da-at#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "_DISZ samag babbar gar_-at _munus-bi giskim_-sza2 lem-ne-et#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "_DISZ samag ge6 gar_-at _min sig5_-at",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "_DISZ giskim_-at a-bu-un-na-ti-sza2 _samag-mesz diri#-[mesz]_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "_zarah2_ sad-rat-su#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "_DISZ_ ina _ugu_ a-bu-un-na-ti-sza2 _samag sa5 gar_-[at]",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "_zarah2#_ sad-rat-su#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "[... x]-na-at#",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing ",
+      "surface": "reverse",
+      "column": "column 3"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ munus_ ar-ka-ta-sza2 kab-ba-ra [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_DISZ_ qat-ta-na [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_DISZ_ ar-ka-as-sa kap-s,a-at [...]",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_DISZ munus nundum-mesz_-sza2 kab-ba-ra# [... x]-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_DISZ_ qat-ta-na mu-lam#-[mi]-na#-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[_DISZ] munus_ kin-s,a-sza2 ba-'-la# [... x]-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_DISZ# tur-mesz_ [...] x ina-ziq",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_DISZ#_ szad-da mu#-[x ... x]-na#-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[_DISZ munus_ sza2]-pu-la-sza2 x [... x]-da#-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[... x]-a-kat3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[... _zarah2_ sad]-rat#-su",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[... x]-lam",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[...] _du10-ga_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[... x]-si#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[...] _du10#-ga_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[...] mu-lap#-pi#-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[...] lum-mu-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[...] _gid2-da-mesz_ lum-mu-na-at : ep-pe-szet",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[...] _pesz4_-at mu-szal-li-mat",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[... x]-at# : ep-pe-szet na-a-a-kat3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[...] _dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "[...] _sza3 hul tuku_-szi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[...] asz#-bat _bir_-ah",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[...] _usz2_ ar2-ni _ug7_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[...] _zi# tuku : _zi_-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[... x]-la a-hi-is-sa u2-szam#-t,a#",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[...] a-s,a-a-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[... x]-as _dam_-sa3 _dam na_ it-ta-na-a-a-ak",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[... x]-at# ina ki-li i-qat-ti",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[...] _x-mesz e2 du3 sumun_-bar _dingir_-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "[... _x]-mesz# sza3-bi nu du10-ga_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "[... x]-pa#-szet ina la ku-UZU _gen-mesz_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "[... x]-ma# _sza3 hul tuku_-szi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "[... x]-ra# _sza3-bi nu du10-ga_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "[... x]-na# lum-mu-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "[... x]-t,a# _uku2_-in",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "[...] _umbin# szu-si-mesz gir3-min_-sza2 ur-ru-ra _til u4_-mi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "[... _x]-mesz_ ad-di-ra-na-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "[...] _kimin : DISZ lugud2-da-mesz sza3-bi du10-ga_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "[...] _dib_-si ib-ri re-s,a _nu tuku_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "[...] _kimin : DISZ babbar-mesz nu du10 sza3 tuku_-szi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "[... _sza3]-bi# du10-ga : DISZ sa5-mesz libir-ra_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "[... _x]-mesz# til u4_-mi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "[... x]-la#-at szi-in-ni a-s,a-at _kir4_ zaq-pat",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "[... x]-ta#-na <<la>> su-uq-tu s,ep-rat",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "[...] um-s,a-ti _diri_-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "[...] qer#-bet nam-rat",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "[... _x]-babbar tuku_-szi _u4-me_-sza2 _gid2-da-mesz_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "[...] _igi#_-sza2 ul ina-asz-szi",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "[...] x x-na-at ap-pa-szu usz-szu-rat",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "51",
+      "atf": "[...] mi#-na-a-at",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "52",
+      "atf": "[... x]-a?-at?",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing ",
+      "surface": "reverse",
+      "column": "column 4"
+    }
+  ],
+  "english": [
+    "[......]",
+    "year: “...”",
+    "If the coils of the colon are 120, he will die.",
+    "If (the Well-being) is located on the right side of the Finger (has) a red head: she is a hero",
+    "who enlarges",
+    "If ditto he is ill: he will die.",
+    "If its ears are yellow-green: she will die.",
+    "and the one who destroys",
+    "If it stands on the left side of the gall bladder: her ears will be destroyed.",
+    "If there is a mole on the right hand,...",
+    "and is not favourable.",
+    "If there is a mole on the left side of the... and the left side of the...:",
+    "If the heart of its 15th...",
+    "If it stands on the left side of the gall bladder:....",
+    "If.......",
+    "It is not favourable...",
+    "If there is a mole on the left side of the 'finger': there will be famine and famine.",
+    "If a woman has a suqtu-plant...",
+    "If the length...",
+    "If a solar disk.......",
+    "... wide and.......",
+    "......",
+    "If there is a mole on the right and the left...",
+    "If between the thighs...",
+    "If he does not have...",
+    "If....",
+    "If....",
+    "....",
+    "If....",
+    "If....",
+    "......",
+    "If.......",
+    "If a sorcery...",
+    "If a sow...",
+    "If a sow...",
+    "If her hands",
+    "If her hands...",
+    "... of the gods,",
+    "If he is surrounded by a halo of the gods:",
+    "If there is a mole on the left side of the gall bladder:",
+    "If a woman... is full of...: her divinity.",
+    "If the slabs of the heart are not good",
+    "If the veins of her brother are swollen: she will die.",
+    "If the lungs are swollen:",
+    "If it is thick: she is a god.",
+    "If a dog is seized by a knife:",
+    "If his brother is weak: the gods will...",
+    "If the bricks become dilapidated"
+  ],
+  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "status": "partial_english",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "translation_meta": {
+    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
+    "device": "cuda",
+    "prompt": "translate Akkadian to English: ",
+    "lines_translated": 48,
+    "lines_total": 181,
+    "source": "local_api"
+  },
+  "omen_kind": "series"
+}

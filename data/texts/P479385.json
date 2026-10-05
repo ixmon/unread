@@ -1,0 +1,2769 @@
+{
+  "id": "P479385",
+  "designation": "CT 33, pl. 01-08, BM 086378",
+  "genre": "Astronomical",
+  "subgenre": "mul.apin",
+  "language": "Akkadian",
+  "period": "Neo-Babylonian (ca. 626-539 BC)",
+  "year": -582,
+  "provenience": "uncertain (mod. uncertain)",
+  "site": "uncertain (mod. Behistun)",
+  "lat": 34.39,
+  "lon": 47.44,
+  "content_lines": 182,
+  "chars": 12060,
+  "font": "Esagil",
+  "known_elsewhere": false,
+  "translation_status": "cdli_english",
+  "translation_label": "CDLI English",
+  "translation_short": "CDLI has English",
+  "translation_detail": "CDLI translation_source: Hunger & Pingree",
+  "cdli_has_english": true,
+  "open_english": true,
+  "print_edition_likely": true,
+  "untranslated_open": false,
+  "cdli_url": "https://cdli.earth/artifacts/479385",
+  "museum_no": "BM 086378",
+  "primary_publication": "CT 33, pl. 01-08, BM 086378",
+  "atf_source": "Hunger & Pingree; Foxvog",
+  "omen_hunt": true,
+  "omen_blurb": "Mul.Apin star/astral list",
+  "omen_score": 127.5,
+  "atf": "&P479385 = CT 33, pl. 01-08, BM 086378\n#atf: lang akk \n@tablet \n@obverse \n@column 1 \n1. [_disz {mul}{gesz}apin_ {d}en-lil2 a]-lik# pa-ni _mul-mesz_ szu-ut {d}en-lil2 :\n#tr.en: The Plow, Enlil, who goes at the fore of the stars of Enlil,  \n2. [_disz {mul}ur-bar]-ra# {gesz}ninda2_ sza2 _{mul}apin_ \n#tr.en: The Wolf, the seeder of the Plow \n3. [_disz {mul}szu]-gi_ {d}en-me-szar2-ra \n#tr.en: The Old Man, Enmešarra, \n4. [_{mul}]gam3_ {d}gam-lum \n#tr.en: The Crook, Gamlu, \n5. [_disz {mul}]masz-tab-ba gal-gal_ {d}lugal-gir3-ra u3 {d}mes-lam-ta-e3-a :\n#tr.en: The Great Twins, Lugalgira and Meslamtaea, \n6. [_disz {mul}masz-tab]-ba# tur-tur_ {d}lal3 u3 {d}nin-|EZENxGUD| \n#tr.en: The Little Twins, Alamuš and Nin-EZENxGUD \n7. [_disz {mul}al]-lul#_ szu-bat {d}a-nim \n#tr.en: The Crab, the seat of Anu, \n8. [_disz {mul}ur]-gu#-la_ {d}la-ta-ra-ak \n#tr.en: The Lion, Latarak, \n9. [_disz mul_ sza2 ina _gaba] {mul#}ur-gu-la gub_-zu _{mul}lugal_ : \n#tr.en: The star which stands in the breast of the Lion: the King. \n10. [_disz mul-mesz_ um-mu]-lu#-tum sza2 ina _kun {mul}ur-gu-la_ : \n#tr.en: The dusky stars which stand in the tail of the Lion: \n11. [_gub_-zu sis]-sin-nu {d}e4-ru6 {d}zar-pa-ni-tum \n#tr.en: the Frond (of the date palm) of Eru, Zarpanitu. \n12. [_disz {mul}SZU-PA_ {d}en]-lil2 sza2 szi-mat _kur_ i-szim-mu \n#tr.en: ŠU-PA, Enlil who decrees the fate of the land. \n13. [_disz mul_ sza2 ina _igi_-szu2 _gub_]-zu# {mul}he2-gal2-a-a-u2 _sukkal_ {d}nin-lil2 \n#tr.en: The star which stands in front of it: the Abundant One, the messenger of Ninlil. \n14. [_disz mul_ sza2 _egir_-szu2 _gub_-zu] _mul bala-tesz2-a sukkal_ {d}tiszpak \n#tr.en: The star which stands behind it: the star of Dignity, the messenger of Tišpak. \n15. [_disz {mul}mar]-gid2#-da#_ {d}nin-lil2 \n#tr.en: The Wagon, Ninlil.\n16. [_disz mul_ sza2 _ki_] za#-ri-i sza2 _{mul}mar-gid2-da gub_-zu  \n#tr.en: The star which stands in the cart-pole of the Wagon: \n17. [...] _{mul}ka5-a_ {d}er3-ra gasz-ri _dingir-mesz_  \n#tr.en: the Fox, Erra, the strong one among the gods.\n18. _disz mul_ sza3 ina _sag-ki {mul}mar-gid2-da gub_-zu _{mul}u8_ {d}a-a \n#tr.en: The star which stands in front of the Wagon: the Ewe, Aya. \n19. _disz {mul}mu-bu-kesz2-da_ {d}a-num _gal_-u2 sza2 _an_-e \n#tr.en: The Hitched Yoke, the great Anu of Heaven. \n20. _disz {mul}mar-gid2-da an-na_ {d}dam-ki-an-na \n#tr.en: The Wagon of Heaven, Damkianna. \n21. _disz mul_ sza2 ina t,ur-ri-szu2 _gub_-zu _{mul}ibila-e2-mah_ \n#tr.en: The star which stands in its rope: the Heir of the Sublime Temple,\n22. _dumu_ resz-tu-u2 sza2 {d}a-nu-um \n#tr.en: the first-ranking son of Anu. \n23. _disz {mul}dingir-gub-ba-mesz_ szu-ut e2-kur _{mul}dingir-tusz-a-mesz_ szu-ut e2-kur \n#tr.en: The Standing Gods of Ekur, the Sitting Gods of Ekur. \n24. _disz {mul}ud5_ {d}gu-la \n#tr.en: The She-Goat, Gula \n25. _disz mul_ sza2 ina _igi {mul}ud5 gub_-zu _{mul}ur-gi7_ \n#tr.en: The star which stands in front of the She-Goat: the Dog. \n26. _disz mul_ ne2-bu-u2 sza2 _{mul}ud5 {d}lamma sukkal_ {d}ba-ba6 \n#tr.en: The bright star of the She-Goat: Lamma, the messenger of Baba. \n27. _disz 2(disz) mul-mesz_ sza2 _egir_-szu2 _gub-mesz_-zu {d}nin-nisi u {d}er3-ra-gal \n#tr.en: The two stars which stand behind it: Ninnisi and Erragal \n28. _disz {mul}u4-ka-du8-a_ {d}u-gur \n#tr.en: The Panther: Nergal  \n29. _disz mul_ sza2 ina _za3_-szu2 _gub_-zu _{mul}szah_ {d}da-mu \n#tr.en: The star which stands at its right side: the Pig, Damu. \n30. _disz mul_ sza2 ina _gub3_-zu _{mul}ansze-kur-ra_ \n#tr.en: The star which stands at its left side: the Horse. \n31. _disz mul_ sza2 _egir_-szu2 _gub_-zu _{mul}lu-lim sukkal mul-mul_ \n#tr.en: The star which stands behind it: the Stag, the messenger of the Stars. \n32. _disz mul-mesz_ um-mu-lu-tu4 sza2 ina _gaba {mul}lu-lim_ \n#tr.en: The dusky stars which stand in the breast of the Stag: \n33. _gub-mesz_-zu {d}har-ri-ru _{d}tir-an-na_ \n#tr.en: Ḫarriru, the Rainbow. \n34. _disz mul sa5_ ne2-bu-u2 sza2 _bir {mul}lu-lim_ \n#tr.en: The bright red star which in the kidney of the Stag \n35. _gub_-zu _{mul}ka-musz-i3-gu7-e_ \n#tr.en: stands: The Deleter. \n# after GUB there is an erased MESZ sign \n36. ki-ma _mul-mesz_ szu-ut {d}en-lil2 ug-dam-mi-ru-ni \n#tr.en: When the stars of Enlil have been finished, \n37. _1(disz) mul gal u4-da_-su da-a'-mat _an_-e _bar_-ma _gub_-zu _mul_ {d}marduk ne2-bi-ri \n#tr.en: one big star – (although) its light is dim – divides the sky in half and stands there: (that is) the star of Marduk, the Ford, \n38. _disz {mul}sag-me-gar ki-gur_-su _kur2-kur2_-ir _an_-e ib-bir \n#tr.en: Jupiter, (it) keeps changing its position and crosses the sky.\n$ single ruling \n39. _3(u) 3(disz) mul-mesz_ szu-ut {d}en-lil2 \n#tr.en: \n$ single ruling \n40. _disz {mul}asz-iku_ szu-bat {d}e2-a a-lik _igi mul-mesz_ szu-ut {d}a-nim \n#tr.en: The Field, the seat of Ea, which goes at the front of the stars of Anu. \n41. _disz mul_ sza2 ina _igi_-it _{mul}asz-iku gub_-zu {mul}szi-nu-nu-tu4 \n#tr.en: The star which stands opposite the Field: the Swallow. \n42. _disz mul_ sza2 _egir {mul}asz-iku gub_-zu {mul}a-nu-ni-tu4 \n#tr.en: The star which stands behind the Field: Anunitu. \n43. _disz mul_ sza2 _egir_-szu2 _gub_-zu {mul}lu2-hun-ga2_ {d}dumu-zi \n#tr.en: The star which stands behind it: the Hired Man, Dumuzi. \n44. _disz mul-mul dingir-imin-bi dingir-mesz gal-mesz_ \n#tr.en: The Stars, the seven gods, the great gods. \n@column 2 \n1. _disz {mul}gu4-an-na_ {d}is le#-[e _aga_ {d}a-nim]  \n#tr.en: The Bull of Heaven, the Jaw of the Bull, the crown of Anu \n2. _disz {mul}sipa-zi-an-na_ {d}pap-sukkal _sukkal#_ [{d}a-nim u innin] \n#tr.en: The True Shepherd of Anu, Papsukkal, the messenger of Anu and Ištar. \n3. _disz_ {mul}masz-tab-ba_ sza2 ina _igi_-et _{mul}[sipa-zi-an-na_]  \n#tr.en: The twin stars which opposite the True Shepherd of Anu \n4. _gub-mesz_-zu {d}lu2-lal3 u {d}la#-[ta-ra-ak] \n#tr.en: stand: Lulal and Latarak. \n5. _disz mul_ sza2 _egir_-szu2 _gub_-zu! _{mul}[dar-lugal] \n#tr.en: The star which stands behind it: the Rooster.\n6. _disz {mul}kak-si-sa2_ szil-ta-hu _ur-sag gal_-u2 {d#}[nin-urta]  \n#tr.en: The Arrow, the arrow of the great warrior Ninurta. \n7. _disz {mul}ban_ {d}isz-tar _nim-ma_-tu4 _dumu-munus_ {d#}[en-lil2] \n#tr.en: The Bow, the Elamite Ištar, the daughter of Enlil  \n8. _disz {mul}{d}nirah_ {d}nin-gesz-zi-da _en_ er-s,e-tu4 \n#tr.en: The Snake, Ningišzida, lord of the Netherworld. \n9. _disz {mul}uga{muszen}_ a-ri-bu _mul {d}iszkur_ \n#tr.en: The Raven, the star of Adad. \n10. _disz_ {mul}ab-sin2_ {d}sza-la szu-bu-ul-tu4 \n#tr.en: The Furrow, Šala, the ear of corn.  \n11. _disz {mul}zi-ba-an-na si {mul}gir2-tab_ \n#tr.en: The Scales, the horn of the Scorpion.\n12. _disz_ mul_ {d}za-ba4-ba4 _{mul}ti8{muszen} u {mul}ad6_ \n#tr.en: The star of Zababa, the Eagle, and the Dead Man. \n13. _disz {mul}dili-bat _ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir \n#tr.en: Venus keeps changing its position and crosses the sky. \n14. _disz_ {mul}s,al-bat-a-nu _ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir \n#tr.en: Mars keeps changing its position and crosses the sky. \n15. _disz {mul}udu-idim-sag-us2 ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir \n#tr.en: Saturn keeps changing its position and crosses the sky. \n16. _disz {mul}udu-idin-gu4-ud_ sza2 {d}masz _mu-ni_ lu ina _{d}utu-e3_\n#tr.en: Mercury, whose name is Ninurta, rises or sets in the east\n17. lu-u2 ina {d}utu-szu2-a_ e-ma _iti igi-la2_-ma e-ma _iti tum3_\n#tr.en: or in the west within a month. \n$ single ruling \n18. _2(u) 3(disz) mul-mesz_ szu-ut {d}a-nim \n#tr.en: 23 stars of Anu. \n$ single ruling \n19. _disz {mul}ku6_ {d}e2-a a-lik _igi mul-mesz_ szu-ut {d}e2-a \n#tr.en: The Fish, Ea, who goes at the front of the stars of Ea.\n20. _disz {mul}gu-la_ {d}e2-a _{mul}eridu{ki}_ {d}e2-a \n#tr.en: The Great One, Ea, the star of Eridu, Ea. \n21. _disz mul_ sza2 ina 1(u)-5(disz)-szu2 _gub_-zu {mul}nin-mah \n#tr.en: The star which stands at its right: Ninmah. \n22. _disz {mul}en-te-na-bar-hum_ {d}nin-gir2-su \n#tr.en: Entena-barhum, Ningirsu.  \n23. _disz mul_ sza2 ina _a2_-szu2 _gub_-zu _{mul}{gesz}gan2-ur3 {gesz}tukul_ sza2 {d}a-e2 \n#tr.en: The star which stands at its side: the Harrow, the weapon of Mar-biti, \n24. sza2 ina lib3-bi-szu2 _abzu_ i-bar-ru-u2 \n#tr.en: inside of which one sees the subterranean waters. \n25. _disz 2(disz) mul-mesz_ sza2 _egir_-szu2 _gub-me_-zu {d}szullat2 u {d}hanisz2 {d}utu u {d}iszkur \n#tr.en: The two stars which stand behind it: Šullat and Ḫaniš, Šamaš and Adad.\n26. _disz mul_ sza2 _egir_-szu2-nu _gub_-zu _gin7_ {d}e2-a _kur_-ha \n#tr.en: The star which stands behind them rises like Ea \n27. _gin7_ {d}e2-a _szu2-mesz_ {mul}nu-musz-da {d}iszkur \n#tr.en: and sets like Ea: Numušda, Adad. \n28. _disz mul_ sza2 ina _gub3 {mul}gir2-tab gub_-zu _{mul}ur-idim_ {d}ku3-su3 \n#tr.en: The star which stands at the left side of the Scorpion: the Mad Dog, Kusu. \n29. _disz {mul}gir2-tab_ {d}isz-ha-ra be-let da-ad2-me \n#tr.en: The Scorpion, Išhara, goddess of all inhabited regions. \n30. _disz {mul}gaba gir2-tab_ {d}li9-si4 {d}AK  \n#tr.en: The Breast of the Scorpion: Lisi, Nabȗ. \n31. _disz 2(disz) mul-mesz_ sza2 ina zi-qit _{mul}gir2-tab gub-mesz_-zu \n#tr.en: The two stars which stand in the sting of the Scorpion: \n32. {d}szar2-ur4 u {d}szar2-gaz \n#tr.en: Šarur and Šargaz. \n33. _disz mul_ sza2 _egir_-szu2-nu _gub_-zu {mul}pa-bil-sag \n#tr.en: The star which stands behind them: Pabilsag. \n34. _disz {mul}ma2-gur8 u {mul}suhur-masz2{ku6}_ \n#tr.en: The Bark and the Goat-Fish. \n$ single ruling \n35. _1(u) 5(disz) mul-mesz_ szu-ut {d}e2-a \n#tr.en: 15 stars of Ea. \n$ single ruling \n36. disz ina _{iti}bara2 u4 1(disz)-kam {mul}lu2-hun-ga2 igi-la2_\n#tr.en: On the 1st of Nisannu the Hired Man becomes visible. \n37. disz ina _{iti}bara2 u4 2(u) {mul}gam3 igi-la2_ \n#tr.en: On the 20th of Nisannu the Crook becomes visble.\n38. disz ina _{iti}gu4 u4 1(disz)-kam mul-mul igi-la2_ \n#tr.en: On the 1st of Ajjaru the Stars become visible. \n39. disz ina _{iti}gu4 u4 2(u)-kam_ {mul}is le-e _igi-la2_  \n#tr.en: On the 20th of Ajjaru the Jaw of the Bull becomes visible. \n40. disz ina _{iti}sig4 u4 1(u)-kam {mul}sipa-zi-an-na u {mul}masz-tab-ba-gal-gal igi-me_ \n#tr.en: On the 10th of Simanu the True Shepherd of Anuy and the Great Twins become visible \n41. disz ina _{iti}szu u4 5(disz)-kam {mul}masz-tab-ba-tur-tur u {mul}al-lub igi-me_ \n#tr.en: On the 5th of Du'uzu the Little Twins and the Crab become visible. \n42. disz ina _{iti}szu u4 1(u) 5(disz)-kam {mul}kak-si-sa2 {mul}musz u {mul}ur-gu-la_ \n#tr.en: On the 15th of Du'uzu the Arrow, the Snake, and the Lion \n43. _igi-me_-ma _4(disz) ma-na en-nun_ u4-me _2(disz) ma-na en-nun gi6_\n#tr.en: become visible; 4 minas is a daytime watch, 2 minas is a nighttime watch. \n44. disz ina _{iti}NE u4 5(disz)-kam {mul}ban u {mul}lugal igi-me_ \n#tr.en: On the 5th of Abu the Bow and the King become visible. \n45. disz ina _{iti}kin u4 1(u)-kam {mul}eridu{ki} u {mul}uga{muszen} igi-me_ \n#tr.en: On the 10th of Ululu the star of Eridu and the Raven become visible. \n46. disz ina _{iti}kin u4 1(u) 5(disz)-kam {mul}SZU-PA {d}en-lil2 [igi_] \n#tr.en: On the 15th of Ululu ŠU-PA, Enlil, becomes visible.  \n47. disz ina _{iti#}[kin] u4 2(u) 5(disz)-kam {mul}ab-sin2 [igi_] \n#tr.en: On the 25th of Ululu the Furrow becomes visible. \n@reverse \n@column 1 \n1. [disz ina _{iti}du6 u4 1(u) 5(disz)-kam_ {mul}zi-ba-ni-tu4 _{mul}ur-idim {mul}en-te-na-bar-hum_] \n#tr.en: On the 15th of Tešritu the Scales, the Mad Dog, entena-barhum \n2. [u {mul}ur-gi7 igi-me-ma 3(disz) ma-na en-nun_ u4-mi _3(disz) ma-na en-nun gi6_] \n#tr.en: and the Dog become visible; 3 minas is a daytime watch, 3 minas is a nighttime watch. \n3. disz ina [_{iti}apin u4 5(disz)-kam] {mul#}gir2#-[tab igi_] \n#tr.en: On the 5th of Araḫsamnu the Scorpion becomes visible. \n4. disz ina _{iti}apin u4 1(u) 5(disz)#-kam {mul}ud5 u {mul}[gaba-bir2-tab igi-me_] \n#tr.en: On the 15th of Araḫsamnu the She-Goat and the Breast of the Scorpion become visible.\n5. disz ina _{iti}gan u4 1(u) 5(disz)-kam {mul}u4-ka-du8-a {mul}ti8{muszen}\n#tr.en: On the 15th of Kislimu the Panther, the Eagle, \n6. u _{mul}pa-bil-sag igi-me_ \n#tr.en: and Pabilsag become visible. \n7. disz ina _{iti}ab u4 1(u) 5(disz)-kam {mul}sim-mah {mul}szi-nu-nu-tu4 {mul}im-szesz_ \n#tr.en: On the 15th of Tebetu SIM-MAH (i.e.) the Swallow (or) IM-ŠEŠ, \n8. ina _gesz-nim igi-la2 u {mul}kak-si-sa2_ ina li-la-a-ti \n#tr.en: becomes visible in the East, and in the evening the Arrow \n9. _igi-la2_-ma _2(disz) ma-na en-nun u4_-me _4(disz) ma-na en-nun gi6_ \n#tr.en: becomes visible; 2 minas is a daytime watch, 4 minas is a nighttime watch. \n10. disz ina _{iti}udru u4 5(disz)-kam {mul}gu-la {mul}asz-iku u {mul}lu-lim igi-mesz_ \n#tr.en: On the 5th of Šabaṭu the Great One, the Field, and a Stag become visible. \n11. disz ina _{iti}udru u4 2(u) 5(disz)-kam_ {mul}a-nu-ni-tu4 _igi-la2_ \n#tr.en: On the 25th of Šabaṭu Anunitu becomes visible. \n12. disz ina _{iti}sze u4 1(u) 5(disz)-kam {mul}ku6 u {mul}szu-gi igi-la2-me_ \n#tr.en: On the 15th of Addaru the Fish ad the Old Man become visible. \n$ single ruling \n13. _disz mul-mul kur_-ma _{mul}gir2-tab szu2_-bi \n#tr.en: The Stars rise and the Scorpion sets. \n14. _disz {mul}gir2-tab kur_-ma _mul-mul szu2_-bi \n#tr.en: The Scorpion rises and the Stars set.\n15. _disz {mul}gu4-an-na kur_-ma _{mul}SZU-PA szu2_-bi \n#tr.en: The Bull of Heaven rises and ŠU-PA sets. \n16. _disz {mul}sipa-zi-an-na kur_-ma {mul}pa-bil-sag _szu2_-bi  \n#tr.en: The True Shepherd of Anu rises and Pabilsag sets.  \n17. _disz {mul}kak-si-sa2 {mul}{d}nirah u {mul}ur-gu-la kur-me_-ma \n#tr.en: The Arrow, the Snake, and the Lion rise, and \n18. _{mul}gu-la u {mul}ti8{muszen} szu2-mesz_ \n#tr.en: the Great One and the Eagle set.  \n19. _disz {mul}ban u {mul}lugal kur-me_-ma _{mul}ud5 szu2_-bi  \n#tr.en: The Bow and the King rise, and the She-Goat sets. \n20. _disz {mul}eridu{ki} u {mul}uga{muszen} kur-mesz_-ma _{mul}u4-ka-du8-a szu2_-bi \n#tr.en: The Star of Eridu and the Raven rise, and the Panther sets. \n21. _disz {mul}SZU-PA_ {d}en-lil2 _kur_-ma _{mul}asz-iku szu2_-bi \n#tr.en: ŠU-PA, Enlil, rises and the Field sets. \n22. _disz {mul}nin-mah kur_-ma {mul}a-nu-ni-tu4 _szu2_-bi  \n#tr.en: Ninmah rises and Anunitu sets.  \n23. disz {mul}zi-ba-ni-tu4 _{mul}ur-idim u {mul}en-te-na-bar-hum_ \n#tr.en: The Scales, the Mad Dog, and Entena-barhum \n24. _kur-me_-ma _{mul}lu2-hun-ga2 szu2_-bi \n#tr.en: rise, and the Hired Man sets. \n25. _disz {mul}gir2-tab u {mul}ur-gi7 kur-me_-ma _{mul}eridu{ki} u mul-mul szu2_-bi \n#tr.en: Th Scorpion and the Dog rise, and the Star of Eridu and the Stars set. \n26. _disz {mul}gaba gir2-tab u {mul}ud5 kur-mesz_-ma _{mul}szu-gi u {mul}sipa-zi-an-na szu2-mesz_ \n#tr.en: The breast of the Scorpion and the She-Goat rise, and the Old Man and the True Shepherd of Anu set. \n27. disz {mul}pa-bil-sag {mul}za-ba4-ba4 u _dingir-gub-ba-mesz kur-mesz_-ma \n#tr.en: Pabilsag, Zababa, and the Standing Gods rise, and \n28. _{mul}kak-si-sa2 {mul}ban u {mul}gam3 szu2-mesz_ \n#tr.en: the Arrow, the Bow and the Crook set, \n29. _disz {mul}u4-ka-du8-a u {mul}ti8{muszen} kur-mesz_-ma \n#tr.en: The Panther and the Eagle rise, and \n30. _{mul}masz-tab-ba-gal-gal u {mul}masz-tab-ba-tur-tur szu2-mesz_\n#tr.en: the Great Twins and the Little Twins set. \n31. _disz {mul}asz-iku {mul}gu-la u {mul}lu-lim kur-mesz_-ma \n#tr.en: The Field, the Great One, and the Stag rise, and \n32. _{mul}ur-gu-la {mul}{d}nirah u {mul}en-te-na-bar-hum szu2-mesz_ \n#tr.en: the Lion, the Snake, and Entena-barhum set. \n33. _disz {mul}ku6 u {mul}szu-gi kur-mesz_-ma _{mul}ab-sin2 u {mul}ur-idim szu2-mesz_ \n#tr.en: The Fish and the Old Man rise, and the Furrow and the Mad Dog set. \n$ single ruling \n34. _disz ta kur_ sza2 _{mul}kak-si-sa2 5(u) 5(disz) u4-mesz_ ana _kur_ sza2 {mul}eridu{ki}    \n#tr.en: 55 days pass from the rising of the Arrow to the rising of the start of Eridu. \n35. _disz ta kur_ sza2 _{mul}kak-si-sa2 1(gesz2)_-szu _u4-mesz_ ana _kur_ sza2 {mul}SZU-PA_  \n#tr.en: 60 days pass from the rising of the Arrow to the rising of ŠU-PA.  \n36. _disz ta kur_ sza2 {mul}SZU-PA _1(u) u4-mesz_ ana _kur_ sza2 _{mul}ab-sin2_ \n#tr.en: 10 days pass from the rising of ŠU-PA to the rising of the Furrow. \n37. _disz ta kur_ sza2 _{mul}ab-sin2 2(u) u4-mesz_ ana _kur_ sza2 {mul}zi-ba-ni-tu4 \n#tr.en: 20 days pass from the rising of the furrow to the rising of the Scales. \n38. _disz ta kur_ sza2 {mul}zi-ba-ni-tu4 _3(u) u4-mesz_ ana _kur_ sza2 _{mul}ud5_ \n#tr.en: 30 days pass from the rising of the Scales to the rising of the She-goat. \n39. _disz ta kur_ sza2 _{mul}ud5 3(u) u4-mesz_ ana _kur_ sza2 _{mul}u4-ka-du8-a_ \n#tr.en: 30 days pass from the rising of the She-Goat to the rising of the Panther. \n40. _disz ta kur_ sza2 _{mul}u4-ka-du8-a 3(u) u4-mesz_ ana _kur_ sza2 _{mul}sim-mah_ \n#tr.en: 30 days pass from the rising of the Panther to the rising of the Swallow.\n41. _disz ta kur_ sza2 _{mul}sim-mah 2(u) u4-mesz_ ana _kur_ sza2 _{mul}asz-iku_ \n#tr.en: 20 days pass from the rising of the Swallow to the rising of the Field. \n42. _disz ta kur_ sza2 _{mul}asz-iku 4(u) u4-mesz_ ana _kur_ sza2 _{mul}ku6_ \n#tr.en: 40 days pass from the rising of the Field to the rising of the Fish. \n43. _disz ta kur_ sza2 _{mul}ku6 3(u) 5(disz) u4-mesz_ ana _kur_ sza2 _{mul}gam3 \n#tr.en: 35 days pass from the rising of the Fish to the rising of the Crook. \n44.  _disz ta kur_ sza2 _{mul}gam3 1(u) u4-mesz_ ana _kur_ sza2 _mul-mul_ \n#tr.en: 10 days pass from the rising of the Crook to the rising of the Stars. \n45.  _disz ta kur_ sza2 _mul-mul 2(u) u4-mesz_ ana _kur_ sza2 _{mul}[gu4-an-na_] \n#tr.en: 20 days pass from the rising of the Stars to the rising of the Bull of Heaven \n46.  _disz ta kur_ sza2 _{mul}gu4-an-na 2(u) u4-mesz_ ana _kur_ sza2 _{mul}[sipa-zi-an-na_] \n#tr.en: 20 days pass from the rising of the Bull of Heaven to the rising of the True shepherd of Anu. \n47.  _disz ta kur_ sza2 _{mul}sipa-zi-an-na 3(u) 5(disz) u4-mesz_ ana _kur_ [sza2 _{mul}kak-si-sa2_] \n#tr.en: 35 days pass from the rising of the True Shepherd of Anu to the rising of the Arrow.  \n48.  _disz ta kur_ sza2 _{mul}kak-si-sa2 2(u) u4-mesz_ ana _kur_ sza2 _{mul}ban_ \n#tr.en: 20 days pass from the rising of the Arrow to the rising of the Bow. \n$ single ruling \n49. u4#-mu _1(disz) usz-ta-am3 mul-mesz_ ina szer3-ti# [ana _gi6 ku4-mesz_-ni] \n#tr.en: The stars enter into the night in the morning 1 UŠ each day.\n50. u4#-mu _1(disz) usz-ta-am3 mul-mesz_ ina li-la-a-ti ana u4#-[me _e3-mesz_-ni] \n#tr.en: The stars come out into the day in the evening 1 UŠ each day. \n$ single ruling \n@column 2\n1. _disz mul-mesz_ sza2 ziq-pi sza2 ina _kaskal_ szu-ut {d}en-lil2 ina [_murub4 an_-e]  \n#tr.en: The ziqpu stars which stand in the path of Enli in the middle of the sky \n2. ina _igi_-it _gaba_ sza2 _szesz an_-e _gub-mesz_-ma _gi6 kur_ [u _szu2_-bi] \n#tr.en: opposite the breast of the obsever of the sky, and \n3. sza2 _mul-mesz_ ina lib3-bi-szu2-nu im-ma-ru# \n#tr.en: by means of whih he observes the rising and setting of the stars at night (are the following): \n$ single ruling \n4. _disz {mul}SZU-PA mul bala-tesz2-a {mul}dingir-gub-ba-mesz {mul}ur-gi7_ \n#tr.en: ŠU-PA, the star of Dignity, the Standing Gods, the Dog, \n5. _{mul}ud5 {mul}u4-ka-du8-a {mul}lu-lim {mul}szu-gi {mul}gam3 \n#tr.en: the She-Goat, the Panther, the Stag, the Old Man, the Crook, \n6. _{mul}masz-tab-ba-gal-gal {mul}al-lub {mul}ur-gu-la {mul}e4-ru6 u {mul}he2-gal2-la-a-a_. \n#tr.en: the Great Twins, the Crab, the Lion, Eru, and the Abundant One. \n$ single ruling\n7. _pap_ an-nu-tu _mul-mesz_ sza2 ziq-pi sza _kaskal_ szu-ut {d}en-lil2 sza2 ina _murub4 an_-e \n#tr.en: All these are the ziqpu stars in the path of the stars of Enlil which stand in the middle of the sky \n8. ina _igi_-it _gaba_-ka _gub-me_-zu-ma _gi6 mu2-mesz u szu2-mesz_ \n#tr.en: opposite your breast, and by means of which you observe \n9. sza2 _mul-mesz_ ina lib3-bi-szu2-nu tam-ma-ru \n#tr.en: the risings and settings of the stars at night. \n$ single ruling \n10. _be_-ma zi-iq-pa a-na a-ma-ri-ka ina _{iti}bara2 u4 2(u)-kam_  \n#tr.en: If you are to observe the ziqpu, you stand \n11. ina szer3-ti la-am {d}utu _kur_-ha _gub_-ma _za3_-ka _{im}mar-tu_ \n#tr.en: in the morning before sunrise, West to your right, \n12. _gub3_-ka _{im}kur-ra_ ni-isz _igi_-ka _{im}u18-lu_ \n#tr.en: East to your left, your face directed towards South; \n13. ku-ma-ru sza2 _{mul}u4-ka-du8-a_ ina _murub4 an_-e  \n#tr.en: on the 20th of Nisannu the kumaru of the Panther in the middle of the sky \n14. ina _igi_-it _gaba_-ka _gub_-ma _{mul}gam3 kur_-ha \n#tr.en: opposite your breast, and the Crook rises. \n$ single ruling\n15. disz ina _{iti}gu4 u4 1(disz)-kam gaba_ sza _{mul}u4-ka-du8-a_ ina _murub4 an_-e \n#tr.en: On the 1st of Ajjaru, the Breast of the Panther stands in the middle of the sky \n16. _igi_-it _gaba_-ka _gub_-ma _mul-mul kur_-ha \n#tr.en: oppostie your breast, and the Stars rise. \n$ single ruling\n17. disz ina _{iti}gu4-ud u4 2(u)-kam_ ki-in-s,u sza2 _{mul}u4-ka-du8-a_ \n#tr.en: On the 20th of Ajjaru, the Knee of the Panther \n18. ina _murub4 an_-e _igi_-it _gaba_-ka _gub_-ma {mul}is le-e _kur_-ha \n#tr.en: stands in the middle of the sky opposite your breast, and the Jaw of the Bull rises. \n$ single ruling \n19. disz ina _{iti}sig4 u4 1(u)-kam_ a-si-du sza2 _{mul}u4-ka-du8-a_ ina _murub4 an_-e \n#tr.en: On the 10th of Simanu the Heel of the Panther stands in the middle of the sky \n20. _igi_-it _gaba_-ka _gub_-ma _{mul}sipa-zi-an-na kur_-ha \n#tr.en: opposite your breast, and the Shepherd of Anu rises. \n$ single ruling\n21. disz ina _{iti}szu u4 1(u) 5(disz)-kam mul_ ne2-bu-u2 sza2 _{mul}szu-gi_ ina _murub4 an_-e _min min {mul}kak-si-sa2 kur_-ha \n#tr.en: On the 15th of Du'uzu the bright star of the Old Man (stand in the middle of the sky opposite your breast, and the Arrow rises.\n$ single ruling\n22-23. disz ina _{iti}NE u4 1(u) 5(disz)-kam mul-mesz_ um-mu-lu-tu4 sza2 _{mul}szu-gi _min min {mul}ban kur_-ha   \n#tr.en: On the 15th of Abu the dusky stars of the Old Man tand in the middle of the sky opposite your breast, and the Bow riseen: \n$ single ruling \n24. disz ina _{iti}kin u4 1(u) 5(disz)-kam {mul}masz-tab-ba-gal-gal min min {mul}SZU-PA u {mul}eridu{ki} kur-mesz_-ni   \n#tr.en: On the 15th of Ululu the Great Twins stand in the middle of the sky opposite your breast, and ŠU-PA and the Star of Eridu rise.\n$ single ruling \n25. disz ina _{iti}du6 u4 1(u) 5(disz)-kam {mul}ur-gu-la min min_ {mul}zi-ba-ni-tu4 _kur_-ha   \n#tr.en: On the 15th of Tešritu the Lion stands in the middle of the sky opposite your breast, and the Scales rise, \n$ single ruling \n26. disz ina _{iti}apin u4 1(u) 5(disz)-kam {mul}e4-ru6_ ina _murub4 an_-e min min {mul}ud5 kur_-ha \n#tr.en: On the 15th of Araḫsamnu Eru stands in the middle of the sky oppoite your breast, and the She-Goat rises.\n$ single ruling \n27. [disz ina _{iti}]gan# u4 1(u) 5(disz)-kam {mul}SZU-PA min min {mul}u4-ka-du8-a kur_-ha   \n#tr.en: On the 15th of Kislimu ŠU-PA stands in the middle of the sky opposite your breast, and the Panther rises. \n$ single ruling \n28. [disz ina _{iti}]ab u4 1(u) 5(disz)-kam {mul}dingir-gub-ba-mesz min min {mul}sim-mah kur_-ha  \n#tr.en: On the 15th of Tebetu the Standing Gods stand in the middle of the sky opposite your breast and the Swallow rises.  \n$ single ruling \n29. [disz ina _{iti}]udru u4 1(u) 5(disz)-kam {mul}ur-gi7 min min {mul}asz-iku kur_-ha  \n#tr.en: On the 15th of Šabatu the Dog stands in the middle of the sky opposite your breast, and the Field rises. \n$ single ruling \n30. [disz ina _{iti}]sze u4 1(u) 5(disz)-kam {mul}ud5 min min {mul}ku6 kur_-ha  \n#tr.en: On the 15th of Addaru the She-Goat stands in the middle of the sky opposite your breast, and the Fish rises. \n31. [_dingir]-mesz_ sza i-na _kaskal_ {d}sin _gub-mesz_-ma {d}sin e-ma _iti_\n#tr.en: The gods who stand in the path of the Moon, through whose regions the Moon in the course of a month \n32. [ina pi]-rik-szu2-nu _dib-mesz_-ma _tag-mesz_-szu2-nu-ti \n#tr.en: passes and whom he touches:\n$ single ruling \n33. [x] _mul-mul {mul}gu4-an-na {mul}sipa-zi-an-na {mul}szu-gi_ \n#tr.en: The Stars, the Bull of Heaven, the True Shepherd of Anu, the Old Man, \n34. [_{mul}]gam3 {mul}masz-tab-ba-gal-gal {mul}al-lub {mul}ur-gu-la \n#tr.en: the Crook, the Great Twins, the Crab, the Lion, \n35. [_{mul}ab2-sin_ {mul}]zi#-ba-ni-tu4 _{mul}gir2-tab_ {mul}pa-bil-sag  \n#tr.en: the Furrow, the Scales, the Scorpion, Pabilsag,  \n36. [_{mul}suhur-masz] {mul#}gu-la kun-mesz {mul}sim-mah \n#tr.en: the Goat-Fish, the Great One, the Tails, the Swallow, \n37. [{mul}a-nu-ni]-tu4# u _{mul}lu2-hun-ga2_\n#tr.en: Anunitu, and the Hired Man, \n$ single ruling \n38. [_pap_ an-nu-tu4 _dingir-mesz_] sza2# ina _kaskal_ {d}sin _gub-mesz_-ma {d}sin e-ma _iti_ \n#tr.en: All these are the gods who stand in the path of the Moon, through whose regions the Moon in the course of a month \n$ single ruling\n39. [ina pi-rik-szu2-nu _dib]-mesz_-ma _tag-mesz_-szu2-nu-ti \n#tr.en: passes and whom he touches. \n$ single ruling \n40. [disz _kaskal_ {d}sin _du_-ku {d}utu] _du#_-ak _dub 1(disz)-kam {mul}apin_ \n#tr.en: [...] travels. Tablet 1 of MUL.APIN. \n41. [...] x _sumun_-szu2 _sar#_-ma# _igi_ \n#tr.en: [... According] to its original written and checked.  \n42. [...] \n43. [...] \n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[_disz {mul}{gesz}apin_ {d}en-lil2 a]-lik# pa-ni _mul-mesz_ szu-ut {d}en-lil2 :",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Plow, Enlil, who goes at the fore of the stars of Enlil,  ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[_disz {mul}ur-bar]-ra# {gesz}ninda2_ sza2 _{mul}apin_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Wolf, the seeder of the Plow ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[_disz {mul}szu]-gi_ {d}en-me-szar2-ra",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Old Man, Enmešarra, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[_{mul}]gam3_ {d}gam-lum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Crook, Gamlu, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[_disz {mul}]masz-tab-ba gal-gal_ {d}lugal-gir3-ra u3 {d}mes-lam-ta-e3-a :",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Great Twins, Lugalgira and Meslamtaea, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[_disz {mul}masz-tab]-ba# tur-tur_ {d}lal3 u3 {d}nin-|EZENxGUD|",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Little Twins, Alamuš and Nin-EZENxGUD ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[_disz {mul}al]-lul#_ szu-bat {d}a-nim",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Crab, the seat of Anu, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[_disz {mul}ur]-gu#-la_ {d}la-ta-ra-ak",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Lion, Latarak, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[_disz mul_ sza2 ina _gaba] {mul#}ur-gu-la gub_-zu _{mul}lugal_ :",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in the breast of the Lion: the King. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[_disz mul-mesz_ um-mu]-lu#-tum sza2 ina _kun {mul}ur-gu-la_ :",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The dusky stars which stand in the tail of the Lion: ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[_gub_-zu sis]-sin-nu {d}e4-ru6 {d}zar-pa-ni-tum",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Frond (of the date palm) of Eru, Zarpanitu. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[_disz {mul}SZU-PA_ {d}en]-lil2 sza2 szi-mat _kur_ i-szim-mu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: ŠU-PA, Enlil who decrees the fate of the land. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[_disz mul_ sza2 ina _igi_-szu2 _gub_]-zu# {mul}he2-gal2-a-a-u2 _sukkal_ {d}nin-lil2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in front of it: the Abundant One, the messenger of Ninlil. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[_disz mul_ sza2 _egir_-szu2 _gub_-zu] _mul bala-tesz2-a sukkal_ {d}tiszpak",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind it: the star of Dignity, the messenger of Tišpak. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[_disz {mul}mar]-gid2#-da#_ {d}nin-lil2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Wagon, Ninlil.",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[_disz mul_ sza2 _ki_] za#-ri-i sza2 _{mul}mar-gid2-da gub_-zu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in the cart-pole of the Wagon: ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[...] _{mul}ka5-a_ {d}er3-ra gasz-ri _dingir-mesz_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Fox, Erra, the strong one among the gods.",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_disz mul_ sza3 ina _sag-ki {mul}mar-gid2-da gub_-zu _{mul}u8_ {d}a-a",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in front of the Wagon: the Ewe, Aya. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_disz {mul}mu-bu-kesz2-da_ {d}a-num _gal_-u2 sza2 _an_-e",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Hitched Yoke, the great Anu of Heaven. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_disz {mul}mar-gid2-da an-na_ {d}dam-ki-an-na",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Wagon of Heaven, Damkianna. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_disz mul_ sza2 ina t,ur-ri-szu2 _gub_-zu _{mul}ibila-e2-mah_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in its rope: the Heir of the Sublime Temple,",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_dumu_ resz-tu-u2 sza2 {d}a-nu-um",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the first-ranking son of Anu. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_disz {mul}dingir-gub-ba-mesz_ szu-ut e2-kur _{mul}dingir-tusz-a-mesz_ szu-ut e2-kur",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Standing Gods of Ekur, the Sitting Gods of Ekur. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_disz {mul}ud5_ {d}gu-la",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The She-Goat, Gula ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_disz mul_ sza2 ina _igi {mul}ud5 gub_-zu _{mul}ur-gi7_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands in front of the She-Goat: the Dog. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_disz mul_ ne2-bu-u2 sza2 _{mul}ud5 {d}lamma sukkal_ {d}ba-ba6",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The bright star of the She-Goat: Lamma, the messenger of Baba. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_disz 2(disz) mul-mesz_ sza2 _egir_-szu2 _gub-mesz_-zu {d}nin-nisi u {d}er3-ra-gal",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The two stars which stand behind it: Ninnisi and Erragal ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_disz {mul}u4-ka-du8-a_ {d}u-gur",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Panther: Nergal  ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_disz mul_ sza2 ina _za3_-szu2 _gub_-zu _{mul}szah_ {d}da-mu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands at its right side: the Pig, Damu. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_disz mul_ sza2 ina _gub3_-zu _{mul}ansze-kur-ra_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands at its left side: the Horse. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_disz mul_ sza2 _egir_-szu2 _gub_-zu _{mul}lu-lim sukkal mul-mul_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind it: the Stag, the messenger of the Stars. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "_disz mul-mesz_ um-mu-lu-tu4 sza2 ina _gaba {mul}lu-lim_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The dusky stars which stand in the breast of the Stag: ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_gub-mesz_-zu {d}har-ri-ru _{d}tir-an-na_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Ḫarriru, the Rainbow. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_disz mul sa5_ ne2-bu-u2 sza2 _bir {mul}lu-lim_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The bright red star which in the kidney of the Stag ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_gub_-zu _{mul}ka-musz-i3-gu7-e_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: stands: The Deleter. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "raw",
+      "text": "# after GUB there is an erased MESZ sign ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "ki-ma _mul-mesz_ szu-ut {d}en-lil2 ug-dam-mi-ru-ni",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: When the stars of Enlil have been finished, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_1(disz) mul gal u4-da_-su da-a'-mat _an_-e _bar_-ma _gub_-zu _mul_ {d}marduk ne2-bi-ri",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: one big star – (although) its light is dim – divides the sky in half and stands there: (that is) the star of Marduk, the Ford, ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "_disz {mul}sag-me-gar ki-gur_-su _kur2-kur2_-ir _an_-e ib-bir",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Jupiter, (it) keeps changing its position and crosses the sky.",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "_3(u) 3(disz) mul-mesz_ szu-ut {d}en-lil2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_disz {mul}asz-iku_ szu-bat {d}e2-a a-lik _igi mul-mesz_ szu-ut {d}a-nim",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Field, the seat of Ea, which goes at the front of the stars of Anu. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "_disz mul_ sza2 ina _igi_-it _{mul}asz-iku gub_-zu {mul}szi-nu-nu-tu4",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands opposite the Field: the Swallow. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "_disz mul_ sza2 _egir {mul}asz-iku gub_-zu {mul}a-nu-ni-tu4",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind the Field: Anunitu. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_disz mul_ sza2 _egir_-szu2 _gub_-zu {mul}lu2-hun-ga2_ {d}dumu-zi",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind it: the Hired Man, Dumuzi. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "_disz mul-mul dingir-imin-bi dingir-mesz gal-mesz_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Stars, the seven gods, the great gods. ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_disz {mul}gu4-an-na_ {d}is le#-[e _aga_ {d}a-nim]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Bull of Heaven, the Jaw of the Bull, the crown of Anu ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_disz {mul}sipa-zi-an-na_ {d}pap-sukkal _sukkal#_ [{d}a-nim u innin]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The True Shepherd of Anu, Papsukkal, the messenger of Anu and Ištar. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_disz_ {mul}masz-tab-ba_ sza2 ina _igi_-et _{mul}[sipa-zi-an-na_]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The twin stars which opposite the True Shepherd of Anu ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_gub-mesz_-zu {d}lu2-lal3 u {d}la#-[ta-ra-ak]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: stand: Lulal and Latarak. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_disz mul_ sza2 _egir_-szu2 _gub_-zu! _{mul}[dar-lugal]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind it: the Rooster.",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_disz {mul}kak-si-sa2_ szil-ta-hu _ur-sag gal_-u2 {d#}[nin-urta]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Arrow, the arrow of the great warrior Ninurta. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_disz {mul}ban_ {d}isz-tar _nim-ma_-tu4 _dumu-munus_ {d#}[en-lil2]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Bow, the Elamite Ištar, the daughter of Enlil  ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_disz {mul}{d}nirah_ {d}nin-gesz-zi-da _en_ er-s,e-tu4",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Snake, Ningišzida, lord of the Netherworld. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_disz {mul}uga{muszen}_ a-ri-bu _mul {d}iszkur_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Raven, the star of Adad. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_disz_ {mul}ab-sin2_ {d}sza-la szu-bu-ul-tu4",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Furrow, Šala, the ear of corn.  ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_disz {mul}zi-ba-an-na si {mul}gir2-tab_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Scales, the horn of the Scorpion.",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_disz_ mul_ {d}za-ba4-ba4 _{mul}ti8{muszen} u {mul}ad6_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star of Zababa, the Eagle, and the Dead Man. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_disz {mul}dili-bat _ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Venus keeps changing its position and crosses the sky. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_disz_ {mul}s,al-bat-a-nu _ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Mars keeps changing its position and crosses the sky. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_disz {mul}udu-idim-sag-us2 ki-gub_-su _kur2-kur2_-ir _an_-e ib-bir",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Saturn keeps changing its position and crosses the sky. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_disz {mul}udu-idin-gu4-ud_ sza2 {d}masz _mu-ni_ lu ina _{d}utu-e3_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Mercury, whose name is Ninurta, rises or sets in the east",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "lu-u2 ina {d}utu-szu2-a_ e-ma _iti igi-la2_-ma e-ma _iti tum3_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: or in the west within a month. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_2(u) 3(disz) mul-mesz_ szu-ut {d}a-nim",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 23 stars of Anu. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_disz {mul}ku6_ {d}e2-a a-lik _igi mul-mesz_ szu-ut {d}e2-a",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Fish, Ea, who goes at the front of the stars of Ea.",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_disz {mul}gu-la_ {d}e2-a _{mul}eridu{ki}_ {d}e2-a",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Great One, Ea, the star of Eridu, Ea. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_disz mul_ sza2 ina 1(u)-5(disz)-szu2 _gub_-zu {mul}nin-mah",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands at its right: Ninmah. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_disz {mul}en-te-na-bar-hum_ {d}nin-gir2-su",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Entena-barhum, Ningirsu.  ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_disz mul_ sza2 ina _a2_-szu2 _gub_-zu _{mul}{gesz}gan2-ur3 {gesz}tukul_ sza2 {d}a-e2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands at its side: the Harrow, the weapon of Mar-biti, ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "sza2 ina lib3-bi-szu2 _abzu_ i-bar-ru-u2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: inside of which one sees the subterranean waters. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_disz 2(disz) mul-mesz_ sza2 _egir_-szu2 _gub-me_-zu {d}szullat2 u {d}hanisz2 {d}utu u {d}iszkur",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The two stars which stand behind it: Šullat and Ḫaniš, Šamaš and Adad.",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_disz mul_ sza2 _egir_-szu2-nu _gub_-zu _gin7_ {d}e2-a _kur_-ha",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind them rises like Ea ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_gin7_ {d}e2-a _szu2-mesz_ {mul}nu-musz-da {d}iszkur",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: and sets like Ea: Numušda, Adad. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_disz mul_ sza2 ina _gub3 {mul}gir2-tab gub_-zu _{mul}ur-idim_ {d}ku3-su3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands at the left side of the Scorpion: the Mad Dog, Kusu. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_disz {mul}gir2-tab_ {d}isz-ha-ra be-let da-ad2-me",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Scorpion, Išhara, goddess of all inhabited regions. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_disz {mul}gaba gir2-tab_ {d}li9-si4 {d}AK",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Breast of the Scorpion: Lisi, Nabȗ. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_disz 2(disz) mul-mesz_ sza2 ina zi-qit _{mul}gir2-tab gub-mesz_-zu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The two stars which stand in the sting of the Scorpion: ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "{d}szar2-ur4 u {d}szar2-gaz",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Šarur and Šargaz. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_disz mul_ sza2 _egir_-szu2-nu _gub_-zu {mul}pa-bil-sag",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The star which stands behind them: Pabilsag. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_disz {mul}ma2-gur8 u {mul}suhur-masz2{ku6}_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Bark and the Goat-Fish. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_1(u) 5(disz) mul-mesz_ szu-ut {d}e2-a",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 15 stars of Ea. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "disz ina _{iti}bara2 u4 1(disz)-kam {mul}lu2-hun-ga2 igi-la2_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 1st of Nisannu the Hired Man becomes visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "disz ina _{iti}bara2 u4 2(u) {mul}gam3 igi-la2_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 20th of Nisannu the Crook becomes visble.",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "disz ina _{iti}gu4 u4 1(disz)-kam mul-mul igi-la2_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 1st of Ajjaru the Stars become visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "disz ina _{iti}gu4 u4 2(u)-kam_ {mul}is le-e _igi-la2_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 20th of Ajjaru the Jaw of the Bull becomes visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "disz ina _{iti}sig4 u4 1(u)-kam {mul}sipa-zi-an-na u {mul}masz-tab-ba-gal-gal igi-me_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 10th of Simanu the True Shepherd of Anuy and the Great Twins become visible ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "disz ina _{iti}szu u4 5(disz)-kam {mul}masz-tab-ba-tur-tur u {mul}al-lub igi-me_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 5th of Du'uzu the Little Twins and the Crab become visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "disz ina _{iti}szu u4 1(u) 5(disz)-kam {mul}kak-si-sa2 {mul}musz u {mul}ur-gu-la_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Du'uzu the Arrow, the Snake, and the Lion ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_igi-me_-ma _4(disz) ma-na en-nun_ u4-me _2(disz) ma-na en-nun gi6_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: become visible; 4 minas is a daytime watch, 2 minas is a nighttime watch. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "disz ina _{iti}NE u4 5(disz)-kam {mul}ban u {mul}lugal igi-me_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 5th of Abu the Bow and the King become visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "disz ina _{iti}kin u4 1(u)-kam {mul}eridu{ki} u {mul}uga{muszen} igi-me_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 10th of Ululu the star of Eridu and the Raven become visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "disz ina _{iti}kin u4 1(u) 5(disz)-kam {mul}SZU-PA {d}en-lil2 [igi_]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Ululu ŠU-PA, Enlil, becomes visible.  ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "disz ina _{iti#}[kin] u4 2(u) 5(disz)-kam {mul}ab-sin2 [igi_]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 25th of Ululu the Furrow becomes visible. ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[disz ina _{iti}du6 u4 1(u) 5(disz)-kam_ {mul}zi-ba-ni-tu4 _{mul}ur-idim {mul}en-te-na-bar-hum_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Tešritu the Scales, the Mad Dog, entena-barhum ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[u {mul}ur-gi7 igi-me-ma 3(disz) ma-na en-nun_ u4-mi _3(disz) ma-na en-nun gi6_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: and the Dog become visible; 3 minas is a daytime watch, 3 minas is a nighttime watch. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "disz ina [_{iti}apin u4 5(disz)-kam] {mul#}gir2#-[tab igi_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 5th of Araḫsamnu the Scorpion becomes visible. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "disz ina _{iti}apin u4 1(u) 5(disz)#-kam {mul}ud5 u {mul}[gaba-bir2-tab igi-me_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Araḫsamnu the She-Goat and the Breast of the Scorpion become visible.",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "disz ina _{iti}gan u4 1(u) 5(disz)-kam {mul}u4-ka-du8-a {mul}ti8{muszen}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Kislimu the Panther, the Eagle, ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "u _{mul}pa-bil-sag igi-me_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: and Pabilsag become visible. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "disz ina _{iti}ab u4 1(u) 5(disz)-kam {mul}sim-mah {mul}szi-nu-nu-tu4 {mul}im-szesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Tebetu SIM-MAH (i.e.) the Swallow (or) IM-ŠEŠ, ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ina _gesz-nim igi-la2 u {mul}kak-si-sa2_ ina li-la-a-ti",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: becomes visible in the East, and in the evening the Arrow ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_igi-la2_-ma _2(disz) ma-na en-nun u4_-me _4(disz) ma-na en-nun gi6_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: becomes visible; 2 minas is a daytime watch, 4 minas is a nighttime watch. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "disz ina _{iti}udru u4 5(disz)-kam {mul}gu-la {mul}asz-iku u {mul}lu-lim igi-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 5th of Šabaṭu the Great One, the Field, and a Stag become visible. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "disz ina _{iti}udru u4 2(u) 5(disz)-kam_ {mul}a-nu-ni-tu4 _igi-la2_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 25th of Šabaṭu Anunitu becomes visible. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "disz ina _{iti}sze u4 1(u) 5(disz)-kam {mul}ku6 u {mul}szu-gi igi-la2-me_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Addaru the Fish ad the Old Man become visible. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_disz mul-mul kur_-ma _{mul}gir2-tab szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Stars rise and the Scorpion sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_disz {mul}gir2-tab kur_-ma _mul-mul szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Scorpion rises and the Stars set.",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_disz {mul}gu4-an-na kur_-ma _{mul}SZU-PA szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Bull of Heaven rises and ŠU-PA sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_disz {mul}sipa-zi-an-na kur_-ma {mul}pa-bil-sag _szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The True Shepherd of Anu rises and Pabilsag sets.  ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_disz {mul}kak-si-sa2 {mul}{d}nirah u {mul}ur-gu-la kur-me_-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Arrow, the Snake, and the Lion rise, and ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_{mul}gu-la u {mul}ti8{muszen} szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Great One and the Eagle set.  ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_disz {mul}ban u {mul}lugal kur-me_-ma _{mul}ud5 szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Bow and the King rise, and the She-Goat sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_disz {mul}eridu{ki} u {mul}uga{muszen} kur-mesz_-ma _{mul}u4-ka-du8-a szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Star of Eridu and the Raven rise, and the Panther sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_disz {mul}SZU-PA_ {d}en-lil2 _kur_-ma _{mul}asz-iku szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: ŠU-PA, Enlil, rises and the Field sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_disz {mul}nin-mah kur_-ma {mul}a-nu-ni-tu4 _szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Ninmah rises and Anunitu sets.  ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "disz {mul}zi-ba-ni-tu4 _{mul}ur-idim u {mul}en-te-na-bar-hum_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Scales, the Mad Dog, and Entena-barhum ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_kur-me_-ma _{mul}lu2-hun-ga2 szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: rise, and the Hired Man sets. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_disz {mul}gir2-tab u {mul}ur-gi7 kur-me_-ma _{mul}eridu{ki} u mul-mul szu2_-bi",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Th Scorpion and the Dog rise, and the Star of Eridu and the Stars set. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_disz {mul}gaba gir2-tab u {mul}ud5 kur-mesz_-ma _{mul}szu-gi u {mul}sipa-zi-an-na szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The breast of the Scorpion and the She-Goat rise, and the Old Man and the True Shepherd of Anu set. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "disz {mul}pa-bil-sag {mul}za-ba4-ba4 u _dingir-gub-ba-mesz kur-mesz_-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Pabilsag, Zababa, and the Standing Gods rise, and ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_{mul}kak-si-sa2 {mul}ban u {mul}gam3 szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Arrow, the Bow and the Crook set, ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_disz {mul}u4-ka-du8-a u {mul}ti8{muszen} kur-mesz_-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Panther and the Eagle rise, and ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_{mul}masz-tab-ba-gal-gal u {mul}masz-tab-ba-tur-tur szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Great Twins and the Little Twins set. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_disz {mul}asz-iku {mul}gu-la u {mul}lu-lim kur-mesz_-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Field, the Great One, and the Stag rise, and ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "_{mul}ur-gu-la {mul}{d}nirah u {mul}en-te-na-bar-hum szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Lion, the Snake, and Entena-barhum set. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_disz {mul}ku6 u {mul}szu-gi kur-mesz_-ma _{mul}ab-sin2 u {mul}ur-idim szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Fish and the Old Man rise, and the Furrow and the Mad Dog set. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_disz ta kur_ sza2 _{mul}kak-si-sa2 5(u) 5(disz) u4-mesz_ ana _kur_ sza2 {mul}eridu{ki}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 55 days pass from the rising of the Arrow to the rising of the start of Eridu. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_disz ta kur_ sza2 _{mul}kak-si-sa2 1(gesz2)_-szu _u4-mesz_ ana _kur_ sza2 {mul}SZU-PA_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 60 days pass from the rising of the Arrow to the rising of ŠU-PA.  ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "_disz ta kur_ sza2 {mul}SZU-PA _1(u) u4-mesz_ ana _kur_ sza2 _{mul}ab-sin2_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 10 days pass from the rising of ŠU-PA to the rising of the Furrow. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_disz ta kur_ sza2 _{mul}ab-sin2 2(u) u4-mesz_ ana _kur_ sza2 {mul}zi-ba-ni-tu4",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 20 days pass from the rising of the furrow to the rising of the Scales. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "_disz ta kur_ sza2 {mul}zi-ba-ni-tu4 _3(u) u4-mesz_ ana _kur_ sza2 _{mul}ud5_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 30 days pass from the rising of the Scales to the rising of the She-goat. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "_disz ta kur_ sza2 _{mul}ud5 3(u) u4-mesz_ ana _kur_ sza2 _{mul}u4-ka-du8-a_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 30 days pass from the rising of the She-Goat to the rising of the Panther. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_disz ta kur_ sza2 _{mul}u4-ka-du8-a 3(u) u4-mesz_ ana _kur_ sza2 _{mul}sim-mah_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 30 days pass from the rising of the Panther to the rising of the Swallow.",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "_disz ta kur_ sza2 _{mul}sim-mah 2(u) u4-mesz_ ana _kur_ sza2 _{mul}asz-iku_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 20 days pass from the rising of the Swallow to the rising of the Field. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "_disz ta kur_ sza2 _{mul}asz-iku 4(u) u4-mesz_ ana _kur_ sza2 _{mul}ku6_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 40 days pass from the rising of the Field to the rising of the Fish. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_disz ta kur_ sza2 _{mul}ku6 3(u) 5(disz) u4-mesz_ ana _kur_ sza2 _{mul}gam3",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 35 days pass from the rising of the Fish to the rising of the Crook. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "_disz ta kur_ sza2 _{mul}gam3 1(u) u4-mesz_ ana _kur_ sza2 _mul-mul_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 10 days pass from the rising of the Crook to the rising of the Stars. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "_disz ta kur_ sza2 _mul-mul 2(u) u4-mesz_ ana _kur_ sza2 _{mul}[gu4-an-na_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 20 days pass from the rising of the Stars to the rising of the Bull of Heaven ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "_disz ta kur_ sza2 _{mul}gu4-an-na 2(u) u4-mesz_ ana _kur_ sza2 _{mul}[sipa-zi-an-na_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 20 days pass from the rising of the Bull of Heaven to the rising of the True shepherd of Anu. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "_disz ta kur_ sza2 _{mul}sipa-zi-an-na 3(u) 5(disz) u4-mesz_ ana _kur_ [sza2 _{mul}kak-si-sa2_]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 35 days pass from the rising of the True Shepherd of Anu to the rising of the Arrow.  ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "_disz ta kur_ sza2 _{mul}kak-si-sa2 2(u) u4-mesz_ ana _kur_ sza2 _{mul}ban_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: 20 days pass from the rising of the Arrow to the rising of the Bow. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "u4#-mu _1(disz) usz-ta-am3 mul-mesz_ ina szer3-ti# [ana _gi6 ku4-mesz_-ni]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The stars enter into the night in the morning 1 UŠ each day.",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "50",
+      "atf": "u4#-mu _1(disz) usz-ta-am3 mul-mesz_ ina li-la-a-ti ana u4#-[me _e3-mesz_-ni]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The stars come out into the day in the evening 1 UŠ each day. ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_disz mul-mesz_ sza2 ziq-pi sza2 ina _kaskal_ szu-ut {d}en-lil2 ina [_murub4 an_-e]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The ziqpu stars which stand in the path of Enli in the middle of the sky ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ina _igi_-it _gaba_ sza2 _szesz an_-e _gub-mesz_-ma _gi6 kur_ [u _szu2_-bi]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: opposite the breast of the obsever of the sky, and ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "sza2 _mul-mesz_ ina lib3-bi-szu2-nu im-ma-ru#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: by means of whih he observes the rising and setting of the stars at night (are the following): ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_disz {mul}SZU-PA mul bala-tesz2-a {mul}dingir-gub-ba-mesz {mul}ur-gi7_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: ŠU-PA, the star of Dignity, the Standing Gods, the Dog, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{mul}ud5 {mul}u4-ka-du8-a {mul}lu-lim {mul}szu-gi {mul}gam3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the She-Goat, the Panther, the Stag, the Old Man, the Crook, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_{mul}masz-tab-ba-gal-gal {mul}al-lub {mul}ur-gu-la {mul}e4-ru6 u {mul}he2-gal2-la-a-a_.",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Great Twins, the Crab, the Lion, Eru, and the Abundant One. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap_ an-nu-tu _mul-mesz_ sza2 ziq-pi sza _kaskal_ szu-ut {d}en-lil2 sza2 ina _murub4 an_-e",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: All these are the ziqpu stars in the path of the stars of Enlil which stand in the middle of the sky ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ina _igi_-it _gaba_-ka _gub-me_-zu-ma _gi6 mu2-mesz u szu2-mesz_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: opposite your breast, and by means of which you observe ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "sza2 _mul-mesz_ ina lib3-bi-szu2-nu tam-ma-ru",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the risings and settings of the stars at night. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_be_-ma zi-iq-pa a-na a-ma-ri-ka ina _{iti}bara2 u4 2(u)-kam_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: If you are to observe the ziqpu, you stand ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "ina szer3-ti la-am {d}utu _kur_-ha _gub_-ma _za3_-ka _{im}mar-tu_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: in the morning before sunrise, West to your right, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_gub3_-ka _{im}kur-ra_ ni-isz _igi_-ka _{im}u18-lu_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: East to your left, your face directed towards South; ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ku-ma-ru sza2 _{mul}u4-ka-du8-a_ ina _murub4 an_-e",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: on the 20th of Nisannu the kumaru of the Panther in the middle of the sky ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ina _igi_-it _gaba_-ka _gub_-ma _{mul}gam3 kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: opposite your breast, and the Crook rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "disz ina _{iti}gu4 u4 1(disz)-kam gaba_ sza _{mul}u4-ka-du8-a_ ina _murub4 an_-e",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 1st of Ajjaru, the Breast of the Panther stands in the middle of the sky ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_igi_-it _gaba_-ka _gub_-ma _mul-mul kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: oppostie your breast, and the Stars rise. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "disz ina _{iti}gu4-ud u4 2(u)-kam_ ki-in-s,u sza2 _{mul}u4-ka-du8-a_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 20th of Ajjaru, the Knee of the Panther ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ina _murub4 an_-e _igi_-it _gaba_-ka _gub_-ma {mul}is le-e _kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: stands in the middle of the sky opposite your breast, and the Jaw of the Bull rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "disz ina _{iti}sig4 u4 1(u)-kam_ a-si-du sza2 _{mul}u4-ka-du8-a_ ina _murub4 an_-e",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 10th of Simanu the Heel of the Panther stands in the middle of the sky ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_igi_-it _gaba_-ka _gub_-ma _{mul}sipa-zi-an-na kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: opposite your breast, and the Shepherd of Anu rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "disz ina _{iti}szu u4 1(u) 5(disz)-kam mul_ ne2-bu-u2 sza2 _{mul}szu-gi_ ina _murub4 an_-e _min min {mul}kak-si-sa2 kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Du'uzu the bright star of the Old Man (stand in the middle of the sky opposite your breast, and the Arrow rises.",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "raw",
+      "text": "22-23. disz ina _{iti}NE u4 1(u) 5(disz)-kam mul-mesz_ um-mu-lu-tu4 sza2 _{mul}szu-gi _min min {mul}ban kur_-ha   ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Abu the dusky stars of the Old Man tand in the middle of the sky opposite your breast, and the Bow riseen: ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "disz ina _{iti}kin u4 1(u) 5(disz)-kam {mul}masz-tab-ba-gal-gal min min {mul}SZU-PA u {mul}eridu{ki} kur-mesz_-ni",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Ululu the Great Twins stand in the middle of the sky opposite your breast, and ŠU-PA and the Star of Eridu rise.",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "disz ina _{iti}du6 u4 1(u) 5(disz)-kam {mul}ur-gu-la min min_ {mul}zi-ba-ni-tu4 _kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Tešritu the Lion stands in the middle of the sky opposite your breast, and the Scales rise, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "disz ina _{iti}apin u4 1(u) 5(disz)-kam {mul}e4-ru6_ ina _murub4 an_-e min min {mul}ud5 kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Araḫsamnu Eru stands in the middle of the sky oppoite your breast, and the She-Goat rises.",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[disz ina _{iti}]gan# u4 1(u) 5(disz)-kam {mul}SZU-PA min min {mul}u4-ka-du8-a kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Kislimu ŠU-PA stands in the middle of the sky opposite your breast, and the Panther rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "[disz ina _{iti}]ab u4 1(u) 5(disz)-kam {mul}dingir-gub-ba-mesz min min {mul}sim-mah kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Tebetu the Standing Gods stand in the middle of the sky opposite your breast and the Swallow rises.  ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[disz ina _{iti}]udru u4 1(u) 5(disz)-kam {mul}ur-gi7 min min {mul}asz-iku kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Šabatu the Dog stands in the middle of the sky opposite your breast, and the Field rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[disz ina _{iti}]sze u4 1(u) 5(disz)-kam {mul}ud5 min min {mul}ku6 kur_-ha",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: On the 15th of Addaru the She-Goat stands in the middle of the sky opposite your breast, and the Fish rises. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "[_dingir]-mesz_ sza i-na _kaskal_ {d}sin _gub-mesz_-ma {d}sin e-ma _iti_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The gods who stand in the path of the Moon, through whose regions the Moon in the course of a month ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "[ina pi]-rik-szu2-nu _dib-mesz_-ma _tag-mesz_-szu2-nu-ti",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: passes and whom he touches:",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "[x] _mul-mul {mul}gu4-an-na {mul}sipa-zi-an-na {mul}szu-gi_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: The Stars, the Bull of Heaven, the True Shepherd of Anu, the Old Man, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "[_{mul}]gam3 {mul}masz-tab-ba-gal-gal {mul}al-lub {mul}ur-gu-la",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Crook, the Great Twins, the Crab, the Lion, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "[_{mul}ab2-sin_ {mul}]zi#-ba-ni-tu4 _{mul}gir2-tab_ {mul}pa-bil-sag",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Furrow, the Scales, the Scorpion, Pabilsag,  ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "[_{mul}suhur-masz] {mul#}gu-la kun-mesz {mul}sim-mah",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: the Goat-Fish, the Great One, the Tails, the Swallow, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "[{mul}a-nu-ni]-tu4# u _{mul}lu2-hun-ga2_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: Anunitu, and the Hired Man, ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "[_pap_ an-nu-tu4 _dingir-mesz_] sza2# ina _kaskal_ {d}sin _gub-mesz_-ma {d}sin e-ma _iti_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: All these are the gods who stand in the path of the Moon, through whose regions the Moon in the course of a month ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "[ina pi-rik-szu2-nu _dib]-mesz_-ma _tag-mesz_-szu2-nu-ti",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: passes and whom he touches. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "[disz _kaskal_ {d}sin _du_-ku {d}utu] _du#_-ak _dub 1(disz)-kam {mul}apin_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: [...] travels. Tablet 1 of MUL.APIN. ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "[...] x _sumun_-szu2 _sar#_-ma# _igi_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "#tr.en: [... According] to its original written and checked.  ",
+      "surface": "reverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "omen_kind": "astral"
+}

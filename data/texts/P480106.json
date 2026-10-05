@@ -1,0 +1,829 @@
+{
+  "id": "P480106",
+  "designation": "AfO Beih 27, pl. 18, 19 BM 057612 +",
+  "genre": "Omen",
+  "subgenre": "",
+  "language": "Akkadian",
+  "period": "Neo-Babylonian (ca. 626-539 BC)",
+  "year": -582,
+  "provenience": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+  "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+  "lat": 33.06,
+  "lon": 44.25,
+  "content_lines": 97,
+  "chars": 7314,
+  "font": "Esagil",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/480106",
+  "museum_no": "BM 057612 + BM 064513",
+  "primary_publication": "AfO Beih 27, pl. 18, 19 BM 057612 +",
+  "atf_source": "cdlistaff (check)",
+  "omen_hunt": true,
+  "omen_blurb": "Omen series",
+  "omen_score": 201.8,
+  "atf": "&P480106 = BM 57612 + 82-7-14, 2023 + 82-9-18, 4493 (AfO Beih 27, Tf 18-19, Šumma kittabru, Ms G)\n#atf: lang akk \n@tablet\n@obverse\n$ beginning missing\n1'. _DISZ sze_ ina _pa igi_ 1(u) 5(disz)-szu2 lu _an-ta_-nu lu _ki-ta! gar an-dul7 dingir ugu na#_ [...] \n2'. _DISZ sze_ ina _pa# igi#_ 1(u) 5(disz)-szu2 _min gar szu#-bi#-asz_ [...]\n3'. _DISZ sze_ ina [...] DU _kir4_-szu2 _gar im# dingir du10-ga_ ana _lu2_ [...]\n4'. _DISZ sze_ ina [...] lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar ugu en inim_-szu2 [...]\n5'. _DISZ sze_ ina [...] na-hi-ri-szu2 lu [...] _gar_ [...] _dingir du10#-[ga]_ ana _lu2_ [i]-za-[aq]\n6'. _DISZ sze_ ina [... x]-szu2# _an-ta_ lu qer-bi#-nu lu ki-da#-a-nu _gar dingir ninda_ nap-sza2 [...]\n7'. _DISZ sze_ ina# [... x]-szu2# _an-ta#_ [...] _gar ka-dib-be-da#_ [...]\n8'. _DISZ_ [...] li-iq [... 1(u)] 5(disz) [...] 2(gesz2) 3(u) _gar ninda_ [...]\n9'. _DISZ_ [...] su-[x ...] _nig2-gur11_ [...]\n10'. _DISZ_ [...] su-[x ...] _gar szu {d}iszkur sig5_ [...]\n11'. _DISZ_ [...] _szu#-bi#-asz-am3#_\n12'. _DISZ_ [... x]-szu2 [...]\n13'. _DISZ_ [... x]-szu2 [...]\n14'. _DISZ_ [...] _gu2#_ [...]\n15'. _DISZ [sze_ ina] _gu2#_ [...]\n16'. _DISZ [sze]_ ina _gu2#_ [...]\n17'. _DISZ [sze]_ ina _gu2#_ [...]\n18'. _DISZ [sze]_ ina x [...]\n19'. _DISZ [sze]_ ina la ri [x]-szu2 [...]\n20'. _DISZ [sze]_ ina x ri su-szu2 1(u) 5(disz) _gar_ [...]\n21'. _DISZ [sze]_ ina u2 ri su-szu2 2(gesz2) 3(u) _gar_ [...]\n22'. _DISZ [sze]_ ina kir-ri-szu2 lu [...] _gar_ [...]\n23'. _DISZ sze#_ ina _ugu mud#_ a-hi# 1(u) 5(disz)-szu2 _gar ugu en inim_-szu2 _gub_ [...]\n24'. _DISZ sze#_ ina _ugu mud#_ a-hi# 2(gesz2) 3(u)-szu2 _gar_ [...]\n25'. _DISZ sze#_ [ina ... x]-szu2 _gar_ [...]\n26'. [_DISZ# sze#_ ina x [...] 2(gesz2) 3(u) [...]\n27'. [_DISZ] sze#_ ina _mud#_ [a]-hi# 1(u) 5(disz)-szu2 _gar_ [...]\n28'. [_DISZ] sze#_ ina _mud_ a-[hi ... x]-szu2 _gar_ x x [...]\n29'. [_DISZ] sze#_ ina _ka-kesz2_ [...] KA x tu x [...]\n30'. [_DISZ] sze#_ ina _ka-kesz2_ [x x] 2(gesz2) 3(u)-szu2 [...] x x x i-tar-[ra-as,]\n31'. _DISZ sze_ ina s,i-s,i-ti _[szu]_ 1(u) 5(disz)-szu2 _an#-ta_-[nu lu] _ki-ta!(DA)_-nu _gar sze-ga_ u _sze#-[ga gar?_-szu2]\n32'. _DISZ sze_ ina s,i-s,i-ti _szu#_ 2(gesz2) 3(u) _kimin gar e2_-su _bir_-[ah]\n33'. _DISZ sze_ ina su-hat 1(u) 5(disz)-szu2 _gar_ tal-lak-ti la ku-UZU [...]\n34'. _DISZ sze_ ina su-hat 2(gesz2) 3(u)-szu2 _gar dingir_ ana _{munus}sig5 us2-mesz#_\n35'. _DISZ sze_ ina ku-tal _kiszib_-szu2 lu sza2 1(u) 5(disz) [lu] sza2 2(gesz2) 3(u) _gar_ i-szar2-ru3 _mu_-szu2 [...]\n36'. _DISZ sze_ ina _suhusz# kiszib_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar munus-bi_ [...] x [...]\n37'. _DISZ sze_ ina _suhusz szu 1(u) 5(disz)-szu2 _gar_ [x] _bi_ x-szu2 _gen_ [...]\n38'. _DISZ sze_ ina _suhusz szu_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_\n39'. _DISZ sze_ ina _suhusz szu-si szu_ 1(u) 5(disz)-szu2 _tur_-ti _gar dingir_-szu2 _[a2]-dah_-szu2 _ninda_ i-szeb-bi#\n40'. _DISZ sze_ ina _suhusz szu-si szu gal_-ti lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar na-bi nig2-gur11_-szu2 [...]\n41'. _DISZ sze_ ina _ka-kesz2 szu-si-mesz_ 1(u) 5(disz)-szu2 _gar nig2-gur11_-szu2 _sumun_-bar#\n42'. [_DISZ sze_ ina] _ka-kesz2 szu-si-mesz_ 2(gesz2) 3(u)-szu2 _gar nig2-gur11_-szu2 _dagal_-[isz] \n43'. [_DISZ sze_ ina] _szu-si tur_-ti sza2 _szu_ 1(u) 5(disz)-szu2 _gar nig2-[tuku?]_\n44'. [_DISZ sze_ ina] _szu#-si tur_-ti sza2 _szu_ 2(gesz2) 3(u)-szu2 _gar uku2_-[in]\n45'. [_DISZ sze_ ina] _ubur#_ 1(u) 5(disz)-szu2 _gar dumu-mesz dumu-munus-mesz tuku_-[szi ...]\n46'. [_DISZ sze_ ina] _ubur_ 2(gesz2) 3(u)-szu2 _gar uku2_-in [...]\n47'. [_DISZ sze_ ina] _an#-ta ubur_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar_ pa-sza2-ha [...]\n48'. [...] _ubur#_-szu2 : ina _sag sza3_-szu2 _gar_\n@reverse\n1. [_DISZ sze_ ina] _gaba#_-szu2 _gar gaba-ri nu-[tuku_-szi]\n2. [_DISZ sze_ ina] ban#-di-szu2 _gar na bi_ pa-sza2-ha _igi#_ [...]\n3. [_DISZ sze_ ina] _ti#_ 1(u) 5(disz)-szu2 _gar na bi sumun_-bar _usz2_ ti# [...]\n4. [_DISZ sze_ ina] _ti_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_\n5. [_DISZ sze_ ina] _sag li-dur_-szu2 _gar gig_ dan#-nu _igi_-mar-ma x [...]\n6. [_DISZ sze_ ina] _sag bir : bir_ 1(u) 5(disz)-szu2 _gar dingir_ ana _lu2 arhusz_\n7. [_DISZ sze_ ina] _sag bir : bir 2(gesz2) 3(u)-szu2 _gar dingir_ ana _lu2 arhusz nu tuku_-[szi] \n8. [_DISZ sze_ ina] _sza3 li-dur_-szu2 _gar dumu-mesz dumu-munus-mesz tuku_-szi _a2-tuku_ [...]\n9. [_DISZ sze_] ina# 1(u) 5(disz) _li-dur_-szu2 _gar sza3-se3-se3-ga_-szu2 _nu kur_-ad2#\n10. [_DISZ sze_] ina# 2(gesz2) 3(u) _li-dur_-szu2 _gar dam_-su _bar_-ma sza2-ni-tam i-le#-[qi2]\n11. [_DISZ sze_] ina _ki-ta li-dur_-szu2 _gar ninda-kur4-ra gu7_\n12. [_DISZ sze_ ina] _murub4 gu2-murgu_-szu2 _gar uku2_-in u _hul us2-mesz_-szu2#\n13. [_DISZ] sze#_ ina _murub4 gu2-murgu_ 1(u) 5(disz) _gar_ mim-mu-szu2 _dagal_-isz _ninda_ nap-sza2 _gu7_\n14. _DISZ sze_ ina _murub4 gu2-murgu_ 2(gesz2) 3(u) _gar szu#-bi#-asz-am3_\n15. _DISZ sze_ ina ri-ba-ti-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar dumu-mesz#_\n16. _DISZ sze_ ina _sig2 gal4-la_-szu2 _gar szu-bi#-[asz]-am3_\n17. _DISZ sze_ ina _ugu gisz3_-szu2 lu _an-ta_-nu lu _ki#-ta_-nu _gar dumu-mes dumu#-munus-mesz tuku_-[szi]-ma _a2-tuku igi_-[mar]\n18. _DISZ sze_ ina _ugu gisz3_-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar szu-bi-asz-am3_\n19. _DISZ sze_ ina _ugu szir_ 1(u) 5(disz)-szu2 _gar szu#-bi-asz-am3_\n20. _DISZ sze_ ina _ugu szir_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_\n21. _DISZ sze_ ina _suhusz szir_-szu2 _gar szu-bi-asz-am3_\n22. _DISZ sze_ ina _tugul_ 1(u) 5(disz)-szu2 _gar suhusz-mesz_-szu2 _gi-na-mesz_\n23. _DISZ sze_ ina _tugul#_ 2(gesz2) 3(u)-szu2 _gar uku2_-in\n24. _DISZ sze_ ina _te tugul_ 1(u) 5(disz)-szu2 _gar ninda du10-ga sza3 gu7#_\n25. _DISZ sze_ ina _te tugul_ 1(u) 5(disz)-szu2 _gar szu-bi-asz-am3#_\n26. _DISZ sze_ ina _ur2_ 1(u) 5(disz)-szu2 _gar mu_-szu2 _sig5_ [...]\n27. _DISZ sze_ ina _ur2_ 2(gesz2) 3(u)-szu2 _gar na bi u4-mesz lugud2-da-[mesz]_\n28. _DISZ sze_ ina _sza3 dur2_-szu2 _gar na bi pap-hal ki-kalag igi_-[mar?]\n29. _DISZ sze_ ina _du8 dur2_-szu2 _gar_ pa-sza2-ha _igi_-[mar]\n30. _DISZ sze_ ina _gudu5_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) ki-da-nu _gar ki_-szu2 ni-ih-tum _tusz_-[ab]\n31. _DISZ sze_ ina _gudu5_-szu lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) qer-bi-nu _gar_ la pa-sza2-ha _igi_-mar#\n32. _DISZ sze_ ina _gudu5-mesz_-szu2 1(u) 5(disz) u 2(gesz2) 3(u) mit-har-ma _gar_-nu _szu-bi-asz-am3_\n33. _DISZ sze_ ina ku-tal2 _mud_ 1(u) 5(disz)-szu2 _gar dingir_ pa-sza2-ha _sum_-su\n34. _DISZ sze_ ina ku-tal2 _mud#_ 2(gesz2) 3(u)-szu2 _gar ki-tusz_-su _nu gi-na_\n35. _DISZ sze_ ina ku-tal2 _mud#_-[szu2] 1(u) 5(disz) u 2(gesz2) 3(u) _gar_-nu-ma mit-ha-ru _ki-tusz_ ne-ih-tum _tusz_-ab\n36. _DISZ sze_ ina kin-s,i [1(u)] 5(disz)-szu2 _gar na bi kur_ i-be-el\n37. _DISZ sze_ ina kin-s,i [2(gesz2)] 3(u)-szu2 _gar na bi te ad_-szu2 _kur_-ad2-ma _im-ri-a_ u2-rap-pa-asz2\n38. _DISZ sze-mesz ta_ kin-s,i-szu2 _en#_ [...] 1(u) 5(disz)-szu2 _gar_-nu _na bi hul dib_-su\n39. _DISZ sze-mesz ta_ kin-s,i-szu2 _en#_ [...] 2(gesz2) 3(u)-szu2 _gar_-nu _nig2-szu_ u _nig2-gur11 tuku_-szi\n40. _DISZ sze-mesz_ ina kin-s,i 1(u) 5(disz) [... 2(gesz2)] 3(u) _gar_-nu _nig2-gur11_-szu2 _dagal_-isz\n41. _DISZ sze-mesz_ ina kin-s,i-szu2 2(gesz2) [3(u) ...] _gar nig2-gur11_-szu2 _tur_-ir\n42. _DISZ sze_ ina ma-hir-[x ...] _gar u4-mesz_-szu2 _lugud2-da-mesz_\n43. _DISZ sze_ ina ma-hir-[x ...] _u4-mesz_-szu2 _gid2-da-mesz#_\n44. _DISZ sze_ ina sza-pu-ul# _ugu# dingir_ u _lugal du10_ [...]\n45. _DISZ sze_ ina sza-pu-ul# [...]\n46. _DISZ sze_ ina ku-tal2 sza2-p[u#-[x ...]\n47. [_DISZ] sze#_ ina ki-s,al-li# [...]\n48. [... ki]-[s,al]-li#\n49. [... ki]-s,al#-li# [...]\n$ rest missing\n",
+  "lines": [
+    {
+      "type": "note",
+      "text": "$ beginning missing",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "_DISZ sze_ ina _pa igi_ 1(u) 5(disz)-szu2 lu _an-ta_-nu lu _ki-ta! gar an-dul7 dingir ugu na#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "_DISZ sze_ ina _pa# igi#_ 1(u) 5(disz)-szu2 _min gar szu#-bi#-asz_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_DISZ sze_ ina [...] DU _kir4_-szu2 _gar im# dingir du10-ga_ ana _lu2_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_DISZ sze_ ina [...] lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar ugu en inim_-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_DISZ sze_ ina [...] na-hi-ri-szu2 lu [...] _gar_ [...] _dingir du10#-[ga]_ ana _lu2_ [i]-za-[aq]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_DISZ sze_ ina [... x]-szu2# _an-ta_ lu qer-bi#-nu lu ki-da#-a-nu _gar dingir ninda_ nap-sza2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_DISZ sze_ ina# [... x]-szu2# _an-ta#_ [...] _gar ka-dib-be-da#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "_DISZ_ [...] li-iq [... 1(u)] 5(disz) [...] 2(gesz2) 3(u) _gar ninda_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_DISZ_ [...] su-[x ...] _nig2-gur11_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "_DISZ_ [...] su-[x ...] _gar szu {d}iszkur sig5_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_DISZ_ [...] _szu#-bi#-asz-am3#_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "_DISZ_ [... x]-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "_DISZ_ [... x]-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "_DISZ_ [...] _gu2#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "_DISZ [sze_ ina] _gu2#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_DISZ [sze]_ ina _gu2#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_DISZ [sze]_ ina _gu2#_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "_DISZ [sze]_ ina x [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_DISZ [sze]_ ina la ri [x]-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_DISZ [sze]_ ina x ri su-szu2 1(u) 5(disz) _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "_DISZ [sze]_ ina u2 ri su-szu2 2(gesz2) 3(u) _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22'",
+      "atf": "_DISZ [sze]_ ina kir-ri-szu2 lu [...] _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23'",
+      "atf": "_DISZ sze#_ ina _ugu mud#_ a-hi# 1(u) 5(disz)-szu2 _gar ugu en inim_-szu2 _gub_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24'",
+      "atf": "_DISZ sze#_ ina _ugu mud#_ a-hi# 2(gesz2) 3(u)-szu2 _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25'",
+      "atf": "_DISZ sze#_ [ina ... x]-szu2 _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26'",
+      "atf": "[_DISZ# sze#_ ina x [...] 2(gesz2) 3(u) [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27'",
+      "atf": "[_DISZ] sze#_ ina _mud#_ [a]-hi# 1(u) 5(disz)-szu2 _gar_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28'",
+      "atf": "[_DISZ] sze#_ ina _mud_ a-[hi ... x]-szu2 _gar_ x x [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29'",
+      "atf": "[_DISZ] sze#_ ina _ka-kesz2_ [...] KA x tu x [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30'",
+      "atf": "[_DISZ] sze#_ ina _ka-kesz2_ [x x] 2(gesz2) 3(u)-szu2 [...] x x x i-tar-[ra-as,]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31'",
+      "atf": "_DISZ sze_ ina s,i-s,i-ti _[szu]_ 1(u) 5(disz)-szu2 _an#-ta_-[nu lu] _ki-ta!(DA)_-nu _gar sze-ga_ u _sze#-[ga gar?_-szu2]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32'",
+      "atf": "_DISZ sze_ ina s,i-s,i-ti _szu#_ 2(gesz2) 3(u) _kimin gar e2_-su _bir_-[ah]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33'",
+      "atf": "_DISZ sze_ ina su-hat 1(u) 5(disz)-szu2 _gar_ tal-lak-ti la ku-UZU [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34'",
+      "atf": "_DISZ sze_ ina su-hat 2(gesz2) 3(u)-szu2 _gar dingir_ ana _{munus}sig5 us2-mesz#_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35'",
+      "atf": "_DISZ sze_ ina ku-tal _kiszib_-szu2 lu sza2 1(u) 5(disz) [lu] sza2 2(gesz2) 3(u) _gar_ i-szar2-ru3 _mu_-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36'",
+      "atf": "_DISZ sze_ ina _suhusz# kiszib_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar munus-bi_ [...] x [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37'",
+      "atf": "_DISZ sze_ ina _suhusz szu 1(u) 5(disz)-szu2 _gar_ [x] _bi_ x-szu2 _gen_ [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38'",
+      "atf": "_DISZ sze_ ina _suhusz szu_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39'",
+      "atf": "_DISZ sze_ ina _suhusz szu-si szu_ 1(u) 5(disz)-szu2 _tur_-ti _gar dingir_-szu2 _[a2]-dah_-szu2 _ninda_ i-szeb-bi#",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40'",
+      "atf": "_DISZ sze_ ina _suhusz szu-si szu gal_-ti lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar na-bi nig2-gur11_-szu2 [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41'",
+      "atf": "_DISZ sze_ ina _ka-kesz2 szu-si-mesz_ 1(u) 5(disz)-szu2 _gar nig2-gur11_-szu2 _sumun_-bar#",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42'",
+      "atf": "[_DISZ sze_ ina] _ka-kesz2 szu-si-mesz_ 2(gesz2) 3(u)-szu2 _gar nig2-gur11_-szu2 _dagal_-[isz]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43'",
+      "atf": "[_DISZ sze_ ina] _szu-si tur_-ti sza2 _szu_ 1(u) 5(disz)-szu2 _gar nig2-[tuku?]_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44'",
+      "atf": "[_DISZ sze_ ina] _szu#-si tur_-ti sza2 _szu_ 2(gesz2) 3(u)-szu2 _gar uku2_-[in]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45'",
+      "atf": "[_DISZ sze_ ina] _ubur#_ 1(u) 5(disz)-szu2 _gar dumu-mesz dumu-munus-mesz tuku_-[szi ...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46'",
+      "atf": "[_DISZ sze_ ina] _ubur_ 2(gesz2) 3(u)-szu2 _gar uku2_-in [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47'",
+      "atf": "[_DISZ sze_ ina] _an#-ta ubur_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar_ pa-sza2-ha [...]",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48'",
+      "atf": "[...] _ubur#_-szu2 : ina _sag sza3_-szu2 _gar_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[_DISZ sze_ ina] _gaba#_-szu2 _gar gaba-ri nu-[tuku_-szi]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[_DISZ sze_ ina] ban#-di-szu2 _gar na bi_ pa-sza2-ha _igi#_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[_DISZ sze_ ina] _ti#_ 1(u) 5(disz)-szu2 _gar na bi sumun_-bar _usz2_ ti# [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[_DISZ sze_ ina] _ti_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[_DISZ sze_ ina] _sag li-dur_-szu2 _gar gig_ dan#-nu _igi_-mar-ma x [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[_DISZ sze_ ina] _sag bir : bir_ 1(u) 5(disz)-szu2 _gar dingir_ ana _lu2 arhusz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[_DISZ sze_ ina] _sag bir : bir 2(gesz2) 3(u)-szu2 _gar dingir_ ana _lu2 arhusz nu tuku_-[szi]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[_DISZ sze_ ina] _sza3 li-dur_-szu2 _gar dumu-mesz dumu-munus-mesz tuku_-szi _a2-tuku_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[_DISZ sze_] ina# 1(u) 5(disz) _li-dur_-szu2 _gar sza3-se3-se3-ga_-szu2 _nu kur_-ad2#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[_DISZ sze_] ina# 2(gesz2) 3(u) _li-dur_-szu2 _gar dam_-su _bar_-ma sza2-ni-tam i-le#-[qi2]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[_DISZ sze_] ina _ki-ta li-dur_-szu2 _gar ninda-kur4-ra gu7_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[_DISZ sze_ ina] _murub4 gu2-murgu_-szu2 _gar uku2_-in u _hul us2-mesz_-szu2#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[_DISZ] sze#_ ina _murub4 gu2-murgu_ 1(u) 5(disz) _gar_ mim-mu-szu2 _dagal_-isz _ninda_ nap-sza2 _gu7_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_DISZ sze_ ina _murub4 gu2-murgu_ 2(gesz2) 3(u) _gar szu#-bi#-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_DISZ sze_ ina ri-ba-ti-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) _gar dumu-mesz#_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_DISZ sze_ ina _sig2 gal4-la_-szu2 _gar szu-bi#-[asz]-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_DISZ sze_ ina _ugu gisz3_-szu2 lu _an-ta_-nu lu _ki#-ta_-nu _gar dumu-mes dumu#-munus-mesz tuku_-[szi]-ma _a2-tuku igi_-[mar]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_DISZ sze_ ina _ugu gisz3_-szu2 lu 1(u) 5(disz) lu 2(gesz2) 3(u) _gar szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_DISZ sze_ ina _ugu szir_ 1(u) 5(disz)-szu2 _gar szu#-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_DISZ sze_ ina _ugu szir_ 2(gesz2) 3(u)-szu2 _gar szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_DISZ sze_ ina _suhusz szir_-szu2 _gar szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_DISZ sze_ ina _tugul_ 1(u) 5(disz)-szu2 _gar suhusz-mesz_-szu2 _gi-na-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_DISZ sze_ ina _tugul#_ 2(gesz2) 3(u)-szu2 _gar uku2_-in",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_DISZ sze_ ina _te tugul_ 1(u) 5(disz)-szu2 _gar ninda du10-ga sza3 gu7#_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_DISZ sze_ ina _te tugul_ 1(u) 5(disz)-szu2 _gar szu-bi-asz-am3#_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_DISZ sze_ ina _ur2_ 1(u) 5(disz)-szu2 _gar mu_-szu2 _sig5_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_DISZ sze_ ina _ur2_ 2(gesz2) 3(u)-szu2 _gar na bi u4-mesz lugud2-da-[mesz]_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_DISZ sze_ ina _sza3 dur2_-szu2 _gar na bi pap-hal ki-kalag igi_-[mar?]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_DISZ sze_ ina _du8 dur2_-szu2 _gar_ pa-sza2-ha _igi_-[mar]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "_DISZ sze_ ina _gudu5_-szu2 lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) ki-da-nu _gar ki_-szu2 ni-ih-tum _tusz_-[ab]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "31",
+      "atf": "_DISZ sze_ ina _gudu5_-szu lu sza2 1(u) 5(disz) lu sza2 2(gesz2) 3(u) qer-bi-nu _gar_ la pa-sza2-ha _igi_-mar#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "32",
+      "atf": "_DISZ sze_ ina _gudu5-mesz_-szu2 1(u) 5(disz) u 2(gesz2) 3(u) mit-har-ma _gar_-nu _szu-bi-asz-am3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "33",
+      "atf": "_DISZ sze_ ina ku-tal2 _mud_ 1(u) 5(disz)-szu2 _gar dingir_ pa-sza2-ha _sum_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "34",
+      "atf": "_DISZ sze_ ina ku-tal2 _mud#_ 2(gesz2) 3(u)-szu2 _gar ki-tusz_-su _nu gi-na_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "35",
+      "atf": "_DISZ sze_ ina ku-tal2 _mud#_-[szu2] 1(u) 5(disz) u 2(gesz2) 3(u) _gar_-nu-ma mit-ha-ru _ki-tusz_ ne-ih-tum _tusz_-ab",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "36",
+      "atf": "_DISZ sze_ ina kin-s,i [1(u)] 5(disz)-szu2 _gar na bi kur_ i-be-el",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "37",
+      "atf": "_DISZ sze_ ina kin-s,i [2(gesz2)] 3(u)-szu2 _gar na bi te ad_-szu2 _kur_-ad2-ma _im-ri-a_ u2-rap-pa-asz2",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "38",
+      "atf": "_DISZ sze-mesz ta_ kin-s,i-szu2 _en#_ [...] 1(u) 5(disz)-szu2 _gar_-nu _na bi hul dib_-su",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "39",
+      "atf": "_DISZ sze-mesz ta_ kin-s,i-szu2 _en#_ [...] 2(gesz2) 3(u)-szu2 _gar_-nu _nig2-szu_ u _nig2-gur11 tuku_-szi",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "40",
+      "atf": "_DISZ sze-mesz_ ina kin-s,i 1(u) 5(disz) [... 2(gesz2)] 3(u) _gar_-nu _nig2-gur11_-szu2 _dagal_-isz",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "41",
+      "atf": "_DISZ sze-mesz_ ina kin-s,i-szu2 2(gesz2) [3(u) ...] _gar nig2-gur11_-szu2 _tur_-ir",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "42",
+      "atf": "_DISZ sze_ ina ma-hir-[x ...] _gar u4-mesz_-szu2 _lugud2-da-mesz_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "43",
+      "atf": "_DISZ sze_ ina ma-hir-[x ...] _u4-mesz_-szu2 _gid2-da-mesz#_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "44",
+      "atf": "_DISZ sze_ ina sza-pu-ul# _ugu# dingir_ u _lugal du10_ [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "45",
+      "atf": "_DISZ sze_ ina sza-pu-ul# [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "46",
+      "atf": "_DISZ sze_ ina ku-tal2 sza2-p[u#-[x ...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "47",
+      "atf": "[_DISZ] sze#_ ina ki-s,al-li# [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "48",
+      "atf": "[... ki]-[s,al]-li#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "49",
+      "atf": "[... ki]-s,al#-li# [...]",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest missing",
+      "surface": "reverse",
+      "column": ""
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "omen_kind": "series"
+}

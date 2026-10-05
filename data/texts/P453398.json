@@ -1,0 +1,197 @@
+{
+  "id": "P453398",
+  "designation": "Babyloniaca 03, 141-142 pl. 9",
+  "genre": "Omen",
+  "subgenre": "extispicy",
+  "language": "",
+  "period": "Old Babylonian (ca. 1900-1600 BC)",
+  "year": -1750,
+  "provenience": "Sippar-Yahrurum (mod. Tell Abu Habbah) ?",
+  "site": "Sippar-Yahrurum (mod. Tell Abu Habbah)",
+  "lat": 33.06,
+  "lon": 44.25,
+  "content_lines": 18,
+  "chars": 630,
+  "font": "Santakku",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/453398",
+  "museum_no": "VAT 06678",
+  "primary_publication": "Babyloniaca 03, 141-142 pl. 9",
+  "atf_source": "Jagersma, Bram",
+  "omen_hunt": true,
+  "omen_blurb": "Extispicy — liver / sacrificial-omens",
+  "omen_score": 96.0,
+  "omen_kind": "extispicy",
+  "atf": "&P453398 = Babyloniaca 03, 141-142 pl. 9 \n#atf: lang akk \n@tablet \n@obverse \n1. 1(disz) _udu_ li-pi2-it qa2-ti \n2. a-na _silim#_ {munus}be-el-ta-ni \n3. a-na i-li a-bi-sza \n$ single ruling \n4. {uzu}te-er-tum re-esz _ki-gub_ zu-qu2-ur2 \n5. _gir2 tuku_ szu-bat _gub3 gir2 gar_ \n6. _kal tuku silim ra_-is, \n7. _{gesz}tukul_ ri-s,i _gar {gesz}tukul_ na-ah-bu-tum \n8. _ze2 za3 gi-na_ \n@reverse \n1. i-na _gub3 ze2 giri3 za3 szu-si du8_ \n2. _gub3 szu-si_ sza-ti-iq \n3. _ansze# mur za3_ ku-ri x _mur za3 RI_ \n4. i-na _za3 mur_ u3 _gub3 mur giri3_ \n5. _szu#-si mur murub4 gub3 du8_ \n6. 1(u) 2(disz) ti-ra-nu \n$ single ruling \n7. a-na _silim#_ sza-al-ma-at \n8. a-[hi-tam pi2]-qi2#-tam i#-szu# \n9. _[iti x x x] u4 1(u) 9(disz)-kam_ \n10. _mu#_ am-mi-s,a-du-qa2 _lugal-e alan-a-an-ni szu silim-ma-a_ \n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "1(disz) _udu_ li-pi2-it qa2-ti",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a-na _silim#_ {munus}be-el-ta-ni",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a-na i-li a-bi-sza",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "obverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{uzu}te-er-tum re-esz _ki-gub_ zu-qu2-ur2",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_gir2 tuku_ szu-bat _gub3 gir2 gar_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_kal tuku silim ra_-is,",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_{gesz}tukul_ ri-s,i _gar {gesz}tukul_ na-ah-bu-tum",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_ze2 za3 gi-na_",
+      "surface": "obverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "i-na _gub3 ze2 giri3 za3 szu-si du8_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_gub3 szu-si_ sza-ti-iq",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_ansze# mur za3_ ku-ri x _mur za3 RI_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "i-na _za3 mur_ u3 _gub3 mur giri3_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_szu#-si mur murub4 gub3 du8_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 2(disz) ti-ra-nu",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ single ruling ",
+      "surface": "reverse",
+      "column": ""
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a-na _silim#_ sza-al-ma-at",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a-[hi-tam pi2]-qi2#-tam i#-szu#",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_[iti x x x] u4 1(u) 9(disz)-kam_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_mu#_ am-mi-s,a-du-qa2 _lugal-e alan-a-an-ni szu silim-ma-a_",
+      "surface": "reverse",
+      "column": "",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

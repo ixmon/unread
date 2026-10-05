@@ -1,0 +1,1005 @@
+{
+  "id": "P464229",
+  "designation": "AoF 39, 222",
+  "genre": "Mathematical",
+  "subgenre": "metrological table",
+  "language": "Sumerian",
+  "period": "ED IIIb (ca. 2500-2340 BC)",
+  "year": -2420,
+  "provenience": "Zabalam (mod. Ibzaikh)",
+  "site": "Zabalam (mod. Ibzaikh)",
+  "lat": null,
+  "lon": null,
+  "content_lines": 95,
+  "chars": 1910,
+  "font": "SantakkuM",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/464229",
+  "museum_no": "Anonymous 464229",
+  "primary_publication": "AoF 39, 222",
+  "atf_source": "Feliu, Lluís",
+  "math_hunt": true,
+  "math_blurb": "Early metrological area table (ED IIIb Zabalam)",
+  "math_score": 157.3,
+  "atf": "&P464229 = AoF 39, 222 \n#atf: lang sux \n@tablet \n@obverse \n@column 1 \n1.a1. 1(gesz'u@c) {ninda#}nindax(DU)#? sag \n1.a2. 1(gesz'u@c) sa2 \n1.b. 3(szar2@c) 2(bur'u@c) \n# calculation: 600 × 600 = 360,000 sqninda = 200 bur3 \n2.a1. 9(gesz2@c) \n2.a2. 9(gesz2@c) sa2 \n2.b. 2(szar2@c) 4(bur'u@c) 2(bur3@c) \n# calculation: 540 × 540 = 291,600 sqninda = 162 bur3 \n3.a1. 8(gesz2@c) \n3.a2. 8(gesz2@c) sa2 \n3.b. 2(szar2@c) 8(bur3@c) \n# calculation: 480 × 480 = 230,400 sqninda = 128 bur3 \n4.a1. 7(gesz2@c) \n4.a2. 7(gesz2@c) sa2 \n4.b. 1(szar2@c) 3(bur'u@c) 8(bur3@c) \n# calculation: 420 × 420 = 176,400 sqninda = 98 bur3 \n5.a1. 6(gesz2@c) \n5.a2. 6(gesz2@c) sa2 \n5.b. 1(szar2@c) 1(bur'u@c) 2(bur3@c) \n# calculation: 360 × 360 = 129,600 sqninda = 72 bur3 \n6.a1. 5(gesz2@c) \n6.a2. 5(gesz2@c) sa2 \n6.b. 5(bur'u@c) \n# calculation: 300 × 300 = 90,000 sqninda = 50 bur3 \n7.a1. 4(gesz2@c) \n7.a2. 4(gesz2@c) sa2 \n7.b. 3(bur'u@c) 2(bur3@c) \n# calculation: 240 × 240 = 57,600 sqninda = 32 bur3 \n8.a1. 3(gesz2@c) \n8.a2. 3(gesz2@c) sa2 \n8.b. 1(bur'u@c) 8(bur3@c) \n# calculation: 180 × 180 = 32,400 sqninda = 18 bur3 \n9.a1. 2(gesz2@c) \n9.a2. 2(gesz2@c) sa2 \n9.b. 8(bur3@c) \n# calculation: 120 × 120 = 14,400 sqninda = 8 bur3 \n10.a1. 1(gesz2@c) \n10.a2. 1(gesz2@c) sa2 \n10.b. 2(bur3@c) \n# calculation: 60 × 60 = 3,600 sqninda = 2 bur3 \n11.a1. 5(u@c) \n11.a2. 5(u@c) sa2 \n11.b. 1(bur3@c) 1(esze3@c) 1(iku@c) \n# calculation: 50 × 50 = 2,500 sqninda = 1 bur3 7 iku\n12.a1. 4(u@c) \n12.a2. 4(u@c) sa2 \n12.b. 2(esze3@c) 4(iku@c) \n# calculation: 40 × 40 = 1,600 sqninda = 16 iku\n13.a1. 3(u@c) \n13.a2. 3(u@c) sa2 \n13.b. 1(esze3@c) 3(iku@c) \n# calculation: 30 × 30 = 900 sqninda = 9 iku\n14.a1. 2(u@c) \n14.a2. 2(u@c) sa2 \n14.b. 4(iku@c) \n# calculation: 20 × 20 = 400 sqninda = 4 iku\n15.a1. 1(u@c)# \n15.a2. 1(u@c)# sa2# \n15.b. 1(iku@c) \n# calculation: 10 × 10 = 100 sqninda = 1 iku\n16.a1. [5(asz@c)] \n16.a2. 5(asz@c) sa2 \n16.b. 1/4(iku@c) \n# calculation: 5 × 5 = 25 sqninda = 1/4 iku\n@column 2 \n1.a1. 1(u@c) {ninda}nindax(DU) sag \n1.a2. 1(gesz'u@c) ki# \n1.b. [3(bur3@c) 1(esze3@c)] \n# calculation: 10 × 600 = 6,000 sqninda = 3 bur3 6 iku\n2.a1. 9(asz@c) \n2.a2. 1(gesz'u@c) ki \n2.b. 3(bur3@c)# \n# calculation: 9 × 600 = 5,400 sqninda = 3 bur3 \n3.a1. 8(asz@c) \n3.a2. 1(gesz'u@c) ki \n3.b. 2(bur3@c) 2(esze3@c)# \n# calculation: 8 × 600 = 4,800 sqninda = 2 bur3 12 iku\n4.a1. 7(asz@c) \n4.a2. 1(gesz'u@c) ki \n4.b. 2(bur3@c) 1(esze3@c) \n# calculation: 7 × 600 = 4,200 sqninda = 2 bur3 6 iku\n5.a1. 6(asz@c) \n5.a2. 1(gesz'u@c) ki \n5.b. 2(bur3@c) \n# calculation: 6 × 600 = 3,600 sqninda = 2 bur3 \n6.a1. 5(asz@c) \n6.a2. 1(gesz'u@c) ki \n6.b. 1(bur3@c) 2(esze3@c) \n# calculation: 5 × 600 = 3,000 sqninda = 1 bur3 12 iku\n7.a1. 4(asz@c) \n7.a2. 1(gesz'u@c) ki \n7.b. 1(bur3@c)# 1(esze3@c)# \n# calculation: 4 × 600 = 2,400 sqninda = 1 bur3 6 iku\n8.a1. 3(asz@c) \n8.a2. 1(gesz'u@c) ki \n8.b. 1(bur3@c) \n# calculation: 3 × 600 = 1,800 sqninda = 1 bur3 \n9.a1. 2(asz@c) \n9.a2. 1(gesz'u@c) ki \n9.b. 2(esze3@c) \n# calculation: 2 × 600 = 1,200 sqninda = 12 iku\n10.a1. 1(asz@c) \n10.a2. 1(gesz'u@c) ki \n10.b. 1(esze3@c) \n# calculation: 1 × 600 = 600 sqninda = 6 iku\n11.a1. 3(asz@c) ur2 hal-la \n# ur2 la hal \n11.a2. 1(gesz'u@c) ki \n11.b. 4(iku@c) 1/2(iku@c) \n# calculation: 3/4 × 600 = 450 sqninda = 4 1/2 iku\n12.a1. 2(asz@c) ur2 hal-la \n# hal la ur2 \n12.a2. 1(gesz'u@c) ki \n12.b. 3(iku@c)# \n# calculation: 2/4 × 600 = 300 sqninda = 3 iku\n13.a1. 1(asz@c) ur2 hal-la \n13.a2. 1(gesz'u@c) ki \n13.b. 1(iku@c) 1/2(iku@c) \n# calculation: 1/4 × 600 = 150 sqninda = 1 1/2 iku\n14.a1. 1(asz@c) kusz3 numun \n14.a2. 1(gesz'u@c) ki \n14.b. 1(iku@c) \n# calculation: 1/6 × 600 = 100 sqninda = 1 iku\n15. sanga ur#-{d}inanna sanga zabalam4# \n@reverse \n@column 1 \n$ broken \n@column 2 \n1. [...] \n2. 2(szar2@c) 5(bur'u@c) [...] \n3. [...] \n4. 1(bur'u@c) 6(bur3@c)# [...] \n$ rest broken \n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a1. 1(gesz'u@c) {ninda#}nindax(DU)#? sag",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a2. 1(gesz'u@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "b. 3(szar2@c) 2(bur'u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 600 × 600 = 360,000 sqninda = 200 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a1. 9(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a2. 9(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "b. 2(szar2@c) 4(bur'u@c) 2(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 540 × 540 = 291,600 sqninda = 162 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a1. 8(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a2. 8(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "b. 2(szar2@c) 8(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 480 × 480 = 230,400 sqninda = 128 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a1. 7(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2. 7(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "b. 1(szar2@c) 3(bur'u@c) 8(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 420 × 420 = 176,400 sqninda = 98 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a1. 6(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a2. 6(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "b. 1(szar2@c) 1(bur'u@c) 2(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 360 × 360 = 129,600 sqninda = 72 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a1. 5(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a2. 5(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "b. 5(bur'u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 300 × 300 = 90,000 sqninda = 50 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a1. 4(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a2. 4(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "b. 3(bur'u@c) 2(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 240 × 240 = 57,600 sqninda = 32 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a1. 3(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2. 3(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "b. 1(bur'u@c) 8(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 180 × 180 = 32,400 sqninda = 18 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a1. 2(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a2. 2(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "b. 8(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 120 × 120 = 14,400 sqninda = 8 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a1. 1(gesz2@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2. 1(gesz2@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "b. 2(bur3@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 60 × 60 = 3,600 sqninda = 2 bur3 ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a1. 5(u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a2. 5(u@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "b. 1(bur3@c) 1(esze3@c) 1(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 50 × 50 = 2,500 sqninda = 1 bur3 7 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a1. 4(u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2. 4(u@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "b. 2(esze3@c) 4(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 40 × 40 = 1,600 sqninda = 16 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a1. 3(u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a2. 3(u@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "b. 1(esze3@c) 3(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 30 × 30 = 900 sqninda = 9 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a1. 2(u@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a2. 2(u@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "b. 4(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 20 × 20 = 400 sqninda = 4 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "a1. 1(u@c)#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "a2. 1(u@c)# sa2#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "b. 1(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 10 × 10 = 100 sqninda = 1 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a1. [5(asz@c)]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "a2. 5(asz@c) sa2",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "b. 1/4(iku@c)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 5 × 5 = 25 sqninda = 1/4 iku",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a1. 1(u@c) {ninda}nindax(DU) sag",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a2. 1(gesz'u@c) ki#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "b. [3(bur3@c) 1(esze3@c)]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 10 × 600 = 6,000 sqninda = 3 bur3 6 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a1. 9(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "b. 3(bur3@c)#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 9 × 600 = 5,400 sqninda = 3 bur3 ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a1. 8(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "b. 2(bur3@c) 2(esze3@c)#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 8 × 600 = 4,800 sqninda = 2 bur3 12 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a1. 7(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "b. 2(bur3@c) 1(esze3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 7 × 600 = 4,200 sqninda = 2 bur3 6 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a1. 6(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "b. 2(bur3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 6 × 600 = 3,600 sqninda = 2 bur3 ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a1. 5(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "b. 1(bur3@c) 2(esze3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 5 × 600 = 3,000 sqninda = 1 bur3 12 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a1. 4(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "b. 1(bur3@c)# 1(esze3@c)#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 4 × 600 = 2,400 sqninda = 1 bur3 6 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a1. 3(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "b. 1(bur3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 3 × 600 = 1,800 sqninda = 1 bur3 ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a1. 2(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "b. 2(esze3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2 × 600 = 1,200 sqninda = 12 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a1. 1(asz@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "b. 1(esze3@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1 × 600 = 600 sqninda = 6 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a1. 3(asz@c) ur2 hal-la",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# ur2 la hal ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "b. 4(iku@c) 1/2(iku@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 3/4 × 600 = 450 sqninda = 4 1/2 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a1. 2(asz@c) ur2 hal-la",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# hal la ur2 ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "b. 3(iku@c)#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 2/4 × 600 = 300 sqninda = 3 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a1. 1(asz@c) ur2 hal-la",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "b. 1(iku@c) 1/2(iku@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1/4 × 600 = 150 sqninda = 1 1/2 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a1. 1(asz@c) kusz3 numun",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "a2. 1(gesz'u@c) ki",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "b. 1(iku@c)",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "raw",
+      "text": "# calculation: 1/6 × 600 = 100 sqninda = 1 iku",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "sanga ur#-{d}inanna sanga zabalam4#",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "reverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "2(szar2@c) 5(bur'u@c) [...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "1(bur'u@c) 6(bur3@c)# [...]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "reverse",
+      "column": "column 2"
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "math_kind": "metrology"
+}

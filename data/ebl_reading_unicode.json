@@ -1,0 +1,13641 @@
+{
+ "source": "ElectronicBabylonianLiterature/ebl-api tests/atf_importer/test_data/signs.json",
+ "source_url": "https://github.com/ElectronicBabylonianLiterature/ebl-api",
+ "api_check": "https://www.ebl.lmu.de/api/signs/transliteration/{atf}",
+ "note": "Reading→Unicode from eBL sign list. Multi-glyph entries are compound writings (e.g. e3 = |UD.DU|). Prefer multi map for synth paleography; count units like 2(u) stay project-specific (U×n vs eBL MIN).",
+ "n_multi": 1796,
+ "n_single": 5629,
+ "multi": {
+  "gin": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "kara": {
+   "unicode": [
+    74492,
+    73728
+   ],
+   "sign": "|TE.A|"
+  },
+  "oo": {
+   "unicode": [
+    160,
+    160
+   ],
+   "sign": "OO"
+  },
+  "a4": {
+   "unicode": [
+    73728,
+    73773
+   ],
+   "sign": "|A.AN|"
+  },
+  "am3": {
+   "unicode": [
+    73728,
+    73773
+   ],
+   "sign": "|A.AN|"
+  },
+  "sze7": {
+   "unicode": [
+    73728,
+    73773
+   ],
+   "sign": "|A.AN|"
+  },
+  "szeg3": {
+   "unicode": [
+    73728,
+    73773
+   ],
+   "sign": "|A.AN|"
+  },
+  "ela": {
+   "unicode": [
+    73728,
+    74135
+   ],
+   "sign": "|A.KAL|"
+  },
+  "ella": {
+   "unicode": [
+    73728,
+    74135
+   ],
+   "sign": "|A.KAL|"
+  },
+  "illu": {
+   "unicode": [
+    73728,
+    74135
+   ],
+   "sign": "|A.KAL|"
+  },
+  "kunigara5": {
+   "unicode": [
+    73728,
+    74262
+   ],
+   "sign": "|A.LU₃|"
+  },
+  "garadin4": {
+   "unicode": [
+    74499,
+    74168
+   ],
+   "sign": "|(ŠE.NUN&NUN)&(ŠE.NUN&NUN).LAGAB|"
+  },
+  "karadin4": {
+   "unicode": [
+    74499,
+    74168,
+    74168
+   ],
+   "sign": "|(ŠE.NUN&NUN)&(ŠE.NUN&NUN).LAGAB.LAGAB|"
+  },
+  "i7": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "id2": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "ida2": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "it2": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "ita5": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "iti5": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "itu5": {
+   "unicode": [
+    73728,
+    74185
+   ],
+   "sign": "|A.LAGAB×HAL|"
+  },
+  "uga2": {
+   "unicode": [
+    73728,
+    74071
+   ],
+   "sign": "|A.KA|"
+  },
+  "ugu2": {
+   "unicode": [
+    73728,
+    74071
+   ],
+   "sign": "|A.KA|"
+  },
+  "ayaya": {
+   "unicode": [
+    73728,
+    73728,
+    73728
+   ],
+   "sign": "|A.A.A|"
+  },
+  "girim3": {
+   "unicode": [
+    73728,
+    74025,
+    74491,
+    73850
+   ],
+   "sign": "|A.HA.TAR.DU|"
+  },
+  "girima3": {
+   "unicode": [
+    73728,
+    74025,
+    74491,
+    73850
+   ],
+   "sign": "|A.HA.TAR.DU|"
+  },
+  "girimma3": {
+   "unicode": [
+    73728,
+    74025,
+    74491,
+    73850
+   ],
+   "sign": "|A.HA.TAR.DU|"
+  },
+  "girin2": {
+   "unicode": [
+    73728,
+    74025,
+    74491,
+    73850
+   ],
+   "sign": "|A.HA.TAR.DU|"
+  },
+  "nun2": {
+   "unicode": [
+    73728,
+    74025,
+    74491,
+    73850
+   ],
+   "sign": "|A.HA.TAR.DU|"
+  },
+  "a'u'u": {
+   "unicode": [
+    73728,
+    74362,
+    74000,
+    74363,
+    74459,
+    73728
+   ],
+   "sign": "|A.PA.GISAL.PAD.SI.A|"
+  },
+  "au": {
+   "unicode": [
+    73728,
+    74362,
+    74000,
+    74363,
+    74459,
+    73728
+   ],
+   "sign": "|A.PA.GISAL.PAD.SI.A|"
+  },
+  "iddir": {
+   "unicode": [
+    73728,
+    74362,
+    74000,
+    74363,
+    74459,
+    73728
+   ],
+   "sign": "|A.PA.GISAL.PAD.SI.A|"
+  },
+  "ebla": {
+   "unicode": [
+    73728,
+    74491,
+    73728,
+    73773
+   ],
+   "sign": "|A.TAR.A.AN|"
+  },
+  "ummu3": {
+   "unicode": [
+    73728,
+    73876,
+    74226
+   ],
+   "sign": "|A.EDIN.LAL|"
+  },
+  "ummud": {
+   "unicode": [
+    73728,
+    73876
+   ],
+   "sign": "|A.EDIN|"
+  },
+  "er2": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "era2": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "esesz": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "esisz3": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "esz9": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "ir2": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "ira2": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "isisz2": {
+   "unicode": [
+    73728,
+    74054
+   ],
+   "sign": "|A.IGI|"
+  },
+  "kuar2": {
+   "unicode": [
+    73728,
+    74025
+   ],
+   "sign": "|A.HA|"
+  },
+  "kuara2": {
+   "unicode": [
+    73728,
+    74025
+   ],
+   "sign": "|A.HA|"
+  },
+  "tuba2": {
+   "unicode": [
+    73728,
+    74025
+   ],
+   "sign": "|A.HA|"
+  },
+  "ugar": {
+   "unicode": [
+    73728,
+    73980
+   ],
+   "sign": "|A.GAR₃|"
+  },
+  "agar": {
+   "unicode": [
+    73728,
+    73980
+   ],
+   "sign": "|A.GAR₃|"
+  },
+  "bir8": {
+   "unicode": [
+    73728,
+    74468
+   ],
+   "sign": "|A.SUD|"
+  },
+  "kaszbir": {
+   "unicode": [
+    73728,
+    74468
+   ],
+   "sign": "|A.SUD|"
+  },
+  "liq3": {
+   "unicode": [
+    73728,
+    74039,
+    74459
+   ],
+   "sign": "|A.HU.SI|"
+  },
+  "tu17": {
+   "unicode": [
+    73728,
+    74455,
+    74304
+   ],
+   "sign": "|A.ŠU.NAGA|"
+  },
+  "kunigara": {
+   "unicode": [
+    73773,
+    73800
+   ],
+   "sign": "|AN.BARA₂|"
+  },
+  "aktum": {
+   "unicode": [
+    73728,
+    74466
+   ],
+   "sign": "|A.SU|"
+  },
+  "tusze": {
+   "unicode": [
+    73728,
+    73850
+   ],
+   "sign": "|A.DU|"
+  },
+  "tuszszuru": {
+   "unicode": [
+    73728,
+    73850
+   ],
+   "sign": "|A.DU|"
+  },
+  "ugu3": {
+   "unicode": [
+    73728,
+    74389
+   ],
+   "sign": "|A.SAG|"
+  },
+  "eszer": {
+   "unicode": [
+    73728,
+    74194
+   ],
+   "sign": "|A.LAGAB×KUL|"
+  },
+  "gan3": {
+   "unicode": [
+    73853,
+    73728
+   ],
+   "sign": "|DU@s.A|"
+  },
+  "gana3": {
+   "unicode": [
+    73853,
+    73728
+   ],
+   "sign": "|DU@s.A|"
+  },
+  "ai": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "aia": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "aye": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayi": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayu": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayya": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayye": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayyi": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "ayyu": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iya": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iyi": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iyu": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iyya": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iyyi": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "iyyu": {
+   "unicode": [
+    73728,
+    73728
+   ],
+   "sign": "|A.A|"
+  },
+  "asal2": {
+   "unicode": [
+    73728,
+    74501,
+    73966,
+    74234
+   ],
+   "sign": "|A.TU.GABA.LIŠ|"
+  },
+  "asar2": {
+   "unicode": [
+    73728,
+    74501,
+    73966,
+    74234
+   ],
+   "sign": "|A.TU.GABA.LIŠ|"
+  },
+  "aszal": {
+   "unicode": [
+    73728,
+    74501,
+    73966,
+    74234
+   ],
+   "sign": "|A.TU.GABA.LIŠ|"
+  },
+  "aszar2": {
+   "unicode": [
+    73728,
+    74501,
+    73966,
+    74234
+   ],
+   "sign": "|A.TU.GABA.LIŠ|"
+  },
+  "azal": {
+   "unicode": [
+    73728,
+    74501,
+    73966,
+    74234
+   ],
+   "sign": "|A.TU.GABA.LIŠ|"
+  },
+  "szakan": {
+   "unicode": [
+    74507,
+    73974
+   ],
+   "sign": "|U.GAN|"
+  },
+  "akszak2": {
+   "unicode": [
+    73728,
+    74165
+   ],
+   "sign": "|A.KUŠU₂|"
+  },
+  "id7": {
+   "unicode": [
+    73728,
+    74185,
+    73842
+   ],
+   "sign": "|A.LAGAB×HAL.DI|"
+  },
+  "id6": {
+   "unicode": [
+    73728,
+    74185,
+    73970
+   ],
+   "sign": "|A.LAGAB×HAL.GAL|"
+  },
+  "aszkud": {
+   "unicode": [
+    73737,
+    74301
+   ],
+   "sign": "|A₂.MUŠ₃@g|"
+  },
+  "darengal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "iszuruengal": {
+   "unicode": [
+    73728,
+    74185,
+    74515,
+    74339,
+    74144
+   ],
+   "sign": "|A.LAGAB×HAL.UD.NUN.KI|"
+  },
+  "surengal": {
+   "unicode": [
+    73728,
+    74185,
+    74515,
+    74339,
+    74144
+   ],
+   "sign": "|A.LAGAB×HAL.UD.NUN.KI|"
+  },
+  "surgal": {
+   "unicode": [
+    73728,
+    74185,
+    74515,
+    74339,
+    74144
+   ],
+   "sign": "|A.LAGAB×HAL.UD.NUN.KI|"
+  },
+  "turungal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "eru4": {
+   "unicode": [
+    73728,
+    73876
+   ],
+   "sign": "|A.EDIN|"
+  },
+  "erua": {
+   "unicode": [
+    73728,
+    73876
+   ],
+   "sign": "|A.EDIN|"
+  },
+  "erum4": {
+   "unicode": [
+    73728,
+    73876
+   ],
+   "sign": "|A.EDIN|"
+  },
+  "ummu": {
+   "unicode": [
+    73728,
+    73876
+   ],
+   "sign": "|A.EDIN|"
+  },
+  "kurun5": {
+   "unicode": [
+    73801,
+    74282
+   ],
+   "sign": "|BI.MI|"
+  },
+  "siris5": {
+   "unicode": [
+    73801,
+    74282
+   ],
+   "sign": "|BI.MI|"
+  },
+  "ega": {
+   "unicode": [
+    73728,
+    74282,
+    73728
+   ],
+   "sign": "|A.MI.A|"
+  },
+  "aszita": {
+   "unicode": [
+    73737,
+    74507,
+    74148
+   ],
+   "sign": "|A₂.U.KID|"
+  },
+  "azad": {
+   "unicode": [
+    73728,
+    74194,
+    74275,
+    74457,
+    73728
+   ],
+   "sign": "|A.LAGAB×KUL.MA₂.ŠU₂.A|"
+  },
+  "enigin": {
+   "unicode": [
+    73728,
+    74168,
+    74168
+   ],
+   "sign": "|A.LAGAB.LAGAB|"
+  },
+  "dabda2": {
+   "unicode": [
+    73793,
+    73793
+   ],
+   "sign": "|BAD.BAD|"
+  },
+  "dibira": {
+   "unicode": [
+    73854,
+    74308
+   ],
+   "sign": "|DUB.NAGAR|"
+  },
+  "tabira": {
+   "unicode": [
+    73854,
+    74308
+   ],
+   "sign": "|DUB.NAGAR|"
+  },
+  "tebiru": {
+   "unicode": [
+    73854,
+    74308
+   ],
+   "sign": "|DUB.NAGAR|"
+  },
+  "tibira": {
+   "unicode": [
+    73854,
+    74308
+   ],
+   "sign": "|DUB.NAGAR|"
+  },
+  "tegi": {
+   "unicode": [
+    73798,
+    74268
+   ],
+   "sign": "|BALAG.LUL|"
+  },
+  "tigi": {
+   "unicode": [
+    73798,
+    74268
+   ],
+   "sign": "|BALAG.LUL|"
+  },
+  "tigu": {
+   "unicode": [
+    73798,
+    74268
+   ],
+   "sign": "|BALAG.LUL|"
+  },
+  "lah5": {
+   "unicode": [
+    73850,
+    73850
+   ],
+   "sign": "|DU.DU|"
+  },
+  "laha5": {
+   "unicode": [
+    73850,
+    73850
+   ],
+   "sign": "|DU.DU|"
+  },
+  "lalah2": {
+   "unicode": [
+    73850,
+    73850
+   ],
+   "sign": "|DU.DU|"
+  },
+  "iszszebu": {
+   "unicode": [
+    74775,
+    74509
+   ],
+   "sign": "|DIŠ.DIŠ.DIŠ.U.U.U|"
+  },
+  "barzil": {
+   "unicode": [
+    73773,
+    73784,
+    73773
+   ],
+   "sign": "|AN.AŠ.AN|"
+  },
+  "tilla2": {
+   "unicode": [
+    73773,
+    73784,
+    73773
+   ],
+   "sign": "|AN.AŠ.AN|"
+  },
+  "lugud": {
+   "unicode": [
+    73793,
+    74515
+   ],
+   "sign": "|BAD.UD|"
+  },
+  "nanna2": {
+   "unicode": [
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|AN.ŠEŠ.KI|"
+  },
+  "azag2": {
+   "unicode": [
+    73737,
+    74362
+   ],
+   "sign": "|A₂.PA|"
+  },
+  "didli": {
+   "unicode": [
+    73784,
+    73784
+   ],
+   "sign": "|AŠ.AŠ|"
+  },
+  "man3": {
+   "unicode": [
+    73784,
+    73784
+   ],
+   "sign": "|AŠ.AŠ|"
+  },
+  "min5": {
+   "unicode": [
+    73784,
+    73784
+   ],
+   "sign": "|AŠ.AŠ|"
+  },
+  "{kasz}uluszin": {
+   "unicode": [
+    73801,
+    73790
+   ],
+   "sign": "|BI.ZIZ₂|"
+  },
+  "zabala": {
+   "unicode": [
+    73773,
+    74297,
+    73749
+   ],
+   "sign": "|AN.MUŠ₃.AB@g|"
+  },
+  "eszszaba": {
+   "unicode": [
+    74775,
+    74649
+   ],
+   "sign": "|DIŠ.DIŠ.DIŠ.U.U|"
+  },
+  "eszszana": {
+   "unicode": [
+    74775,
+    74649
+   ],
+   "sign": "|DIŠ.DIŠ.DIŠ.U.U|"
+  },
+  "arhusz7": {
+   "unicode": [
+    73737,
+    73955
+   ],
+   "sign": "|A₂.GA₂×SAL|"
+  },
+  "era": {
+   "unicode": [
+    73780,
+    74383
+   ],
+   "sign": "|ARAD.RA|"
+  },
+  "edamu": {
+   "unicode": [
+    73728,
+    74505
+   ],
+   "sign": "|A.TUR|"
+  },
+  "arhusz5": {
+   "unicode": [
+    73737,
+    74505
+   ],
+   "sign": "|A₂.TUR|"
+  },
+  "arhusz6": {
+   "unicode": [
+    73737,
+    74409
+   ],
+   "sign": "|A₂.SAL|"
+  },
+  "sugal6": {
+   "unicode": [
+    73738,
+    74297
+   ],
+   "sign": "|AB.MUŠ₃|"
+  },
+  "zabala6": {
+   "unicode": [
+    73738,
+    74297
+   ],
+   "sign": "|AB.MUŠ₃|"
+  },
+  "zabalam6": {
+   "unicode": [
+    73738,
+    74297
+   ],
+   "sign": "|AB.MUŠ₃|"
+  },
+  "marduk": {
+   "unicode": [
+    73771,
+    74515
+   ],
+   "sign": "|AMAR.UD|"
+  },
+  "aski": {
+   "unicode": [
+    73784,
+    74033,
+    73988
+   ],
+   "sign": "|AŠ.HI×DIŠ.GI₄|"
+  },
+  "aszgi": {
+   "unicode": [
+    74451,
+    73988
+   ],
+   "sign": "|ŠIR.GI₄|"
+  },
+  "akkil": {
+   "unicode": [
+    73968,
+    74490,
+    74459
+   ],
+   "sign": "|GAD.TAK₄.SI|"
+  },
+  "sisi": {
+   "unicode": [
+    73778,
+    74163,
+    74383
+   ],
+   "sign": "|ANŠE.KUR.RA|"
+  },
+  "zizi": {
+   "unicode": [
+    73778,
+    74163,
+    74383
+   ],
+   "sign": "|ANŠE.KUR.RA|"
+  },
+  "eszgar": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "gigri2": {
+   "unicode": [
+    73853,
+    73853
+   ],
+   "sign": "|DU@s.DU@s|"
+  },
+  "dida2": {
+   "unicode": [
+    74577,
+    74387
+   ],
+   "sign": "|UŠ.SA|"
+  },
+  "{kasz}dida2": {
+   "unicode": [
+    73801,
+    74577,
+    74387
+   ],
+   "sign": "|BI.UŠ.SA|"
+  },
+  "pihu5": {
+   "unicode": [
+    74577,
+    74387
+   ],
+   "sign": "|UŠ.SA|"
+  },
+  "szeg4": {
+   "unicode": [
+    73728,
+    74457,
+    74304
+   ],
+   "sign": "|A.ŠU₂.NAGA|"
+  },
+  "aszdar2": {
+   "unicode": [
+    73849,
+    73839
+   ],
+   "sign": "|DIŠ.DAR|"
+  },
+  "dusi2": {
+   "unicode": [
+    73778,
+    74054,
+    73888
+   ],
+   "sign": "|ANŠE.IGI.EŠ₂|"
+  },
+  "dussa2": {
+   "unicode": [
+    73778,
+    74054,
+    73888
+   ],
+   "sign": "|ANŠE.IGI.EŠ₂|"
+  },
+  "dusu2": {
+   "unicode": [
+    73778,
+    74054,
+    73888
+   ],
+   "sign": "|ANŠE.IGI.EŠ₂|"
+  },
+  "rig12": {
+   "unicode": [
+    73850,
+    74040
+   ],
+   "sign": "|DU.HUB₂|"
+  },
+  "rige12": {
+   "unicode": [
+    73850,
+    74040
+   ],
+   "sign": "|DU.HUB₂|"
+  },
+  "gigri": {
+   "unicode": [
+    73852,
+    73852
+   ],
+   "sign": "|DU@g.DU@g|"
+  },
+  "ugu": {
+   "unicode": [
+    74507,
+    74389
+   ],
+   "sign": "|U.SAG|"
+  },
+  "dida": {
+   "unicode": [
+    74513,
+    74387
+   ],
+   "sign": "|U₂.SA|"
+  },
+  "{kasz}dida": {
+   "unicode": [
+    73801,
+    74513,
+    74387
+   ],
+   "sign": "|BI.U₂.SA|"
+  },
+  "pihu4": {
+   "unicode": [
+    73801,
+    74513,
+    74387
+   ],
+   "sign": "|BI.U₂.SA|"
+  },
+  "nagad": {
+   "unicode": [
+    73750,
+    74154
+   ],
+   "sign": "|AB₂.KU|"
+  },
+  "udul": {
+   "unicode": [
+    73750,
+    74154
+   ],
+   "sign": "|AB₂.KU|"
+  },
+  "unu3": {
+   "unicode": [
+    73750,
+    74154
+   ],
+   "sign": "|AB₂.KU|"
+  },
+  "unud": {
+   "unicode": [
+    73750,
+    74154
+   ],
+   "sign": "|AB₂.KU|"
+  },
+  "uluszin": {
+   "unicode": [
+    73801,
+    73728,
+    74468
+   ],
+   "sign": "|BI.A.SUD|"
+  },
+  "kunigara3": {
+   "unicode": [
+    73773,
+    74501
+   ],
+   "sign": "|AN.TU|"
+  },
+  "zabitum": {
+   "unicode": [
+    73798,
+    74505
+   ],
+   "sign": "|BALAG.TUR|"
+  },
+  "tilla4": {
+   "unicode": [
+    73773,
+    73784,
+    73728,
+    73773
+   ],
+   "sign": "|AN.AŠ.A.AN|"
+  },
+  "liri5": {
+   "unicode": [
+    73737,
+    73784
+   ],
+   "sign": "|A₂.AŠ|"
+  },
+  "liru5": {
+   "unicode": [
+    73737,
+    73784
+   ],
+   "sign": "|A₂.AŠ|"
+  },
+  "lirum5": {
+   "unicode": [
+    73737,
+    73784
+   ],
+   "sign": "|A₂.AŠ|"
+  },
+  "kunga2": {
+   "unicode": [
+    73799,
+    73773
+   ],
+   "sign": "|BAR.AN|"
+  },
+  "kungi2": {
+   "unicode": [
+    73799,
+    73773
+   ],
+   "sign": "|BAR.AN|"
+  },
+  "eme6": {
+   "unicode": [
+    73778,
+    74409
+   ],
+   "sign": "|ANŠE.SAL|"
+  },
+  "sagmasz": {
+   "unicode": [
+    73793,
+    74140
+   ],
+   "sign": "|BAD.KASKAL|"
+  },
+  "zanbur": {
+   "unicode": [
+    73793,
+    74140
+   ],
+   "sign": "|BAD.KASKAL|"
+  },
+  "bahar": {
+   "unicode": [
+    73857,
+    73811
+   ],
+   "sign": "|DUG.BUR|"
+  },
+  "szihum": {
+   "unicode": [
+    73814,
+    74152
+   ],
+   "sign": "|DAG.KISIM₅|"
+  },
+  "udul10": {
+   "unicode": [
+    73750,
+    74235
+   ],
+   "sign": "|AB₂.LU|"
+  },
+  "utul10": {
+   "unicode": [
+    73750,
+    74235
+   ],
+   "sign": "|AB₂.LU|"
+  },
+  "du25": {
+   "unicode": [
+    73778,
+    73780
+   ],
+   "sign": "|ANŠE.ARAD|"
+  },
+  "dur3": {
+   "unicode": [
+    73778,
+    73780
+   ],
+   "sign": "|ANŠE.ARAD|"
+  },
+  "duru3": {
+   "unicode": [
+    73778,
+    73780
+   ],
+   "sign": "|ANŠE.ARAD|"
+  },
+  "szaggin": {
+   "unicode": [
+    73778,
+    73780
+   ],
+   "sign": "|ANŠE.ARAD|"
+  },
+  "szakkan6": {
+   "unicode": [
+    73778,
+    73780
+   ],
+   "sign": "|ANŠE.ARAD|"
+  },
+  "ligidba": {
+   "unicode": [
+    73773,
+    74409,
+    74502,
+    74049
+   ],
+   "sign": "|AN.SAL.TUG₂.IB|"
+  },
+  "nanibgal": {
+   "unicode": [
+    73773,
+    74304
+   ],
+   "sign": "|AN.NAGA|"
+  },
+  "babila": {
+   "unicode": [
+    74125,
+    73773
+   ],
+   "sign": "|KA₂.AN|"
+  },
+  "dintir": {
+   "unicode": [
+    73847,
+    74426,
+    74346
+   ],
+   "sign": "|DIN.ŠE.NUN&NUN|"
+  },
+  "gamun": {
+   "unicode": [
+    73847,
+    74426,
+    74346
+   ],
+   "sign": "|DIN.ŠE.NUN&NUN|"
+  },
+  "aszszan": {
+   "unicode": [
+    73773,
+    73850,
+    73773
+   ],
+   "sign": "|AN.DU.AN|"
+  },
+  "bahar4": {
+   "unicode": [
+    73799,
+    73876
+   ],
+   "sign": "|BAR.EDIN|"
+  },
+  "nab3": {
+   "unicode": [
+    73773,
+    73773
+   ],
+   "sign": "|AN.AN|"
+  },
+  "adgub": {
+   "unicode": [
+    73756,
+    74148
+   ],
+   "sign": "|AD.KID|"
+  },
+  "akkil2": {
+   "unicode": [
+    73756,
+    74148
+   ],
+   "sign": "|AD.KID|"
+  },
+  "sillu": {
+   "unicode": [
+    73773,
+    74408
+   ],
+   "sign": "|AN.SAG@g|"
+  },
+  "siskur2": {
+   "unicode": [
+    73772,
+    73772
+   ],
+   "sign": "|AMAR×ŠE.AMAR×ŠE|"
+  },
+  "siszkur2": {
+   "unicode": [
+    73772,
+    73772
+   ],
+   "sign": "|AMAR×ŠE.AMAR×ŠE|"
+  },
+  "sizkur2": {
+   "unicode": [
+    73772,
+    73772
+   ],
+   "sign": "|AMAR×ŠE.AMAR×ŠE|"
+  },
+  "anzu": {
+   "unicode": [
+    73773,
+    74062,
+    73858
+   ],
+   "sign": "|AN.IM.DUGUD|"
+  },
+  "gun": {
+   "unicode": [
+    74008,
+    74534
+   ],
+   "sign": "|GU₂.UN|"
+  },
+  "asi": {
+   "unicode": [
+    73728,
+    74426,
+    74346
+   ],
+   "sign": "|A.ŠE.NUN&NUN|"
+  },
+  "esze4": {
+   "unicode": [
+    73728,
+    74426,
+    74346
+   ],
+   "sign": "|A.ŠE.NUN&NUN|"
+  },
+  "ussa3": {
+   "unicode": [
+    73788,
+    73788,
+    74480
+   ],
+   "sign": "|AŠ&AŠ&AŠ.AŠ&AŠ&AŠ.TAB|"
+  },
+  "aszkud2": {
+   "unicode": [
+    73737,
+    74297
+   ],
+   "sign": "|A₂.MUŠ₃|"
+  },
+  "bubbur": {
+   "unicode": [
+    73812,
+    73812
+   ],
+   "sign": "|BUR₂.BUR₂|"
+  },
+  "szakan4": {
+   "unicode": [
+    73778,
+    73773
+   ],
+   "sign": "|ANŠE.AN|"
+  },
+  "adama": {
+   "unicode": [
+    73793,
+    74282
+   ],
+   "sign": "|BAD.MI|"
+  },
+  "adamu": {
+   "unicode": [
+    73793,
+    74282
+   ],
+   "sign": "|BAD.MI|"
+  },
+  "mudgi": {
+   "unicode": [
+    73793,
+    74282
+   ],
+   "sign": "|BAD.MI|"
+  },
+  "{kasz}uluszin3": {
+   "unicode": [
+    73801,
+    73790,
+    73773
+   ],
+   "sign": "|BI.ZIZ₂.AN|"
+  },
+  "agasz": {
+   "unicode": [
+    73793,
+    88
+   ],
+   "sign": "|BAD.X|"
+  },
+  "nunmeli": {
+   "unicode": [
+    73799,
+    74039,
+    74133
+   ],
+   "sign": "|BAR.HU.KAK|"
+  },
+  "szaqa": {
+   "unicode": [
+    73801,
+    74268
+   ],
+   "sign": "|BI.LUL|"
+  },
+  "szaqu": {
+   "unicode": [
+    73801,
+    74268
+   ],
+   "sign": "|BI.LUL|"
+  },
+  "szaqum": {
+   "unicode": [
+    73801,
+    74268
+   ],
+   "sign": "|BI.LUL|"
+  },
+  "zar6": {
+   "unicode": [
+    73793,
+    73784
+   ],
+   "sign": "|BAD.AŠ|"
+  },
+  "zara6": {
+   "unicode": [
+    73793,
+    73784
+   ],
+   "sign": "|BAD.AŠ|"
+  },
+  "zuru10": {
+   "unicode": [
+    73793,
+    73784
+   ],
+   "sign": "|BAD.AŠ|"
+  },
+  "tilla3": {
+   "unicode": [
+    73773,
+    73849,
+    73773
+   ],
+   "sign": "|AN.DIŠ.AN|"
+  },
+  "anzud": {
+   "unicode": [
+    73773,
+    74062,
+    73858
+   ],
+   "sign": "|AN.IM.DUGUD|"
+  },
+  "essadu": {
+   "unicode": [
+    73738,
+    74025,
+    74592,
+    73966,
+    74039
+   ],
+   "sign": "|AB.HA.ZAG.GABA.HU|"
+  },
+  "eszsadu": {
+   "unicode": [
+    73738,
+    74025,
+    74592,
+    73966,
+    74039
+   ],
+   "sign": "|AB.HA.ZAG.GABA.HU|"
+  },
+  "szuhub": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "nagga": {
+   "unicode": [
+    73773,
+    74302
+   ],
+   "sign": "|AN.NA|"
+  },
+  "nanga5": {
+   "unicode": [
+    73773,
+    74302
+   ],
+   "sign": "|AN.NA|"
+  },
+  "niggi": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "niggin": {
+   "unicode": [
+    73773,
+    74302
+   ],
+   "sign": "|AN.NA|"
+  },
+  "gurun2": {
+   "unicode": [
+    73793,
+    74054,
+    73793
+   ],
+   "sign": "|BAD.IGI.BAD|"
+  },
+  "gabra": {
+   "unicode": [
+    73813,
+    74577
+   ],
+   "sign": "|DA.UŠ|"
+  },
+  "ragab": {
+   "unicode": [
+    73813,
+    74577
+   ],
+   "sign": "|DA.UŠ|"
+  },
+  "sadu": {
+   "unicode": [
+    73842,
+    73842
+   ],
+   "sign": "|DI.DI|"
+  },
+  "ehe": {
+   "unicode": [
+    73737,
+    74515,
+    73850
+   ],
+   "sign": "|A₂.UD.DU|"
+  },
+  "ehi": {
+   "unicode": [
+    73737,
+    74515,
+    73850
+   ],
+   "sign": "|A₂.UD.DU|"
+  },
+  "aszki": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "gug": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "lamahusz": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "suluhu": {
+   "unicode": [
+    73728,
+    74596
+   ],
+   "sign": "|A.ZI&ZI|"
+  },
+  "zukum": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "nanibgal2": {
+   "unicode": [
+    73773,
+    74426,
+    74304
+   ],
+   "sign": "|AN.ŠE.NAGA|"
+  },
+  "tilla5": {
+   "unicode": [
+    73773,
+    73785,
+    73773
+   ],
+   "sign": "|AN.AŠ@z.AN|"
+  },
+  "qutra": {
+   "unicode": [
+    73773,
+    74062
+   ],
+   "sign": "|AN.IM|"
+  },
+  "kutra": {
+   "unicode": [
+    73773,
+    74062
+   ],
+   "sign": "|AN.IM|"
+  },
+  "ia9": {
+   "unicode": [
+    73788,
+    74480
+   ],
+   "sign": "|AŠ&AŠ&AŠ.TAB|"
+  },
+  "ili7": {
+   "unicode": [
+    73773,
+    74636
+   ],
+   "sign": "|AN.ME.U.U.U|"
+  },
+  "bahar5": {
+   "unicode": [
+    73857,
+    74465,
+    73811,
+    74302
+   ],
+   "sign": "|DUG.SILA₃.BUR.NA|"
+  },
+  "e'i": {
+   "unicode": [
+    73869,
+    73728
+   ],
+   "sign": "|E₂.A|"
+  },
+  "e'u": {
+   "unicode": [
+    73869,
+    73728
+   ],
+   "sign": "|E₂.A|"
+  },
+  "dalhamun3": {
+   "unicode": [
+    73883,
+    74064
+   ],
+   "sign": "|EN%EN.IM%IM|"
+  },
+  "nimgigri2": {
+   "unicode": [
+    73883,
+    74064
+   ],
+   "sign": "|EN%EN.IM%IM|"
+  },
+  "nimgirgirri2": {
+   "unicode": [
+    73883,
+    74064
+   ],
+   "sign": "|EN%EN.IM%IM|"
+  },
+  "{kasz}uluszin2": {
+   "unicode": [
+    73801,
+    73790,
+    73773,
+    74302
+   ],
+   "sign": "|BI.ZIZ₂.AN.NA|"
+  },
+  "absin2": {
+   "unicode": [
+    73738,
+    74310
+   ],
+   "sign": "|AB.NAM|"
+  },
+  "ita4": {
+   "unicode": [
+    73773,
+    73728,
+    74185
+   ],
+   "sign": "|AN.A.LAGAB×HAL|"
+  },
+  "iti4": {
+   "unicode": [
+    73773,
+    73728,
+    74185
+   ],
+   "sign": "|AN.A.LAGAB×HAL|"
+  },
+  "itu4": {
+   "unicode": [
+    73773,
+    73728,
+    74185
+   ],
+   "sign": "|AN.A.LAGAB×HAL|"
+  },
+  "marad2": {
+   "unicode": [
+    73771,
+    73813
+   ],
+   "sign": "|AMAR.DA|"
+  },
+  "engiz": {
+   "unicode": [
+    73879,
+    73984
+   ],
+   "sign": "|EN.GI|"
+  },
+  "galti": {
+   "unicode": [
+    73970,
+    73842
+   ],
+   "sign": "|GAL.DI|"
+  },
+  "kunigara2": {
+   "unicode": [
+    73773,
+    74290
+   ],
+   "sign": "|AN.MUŠ|"
+  },
+  "hurin": {
+   "unicode": [
+    73798,
+    73728
+   ],
+   "sign": "|BALAG.A|"
+  },
+  "zahda": {
+   "unicode": [
+    73860,
+    74505
+   ],
+   "sign": "|DUN.TUR|"
+  },
+  "suruen": {
+   "unicode": [
+    73879,
+    74432
+   ],
+   "sign": "|EN.ŠEŠ|"
+  },
+  "anzu2": {
+   "unicode": [
+    73773,
+    74062,
+    74282
+   ],
+   "sign": "|AN.IM.MI|"
+  },
+  "anzud2": {
+   "unicode": [
+    73773,
+    74062,
+    74282
+   ],
+   "sign": "|AN.IM.MI|"
+  },
+  "liri4": {
+   "unicode": [
+    73737,
+    74135
+   ],
+   "sign": "|A₂.KAL|"
+  },
+  "liru4": {
+   "unicode": [
+    73737,
+    74135
+   ],
+   "sign": "|A₂.KAL|"
+  },
+  "lirum4": {
+   "unicode": [
+    73737,
+    74135
+   ],
+   "sign": "|A₂.KAL|"
+  },
+  "usu": {
+   "unicode": [
+    73737,
+    74135
+   ],
+   "sign": "|A₂.KAL|"
+  },
+  "uszszu": {
+   "unicode": [
+    73737,
+    74135
+   ],
+   "sign": "|A₂.KAL|"
+  },
+  "samanur": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "samun": {
+   "unicode": [
+    73888,
+    74468,
+    74339,
+    73888,
+    74501
+   ],
+   "sign": "|EŠ₂.SUD.NUN.EŠ₂.TU|"
+  },
+  "dimgal": {
+   "unicode": [
+    73970,
+    73844
+   ],
+   "sign": "|GAL.DIM|"
+  },
+  "gar11": {
+   "unicode": [
+    73909,
+    73728
+   ],
+   "sign": "|GA.A|"
+  },
+  "gara11": {
+   "unicode": [
+    73909,
+    73728
+   ],
+   "sign": "|GA.A|"
+  },
+  "ensi": {
+   "unicode": [
+    73879,
+    74231
+   ],
+   "sign": "|EN.LI|"
+  },
+  "ukurrim": {
+   "unicode": [
+    73879,
+    74280,
+    73773,
+    74297
+   ],
+   "sign": "|EN.ME.AN.MUŠ₃|"
+  },
+  "urume": {
+   "unicode": [
+    73887,
+    74302
+   ],
+   "sign": "|ERIN₂.NA|"
+  },
+  "enkum": {
+   "unicode": [
+    73879,
+    74365,
+    74058,
+    74339,
+    74280,
+    73900
+   ],
+   "sign": "|EN.PAP.IGI@g.NUN.ME.EZEN×KASKAL|"
+  },
+  "engiz2": {
+   "unicode": [
+    73882,
+    73984
+   ],
+   "sign": "|EN×ME.GI|"
+  },
+  "kuru": {
+   "unicode": [
+    73866,
+    74468,
+    74045
+   ],
+   "sign": "|E.SUD.HUB₂×UD|"
+  },
+  "dabin": {
+   "unicode": [
+    73888,
+    74426
+   ],
+   "sign": "|EŠ₂.ŠE|"
+  },
+  "ebih2": {
+   "unicode": [
+    73888,
+    74276
+   ],
+   "sign": "|EŠ₂.MAH|"
+  },
+  "ukusz": {
+   "unicode": [
+    73863,
+    74577
+   ],
+   "sign": "|DUN₃@g@g.UŠ|"
+  },
+  "ellil": {
+   "unicode": [
+    73879,
+    74148
+   ],
+   "sign": "|EN.KID|"
+  },
+  "illil": {
+   "unicode": [
+    73879,
+    74148
+   ],
+   "sign": "|EN.KID|"
+  },
+  "nibri": {
+   "unicode": [
+    73879,
+    74148
+   ],
+   "sign": "|EN.KID|"
+  },
+  "nibru": {
+   "unicode": [
+    73879,
+    74148
+   ],
+   "sign": "|EN.KID|"
+  },
+  "endib": {
+   "unicode": [
+    73879,
+    74280,
+    74284
+   ],
+   "sign": "|EN.ME.MU|"
+  },
+  "endub": {
+   "unicode": [
+    73879,
+    74280,
+    74284
+   ],
+   "sign": "|EN.ME.MU|"
+  },
+  "gim8": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "seg8": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "sig8": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "uruaka": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "uruiszdua": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "uruiszduha": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "urulla": {
+   "unicode": [
+    73968,
+    74490,
+    74001
+   ],
+   "sign": "|GAD.TAK₄.GIŠ|"
+  },
+  "zirru": {
+   "unicode": [
+    73879,
+    74349,
+    74595,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|EN.NUNUZ.ZI.AN.ŠEŠ.KI|"
+  },
+  "ebeh": {
+   "unicode": [
+    73879,
+    74494
+   ],
+   "sign": "|EN.TI|"
+  },
+  "ebih": {
+   "unicode": [
+    73879,
+    74494
+   ],
+   "sign": "|EN.TI|"
+  },
+  "akkil3": {
+   "unicode": [
+    73968,
+    74490
+   ],
+   "sign": "|GAD.TAK₄|"
+  },
+  "aszsza2": {
+   "unicode": [
+    73968,
+    74490
+   ],
+   "sign": "|GAD.TAK₄|"
+  },
+  "aszta": {
+   "unicode": [
+    73968,
+    74490
+   ],
+   "sign": "|GAD.TAK₄|"
+  },
+  "kil4": {
+   "unicode": [
+    73968,
+    74490
+   ],
+   "sign": "|GAD.TAK₄|"
+  },
+  "szidimgal": {
+   "unicode": [
+    73970,
+    73846
+   ],
+   "sign": "|GAL.DIM₂|"
+  },
+  "dūru": {
+   "unicode": [
+    73894,
+    73773
+   ],
+   "sign": "|EZEN×BAD.AN|"
+  },
+  "szennu": {
+   "unicode": [
+    73879,
+    74280,
+    73756,
+    74156
+   ],
+   "sign": "|EN.ME.AD.KU₃|"
+  },
+  "gar12": {
+   "unicode": [
+    73909,
+    73849
+   ],
+   "sign": "|GA.DIŠ|"
+  },
+  "tungal2": {
+   "unicode": [
+    73879,
+    74144
+   ],
+   "sign": "|EN.KI|"
+  },
+  "nunuzzi": {
+   "unicode": [
+    73879,
+    74349,
+    74595,
+    73773,
+    74515
+   ],
+   "sign": "|EN.NUNUZ.ZI.AN.UD|"
+  },
+  "nuzzi": {
+   "unicode": [
+    73879,
+    74349,
+    74595,
+    73773,
+    74515
+   ],
+   "sign": "|EN.NUNUZ.ZI.AN.UD|"
+  },
+  "ennigi2": {
+   "unicode": [
+    73879,
+    74349,
+    73846
+   ],
+   "sign": "|EN.NUNUZ.DIM₂|"
+  },
+  "nigirgal": {
+   "unicode": [
+    73970,
+    73863
+   ],
+   "sign": "|GAL.DUN₃@g@g|"
+  },
+  "arah4": {
+   "unicode": [
+    73869,
+    74577,
+    73805,
+    73813
+   ],
+   "sign": "|E₂.UŠ.BU.DA|"
+  },
+  "araha": {
+   "unicode": [
+    73869,
+    74577,
+    73805,
+    73813
+   ],
+   "sign": "|E₂.UŠ.BU.DA|"
+  },
+  "aszlug": {
+   "unicode": [
+    73869,
+    74577,
+    73805,
+    73813
+   ],
+   "sign": "|E₂.UŠ.BU.DA|"
+  },
+  "szeszlam2": {
+   "unicode": [
+    73879,
+    74280,
+    74231
+   ],
+   "sign": "|EN.ME.LI|"
+  },
+  "maszda4": {
+   "unicode": [
+    73879,
+    74278,
+    74133
+   ],
+   "sign": "|EN.MAŠ.KAK|"
+  },
+  "gar10": {
+   "unicode": [
+    73909,
+    74316
+   ],
+   "sign": "|GA.NI|"
+  },
+  "gara10": {
+   "unicode": [
+    73909,
+    74316
+   ],
+   "sign": "|GA.NI|"
+  },
+  "enegi3": {
+   "unicode": [
+    73879,
+    73846,
+    88
+   ],
+   "sign": "|EN.DIM₂.GIG|"
+  },
+  "enegir3": {
+   "unicode": [
+    73879,
+    73846,
+    88
+   ],
+   "sign": "|EN.DIM₂.GIG|"
+  },
+  "ennigi3": {
+   "unicode": [
+    73879,
+    73846,
+    88
+   ],
+   "sign": "|EN.DIM₂.GIG|"
+  },
+  "kurul": {
+   "unicode": [
+    73866,
+    74504,
+    73953
+   ],
+   "sign": "|E.TUM.GA₂×NUN&NUN|"
+  },
+  "arala": {
+   "unicode": [
+    73869,
+    74163,
+    73793
+   ],
+   "sign": "|E₂.KUR.BAD|"
+  },
+  "azlaggal": {
+   "unicode": [
+    73970,
+    74001,
+    74502,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GAL.GIŠ.TUG₂.TE.A.DU|"
+  },
+  "murub3": {
+   "unicode": [
+    73879,
+    74280,
+    74220
+   ],
+   "sign": "|EN.ME.LAGAR|"
+  },
+  "gugru": {
+   "unicode": [
+    73976,
+    73976
+   ],
+   "sign": "|GAN₂@t.GAN₂@t|"
+  },
+  "nagargal": {
+   "unicode": [
+    73970,
+    74308
+   ],
+   "sign": "|GAL.NAGAR|"
+  },
+  "agrun": {
+   "unicode": [
+    73869,
+    74339
+   ],
+   "sign": "|E₂.NUN|"
+  },
+  "agru": {
+   "unicode": [
+    73869,
+    74339
+   ],
+   "sign": "|E₂.NUN|"
+  },
+  "agruna": {
+   "unicode": [
+    73869,
+    74339
+   ],
+   "sign": "|E₂.NUN|"
+  },
+  "eresz5": {
+   "unicode": [
+    73970,
+    73773,
+    74602
+   ],
+   "sign": "|GAL.AN.ZU|"
+  },
+  "gideszta": {
+   "unicode": [
+    73979,
+    74843,
+    74465
+   ],
+   "sign": "|GAR.ŠANABI.SILA₃|"
+  },
+  "eriszti": {
+   "unicode": [
+    73970,
+    74602
+   ],
+   "sign": "|GAL.ZU|"
+  },
+  "gagazu": {
+   "unicode": [
+    73970,
+    74602
+   ],
+   "sign": "|GAL.ZU|"
+  },
+  "gaesz": {
+   "unicode": [
+    73909,
+    74140
+   ],
+   "sign": "|GA.KASKAL|"
+  },
+  "gaisz": {
+   "unicode": [
+    73909,
+    74140
+   ],
+   "sign": "|GA.KASKAL|"
+  },
+  "garasz3": {
+   "unicode": [
+    73909,
+    74140
+   ],
+   "sign": "|GA.KASKAL|"
+  },
+  "aszgabgal": {
+   "unicode": [
+    73970,
+    73791
+   ],
+   "sign": "|GAL.AŠGAB|"
+  },
+  "kadra": {
+   "unicode": [
+    74414,
+    73728
+   ],
+   "sign": "|ŠA₃.A|"
+  },
+  "kadri": {
+   "unicode": [
+    73979,
+    74414,
+    73728
+   ],
+   "sign": "|GAR.ŠA₃.A|"
+  },
+  "kadru": {
+   "unicode": [
+    73979,
+    74414,
+    73728
+   ],
+   "sign": "|GAR.ŠA₃.A|"
+  },
+  "eszemen3": {
+   "unicode": [
+    73888,
+    74046
+   ],
+   "sign": "|EŠ₂.HUL₂|"
+  },
+  "eszemin3": {
+   "unicode": [
+    73888,
+    74046
+   ],
+   "sign": "|EŠ₂.HUL₂|"
+  },
+  "santan": {
+   "unicode": [
+    73970,
+    74316
+   ],
+   "sign": "|GAL.NI|"
+  },
+  "santana": {
+   "unicode": [
+    73970,
+    74316
+   ],
+   "sign": "|GAL.NI|"
+  },
+  "szandan": {
+   "unicode": [
+    73970,
+    74316
+   ],
+   "sign": "|GAL.NI|"
+  },
+  "szandana": {
+   "unicode": [
+    73970,
+    74316
+   ],
+   "sign": "|GAL.NI|"
+  },
+  "uttuku": {
+   "unicode": [
+    73979,
+    74435
+   ],
+   "sign": "|GAR.ŠID|"
+  },
+  "utuq": {
+   "unicode": [
+    73979,
+    74435
+   ],
+   "sign": "|GAR.ŠID|"
+  },
+  "utuku": {
+   "unicode": [
+    73979,
+    74435
+   ],
+   "sign": "|GAR.ŠID|"
+  },
+  "kadra2": {
+   "unicode": [
+    73979,
+    74414
+   ],
+   "sign": "|GAR.ŠA₃|"
+  },
+  "gapi": {
+   "unicode": [
+    73979,
+    73914
+   ],
+   "sign": "|GAR.GA₂×(A.IGI)|"
+  },
+  "mudru2": {
+   "unicode": [
+    73879,
+    74154,
+    73728
+   ],
+   "sign": "|EN.KU.A|"
+  },
+  "kindagal2": {
+   "unicode": [
+    73970,
+    74549
+   ],
+   "sign": "|GAL.URI|"
+  },
+  "nisiki": {
+   "unicode": [
+    74001,
+    73979,
+    74530
+   ],
+   "sign": "|GIŠ.GAR.UMBIN|"
+  },
+  "ukra": {
+   "unicode": [
+    73970,
+    74458
+   ],
+   "sign": "|GAL.ŠUBUR|"
+  },
+  "ukur2": {
+   "unicode": [
+    73970,
+    74458
+   ],
+   "sign": "|GAL.ŠUBUR|"
+  },
+  "sukkalgal": {
+   "unicode": [
+    73970,
+    74267
+   ],
+   "sign": "|GAL.LUH|"
+  },
+  "kadra3": {
+   "unicode": [
+    73979,
+    74415
+   ],
+   "sign": "|GAR.ŠA₃×A|"
+  },
+  "kadri3": {
+   "unicode": [
+    73979,
+    74415
+   ],
+   "sign": "|GAR.ŠA₃×A|"
+  },
+  "kadru3": {
+   "unicode": [
+    73979,
+    74415
+   ],
+   "sign": "|GAR.ŠA₃×A|"
+  },
+  "balla": {
+   "unicode": [
+    73979,
+    74389,
+    74061,
+    73889,
+    74577
+   ],
+   "sign": "|GAR.SAG.IL₂.EZEN.UŠ|"
+  },
+  "sin3": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "suen": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "suena": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "tungal": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "zuen": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "zuena": {
+   "unicode": [
+    73879,
+    74602
+   ],
+   "sign": "|EN.ZU|"
+  },
+  "uszumgal": {
+   "unicode": [
+    73970,
+    73812
+   ],
+   "sign": "|GAL.BUR₂|"
+  },
+  "gallagal": {
+   "unicode": [
+    73970,
+    74492,
+    74226
+   ],
+   "sign": "|GAL.TE.LAL|"
+  },
+  "kisim6": {
+   "unicode": [
+    73909,
+    74168
+   ],
+   "sign": "|GA.LAGAB|"
+  },
+  "sura13": {
+   "unicode": [
+    73888,
+    74071
+   ],
+   "sign": "|EŠ₂.KA|"
+  },
+  "surra13": {
+   "unicode": [
+    73888,
+    74071
+   ],
+   "sign": "|EŠ₂.KA|"
+  },
+  "zir2": {
+   "unicode": [
+    73888,
+    74071
+   ],
+   "sign": "|EŠ₂.KA|"
+  },
+  "egar": {
+   "unicode": [
+    73869,
+    74462
+   ],
+   "sign": "|E₂.SIG₄|"
+  },
+  "igar": {
+   "unicode": [
+    73869,
+    74462
+   ],
+   "sign": "|E₂.SIG₄|"
+  },
+  "ingar": {
+   "unicode": [
+    73869,
+    74462
+   ],
+   "sign": "|E₂.SIG₄|"
+  },
+  "balla2": {
+   "unicode": [
+    73979,
+    74389,
+    74061,
+    73889,
+    74409
+   ],
+   "sign": "|GAR.SAG.IL₂.EZEN.SAL|"
+  },
+  "kibsur": {
+   "unicode": [
+    73979,
+    74168
+   ],
+   "sign": "|GAR.LAGAB|"
+  },
+  "kibszur": {
+   "unicode": [
+    73979,
+    74168
+   ],
+   "sign": "|GAR.LAGAB|"
+  },
+  "bahargal": {
+   "unicode": [
+    73970,
+    73799,
+    73876
+   ],
+   "sign": "|GAL.BAR.EDIN|"
+  },
+  "gur21": {
+   "unicode": [
+    73866,
+    74504
+   ],
+   "sign": "|E.TUM|"
+  },
+  "guru21": {
+   "unicode": [
+    73866,
+    74504
+   ],
+   "sign": "|E.TUM|"
+  },
+  "kur14": {
+   "unicode": [
+    73866,
+    74504
+   ],
+   "sign": "|E.TUM|"
+  },
+  "kuru14": {
+   "unicode": [
+    73866,
+    74504
+   ],
+   "sign": "|E.TUM|"
+  },
+  "kurul14": {
+   "unicode": [
+    73866,
+    74504
+   ],
+   "sign": "|E.TUM|"
+  },
+  "simuggal": {
+   "unicode": [
+    73970,
+    74531
+   ],
+   "sign": "|GAL.UMUM|"
+  },
+  "gagalam": {
+   "unicode": [
+    73972,
+    73972
+   ],
+   "sign": "|GALAM.GALAM|"
+  },
+  "gibil5": {
+   "unicode": [
+    73972,
+    73972
+   ],
+   "sign": "|GALAM.GALAM|"
+  },
+  "szurmen": {
+   "unicode": [
+    73886,
+    74455,
+    74280
+   ],
+   "sign": "|EREN.ŠU.ME|"
+  },
+  "eurre": {
+   "unicode": [
+    73869,
+    74144,
+    74471,
+    73909
+   ],
+   "sign": "|E₂.KI.SUM.GA|"
+  },
+  "gug3": {
+   "unicode": [
+    73979,
+    74262
+   ],
+   "sign": "|GAR.LU₃|"
+  },
+  "gugina": {
+   "unicode": [
+    73979,
+    74262
+   ],
+   "sign": "|GAR.LU₃|"
+  },
+  "szanna": {
+   "unicode": [
+    73975,
+    73805
+   ],
+   "sign": "|GAN₂.BU|"
+  },
+  "tiru": {
+   "unicode": [
+    73970,
+    74492
+   ],
+   "sign": "|GAL.TE|"
+  },
+  "tirum": {
+   "unicode": [
+    73970,
+    74492
+   ],
+   "sign": "|GAL.TE|"
+  },
+  "argab": {
+   "unicode": [
+    73979,
+    74049
+   ],
+   "sign": "|GAR.IB|"
+  },
+  "irkab": {
+   "unicode": [
+    73979,
+    74049
+   ],
+   "sign": "|GAR.IB|"
+  },
+  "gigirum": {
+   "unicode": [
+    73973,
+    73973
+   ],
+   "sign": "|GAM.GAM|"
+  },
+  "kingal": {
+   "unicode": [
+    73970,
+    74554
+   ],
+   "sign": "|GAL.URU×BAR|"
+  },
+  "kiggal": {
+   "unicode": [
+    73970,
+    74554
+   ],
+   "sign": "|GAL.URU×BAR|"
+  },
+  "agarin3": {
+   "unicode": [
+    73916,
+    73862
+   ],
+   "sign": "|GA₂×AN.DUN₃@g|"
+  },
+  "aszlag4": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A.DU|"
+  },
+  "azalag4": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A.DU|"
+  },
+  "azlag4": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A.DU|"
+  },
+  "amalug": {
+   "unicode": [
+    73916,
+    74268
+   ],
+   "sign": "|GA₂×AN.LUL|"
+  },
+  "malug": {
+   "unicode": [
+    73916,
+    74268
+   ],
+   "sign": "|GA₂×AN.LUL|"
+  },
+  "umma": {
+   "unicode": [
+    74001,
+    74165
+   ],
+   "sign": "|GIŠ.KUŠU₂|"
+  },
+  "ummen": {
+   "unicode": [
+    74001,
+    74165
+   ],
+   "sign": "|GIŠ.KUŠU₂|"
+  },
+  "ummi": {
+   "unicode": [
+    74001,
+    74165
+   ],
+   "sign": "|GIŠ.KUŠU₂|"
+  },
+  "gilgames3": {
+   "unicode": [
+    74001,
+    74312,
+    73909,
+    74281
+   ],
+   "sign": "|GIŠ.NE.GA.MES|"
+  },
+  "gilgamesz3": {
+   "unicode": [
+    74001,
+    74312,
+    73909,
+    74281
+   ],
+   "sign": "|GIŠ.NE.GA.MES|"
+  },
+  "geszdu2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "gesztu2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "gesztug2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "giszdu2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "gisztu2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "gisztug2": {
+   "unicode": [
+    74001,
+    74502,
+    74367
+   ],
+   "sign": "|GIŠ.TUG₂.PI|"
+  },
+  "giszzal": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74643,
+    74465
+   ],
+   "sign": "|GIŠ.TUG₂.PI.NU₁₁@90.SILA₃|"
+  },
+  "gizal2": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74643,
+    74465
+   ],
+   "sign": "|GIŠ.TUG₂.PI.NU₁₁@90.SILA₃|"
+  },
+  "gessal": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74643,
+    74465
+   ],
+   "sign": "|GIŠ.TUG₂.PI.NU₁₁@90.SILA₃|"
+  },
+  "gezzal": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74643,
+    74465
+   ],
+   "sign": "|GIŠ.TUG₂.PI.NU₁₁@90.SILA₃|"
+  },
+  "misal": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74643,
+    74465
+   ],
+   "sign": "|GIŠ.TUG₂.PI.NU₁₁@90.SILA₃|"
+  },
+  "kiszer": {
+   "unicode": [
+    73994,
+    73799
+   ],
+   "sign": "|GIR₃.BAR|"
+  },
+  "szer11": {
+   "unicode": [
+    73994,
+    73799
+   ],
+   "sign": "|GIR₃.BAR|"
+  },
+  "amra": {
+   "unicode": [
+    74001,
+    74275,
+    74383
+   ],
+   "sign": "|GIŠ.MA₂.RA|"
+  },
+  "wi5": {
+   "unicode": [
+    74001,
+    73847
+   ],
+   "sign": "|GIŠ.DIN|"
+  },
+  "sishe": {
+   "unicode": [
+    74007,
+    74007
+   ],
+   "sign": "|GU%GU.GU%GU|"
+  },
+  "miszhasz": {
+   "unicode": [
+    74001,
+    74491
+   ],
+   "sign": "|GIŠ.TAR|"
+  },
+  "sakkan2": {
+   "unicode": [
+    73994,
+    73954,
+    73728,
+    73773
+   ],
+   "sign": "|GIR₃.GA₂×PA.A.AN|"
+  },
+  "gira2": {
+   "unicode": [
+    74001,
+    73799
+   ],
+   "sign": "|GIŠ.BAR|"
+  },
+  "gesztukul2": {
+   "unicode": [
+    74001,
+    74154
+   ],
+   "sign": "|GIŠ.KU|"
+  },
+  "immal3": {
+   "unicode": [
+    73979,
+    74455,
+    73858
+   ],
+   "sign": "|GAR.ŠU.DUGUD|"
+  },
+  "aszlag6": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A|"
+  },
+  "azalag6": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A|"
+  },
+  "azlag6": {
+   "unicode": [
+    74001,
+    74502,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.TE.A|"
+  },
+  "emedu": {
+   "unicode": [
+    73916,
+    74501
+   ],
+   "sign": "|GA₂×AN.TU|"
+  },
+  "gilgames": {
+   "unicode": [
+    74001,
+    73862,
+    74278
+   ],
+   "sign": "|GIŠ.DUN₃@g.MAŠ|"
+  },
+  "gilgamesz": {
+   "unicode": [
+    74001,
+    73862,
+    74278
+   ],
+   "sign": "|GIŠ.DUN₃@g.MAŠ|"
+  },
+  "bil3": {
+   "unicode": [
+    74001,
+    74315
+   ],
+   "sign": "|GIŠ.NE@s|"
+  },
+  "pil3": {
+   "unicode": [
+    74001,
+    74315
+   ],
+   "sign": "|GIŠ.NE@s|"
+  },
+  "ubilla": {
+   "unicode": [
+    74001,
+    74315
+   ],
+   "sign": "|GIŠ.NE@s|"
+  },
+  "agarim": {
+   "unicode": [
+    73916,
+    73773,
+    74297
+   ],
+   "sign": "|GA₂×AN.AN.MUŠ₃|"
+  },
+  "amalu": {
+   "unicode": [
+    73916,
+    73773,
+    74297
+   ],
+   "sign": "|GA₂×AN.AN.MUŠ₃|"
+  },
+  "amarim": {
+   "unicode": [
+    73916,
+    73773,
+    74297
+   ],
+   "sign": "|GA₂×AN.AN.MUŠ₃|"
+  },
+  "aszlag5": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A|"
+  },
+  "azalag5": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A|"
+  },
+  "azlag5": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A|"
+  },
+  "kageszkara": {
+   "unicode": [
+    74001,
+    74071,
+    74130
+   ],
+   "sign": "|GIŠ.KA.KAD₄|"
+  },
+  "amedu": {
+   "unicode": [
+    73916,
+    73728,
+    74501
+   ],
+   "sign": "|GA₂×AN.A.TU|"
+  },
+  "emedu2": {
+   "unicode": [
+    73916,
+    73728,
+    74501
+   ],
+   "sign": "|GA₂×AN.A.TU|"
+  },
+  "hubud": {
+   "unicode": [
+    73994,
+    74455,
+    74053
+   ],
+   "sign": "|GIR₃.ŠU.IG|"
+  },
+  "aszlag3": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A.DU|"
+  },
+  "azalag3": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A.DU|"
+  },
+  "azlag3": {
+   "unicode": [
+    74001,
+    74502,
+    74367,
+    74492,
+    73728,
+    73850
+   ],
+   "sign": "|GIŠ.TUG₂.PI.TE.A.DU|"
+  },
+  "agarin5": {
+   "unicode": [
+    73916,
+    74443
+   ],
+   "sign": "|GA₂×AN.ŠIM×GAR|"
+  },
+  "geszbun": {
+   "unicode": [
+    74001,
+    74144,
+    73801
+   ],
+   "sign": "|GIŠ.KI.BI|"
+  },
+  "agarin4": {
+   "unicode": [
+    73916,
+    74438
+   ],
+   "sign": "|GA₂×AN.ŠIM|"
+  },
+  "geszgiri": {
+   "unicode": [
+    74001,
+    74237
+   ],
+   "sign": "|GIŠ.LU₂|"
+  },
+  "irgi": {
+   "unicode": [
+    73994,
+    74590
+   ],
+   "sign": "|GIR₃.ZA@t|"
+  },
+  "dimmusz": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "gissu": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "gizzu": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "gessu": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "gessun": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "luhum": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "luhummu": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "ubilla2": {
+   "unicode": [
+    74001,
+    74282
+   ],
+   "sign": "|GIŠ.MI|"
+  },
+  "bil4": {
+   "unicode": [
+    74001,
+    74312
+   ],
+   "sign": "|GIŠ.NE|"
+  },
+  "pil4": {
+   "unicode": [
+    74001,
+    74312
+   ],
+   "sign": "|GIŠ.NE|"
+  },
+  "lium": {
+   "unicode": [
+    74014,
+    73773,
+    74302
+   ],
+   "sign": "|GUD.AN.NA|"
+  },
+  "szaggina": {
+   "unicode": [
+    73994,
+    73780
+   ],
+   "sign": "|GIR₃.ARAD|"
+  },
+  "szagina": {
+   "unicode": [
+    73994,
+    73780
+   ],
+   "sign": "|GIR₃.ARAD|"
+  },
+  "szagana": {
+   "unicode": [
+    73994,
+    73780
+   ],
+   "sign": "|GIR₃.ARAD|"
+  },
+  "szakan6": {
+   "unicode": [
+    73994,
+    73780
+   ],
+   "sign": "|GIR₃.ARAD|"
+  },
+  "szakkana": {
+   "unicode": [
+    73994,
+    73780
+   ],
+   "sign": "|GIR₃.ARAD|"
+  },
+  "szutum": {
+   "unicode": [
+    73984,
+    74302,
+    73738,
+    74507,
+    74014
+   ],
+   "sign": "|GI.NA.AB.U.GUD|"
+  },
+  "biltu": {
+   "unicode": [
+    74008,
+    74534
+   ],
+   "sign": "|GU₂.UN|"
+  },
+  "sa13": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "sag10": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "saga10": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "seg5": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "sig5": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "sza15": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|IGI.ERIN₂|"
+  },
+  "miszsun": {
+   "unicode": [
+    74001,
+    73793
+   ],
+   "sign": "|GIŠ.BAD|"
+  },
+  "nida": {
+   "unicode": [
+    74008,
+    74349
+   ],
+   "sign": "|GU₂.NUNUZ|"
+  },
+  "luhsza": {
+   "unicode": [
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|HI×NUN.ME.U|"
+  },
+  "luhszu": {
+   "unicode": [
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|HI×NUN.ME.U|"
+  },
+  "ulu2": {
+   "unicode": [
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|HI×NUN.ME.U|"
+  },
+  "utul12": {
+   "unicode": [
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|HI×NUN.ME.U|"
+  },
+  "ha2": {
+   "unicode": [
+    74029,
+    73728
+   ],
+   "sign": "|HI.A|"
+  },
+  "ahhur": {
+   "unicode": [
+    74054,
+    73728
+   ],
+   "sign": "|IGI.A|"
+  },
+  "imhur4": {
+   "unicode": [
+    74054,
+    73728
+   ],
+   "sign": "|IGI.A|"
+  },
+  "uhhur3": {
+   "unicode": [
+    74054,
+    73728
+   ],
+   "sign": "|IGI.A|"
+  },
+  "kiszi13": {
+   "unicode": [
+    74036,
+    74140
+   ],
+   "sign": "|HI×NUN.KASKAL|"
+  },
+  "kun4": {
+   "unicode": [
+    74047,
+    74235
+   ],
+   "sign": "|I.LU|"
+  },
+  "kug4": {
+   "unicode": [
+    74047,
+    74235
+   ],
+   "sign": "|I.LU|"
+  },
+  "dullu": {
+   "unicode": [
+    74025,
+    74308,
+    73805
+   ],
+   "sign": "|HA.NAGAR.BU|"
+  },
+  "duran": {
+   "unicode": [
+    74009,
+    74002
+   ],
+   "sign": "|GU₂×KAK.GIŠ%GIŠ|"
+  },
+  "turan": {
+   "unicode": [
+    74009,
+    74002
+   ],
+   "sign": "|GU₂×KAK.GIŠ%GIŠ|"
+  },
+  "aszarid": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "aszaridu": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "geszdu4": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "gesztu4": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "igesztu": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "igisztu": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "mahra": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "palil": {
+   "unicode": [
+    74054,
+    73850
+   ],
+   "sign": "|IGI.DU|"
+  },
+  "enku": {
+   "unicode": [
+    74025,
+    74592
+   ],
+   "sign": "|HA.ZAG|"
+  },
+  "azubir": {
+   "unicode": [
+    74031,
+    74389
+   ],
+   "sign": "|HI×AŠ₂.SAG|"
+  },
+  "azugna": {
+   "unicode": [
+    74031,
+    74389
+   ],
+   "sign": "|HI×AŠ₂.SAG|"
+  },
+  "azukna": {
+   "unicode": [
+    74031,
+    74389
+   ],
+   "sign": "|HI×AŠ₂.SAG|"
+  },
+  "urgu": {
+   "unicode": [
+    74031,
+    74085
+   ],
+   "sign": "|HI×AŠ₂.KA×GAR|"
+  },
+  "ugur": {
+   "unicode": [
+    74507,
+    74021
+   ],
+   "sign": "|U.GUR|"
+  },
+  "ursza": {
+   "unicode": [
+    74031,
+    73850
+   ],
+   "sign": "|HI×AŠ₂.DU|"
+  },
+  "geszdu3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "gesztu3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "gesztug3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "giszdu3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "gisztu3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "gisztug3": {
+   "unicode": [
+    74001,
+    74367,
+    74502
+   ],
+   "sign": "|GIŠ.PI.TUG₂|"
+  },
+  "sa4": {
+   "unicode": [
+    74039,
+    74303
+   ],
+   "sign": "|HU.NA₂|"
+  },
+  "sza22": {
+   "unicode": [
+    74039,
+    74303
+   ],
+   "sign": "|HU.NA₂|"
+  },
+  "sze21": {
+   "unicode": [
+    74039,
+    74303
+   ],
+   "sign": "|HU.NA₂|"
+  },
+  "imhur2": {
+   "unicode": [
+    74054,
+    73801
+   ],
+   "sign": "|IGI.BI|"
+  },
+  "uhhur": {
+   "unicode": [
+    74054,
+    73801
+   ],
+   "sign": "|IGI.BI|"
+  },
+  "ara5": {
+   "unicode": [
+    74031,
+    74031
+   ],
+   "sign": "|HI×AŠ₂.HI×AŠ₂|"
+  },
+  "kikken2": {
+   "unicode": [
+    74031,
+    74031
+   ],
+   "sign": "|HI×AŠ₂.HI×AŠ₂|"
+  },
+  "kikkin2": {
+   "unicode": [
+    74031,
+    74031
+   ],
+   "sign": "|HI×AŠ₂.HI×AŠ₂|"
+  },
+  "kinkin2": {
+   "unicode": [
+    74031,
+    74031
+   ],
+   "sign": "|HI×AŠ₂.HI×AŠ₂|"
+  },
+  "kuar": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "kuara": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "sah6": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "saha6": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "zah2": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "zaha2": {
+   "unicode": [
+    74025,
+    73728
+   ],
+   "sign": "|HA.A|"
+  },
+  "henzer": {
+   "unicode": [
+    74054,
+    73844
+   ],
+   "sign": "|IGI.DIM|"
+  },
+  "henzir": {
+   "unicode": [
+    74054,
+    73844
+   ],
+   "sign": "|IGI.DIM|"
+  },
+  "ubri2": {
+   "unicode": [
+    74054,
+    73844
+   ],
+   "sign": "|IGI.DIM|"
+  },
+  "usanda": {
+   "unicode": [
+    74039,
+    74133
+   ],
+   "sign": "|HU.KAK|"
+  },
+  "guda2": {
+   "unicode": [
+    74036,
+    74280
+   ],
+   "sign": "|HI×NUN.ME|"
+  },
+  "gudda": {
+   "unicode": [
+    74036,
+    74280
+   ],
+   "sign": "|HI×NUN.ME|"
+  },
+  "gudu4": {
+   "unicode": [
+    74036,
+    74280
+   ],
+   "sign": "|HI×NUN.ME|"
+  },
+  "gudug": {
+   "unicode": [
+    74036,
+    74280
+   ],
+   "sign": "|HI×NUN.ME|"
+  },
+  "szutug2": {
+   "unicode": [
+    74036,
+    74280
+   ],
+   "sign": "|HI×NUN.ME|"
+  },
+  "mat3": {
+   "unicode": [
+    74039,
+    74029
+   ],
+   "sign": "|HU.HI|"
+  },
+  "mu12": {
+   "unicode": [
+    74039,
+    74029
+   ],
+   "sign": "|HU.HI|"
+  },
+  "mut": {
+   "unicode": [
+    74039,
+    74029
+   ],
+   "sign": "|HU.HI|"
+  },
+  "mutu": {
+   "unicode": [
+    74039,
+    74029
+   ],
+   "sign": "|HU.HI|"
+  },
+  "igira": {
+   "unicode": [
+    74054,
+    73805
+   ],
+   "sign": "|IGI.BU|"
+  },
+  "rig9": {
+   "unicode": [
+    74040,
+    73850
+   ],
+   "sign": "|HUB₂.DU|"
+  },
+  "birdu": {
+   "unicode": [
+    74135,
+    73876
+   ],
+   "sign": "|KAL.EDIN|"
+  },
+  "szarap": {
+   "unicode": [
+    74135,
+    73876
+   ],
+   "sign": "|KAL.EDIN|"
+  },
+  "babilim": {
+   "unicode": [
+    74125,
+    73773
+   ],
+   "sign": "|KA₂.AN|"
+  },
+  "babilima": {
+   "unicode": [
+    74125,
+    73773
+   ],
+   "sign": "|KA₂.AN|"
+  },
+  "zikura": {
+   "unicode": [
+    74140,
+    74763
+   ],
+   "sign": "|KASKAL.6(DIŠ)|"
+  },
+  "ligim": {
+   "unicode": [
+    74054,
+    74505,
+    74505
+   ],
+   "sign": "|IGI.TUR.TUR|"
+  },
+  "ligima": {
+   "unicode": [
+    74054,
+    74505,
+    74505
+   ],
+   "sign": "|IGI.TUR.TUR|"
+  },
+  "ligin": {
+   "unicode": [
+    74054,
+    74505,
+    74505
+   ],
+   "sign": "|IGI.TUR.TUR|"
+  },
+  "udul11": {
+   "unicode": [
+    74362,
+    73814
+   ],
+   "sign": "|PA.DAG.KISIM₅×GUD|"
+  },
+  "utul11": {
+   "unicode": [
+    74362,
+    73814
+   ],
+   "sign": "|PA.DAG.KISIM₅×GUD|"
+  },
+  "gaesz2": {
+   "unicode": [
+    74140,
+    73909
+   ],
+   "sign": "|KASKAL.GA|"
+  },
+  "gaisz2": {
+   "unicode": [
+    74140,
+    73909
+   ],
+   "sign": "|KASKAL.GA|"
+  },
+  "garasz4": {
+   "unicode": [
+    74140,
+    73909
+   ],
+   "sign": "|KASKAL.GA|"
+  },
+  "agrig": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "geszkim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "geszgem": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "giskim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "giszkim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "gizkim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "iskim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "izkim": {
+   "unicode": [
+    74054,
+    73854
+   ],
+   "sign": "|IGI.DUB|"
+  },
+  "u5": {
+   "unicode": [
+    74039,
+    74459
+   ],
+   "sign": "|HU.SI|"
+  },
+  "ud3": {
+   "unicode": [
+    74039,
+    74459
+   ],
+   "sign": "|HU.SI|"
+  },
+  "tugul": {
+   "unicode": [
+    74308,
+    74590
+   ],
+   "sign": "|NAGAR.ZA@t|"
+  },
+  "tuhul": {
+   "unicode": [
+    74308,
+    74590
+   ],
+   "sign": "|NAGAR.ZA@t|"
+  },
+  "idigna": {
+   "unicode": [
+    74008,
+    73980
+   ],
+   "sign": "|GU₂.GAR₃|"
+  },
+  "dalla": {
+   "unicode": [
+    74008,
+    73980
+   ],
+   "sign": "|GU₂.GAR₃|"
+  },
+  "dabda": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "lalla2": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "lelle": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "lelli": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "lilli": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "lilib": {
+   "unicode": [
+    74054,
+    74054
+   ],
+   "sign": "|IGI.IGI|"
+  },
+  "hursag": {
+   "unicode": [
+    74362,
+    73861
+   ],
+   "sign": "|PA.DUN₃|"
+  },
+  "szabra2": {
+   "unicode": [
+    74362,
+    73869
+   ],
+   "sign": "|PA.E₂|"
+  },
+  "szapra2": {
+   "unicode": [
+    74362,
+    73869
+   ],
+   "sign": "|PA.E₂|"
+  },
+  "esir3": {
+   "unicode": [
+    74131,
+    74131
+   ],
+   "sign": "|KAD₅.KAD₅|"
+  },
+  "tal5": {
+   "unicode": [
+    74131,
+    74131
+   ],
+   "sign": "|KAD₅.KAD₅|"
+  },
+  "til6": {
+   "unicode": [
+    74131,
+    74131
+   ],
+   "sign": "|KAD₅.KAD₅|"
+  },
+  "ugnim": {
+   "unicode": [
+    74144,
+    74235,
+    73888
+   ],
+   "sign": "|KI.LU.EŠ₂|"
+  },
+  "nigi3": {
+   "unicode": [
+    74349,
+    73846
+   ],
+   "sign": "|NUNUZ.DIM₂|"
+  },
+  "tēmu": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "demma": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "demmu": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "dema": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "demu": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "dima": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "dimma": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "dimmu": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "dimu": {
+   "unicode": [
+    74071,
+    74029
+   ],
+   "sign": "|KA.HI|"
+  },
+  "ini4": {
+   "unicode": [
+    74054,
+    74283
+   ],
+   "sign": "|IGI.MIN|"
+  },
+  "nidba": {
+   "unicode": [
+    74363,
+    73773,
+    74297
+   ],
+   "sign": "|PAD.AN.MUŠ₃|"
+  },
+  "nigdaba": {
+   "unicode": [
+    74363,
+    73773,
+    74297
+   ],
+   "sign": "|PAD.AN.MUŠ₃|"
+  },
+  "nindaba": {
+   "unicode": [
+    74363,
+    74297
+   ],
+   "sign": "|PAD.MUŠ₃|"
+  },
+  "ninni7": {
+   "unicode": [
+    74363,
+    73773,
+    74297
+   ],
+   "sign": "|PAD.AN.MUŠ₃|"
+  },
+  "ninnim7": {
+   "unicode": [
+    74363,
+    73773,
+    74297
+   ],
+   "sign": "|PAD.AN.MUŠ₃|"
+  },
+  "sabu": {
+   "unicode": [
+    74459,
+    73728,
+    73812
+   ],
+   "sign": "|SI.A.BUR₂|"
+  },
+  "agar6": {
+   "unicode": [
+    74062,
+    73858
+   ],
+   "sign": "|IM.DUGUD|"
+  },
+  "muru9": {
+   "unicode": [
+    74062,
+    73858
+   ],
+   "sign": "|IM.DUGUD|"
+  },
+  "banda5": {
+   "unicode": [
+    74462,
+    74050
+   ],
+   "sign": "|SIG₄.IDIM|"
+  },
+  "uru9": {
+   "unicode": [
+    74462,
+    74050
+   ],
+   "sign": "|SIG₄.IDIM|"
+  },
+  "gabu": {
+   "unicode": [
+    74127,
+    73805
+   ],
+   "sign": "|KAB.BU|"
+  },
+  "buzur4": {
+   "unicode": [
+    74084,
+    74413
+   ],
+   "sign": "|KA×GAN₂@t.ŠA|"
+  },
+  "puzur4": {
+   "unicode": [
+    74084,
+    74413
+   ],
+   "sign": "|KA×GAN₂@t.ŠA|"
+  },
+  "dana": {
+   "unicode": [
+    74140,
+    73805
+   ],
+   "sign": "|KASKAL.BU|"
+  },
+  "danna": {
+   "unicode": [
+    74140,
+    73805
+   ],
+   "sign": "|KASKAL.BU|"
+  },
+  "nenin": {
+   "unicode": [
+    74163,
+    74459,
+    73728,
+    73909
+   ],
+   "sign": "|KUR.SI.A.GA|"
+  },
+  "eme5": {
+   "unicode": [
+    74409,
+    74040
+   ],
+   "sign": "|SAL.HUB₂|"
+  },
+  "emerah": {
+   "unicode": [
+    74409,
+    74040
+   ],
+   "sign": "|SAL.HUB₂|"
+  },
+  "lagar3": {
+   "unicode": [
+    74409,
+    74040
+   ],
+   "sign": "|SAL.HUB₂|"
+  },
+  "sukkal2": {
+   "unicode": [
+    74409,
+    74040
+   ],
+   "sign": "|SAL.HUB₂|"
+  },
+  "emesz": {
+   "unicode": [
+    74409,
+    74220
+   ],
+   "sign": "|SAL.LAGAR|"
+  },
+  "emezi": {
+   "unicode": [
+    74409,
+    74220
+   ],
+   "sign": "|SAL.LAGAR|"
+  },
+  "ezi": {
+   "unicode": [
+    74409,
+    74220
+   ],
+   "sign": "|SAL.LAGAR|"
+  },
+  "murub2": {
+   "unicode": [
+    74409,
+    74220
+   ],
+   "sign": "|SAL.LAGAR|"
+  },
+  "usuh": {
+   "unicode": [
+    74409,
+    74220
+   ],
+   "sign": "|SAL.LAGAR|"
+  },
+  "szubtu": {
+   "unicode": [
+    74140,
+    74168
+   ],
+   "sign": "|KASKAL.LAGAB|"
+  },
+  "szubtu3": {
+   "unicode": [
+    74140,
+    74168
+   ],
+   "sign": "|KASKAL.LAGAB|"
+  },
+  "szubtum3": {
+   "unicode": [
+    74140,
+    74168
+   ],
+   "sign": "|KASKAL.LAGAB|"
+  },
+  "ehehhe": {
+   "unicode": [
+    74154,
+    74154,
+    74154
+   ],
+   "sign": "|KU.KU.KU|"
+  },
+  "eheh": {
+   "unicode": [
+    74154,
+    74154,
+    74154
+   ],
+   "sign": "|KU.KU.KU|"
+  },
+  "la'u4": {
+   "unicode": [
+    74227,
+    74133
+   ],
+   "sign": "|LAL₂.KAK|"
+  },
+  "lal'u4": {
+   "unicode": [
+    74227,
+    74133
+   ],
+   "sign": "|LAL₂.KAK|"
+  },
+  "lagar2": {
+   "unicode": [
+    74409,
+    74280
+   ],
+   "sign": "|SAL.ME|"
+  },
+  "lukur": {
+   "unicode": [
+    74409,
+    74280
+   ],
+   "sign": "|SAL.ME|"
+  },
+  "enaqa": {
+   "unicode": [
+    74062,
+    74316,
+    74515
+   ],
+   "sign": "|IM.NI.UD|"
+  },
+  "la'u7": {
+   "unicode": [
+    74226,
+    74133
+   ],
+   "sign": "|LAL.KAK|"
+  },
+  "lal'u7": {
+   "unicode": [
+    74226,
+    74133
+   ],
+   "sign": "|LAL.KAK|"
+  },
+  "tirigi": {
+   "unicode": [
+    74389,
+    73773
+   ],
+   "sign": "|SAG.AN|"
+  },
+  "dutu": {
+   "unicode": [
+    74071,
+    74071
+   ],
+   "sign": "|KA.KA|"
+  },
+  "kenke": {
+   "unicode": [
+    74149,
+    74149
+   ],
+   "sign": "|KIN.KIN|"
+  },
+  "emasz": {
+   "unicode": [
+    74278,
+    88
+   ],
+   "sign": "|MAŠ.X|"
+  },
+  "erina8": {
+   "unicode": [
+    74296,
+    73728,
+    74302
+   ],
+   "sign": "|MUŠ%MUŠ.A.NA|"
+  },
+  "irina": {
+   "unicode": [
+    74296,
+    73728,
+    74302
+   ],
+   "sign": "|MUŠ%MUŠ.A.NA|"
+  },
+  "ege2": {
+   "unicode": [
+    74409,
+    73888
+   ],
+   "sign": "|SAL.EŠ₂|"
+  },
+  "eger3": {
+   "unicode": [
+    74409,
+    73888
+   ],
+   "sign": "|SAL.EŠ₂|"
+  },
+  "egi2": {
+   "unicode": [
+    74409,
+    73888
+   ],
+   "sign": "|SAL.EŠ₂|"
+  },
+  "egir3": {
+   "unicode": [
+    74409,
+    73888
+   ],
+   "sign": "|SAL.EŠ₂|"
+  },
+  "nanga4": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "nigin9": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "nimen5": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "usar2": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "uszar2": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "uszur2": {
+   "unicode": [
+    74226,
+    74412
+   ],
+   "sign": "|LAL.SAR|"
+  },
+  "eh3": {
+   "unicode": [
+    74154,
+    74154
+   ],
+   "sign": "|KU.KU|"
+  },
+  "kurku2": {
+   "unicode": [
+    74071,
+    73773,
+    74316,
+    74459
+   ],
+   "sign": "|KA.AN.NI.SI|"
+  },
+  "rug2": {
+   "unicode": [
+    74310,
+    74466
+   ],
+   "sign": "|NAM.SU|"
+  },
+  "enszada": {
+   "unicode": [
+    74362,
+    74502
+   ],
+   "sign": "|PA.TUG₂|"
+  },
+  "enszadu": {
+   "unicode": [
+    74362,
+    74502
+   ],
+   "sign": "|PA.TUG₂|"
+  },
+  "nuska": {
+   "unicode": [
+    74362,
+    74502
+   ],
+   "sign": "|PA.TUG₂|"
+  },
+  "nuszka": {
+   "unicode": [
+    74362,
+    74502
+   ],
+   "sign": "|PA.TUG₂|"
+  },
+  "nusku": {
+   "unicode": [
+    74362,
+    74502
+   ],
+   "sign": "|PA.TUG₂|"
+  },
+  "kid8": {
+   "unicode": [
+    74409,
+    74490
+   ],
+   "sign": "|SAL.TAK₄|"
+  },
+  "ragab3": {
+   "unicode": [
+    74127,
+    74577
+   ],
+   "sign": "|KAB.UŠ|"
+  },
+  "bula": {
+   "unicode": [
+    74154,
+    74337
+   ],
+   "sign": "|KU.NU|"
+  },
+  "suhul3": {
+   "unicode": [
+    74062,
+    73860,
+    73863
+   ],
+   "sign": "|IM.DUN.DUN₃@g@g|"
+  },
+  "garza2": {
+   "unicode": [
+    74362,
+    74263
+   ],
+   "sign": "|PA.LUGAL|"
+  },
+  "girza": {
+   "unicode": [
+    74362,
+    74263
+   ],
+   "sign": "|PA.LUGAL|"
+  },
+  "muru5": {
+   "unicode": [
+    74409,
+    74515,
+    73876
+   ],
+   "sign": "|SAL.UD.EDIN|"
+  },
+  "murub5": {
+   "unicode": [
+    74409,
+    74515,
+    73876
+   ],
+   "sign": "|SAL.UD.EDIN|"
+  },
+  "murum5": {
+   "unicode": [
+    74409,
+    74515,
+    73876
+   ],
+   "sign": "|SAL.UD.EDIN|"
+  },
+  "gammu": {
+   "unicode": [
+    74409,
+    74577,
+    73842
+   ],
+   "sign": "|SAL.UŠ.DI|"
+  },
+  "gamu": {
+   "unicode": [
+    74409,
+    74577,
+    73842
+   ],
+   "sign": "|SAL.UŠ.DI|"
+  },
+  "munussa": {
+   "unicode": [
+    74409,
+    74577,
+    73842
+   ],
+   "sign": "|SAL.UŠ.DI|"
+  },
+  "mussa": {
+   "unicode": [
+    74409,
+    74577,
+    73842
+   ],
+   "sign": "|SAL.UŠ.DI|"
+  },
+  "gal10": {
+   "unicode": [
+    74237,
+    73849
+   ],
+   "sign": "|LU₂.DIŠ|"
+  },
+  "pa5": {
+   "unicode": [
+    74365,
+    73866
+   ],
+   "sign": "|PAP.E|"
+  },
+  "pad5": {
+   "unicode": [
+    74365,
+    73866
+   ],
+   "sign": "|PAP.E|"
+  },
+  "dim8": {
+   "unicode": [
+    74384,
+    73974
+   ],
+   "sign": "|RAB.GAN|"
+  },
+  "dir": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "diri": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "dirig": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "du26": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "mal2": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "nindar": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "sa5": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "ter4": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "usz15": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "uszub": {
+   "unicode": [
+    74459,
+    73728
+   ],
+   "sign": "|SI.A|"
+  },
+  "se25": {
+   "unicode": [
+    74297,
+    73842
+   ],
+   "sign": "|MUŠ₃.DI|"
+  },
+  "sed4": {
+   "unicode": [
+    74297,
+    73842
+   ],
+   "sign": "|MUŠ₃.DI|"
+  },
+  "sedi4": {
+   "unicode": [
+    74297,
+    73842
+   ],
+   "sign": "|MUŠ₃.DI|"
+  },
+  "sze17": {
+   "unicode": [
+    74297,
+    73842
+   ],
+   "sign": "|MUŠ₃.DI|"
+  },
+  "szed10": {
+   "unicode": [
+    74297,
+    73842
+   ],
+   "sign": "|MUŠ₃.DI|"
+  },
+  "kibini": {
+   "unicode": [
+    74144,
+    73801,
+    74316
+   ],
+   "sign": "|KI.BI.NI|"
+  },
+  "guszur2": {
+   "unicode": [
+    74384,
+    73970
+   ],
+   "sign": "|RAB.GAL|"
+  },
+  "ur13": {
+   "unicode": [
+    74384,
+    73970
+   ],
+   "sign": "|RAB.GAL|"
+  },
+  "munzer": {
+   "unicode": [
+    74284,
+    73805
+   ],
+   "sign": "|MU.BU|"
+  },
+  "munzur": {
+   "unicode": [
+    74144,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|KI.AN.ŠEŠ.KI|"
+  },
+  "musur": {
+   "unicode": [
+    74144,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|KI.AN.ŠEŠ.KI|"
+  },
+  "sulili": {
+   "unicode": [
+    74362,
+    74567
+   ],
+   "sign": "|PA.URU×MIN|"
+  },
+  "zilili": {
+   "unicode": [
+    74362,
+    74567
+   ],
+   "sign": "|PA.URU×MIN|"
+  },
+  "zilulu": {
+   "unicode": [
+    74362,
+    74567
+   ],
+   "sign": "|PA.URU×MIN|"
+  },
+  "ummanu": {
+   "unicode": [
+    74144,
+    74466,
+    74235,
+    73888,
+    73979
+   ],
+   "sign": "|KI.SU.LU.EŠ₂.GAR|"
+  },
+  "umman": {
+   "unicode": [
+    74144,
+    74466,
+    74235,
+    73888,
+    73979
+   ],
+   "sign": "|KI.SU.LU.EŠ₂.GAR|"
+  },
+  "gaszam": {
+   "unicode": [
+    74339,
+    74280,
+    74483
+   ],
+   "sign": "|NUN.ME.TAG|"
+  },
+  "gaszszu": {
+   "unicode": [
+    74339,
+    74280,
+    74483
+   ],
+   "sign": "|NUN.ME.TAG|"
+  },
+  "nitadam": {
+   "unicode": [
+    74409,
+    73780,
+    73838
+   ],
+   "sign": "|SAL.ARAD.DAM|"
+  },
+  "maszda3": {
+   "unicode": [
+    74278,
+    74133,
+    73879
+   ],
+   "sign": "|MAŠ.KAK.EN|"
+  },
+  "guhszu2": {
+   "unicode": [
+    74270,
+    74457
+   ],
+   "sign": "|LUM&LUM.ŠU₂|"
+  },
+  "gumgumszu": {
+   "unicode": [
+    74270,
+    74457
+   ],
+   "sign": "|LUM&LUM.ŠU₂|"
+  },
+  "egi3": {
+   "unicode": [
+    74144,
+    74389
+   ],
+   "sign": "|KI.SAG|"
+  },
+  "igi3": {
+   "unicode": [
+    74144,
+    74389
+   ],
+   "sign": "|KI.SAG|"
+  },
+  "kislah": {
+   "unicode": [
+    74144,
+    74515
+   ],
+   "sign": "|KI.UD|"
+  },
+  "kizlah": {
+   "unicode": [
+    74144,
+    74515
+   ],
+   "sign": "|KI.UD|"
+  },
+  "ildu": {
+   "unicode": [
+    74054,
+    74308
+   ],
+   "sign": "|IGI.NAGAR|"
+  },
+  "sugal3": {
+   "unicode": [
+    74297,
+    73749
+   ],
+   "sign": "|MUŠ₃.AB@g|"
+  },
+  "zabala3": {
+   "unicode": [
+    74297,
+    73749
+   ],
+   "sign": "|MUŠ₃.AB@g|"
+  },
+  "zabalam3": {
+   "unicode": [
+    74297,
+    73749
+   ],
+   "sign": "|MUŠ₃.AB@g|"
+  },
+  "susbu3": {
+   "unicode": [
+    74297,
+    73805
+   ],
+   "sign": "|MUŠ₃.BU|"
+  },
+  "suzbu3": {
+   "unicode": [
+    74297,
+    73805
+   ],
+   "sign": "|MUŠ₃.BU|"
+  },
+  "mudra6": {
+   "unicode": [
+    74284,
+    73805
+   ],
+   "sign": "|MU.BU|"
+  },
+  "mudru6": {
+   "unicode": [
+    74284,
+    73805
+   ],
+   "sign": "|MU.BU|"
+  },
+  "la'u8": {
+   "unicode": [
+    74227,
+    74507
+   ],
+   "sign": "|LAL₂.U|"
+  },
+  "lal'u8": {
+   "unicode": [
+    74227,
+    74507
+   ],
+   "sign": "|LAL₂.U|"
+  },
+  "la'u5": {
+   "unicode": [
+    74227,
+    73728
+   ],
+   "sign": "|LAL₂.A|"
+  },
+  "lal'u5": {
+   "unicode": [
+    74227,
+    73728
+   ],
+   "sign": "|LAL₂.A|"
+  },
+  "dara": {
+   "unicode": [
+    74154,
+    74002
+   ],
+   "sign": "|KU.GIŠ%GIŠ|"
+  },
+  "dari": {
+   "unicode": [
+    74154,
+    74002
+   ],
+   "sign": "|KU.GIŠ%GIŠ|"
+  },
+  "daru": {
+   "unicode": [
+    74154,
+    74002
+   ],
+   "sign": "|KU.GIŠ%GIŠ|"
+  },
+  "duru": {
+   "unicode": [
+    74154,
+    74002
+   ],
+   "sign": "|KU.GIŠ%GIŠ|"
+  },
+  "bur4": {
+   "unicode": [
+    74338,
+    73811
+   ],
+   "sign": "|NU₁₁.BUR|"
+  },
+  "buru4": {
+   "unicode": [
+    74338,
+    73811
+   ],
+   "sign": "|NU₁₁.BUR|"
+  },
+  "lagasz": {
+   "unicode": [
+    74338,
+    73811
+   ],
+   "sign": "|NU₁₁.BUR|"
+  },
+  "kutu2": {
+   "unicode": [
+    74383,
+    74383
+   ],
+   "sign": "|RA.RA|"
+  },
+  "tertu": {
+   "unicode": [
+    74362,
+    74466
+   ],
+   "sign": "|PA.SU|"
+  },
+  "szakira2": {
+   "unicode": [
+    74144,
+    73773,
+    74515
+   ],
+   "sign": "|KI.AN.UD|"
+  },
+  "garadin5": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "iszhara3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "karadin5": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kel3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kil3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kila": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kilu": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kili3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kilib3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "kin4": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "ni6": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "nigginaku": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "nigen": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "nimen": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "nin3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "nini": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "ninni2": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "rin3": {
+   "unicode": [
+    74168,
+    74168
+   ],
+   "sign": "|LAGAB.LAGAB|"
+  },
+  "saggidim": {
+   "unicode": [
+    74278,
+    74649
+   ],
+   "sign": "|MAŠ.U.U|"
+  },
+  "maszmin": {
+   "unicode": [
+    74278,
+    74649
+   ],
+   "sign": "|MAŠ.U.U|"
+  },
+  "sagman": {
+   "unicode": [
+    74278,
+    74649
+   ],
+   "sign": "|MAŠ.U.U|"
+  },
+  "sagesz?": {
+   "unicode": [
+    74278,
+    74507,
+    74507,
+    74507
+   ],
+   "sign": "|MAŠ.U.U.U|"
+  },
+  "maszkim2": {
+   "unicode": [
+    74362,
+    73852
+   ],
+   "sign": "|PA.DU@g|"
+  },
+  "amuru": {
+   "unicode": [
+    74148,
+    74276
+   ],
+   "sign": "|KID.MAH|"
+  },
+  "maszda2": {
+   "unicode": [
+    74278,
+    73879,
+    74133
+   ],
+   "sign": "|MAŠ.EN.KAK|"
+  },
+  "maszgagen": {
+   "unicode": [
+    74278,
+    73879,
+    74133
+   ],
+   "sign": "|MAŠ.EN.KAK|"
+  },
+  "ganzer3": {
+   "unicode": [
+    74054,
+    74163
+   ],
+   "sign": "|IGI.KUR|"
+  },
+  "ganzir3": {
+   "unicode": [
+    74054,
+    74163
+   ],
+   "sign": "|IGI.KUR|"
+  },
+  "halib": {
+   "unicode": [
+    74054,
+    74163
+   ],
+   "sign": "|IGI.KUR|"
+  },
+  "hilib": {
+   "unicode": [
+    74054,
+    74163
+   ],
+   "sign": "|IGI.KUR|"
+  },
+  "erim2": {
+   "unicode": [
+    74312,
+    74386
+   ],
+   "sign": "|NE.RU|"
+  },
+  "erima2": {
+   "unicode": [
+    74312,
+    74386
+   ],
+   "sign": "|NE.RU|"
+  },
+  "erin7": {
+   "unicode": [
+    74312,
+    74386
+   ],
+   "sign": "|NE.RU|"
+  },
+  "rim3": {
+   "unicode": [
+    74312,
+    74386
+   ],
+   "sign": "|NE.RU|"
+  },
+  "rum2": {
+   "unicode": [
+    74312,
+    74386
+   ],
+   "sign": "|NE.RU|"
+  },
+  "amat": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "amti": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "amta": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "amtam": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "amtu": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "ge12": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "gem3": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "geme2": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "gi12": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "gim3": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "gin5": {
+   "unicode": [
+    74409,
+    74163
+   ],
+   "sign": "|SAL.KUR|"
+  },
+  "dudu": {
+   "unicode": [
+    74144,
+    74049
+   ],
+   "sign": "|KI.IB|"
+  },
+  "eszszeb": {
+   "unicode": [
+    74144,
+    74049
+   ],
+   "sign": "|KI.IB|"
+  },
+  "usztuh": {
+   "unicode": [
+    74144,
+    74049
+   ],
+   "sign": "|KI.IB|"
+  },
+  "susbu": {
+   "unicode": [
+    74301,
+    73805
+   ],
+   "sign": "|MUŠ₃@g.BU|"
+  },
+  "suzbu": {
+   "unicode": [
+    74301,
+    73805
+   ],
+   "sign": "|MUŠ₃@g.BU|"
+  },
+  "garasza": {
+   "unicode": [
+    74144,
+    73793
+   ],
+   "sign": "|KI.BAD|"
+  },
+  "sugal4": {
+   "unicode": [
+    74297,
+    74589,
+    73749
+   ],
+   "sign": "|MUŠ₃.ZA.AB@g|"
+  },
+  "zabala4": {
+   "unicode": [
+    74297,
+    74589,
+    73749
+   ],
+   "sign": "|MUŠ₃.ZA.AB@g|"
+  },
+  "zabalam4": {
+   "unicode": [
+    74297,
+    74589,
+    73749
+   ],
+   "sign": "|MUŠ₃.ZA.AB@g|"
+  },
+  "tuk8": {
+   "unicode": [
+    74062,
+    74129
+   ],
+   "sign": "|IM.KAD₃|"
+  },
+  "enna": {
+   "unicode": [
+    74316,
+    74515,
+    73879
+   ],
+   "sign": "|NI.UD.EN|"
+  },
+  "gur19": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "guru19": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "gurud": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "kur11": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "kuru11": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "kurud": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "kuruda": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "nunpe": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "zilpe": {
+   "unicode": [
+    74345,
+    74144
+   ],
+   "sign": "|NUN@t.KI|"
+  },
+  "mud4": {
+   "unicode": [
+    74168,
+    74507,
+    74133
+   ],
+   "sign": "|LAGAB.U.KAK|"
+  },
+  "sermuszszu": {
+   "unicode": [
+    74058,
+    74490,
+    73769
+   ],
+   "sign": "|IGI@g.TAK₄.ALAN|"
+  },
+  "sirmuszszu": {
+   "unicode": [
+    74058,
+    74490,
+    73769
+   ],
+   "sign": "|IGI@g.TAK₄.ALAN|"
+  },
+  "zermuszku": {
+   "unicode": [
+    74490,
+    73769
+   ],
+   "sign": "|TAK₄.ALAN|"
+  },
+  "zermuszszu": {
+   "unicode": [
+    74058,
+    74490,
+    73769
+   ],
+   "sign": "|IGI@g.TAK₄.ALAN|"
+  },
+  "zirmuszszu": {
+   "unicode": [
+    74058,
+    74490,
+    73769
+   ],
+   "sign": "|IGI@g.TAK₄.ALAN|"
+  },
+  "rig8": {
+   "unicode": [
+    74362,
+    74040
+   ],
+   "sign": "|PA.HUB₂|"
+  },
+  "pusz2": {
+   "unicode": [
+    74365,
+    74028
+   ],
+   "sign": "|PAP.HAL|"
+  },
+  "nergal": {
+   "unicode": [
+    74507,
+    74021
+   ],
+   "sign": "|U.GUR|"
+  },
+  "nerigal": {
+   "unicode": [
+    74378,
+    73749,
+    73970
+   ],
+   "sign": "|PIRIG.AB@g.GAL|"
+  },
+  "mittu": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "medda": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "meddu": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "meta": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "metu": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "midda": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "middu": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "mitta": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "mitum": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "mita": {
+   "unicode": [
+    74154,
+    73773
+   ],
+   "sign": "|KU.AN|"
+  },
+  "abrig": {
+   "unicode": [
+    74339,
+    74280,
+    73850
+   ],
+   "sign": "|NUN.ME.DU|"
+  },
+  "nanga2": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "nigin7": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "nimem3": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "szur5": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "usar4": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "usur4": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "uszar4": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "uszur4": {
+   "unicode": [
+    74226,
+    74168
+   ],
+   "sign": "|LAL.LAGAB|"
+  },
+  "hamanzer": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "saba": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "sip4": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "sipa2": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szab": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szaba": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szap": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szib3": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szip3": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szub3": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "szup3": {
+   "unicode": [
+    74362,
+    74049
+   ],
+   "sign": "|PA.IB|"
+  },
+  "halba4": {
+   "unicode": [
+    74227,
+    74028
+   ],
+   "sign": "|LAL₂.HAL|"
+  },
+  "halbi4": {
+   "unicode": [
+    74227,
+    74028
+   ],
+   "sign": "|LAL₂.HAL|"
+  },
+  "halbu4": {
+   "unicode": [
+    74227,
+    74028
+   ],
+   "sign": "|LAL₂.HAL|"
+  },
+  "halpi": {
+   "unicode": [
+    74227,
+    74028
+   ],
+   "sign": "|LAL₂.HAL|"
+  },
+  "halpia": {
+   "unicode": [
+    74227,
+    74028
+   ],
+   "sign": "|LAL₂.HAL|"
+  },
+  "lagas": {
+   "unicode": [
+    74338,
+    73811,
+    74167
+   ],
+   "sign": "|NU₁₁.BUR.LA|"
+  },
+  "lagasa": {
+   "unicode": [
+    74338,
+    73811,
+    74167
+   ],
+   "sign": "|NU₁₁.BUR.LA|"
+  },
+  "lagasza": {
+   "unicode": [
+    74338,
+    73811,
+    74167
+   ],
+   "sign": "|NU₁₁.BUR.LA|"
+  },
+  "nemur2": {
+   "unicode": [
+    74378,
+    74505
+   ],
+   "sign": "|PIRIG.TUR|"
+  },
+  "nimur": {
+   "unicode": [
+    74378,
+    74505
+   ],
+   "sign": "|PIRIG.TUR|"
+  },
+  "iti3": {
+   "unicode": [
+    74140,
+    74522
+   ],
+   "sign": "|KASKAL.UD@s|"
+  },
+  "abni2": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "dinig": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "gibil3": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "gunni": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "izi2": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "kuszlug": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "mel3": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "munu2": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "ne5": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "zi7": {
+   "unicode": [
+    74144,
+    74312
+   ],
+   "sign": "|KI.NE|"
+  },
+  "nanga3": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "nigin8": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "nimen4": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "szur4": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "usar": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "usur": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "uszar": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "uszur": {
+   "unicode": [
+    74227,
+    74412
+   ],
+   "sign": "|LAL₂.SAR|"
+  },
+  "ellandu": {
+   "unicode": [
+    74387,
+    74037,
+    74133
+   ],
+   "sign": "|SA.HI×ŠE.KAK|"
+  },
+  "suluhu4": {
+   "unicode": [
+    74169,
+    74269
+   ],
+   "sign": "|LAGAB×A.LUM|"
+  },
+  "sulumhi4": {
+   "unicode": [
+    74169,
+    74269
+   ],
+   "sign": "|LAGAB×A.LUM|"
+  },
+  "zuluhu4": {
+   "unicode": [
+    74169,
+    74269
+   ],
+   "sign": "|LAGAB×A.LUM|"
+  },
+  "hul4": {
+   "unicode": [
+    74054,
+    74538
+   ],
+   "sign": "|IGI.UR@s|"
+  },
+  "bad4": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "dubad": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "garasz5": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "hirim": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "kankal": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "karasz2": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "kikla": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "kislah3": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "uludim": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "uludin": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "ulutim": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "ulutin": {
+   "unicode": [
+    74144,
+    74135
+   ],
+   "sign": "|KI.KAL|"
+  },
+  "szerkan": {
+   "unicode": [
+    74062,
+    73856
+   ],
+   "sign": "|IM.DUB₂|"
+  },
+  "dim10": {
+   "unicode": [
+    74384,
+    1048597
+   ],
+   "sign": "|RAB.HI×BAD|"
+  },
+  "u6": {
+   "unicode": [
+    74054,
+    73869
+   ],
+   "sign": "|IGI.E₂|"
+  },
+  "ug6": {
+   "unicode": [
+    74054,
+    73869
+   ],
+   "sign": "|IGI.E₂|"
+  },
+  "daparu": {
+   "unicode": [
+    74237,
+    74280,
+    73879
+   ],
+   "sign": "|LU₂.ME.EN|"
+  },
+  "saparu": {
+   "unicode": [
+    74237,
+    74280,
+    73879
+   ],
+   "sign": "|LU₂.ME.EN|"
+  },
+  "dal2": {
+   "unicode": [
+    74278,
+    74008,
+    73980
+   ],
+   "sign": "|MAŠ.GU₂.GAR₃|"
+  },
+  "zarah": {
+   "unicode": [
+    74389,
+    74362,
+    74168
+   ],
+   "sign": "|SAG.PA.LAGAB|"
+  },
+  "kuszu": {
+   "unicode": [
+    74507,
+    74378
+   ],
+   "sign": "|U.PIRIG|"
+  },
+  "kuya": {
+   "unicode": [
+    74409,
+    74165
+   ],
+   "sign": "|SAL.KUŠU₂|"
+  },
+  "garasz2": {
+   "unicode": [
+    74144,
+    74136
+   ],
+   "sign": "|KI.KAL×BAD|"
+  },
+  "hul": {
+   "unicode": [
+    74054,
+    74536
+   ],
+   "sign": "|IGI.UR|"
+  },
+  "hula": {
+   "unicode": [
+    74054,
+    74536
+   ],
+   "sign": "|IGI.UR|"
+  },
+  "hulu": {
+   "unicode": [
+    74054,
+    74536
+   ],
+   "sign": "|IGI.UR|"
+  },
+  "sarsa": {
+   "unicode": [
+    74412,
+    74412
+   ],
+   "sign": "|SAR.SAR|"
+  },
+  "gugumu": {
+   "unicode": [
+    74269,
+    74269
+   ],
+   "sign": "|LUM.LUM|"
+  },
+  "szimaszgi": {
+   "unicode": [
+    74237,
+    74466
+   ],
+   "sign": "|LU₂.SU|"
+  },
+  "szimaszki": {
+   "unicode": [
+    74237,
+    74466
+   ],
+   "sign": "|LU₂.SU|"
+  },
+  "salam": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "ukdin": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "uktin": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "uktim": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "uludim2": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "uludin2": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "ulutim2": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "ulutin2": {
+   "unicode": [
+    74058,
+    73769
+   ],
+   "sign": "|IGI@g.ALAN|"
+  },
+  "sulum": {
+   "unicode": [
+    74144,
+    74389,
+    73850
+   ],
+   "sign": "|KI.SAG.DU|"
+  },
+  "sulummar": {
+   "unicode": [
+    74144,
+    74389,
+    73850
+   ],
+   "sign": "|KI.SAG.DU|"
+  },
+  "pala3": {
+   "unicode": [
+    74310,
+    74409,
+    74502
+   ],
+   "sign": "|NAM.SAL.TUG₂|"
+  },
+  "medda2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "meddu2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "meta2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "metu2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "midda2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "middu2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "mitta2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "mittu2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "mitum2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "mita2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "mitu2": {
+   "unicode": [
+    74154,
+    74050
+   ],
+   "sign": "|KU.IDIM|"
+  },
+  "ari5": {
+   "unicode": [
+    74362,
+    74636
+   ],
+   "sign": "|PA.ME.U.U.U|"
+  },
+  "halba5": {
+   "unicode": [
+    74227,
+    74567
+   ],
+   "sign": "|LAL₂.URU×MIN|"
+  },
+  "halpa": {
+   "unicode": [
+    74227,
+    74567
+   ],
+   "sign": "|LAL₂.URU×MIN|"
+  },
+  "halbi5": {
+   "unicode": [
+    74227,
+    74567
+   ],
+   "sign": "|LAL₂.URU×MIN|"
+  },
+  "halbu5": {
+   "unicode": [
+    74227,
+    74567
+   ],
+   "sign": "|LAL₂.URU×MIN|"
+  },
+  "parsa": {
+   "unicode": [
+    74163,
+    74494
+   ],
+   "sign": "|KUR.TI|"
+  },
+  "gibil6": {
+   "unicode": [
+    74312,
+    73984
+   ],
+   "sign": "|NE.GI|"
+  },
+  "gir18": {
+   "unicode": [
+    74312,
+    73984
+   ],
+   "sign": "|NE.GI|"
+  },
+  "gira3": {
+   "unicode": [
+    74312,
+    73984
+   ],
+   "sign": "|NE.GI|"
+  },
+  "girra": {
+   "unicode": [
+    74312,
+    73984
+   ],
+   "sign": "|NE.GI|"
+  },
+  "gidlam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "gitlam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "geszdan": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "geszdana": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "gesztan": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "gesztana": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "mada": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "mudna": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "nidalam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "nidlam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "nitalam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "nitlam": {
+   "unicode": [
+    74409,
+    74577,
+    73838
+   ],
+   "sign": "|SAL.UŠ.DAM|"
+  },
+  "eszemen2": {
+   "unicode": [
+    74144,
+    73866,
+    74312,
+    73842,
+    73773,
+    74297
+   ],
+   "sign": "|KI.E.NE.DI.AN.MUŠ₃|"
+  },
+  "eszemin2": {
+   "unicode": [
+    74144,
+    73866,
+    74312,
+    73842,
+    73773,
+    74297
+   ],
+   "sign": "|KI.E.NE.DI.AN.MUŠ₃|"
+  },
+  "titab2": {
+   "unicode": [
+    73800,
+    74365,
+    74365
+   ],
+   "sign": "|LU₃.PAP.PAP|"
+  },
+  "szasuk": {
+   "unicode": [
+    74389,
+    73861
+   ],
+   "sign": "|SAG.DUN₃|"
+  },
+  "durme": {
+   "unicode": [
+    74389,
+    73889
+   ],
+   "sign": "|SAG.EZEN|"
+  },
+  "re'u": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "nuska2": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "nusku2": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "nuszka2": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "nuszku2": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "re'e": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "re'i": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "sap3": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "siba": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "sibad": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "sip2": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "sipa": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "sipad": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "szab5": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "szap5": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "zip3": {
+   "unicode": [
+    74362,
+    74235
+   ],
+   "sign": "|PA.LU|"
+  },
+  "dud": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "duda": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "dunda": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "tud2": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "tudu": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "tunda": {
+   "unicode": [
+    74362,
+    74588
+   ],
+   "sign": "|PA.UZU|"
+  },
+  "eszemen": {
+   "unicode": [
+    74144,
+    73866,
+    74312,
+    73842
+   ],
+   "sign": "|KI.E.NE.DI|"
+  },
+  "eszemin": {
+   "unicode": [
+    74144,
+    73866,
+    74312,
+    73842
+   ],
+   "sign": "|KI.E.NE.DI|"
+  },
+  "geszbun2": {
+   "unicode": [
+    74144,
+    73801
+   ],
+   "sign": "|KI.BI|"
+  },
+  "giszbun2": {
+   "unicode": [
+    74144,
+    73801
+   ],
+   "sign": "|KI.BI|"
+  },
+  "suhul2": {
+   "unicode": [
+    74062,
+    73863,
+    73860
+   ],
+   "sign": "|IM.DUN3@g@g.DUN|"
+  },
+  "kukku4": {
+   "unicode": [
+    74144,
+    74301
+   ],
+   "sign": "|KI.MUŠ₃@g|"
+  },
+  "szu17": {
+   "unicode": [
+    74062,
+    74457
+   ],
+   "sign": "|IM.ŠU₂|"
+  },
+  "uh6": {
+   "unicode": [
+    74062,
+    74457
+   ],
+   "sign": "|IM.ŠU₂|"
+  },
+  "aza2": {
+   "unicode": [
+    74156,
+    73773
+   ],
+   "sign": "|KU₃.AN|"
+  },
+  "azag": {
+   "unicode": [
+    74156,
+    73773
+   ],
+   "sign": "|KU₃.AN|"
+  },
+  "azak": {
+   "unicode": [
+    74156,
+    73773
+   ],
+   "sign": "|KU₃.AN|"
+  },
+  "mam3": {
+   "unicode": [
+    74409,
+    74272
+   ],
+   "sign": "|SAL.MA|"
+  },
+  "mim4": {
+   "unicode": [
+    74409,
+    74272
+   ],
+   "sign": "|SAL.MA|"
+  },
+  "mummun": {
+   "unicode": [
+    74098,
+    74098
+   ],
+   "sign": "|KA×LI.KA×LI|"
+  },
+  "uluba2": {
+   "unicode": [
+    74062,
+    74036,
+    74280,
+    74507,
+    73975
+   ],
+   "sign": "|IM.HI×NUN.ME.U.GAN₂|"
+  },
+  "ulubar2": {
+   "unicode": [
+    74062,
+    74036,
+    74280,
+    74507,
+    73975
+   ],
+   "sign": "|IM.HI×NUN.ME.U.GAN₂|"
+  },
+  "ulumasz2": {
+   "unicode": [
+    74062,
+    74036,
+    74280,
+    74507,
+    73975
+   ],
+   "sign": "|IM.HI×NUN.ME.U.GAN₂|"
+  },
+  "guszkin": {
+   "unicode": [
+    74156,
+    73984
+   ],
+   "sign": "|KU₃.GI|"
+  },
+  "kukku2": {
+   "unicode": [
+    74282,
+    74282
+   ],
+   "sign": "|MI.MI|"
+  },
+  "kukkug2": {
+   "unicode": [
+    74282,
+    74282
+   ],
+   "sign": "|MI.MI|"
+  },
+  "masz3": {
+   "unicode": [
+    74278,
+    74362
+   ],
+   "sign": "|MAŠ.PA|"
+  },
+  "nisaga": {
+   "unicode": [
+    74349,
+    74152
+   ],
+   "sign": "|NUNUZ.KISIM₅|"
+  },
+  "kiszi12": {
+   "unicode": [
+    74339,
+    74426
+   ],
+   "sign": "|NUN.ŠE|"
+  },
+  "delmun": {
+   "unicode": [
+    74316,
+    74503
+   ],
+   "sign": "|NI.TUK|"
+  },
+  "dilmun": {
+   "unicode": [
+    74316,
+    74503
+   ],
+   "sign": "|NI.TUK|"
+  },
+  "dilmuna": {
+   "unicode": [
+    74316,
+    74503
+   ],
+   "sign": "|NI.TUK|"
+  },
+  "telmun": {
+   "unicode": [
+    74316,
+    74503
+   ],
+   "sign": "|NI.TUK|"
+  },
+  "tilmun": {
+   "unicode": [
+    74316,
+    74503
+   ],
+   "sign": "|NI.TUK|"
+  },
+  "maszda": {
+   "unicode": [
+    74278,
+    74133
+   ],
+   "sign": "|MAŠ.KAK|"
+  },
+  "sugal5": {
+   "unicode": [
+    74297,
+    73738
+   ],
+   "sign": "|MUŠ₃.AB|"
+  },
+  "zabala5": {
+   "unicode": [
+    74297,
+    73738
+   ],
+   "sign": "|MUŠ₃.AB|"
+  },
+  "zabalam5": {
+   "unicode": [
+    74297,
+    73738
+   ],
+   "sign": "|MUŠ₃.AB|"
+  },
+  "luga": {
+   "unicode": [
+    74362,
+    73911
+   ],
+   "sign": "|PA.GA₂|"
+  },
+  "gala2": {
+   "unicode": [
+    74409,
+    74167
+   ],
+   "sign": "|SAL.LA|"
+  },
+  "galla2": {
+   "unicode": [
+    74409,
+    74167
+   ],
+   "sign": "|SAL.LA|"
+  },
+  "kala2": {
+   "unicode": [
+    74409,
+    74167
+   ],
+   "sign": "|SAL.LA|"
+  },
+  "nenkum": {
+   "unicode": [
+    74409,
+    74502,
+    74365,
+    74058,
+    74339,
+    74280,
+    73900
+   ],
+   "sign": "|SAL.TUG₂.PAP.IGI@g.NUN.ME.EZEN×KASKAL|"
+  },
+  "ninkum": {
+   "unicode": [
+    74409,
+    74502,
+    74365,
+    74058,
+    74339,
+    74280,
+    73900
+   ],
+   "sign": "|SAL.TUG₂.PAP.IGI@g.NUN.ME.EZEN×KASKAL|"
+  },
+  "isin": {
+   "unicode": [
+    74362,
+    74426
+   ],
+   "sign": "|PA.ŠE|"
+  },
+  "isina": {
+   "unicode": [
+    74362,
+    74426
+   ],
+   "sign": "|PA.ŠE|"
+  },
+  "iszin": {
+   "unicode": [
+    74362,
+    74426
+   ],
+   "sign": "|PA.ŠE|"
+  },
+  "kulkul": {
+   "unicode": [
+    74082,
+    74389
+   ],
+   "sign": "|KA×GA.SAG|"
+  },
+  "absin": {
+   "unicode": [
+    74144,
+    73784,
+    73784
+   ],
+   "sign": "|KI.AŠ.AŠ|"
+  },
+  "gisbun": {
+   "unicode": [
+    74144,
+    73784,
+    73784
+   ],
+   "sign": "|KI.AŠ.AŠ|"
+  },
+  "hulpad": {
+   "unicode": [
+    74054,
+    74536,
+    74386,
+    73979
+   ],
+   "sign": "|IGI.UR.RU.GAR|"
+  },
+  "giszbum": {
+   "unicode": [
+    74144,
+    73801,
+    73979
+   ],
+   "sign": "|KI.BI.GAR|"
+  },
+  "gizbun": {
+   "unicode": [
+    74144,
+    73801,
+    73979
+   ],
+   "sign": "|KI.BI.GAR|"
+  },
+  "szubun": {
+   "unicode": [
+    74144,
+    73801,
+    73979
+   ],
+   "sign": "|KI.BI.GAR|"
+  },
+  "kukku": {
+   "unicode": [
+    74159,
+    74159
+   ],
+   "sign": "|KU₇.KU₇|"
+  },
+  "gidlam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "gitlam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "geszdan4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "geszdana4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "gesztan4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "gesztana4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nidalam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nidlam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nintah3": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nita3": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nitah3": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nitadam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nitalam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "nitlam4": {
+   "unicode": [
+    74409,
+    74577
+   ],
+   "sign": "|SAL.UŠ|"
+  },
+  "guza": {
+   "unicode": [
+    74154,
+    73979
+   ],
+   "sign": "|KU.GAR|"
+  },
+  "guzza": {
+   "unicode": [
+    74154,
+    73979
+   ],
+   "sign": "|KU.GAR|"
+  },
+  "libir": {
+   "unicode": [
+    74054,
+    73888
+   ],
+   "sign": "|IGI.EŠ₂|"
+  },
+  "si5": {
+   "unicode": [
+    74054,
+    73888
+   ],
+   "sign": "|IGI.EŠ₂|"
+  },
+  "szeg14": {
+   "unicode": [
+    74062,
+    73728,
+    73773
+   ],
+   "sign": "|IM.A.AN|"
+  },
+  "kissa": {
+   "unicode": [
+    74144,
+    74432,
+    74133
+   ],
+   "sign": "|KI.ŠEŠ.KAK|"
+  },
+  "kimin": {
+   "unicode": [
+    74144,
+    74283
+   ],
+   "sign": "|KI.MIN|"
+  },
+  "u7": {
+   "unicode": [
+    74144,
+    74283
+   ],
+   "sign": "|KI.MIN|"
+  },
+  "su9": {
+   "unicode": [
+    74460,
+    73728
+   ],
+   "sign": "|SI@g.A|"
+  },
+  "uttu6": {
+   "unicode": [
+    74144,
+    74226
+   ],
+   "sign": "|KI.LAL|"
+  },
+  "utu6": {
+   "unicode": [
+    74144,
+    74226
+   ],
+   "sign": "|KI.LAL|"
+  },
+  "u'a": {
+   "unicode": [
+    74183,
+    73728
+   ],
+   "sign": "|LAGAB×(GUD.GUD).A|"
+  },
+  "u'i": {
+   "unicode": [
+    74183,
+    73728
+   ],
+   "sign": "|LAGAB×(GUD.GUD).A|"
+  },
+  "u'u": {
+   "unicode": [
+    74183,
+    73728
+   ],
+   "sign": "|LAGAB×(GUD.GUD).A|"
+  },
+  "pala2": {
+   "unicode": [
+    74310,
+    73879
+   ],
+   "sign": "|NAM.EN|"
+  },
+  "lisi": {
+   "unicode": [
+    74312,
+    74460
+   ],
+   "sign": "|NE.SI@g|"
+  },
+  "lisin": {
+   "unicode": [
+    74312,
+    74460
+   ],
+   "sign": "|NE.SI@g|"
+  },
+  "kurku": {
+   "unicode": [
+    74280,
+    73773,
+    74426,
+    74304
+   ],
+   "sign": "|ME.AN.ŠE.NAGA|"
+  },
+  "dellu": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "dergul": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "dilu": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "dilur": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "dimgul": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "dirgul": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "durgul": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "targul": {
+   "unicode": [
+    74275,
+    74286
+   ],
+   "sign": "|MA₂.MUG|"
+  },
+  "immal": {
+   "unicode": [
+    74339,
+    74220
+   ],
+   "sign": "|NUN.LAGAR|"
+  },
+  "surum": {
+   "unicode": [
+    74339,
+    74220
+   ],
+   "sign": "|NUN.LAGAR|"
+  },
+  "la'u3": {
+   "unicode": [
+    74227,
+    74316
+   ],
+   "sign": "|LAL₂.NI|"
+  },
+  "lal'u3": {
+   "unicode": [
+    74227,
+    74316
+   ],
+   "sign": "|LAL₂.NI|"
+  },
+  "inszuszinak": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "susan": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "susin": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "susina": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "szuszin": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "szuszina": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "szuszum": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "szuszun": {
+   "unicode": [
+    74297,
+    73886
+   ],
+   "sign": "|MUŠ₃.EREN|"
+  },
+  "szuszru": {
+   "unicode": [
+    74365,
+    74365,
+    88
+   ],
+   "sign": "|PAP.PAP.4×IDIM|"
+  },
+  "szuszszub": {
+   "unicode": [
+    74365,
+    74365,
+    88
+   ],
+   "sign": "|PAP.PAP.4×IDIM|"
+  },
+  "eru2": {
+   "unicode": [
+    74389,
+    74409
+   ],
+   "sign": "|SAG.SAL|"
+  },
+  "erum2": {
+   "unicode": [
+    74389,
+    74409
+   ],
+   "sign": "|SAG.SAL|"
+  },
+  "nidba2": {
+   "unicode": [
+    74363,
+    74297
+   ],
+   "sign": "|PAD.MUŠ₃|"
+  },
+  "nigdaba2": {
+   "unicode": [
+    74363,
+    74297
+   ],
+   "sign": "|PAD.MUŠ₃|"
+  },
+  "ninnim": {
+   "unicode": [
+    74363,
+    74297
+   ],
+   "sign": "|PAD.MUŠ₃|"
+  },
+  "sag2": {
+   "unicode": [
+    74362,
+    73974
+   ],
+   "sign": "|PA.GAN|"
+  },
+  "seg11": {
+   "unicode": [
+    74362,
+    73974
+   ],
+   "sign": "|PA.GAN|"
+  },
+  "sig11": {
+   "unicode": [
+    74362,
+    73974
+   ],
+   "sign": "|PA.GAN|"
+  },
+  "szubtu5": {
+   "unicode": [
+    74140,
+    74213
+   ],
+   "sign": "|KASKAL.LAGAB×U|"
+  },
+  "szubtum5": {
+   "unicode": [
+    74140,
+    74213
+   ],
+   "sign": "|KASKAL.LAGAB×U|"
+  },
+  "saga3": {
+   "unicode": [
+    74061,
+    74275,
+    74058
+   ],
+   "sign": "|IL₂.MA₂.IGI@g|"
+  },
+  "sagga3": {
+   "unicode": [
+    74061,
+    74275,
+    74058
+   ],
+   "sign": "|IL₂.MA₂.IGI@g|"
+  },
+  "sanga3": {
+   "unicode": [
+    74061,
+    74275,
+    74058
+   ],
+   "sign": "|IL₂.MA₂.IGI@g|"
+  },
+  "sangu3": {
+   "unicode": [
+    74061,
+    74275,
+    74058
+   ],
+   "sign": "|IL₂.MA₂.IGI@g|"
+  },
+  "pesz10": {
+   "unicode": [
+    74144,
+    73728
+   ],
+   "sign": "|KI.A|"
+  },
+  "pisz10": {
+   "unicode": [
+    74144,
+    73728
+   ],
+   "sign": "|KI.A|"
+  },
+  "ilduma": {
+   "unicode": [
+    74054,
+    73888,
+    73850,
+    73887
+   ],
+   "sign": "|IGI.EŠ₂.DU.ERIN₂|"
+  },
+  "ildumma": {
+   "unicode": [
+    74054,
+    73888,
+    73850,
+    73887
+   ],
+   "sign": "|IGI.EŠ₂.DU.ERIN₂|"
+  },
+  "palil2": {
+   "unicode": [
+    74054,
+    73888,
+    73850,
+    73887
+   ],
+   "sign": "|IGI.EŠ₂.DU.ERIN₂|"
+  },
+  "pallil": {
+   "unicode": [
+    74054,
+    73888,
+    73850,
+    73887
+   ],
+   "sign": "|IGI.EŠ₂.DU.ERIN₂|"
+  },
+  "dulum": {
+   "unicode": [
+    74054,
+    74308,
+    73805
+   ],
+   "sign": "|IGI.NAGAR.BU|"
+  },
+  "ildu2": {
+   "unicode": [
+    74054,
+    74308,
+    73805
+   ],
+   "sign": "|IGI.NAGAR.BU|"
+  },
+  "ildum2": {
+   "unicode": [
+    74054,
+    74308,
+    73805
+   ],
+   "sign": "|IGI.NAGAR.BU|"
+  },
+  "ilduma2": {
+   "unicode": [
+    74054,
+    74308,
+    73805
+   ],
+   "sign": "|IGI.NAGAR.BU|"
+  },
+  "ildumma2": {
+   "unicode": [
+    74054,
+    74308,
+    73805
+   ],
+   "sign": "|IGI.NAGAR.BU|"
+  },
+  "kuksu2": {
+   "unicode": [
+    74133,
+    74491
+   ],
+   "sign": "|KAK.TAR|"
+  },
+  "kiszi15": {
+   "unicode": [
+    74140,
+    74036
+   ],
+   "sign": "|KASKAL.HI×NUN|"
+  },
+  "kilahha": {
+   "unicode": [
+    74144,
+    74515,
+    73728
+   ],
+   "sign": "|KI.UD.A|"
+  },
+  "dulum2": {
+   "unicode": [
+    74308,
+    73805
+   ],
+   "sign": "|NAGAR.BU|"
+  },
+  "ildu3": {
+   "unicode": [
+    74308,
+    73805
+   ],
+   "sign": "|NAGAR.BU|"
+  },
+  "ildum3": {
+   "unicode": [
+    74308,
+    73805
+   ],
+   "sign": "|NAGAR.BU|"
+  },
+  "ilduma3": {
+   "unicode": [
+    74308,
+    73805
+   ],
+   "sign": "|NAGAR.BU|"
+  },
+  "ildumma3": {
+   "unicode": [
+    74308,
+    73805
+   ],
+   "sign": "|NAGAR.BU|"
+  },
+  "pala": {
+   "unicode": [
+    74310,
+    74263
+   ],
+   "sign": "|NAM.LUGAL|"
+  },
+  "zabar3": {
+   "unicode": [
+    74121,
+    73799
+   ],
+   "sign": "|KA×UD.BAR|"
+  },
+  "zibar3": {
+   "unicode": [
+    74121,
+    73799
+   ],
+   "sign": "|KA×UD.BAR|"
+  },
+  "duggu": {
+   "unicode": [
+    74062,
+    74459,
+    73728
+   ],
+   "sign": "|IM.SI.A|"
+  },
+  "dungu": {
+   "unicode": [
+    74062,
+    74459,
+    73728
+   ],
+   "sign": "|IM.SI.A|"
+  },
+  "kuggala": {
+   "unicode": [
+    74235,
+    74046
+   ],
+   "sign": "|LU.HUL₂|"
+  },
+  "hutpu": {
+   "unicode": [
+    74362,
+    74133
+   ],
+   "sign": "|PA.KAK|"
+  },
+  "hudbu": {
+   "unicode": [
+    74362,
+    74133
+   ],
+   "sign": "|PA.KAK|"
+  },
+  "bubu": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "bubbu": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "nenna": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "nenni": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "nin7": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "ninnu2": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "tutke": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "tutki": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "tutku": {
+   "unicode": [
+    74215,
+    74215
+   ],
+   "sign": "|LAGAB×(U.U.U).LAGAB×(U.U.U)|"
+  },
+  "szimaszgi2": {
+   "unicode": [
+    74237,
+    74466,
+    73728
+   ],
+   "sign": "|LU₂.SU.A|"
+  },
+  "szimaszki2": {
+   "unicode": [
+    74237,
+    74466,
+    73728
+   ],
+   "sign": "|LU₂.SU.A|"
+  },
+  "szeszszed2": {
+   "unicode": [
+    74129,
+    74129
+   ],
+   "sign": "|KAD₃.KAD₃|"
+  },
+  "kukku3": {
+   "unicode": [
+    74144,
+    74144
+   ],
+   "sign": "|KI.KI|"
+  },
+  "utte": {
+   "unicode": [
+    74144,
+    74144
+   ],
+   "sign": "|KI.KI|"
+  },
+  "ute": {
+   "unicode": [
+    74144,
+    74144
+   ],
+   "sign": "|KI.KI|"
+  },
+  "uku5": {
+   "unicode": [
+    74227,
+    73850,
+    73850
+   ],
+   "sign": "|LAL₂.DU.DU|"
+  },
+  "ukur4": {
+   "unicode": [
+    74227,
+    73850,
+    73850
+   ],
+   "sign": "|LAL₂.DU.DU|"
+  },
+  "dim9": {
+   "unicode": [
+    74263,
+    73974
+   ],
+   "sign": "|LUGAL.GAN|"
+  },
+  "munu5": {
+   "unicode": [
+    74365,
+    74426,
+    74365
+   ],
+   "sign": "|PAP.ŠE.PAP|"
+  },
+  "la'u6": {
+   "unicode": [
+    74226,
+    74316
+   ],
+   "sign": "|LAL.NI|"
+  },
+  "lal'u6": {
+   "unicode": [
+    74226,
+    74316
+   ],
+   "sign": "|LAL.NI|"
+  },
+  "bur11": {
+   "unicode": [
+    74144,
+    73879,
+    74133
+   ],
+   "sign": "|KI.EN.KAK|"
+  },
+  "buru11": {
+   "unicode": [
+    74144,
+    73879,
+    74133
+   ],
+   "sign": "|KI.EN.KAK|"
+  },
+  "mur6": {
+   "unicode": [
+    74144,
+    73879,
+    74133
+   ],
+   "sign": "|KI.EN.KAK|"
+  },
+  "muru6": {
+   "unicode": [
+    74144,
+    73879,
+    74133
+   ],
+   "sign": "|KI.EN.KAK|"
+  },
+  "murum6": {
+   "unicode": [
+    74144,
+    73879,
+    74133
+   ],
+   "sign": "|KI.EN.KAK|"
+  },
+  "en5": {
+   "unicode": [
+    74362,
+    74492
+   ],
+   "sign": "|PA.TE|"
+  },
+  "buru15": {
+   "unicode": [
+    74338,
+    74069
+   ],
+   "sign": "|NU₁₁.IR|"
+  },
+  "gesznu2": {
+   "unicode": [
+    74338,
+    74069
+   ],
+   "sign": "|NU₁₁.IR|"
+  },
+  "gisznu2": {
+   "unicode": [
+    74338,
+    74069
+   ],
+   "sign": "|NU₁₁.IR|"
+  },
+  "sirru": {
+   "unicode": [
+    74338,
+    74069
+   ],
+   "sign": "|NU₁₁.IR|"
+  },
+  "gabar": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "kabar": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "kapar": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "nagada": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "rig10": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "ririg": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "udul9": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "utul9": {
+   "unicode": [
+    74362,
+    73827
+   ],
+   "sign": "|PA.DAG.KISIM₅×KAK|"
+  },
+  "bizaza": {
+   "unicode": [
+    74071,
+    73798,
+    73911,
+    74492,
+    73728,
+    73853,
+    74589,
+    74302
+   ],
+   "sign": "|KA.BALAG.GA₂.TE.A.DU@s.ZA.NA|"
+  },
+  "szabra": {
+   "unicode": [
+    74362,
+    73760
+   ],
+   "sign": "|PA.AL|"
+  },
+  "szapra": {
+   "unicode": [
+    74362,
+    73760
+   ],
+   "sign": "|PA.AL|"
+  },
+  "erida2": {
+   "unicode": [
+    74362,
+    74423
+   ],
+   "sign": "|PA.ŠA₆|"
+  },
+  "gangud": {
+   "unicode": [
+    74362,
+    74423
+   ],
+   "sign": "|PA.ŠA₆|"
+  },
+  "szanga7": {
+   "unicode": [
+    74362,
+    74423
+   ],
+   "sign": "|PA.ŠA₆|"
+  },
+  "tidim": {
+   "unicode": [
+    74362,
+    74423
+   ],
+   "sign": "|PA.ŠA₆|"
+  },
+  "imhur3": {
+   "unicode": [
+    74054,
+    73909
+   ],
+   "sign": "|IGI.GA|"
+  },
+  "uhhur2": {
+   "unicode": [
+    74054,
+    73909
+   ],
+   "sign": "|IGI.GA|"
+  },
+  "babila2": {
+   "unicode": [
+    74071,
+    73773,
+    74383
+   ],
+   "sign": "|KA.AN.RA|"
+  },
+  "billuda": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "billudu": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "biluda": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "garza": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "garzu": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "kusz4": {
+   "unicode": [
+    74362,
+    73773
+   ],
+   "sign": "|PA.AN|"
+  },
+  "musztu2": {
+   "unicode": [
+    74284,
+    74577,
+    74502,
+    74367
+   ],
+   "sign": "|MU.UŠ.TUG₂.PI|"
+  },
+  "musztug2": {
+   "unicode": [
+    74284,
+    74577,
+    74502,
+    74367
+   ],
+   "sign": "|MU.UŠ.TUG₂.PI|"
+  },
+  "digbir": {
+   "unicode": [
+    74144,
+    74312,
+    73773,
+    74297
+   ],
+   "sign": "|KI.NE.AN.MUŠ₃|"
+  },
+  "namru": {
+   "unicode": [
+    74163,
+    74301,
+    74589,
+    74144
+   ],
+   "sign": "|KUR.MUŠ₃@g.ZA.KI|"
+  },
+  "szumati": {
+   "unicode": [
+    74284,
+    74636
+   ],
+   "sign": "|MU.ME.U.U.U|"
+  },
+  "szuwati": {
+   "unicode": [
+    74284,
+    74636
+   ],
+   "sign": "|MU.ME.U.U.U|"
+  },
+  "nik": {
+   "unicode": [
+    74409,
+    74536
+   ],
+   "sign": "|SAL.UR|"
+  },
+  "niq": {
+   "unicode": [
+    74409,
+    74536
+   ],
+   "sign": "|SAL.UR|"
+  },
+  "ganba": {
+   "unicode": [
+    74144,
+    74228
+   ],
+   "sign": "|KI.LAM|"
+  },
+  "malba": {
+   "unicode": [
+    74144,
+    74228
+   ],
+   "sign": "|KI.LAM|"
+  },
+  "szakaka": {
+   "unicode": [
+    74144,
+    74228
+   ],
+   "sign": "|KI.LAM|"
+  },
+  "szakanka": {
+   "unicode": [
+    74144,
+    74228
+   ],
+   "sign": "|KI.LAM|"
+  },
+  "ka10": {
+   "unicode": [
+    74268,
+    73728
+   ],
+   "sign": "|LUL.A|"
+  },
+  "sidar": {
+   "unicode": [
+    74062,
+    74515
+   ],
+   "sign": "|IM.UD|"
+  },
+  "uluba": {
+   "unicode": [
+    74062,
+    73975,
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|IM.GAN₂.HI×NUN.ME.U|"
+  },
+  "ulubar": {
+   "unicode": [
+    74062,
+    73975,
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|IM.GAN₂.HI×NUN.ME.U|"
+  },
+  "ulumasz": {
+   "unicode": [
+    74062,
+    73975,
+    74036,
+    74280,
+    74507
+   ],
+   "sign": "|IM.GAN₂.HI×NUN.ME.U|"
+  },
+  "dim11": {
+   "unicode": [
+    74263,
+    1048597
+   ],
+   "sign": "|LUGAL.HI×BAD|"
+  },
+  "isimu4": {
+   "unicode": [
+    74365,
+    74058,
+    74339,
+    74280
+   ],
+   "sign": "|PAP.IGI@g.NUN.ME|"
+  },
+  "isimud4": {
+   "unicode": [
+    74365,
+    74058,
+    74339,
+    74280
+   ],
+   "sign": "|PAP.IGI@g.NUN.ME|"
+  },
+  "ensag": {
+   "unicode": [
+    74362,
+    74492,
+    74459
+   ],
+   "sign": "|PA.TE.SI|"
+  },
+  "ensi2": {
+   "unicode": [
+    74362,
+    74492,
+    74459
+   ],
+   "sign": "|PA.TE.SI|"
+  },
+  "ensik": {
+   "unicode": [
+    74362,
+    74492,
+    74459
+   ],
+   "sign": "|PA.TE.SI|"
+  },
+  "isima": {
+   "unicode": [
+    74365,
+    74058
+   ],
+   "sign": "|PAP.IGI@g|"
+  },
+  "isimu": {
+   "unicode": [
+    74365,
+    74058
+   ],
+   "sign": "|PAP.IGI@g|"
+  },
+  "isimud": {
+   "unicode": [
+    74365,
+    74058
+   ],
+   "sign": "|PAP.IGI@g|"
+  },
+  "maszkim": {
+   "unicode": [
+    74362,
+    73853
+   ],
+   "sign": "|PA.DU@s|"
+  },
+  "usduha": {
+   "unicode": [
+    74182,
+    74235,
+    74029,
+    73728
+   ],
+   "sign": "|LAGAB×GUD.LU.HI.A|"
+  },
+  "uzduha": {
+   "unicode": [
+    74182,
+    74235,
+    74029,
+    73728
+   ],
+   "sign": "|LAGAB×GUD.LU.HI.A|"
+  },
+  "e12": {
+   "unicode": [
+    74223,
+    73853
+   ],
+   "sign": "|LAGAR@g.DU@s|"
+  },
+  "ed4": {
+   "unicode": [
+    74223,
+    73853
+   ],
+   "sign": "|LAGAR@g.DU@s|"
+  },
+  "eme3": {
+   "unicode": [
+    74409,
+    73778
+   ],
+   "sign": "|SAL.ANŠE|"
+  },
+  "gug6": {
+   "unicode": [
+    74071,
+    74133
+   ],
+   "sign": "|KA.KAK|"
+  },
+  "pihu3": {
+   "unicode": [
+    74071,
+    74133
+   ],
+   "sign": "|KA.KAK|"
+  },
+  "babilim2": {
+   "unicode": [
+    74125,
+    73773,
+    74383
+   ],
+   "sign": "|KA₂.AN.RA|"
+  },
+  "babilima2": {
+   "unicode": [
+    74125,
+    73773,
+    74383
+   ],
+   "sign": "|KA₂.AN.RA|"
+  },
+  "sur10": {
+   "unicode": [
+    74275,
+    74058
+   ],
+   "sign": "|MA₂.IGI@g|"
+  },
+  "sura10": {
+   "unicode": [
+    74275,
+    74058
+   ],
+   "sign": "|MA₂.IGI@g|"
+  },
+  "surru2": {
+   "unicode": [
+    74275,
+    74058
+   ],
+   "sign": "|MA₂.IGI@g|"
+  },
+  "zur3": {
+   "unicode": [
+    74275,
+    74058
+   ],
+   "sign": "|MA₂.IGI@g|"
+  },
+  "aman": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "bu10": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "bulug3": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "bur13": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "dim4": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "munu4": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "pur13": {
+   "unicode": [
+    74365,
+    74365
+   ],
+   "sign": "|PAP.PAP|"
+  },
+  "nanga": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "nigen5": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "nigin5": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "szur6": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "usar3": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "uszar3": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "uszur3": {
+   "unicode": [
+    74227,
+    74168
+   ],
+   "sign": "|LAL₂.LAGAB|"
+  },
+  "abgal": {
+   "unicode": [
+    74339,
+    74280
+   ],
+   "sign": "|NUN.ME|"
+  },
+  "pa3": {
+   "unicode": [
+    74054,
+    74386
+   ],
+   "sign": "|IGI.RU|"
+  },
+  "pad3": {
+   "unicode": [
+    74054,
+    74386
+   ],
+   "sign": "|IGI.RU|"
+  },
+  "illatu": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "alba2": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "alha": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "baliha": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "ellat": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "ilba2": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "ilha": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "illat": {
+   "unicode": [
+    74140,
+    74163
+   ],
+   "sign": "|KASKAL.KUR|"
+  },
+  "ganzer2": {
+   "unicode": [
+    74312,
+    74459,
+    73728
+   ],
+   "sign": "|NE.SI.A|"
+  },
+  "ganzir2": {
+   "unicode": [
+    74312,
+    74459,
+    73728
+   ],
+   "sign": "|NE.SI.A|"
+  },
+  "udub3": {
+   "unicode": [
+    74312,
+    74459,
+    73728
+   ],
+   "sign": "|NE.SI.A|"
+  },
+  "dagan": {
+   "unicode": [
+    74144,
+    74567
+   ],
+   "sign": "|KI.URU×MIN|"
+  },
+  "daggan": {
+   "unicode": [
+    74144,
+    74567
+   ],
+   "sign": "|KI.URU×MIN|"
+  },
+  "dakan": {
+   "unicode": [
+    74144,
+    74567
+   ],
+   "sign": "|KI.URU×MIN|"
+  },
+  "dakkan": {
+   "unicode": [
+    74144,
+    74567
+   ],
+   "sign": "|KI.URU×MIN|"
+  },
+  "suku4": {
+   "unicode": [
+    74144,
+    74567
+   ],
+   "sign": "|KI.URU×MIN|"
+  },
+  "szeszszed3": {
+   "unicode": [
+    74130,
+    74130,
+    74131
+   ],
+   "sign": "|KAD₄.KAD₄.KAD₅|"
+  },
+  "uku2": {
+   "unicode": [
+    74227,
+    73850
+   ],
+   "sign": "|LAL₂.DU|"
+  },
+  "ukur3": {
+   "unicode": [
+    74227,
+    73850
+   ],
+   "sign": "|LAL₂.DU|"
+  },
+  "addir3": {
+   "unicode": [
+    74362,
+    74000,
+    74363
+   ],
+   "sign": "|PA.GISAL.PAD|"
+  },
+  "nin10": {
+   "unicode": [
+    74409,
+    74464
+   ],
+   "sign": "|SAL.SIK₂|"
+  },
+  "e11": {
+   "unicode": [
+    74223,
+    73850
+   ],
+   "sign": "|LAGAR@g.DU|"
+  },
+  "ed3": {
+   "unicode": [
+    74223,
+    73850
+   ],
+   "sign": "|LAGAR@g.DU|"
+  },
+  "gigir4": {
+   "unicode": [
+    74223,
+    73850
+   ],
+   "sign": "|LAGAR@g.DU|"
+  },
+  "ganzir": {
+   "unicode": [
+    74054,
+    74163,
+    74589
+   ],
+   "sign": "|IGI.KUR.ZA|"
+  },
+  "isztaran": {
+   "unicode": [
+    74071,
+    73842
+   ],
+   "sign": "|KA.DI|"
+  },
+  "abul": {
+   "unicode": [
+    74125,
+    73970
+   ],
+   "sign": "|KA₂.GAL|"
+  },
+  "abula": {
+   "unicode": [
+    74125,
+    73970
+   ],
+   "sign": "|KA₂.GAL|"
+  },
+  "abulla": {
+   "unicode": [
+    74125,
+    73970
+   ],
+   "sign": "|KA₂.GAL|"
+  },
+  "rak0": {
+   "unicode": [
+    74409,
+    73799
+   ],
+   "sign": "|SAL.BAR|"
+  },
+  "mudra": {
+   "unicode": [
+    74461,
+    74284,
+    73805
+   ],
+   "sign": "|SIG.MU.BU|"
+  },
+  "dala2": {
+   "unicode": [
+    74054,
+    74133
+   ],
+   "sign": "|IGI.KAK|"
+  },
+  "dalla2": {
+   "unicode": [
+    74054,
+    74133
+   ],
+   "sign": "|IGI.KAK|"
+  },
+  "szukur": {
+   "unicode": [
+    74054,
+    74133
+   ],
+   "sign": "|IGI.KAK|"
+  },
+  "ubri": {
+   "unicode": [
+    74054,
+    74133
+   ],
+   "sign": "|IGI.KAK|"
+  },
+  "ubrim": {
+   "unicode": [
+    74054,
+    74133
+   ],
+   "sign": "|IGI.KAK|"
+  },
+  "samannu": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "szamanur": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "szaszamanur": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "szeknu": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "szem7": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "szen5": {
+   "unicode": [
+    74070,
+    74575
+   ],
+   "sign": "|IŠ.URUDA|"
+  },
+  "kir11": {
+   "unicode": [
+    74409,
+    73954
+   ],
+   "sign": "|SAL.GA₂×PA|"
+  },
+  "rig7": {
+   "unicode": [
+    74362,
+    74040,
+    73850
+   ],
+   "sign": "|PA.HUB₂.DU|"
+  },
+  "zarah2": {
+   "unicode": [
+    74235,
+    74144,
+    74133
+   ],
+   "sign": "|LU.KI.KAK|"
+  },
+  "rig11": {
+   "unicode": [
+    74281,
+    74386
+   ],
+   "sign": "|MES.RU|"
+  },
+  "sur7": {
+   "unicode": [
+    74144,
+    74133
+   ],
+   "sign": "|KI.KAK|"
+  },
+  "pa6": {
+   "unicode": [
+    74365,
+    74070
+   ],
+   "sign": "|PAP.IŠ|"
+  },
+  "pad6": {
+   "unicode": [
+    74365,
+    74070
+   ],
+   "sign": "|PAP.IŠ|"
+  },
+  "ilī": {
+   "unicode": [
+    74316,
+    74316
+   ],
+   "sign": "|NI.NI|"
+  },
+  "gidim2": {
+   "unicode": [
+    74278,
+    74507
+   ],
+   "sign": "|MAŠ.U|"
+  },
+  "giguru2": {
+   "unicode": [
+    74278,
+    74507
+   ],
+   "sign": "|MAŠ.U|"
+  },
+  "sur6": {
+   "unicode": [
+    74144,
+    73970
+   ],
+   "sign": "|KI.GAL|"
+  },
+  "tegi2": {
+   "unicode": [
+    74268,
+    73798
+   ],
+   "sign": "|LUL.BALAG|"
+  },
+  "tigi2": {
+   "unicode": [
+    74268,
+    73798
+   ],
+   "sign": "|LUL.BALAG|"
+  },
+  "tigu2": {
+   "unicode": [
+    74268,
+    73798
+   ],
+   "sign": "|LUL.BALAG|"
+  },
+  "para4": {
+   "unicode": [
+    74316,
+    74001
+   ],
+   "sign": "|NI.GIŠ|"
+  },
+  "igira2": {
+   "unicode": [
+    74144,
+    74389,
+    74409
+   ],
+   "sign": "|KI.SAG.SAL|"
+  },
+  "igiru": {
+   "unicode": [
+    74144,
+    74389,
+    74409
+   ],
+   "sign": "|KI.SAG.SAL|"
+  },
+  "amurrum": {
+   "unicode": [
+    74277,
+    74501
+   ],
+   "sign": "|MAR.TU|"
+  },
+  "eme7": {
+   "unicode": [
+    74409,
+    73760
+   ],
+   "sign": "|SAL.AL|"
+  },
+  "sukkal3": {
+   "unicode": [
+    74409,
+    73760
+   ],
+   "sign": "|SAL.AL|"
+  },
+  "nisagga": {
+   "unicode": [
+    74349,
+    73750
+   ],
+   "sign": "|NUNUZ.AB₂|"
+  },
+  "maszkim3": {
+   "unicode": [
+    74362,
+    73850
+   ],
+   "sign": "|PA.DU|"
+  },
+  "tugir": {
+   "unicode": [
+    74502,
+    73853
+   ],
+   "sign": "|TUG₂.DU@s|"
+  },
+  "szutul": {
+   "unicode": [
+    74457,
+    73864
+   ],
+   "sign": "|ŠU₂.DUN₃@g@g@s|"
+  },
+  "nigin4": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "nim3": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "ningin4": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "szu16": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "uszu2": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "uzu5": {
+   "unicode": [
+    74507,
+    74515
+   ],
+   "sign": "|U.UD|"
+  },
+  "sugal": {
+   "unicode": [
+    74589,
+    74301,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃@g.AB@g|"
+  },
+  "unu11": {
+   "unicode": [
+    74589,
+    74301,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃@g.AB@g|"
+  },
+  "zabalam": {
+   "unicode": [
+    74589,
+    74301,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃@g.AB@g|"
+  },
+  "bakiru": {
+   "unicode": [
+    74507,
+    74412
+   ],
+   "sign": "|U.SAR|"
+  },
+  "bakirum": {
+   "unicode": [
+    74507,
+    74412
+   ],
+   "sign": "|U.SAR|"
+  },
+  "mahar2": {
+   "unicode": [
+    74507,
+    74412
+   ],
+   "sign": "|U.SAR|"
+  },
+  "nidaba": {
+   "unicode": [
+    74426,
+    74304
+   ],
+   "sign": "|ŠE.NAGA|"
+  },
+  "nisaba": {
+   "unicode": [
+    74426,
+    74304
+   ],
+   "sign": "|ŠE.NAGA|"
+  },
+  "sirara3": {
+   "unicode": [
+    74515,
+    74275,
+    73743,
+    74483
+   ],
+   "sign": "|UD.MA₂.AB×HA.TAG|"
+  },
+  "qa4": {
+   "unicode": [
+    74455,
+    74283
+   ],
+   "sign": "|ŠU.MIN|"
+  },
+  "qad2": {
+   "unicode": [
+    74455,
+    74283
+   ],
+   "sign": "|ŠU.MIN|"
+  },
+  "qat2": {
+   "unicode": [
+    74455,
+    74283
+   ],
+   "sign": "|ŠU.MIN|"
+  },
+  "sagmunzer": {
+   "unicode": [
+    74464,
+    74284,
+    73805
+   ],
+   "sign": "|SIK₂.MU.BU|"
+  },
+  "sagmunzir": {
+   "unicode": [
+    74464,
+    74284,
+    73805
+   ],
+   "sign": "|SIK₂.MU.BU|"
+  },
+  "ararama2": {
+   "unicode": [
+    74515,
+    73738
+   ],
+   "sign": "|UD.AB|"
+  },
+  "ararma2": {
+   "unicode": [
+    74515,
+    73738
+   ],
+   "sign": "|UD.AB|"
+  },
+  "larsa2": {
+   "unicode": [
+    74515,
+    73738
+   ],
+   "sign": "|UD.AB|"
+  },
+  "larsam2": {
+   "unicode": [
+    74515,
+    73738
+   ],
+   "sign": "|UD.AB|"
+  },
+  "nir3": {
+   "unicode": [
+    74589,
+    74319
+   ],
+   "sign": "|ZA.NIM|"
+  },
+  "nira3": {
+   "unicode": [
+    74589,
+    74319
+   ],
+   "sign": "|ZA.NIM|"
+  },
+  "musug4": {
+   "unicode": [
+    74513,
+    74163,
+    74316,
+    74503,
+    74144
+   ],
+   "sign": "|U₂.KUR.NI.TUK.KI|"
+  },
+  "muzug4": {
+   "unicode": [
+    74513,
+    74163,
+    74316,
+    74503,
+    74144
+   ],
+   "sign": "|U₂.KUR.NI.TUK.KI|"
+  },
+  "usug4": {
+   "unicode": [
+    74513,
+    74163,
+    74316,
+    74503,
+    74144
+   ],
+   "sign": "|U₂.KUR.NI.TUK.KI|"
+  },
+  "uzug4": {
+   "unicode": [
+    74513,
+    74163,
+    74316,
+    74503,
+    74144
+   ],
+   "sign": "|U₂.KUR.NI.TUK.KI|"
+  },
+  "szurmin": {
+   "unicode": [
+    74455,
+    74280,
+    73886
+   ],
+   "sign": "|ŠU.ME.EREN|"
+  },
+  "szemusz": {
+   "unicode": [
+    74426,
+    74432
+   ],
+   "sign": "|ŠE.ŠEŠ|"
+  },
+  "abbununna": {
+   "unicode": [
+    74515,
+    74039,
+    74029,
+    74339
+   ],
+   "sign": "|UD.HU.HI.NUN|"
+  },
+  "abbununnu": {
+   "unicode": [
+    74515,
+    74039,
+    74029,
+    74339
+   ],
+   "sign": "|UD.HU.HI.NUN|"
+  },
+  "ibbanunna": {
+   "unicode": [
+    74515,
+    74039,
+    74029,
+    74339
+   ],
+   "sign": "|UD.HU.HI.NUN|"
+  },
+  "imgaga": {
+   "unicode": [
+    74601,
+    73728
+   ],
+   "sign": "|ZIZ₂.A|"
+  },
+  "kiraszi": {
+   "unicode": [
+    74601,
+    73773
+   ],
+   "sign": "|ZIZ₂.AN|"
+  },
+  "udra": {
+   "unicode": [
+    74601,
+    73728
+   ],
+   "sign": "|ZIZ₂.A|"
+  },
+  "udru": {
+   "unicode": [
+    74601,
+    73728,
+    73773
+   ],
+   "sign": "|ZIZ₂.A.AN|"
+  },
+  "suluhu3": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "sulumhi3": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "zukum2": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "zuluhu3": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "zulumhi3": {
+   "unicode": [
+    74596,
+    73728
+   ],
+   "sign": "|ZI&ZI.A|"
+  },
+  "szuku2": {
+   "unicode": [
+    74455,
+    74025
+   ],
+   "sign": "|ŠU.HA|"
+  },
+  "szukud2": {
+   "unicode": [
+    74455,
+    74025
+   ],
+   "sign": "|ŠU.HA|"
+  },
+  "guq": {
+   "unicode": [
+    74589,
+    74018
+   ],
+   "sign": "|ZA.GUL|"
+  },
+  "kaz9": {
+   "unicode": [
+    74515,
+    74031
+   ],
+   "sign": "|UD.HI×AŠ₂|"
+  },
+  "usztu2": {
+   "unicode": [
+    74577,
+    74502,
+    74367
+   ],
+   "sign": "|UŠ.TUG₂.PI|"
+  },
+  "usztug2": {
+   "unicode": [
+    74577,
+    74502,
+    74367
+   ],
+   "sign": "|UŠ.TUG₂.PI|"
+  },
+  "megida2": {
+   "unicode": [
+    74480,
+    74162
+   ],
+   "sign": "|TAB.KUN|"
+  },
+  "megidda2": {
+   "unicode": [
+    74480,
+    74162
+   ],
+   "sign": "|TAB.KUN|"
+  },
+  "szera": {
+   "unicode": [
+    74483,
+    74502
+   ],
+   "sign": "|TAG.TUG₂|"
+  },
+  "szesag": {
+   "unicode": [
+    74426,
+    74263
+   ],
+   "sign": "|ŠE.LUGAL|"
+  },
+  "ligidba2": {
+   "unicode": [
+    74438,
+    73773,
+    74278
+   ],
+   "sign": "|ŠIM.AN.MAŠ|"
+  },
+  "ibila2": {
+   "unicode": [
+    74505,
+    73780
+   ],
+   "sign": "|TUR.ARAD|"
+  },
+  "gena": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "genan": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "genna": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "ginan": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "ginna": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "hibis": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "hibiz": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "ibila": {
+   "unicode": [
+    74505,
+    73849
+   ],
+   "sign": "|TUR.DIŠ|"
+  },
+  "ibila3": {
+   "unicode": [
+    74505,
+    74389
+   ],
+   "sign": "|TUR.SAG|"
+  },
+  "sagdul": {
+   "unicode": [
+    74507,
+    74389
+   ],
+   "sign": "|U.SAG|"
+  },
+  "sagszu": {
+   "unicode": [
+    74507,
+    74389
+   ],
+   "sign": "|U.SAG|"
+  },
+  "sagtusz": {
+   "unicode": [
+    74507,
+    74389
+   ],
+   "sign": "|U.SAG|"
+  },
+  "gulla": {
+   "unicode": [
+    74492,
+    74226
+   ],
+   "sign": "|TE.LAL|"
+  },
+  "galu": {
+   "unicode": [
+    74492,
+    74226
+   ],
+   "sign": "|TE.LAL|"
+  },
+  "urum7": {
+   "unicode": [
+    74507,
+    74413
+   ],
+   "sign": "|U.ŠA|"
+  },
+  "qati": {
+   "unicode": [
+    74455,
+    74283,
+    74636
+   ],
+   "sign": "|ŠU.MIN.ME.U.U.U|"
+  },
+  "suba2": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "subi2": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "szub8": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "szuba2": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "szubu": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "zanaru2": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "zannaru2": {
+   "unicode": [
+    74589,
+    74297
+   ],
+   "sign": "|ZA.MUŠ₃|"
+  },
+  "duddu": {
+   "unicode": [
+    74503,
+    74503
+   ],
+   "sign": "|TUK.TUK|"
+  },
+  "duttu": {
+   "unicode": [
+    74503,
+    74503
+   ],
+   "sign": "|TUK.TUK|"
+  },
+  "anzalub": {
+   "unicode": [
+    74414,
+    73984
+   ],
+   "sign": "|ŠA₃.GI|"
+  },
+  "buglu": {
+   "unicode": [
+    74414,
+    73984
+   ],
+   "sign": "|ŠA₃.GI|"
+  },
+  "hanzalub": {
+   "unicode": [
+    74414,
+    73984
+   ],
+   "sign": "|ŠA₃.GI|"
+  },
+  "puglu": {
+   "unicode": [
+    74414,
+    73984
+   ],
+   "sign": "|ŠA₃.GI|"
+  },
+  "gir4": {
+   "unicode": [
+    74507,
+    73756
+   ],
+   "sign": "|U.AD|"
+  },
+  "isi3": {
+   "unicode": [
+    74507,
+    73756
+   ],
+   "sign": "|U.AD|"
+  },
+  "isim3": {
+   "unicode": [
+    74507,
+    73756
+   ],
+   "sign": "|U.AD|"
+  },
+  "isimu3": {
+   "unicode": [
+    74507,
+    73756
+   ],
+   "sign": "|U.AD|"
+  },
+  "kir13": {
+   "unicode": [
+    74507,
+    73756
+   ],
+   "sign": "|U.AD|"
+  },
+  "larag": {
+   "unicode": [
+    74515,
+    74515,
+    73757
+   ],
+   "sign": "|UD.UD.AK|"
+  },
+  "gar14": {
+   "unicode": [
+    74492,
+    73728
+   ],
+   "sign": "|TE.A|"
+  },
+  "ka11": {
+   "unicode": [
+    74492,
+    73728
+   ],
+   "sign": "|TE.A|"
+  },
+  "kir8": {
+   "unicode": [
+    74492,
+    73728
+   ],
+   "sign": "|TE.A|"
+  },
+  "qar2": {
+   "unicode": [
+    74492,
+    73728
+   ],
+   "sign": "|TE.A|"
+  },
+  "szita4": {
+   "unicode": [
+    74507,
+    74148
+   ],
+   "sign": "|U.KID|"
+  },
+  "szudul6": {
+   "unicode": [
+    74507,
+    74148
+   ],
+   "sign": "|U.KID|"
+  },
+  "szutul6": {
+   "unicode": [
+    74507,
+    74148
+   ],
+   "sign": "|U.KID|"
+  },
+  "gakkul3": {
+   "unicode": [
+    74507,
+    73844
+   ],
+   "sign": "|U.DIM|"
+  },
+  "kakkul3": {
+   "unicode": [
+    74507,
+    73844
+   ],
+   "sign": "|U.DIM|"
+  },
+  "mun6": {
+   "unicode": [
+    74507,
+    73844
+   ],
+   "sign": "|U.DIM|"
+  },
+  "aszdar": {
+   "unicode": [
+    74507,
+    73839
+   ],
+   "sign": "|U.DAR|"
+  },
+  "ugun": {
+   "unicode": [
+    74507,
+    73839
+   ],
+   "sign": "|U.DAR|"
+  },
+  "ugunu": {
+   "unicode": [
+    74507,
+    73839
+   ],
+   "sign": "|U.DAR|"
+  },
+  "liri": {
+   "unicode": [
+    74455,
+    74135
+   ],
+   "sign": "|ŠU.KAL|"
+  },
+  "liru": {
+   "unicode": [
+    74455,
+    74135
+   ],
+   "sign": "|ŠU.KAL|"
+  },
+  "szugbar": {
+   "unicode": [
+    74455,
+    74135
+   ],
+   "sign": "|ŠU.KAL|"
+  },
+  "szugmasz": {
+   "unicode": [
+    74455,
+    74135
+   ],
+   "sign": "|ŠU.KAL|"
+  },
+  "szukbar": {
+   "unicode": [
+    74455,
+    74135
+   ],
+   "sign": "|ŠU.KAL|"
+  },
+  "bahar3": {
+   "unicode": [
+    74507,
+    73876
+   ],
+   "sign": "|U.EDIN|"
+  },
+  "namri": {
+   "unicode": [
+    74513,
+    74163,
+    74589,
+    74301,
+    74144
+   ],
+   "sign": "|U₂.KUR.ZA.MUŠ₃@g.KI|"
+  },
+  "id4": {
+   "unicode": [
+    74515,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|UD.AN.ŠEŠ.KI|"
+  },
+  "it4": {
+   "unicode": [
+    74515,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|UD.AN.ŠEŠ.KI|"
+  },
+  "ita": {
+   "unicode": [
+    74515,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|UD.AN.ŠEŠ.KI|"
+  },
+  "iti6": {
+   "unicode": [
+    74515,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|UD.AN.ŠEŠ.KI|"
+  },
+  "ele": {
+   "unicode": [
+    74507,
+    74071
+   ],
+   "sign": "|U.KA|"
+  },
+  "eli": {
+   "unicode": [
+    74507,
+    74071
+   ],
+   "sign": "|U.KA|"
+  },
+  "mah3": {
+   "unicode": [
+    74507,
+    74071
+   ],
+   "sign": "|U.KA|"
+  },
+  "muh": {
+   "unicode": [
+    74507,
+    74071
+   ],
+   "sign": "|U.KA|"
+  },
+  "ugun3": {
+   "unicode": [
+    74507,
+    74071
+   ],
+   "sign": "|U.KA|"
+  },
+  "samag4": {
+   "unicode": [
+    74529,
+    74168
+   ],
+   "sign": "|UM×U.LAGAB|"
+  },
+  "sumug4": {
+   "unicode": [
+    74529,
+    74168
+   ],
+   "sign": "|UM×U.LAGAB|"
+  },
+  "nir4": {
+   "unicode": [
+    74589,
+    74466
+   ],
+   "sign": "|ZA.SU|"
+  },
+  "dadda": {
+   "unicode": [
+    74490,
+    74490
+   ],
+   "sign": "|TAK₄.TAK₄|"
+  },
+  "tatge": {
+   "unicode": [
+    74490,
+    74490
+   ],
+   "sign": "|TAK₄.TAK₄|"
+  },
+  "suslug": {
+   "unicode": [
+    74455,
+    74268
+   ],
+   "sign": "|ŠU.LUL|"
+  },
+  "adkin": {
+   "unicode": [
+    74464,
+    74228
+   ],
+   "sign": "|SIK₂.LAM|"
+  },
+  "asz6": {
+   "unicode": [
+    74464,
+    74228
+   ],
+   "sign": "|SIK₂.LAM|"
+  },
+  "sikin": {
+   "unicode": [
+    74464,
+    74228
+   ],
+   "sign": "|SIK₂.LAM|"
+  },
+  "szikin3": {
+   "unicode": [
+    74464,
+    74228
+   ],
+   "sign": "|SIK₂.LAM|"
+  },
+  "udkin": {
+   "unicode": [
+    74464,
+    74228
+   ],
+   "sign": "|SIK₂.LAM|"
+  },
+  "gudu11": {
+   "unicode": [
+    74472,
+    74280
+   ],
+   "sign": "|SUMAŠ.ME|"
+  },
+  "gudug2": {
+   "unicode": [
+    74472,
+    74280
+   ],
+   "sign": "|SUMAŠ.ME|"
+  },
+  "15": {
+   "unicode": [
+    74507,
+    74762
+   ],
+   "sign": "|U.5(DIŠ)|"
+  },
+  "uia": {
+   "unicode": [
+    74507,
+    74762
+   ],
+   "sign": "|U.5(DIŠ)|"
+  },
+  "uya": {
+   "unicode": [
+    74507,
+    74762
+   ],
+   "sign": "|U.5(DIŠ)|"
+  },
+  "udilia": {
+   "unicode": [
+    74507,
+    74762
+   ],
+   "sign": "|U.5(DIŠ)|"
+  },
+  "pesz8": {
+   "unicode": [
+    74455,
+    73974
+   ],
+   "sign": "|ŠU.GAN|"
+  },
+  "musug2": {
+   "unicode": [
+    74513,
+    74071
+   ],
+   "sign": "|U₂.KA|"
+  },
+  "muzug2": {
+   "unicode": [
+    74513,
+    74071
+   ],
+   "sign": "|U₂.KA|"
+  },
+  "usug2": {
+   "unicode": [
+    74513,
+    74071
+   ],
+   "sign": "|U₂.KA|"
+  },
+  "uzug2": {
+   "unicode": [
+    74513,
+    74071
+   ],
+   "sign": "|U₂.KA|"
+  },
+  "unu6": {
+   "unicode": [
+    74492,
+    73738
+   ],
+   "sign": "|TE.AB|"
+  },
+  "unug3": {
+   "unicode": [
+    74492,
+    73738
+   ],
+   "sign": "|TE.AB|"
+  },
+  "lambi": {
+   "unicode": [
+    74414,
+    74412
+   ],
+   "sign": "|ŠA₃.SAR|"
+  },
+  "asz5": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "munsub2": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "munszub2": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "musub2": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "muzer": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "muzir": {
+   "unicode": [
+    74433,
+    74470
+   ],
+   "sign": "|SIK₂.LAM.SUHUR|"
+  },
+  "sugal2": {
+   "unicode": [
+    74589,
+    74297,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃.AB@g|"
+  },
+  "zabala2": {
+   "unicode": [
+    74589,
+    74297,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃.AB@g|"
+  },
+  "zabalam2": {
+   "unicode": [
+    74589,
+    74297,
+    73749
+   ],
+   "sign": "|ZA.MUŠ₃.AB@g|"
+  },
+  "nan2": {
+   "unicode": [
+    74432,
+    74144
+   ],
+   "sign": "|ŠEŠ.KI|"
+  },
+  "nanna": {
+   "unicode": [
+    74432,
+    74144
+   ],
+   "sign": "|ŠEŠ.KI|"
+  },
+  "geszbu2": {
+   "unicode": [
+    74455,
+    74365,
+    74365
+   ],
+   "sign": "|ŠU.PAP.PAP|"
+  },
+  "geszba2": {
+   "unicode": [
+    74455,
+    74365,
+    74365
+   ],
+   "sign": "|ŠU.PAP.PAP|"
+  },
+  "geszpu2": {
+   "unicode": [
+    74455,
+    74365,
+    74365
+   ],
+   "sign": "|ŠU.PAP.PAP|"
+  },
+  "ziz5": {
+   "unicode": [
+    74483,
+    74483
+   ],
+   "sign": "|TAG.TAG|"
+  },
+  "būdu": {
+   "unicode": [
+    74592,
+    74025
+   ],
+   "sign": "|ZAG.HA|"
+  },
+  "enkud": {
+   "unicode": [
+    74592,
+    74025
+   ],
+   "sign": "|ZAG.HA|"
+  },
+  "essad": {
+   "unicode": [
+    74592,
+    74025
+   ],
+   "sign": "|ZAG.HA|"
+  },
+  "eszsad": {
+   "unicode": [
+    74592,
+    74025
+   ],
+   "sign": "|ZAG.HA|"
+  },
+  "eszszad": {
+   "unicode": [
+    74592,
+    74025
+   ],
+   "sign": "|ZAG.HA|"
+  },
+  "sabar": {
+   "unicode": [
+    74430,
+    73799
+   ],
+   "sign": "|ŠEG₉.BAR|"
+  },
+  "imgaga3": {
+   "unicode": [
+    74601,
+    73773
+   ],
+   "sign": "|ZIZ₂.AN|"
+  },
+  "udra3": {
+   "unicode": [
+    74601,
+    73773
+   ],
+   "sign": "|ZIZ₂.AN|"
+  },
+  "uluszin3": {
+   "unicode": [
+    74601,
+    73773
+   ],
+   "sign": "|ZIZ₂.AN|"
+  },
+  "imgaga2": {
+   "unicode": [
+    74601,
+    73773,
+    74302
+   ],
+   "sign": "|ZIZ₂.AN.NA|"
+  },
+  "udra2": {
+   "unicode": [
+    74601,
+    73773,
+    74302
+   ],
+   "sign": "|ZIZ₂.AN.NA|"
+  },
+  "uluszin2": {
+   "unicode": [
+    74601,
+    73773,
+    74302
+   ],
+   "sign": "|ZIZ₂.AN.NA|"
+  },
+  "muzug": {
+   "unicode": [
+    74513,
+    74389
+   ],
+   "sign": "|U₂.SAG|"
+  },
+  "buzur3": {
+   "unicode": [
+    74507,
+    74592
+   ],
+   "sign": "|U.ZAG|"
+  },
+  "puzur3": {
+   "unicode": [
+    74507,
+    74592
+   ],
+   "sign": "|U.ZAG|"
+  },
+  "babar2": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "babbar2": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "dadag": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "hahad": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "hahhad": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "huhud": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "larag2": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "tatam": {
+   "unicode": [
+    74515,
+    74515
+   ],
+   "sign": "|UD.UD|"
+  },
+  "bunga": {
+   "unicode": [
+    74577,
+    73909
+   ],
+   "sign": "|UŠ.GA|"
+  },
+  "bungu": {
+   "unicode": [
+    74577,
+    73909
+   ],
+   "sign": "|UŠ.GA|"
+  },
+  "giri21": {
+   "unicode": [
+    74455,
+    74263
+   ],
+   "sign": "|ŠU.LUGAL|"
+  },
+  "ura15": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "uram": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "uri2": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "urim2": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "uru14": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "urum5": {
+   "unicode": [
+    74432,
+    73749
+   ],
+   "sign": "|ŠEŠ.AB@g|"
+  },
+  "unu7": {
+   "unicode": [
+    74493,
+    73749
+   ],
+   "sign": "|TE@g.AB@g|"
+  },
+  "unug4": {
+   "unicode": [
+    74493,
+    73749
+   ],
+   "sign": "|TE@g.AB@g|"
+  },
+  "adab": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "adaba": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "arab": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "durungal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "isurungal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "suruengal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "surungal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "surugal": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "usab": {
+   "unicode": [
+    74515,
+    74339
+   ],
+   "sign": "|UD.NUN|"
+  },
+  "dimna": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "u14": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "ud6": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "ut6": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "utu2": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "zahan2": {
+   "unicode": [
+    74507,
+    73909
+   ],
+   "sign": "|U.GA|"
+  },
+  "pesz14": {
+   "unicode": [
+    74455,
+    74130
+   ],
+   "sign": "|ŠU.KAD₄|"
+  },
+  "sirara6": {
+   "unicode": [
+    74515,
+    74275,
+    73743,
+    74144,
+    74483
+   ],
+   "sign": "|UD.MA₂.AB×HA.KI.TAG|"
+  },
+  "megidda": {
+   "unicode": [
+    74480,
+    74494
+   ],
+   "sign": "|TAB.TI|"
+  },
+  "halba3": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "halbi3": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "halbu3": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "suba": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "subi": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "szub7": {
+   "unicode": [
+    74589,
+    74301
+   ],
+   "sign": "|ZA.MUŠ₃@g|"
+  },
+  "hamanzir": {
+   "unicode": [
+    74464,
+    74362,
+    74049
+   ],
+   "sign": "|SIK₂.PA.IB|"
+  },
+  "suhub5": {
+   "unicode": [
+    74455,
+    73909
+   ],
+   "sign": "|ŠU.GA|"
+  },
+  "pihu": {
+   "unicode": [
+    74513,
+    74387
+   ],
+   "sign": "|U₂.SA|"
+  },
+  "nir5": {
+   "unicode": [
+    74589,
+    74049
+   ],
+   "sign": "|ZA.IB|"
+  },
+  "sulumhi": {
+   "unicode": [
+    74464,
+    74468
+   ],
+   "sign": "|SIK₂.SUD|"
+  },
+  "zuluhu": {
+   "unicode": [
+    74464,
+    74468
+   ],
+   "sign": "|SIK₂.SUD|"
+  },
+  "zulumhi": {
+   "unicode": [
+    74464,
+    74468
+   ],
+   "sign": "|SIK₂.SUD|"
+  },
+  "kiszi10": {
+   "unicode": [
+    74507,
+    74378
+   ],
+   "sign": "|U.PIRIG|"
+  },
+  "kusz5": {
+   "unicode": [
+    74507,
+    74378
+   ],
+   "sign": "|U.PIRIG|"
+  },
+  "kuszum4": {
+   "unicode": [
+    74507,
+    74378
+   ],
+   "sign": "|U.PIRIG|"
+  },
+  "zamin": {
+   "unicode": [
+    74514,
+    74385
+   ],
+   "sign": "|UB.RI|"
+  },
+  "pesz9": {
+   "unicode": [
+    74515,
+    73728
+   ],
+   "sign": "|UD.A|"
+  },
+  "uttu5": {
+   "unicode": [
+    74577,
+    73799
+   ],
+   "sign": "|UŠ.BAR|"
+  },
+  "gud3": {
+   "unicode": [
+    74513,
+    74144,
+    74471,
+    73909
+   ],
+   "sign": "|U₂.KI.SUM.GA|"
+  },
+  "zagindur": {
+   "unicode": [
+    74589,
+    74163,
+    73728
+   ],
+   "sign": "|ZA.KUR.A|"
+  },
+  "tibula2": {
+   "unicode": [
+    74414,
+    74283,
+    74140
+   ],
+   "sign": "|ŠA₃.MIN.KASKAL|"
+  },
+  "tigidla2": {
+   "unicode": [
+    74414,
+    74283,
+    74140
+   ],
+   "sign": "|ŠA₃.MIN.KASKAL|"
+  },
+  "tigidla": {
+   "unicode": [
+    74414,
+    74491
+   ],
+   "sign": "|ŠA₃.TAR|"
+  },
+  "ura16": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "uram2": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "uri5": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "urim5": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "uru15": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "urum6": {
+   "unicode": [
+    74432,
+    73738
+   ],
+   "sign": "|ŠEŠ.AB|"
+  },
+  "ad5": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "adda3": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "addu2": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "atu": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kisz16": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kisza": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kiszeg": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kiszek": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kiszi16": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kiszig": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "kiszik": {
+   "unicode": [
+    74513,
+    73993
+   ],
+   "sign": "|U₂.GIR₂@g|"
+  },
+  "buranun": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "buranuna": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "buranunu": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "burunun": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "burununa": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "sippar": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "zibbir": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "zimbir": {
+   "unicode": [
+    74515,
+    74002,
+    74339
+   ],
+   "sign": "|UD.GIŠ%GIŠ.NUN|"
+  },
+  "szugi": {
+   "unicode": [
+    74455,
+    73987
+   ],
+   "sign": "|ŠU.GI%GI|"
+  },
+  "eszgiri": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "eszkiri": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "ganu": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "kir12": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "kirru": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "sibir": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "szibir": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "uszbar5": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "uszbur5": {
+   "unicode": [
+    74507,
+    73881
+   ],
+   "sign": "|U.EN×GAN₂@t|"
+  },
+  "nir7": {
+   "unicode": [
+    74589,
+    73863
+   ],
+   "sign": "|ZA.DUN₃@g@g|"
+  },
+  "mudra5": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "mudru5": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "suluhu2": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "sulumhi2": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "zuluhu2": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "zulumhi2": {
+   "unicode": [
+    74464,
+    73805
+   ],
+   "sign": "|SIK₂.BU|"
+  },
+  "giszta'e2": {
+   "unicode": [
+    74589,
+    74163
+   ],
+   "sign": "|ZA.KUR|"
+  },
+  "giszta'i2": {
+   "unicode": [
+    74589,
+    74163
+   ],
+   "sign": "|ZA.KUR|"
+  },
+  "gesztae2": {
+   "unicode": [
+    74589,
+    74163
+   ],
+   "sign": "|ZA.KUR|"
+  },
+  "nira2": {
+   "unicode": [
+    74589,
+    74163
+   ],
+   "sign": "|ZA.KUR|"
+  },
+  "kun5": {
+   "unicode": [
+    74505,
+    73888
+   ],
+   "sign": "|TUR.EŠ₂|"
+  },
+  "kug5": {
+   "unicode": [
+    74505,
+    73888
+   ],
+   "sign": "|TUR.EŠ₂|"
+  },
+  "gidlam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "gitlam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "geszdan2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "geszdana2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "gesztan2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "gesztana2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "nidalam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "nidlam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "nitadam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "nitalam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "nitlam2": {
+   "unicode": [
+    74577,
+    73838
+   ],
+   "sign": "|UŠ.DAM|"
+  },
+  "aktum2": {
+   "unicode": [
+    74466,
+    73728
+   ],
+   "sign": "|SU.A|"
+  },
+  "szukra": {
+   "unicode": [
+    74455,
+    73976
+   ],
+   "sign": "|ŠU.GAN₂@t|"
+  },
+  "szunigin": {
+   "unicode": [
+    74455,
+    73976
+   ],
+   "sign": "|ŠU.GAN₂@t|"
+  },
+  "aszlag": {
+   "unicode": [
+    74502,
+    74515
+   ],
+   "sign": "|TUG₂.UD|"
+  },
+  "azalag": {
+   "unicode": [
+    74502,
+    74515
+   ],
+   "sign": "|TUG₂.UD|"
+  },
+  "azlag": {
+   "unicode": [
+    74502,
+    74515
+   ],
+   "sign": "|TUG₂.UD|"
+  },
+  "algames": {
+   "unicode": [
+    74515,
+    74409,
+    74040
+   ],
+   "sign": "|UD.SAL.HUB₂|"
+  },
+  "algamesz": {
+   "unicode": [
+    74515,
+    74409,
+    74040
+   ],
+   "sign": "|UD.SAL.HUB₂|"
+  },
+  "algamis": {
+   "unicode": [
+    74515,
+    74409,
+    74040
+   ],
+   "sign": "|UD.SAL.HUB₂|"
+  },
+  "muthum": {
+   "unicode": [
+    74513,
+    74001,
+    74412
+   ],
+   "sign": "|U₂.GIŠ.SAR|"
+  },
+  "gira": {
+   "unicode": [
+    74507,
+    74278,
+    74127
+   ],
+   "sign": "|U.MAŠ.KAB|"
+  },
+  "gin4": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "gug4": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "mud7": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "numun2": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "szub5": {
+   "unicode": [
+    74596,
+    74168
+   ],
+   "sign": "|ZI&ZI.LAGAB|"
+  },
+  "arar": {
+   "unicode": [
+    74515,
+    73749
+   ],
+   "sign": "|UD.AB@g|"
+  },
+  "ararama": {
+   "unicode": [
+    74515,
+    73749
+   ],
+   "sign": "|UD.AB@g|"
+  },
+  "ararma": {
+   "unicode": [
+    74515,
+    73749
+   ],
+   "sign": "|UD.AB@g|"
+  },
+  "larsa": {
+   "unicode": [
+    74515,
+    73749
+   ],
+   "sign": "|UD.AB@g|"
+  },
+  "larsam": {
+   "unicode": [
+    74515,
+    73749
+   ],
+   "sign": "|UD.AB@g|"
+  },
+  "muzug6": {
+   "unicode": [
+    74513,
+    74098
+   ],
+   "sign": "|U₂.KA×LI|"
+  },
+  "sahab2": {
+   "unicode": [
+    74455,
+    73842,
+    74507,
+    74507,
+    74507
+   ],
+   "sign": "|ŠU.DI.U.U.U|"
+  },
+  "suhub4": {
+   "unicode": [
+    74455,
+    73842,
+    74507,
+    74507,
+    74507
+   ],
+   "sign": "|ŠU.DI.U.U.U|"
+  },
+  "szahab2": {
+   "unicode": [
+    74455,
+    73842,
+    74507,
+    74507,
+    74507
+   ],
+   "sign": "|ŠU.DI.U.U.U|"
+  },
+  "szuhub4": {
+   "unicode": [
+    74455,
+    73842,
+    74507,
+    74507,
+    74507
+   ],
+   "sign": "|ŠU.DI.U.U.U|"
+  },
+  "tukum": {
+   "unicode": [
+    74455,
+    73979,
+    74505,
+    74226
+   ],
+   "sign": "|ŠU.GAR.TUR.LAL|"
+  },
+  "tukun": {
+   "unicode": [
+    74455,
+    73979,
+    74505,
+    74226
+   ],
+   "sign": "|ŠU.GAR.TUR.LAL|"
+  },
+  "iszhara2": {
+   "unicode": [
+    74414,
+    74168
+   ],
+   "sign": "|ŠA₃.LAGAB|"
+  },
+  "tibula3": {
+   "unicode": [
+    74414,
+    74283,
+    73842
+   ],
+   "sign": "|ŠA₃.MIN.DI|"
+  },
+  "tigidla3": {
+   "unicode": [
+    74414,
+    74283,
+    73842
+   ],
+   "sign": "|ŠA₃.MIN.DI|"
+  },
+  "ala2": {
+   "unicode": [
+    74551,
+    74636
+   ],
+   "sign": "|URU.ME.U.U.U|"
+  },
+  "asznana": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezenna": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezim2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezin2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezina2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezinam2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezinan2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "ezinu2": {
+   "unicode": [
+    74426,
+    74426,
+    74346
+   ],
+   "sign": "|ŠE.ŠE.NUN&NUN|"
+  },
+  "delen2": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "delena2": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "dilim4": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "dilin2": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "dilina2": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "durun3": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "duruna3": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "tinur2": {
+   "unicode": [
+    74455,
+    74168,
+    74302
+   ],
+   "sign": "|ŠU.LAGAB.NA|"
+  },
+  "gidi6": {
+   "unicode": [
+    74515,
+    73974
+   ],
+   "sign": "|UD.GAN|"
+  },
+  "gidlam3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "gitlam3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "geszdan3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "geszdana3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "gesztan3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "gesztana3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "nidlam3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "nitalam3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "nitlam3": {
+   "unicode": [
+    74577,
+    74409,
+    73838
+   ],
+   "sign": "|UŠ.SAL.DAM|"
+  },
+  "absu": {
+   "unicode": [
+    74602,
+    73738
+   ],
+   "sign": "|ZU.AB|"
+  },
+  "usug": {
+   "unicode": [
+    74592,
+    73773
+   ],
+   "sign": "|ZAG.AN|"
+  },
+  "udul8": {
+   "unicode": [
+    74507,
+    74284
+   ],
+   "sign": "|U.MU|"
+  },
+  "udun": {
+   "unicode": [
+    74507,
+    74284
+   ],
+   "sign": "|U.MU|"
+  },
+  "umun10": {
+   "unicode": [
+    74507,
+    74284
+   ],
+   "sign": "|U.MU|"
+  },
+  "utul8": {
+   "unicode": [
+    74507,
+    74284
+   ],
+   "sign": "|U.MU|"
+  },
+  "utun": {
+   "unicode": [
+    74507,
+    74284
+   ],
+   "sign": "|U.MU|"
+  },
+  "unu2": {
+   "unicode": [
+    74492,
+    73749
+   ],
+   "sign": "|TE.AB@g|"
+  },
+  "unug2": {
+   "unicode": [
+    74492,
+    73749
+   ],
+   "sign": "|TE.AB@g|"
+  },
+  "dimusz": {
+   "unicode": [
+    74513,
+    74001,
+    74282
+   ],
+   "sign": "|U₂.GIŠ.MI|"
+  },
+  "saman4": {
+   "unicode": [
+    74507,
+    73974
+   ],
+   "sign": "|U.GAN|"
+  },
+  "szakkan": {
+   "unicode": [
+    74507,
+    73974
+   ],
+   "sign": "|U.GAN|"
+  },
+  "szaman2": {
+   "unicode": [
+    74507,
+    73974
+   ],
+   "sign": "|U.GAN|"
+  },
+  "mete": {
+   "unicode": [
+    74492,
+    74280
+   ],
+   "sign": "|TE.ME|"
+  },
+  "henbur2": {
+   "unicode": [
+    74426,
+    74133
+   ],
+   "sign": "|ŠE.KAK|"
+  },
+  "zahan": {
+   "unicode": [
+    74507,
+    73909,
+    74029
+   ],
+   "sign": "|U.GA.HI|"
+  },
+  "sahab": {
+   "unicode": [
+    74455,
+    73849
+   ],
+   "sign": "|ŠU.DIŠ|"
+  },
+  "suhub3": {
+   "unicode": [
+    74455,
+    73849
+   ],
+   "sign": "|ŠU.DIŠ|"
+  },
+  "szahab": {
+   "unicode": [
+    74455,
+    73849
+   ],
+   "sign": "|ŠU.DIŠ|"
+  },
+  "giri19": {
+   "unicode": [
+    74455,
+    74237
+   ],
+   "sign": "|ŠU.LU₂|"
+  },
+  "ni9": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "nig6": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "nigar": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "nigin3": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "nimar": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "nimgin3": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "ningin3": {
+   "unicode": [
+    74507,
+    74515,
+    74148
+   ],
+   "sign": "|U.UD.KID|"
+  },
+  "sirara2": {
+   "unicode": [
+    74515,
+    74275,
+    73743,
+    74451
+   ],
+   "sign": "|UD.MA₂.AB×HA.ŠIR|"
+  },
+  "guana": {
+   "unicode": [
+    74586,
+    74140
+   ],
+   "sign": "|UZ₃.KASKAL|"
+  },
+  "giri20": {
+   "unicode": [
+    74455,
+    73773
+   ],
+   "sign": "|ŠU.AN|"
+  },
+  "iti7": {
+   "unicode": [
+    74519,
+    73773,
+    74432,
+    74144
+   ],
+   "sign": "|UD×(U.U.U).AN.ŠEŠ.KI|"
+  },
+  "bebad": {
+   "unicode": [
+    74426,
+    74039,
+    74505
+   ],
+   "sign": "|ŠE.HU.TUR|"
+  },
+  "bibad": {
+   "unicode": [
+    74426,
+    74039,
+    74505
+   ],
+   "sign": "|ŠE.HU.TUR|"
+  },
+  "bibe": {
+   "unicode": [
+    74426,
+    74039,
+    74505
+   ],
+   "sign": "|ŠE.HU.TUR|"
+  },
+  "szembirida": {
+   "unicode": [
+    74513,
+    74163,
+    74383
+   ],
+   "sign": "|U₂.KUR.RA|"
+  },
+  "szimbirida": {
+   "unicode": [
+    74513,
+    74163,
+    74383
+   ],
+   "sign": "|U₂.KUR.RA|"
+  },
+  "sirara4": {
+   "unicode": [
+    74515,
+    74275,
+    73743
+   ],
+   "sign": "|UD.MA₂.AB×HA|"
+  },
+  "szerrida": {
+   "unicode": [
+    74515,
+    73773,
+    74515
+   ],
+   "sign": "|UD.AN.UD|"
+  },
+  "szeszszeg": {
+   "unicode": [
+    74571,
+    74571
+   ],
+   "sign": "|URU×TU.URU×TU|"
+  },
+  "tibula": {
+   "unicode": [
+    74414,
+    74283,
+    74491
+   ],
+   "sign": "|ŠA₃.MIN.TAR|"
+  },
+  "ni11": {
+   "unicode": [
+    74522,
+    74148
+   ],
+   "sign": "|UD@s.KID|"
+  },
+  "nigin10": {
+   "unicode": [
+    74522,
+    74148
+   ],
+   "sign": "|UD@s.KID|"
+  },
+  "nir2": {
+   "unicode": [
+    74589,
+    73862
+   ],
+   "sign": "|ZA.DUN₃@g|"
+  },
+  "munu6": {
+   "unicode": [
+    74426,
+    73809
+   ],
+   "sign": "|ŠE.BULUG|"
+  },
+  "sud3": {
+   "unicode": [
+    74466,
+    74163,
+    74386
+   ],
+   "sign": "|SU.KUR.RU|"
+  },
+  "szuripak": {
+   "unicode": [
+    74466,
+    74163,
+    74386
+   ],
+   "sign": "|SU.KUR.RU|"
+  },
+  "szurippak": {
+   "unicode": [
+    74466,
+    74163,
+    74386
+   ],
+   "sign": "|SU.KUR.RU|"
+  },
+  "szurupak": {
+   "unicode": [
+    74466,
+    74163,
+    74386
+   ],
+   "sign": "|SU.KUR.RU|"
+  },
+  "szuruppag": {
+   "unicode": [
+    74466,
+    74163,
+    74386
+   ],
+   "sign": "|SU.KUR.RU|"
+  },
+  "szagia": {
+   "unicode": [
+    74465,
+    74455,
+    73966
+   ],
+   "sign": "|SILA₃.ŠU.GABA|"
+  },
+  "girah": {
+   "unicode": [
+    74455,
+    73846
+   ],
+   "sign": "|ŠU.DIM₂|"
+  },
+  "ara4": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "e3": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "ed2": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "eda": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "i10": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "sagus": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "sagusz": {
+   "unicode": [
+    74515,
+    73850
+   ],
+   "sign": "|UD.DU|"
+  },
+  "szumgamme": {
+   "unicode": [
+    74483,
+    73973,
+    74280
+   ],
+   "sign": "|TAG.GAM.ME|"
+  },
+  "udu2": {
+   "unicode": [
+    74455,
+    73793
+   ],
+   "sign": "|ŠU.BAD|"
+  },
+  "usz16": {
+   "unicode": [
+    74455,
+    73793
+   ],
+   "sign": "|ŠU.BAD|"
+  },
+  "zapah": {
+   "unicode": [
+    74455,
+    73793
+   ],
+   "sign": "|ŠU.BAD|"
+  },
+  "zipah2": {
+   "unicode": [
+    74455,
+    73793
+   ],
+   "sign": "|ŠU.BAD|"
+  },
+  "lal5": {
+   "unicode": [
+    74457,
+    74509
+   ],
+   "sign": "|ŠU₂.U.U.U|"
+  },
+  "lil3": {
+   "unicode": [
+    74457,
+    74509
+   ],
+   "sign": "|ŠU₂.U.U.U|"
+  },
+  "kiszi14": {
+   "unicode": [
+    74457,
+    74304
+   ],
+   "sign": "|ŠU₂.NAGA|"
+  },
+  "sa17": {
+   "unicode": [
+    74457,
+    74304
+   ],
+   "sign": "|ŠU₂.NAGA|"
+  },
+  "szeg8": {
+   "unicode": [
+    74457,
+    74304
+   ],
+   "sign": "|ŠU₂.NAGA|"
+  },
+  "sipar": {
+   "unicode": [
+    74515,
+    74071,
+    73799
+   ],
+   "sign": "|UD.KA.BAR|"
+  },
+  "zabar": {
+   "unicode": [
+    74515,
+    74071,
+    73799
+   ],
+   "sign": "|UD.KA.BAR|"
+  },
+  "zibar": {
+   "unicode": [
+    74515,
+    74071,
+    73799
+   ],
+   "sign": "|UD.KA.BAR|"
+  },
+  "bangasz": {
+   "unicode": [
+    74507,
+    74507,
+    74507,
+    74763
+   ],
+   "sign": "|U.U.U.AŠ₃|"
+  },
+  "lidda2": {
+   "unicode": [
+    74414,
+    73849
+   ],
+   "sign": "|ŠA₃.DIŠ|"
+  },
+  "nesza": {
+   "unicode": [
+    74536,
+    74276
+   ],
+   "sign": "|UR.MAH|"
+  },
+  "gakkul": {
+   "unicode": [
+    74507,
+    73845
+   ],
+   "sign": "|U.DIM×ŠE|"
+  },
+  "kakkul": {
+   "unicode": [
+    74507,
+    73845
+   ],
+   "sign": "|U.DIM×ŠE|"
+  },
+  "mun5": {
+   "unicode": [
+    74507,
+    73845
+   ],
+   "sign": "|U.DIM×ŠE|"
+  },
+  "titab": {
+   "unicode": [
+    73800,
+    74365,
+    74426,
+    74365
+   ],
+   "sign": "|BARA₂.PAP.ŠE.PAP|"
+  },
+  "tukumbi": {
+   "unicode": [
+    74455,
+    73979,
+    74505,
+    74226,
+    73801
+   ],
+   "sign": "|ŠU.GAR.TUR.LAL.BI|"
+  },
+  "tukunbi": {
+   "unicode": [
+    74455,
+    73979,
+    74505,
+    74226,
+    73801
+   ],
+   "sign": "|ŠU.GAR.TUR.LAL.BI|"
+  },
+  "akszak3": {
+   "unicode": [
+    74522,
+    74165
+   ],
+   "sign": "|UD@s.KUŠU₂|"
+  },
+  "eszda2": {
+   "unicode": [
+    74454,
+    74001,
+    74502
+   ],
+   "sign": "|ŠITA.GIŠ.TUG₂|"
+  },
+  "eszta": {
+   "unicode": [
+    74454,
+    74001,
+    74502
+   ],
+   "sign": "|ŠITA.GIŠ.TUG₂|"
+  },
+  "i9": {
+   "unicode": [
+    74454,
+    74001,
+    74502
+   ],
+   "sign": "|ŠITA.GIŠ.TUG₂|"
+  },
+  "dubul": {
+   "unicode": [
+    74455,
+    73805
+   ],
+   "sign": "|ŠU.BU|"
+  },
+  "dulu": {
+   "unicode": [
+    74455,
+    73805
+   ],
+   "sign": "|ŠU.BU|"
+  },
+  "ul7": {
+   "unicode": [
+    74455,
+    73805
+   ],
+   "sign": "|ŠU.BU|"
+  },
+  "iszi2": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "kunga": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "kungi": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "suhub": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "suhul": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "sulgar": {
+   "unicode": [
+    74457,
+    73775
+   ],
+   "sign": "|ŠU₂.3×AN|"
+  },
+  "en2": {
+   "unicode": [
+    74457,
+    73773
+   ],
+   "sign": "|ŠU₂.AN|"
+  },
+  "gibil7": {
+   "unicode": [
+    74457,
+    73773
+   ],
+   "sign": "|ŠU₂.AN|"
+  },
+  "gibir2": {
+   "unicode": [
+    74457,
+    73773
+   ],
+   "sign": "|ŠU₂.AN|"
+  },
+  "kibir3": {
+   "unicode": [
+    74457,
+    73773
+   ],
+   "sign": "|ŠU₂.AN|"
+  },
+  "sze9": {
+   "unicode": [
+    74457,
+    73773
+   ],
+   "sign": "|ŠU₂.AN|"
+  },
+  "kesz3": {
+   "unicode": [
+    74457,
+    73773,
+    74034
+   ],
+   "sign": "|ŠU₂.AN.HI×GAD|"
+  },
+  "keszi3": {
+   "unicode": [
+    74457,
+    73773,
+    74034
+   ],
+   "sign": "|ŠU₂.AN.HI×GAD|"
+  },
+  "kiszi3": {
+   "unicode": [
+    74457,
+    73773,
+    74034
+   ],
+   "sign": "|ŠU₂.AN.HI×GAD|"
+  },
+  "lal6": {
+   "unicode": [
+    74457,
+    74312
+   ],
+   "sign": "|ŠU₂.NE|"
+  },
+  "lil5": {
+   "unicode": [
+    74457,
+    74312
+   ],
+   "sign": "|ŠU₂.NE|"
+  },
+  "ne4": {
+   "unicode": [
+    74457,
+    74312
+   ],
+   "sign": "|ŠU₂.NE|"
+  },
+  "giszha": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "ha8": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "rig3": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "szita2": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "udub2": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "udug2": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "utug2": {
+   "unicode": [
+    73911,
+    74001
+   ],
+   "sign": "ŠITA₂"
+  },
+  "szudul3": {
+   "unicode": [
+    74457,
+    74538
+   ],
+   "sign": "|ŠU₂.UR@s|"
+  },
+  "szudun3": {
+   "unicode": [
+    74457,
+    74538
+   ],
+   "sign": "|ŠU₂.UR@s|"
+  },
+  "szutul3": {
+   "unicode": [
+    74457,
+    74538
+   ],
+   "sign": "|ŠU₂.UR@s|"
+  },
+  "gibil2": {
+   "unicode": [
+    74457,
+    73790
+   ],
+   "sign": "|ŠU₂.AŠ₂|"
+  },
+  "gibir": {
+   "unicode": [
+    74457,
+    73790
+   ],
+   "sign": "|ŠU₂.AŠ₂|"
+  },
+  "kibir2": {
+   "unicode": [
+    74457,
+    73790
+   ],
+   "sign": "|ŠU₂.AŠ₂|"
+  },
+  "szudul": {
+   "unicode": [
+    74457,
+    73864
+   ],
+   "sign": "|ŠU₂.DUN₃@g@g@s|"
+  },
+  "szudulu": {
+   "unicode": [
+    74457,
+    73864
+   ],
+   "sign": "|ŠU₂.DUN₃@g@g@s|"
+  },
+  "szudun": {
+   "unicode": [
+    74457,
+    73864
+   ],
+   "sign": "|ŠU₂.DUN₃@g@g@s|"
+  },
+  "saga6": {
+   "unicode": [
+    73909,
+    74275,
+    74058
+   ],
+   "sign": "|GA.MA₂.IGI@g|"
+  },
+  "sagga6": {
+   "unicode": [
+    73909,
+    74275,
+    74058
+   ],
+   "sign": "|GA.MA₂.IGI@g|"
+  },
+  "sanga6": {
+   "unicode": [
+    73909,
+    74275,
+    74058
+   ],
+   "sign": "|GA.MA₂.IGI@g|"
+  },
+  "sangu6": {
+   "unicode": [
+    73909,
+    74275,
+    74058
+   ],
+   "sign": "|GA.MA₂.IGI@g|"
+  },
+  "saga5": {
+   "unicode": [
+    73909,
+    74586,
+    74058
+   ],
+   "sign": "|GA.UZ₃.IGI@g|"
+  },
+  "sagga5": {
+   "unicode": [
+    73909,
+    74586,
+    74058
+   ],
+   "sign": "|GA.UZ₃.IGI@g|"
+  },
+  "sanga5": {
+   "unicode": [
+    73909,
+    74586,
+    74058
+   ],
+   "sign": "|GA.UZ₃.IGI@g|"
+  },
+  "sangu5": {
+   "unicode": [
+    73909,
+    74586,
+    74058
+   ],
+   "sign": "|GA.UZ₃.IGI@g|"
+  },
+  "saga4": {
+   "unicode": [
+    74061,
+    73856
+   ],
+   "sign": "|IL₂.DUB₂|"
+  },
+  "sagga4": {
+   "unicode": [
+    74061,
+    73856
+   ],
+   "sign": "|IL₂.DUB₂|"
+  },
+  "sanga4": {
+   "unicode": [
+    74061,
+    73856
+   ],
+   "sign": "|IL₂.DUB₂|"
+  },
+  "sangu4": {
+   "unicode": [
+    74061,
+    73856
+   ],
+   "sign": "|IL₂.DUB₂|"
+  },
+  "sagga2": {
+   "unicode": [
+    74061,
+    74275,
+    73856
+   ],
+   "sign": "|IL₂.MA₂.DUB₂|"
+  },
+  "sangu2": {
+   "unicode": [
+    74061,
+    74275,
+    73856
+   ],
+   "sign": "|IL₂.MA₂.DUB₂|"
+  },
+  "abrig2": {
+   "unicode": [
+    73750,
+    74339,
+    74280,
+    73850
+   ],
+   "sign": "|AB₂.NUN.ME.DU|"
+  },
+  "burum": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|KURUM₇|"
+  },
+  "gurum2": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|KURUM₇|"
+  },
+  "kur7": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|KURUM₇|"
+  },
+  "kuru7": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|KURUM₇|"
+  },
+  "kurum7": {
+   "unicode": [
+    74054,
+    73887
+   ],
+   "sign": "|KURUM₇|"
+  },
+  "szutum2": {
+   "unicode": [
+    73984,
+    74302,
+    73738,
+    74504
+   ],
+   "sign": "|GI.NA.AB.TUM|"
+  },
+  "saman3": {
+   "unicode": [
+    74426,
+    73888,
+    74339,
+    73805
+   ],
+   "sign": "|ŠE.EŠ₂.NUN.BU|"
+  },
+  "sagga7": {
+   "unicode": [
+    74061,
+    73909
+   ],
+   "sign": "|GA.DUB₂|"
+  },
+  "sanga7": {
+   "unicode": [
+    74061,
+    73909
+   ],
+   "sign": "|GA.DUB₂|"
+  },
+  "sangu7": {
+   "unicode": [
+    74061,
+    73909
+   ],
+   "sign": "|GA.DUB₂|"
+  },
+  "gilgamesz2": {
+   "unicode": [
+    74001,
+    74315,
+    73909,
+    74281
+   ],
+   "sign": "|GIŠ.NE@s.GA.MES|"
+  }
+ },
+ "single_priority": {
+  "ku3": {
+   "unicode": 74156,
+   "sign": "KU₃"
+  },
+  "kug": {
+   "unicode": 74156,
+   "sign": "KU₃"
+  },
+  "u4": {
+   "unicode": 74515,
+   "sign": "UD"
+  },
+  "ud": {
+   "unicode": 74515,
+   "sign": "UD"
+  },
+  "disz": {
+   "unicode": 73849,
+   "sign": "DIŠ"
+  },
+  "asz": {
+   "unicode": 73784,
+   "sign": "AŠ"
+  },
+  "min": {
+   "unicode": 74283,
+   "sign": "MIN"
+  },
+  "limmu": {
+   "unicode": 74812,
+   "sign": "LIMMU"
+  },
+  "u": {
+   "unicode": 74507,
+   "sign": "U"
+  },
+  "bi": {
+   "unicode": 73801,
+   "sign": "BI"
+  },
+  "ki": {
+   "unicode": 74144,
+   "sign": "KI"
+  },
+  "ga": {
+   "unicode": 73909,
+   "sign": "GA"
+  },
+  "ka": {
+   "unicode": 74071,
+   "sign": "KA"
+  },
+  "mu": {
+   "unicode": 74029,
+   "sign": "HI"
+  },
+  "na": {
+   "unicode": 74302,
+   "sign": "NA"
+  },
+  "ni": {
+   "unicode": 74316,
+   "sign": "NI"
+  },
+  "ne": {
+   "unicode": 74312,
+   "sign": "NE"
+  },
+  "ra": {
+   "unicode": 74054,
+   "sign": "IGI"
+  },
+  "ri": {
+   "unicode": 74385,
+   "sign": "RI"
+  },
+  "e2": {
+   "unicode": 73869,
+   "sign": "E₂"
+  },
+  "e": {
+   "unicode": 73866,
+   "sign": "E"
+  },
+  "a": {
+   "unicode": 73813,
+   "sign": "DA"
+  },
+  "i3": {
+   "unicode": 74316,
+   "sign": "NI"
+  },
+  "ia": {
+   "unicode": 74048,
+   "sign": "|I.A|"
+  },
+  "lu2": {
+   "unicode": 74237,
+   "sign": "LU₂"
+  },
+  "dingir": {
+   "unicode": 73773,
+   "sign": "AN"
+  },
+  "an": {
+   "unicode": 73849,
+   "sign": "DIŠ"
+  },
+  "en": {
+   "unicode": 73879,
+   "sign": "EN"
+  },
+  "lugal": {
+   "unicode": 74263,
+   "sign": "LUGAL"
+  },
+  "dumu": {
+   "unicode": 74505,
+   "sign": "TUR"
+  },
+  "sze": {
+   "unicode": 74058,
+   "sign": "IGI@g"
+  },
+  "su": {
+   "unicode": 74168,
+   "sign": "LAGAB"
+  },
+  "szu": {
+   "unicode": 74386,
+   "sign": "RU"
+  },
+  "ti": {
+   "unicode": 73842,
+   "sign": "DI"
+  },
+  "tu": {
+   "unicode": 73861,
+   "sign": "DUN₃"
+  },
+  "ba": {
+   "unicode": 74367,
+   "sign": "PI"
+  },
+  "ma": {
+   "unicode": 74272,
+   "sign": "MA"
+  },
+  "me": {
+   "unicode": 74071,
+   "sign": "KA"
+  },
+  "mi": {
+   "unicode": 74282,
+   "sign": "MI"
+  },
+  "pa": {
+   "unicode": 73793,
+   "sign": "BAD"
+  },
+  "pi": {
+   "unicode": 74367,
+   "sign": "PI"
+  },
+  "sa": {
+   "unicode": 74387,
+   "sign": "SA"
+  },
+  "si": {
+   "unicode": 73805,
+   "sign": "BU"
+  },
+  "ta": {
+   "unicode": 73813,
+   "sign": "DA"
+  },
+  "te": {
+   "unicode": 73842,
+   "sign": "DI"
+  },
+  "za": {
+   "unicode": 74602,
+   "sign": "ZU"
+  },
+  "zi": {
+   "unicode": 74312,
+   "sign": "NE"
+  },
+  "zu": {
+   "unicode": 73784,
+   "sign": "AŠ"
+  },
+  "hu": {
+   "unicode": 74385,
+   "sign": "RI"
+  },
+  "ha": {
+   "unicode": 74025,
+   "sign": "HA"
+  },
+  "he": {
+   "unicode": 74029,
+   "sign": "HI"
+  },
+  "hi": {
+   "unicode": 74029,
+   "sign": "HI"
+  },
+  "gu": {
+   "unicode": 74006,
+   "sign": "GU"
+  },
+  "gi": {
+   "unicode": 73984,
+   "sign": "GI"
+  },
+  "ge": {
+   "unicode": 73984,
+   "sign": "GI"
+  },
+  "du": {
+   "unicode": 73842,
+   "sign": "DI"
+  },
+  "da": {
+   "unicode": 73813,
+   "sign": "DA"
+  },
+  "di": {
+   "unicode": 73813,
+   "sign": "DA"
+  },
+  "de": {
+   "unicode": 73842,
+   "sign": "DI"
+  },
+  "la": {
+   "unicode": 74167,
+   "sign": "LA"
+  },
+  "li": {
+   "unicode": 74231,
+   "sign": "LI"
+  },
+  "lu": {
+   "unicode": 74226,
+   "sign": "LAL"
+  },
+  "nu": {
+   "unicode": 74337,
+   "sign": "NU"
+  },
+  "nam": {
+   "unicode": 74310,
+   "sign": "NAM"
+  },
+  "nin": {
+   "unicode": 74639,
+   "sign": "|SAL.TUG₂|"
+  },
+  "sar": {
+   "unicode": 74337,
+   "sign": "NU"
+  },
+  "kur": {
+   "unicode": 74163,
+   "sign": "KUR"
+  },
+  "kal": {
+   "unicode": 74135,
+   "sign": "KAL"
+  },
+  "gal": {
+   "unicode": 73970,
+   "sign": "GAL"
+  },
+  "tur": {
+   "unicode": 74505,
+   "sign": "TUR"
+  },
+  "mah": {
+   "unicode": 74276,
+   "sign": "MAH"
+  },
+  "sig": {
+   "unicode": 74071,
+   "sign": "KA"
+  },
+  "sik": {
+   "unicode": 74461,
+   "sign": "SIG"
+  },
+  "gin7": {
+   "unicode": 73846,
+   "sign": "DIM₂"
+  },
+  "gim": {
+   "unicode": 73846,
+   "sign": "DIM₂"
+  },
+  "gu10": {
+   "unicode": 74284,
+   "sign": "MU"
+  },
+  "gu2": {
+   "unicode": 74008,
+   "sign": "GU₂"
+  },
+  "gu3": {
+   "unicode": 74071,
+   "sign": "KA"
+  },
+  "gu7": {
+   "unicode": 74085,
+   "sign": "|KA×GAR|"
+  },
+  "igi": {
+   "unicode": 74054,
+   "sign": "IGI"
+  },
+  "ig": {
+   "unicode": 74053,
+   "sign": "IG"
+  },
+  "ib2": {
+   "unicode": 74504,
+   "sign": "TUM"
+  },
+  "il2": {
+   "unicode": 74061,
+   "sign": "IL₂"
+  },
+  "im": {
+   "unicode": 74062,
+   "sign": "IM"
+  },
+  "in": {
+   "unicode": 74068,
+   "sign": "IN"
+  },
+  "ir": {
+   "unicode": 73992,
+   "sign": "GIR₂"
+  },
+  "is": {
+   "unicode": 74001,
+   "sign": "GIŠ"
+  },
+  "iz": {
+   "unicode": 74001,
+   "sign": "GIŠ"
+  },
+  "us2": {
+   "unicode": 74577,
+   "sign": "UŠ"
+  },
+  "usz": {
+   "unicode": 74577,
+   "sign": "UŠ"
+  },
+  "ur": {
+   "unicode": 74490,
+   "sign": "TAK₄"
+  },
+  "uri": {
+   "unicode": 74549,
+   "sign": "URI"
+  },
+  "uru": {
+   "unicode": 74551,
+   "sign": "URU"
+  },
+  "ug": {
+   "unicode": 74380,
+   "sign": "|PIRIG×UD|"
+  },
+  "uk": {
+   "unicode": 74380,
+   "sign": "|PIRIG×UD|"
+  },
+  "um": {
+   "unicode": 74525,
+   "sign": "UM"
+  },
+  "un": {
+   "unicode": 74534,
+   "sign": "UN"
+  },
+  "up": {
+   "unicode": 74514,
+   "sign": "UB"
+  },
+  "uq": {
+   "unicode": 74380,
+   "sign": "|PIRIG×UD|"
+  },
+  "ur2": {
+   "unicode": 74539,
+   "sign": "UR₂"
+  },
+  "ut": {
+   "unicode": 74515,
+   "sign": "UD"
+  },
+  "uz": {
+   "unicode": 74427,
+   "sign": "|ŠE.HU|"
+  }
+ }
+}

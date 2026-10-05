@@ -1,0 +1,2245 @@
+{
+  "id": "P285397",
+  "designation": "BAM 3, 313",
+  "genre": "Scientific",
+  "subgenre": "medical",
+  "language": "",
+  "period": "",
+  "year": null,
+  "provenience": "Assur (mod. Qalat Sherqat)",
+  "site": "Assur (mod. Qalat Sherqat)",
+  "lat": 35.46,
+  "lon": 43.26,
+  "content_lines": 267,
+  "chars": 4503,
+  "font": "NotoSansCuneiform",
+  "known_elsewhere": false,
+  "cdli_url": "https://cdli.earth/artifacts/285397",
+  "museum_no": "Ist A 00206 + VAT 14160",
+  "primary_publication": "BAM 3, 313",
+  "atf_source": "BabMed Team",
+  "atf": "&P285397 = BAM 3, 313 \n#atf: lang akk \n@tablet \n@obverse \n@surface a1 \n@column 1 \n1. [...] \n2. [x] _in6#?-usz2#?_ \n3. [x] x x x \n4. _numun#_ {gesz}x [x] \n5. _numun {gesz}esi_ \n6. {u2#}[x x] \n7. _pap 5(disz) u2-me_ \n8. me-eli \n@column 2 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. [...] \n6. [...] \n7. _pap 6(disz)#? _u2#-[me]_ \n8. me-[eli] \n@column 3 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. [...] \n6. _{na4}gug#?_ \n7. _pap_ x _u2-me_ \n8. me-eli \n@column 4 \n1. [...] \n2. [x x] _bur2#?_ \n3. _{u2}dili_ \n4. _{na4}zalag2_ \n5. _{u2}lal_ \n6. _suhusz_ {gesz}szu-[szi?] \n7. _pap 4(disz)? u2-me_ \n8. me-[eli] \n@column 5 \n1. [...] \n2. [...] \n3. [x x x] ra \n4. [x x] _{na4}bala_ \n5. [x] _bad bara2?_ \n6. {d}sza2-masz \n7. _pap 4(disz) u2-me_ \n8. me-eli \n@column 6 \n1. [...] \n2. [...] \n3. x [...] \n4. {u2}x [...] \n5. _{na4}babbar?-dili#?_ \n6. _u2 sikil_ \n7. _pap 3(disz) u2-me_ \n8. me-eli \n@column 7 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. [...] \n6. {na4}x [...] \n7. _pap 3(disz) u2#-[me]_ \n8. me-eli# \n@column 8 \n$ broken \n@column 9 \n1. [...] \n2. [...] \n3. [x x] _{d}utu_ \n4. _[na4] kur#_-nu _dab-ba_ \n5. _[na4]_ mu#-s,u2 \n6. _na4#?_ lu-lu-tu2 \n7. [x] x nu \n8. [x x] _u2#-me#_ me#-eli \n@column 10 \n1. [...] \n2. [...] \n3. _bur2_ : la x x \n4. _munu ma-nu_ \n5. _{gesz}li_ \n6. _pa_ {gesz}bi-nu \n7. _pap 4(disz) u2-me_ \n8. me-eli \n@column 11 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. x [...] \n6. x [...] \n7. _pap_ [...] \n8. me-[eli] \n@column 12 \n$ broken \n@column 13 \n$ broken \n@surface a2 \n1. _pap 1(u) 4(disz)_ me-[eli ...] ki-im-la-te sza _gun3 ti_-qi2 [...] \n@surface a3 \n1. _[en2] a#-ra-zu szu-te-ma-ab-ba : dingir-mu [...] _sze-ga-me-en sze-ga-me-en 3(disz)-ta-am3_ ina _ugu_ me-eli _szid#_-[nu ...] \n@surface b1 \n@column 1 \n1. [x] x _kal_ \n2. [{u2?}nu]-s,a-bu \n3. [...] _ansze_ \n4. [...] \n5. [...] \n6. [...] \n@column 2 \n1. _an-zah-ge6_ \n2. {u2}tar-musz8 \n3. _u2 sikil_ \n4. _{u2}ku6_ \n5. _pap_ [x] _u2#-me_ \n6. me-eli# \n7. [...] \n@column 3 \n1. _{na4}zalag2_ \n2. _{u2}lal#_ \n3. _suhusz_ {gesz}szu#-[szi] \n4. _ku3-sig17 husz-a_ \n5. _pap 4(disz) u2-me_ \n6. me-eli \n7. [...] \n@column 4 \n1. _{u2}sumun-dar_ \n2. _{gesz}szur-min3_ \n3. _{gesz}erin sumun_ \n4. _ku3-sig17 husz-a_ \n5. _pap 4(disz) u2-me_ \n6. me-eli \n7. 4(disz)-u? \n@column 5 \n1. _szika sila-lim2_ \n2. {u2}ha-me-mu \n3. _{na4}nig2-bur3-bur3_ \n4. _pap 3(disz) u2-me_ \n5. me-eli \n6. ha-an-szu \n@column 6 \n1. {u2}am-ha#-ra \n2. x [at]-kam \n3. _{na4#}bala_ \n4. _na4# bara2 {d}utu_ \n5. _pap [4(disz)] u2-me_ \n6. me-eli# szi-sza-szu2 \n@column 7 \n1. _{u2}sze-na2-a_ \n2. _u2 sikil_ \n3. _{u2}kur-kur_ \n4. _ku3-sig17 husz-a_ \n5. _pap 4(disz) u2-me_ \n6. me-eli 7(disz)-u \n@column 8 \n1. _{u2}igi_-lim \n2. _gurun {gesz}nu-ur2-ma_ \n3. _bar_ {gesz}hi? [...] \n4. _pap 3(disz) [u2-me]_ \n5. me-[eli] \n6. 8(disz) [...] \n@column 9 \n$ broken \n@column 10 \n$ broken \n@column 11 \n$ broken \n@column 12 \n$ broken \n@surface b2 \n1. [...] x ak ta _i7 e2_ di? ma _musz-husz zalag2 ur4#-ur4_ ta ki kal _abzu e2#?_ [...] \n@surface b3 \n1. [...] x na-mir ni-isz x [x] _dingir_-szu2 _igi igi?_ [x] s,u-me _sud2 sza3_-szu2 _kur gir2?_ ana x [...] \n@reverse \n@surface c1 \n@column 1 \n1. _ku3-sig17 husz-a_ \n2. _ku3-babbar za-gin3_ \n3. _pap 3(disz) u2-me_ \n4. me-li \n5. 1(u) 1(disz) \n@column 2 \n1. _numun gesz#?_ [x] GAG#? \n2. _numun {gesz#}ma#-nu_ \n3. _{u2}lal_ \n4. _pap 3(disz) u2-me_ \n5. me-eli \n6. 1(u) 2(disz) \n@column 3 \n1. _szika nunuz_ \n2. _ga-nu11{muszen}_ \n3. ku3-sig17 husz-a_ \n4. _pap 2(disz) u2-me_ \n5. me-eli \n6. 1(u) 3(disz) \n@column 4 \n1. _{gesz}erin babbar_ \n2. _ku3-babbar ku3-sig17_ \n3. _pap 3(disz) u2-me_ \n4. me-eli \n5. 1(u) 4(disz) \n@column 5 \n1. _{gesz}gesztin ka5-a_ \n2. _ka a-ab-ba_ \n3. _ku3-sig17 husz-a_ \n4. _pap 3(disz)_ \n5. _u2-me_ \n6. 1(u) 5(disz) me-eli \n@column 6 \n1. _{na4}bala_ \n2. _kur_-nu _dab-ba_ \n3. _{u2}kur-kur_ \n4. _pap 3(disz)_ \n5. _u2-me_ \n6. 1(u) 6(disz) me-eli \n@column 7 \n1. _numun {u2}dili_ \n2. _numun_ [x] lu ku? \n3. _numun [a]-zal-la_ \n4. _pap 3(disz)_ \n5. _u2-me_ \n6. 1(u) 7(disz) me-eli \n@column 8 \n1. |KU.KU| {gesz}x \n2. |KU.KU| {gesz}x \n3. _pap 2(disz)#?_ \n4. _u2-[me]_ \n5. 1(u) 8(disz) me-eli# \n@column 9 \n1. [...] \n2. [...] \n3. _pap_ [...] \n4. _u2-[me]_ \n5. 1(u) 9(disz) me-[eli] \n@column 10 \n$ broken \n@column 11 \n$ broken \n@surface c2 \n1. _en2_ {d}e2-a _i7 e2_ di#? [x] _dingir musz-husz zalag2# ur4-ur4-e-de3_ [x] szu2 [x] x ina#? [...] \n@surface d1 \n@column 1 \n1. [...] x ku#? \n2. [...] _{d}masz_ \n3. _[ka] a#-ab-ba_ \n4. [...] _lal_ \n5. [...] x ba? \n6. [...] ka#-tu2 \n7. _[pap_ x] _u2#-me_ \n8. [... me]-eli# \n@column 2 \n1. _DISZ ki#_ [x x] \n2. {u2}[x x x] \n3. _szurun {d}gu4_ \n4. {na4}mu-s,a \n5. _{na4}an-zah_ \n6. _pap [5(disz)?] u2#-me_ \n7. 2(disz)-u me-eli \n@column 3 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. [...] \n6. _pap 2(disz)#? u2-me_ \n7. 3(disz)-szu2 me-eli \n@column 4 \n$ broken \n@column 5 \n1. _DISZ ki-min_ [...] \n2. [...] pa? \n3. [...] a \n$ rest broken \n@column 6 \n1. _DISZ na_ ina _ugu {lu2}gig_ \n2. na-asz2-pa-ar2#?-[tu2] u \n3. e-[x x x x] x \n4. _ki sahar_ [x x] _bur2#_ \n5. _[{u2}]igi_-lim \n$ rest broken \n@column 7 \n1. _DISZ na_ ina _ki-na_-szu2 _szid-szid_ \n2. [x x] {u2}tar-musz \n3. [...] \n4. _pesz10-{d}i7_ \n5. [x] _gesz_ [x x] \n6. [...] \n7. _pap 5(disz) u2-me_ \n8. 7(disz)-u me-eli \n@column 8 \n1. _DISZ ki-min_ [...] \n2. {u2}[x ...] \n3. {u2}[x ...] \n4. {u2}[x ...] \n5. _ka [a-ab-ba?]_ \n6. {u2}[x ...] \n7. _pap_ [...] \n8. [...] \n@column 9 \n1. [...] \n2. [...] \n3. [...] x \n4. [...] \n5. [...] x \n6. [...] x \n7. _[pap_ x _u2]-me_ \n8. [...] \n@column 10 \n1. _DISZ_ [...] \n2. x [x] ru# x szu2 \n3. {u2}el-kul-la \n4. _{gesz}har_ \n5. [...] \n6. e# x _gug2? ga#_ \n7. _pap 4(disz) u2-me_ \n8. ina? x \n9. me#-eli \n@column 11 \n1. _DISZ_ [...] \n2. _gesz#?_ [...] \n3. [...] x kal \n4. {u2}[x ...] \n5. {na4}AN x [x] \n6. [...] \n7. _pap 4(disz)#? u2-me_ \n8. ina#? _szu_ \n9. me-eli \n@column 12 \n1. [...] \n2. [...] \n3. [...] \n4. x [...] \n5. x x [...] \n6. _pap# 4(disz)# u2-me_ \n7. x bu# \n8. me-eli \n@surface d2 \n1. [x x] x x x x [...] \n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[x] _in6#?-usz2#?_",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[x] x x x",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_numun#_ {gesz}x [x]",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_numun {gesz}esi_",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{u2#}[x x]",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 5(disz) u2-me_",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface a1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 6(disz)#? _u2#-[me]_",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-[eli]",
+      "surface": "surface a1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_{na4}gug#?_",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap_ x _u2-me_",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface a1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[x x] _bur2#?_",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{u2}dili_",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_{na4}zalag2_",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{u2}lal_",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_suhusz_ {gesz}szu-[szi?]",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 4(disz)? u2-me_",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-[eli]",
+      "surface": "surface a1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[x x x] ra",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[x x] _{na4}bala_",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[x] _bad bara2?_",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{d}sza2-masz",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface a1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "x [...]",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{u2}x [...]",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{na4}babbar?-dili#?_",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_u2 sikil_",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 3(disz) u2-me_",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface a1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{na4}x [...]",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 3(disz) u2#-[me]_",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli#",
+      "surface": "surface a1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface a1",
+      "column": "column 8"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[x x] _{d}utu_",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_[na4] kur#_-nu _dab-ba_",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_[na4]_ mu#-s,u2",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_na4#?_ lu-lu-tu2",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[x] x nu",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[x x] _u2#-me#_ me#-eli",
+      "surface": "surface a1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_bur2_ : la x x",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_munu ma-nu_",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{gesz}li_",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_pa_ {gesz}bi-nu",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface a1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "x [...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "x [...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap_ [...]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-[eli]",
+      "surface": "surface a1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface a1",
+      "column": "column 12"
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface a1",
+      "column": "column 13"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_pap 1(u) 4(disz)_ me-[eli ...] ki-im-la-te sza _gun3 ti_-qi2 [...]",
+      "surface": "surface a2",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[en2] a#-ra-zu szu-te-ma-ab-ba : dingir-mu [...] _sze-ga-me-en sze-ga-me-en 3(disz)-ta-am3_ ina _ugu_ me-eli _szid#_-[nu ...]",
+      "surface": "surface a3",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[x] x _kal_",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{u2?}nu]-s,a-bu",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...] _ansze_",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...]",
+      "surface": "surface b1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_an-zah-ge6_",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{u2}tar-musz8",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_u2 sikil_",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_{u2}ku6_",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_pap_ [x] _u2#-me_",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "me-eli#",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[...]",
+      "surface": "surface b1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{na4}zalag2_",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_{u2}lal#_",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_suhusz_ {gesz}szu#-[szi]",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_ku3-sig17 husz-a_",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "me-eli",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[...]",
+      "surface": "surface b1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{u2}sumun-dar_",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_{gesz}szur-min3_",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{gesz}erin sumun_",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_ku3-sig17 husz-a_",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "me-eli",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "4(disz)-u?",
+      "surface": "surface b1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_szika sila-lim2_",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{u2}ha-me-mu",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{na4}nig2-bur3-bur3_",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz) u2-me_",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "me-eli",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "ha-an-szu",
+      "surface": "surface b1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "{u2}am-ha#-ra",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "x [at]-kam",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{na4#}bala_",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_na4# bara2 {d}utu_",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_pap [4(disz)] u2-me_",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "me-eli# szi-sza-szu2",
+      "surface": "surface b1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{u2}sze-na2-a_",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_u2 sikil_",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{u2}kur-kur_",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_ku3-sig17 husz-a_",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "me-eli 7(disz)-u",
+      "surface": "surface b1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{u2}igi_-lim",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_gurun {gesz}nu-ur2-ma_",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_bar_ {gesz}hi? [...]",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz) [u2-me]_",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "me-[eli]",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "8(disz) [...]",
+      "surface": "surface b1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface b1",
+      "column": "column 9"
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface b1",
+      "column": "column 10"
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface b1",
+      "column": "column 11"
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface b1",
+      "column": "column 12"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...] x ak ta _i7 e2_ di? ma _musz-husz zalag2 ur4#-ur4_ ta ki kal _abzu e2#?_ [...]",
+      "surface": "surface b2",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...] x na-mir ni-isz x [x] _dingir_-szu2 _igi igi?_ [x] s,u-me _sud2 sza3_-szu2 _kur gir2?_ ana x [...]",
+      "surface": "surface b3",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_ku3-sig17 husz-a_",
+      "surface": "surface c1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_ku3-babbar za-gin3_",
+      "surface": "surface c1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_pap 3(disz) u2-me_",
+      "surface": "surface c1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "me-li",
+      "surface": "surface c1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(u) 1(disz)",
+      "surface": "surface c1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_numun gesz#?_ [x] GAG#?",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_numun {gesz#}ma#-nu_",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{u2}lal_",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz) u2-me_",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "me-eli",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 2(disz)",
+      "surface": "surface c1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_szika nunuz_",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_ga-nu11{muszen}_",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ku3-sig17 husz-a_",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 2(disz) u2-me_",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "me-eli",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 3(disz)",
+      "surface": "surface c1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{gesz}erin babbar_",
+      "surface": "surface c1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_ku3-babbar ku3-sig17_",
+      "surface": "surface c1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_pap 3(disz) u2-me_",
+      "surface": "surface c1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "me-eli",
+      "surface": "surface c1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(u) 4(disz)",
+      "surface": "surface c1",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{gesz}gesztin ka5-a_",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_ka a-ab-ba_",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_ku3-sig17 husz-a_",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz)_",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_u2-me_",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 5(disz) me-eli",
+      "surface": "surface c1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_{na4}bala_",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_kur_-nu _dab-ba_",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_{u2}kur-kur_",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz)_",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_u2-me_",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 6(disz) me-eli",
+      "surface": "surface c1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_numun {u2}dili_",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_numun_ [x] lu ku?",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_numun [a]-zal-la_",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pap 3(disz)_",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_u2-me_",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "1(u) 7(disz) me-eli",
+      "surface": "surface c1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "|KU.KU| {gesz}x",
+      "surface": "surface c1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "|KU.KU| {gesz}x",
+      "surface": "surface c1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_pap 2(disz)#?_",
+      "surface": "surface c1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_u2-[me]_",
+      "surface": "surface c1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(u) 8(disz) me-eli#",
+      "surface": "surface c1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface c1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface c1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_pap_ [...]",
+      "surface": "surface c1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_u2-[me]_",
+      "surface": "surface c1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(u) 9(disz) me-[eli]",
+      "surface": "surface c1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface c1",
+      "column": "column 10"
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface c1",
+      "column": "column 11"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_en2_ {d}e2-a _i7 e2_ di#? [x] _dingir musz-husz zalag2# ur4-ur4-e-de3_ [x] szu2 [x] x ina#? [...]",
+      "surface": "surface c2",
+      "column": "",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...] x ku#?",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...] _{d}masz_",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_[ka] a#-ab-ba_",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...] _lal_",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...] x ba?",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...] ka#-tu2",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_[pap_ x] _u2#-me_",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[... me]-eli#",
+      "surface": "surface d1",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ ki#_ [x x]",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{u2}[x x x]",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_szurun {d}gu4_",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{na4}mu-s,a",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_{na4}an-zah_",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_pap [5(disz)?] u2#-me_",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "2(disz)-u me-eli",
+      "surface": "surface d1",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_pap 2(disz)#? u2-me_",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "3(disz)-szu2 me-eli",
+      "surface": "surface d1",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ broken ",
+      "surface": "surface d1",
+      "column": "column 4"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ ki-min_ [...]",
+      "surface": "surface d1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...] pa?",
+      "surface": "surface d1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...] a",
+      "surface": "surface d1",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "surface d1",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ na_ ina _ugu {lu2}gig_",
+      "surface": "surface d1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "na-asz2-pa-ar2#?-[tu2] u",
+      "surface": "surface d1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "e-[x x x x] x",
+      "surface": "surface d1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_ki sahar_ [x x] _bur2#_",
+      "surface": "surface d1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_[{u2}]igi_-lim",
+      "surface": "surface d1",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "surface d1",
+      "column": "column 6"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ na_ ina _ki-na_-szu2 _szid-szid_",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[x x] {u2}tar-musz",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_pesz10-{d}i7_",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[x] _gesz_ [x x]",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 5(disz) u2-me_",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "7(disz)-u me-eli",
+      "surface": "surface d1",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ ki-min_ [...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "{u2}[x ...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{u2}[x ...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{u2}[x ...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_ka [a-ab-ba?]_",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{u2}[x ...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap_ [...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...] x",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...] x",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...] x",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_[pap_ x _u2]-me_",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ_ [...]",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "x [x] ru# x szu2",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{u2}el-kul-la",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_{gesz}har_",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "e# x _gug2? ga#_",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 4(disz) u2-me_",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ina? x",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "me#-eli",
+      "surface": "surface d1",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_DISZ_ [...]",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_gesz#?_ [...]",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...] x kal",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{u2}[x ...]",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{na4}AN x [x]",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_pap 4(disz)#? u2-me_",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ina#? _szu_",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "me-eli",
+      "surface": "surface d1",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "x [...]",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "x x [...]",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_pap# 4(disz)# u2-me_",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "x bu#",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "me-eli",
+      "surface": "surface d1",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[x x] x x x x [...]",
+      "surface": "surface d2",
+      "column": "",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate when the local/HF model is wired.",
+  "status": "atf_only",
+  "translation_status": "print_edition",
+  "translation_label": "Print edition (no CDLI English)",
+  "translation_short": "Print: BAM",
+  "translation_detail": "Published series match (BAM) — scholars have almost certainly translated this (often IT/DE/FR/EN in print), but CDLI has no English text",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": true,
+  "untranslated_open": true,
+  "has_machine_draft": false,
+  "machine_draft_lines": 0
+}

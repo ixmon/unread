@@ -1,0 +1,585 @@
+{
+  "id": "P257557",
+  "designation": "TMN Ist Ni 00374",
+  "genre": "Mathematical",
+  "subgenre": "",
+  "language": "Sumerian",
+  "period": "Old Babylonian (ca. 1900-1600 BC)",
+  "year": -1750,
+  "provenience": "Nippur (mod. Nuffar)",
+  "site": "Nippur (mod. Nuffar)",
+  "lat": 32.13,
+  "lon": 45.23,
+  "content_lines": 68,
+  "chars": 1127,
+  "font": "Santakku",
+  "known_elsewhere": false,
+  "translation_status": "no_open_english",
+  "translation_label": "No open English found",
+  "translation_short": "No open English",
+  "translation_detail": "CDLI has no English; no RINAP/ETCSL-style project hit; no common print-series match. Strong candidate for a first open English reading (still verify literature).",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": false,
+  "untranslated_open": true,
+  "cdli_url": "https://cdli.earth/artifacts/257557",
+  "museum_no": "Ist Ni 00374",
+  "primary_publication": "TMN Ist Ni 00374",
+  "atf_source": "Proust, Christine",
+  "math_hunt": true,
+  "math_blurb": "Reciprocal (igi) table — Nippur school",
+  "math_score": 193.6,
+  "atf": "&P257557 = TMN Ist Ni 00374 \n#atf: use math \n@obverse \n@column 1 \n1. [1-da] igi# \n2. [2 gal2]-bi# & 30 \n3. [igi 3-gal2]-bi# & 20 \n4. [igi 4] & 15 \n5. [igi 5] & 12 \n6. [igi 6] & 10 \n7. [igi 7] & nu \n8. [igi 8] & [7].30 \n9. [igi 9] & [6].40 \n10. [igi 10] & 6 \n11. [igi 11] & nu \n12. [igi 12] & 5 \n13. [igi 13] & nu \n14. [igi 14] & nu \n15. [igi 15] & 4 \n@column 2 \n1. [igi] 16 & 3.45 \n2. igi 17 & [nu] \n3. igi 18 & 3.20 \n4. [igi 19] & [nu] \n5. igi 20 & 3 \n6. igi 21 & nu \n7. igi 22 & [nu] \n8. [igi] 23 & [nu] \n9. [igi 24] & [2].30 \n10. igi 25 & 2.24 \n11. igi 26 & nu \n12. igi 27 & 2.13.20 \n13. igi 28 & nu \n14. igi 29 & nu \n15. igi 30 & 2 \n16. igi 31 & nu \n17. igi 32 & 1.52.30 \n@reverse \n@column 1 \n1. igi 33 & nu \n2. igi 34 & nu \n3. igi 35 & nu \n4. igi 36 & 1.40 \n5. igi 37 & nu \n6. igi 38 & nu \n7. igi 39 & nu \n8. igi 40 & 1.30 \n9. igi 41 & nu \n10. igi 42 & nu \n11. igi 43 & nu \n12. igi 44 & nu \n13. igi 45 & 1.20 \n14. igi 46 & nu \n15. igi 47 & nu \n16. igi 48 & 1.15 \n17. igi 49 & nu \n18. igi 50 & 1.12 \n@column 2 \n1. [igi 51] & nu \n2. [igi 52] & nu \n3. [igi 53] & nu \n4. igi 54 & 1.6.40 \n5. igi 55 & nu \n6. igi 56 & nu \n7. igi 57 & nu \n8. igi 58 & nu \n9. igi 59 & nu \n10. [igi 1] & 1 \n11. [igi 1.4] & [56.15] \n12. [igi 1.12] & 50 \n13. [igi 1.15] & 48# \n14. [igi 1.20] & 45 \n15. [igi 1.21] & [44].26#.40 \n16. [igi 1.30] & 40 \n17. [igi 1.36] & 37#.30 \n18. [igi 1.40] & 36 \n\n",
+  "lines": [
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[1-da] igi#",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[2 gal2]-bi# & 30",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[igi 3-gal2]-bi# & 20",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[igi 4] & 15",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[igi 5] & 12",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[igi 6] & 10",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[igi 7] & nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[igi 8] & [7].30",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[igi 9] & [6].40",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[igi 10] & 6",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[igi 11] & nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[igi 12] & 5",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[igi 13] & nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[igi 14] & nu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[igi 15] & 4",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[igi] 16 & 3.45",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "igi 17 & [nu]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "igi 18 & 3.20",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[igi 19] & [nu]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "igi 20 & 3",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "igi 21 & nu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "igi 22 & [nu]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[igi] 23 & [nu]",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[igi 24] & [2].30",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "igi 25 & 2.24",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "igi 26 & nu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "igi 27 & 2.13.20",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "igi 28 & nu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "igi 29 & nu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "igi 30 & 2",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "igi 31 & nu",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "igi 32 & 1.52.30",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "igi 33 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "igi 34 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "igi 35 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "igi 36 & 1.40",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "igi 37 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "igi 38 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "igi 39 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "igi 40 & 1.30",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "igi 41 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "igi 42 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "igi 43 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "igi 44 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "igi 45 & 1.20",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "igi 46 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "igi 47 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "igi 48 & 1.15",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "igi 49 & nu",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "igi 50 & 1.12",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[igi 51] & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[igi 52] & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[igi 53] & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "igi 54 & 1.6.40",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "igi 55 & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "igi 56 & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "igi 57 & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "igi 58 & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "igi 59 & nu",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[igi 1] & 1",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[igi 1.4] & [56.15]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[igi 1.12] & 50",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[igi 1.15] & 48#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[igi 1.20] & 45",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[igi 1.21] & [44].26#.40",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[igi 1.30] & 40",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[igi 1.36] & 37#.30",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[igi 1.40] & 36",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    }
+  ],
+  "english": null,
+  "english_note": "No model translation yet — use Translate in the reader.",
+  "status": "atf_only",
+  "has_machine_draft": false,
+  "machine_draft_lines": 0,
+  "math_kind": "reciprocal"
+}

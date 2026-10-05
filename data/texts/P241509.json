@@ -1,0 +1,6838 @@
+{
+  "id": "P241509",
+  "designation": "ARET 03, 394 + 617 + 604 + ARET 11, 2 + unp. frag.",
+  "genre": "Literary",
+  "subgenre": "Ritual",
+  "language": "Eblaite",
+  "period": "Ebla (ca. 2350-2250 BC)",
+  "year": -2300,
+  "provenience": "Ebla (mod. Tell Mardikh)",
+  "site": "Ebla (mod. Tell Mardikh)",
+  "lat": 35.8,
+  "lon": 36.8,
+  "content_lines": 834,
+  "chars": 12693,
+  "font": "NotoSansCuneiform",
+  "known_elsewhere": false,
+  "cdli_url": "https://cdli.earth/artifacts/241509",
+  "museum_no": "NMSI —",
+  "primary_publication": "ARET 03, 394 + 617 + 604 + ARET 11, 2 + unp. frag.",
+  "atf_source": "cdlistaff",
+  "atf": "&P241509 = ARET 11, 2 \n#atf: lang qeb \n@tablet \n@obverse \n@column 1 \n$ beginning broken \n1'. 1(asz@c) gu3-li-lum _ku3-sig17_ \n2'. [ni-gu2] \n3'. [ma-lik-tum] \n4'. _szu mu-tagx(BALAG)_ \n5'. 1(asz@c) _udu_ \n6'. {d}utu \n7'. _nidba2#_ \n8'. [...] \n$ n lines broken \n9'. [a]-mu#-isz \n10'. in _u4_ \n11'. _nig2-mu-sa2_ gesz BUR-kak!(NI) \n@column 2 \n$ beginning broken \n1'. wa-ma-sa \n2'. U2-_il2_ \n3'. KA-_du3-gid2 ku3-sig17_ \n4'. na-u3-bad \n5'. _tug2 u2-hab2_ {gesz}MA-_ir_ \n6'. du-ru12-ru12 _dar_ \n7'. tug2-MU \n8'. ma-lik-tum \n9'. al6 \n10'. KASKAL \n11'. NU tug2-ZI-ZI \n@column 3 \n1. [1(asz@c) DIB _ku3-sig17_ SZA-PI] \n2. [1(asz@c) _zara6{tug2} u2-hab2]_ \n3. [1(asz@c) _gid2{tug2} {gesz}ma-ir]_ \n4. [ni-gu2] \n5. [ma-lik-tum] \n6. _[szu mu-tagx(BALAG)]_ \n7. [in _u4]_ \n8. ma-lik-tum \n9. _e3_ \n10. _e2_ \n11. _a-mu_-isz \n12. a-ti-ma \n13. _e2_ \n14. {d}ku-ra \n15. _mu-kux(DU)_ \n16. si-in \n17. _bad3_{ki} \n18. _nu-mu-kux(DU)#_ \n19. [...]-x \n20. _bad3_{ki} \n21. _ki-na2_ \n22. in _u4_ \n23. ma-lik-tum# \n@column 4 \n1. [e3] \n2. [e2] \n3. [A-MU-isz] \n4. [KA2] \n5. [{d}ku-ra] \n6. [ma-lik-tum] \n7. [MU-DU] \n8. [si-in] \n9. [ma2-la-szum2] \n10. wa# \n11. _mu-ti_ \n12. _tug2-tug2 u2-hab2_ {gesz}MA-_ir dar_ \n13. wa \n14. [KA]-DU3-[GID2] _ku3-sig17_ \n15. _mu-ti_ \n16. in \n17. ma2-la-szum2 \n18. wa \n19. tug2-ZI-ZI \n20. ma-lik-tum \n21. in \n22. ma2-la-szum2 \n23. wa \n@column 5 \n1. [tug2-MU] \n2. [tug2-nu?] \n3. [wa] \n4. _[mu-kux(DU)]_ \n5. _[e2]_ \n6. [{d}ku-ra] \n7. [4(asz@c) _udu-nita]_ \n8. [2(asz@c) _ku3-sal_ 4(asz@c) _buru4{muszen}] ku3:babbar#_ \n2'. {d}ku-ra \n3'. {d}ba-ra-ma \n4'. {d}isz11-ru12 \n5'. {d}a-NI-lu \n6'. _lu2 e2_ \n7'. A-_mu_-isz \n8'. ma-lik-tum \n9'. _szu mu-tagx(BALAG)_ \n10'. 4(asz@c) {gesz}szu4 {gesz}taszkarin ku5 _nig2-sagszu_ \n11'. 1(asz@c) sa2-ba-na {gesz}taszkarin \n12'. gu7 \n13'. {d}ku-ra \n14'. wa# \n@column 6 \n1. [{d}ba-ra-ma] \n2. [2(asz@c) gu2-mi-a-nu ri2-za-im 1(asz@c) _an-zamx(KUSZU2)]_ \n3. [na-ba-ti-isz] \n4. [{d}ku-ra] \n5. [wa] \n6. [{d}ba-ra-ma] \n7. [1(asz@c) _u9-am3_ {gesz}taszkarin 2(asz@c)] _an-zamx(KUSZU2)_ \n8. 2(asz@c) _si-du3_ \n9. {d}ku-ra \n10. 2(asz@c) _gilim_ \n11. e-am \n12. {d}ku-ra \n13. 1(asz@c) da-ga-a-dum e-am \n14. 1(asz@c) gu2-ti-a-isz \n15. {d}ba-ra-ma \n16. 2(asz@c) {gesz}szu4 {gesz}taszkarin 2(asz@c@90) _nig2-sagszu_ \n17. {d}BARA10-isz \n18. _si-du3 si-du3_ \n19. 1(asz@c) {gesz}erin2 {gesz}taszkarin \n20. 4(asz@c) {gesz}RU \n@column 7 \n$ beginning broken \n1'. {d}ku-ra \n2'. wa \n3'. _tug2 nu-tag_ \n4'. ma-ri2-a-tim \n5'. ma-lik-tum \n6'. _HI-mu-kux(DU)_ \n7'. siki \n8'. 2(asz@c) _udu_ \n9'. masz-da-bu3 \n10'. ma-ri2-a-tim \n11'. _tug2 nu-tag_ \n12'. in \n13'. 3(asz@c) _u4 gibil_ \n14'. iti ha-li-NI \n15'. ma-lik-tum \n16'. _mu-kux(DU)_ \n@column 8 \n1. _[e2]_ \n2. [{d}ku-ra] \n3. [in] \n4. [4(asz@c) _u4 gibil]_ \n5. [iti ha-li-NI] \n6. _[en]_ \n7. [wa] \n8. [ma-lik-tum] \n9. _e3_ \n10. si-in \n11. NE-na-asz2{ki} \n12. mi-in \n13. 5(asz@c) _u4 gibil_ \n14. _iti_ ha-li-NI \n15. _al6-tusz_ \n16. _en_ \n17. wa \n18. ma-lik-tum \n19. al6 \n20. 2(asz@c) _{gesz}szudun_ \n21. _a-mu-a-mu_-su3 \n22. _a_ \n23. _lu2_ \n24. ma-sza-du{ki} \n25. sza-ti \n@column 9 \n1. [NI-ra-ar{ki}] \n$ n lines broken \n2'. [NE-na]-asz2#{ki} \n3'. in \n4'. iti |MAxGAN2@t|-sag \n5'. _szu ba4-ti_ \n6'. A \n7'. {gesz}GIGIR2-_szum2_ \n8'. sza-ti \n9'. U5 \n10'. {d}ku-ra \n11'. wa \n12'. {d}ba-ra-ma \n13'. 4(asz@c)? {gesz}UM na-gi-ba \n14'. ap \n15'. {gesz}masz {gesz}masz \n16'. {gesz}SZU-_me_ \n17'. _gesz-gesz_-su3 \n18'. na-gi-ba \n19'. 2(asz@c) _{gesz}ma-dul10 {gesz}ildag4_ \n20'. wa \n@column 10 \n1. [...] \n2. [...] \n3. [...] \n4. [...] \n5. _[a]-buninx(|LAGAB+A|)-na_ \n6. _tug2_ \n7. {gesz}GIGIR2-_szum2_ \n8. _kid2-gi_ \n9. [...] \n10. [...] \n11. TUM@g \n12. su-ma-ti \n13. {gesz}GIGIR2-_szum2_ \n14. _u5_ \n15. {d}ku-ra \n16. wa \n17. {d}ba-ra-ma \n18. en-na-NI \n19. wa \n20. _pa4-szesz_ {d}ku-ra \n21. _gar_ \n22. 4(asz@c) _gu4-mah gi6 ur4_ \n23. _szu mu-tagx(BALAG)_ \n@column 11 \n1. [{d}ku-ra] \n2. [wa] \n3. [{gesz}GIGIR2-_sum]_ \n4. [{d}ku-ra] \n5. [a-du]-lu \n6. wa \n7. _dumu-nita_ \n8. isz11-a-il \n9. il2-ad{ki} \n10. _u2-il2_ \n11. si-in \n12. {gesz}GIGIR2-_szum2_ \n13. {d}ba-ra-ma \n14. ba-sa-[lu] \n15. [wa] \n16. _dumu-nita_ \n17. ir3-da-ma-lik \n18. _u2-il2_ \n19. si-in \n20. {gesz}GIGIR2-_szum2_ \n21. {d}A-NI-lu \n22. wa \n23. 2(asz@c) _lu2_ \n24. wa \n25. 1(asz@c) gi-zu2 \n@column 12 \n1. [ZABAR] \n2. [wa] \n3. [1(asz@c) {gesz}szu4 _ku3:babbar]_ \n4. _dumu-nita dumu-nita_ \n5. _dingir-dingir_ \n6. _u2-il2_ \n7. si-in \n8. {gesz}|e2xGIGIR2| \n9. _bir3 kunga2_ \n10. {d}A-NI-lu \n11. _u5_ \n12. _gaba_ \n13. {d}ku-ra \n14. _du-du_ \n15. si-in \n16. NE-na-asz2{ki} \n17. 1(asz@c) _dug i3-gesz {gesz}ildag4_ \n18. _nig2-ag2_ \n19. _gaba_ \n20. {d}ku-ra \n21. wa \n22. {d}ba-ra-ma \n23. ha-sa-nu _ku3:babbar_ \n24. sa-ha-da-szum \n@column 13 \n1. [al6] \n2. [da-ma-ti] \n3. [in _u4]_ \n4. _du-du_ \n5. ma-lik-tum \n6. si-in \n7. NE-na-asz2{ki} \n8. _ka-du3-gid2 ku3-sig17_ \n9. _nu szu mu-tagx(BALAG)_ \n10. 2(asz@c) 'a3-da-um{tug2} 2(asz@c@90) _aktum{tug2}_ 2(asz@c) _|IB2+3(disz@t)| sa6 tug2 dar_ \n11. en-na-NI \n12. _lu2 dingir-dingir_ \n13. wa \n14. 'a3-ru12-gu2{ki} \n15. _szu ba4-ti_ \n16. [...] \n17. _pa4:szesz_ {d}ku-ra \n18. _dumu-nita_ \n19. isz11-a-il \n20. ba-sa-[lu] \n@column 14 \n1. [dumu-nita] \n2. [ir3-da-ma-lik] \n3. [dumu-nita] \n4. na-zu-mu \n5. wa \n6. _nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)_ \n7. wa \n8. na-i3-bu3 \n9. _an-zamx(KUSZU2)_ \n10. a-zi \n11. dam-da-NI \n12. en-nu-lum \n13. wa \n14. KA-DI \n15. 1(asz@c) tug2-NI-NI 1(asz@c) _nig2-la2_ ZI-ZI 2(asz@c) bu-DI \n16. _[dam]_ \n17. NE-na-asz2{ki} \n18. _e3_ \n19. {d}ku-ra \n20. wa \n21. {d}ba-ra-ma \n22. wa \n@column 15 \n1. [en] \n2. [wa] \n3. [ma-lik-tum] \n4. [mi-in] \n5. 4(asz@c) _u4 gibil_ \n6. _iti_ ha-li-NI \n7. si-in \n8. NE-na-asz2{ki} \n9. _kaskal_ \n10. lu-ub{ki} \n11. [DU-DU] \n12. [zi-il] \n13. [lu-ub{ki}] \n14. _[e3]_ \n15. [si-in] \n16. [il2-ad{ki}] \n17. [{d}utu] \n18. [il2-ad{ki}] \n19. _[e3]_ \n20. 1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_ \n21. _e2_ \n22. _en_ \n23. _e3_ \n24. _dingir_ \n@column 16 \n1. [a-bur-li-im] \n2. [mi-nu] \n3. [il2-ad{ki}] \n4. en-na-NI \n5. _nidba2_ \n6. _e3_-ma \n7. mi-nu \n8. il2-ad{ki} \n9. [si-in] \n10. u3-du-hu-du{ki} \n11. [{d}utu] \n12. u3-du-hu-du{ki} \n13. [e3] \n14. [...] \n15. [e2] \n16. [en] \n17. [e3] \n18. _dingir#_ \n19. 'a3-ma-na \n20. en-na-NI \n21. _nidba2_ \n22. _e3_-ma \n23. mi-nu \n24. u3-du-hu-du{ki} \n@column 17 \n1. [si-in] \n2. [NI-ap{ki}] \n3. [mi-nu] \n4. [NAM{ki}] \n5. 1(asz@c) _udu-nita_ 1(asz@c) _buru4{muszen}_ \n6. _e2_ \n7. _en_ \n8. _e3_ \n9. {d}isz-ru12 \n10. en-na-NI \n11. _[nidba2]_ \n12. _[ba4-ti]_ \n13. [si-in] \n14. [NI-ap{ki}] \n15. [...] \n16. [mi-nu] \n17. [NI-ap{ki}] \n18. _e3_ \n19. {d}'a5-al6-du \n20. en-na-NI \n21. _nidba2_ \n22. 1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _gir3-mar tu-hul_ \n23. mi-nu \n@column 18 \n1. [NI-ap{ki}] \n2. [e3] \n3. [{d}da-i-in] \n4. [wa] \n5. [da-i-in] \n6. en#-[na-NI] \n7. _nidba2#_ \n8. 1(asz@c) _udu# [nita]_ 1(asz@c) _[u8]_ 1(asz@c) _[gir2] mar#-[tu]_ zu2#-[x] 1(asz@c) [...] \n9. mi#-nu \n10. [NI]-ap{ki} \n11. e3# \n12. {d#}ga-mi-isz \n13. wa \n14. {d}ba-al6-dum \n15. en-na-NI \n16. _[nidba2]_ \n17. _e3_-ma \n18. {d}utu \n19. NI-ap{ki} \n20. wa \n21. _du-du_ \n22. _kaskal_ \n23. masz-za-im \n24. si-in \n25. NE-na-asz2{ki} \n@reverse \n@column 1 \n1. zi-il \n2. NE-na-asz2{ki} \n3. _mu-kux(DU)_ \n4. si-in \n5. _e2_ ma-tim \n6. wa \n7. _nisaba?_ \n8. _e2_ ma-tim \n9. 1(asz@c) _uz3_ \n10. 1(asz@c) gu2-li-lum _ku3:babbar_ \n11. GU2# \n12. [UZ3] \n13. _gaba_ \n14. _mu-kux(DU)_ \n15. {d}ku-ra \n16. wa \n17. {d}ba-ra-ma \n18. si-in \n19. _kur_{ki} \n20. a-li-NI{ki} \n21. |GA2xGEME2|-GI4 \n22. _[mu-kux(DU)]_ \n23. _[en]_ \n24. [wa] \n25. ma-lik#-[tum] \n26. si-in# \n@column 2 \n1. _e2_ ma-tim \n2. 1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_ \n3. {d}a-gum2 \n4. NE-na-asz2{ki} \n5. en-na-NI \n6. _nidba2_ \n7. _ba4-ti_ \n8. [{d}ku-ra] \n9. [wa] \n10. {d}ba-ra-ma \n11. si-in# \n12. _e2#_ [ma-tim] \n13. [wa] \n14. _mu-kux(DU)_ \n15. {d}ku-ra \n16. wa \n17. {d}ba-ra-ma \n18. si-in \n19. 1(asz@c) _e2-duru5_{ki} \n20. wa \n21. _al6#-tusz#_ \n22. wa \n23. _mu-kux(DU)_ \n24. _en_ \n25. si-in \n26. _e2-duru5_{ki}-su3 \n@column 3 \n1. ap \n2. ma-lik-tum \n3. si-in \n4. _e2-duru5_{ki}-su3 \n5. u3-lu \n6. _ba4-ti_ \n7. _en_ \n8. wa \n9. ma-lik-tum \n10. 1(asz@c) _gu4 abba2_ 2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_ \n11. _dingir_ \n12. i-bi2-ni-li-im \n13. 2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_ \n14. _dingir_ \n15. sa-gi-su \n16. 2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_ \n17. _dingir_ \n18. isz11-ru12-ud-da-mu \n19. en-na-NI \n20. _nidba2_ \n21. _zi-ga_ \n22. _ti{tug2}_ \n@column 4 \n1. _en_ \n2. wa \n3. ma-lik-tum \n4. _e3_-ma \n5. wa \n6. _al6-tusz_ \n7. al6 \n8. _{gesz}szudun_ \n9. _a-mu-a-mu_-su3 \n10. wa \n11. _en-nun-ak_ \n12. _u4 e3_ \n13. {d}utu \n14. {d}utu-ma \n15. _e3_ \n16. KA-DI \n17. KA-DI \n18. _balag-di-balag#-di#_ \n19. _balag-di_ \n20. sza-ti \n21. {d}TU \n22. _sur-aka_ \n23. wa \n24. _[du11]-ga#_ \n25. _[nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)]_ \n26. _[nig2-mulx(|AN.AN.AN.AN|)]-mulx(|AN.AN.AN.AN|)#_ \n@column 5 \n1. wa \n2. _nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)_ \n3. {d}TU \n4. {d}ku-_ra gibil_ \n5. {d}ba-ra-ma _gibil_ \n6. _en gibil_ \n7. ma-lik-tum _gibil_ \n8. wa \n9. lu-da-ba-ab \n10. NE-na-asz2{ki} \n11. _an-zamx(KUSZU2)_ \n12. 3(asz@t) \n13. _zax(LAK384)_ \n14. {d#}asz#-dar \n15. _bi2-ra_ \n16. _dumu-nita_ \n17. na-zu-mu \n18. KA-_du3-gid2_ \n19. _{gesz}banszur_ \n20. in \n21. _da_ \n22. wa \n$ rest broken \n@column 6 \n1. 3(asz@t) \n2. wa \n3. al6 \n4. 3(asz@t)-ma \n5. _il-il_ \n6. al6 \n7. {d}utu \n8. _e3#_ \n9. {d}ku-ra \n10. 1(asz@c) _udu_ \n11. {d}ba-ra-ma \n12. 1(asz@c) _udu_ \n13. {d}isz-lu \n14. ib#-ri2-um# \n15. _nidba2#_ \n16. _gaba_ \n17. {d}ku-ra \n18. KU-BA \n19. in \n20. _e2-duru5{ki}_ \n21. 1(asz@c) _pesz-ab2 nu gesz gal2 tagx(BALAG)_ 1(asz@c) _udu_ \n22. {d}utu \n23. ib-ri2-um \n24. _nidba2_ \n25. 1(u@c) _u4-u4_ \n26. 1(asz@c) _udu_ \n27. {d}asz-dar \n28. 1(u@c) _u4-u4_ \n29. 1(u@c) _udu_ \n@column 7 \n1. _dingir-dingir_ \n2. ib-ri2-um \n3. _nidba2_ \n4. 1(u@c) _u4-u4_ \n5. ti-la-dum \n6. _dingir-dingir#_ \n7. [ib-ri2-um] \n8. _[nidba2]_ \n9. _nig2-ag2_ \n10. _nig2-ag2_ \n11. _e2_ ma-tim \n12. _i3-gesz_ {gesz}ir-de3 \n13. _igi-igi_ \n14. _dingir-dingir_ \n15. wa \n16. _igi-igi_ \n17. _na-se11 na-se11_ \n18. _za3-me_-ma \n19. _balag-di-balag-di_ \n20. _balag-di_ \n21. wa \n22. _al6_-BAD \n23. 'a3-ru12-gu2{ki} \n24. wa \n25. i-a-ba-ad \n26. _si-du3_ \n27. 3(asz@t) \n28. wa \n@column 8 \n1. ma-lik-tum \n2. 3(asz@t)-ma \n3. wa \n4. _al6_-BAD \n5. _dam_ \n6. [mu]-a#-[bi2-isz-dum] \n7. wa \n8. du-a-ba-asz2 \n9. PAD-tug2 \n10. ma-lik-tum \n11. 7(asz@c)# \n12. ap \n13. _sag_ \n14. _szu-szu_ \n15. [ma-lik-tum] \n16. [PAD]-tug2# \n17. _en#_ \n18. wa \n19. ma-lik-tum \n20. _al6-tusz_ \n21. {d}utu \n22. 2(asz@c) _ka2_ \n23. _e2-duru5_{ki} \n24. {d}ku-ra \n25. _igi-tum3_ \n26. i-ba-na \n27. al6 \n28. _gub3_ \n29. _en_ \n30. [ma-lik-tum] \n@column 9 \n1. _al6-tusz_ \n2. wa \n3. _u2-il2_ \n4. _en_ \n5. wa \n6. [ma-lik]-tum \n7. [sa-hu]-ra-ti# _i3-[gesz]_ \n8. si-in \n9. 2(asz@c) _e2-duru5{ki}_-su3 \n10. _en_ \n11. wa \n12. ma-lik-tum \n13. _igi-igi_ \n14. _nu igi-hi-du8_ \n15. mi-in \n16. 2(asz@c) _e2-duru5{ki}_-su3 \n17. a-ti-ma \n18. al6 \n19. _{gesz}szudun_ \n20. _a-mu-a-mu_-su3 \n21. am-sa-a \n22. _igi-igi_ \n23. _igi-hi-du8_ \n24. 7(asz@c) _u4_ \n25. sa-ba-dum \n26. _mah_ \n27. 2(asz@c) _sila4_ 7(asz@c) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR [sikiL] \n@column 10 \n1. 7(asz@c) gu2-mi-a-nu |SZE+TIN| \n2. 7(asz@c)# ma-sa-ha-dum \n3. _ub-u8-mi2_ \n4. {d}ku-ra \n5. wa \n6. {d}ba-ra-ma \n7. mi-in \n8. a-he-ri2 \n9. _u4-u4_ \n10. sa-ba-dum \n11. _mah_ \n12. _gi6-an_ \n13. 2(asz@c) _udu_ \n14. _dingir_ \n15. sa-gi-su \n16. 2(asz@c) _udu_ \n17. _dingir_ \n18. i-bi2-ni-li-im \n19. 2(asz@c) _udu_ \n20. _dingir_ \n21. [isz11-ru12-ud-da-mu] \n22. mi-in \n23. a-he-ri2 \n24. sa-ba-dum \n25. _mah_ \n26. en-na-NI \n27. _nidba2_ \n28. 3(asz@c) _u4_ \n29. sa-ba-dum \n30. [ga]-bi2#-[li-a-dum] \n@column 11 \n1. 2(asz@c)# _sila4#_ [7(asz@c@90) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR _sikil_ 7(asz@c@90) gu2-mi-a-nu |SZE+TIN| 7(asz@c)] masz#-ha#-dum \n2. _ub-u8-mi2_ \n3. {d}ku-ra \n4. wa \n5. {d}ba-ra-ma \n6. mi-in \n7. a-he-ri2 \n8. _u4-u4_ \n9. sa-ba-dum \n10. ga-bi2-li-a-dum \n11. 2(asz@c) _udu_ \n12. _dingir_ \n13. sa-gi-su \n14. 2(asz@c) _udu_ \n15. _dingir_ \n16. i-bi2-ni-li-[im] \n17. [2(asz@c) _udu]_ \n18. _dingir_ \n19. isz11-ru12-ud-da-mu \n20. mi-in \n21. a-he-ri2 \n22. sa-ba-dum \n23. ga-bi2-li-a-dum \n24. en-na-NI \n25. _nidba2_ \n26. [x _u4]_ \n27. [sa-ba-dum] \n@column 12 \n1. a-hir-dum \n2. 2(asz@c) _sila4_ \n3. 7(asz@c) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR _sikil_ 7(asz@c) gu2-mi#:a#-nu |SZE+TIN| 7(asz@c) masz-ha-dum \n4. [UB]-U8-_mi2_ \n5. {d}ku-ra \n6. wa \n7. {d}ba-ra-ma \n8. mi-in \n9. a-he-ri2 \n10. sa-ba-dum \n11. a-he2-dum \n12. 2(asz@c) _udu_ \n13. _dingir_ \n14. sa-gi-su \n15. 2(asz@c) _udu_ \n16. _dingir#_ \n17. [i-bi2-ni-li-im] \n18. [2(asz@c) _udu]_ \n19. [DINGIR] \n20. isz11-ru12-ud-da-mu \n21. [mi-in] \n22. [a-he-ri2] \n23. [sa-ba-dum] \n24. [a-hir-dum] \n25. [en-na-NI] \n26. _[nidba2]_ \n27. [in] \n@column 13 \n1. _al6-tusz_ \n2. _e2_ ma-tim \n3. sza-ti \n4. sa-ba-a-ti-su3-ma \n5. 4(asz@c) ma-ri2-a-dum \n6. _tug2 nu-tag_ \n7. {d}ku-ra \n8. wa \n9. {d}ba-ra-ma \n10. wa \n11. _en_ \n12. wa \n13. ma-lik-tum \n14. in _u4_ \n15. _du-du_ \n16. 'a5-na \n17. sa-zax(LAK384){ki} \n$ n lines broken \n18'. [SZU-SZU-su3] \n@column 14 \n1. _nu_ tug2-ZI-ZI \n2. _szu-szu_-su3 \n3. ba-ga-ru12 \n4. a#-ba-ga-ru12 \n5. du-la-ti \n6. _en_ \n7. wa \n8. ma-lik-tum \n9. na-se11 \n10. _nu gu7_ \n11. du-la-ti \n12. _en_ \n13. ma-lik-tum \n14. _gu7_ \n15. ap \n16. du-la-ti-su3 \n17. [an-ne] \n18. _gu7#_ \n19. 1(u@c) 6(asz@c) _{gesz}gu#-[gid2-kak szub]_ \n$ rest broken \n@column 15 \n1. _[en]_ \n2. _[gibil]_ \n3. _szu mu-tagx(BALAG)_ \n4. _e2_ \n5. {d}ku-ra \n6. al6 \n7. 4(asz@t) \n8. _ba4-ti_ \n9. _en_ \n10. si-in \n11. _e2_ ma-tim \n12. 1(asz@c) _udu_ \n13. _dingir_ \n14. sa-gi-su \n15. 1(asz@c) _udu_ \n16. _dingir_ \n17. ig-ri2-isz-ha-labx(LAM) \n18. 1(asz@c) _udu#_ \n$ n lines broken \n19'. [a-ti-ma] \n20'. _[en gibil]_ \n@column 16 \n1. _[nidba2]_ \n2. _e2_ \n3. _dingir_ \n4. sa-gi-su \n5. sa2-du \n6. _en_ \n7. 1(asz@c) _an-dul3_ \n8. a-la-gu2-nu \n9. sa2-du \n10. ma-lik-tum \n11. 1(asz@c) _an-dul3_ \n12. a-la-gu2-nu \n13. wa \n14. du-usz-da-a-da-mu \n15. wa \n16. _dim2_ \n17. _[gurusz an-dul3 gurusz an-dul3]_ \n$ n lines broken \n18'. [{d}BARA10-isz] \n19'. [en] \n20'. [{gesz}taszkarin] \n21'. [sag] \n@column 17 \n1. _[ku3:babbar]_ \n2. 1(asz@c) _ib2-la2 ku3:babbar_ \n3. {gesz}ASAR \n4. in \n5. 1(asz@c) SZU-su3 \n6. {d}SI-GAR \n7. _en_ \n8. {gesz}taszkarin \n9. _sag_ \n10. _ku3:babbar_ \n11. 1(asz@c) _ib2-la2 ku3:babbar_ \n12. KA-_du3-gid2_ \n13. {gesz}ASAR \n14. in \n15. 1(asz@c) SZU-su3 \n16. in _u4_ \n17. _i3-til3_ \n$ n lines broken \n18'. [wa] \n19'. _[al6-tusz]_ \n20'. [2(asz@c) sa-ba-a-ti] \n@column 18 \n1. 7(asz@c) _u4_ \n2. wa# \n3. [7(asz@c) _u4]_ \n4. [ZA3-_me]_ \n5. _[u4]_ \n6. [sa-ba-da-su3] \n7. [wa] \n8. _sag_ \n9. {d}ku-ra \n10. PAD \n11. _e3#_-ma \n12. _en_ \n13. wa \n14. ma-lik-tum \n15. wa \n16. _szu mu-nigin2_ \n17. _[e2 dingir-dingir]_ \n18. [ma2-ga-na-tim] \n19. _[nidba2]_ \n20. [sa-zax(LAK384){ki}] \n21. [gu7] \n22. [in] \n23. [U4] \n24. [su-wa-ti] \n25. _en_ \n26. _e2_ \n27. _ti{tug2}_ \n28. _[ki-na2]_ \n29. [ap] \n@bottom \n@column 1 \n1. ma-lik-tum \n2. _e2_ \n3. _dingir-dingir en_ \n4. _ki-na2_ \n5. u3-lu-um \n$ rest broken \n@column 2 \n1'. tug2-ZI-ZI \n2'. 2(asz@c) _sag_-su3# \n\n",
+  "lines": [
+    {
+      "type": "note",
+      "text": "$ beginning broken ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "1(asz@c) gu3-li-lum _ku3-sig17_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "1 Gulilum of gold,"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[ni-gu2]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "[ma-lik-tum]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "a kind of profession"
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "_szu mu-tagx(BALAG)_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "he will recover."
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "1(asz@c) _udu_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "1 sheep"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "{d}utu",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "For Utu"
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "_nidba2#_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "food offering"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "...."
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "obverse",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "[a]-mu#-isz",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "I erected."
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "in _u4_",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "on the day"
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_nig2-mu-sa2_ gesz BUR-kak!(NI)",
+      "surface": "obverse",
+      "column": "column 1",
+      "english": "a gift of... wood"
+    },
+    {
+      "type": "note",
+      "text": "$ beginning broken ",
+      "surface": "obverse",
+      "column": "column 2"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "wa-ma-sa",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "her husband"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "U2-_il2_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "a kind of grass"
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "KA-_du3-gid2 ku3-sig17_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "KA-dugid, gold."
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "na-u3-bad",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "Na’u-duri"
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_tug2 u2-hab2_ {gesz}MA-_ir_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "a garment, a turban, a muhru-aromatic"
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "du-ru12-ru12 _dar_",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "the droops"
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "tug2-MU",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "textile (for)"
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "al6",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "malt"
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "KASKAL",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "road"
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "NU tug2-ZI-ZI",
+      "surface": "obverse",
+      "column": "column 2",
+      "english": "(a kind of garment)"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[1(asz@c) DIB _ku3-sig17_ SZA-PI]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "1 gold...,"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[1(asz@c) _zara6{tug2} u2-hab2]_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "1 a-c-(worker): ara-tua uhab-garment"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[1(asz@c) _gid2{tug2} {gesz}ma-ir]_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "1 a-c-(worker), a door"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[ni-gu2]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[ma-lik-tum]",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "a kind of profession"
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_[szu mu-tagx(BALAG)]_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "he will recover."
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[in _u4]_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "On the day"
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "emerges."
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_e2_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "the house"
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_a-mu_-isz",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "I swore."
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a-ti-ma",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "At that time"
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_e2_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "the house"
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "To Kura"
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_mu-kux(DU)_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "delivery"
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of insect)"
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_bad3_{ki}",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "of Dr"
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_nu-mu-kux(DU)#_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "a gift"
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[...]-x",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "......"
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_bad3_{ki}",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "of Dr"
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_ki-na2_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "the bed"
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "in _u4_",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "on the day"
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ma-lik-tum#",
+      "surface": "obverse",
+      "column": "column 3",
+      "english": "(a kind of profession)"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[e3]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "go out"
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[e2]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "house"
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[A-MU-isz]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": "a second time"
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[KA2]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[ma-lik-tum]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[MU-DU]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[si-in]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[ma2-la-szum2]",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "wa#",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_mu-ti_",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_tug2-tug2 u2-hab2_ {gesz}MA-_ir dar_",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[KA]-DU3-[GID2] _ku3-sig17_",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_mu-ti_",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "in",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "ma2-la-szum2",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "tug2-ZI-ZI",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "in",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "ma2-la-szum2",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[tug2-MU]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[tug2-nu?]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_[mu-kux(DU)]_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_[e2]_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[4(asz@c) _udu-nita]_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[2(asz@c) _ku3-sal_ 4(asz@c) _buru4{muszen}] ku3:babbar#_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "{d}isz11-ru12",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "{d}a-NI-lu",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_lu2 e2_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "A-_mu_-isz",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "_szu mu-tagx(BALAG)_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "4(asz@c) {gesz}szu4 {gesz}taszkarin ku5 _nig2-sagszu_",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "1(asz@c) sa2-ba-na {gesz}taszkarin",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "gu7",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "wa#",
+      "surface": "obverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[{d}ba-ra-ma]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[2(asz@c) gu2-mi-a-nu ri2-za-im 1(asz@c) _an-zamx(KUSZU2)]_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[na-ba-ti-isz]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[{d}ba-ra-ma]",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[1(asz@c) _u9-am3_ {gesz}taszkarin 2(asz@c)] _an-zamx(KUSZU2)_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "2(asz@c) _si-du3_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "2(asz@c) _gilim_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "e-am",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "1(asz@c) da-ga-a-dum e-am",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "1(asz@c) gu2-ti-a-isz",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "2(asz@c) {gesz}szu4 {gesz}taszkarin 2(asz@c@90) _nig2-sagszu_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}BARA10-isz",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_si-du3 si-du3_",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "1(asz@c) {gesz}erin2 {gesz}taszkarin",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "4(asz@c) {gesz}RU",
+      "surface": "obverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ beginning broken ",
+      "surface": "obverse",
+      "column": "column 7"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "_tug2 nu-tag_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "ma-ri2-a-tim",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "_HI-mu-kux(DU)_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "siki",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "2(asz@c) _udu_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "masz-da-bu3",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "ma-ri2-a-tim",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "_tug2 nu-tag_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "in",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "3(asz@c) _u4 gibil_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "iti ha-li-NI",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "_mu-kux(DU)_",
+      "surface": "obverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[e2]_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[in]",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[4(asz@c) _u4 gibil]_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[iti ha-li-NI]",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_[en]_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[ma-lik-tum]",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "mi-in",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "5(asz@c) _u4 gibil_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_iti_ ha-li-NI",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_al6-tusz_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_en_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "al6",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "2(asz@c) _{gesz}szudun_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_a-mu-a-mu_-su3",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_a_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_lu2_",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "ma-sza-du{ki}",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "sza-ti",
+      "surface": "obverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[NI-ra-ar{ki}]",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "obverse",
+      "column": "column 9"
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "[NE-na]-asz2#{ki}",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3'",
+      "atf": "in",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4'",
+      "atf": "iti |MAxGAN2@t|-sag",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5'",
+      "atf": "_szu ba4-ti_",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6'",
+      "atf": "A",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7'",
+      "atf": "{gesz}GIGIR2-_szum2_",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8'",
+      "atf": "sza-ti",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9'",
+      "atf": "U5",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10'",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11'",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12'",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13'",
+      "atf": "4(asz@c)? {gesz}UM na-gi-ba",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14'",
+      "atf": "ap",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15'",
+      "atf": "{gesz}masz {gesz}masz",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16'",
+      "atf": "{gesz}SZU-_me_",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17'",
+      "atf": "_gesz-gesz_-su3",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "na-gi-ba",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "2(asz@c) _{gesz}ma-dul10 {gesz}ildag4_",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_[a]-buninx(|LAGAB+A|)-na_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_tug2_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{gesz}GIGIR2-_szum2_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_kid2-gi_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "TUM@g",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "su-ma-ti",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{gesz}GIGIR2-_szum2_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_u5_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_pa4-szesz_ {d}ku-ra",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_gar_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "4(asz@c) _gu4-mah gi6 ur4_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_szu mu-tagx(BALAG)_",
+      "surface": "obverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{gesz}GIGIR2-_sum]_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[{d}ku-ra]",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[a-du]-lu",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_dumu-nita_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "isz11-a-il",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "il2-ad{ki}",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_u2-il2_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{gesz}GIGIR2-_szum2_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ba-sa-[lu]",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_dumu-nita_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "ir3-da-ma-lik",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_u2-il2_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{gesz}GIGIR2-_szum2_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{d}A-NI-lu",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "2(asz@c) _lu2_",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "1(asz@c) gi-zu2",
+      "surface": "obverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[ZABAR]",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[1(asz@c) {gesz}szu4 _ku3:babbar]_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_dumu-nita dumu-nita_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_dingir-dingir_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_u2-il2_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{gesz}|e2xGIGIR2|",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_bir3 kunga2_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{d}A-NI-lu",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_u5_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_gaba_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_du-du_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "1(asz@c) _dug i3-gesz {gesz}ildag4_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_nig2-ag2_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_gaba_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ha-sa-nu _ku3:babbar_",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "sa-ha-da-szum",
+      "surface": "obverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[al6]",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[da-ma-ti]",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[in _u4]_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_du-du_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ma-lik-tum",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_ka-du3-gid2 ku3-sig17_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_nu szu mu-tagx(BALAG)_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "2(asz@c) 'a3-da-um{tug2} 2(asz@c@90) _aktum{tug2}_ 2(asz@c) _|IB2+3(disz@t)| sa6 tug2 dar_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_lu2 dingir-dingir_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "'a3-ru12-gu2{ki}",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_szu ba4-ti_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_pa4:szesz_ {d}ku-ra",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_dumu-nita_",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "isz11-a-il",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "ba-sa-[lu]",
+      "surface": "obverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[dumu-nita]",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[ir3-da-ma-lik]",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[dumu-nita]",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "na-zu-mu",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)_",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "na-i3-bu3",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_an-zamx(KUSZU2)_",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "a-zi",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "dam-da-NI",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "en-nu-lum",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "KA-DI",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(asz@c) tug2-NI-NI 1(asz@c) _nig2-la2_ ZI-ZI 2(asz@c) bu-DI",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_[dam]_",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{d}ku-ra",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{d}ba-ra-ma",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[en]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[ma-lik-tum]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[mi-in]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "4(asz@c) _u4 gibil_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_iti_ ha-li-NI",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_kaskal_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "lu-ub{ki}",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[DU-DU]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[zi-il]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[lu-ub{ki}]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_[e3]_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[si-in]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[il2-ad{ki}]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[{d}utu]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[il2-ad{ki}]",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_[e3]_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_e2_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_en_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_dingir_",
+      "surface": "obverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[a-bur-li-im]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[mi-nu]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[il2-ad{ki}]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_nidba2_",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_e3_-ma",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "mi-nu",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "il2-ad{ki}",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[si-in]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "u3-du-hu-du{ki}",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "[{d}utu]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "u3-du-hu-du{ki}",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[e3]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[e2]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[en]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[e3]",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_dingir#_",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "'a3-ma-na",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_nidba2_",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_e3_-ma",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "mi-nu",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "u3-du-hu-du{ki}",
+      "surface": "obverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[si-in]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[NI-ap{ki}]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[mi-nu]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[NAM{ki}]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(asz@c) _udu-nita_ 1(asz@c) _buru4{muszen}_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_e2_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_en_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}isz-ru12",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_[nidba2]_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_[ba4-ti]_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[si-in]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "[NI-ap{ki}]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[...]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[mi-nu]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[NI-ap{ki}]",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_e3_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "{d}'a5-al6-du",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_nidba2_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _gir3-mar tu-hul_",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "mi-nu",
+      "surface": "obverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "[NI-ap{ki}]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "[e3]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[{d}da-i-in]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[wa]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "[da-i-in]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "en#-[na-NI]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_nidba2#_",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "1(asz@c) _udu# [nita]_ 1(asz@c) _[u8]_ 1(asz@c) _[gir2] mar#-[tu]_ zu2#-[x] 1(asz@c) [...]",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "mi#-nu",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "[NI]-ap{ki}",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "e3#",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "{d#}ga-mi-isz",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{d}ba-al6-dum",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "en-na-NI",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_[nidba2]_",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_e3_-ma",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "{d}utu",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "NI-ap{ki}",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "wa",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_du-du_",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_kaskal_",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "masz-za-im",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "si-in",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "obverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "zi-il",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_mu-kux(DU)_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_nisaba?_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "1(asz@c) _uz3_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "1(asz@c) gu2-li-lum _ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "GU2#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "[UZ3]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_gaba_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_mu-kux(DU)_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_kur_{ki}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "a-li-NI{ki}",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "|GA2xGEME2|-GI4",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_[mu-kux(DU)]_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_[en]_",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[wa]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "ma-lik#-[tum]",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "si-in#",
+      "surface": "reverse",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "1(asz@c) _udu-nita_ 1(asz@c) _u8_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{d}a-gum2",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "en-na-NI",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_ba4-ti_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "[{d}ku-ra]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "[wa]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "si-in#",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_e2#_ [ma-tim]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "[wa]",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_mu-kux(DU)_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "1(asz@c) _e2-duru5_{ki}",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_al6#-tusz#_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_mu-kux(DU)_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_e2-duru5_{ki}-su3",
+      "surface": "reverse",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ap",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_e2-duru5_{ki}-su3",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "u3-lu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_ba4-ti_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "1(asz@c) _gu4 abba2_ 2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "i-bi2-ni-li-im",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "2(asz@c) _udu_ 1(asz@c) _ku3-sal_ 1(asz@c) _buru4{muszen} ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "isz11-ru12-ud-da-mu",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "en-na-NI",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_zi-ga_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_ti{tug2}_",
+      "surface": "reverse",
+      "column": "column 3",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_e3_-ma",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_al6-tusz_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_{gesz}szudun_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_a-mu-a-mu_-su3",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_en-nun-ak_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_u4 e3_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{d}utu",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{d}utu-ma",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_e3_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "KA-DI",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "KA-DI",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_balag-di-balag#-di#_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_balag-di_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "sza-ti",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{d}TU",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_sur-aka_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_[du11]-ga#_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_[nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)]_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_[nig2-mulx(|AN.AN.AN.AN|)]-mulx(|AN.AN.AN.AN|)#_",
+      "surface": "reverse",
+      "column": "column 4",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_nig2-mulx(|AN.AN.AN.AN|)-mulx(|AN.AN.AN.AN|)_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{d}TU",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{d}ku-_ra gibil_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}ba-ra-ma _gibil_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_en gibil_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "ma-lik-tum _gibil_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "lu-da-ba-ab",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "NE-na-asz2{ki}",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_an-zamx(KUSZU2)_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "3(asz@t)",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_zax(LAK384)_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "{d#}asz#-dar",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_bi2-ra_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_dumu-nita_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "na-zu-mu",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "KA-_du3-gid2_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_{gesz}banszur_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "in",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "_da_",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 5",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "reverse",
+      "column": "column 5"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "3(asz@t)",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "3(asz@t)-ma",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_il-il_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{d}utu",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_e3#_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{d}isz-lu",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ib#-ri2-um#",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_nidba2#_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_gaba_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "KU-BA",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "in",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_e2-duru5{ki}_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "1(asz@c) _pesz-ab2 nu gesz gal2 tagx(BALAG)_ 1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "{d}utu",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ib-ri2-um",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "1(u@c) _u4-u4_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "{d}asz-dar",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "1(u@c) _u4-u4_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "1(u@c) _udu_",
+      "surface": "reverse",
+      "column": "column 6",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_dingir-dingir_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "ib-ri2-um",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "1(u@c) _u4-u4_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "ti-la-dum",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_dingir-dingir#_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[ib-ri2-um]",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_[nidba2]_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_nig2-ag2_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_nig2-ag2_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_i3-gesz_ {gesz}ir-de3",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_igi-igi_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_dingir-dingir_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_igi-igi_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_na-se11 na-se11_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_za3-me_-ma",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_balag-di-balag-di_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_balag-di_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_al6_-BAD",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "'a3-ru12-gu2{ki}",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "i-a-ba-ad",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_si-du3_",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "3(asz@t)",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 7",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "3(asz@t)-ma",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_al6_-BAD",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_dam_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[mu]-a#-[bi2-isz-dum]",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "du-a-ba-asz2",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "PAD-tug2",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "7(asz@c)#",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "ap",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_sag_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_szu-szu_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "[ma-lik-tum]",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "[PAD]-tug2#",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_en#_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_al6-tusz_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "{d}utu",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "2(asz@c) _ka2_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_e2-duru5_{ki}",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_igi-tum3_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "i-ba-na",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_gub3_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[ma-lik-tum]",
+      "surface": "reverse",
+      "column": "column 8",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_al6-tusz_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_u2-il2_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[ma-lik]-tum",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[sa-hu]-ra-ti# _i3-[gesz]_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "2(asz@c) _e2-duru5{ki}_-su3",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_igi-igi_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_nu igi-hi-du8_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "2(asz@c) _e2-duru5{ki}_-su3",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "a-ti-ma",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_{gesz}szudun_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_a-mu-a-mu_-su3",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "am-sa-a",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "_igi-igi_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "_igi-hi-du8_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "7(asz@c) _u4_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_mah_",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "2(asz@c) _sila4_ 7(asz@c) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR [sikiL]",
+      "surface": "reverse",
+      "column": "column 9",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "7(asz@c) gu2-mi-a-nu |SZE+TIN|",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "7(asz@c)# ma-sa-ha-dum",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_ub-u8-mi2_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a-he-ri2",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_u4-u4_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_mah_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_gi6-an_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "i-bi2-ni-li-im",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[isz11-ru12-ud-da-mu]",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "a-he-ri2",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_mah_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "en-na-NI",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "3(asz@c) _u4_",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "30",
+      "atf": "[ga]-bi2#-[li-a-dum]",
+      "surface": "reverse",
+      "column": "column 10",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "2(asz@c)# _sila4#_ [7(asz@c@90) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR _sikil_ 7(asz@c@90) gu2-mi-a-nu |SZE+TIN| 7(asz@c)] masz#-ha#-dum",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_ub-u8-mi2_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "a-he-ri2",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_u4-u4_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ga-bi2-li-a-dum",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "i-bi2-ni-li-[im]",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[2(asz@c) _udu]_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "isz11-ru12-ud-da-mu",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "a-he-ri2",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "ga-bi2-li-a-dum",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "en-na-NI",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_nidba2_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "[x _u4]_",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[sa-ba-dum]",
+      "surface": "reverse",
+      "column": "column 11",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "a-hir-dum",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "2(asz@c) _sila4_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "7(asz@c) _surx(EREM)? tur_ 7(asz@c) {gesz}ASAR _sikil_ 7(asz@c) gu2-mi#:a#-nu |SZE+TIN| 7(asz@c) masz-ha-dum",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[UB]-U8-_mi2_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "mi-in",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "a-he-ri2",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "sa-ba-dum",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "a-he2-dum",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "2(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_dingir#_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[i-bi2-ni-li-im]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[2(asz@c) _udu]_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "[DINGIR]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "isz11-ru12-ud-da-mu",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[mi-in]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "[a-he-ri2]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[sa-ba-dum]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[a-hir-dum]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "[en-na-NI]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_[nidba2]_",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "[in]",
+      "surface": "reverse",
+      "column": "column 12",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_al6-tusz_",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "sza-ti",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "sa-ba-a-ti-su3-ma",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "4(asz@c) ma-ri2-a-dum",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_tug2 nu-tag_",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}ba-ra-ma",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "in _u4_",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "_du-du_",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "'a5-na",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "sa-zax(LAK384){ki}",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "reverse",
+      "column": "column 13"
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "[SZU-SZU-su3]",
+      "surface": "reverse",
+      "column": "column 13",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_nu_ tug2-ZI-ZI",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_szu-szu_-su3",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "ba-ga-ru12",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "a#-ba-ga-ru12",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "du-la-ti",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "na-se11",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_nu gu7_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "du-la-ti",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "_gu7_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "ap",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "du-la-ti-su3",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "[an-ne]",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "_gu7#_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "1(u@c) 6(asz@c) _{gesz}gu#-[gid2-kak szub]_",
+      "surface": "reverse",
+      "column": "column 14",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "reverse",
+      "column": "column 14"
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[en]_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_[gibil]_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_szu mu-tagx(BALAG)_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_e2_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "al6",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "4(asz@t)",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_ba4-ti_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "si-in",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_e2_ ma-tim",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(asz@c) _udu_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "ig-ri2-isz-ha-labx(LAM)",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "1(asz@c) _udu#_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "reverse",
+      "column": "column 15"
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "[a-ti-ma]",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "_[en gibil]_",
+      "surface": "reverse",
+      "column": "column 15",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[nidba2]_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_e2_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_dingir_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "sa-gi-su",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "sa2-du",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "1(asz@c) _an-dul3_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "a-la-gu2-nu",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "sa2-du",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "1(asz@c) _an-dul3_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "a-la-gu2-nu",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "du-usz-da-a-da-mu",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_dim2_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_[gurusz an-dul3 gurusz an-dul3]_",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "reverse",
+      "column": "column 16"
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "[{d}BARA10-isz]",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "[en]",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "[{gesz}taszkarin]",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21'",
+      "atf": "[sag]",
+      "surface": "reverse",
+      "column": "column 16",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "_[ku3:babbar]_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "1(asz@c) _ib2-la2 ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "{gesz}ASAR",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "in",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "1(asz@c) SZU-su3",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "{d}SI-GAR",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "{gesz}taszkarin",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "_sag_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "_ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "1(asz@c) _ib2-la2 ku3:babbar_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "KA-_du3-gid2_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "{gesz}ASAR",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "in",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "1(asz@c) SZU-su3",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "in _u4_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_i3-til3_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ n lines broken ",
+      "surface": "reverse",
+      "column": "column 17"
+    },
+    {
+      "type": "line",
+      "n": "18'",
+      "atf": "[wa]",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19'",
+      "atf": "_[al6-tusz]_",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20'",
+      "atf": "[2(asz@c) sa-ba-a-ti]",
+      "surface": "reverse",
+      "column": "column 17",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "7(asz@c) _u4_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "wa#",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "[7(asz@c) _u4]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "[ZA3-_me]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "_[u4]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "6",
+      "atf": "[sa-ba-da-su3]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "7",
+      "atf": "[wa]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "8",
+      "atf": "_sag_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "9",
+      "atf": "{d}ku-ra",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "10",
+      "atf": "PAD",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "11",
+      "atf": "_e3#_-ma",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "12",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "13",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "14",
+      "atf": "ma-lik-tum",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "15",
+      "atf": "wa",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "16",
+      "atf": "_szu mu-nigin2_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "17",
+      "atf": "_[e2 dingir-dingir]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "18",
+      "atf": "[ma2-ga-na-tim]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "19",
+      "atf": "_[nidba2]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "20",
+      "atf": "[sa-zax(LAK384){ki}]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "21",
+      "atf": "[gu7]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "22",
+      "atf": "[in]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "23",
+      "atf": "[U4]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "24",
+      "atf": "[su-wa-ti]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "25",
+      "atf": "_en_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "26",
+      "atf": "_e2_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "27",
+      "atf": "_ti{tug2}_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "28",
+      "atf": "_[ki-na2]_",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "29",
+      "atf": "[ap]",
+      "surface": "reverse",
+      "column": "column 18",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "1",
+      "atf": "ma-lik-tum",
+      "surface": "bottom",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2",
+      "atf": "_e2_",
+      "surface": "bottom",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "3",
+      "atf": "_dingir-dingir en_",
+      "surface": "bottom",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "4",
+      "atf": "_ki-na2_",
+      "surface": "bottom",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "5",
+      "atf": "u3-lu-um",
+      "surface": "bottom",
+      "column": "column 1",
+      "english": null
+    },
+    {
+      "type": "note",
+      "text": "$ rest broken ",
+      "surface": "bottom",
+      "column": "column 1"
+    },
+    {
+      "type": "line",
+      "n": "1'",
+      "atf": "tug2-ZI-ZI",
+      "surface": "bottom",
+      "column": "column 2",
+      "english": null
+    },
+    {
+      "type": "line",
+      "n": "2'",
+      "atf": "2(asz@c) _sag_-su3#",
+      "surface": "bottom",
+      "column": "column 2",
+      "english": null
+    }
+  ],
+  "english": [
+    "1 Gulilum of gold,",
+    "(a kind of profession)",
+    "a kind of profession",
+    "he will recover.",
+    "1 sheep",
+    "For Utu",
+    "food offering",
+    "....",
+    "I erected.",
+    "on the day",
+    "a gift of... wood",
+    "her husband",
+    "a kind of grass",
+    "KA-dugid, gold.",
+    "Na’u-duri",
+    "a garment, a turban, a muhru-aromatic",
+    "the droops",
+    "textile (for)",
+    "(a kind of profession)",
+    "malt",
+    "road",
+    "(a kind of garment)",
+    "1 gold...,",
+    "1 a-c-(worker): ara-tua uhab-garment",
+    "1 a-c-(worker), a door",
+    "(a kind of profession)",
+    "a kind of profession",
+    "he will recover.",
+    "On the day",
+    "(a kind of profession)",
+    "emerges.",
+    "the house",
+    "I swore.",
+    "At that time",
+    "the house",
+    "To Kura",
+    "delivery",
+    "(a kind of insect)",
+    "of Dr",
+    "a gift",
+    "......",
+    "of Dr",
+    "the bed",
+    "on the day",
+    "(a kind of profession)",
+    "go out",
+    "house",
+    "a second time"
+  ],
+  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "status": "partial_english",
+  "translation_meta": {
+    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
+    "device": "cuda",
+    "prompt": "translate Akkadian to English: ",
+    "lines_translated": 48,
+    "lines_total": 834,
+    "source": "local_api"
+  },
+  "translation_status": "print_edition",
+  "translation_label": "Print edition (no CDLI English)",
+  "translation_short": "Print: ARET",
+  "translation_detail": "Published series match (ARET) — scholars have almost certainly translated this (often IT/DE/FR/EN in print), but CDLI has no English text",
+  "cdli_has_english": false,
+  "open_english": false,
+  "print_edition_likely": true,
+  "untranslated_open": true,
+  "has_machine_draft": true,
+  "machine_draft_lines": 48
+}
