@@ -104,3 +104,31 @@ CDLI `translation_source = "no translation"` means **not in CDLI**, not necessar
 - CDLI catalogue & ATF: follow [CDLI](https://cdli.earth/) terms  
 - eBL fonts & sign list: follow eBL / author terms  
 - App code in this repo: TBD (add a LICENSE when you publish)
+
+## In-browser translator (`web/translate.html`)
+
+Runs the ATF→English T5 model fully client-side with Transformers.js v3 in a Web Worker
+(`web/js/translator.js` + `web/js/translator-worker.js`). Per line: prefix
+`translate Akkadian to English: `, 4 beams, max 100 new tokens. Output is labelled as a machine draft.
+
+Model files are **not in git** (`web/models/` is gitignored, ~470 MB with fp32, ~95 MB int8 only).
+To run locally, export and copy them:
+
+```bash
+# export (see ../atf-translate-test/onnx-export/): optimum-cli export onnx --task text2text-generation-with-past
+# + onnxruntime int8 dynamic quantization (EnableSubgraph for decoder_model_merged)
+cp -r ../atf-translate-test/onnx-export/tjs web/models/atf-to-english
+python3 -m http.server -d web 8000   # open http://localhost:8000/translate.html
+```
+
+Expected layout: `web/models/atf-to-english/{config.json,generation_config.json,tokenizer*.json,special_tokens_map.json}`
+and `onnx/{encoder_model,decoder_model_merged}_quantized.onnx` (int8, default) or the fp32 files.
+Note: the exported `tokenizer.json` uses `Sequence[WhitespaceSplit, Metaspace(prepend_scheme)]`, which Transformers.js 3.7 tokenizes wrongly (garbage output). In the web copy, `pre_tokenizer` and `decoder` are replaced with a single `Metaspace` (`add_prefix_space: true`); token ids then match Python exactly.
+Options: `?dtype=fp32`, or `?model=montycrypto/atf-to-english` to load from the Hugging Face Hub
+(requires an `onnx/` folder in that repo).
+
+## Curated static pages (`web/t/`)
+
+`python3 scripts/build_static.py` reads `web/data-curated/curated.json` plus `../unread-db/corpus.sqlite`
+(read-only) and `web/data/texts/<id>.json`, and writes pre-rendered `web/t/<id>.html`, `web/t/index.html`
+and `web/sitemap.xml`. ATF is only shown when the source allows republication (`sources.can_republish_atf`).

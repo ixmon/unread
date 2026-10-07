@@ -8,3 +8,6 @@ node_modules/
 *.swo
 .swn
 web/data
+
+# Large local model files (ONNX); see README "In-browser translator"
+web/models/

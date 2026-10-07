@@ -1457,3 +1457,7 @@ body.mode-epic .catalog-card .title {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Links to static pages in the main nav (not view buttons) */
+.header-nav .nav-link { color: var(--text-dim); padding: 0.4rem 0.85rem; border-radius: 999px; text-decoration: none; }
+.header-nav .nav-link:hover { color: var(--text); background: var(--bg-hover); }

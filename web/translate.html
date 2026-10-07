@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATF → English translator (in-browser) · Unread</title>
+    <meta name="description" content="Translate Akkadian ATF transliteration to English in your browser with a small T5 model (machine draft)." />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/static.css" />
+  </head>
+  <body class="static-page">
+    <header class="static-header">
+      <a class="brand" href="index.html">Unread · New Cuneiform Translations</a>
+      <nav aria-label="Main">
+        <a class="nav-link" href="index.html">Explore &amp; map</a>
+        <a class="nav-link" href="t/index.html">Curated texts</a>
+        <a class="nav-link active" href="translate.html" aria-current="page">Translator</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <h1>ATF → English, in your browser</h1>
+      <p class="lede">
+        Paste Akkadian ATF transliteration, one line per line. Each line is translated separately
+        by a small T5 model running entirely on this device (no server). Output is a
+        <strong>machine draft</strong>, not a scholarly translation.
+      </p>
+      <p class="model-line">Model: <code id="model-id">…</code> · <span id="model-src"></span></p>
+
+      <label for="atf-input" class="field-label">ATF lines</label>
+      <textarea id="atf-input" rows="8" spellcheck="false">a-na be-li2-ia qi2-bi2-ma
+um-ma {d}utu-ki-ib-si ARAD-ka-ma</textarea>
+
+      <div class="controls">
+        <button type="button" class="btn primary" id="btn-run">Translate</button>
+        <button type="button" class="btn" id="btn-stop" disabled>Stop</button>
+        <span id="status" class="status" role="status">Model not loaded yet (≈95 MB download on first use, then cached).</span>
+      </div>
+      <div class="progress" id="progress" hidden>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-label" id="progress-label"></div>
+      </div>
+
+      <section id="results" class="results" aria-live="polite"></section>
+      <p class="draft-label" id="draft-label" hidden></p>
+    </main>
+    <footer class="static-footer">
+      Model: montycrypto/atf-to-english (T5-small fine-tune, checkpoint atf-en-best-v2), ONNX int8 via Transformers.js.
+      Prompt prefix <code>translate Akkadian to English: </code>, 4 beams, max 100 new tokens.
+    </footer>
+    <script type="module" src="js/translator.js"></script>
+  </body>
+</html>
