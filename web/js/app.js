@@ -1168,11 +1168,37 @@ function initMap() {
     maxZoom: 10,
   }).setView([33.5, 44.0], 5);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: "abcd",
-    maxZoom: 18,
+  // Self-hosted, label-free shaded relief (NOAA ETOPO 2022 + Natural Earth, both public domain).
+  // Built by scripts/basemap/render_relief.py; see web/tiles/relief/ATTRIBUTION.md.
+  // z4-6 cover a wide area; z7-8 add Near East detail; above z8 tiles are upscaled.
+  const RELIEF_URL = "tiles/relief/{z}/{x}/{y}.webp";
+  const RELIEF_ATTR =
+    'Relief: <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model">NOAA ETOPO 2022</a>' +
+    ' &middot; <a href="https://www.naturalearthdata.com/">Natural Earth</a>';
+  L.tileLayer(RELIEF_URL, {
+    attribution: RELIEF_ATTR,
+    minZoom: 4,
+    maxZoom: 10,
+    minNativeZoom: 4,
+    maxNativeZoom: 6,
+    bounds: [[5, -10], [60, 100]],
+    noWrap: true,
   }).addTo(state.map);
+  L.tileLayer(RELIEF_URL, {
+    minZoom: 7,
+    maxZoom: 10,
+    minNativeZoom: 7,
+    maxNativeZoom: 8,
+    bounds: [[22, 24], [46, 62]],
+    noWrap: true,
+  }).addTo(state.map);
+
+  // Fallback: CARTO dark basemap (now requires a free API key: https://carto.com/basemaps/apikey)
+  // L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=YOUR_KEY", {
+  //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  //   subdomains: "abcd",
+  //   maxZoom: 18,
+  // }).addTo(state.map);
 
   // Fit Mesopotamia + Anatolia
   state.map.fitBounds([

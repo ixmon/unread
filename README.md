@@ -132,3 +132,10 @@ Options: `?dtype=fp32`, or `?model=montycrypto/atf-to-english` to load from the 
 `python3 scripts/build_static.py` reads `web/data-curated/curated.json` plus `../unread-db/corpus.sqlite`
 (read-only) and `web/data/texts/<id>.json`, and writes pre-rendered `web/t/<id>.html`, `web/t/index.html`
 and `web/sitemap.xml`. ATF is only shown when the source allows republication (`sources.can_republish_atf`).
+
+## Basemap (`web/tiles/relief/`)
+
+The map uses our own label-free shaded-relief tiles (WebP XYZ, z4–8, ~5.5 MB) instead of CARTO
+(which now requires an API key). Rendered by `scripts/basemap/render_relief.py` from NOAA ETOPO 2022
+(public domain) and Natural Earth 10m (public domain); no roads, borders, labels or modern reservoirs.
+Sources, extents and rebuild commands: `web/tiles/relief/ATTRIBUTION.md`.
