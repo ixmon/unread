@@ -1,0 +1,9 @@
+{
+  "$note": "Single source for site name + header/footer links. After editing, run: python3 scripts/build_static.py (patches index.html, translate.html and rebuilds web/t/*).",
+  "name": "Unread Atlas",
+  "tagline": "first readings · open corpus",
+  "links": [
+    {"id": "x", "label": "@roguesamurai", "title": "Hayden on X", "url": "https://x.com/roguesamurai"},
+    {"id": "github", "label": "GitHub", "title": "Source on GitHub", "url": "https://github.com/ixmon/unread"}
+  ]
+}

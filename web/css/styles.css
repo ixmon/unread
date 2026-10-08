@@ -1461,3 +1461,9 @@ body.mode-epic .catalog-card .title {
 /* Links to static pages in the main nav (not view buttons) */
 .header-nav .nav-link { color: var(--text-dim); padding: 0.4rem 0.85rem; border-radius: 999px; text-decoration: none; }
 .header-nav .nav-link:hover { color: var(--text); background: var(--bg-hover); }
+
+/* Header social links (X, GitHub) — URLs come from web/site.json via scripts/build_static.py */
+.site-links { display: flex; gap: 0.35rem; margin-left: 0.75rem; }
+.social-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--text-faint); text-decoration: none; font-size: 0.8rem; padding: 0.25rem 0.45rem; border-radius: 6px; }
+.social-link:hover { color: var(--text); background: var(--bg-hover); }
+@media (max-width: 900px) { .social-link span { display: none; } }

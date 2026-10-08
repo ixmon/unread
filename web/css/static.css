@@ -36,3 +36,5 @@ body.static-page { overflow: auto; height: auto; }
 .card-list .sub { color: var(--text-dim); font-size: 0.9rem; }
 .withheld { color: var(--text-dim); font-style: italic; }
 a { color: var(--accent-strong); }
+.footer-links { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+.static-footer .social-link { padding-left: 0; }

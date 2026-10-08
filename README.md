@@ -1,4 +1,4 @@
-# unread
+# Unread Atlas
 
 A **web reader** for works that already have a source text but little or no open translation. The first corpus is cuneiform: ATF (transliteration) with little or no open English on CDLI. The tool is meant to grow past cuneiform.
 
@@ -135,7 +135,7 @@ and `web/sitemap.xml`. ATF is only shown when the source allows republication (`
 
 ## Basemap (`web/tiles/relief/`)
 
-The map uses our own label-free shaded-relief tiles (WebP XYZ, z4–8, ~5.5 MB) instead of CARTO
+The map uses our own label-free shaded-relief tiles (WebP XYZ: world z0–6, Near East z7–8) instead of CARTO
 (which now requires an API key). Rendered by `scripts/basemap/render_relief.py` from NOAA ETOPO 2022
 (public domain) and Natural Earth 10m (public domain); no roads, borders, labels or modern reservoirs.
 Sources, extents and rebuild commands: `web/tiles/relief/ATTRIBUTION.md`.
