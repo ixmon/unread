@@ -135,7 +135,7 @@ and `web/sitemap.xml`. ATF is only shown when the source allows republication (`
 
 ## Basemap (`web/tiles/relief/`)
 
-The map uses our own label-free shaded-relief tiles (WebP XYZ: world z0–6, Near East z7–8) instead of CARTO
+The map uses our own label-free shaded-relief tiles (WebP XYZ: world z0–7, Near East z7–8 from finer data) instead of CARTO
 (which now requires an API key). Rendered by `scripts/basemap/render_relief.py` from NOAA ETOPO 2022
 (public domain) and Natural Earth 10m (public domain); no roads, borders, labels or modern reservoirs.
 Sources, extents and rebuild commands: `web/tiles/relief/ATTRIBUTION.md`.

@@ -1172,7 +1172,8 @@ function initMap() {
 
   // Self-hosted, label-free shaded relief (NOAA ETOPO 2022 + Natural Earth, both public domain).
   // Built by scripts/basemap/render_relief.py; see web/tiles/relief/ATTRIBUTION.md.
-  // z0-6 cover the whole world (ETOPO 60"); z7-8 add Near East detail (ETOPO 15"); above that tiles are upscaled.
+  // z0-7 cover the whole world (ETOPO 60"); Near East z7-8 come from ETOPO 15" (the z7 files there replace
+  // the 60" ones in the same folder); above that tiles are upscaled.
   const RELIEF_URL = "tiles/relief/{z}/{x}/{y}.webp";
   const RELIEF_ATTR =
     'Relief: <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model">NOAA ETOPO 2022</a>' +
@@ -1182,7 +1183,7 @@ function initMap() {
     minZoom: 0,
     maxZoom: 10,
     minNativeZoom: 0,
-    maxNativeZoom: 6,
+    maxNativeZoom: 7,
     bounds: [[-85.0511, -180], [85.0511, 180]],
     noWrap: true,
   }).addTo(state.map);
