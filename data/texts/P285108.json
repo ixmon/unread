@@ -2133,14 +2133,18 @@
     "he will recover and he will recover.",
     "If a man is ill with a sickness: butter, butter, brother's white grass, and wine."
   ],
-  "english_note": "Draft model translation (atf-en-best-v2), first 48 of 209 lines. Not a scholarly edition — machine draft for UI demo.",
+  "english_note": "Machine draft · model atf-en-best-v2 (montycrypto/atf-to-english @ d871547) · translated 2026-08-07. First 48 of 209 lines. Not a scholarly translation; verify against a published edition.",
   "status": "partial_english",
   "translation_meta": {
+    "kind": "machine_draft",
     "model": "atf-en-best-v2",
+    "model_repo": "montycrypto/atf-to-english",
+    "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+    "translated_on": "2026-08-07",
+    "date_basis": "file modification date (translation happened on or before this day)",
     "prompt": "translate Akkadian to English: ",
     "lines_translated": 48,
-    "lines_total": 209,
-    "beams": 4
+    "lines_total": 209
   },
   "translation_status": "print_edition",
   "translation_label": "Print edition (no CDLI English)",

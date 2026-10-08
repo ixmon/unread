@@ -3,10 +3,20 @@
  */
 
 const DATA_BASE = "data";
+const API_PARAM = new URLSearchParams(location.search).get("api");
 /** Local translate API (same host as the page, port 42226). Override with ?api=http://host:port */
-const TRANSLATE_API =
-  new URLSearchParams(location.search).get("api") ||
-  `${location.protocol}//${location.hostname}:42226`;
+const TRANSLATE_API = API_PARAM || `${location.protocol}//${location.hostname}:42226`;
+/**
+ * Static mode (public GitHub Pages build): no local translate API is probed; "Translate" opens the
+ * in-browser translator instead. On when the page carries <meta name="unread-static" content="1">
+ * (added by scripts/build_site.sh) or is not served from a local/LAN host. ?api=… always re-enables the API.
+ */
+const IS_LOCAL_HOST =
+  /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[::1\]$)/.test(location.hostname) ||
+  location.hostname.endsWith(".local");
+const STATIC_MODE =
+  !API_PARAM && (!!document.querySelector('meta[name="unread-static"][content="1"]') || !IS_LOCAL_HOST);
+const TRANSLATOR_PAGE = "translate.html";
 const TRANSLATE_CHUNK = 12; // lines per request (server max default 64)
 const TRANSLATE_DEFAULT_LIMIT = 48; // first-pass default; "continue" fills the rest
 
@@ -343,7 +353,9 @@ function machineChip(text) {
   if (!n) return "";
   const total = (text.lines || []).filter((l) => l.type === "line").length;
   const label = total && n < total ? `Machine draft ${n}/${total}` : `Machine draft (${n})`;
-  return `<span class="chip status-machine" title="Local model English — not a scholarly edition">${label}</span>`;
+  const tm = text.translation_meta || {};
+  const stamp = tm.model ? ` · ${tm.model}${tm.translated_on ? ` · ${tm.translated_on}` : ""}` : "";
+  return `<span class="chip status-machine" title="Machine English${escapeAttr(stamp)} — not a scholarly translation">${label}</span>`;
 }
 
 function markerChips(item) {
@@ -846,7 +858,11 @@ function renderEnglishCol(text) {
     const remaining = contentLines.length - text.english.length;
     const more =
       remaining > 0
-        ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+        ? STATIC_MODE
+          ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+               <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
+             </p>`
+          : `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
              <button type="button" class="btn" id="btn-continue-translate" style="margin-left:0.5rem">Continue</button>
            </p>`
         : "";
@@ -856,6 +872,22 @@ function renderEnglishCol(text) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
   } else {
     const lineCount = contentLines.length;
+    if (STATIC_MODE) {
+      body.innerHTML = `
+      <div class="english-placeholder">
+        <div class="badge">Awaiting first English</div>
+        <p>No machine draft is published for this text yet.</p>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
+          ${lineCount} ATF content lines ready. You can draft English yourself with the in-browser
+          translator (model atf-en-best-v2, ≈95 MB download on first use, runs on your device).
+        </p>
+        <p style="margin-top:1rem">
+          ${lineCount ? `<a class="btn primary" href="${escapeAttr(translatorUrl(text, 0))}">Open in the in-browser translator</a>` : ""}
+        </p>
+      </div>`;
+      bindLineHover(body);
+      return;
+    }
     body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
@@ -875,9 +907,23 @@ function renderEnglishCol(text) {
 }
 
 // ─── Translate API ───
+/** Link to translate.html prefilled with this text's ATF lines (starting at line index `from`). */
+function translatorUrl(text, from = 0) {
+  const q = new URLSearchParams({ id: text.id });
+  if (from > 0) q.set("from", String(from));
+  return `${TRANSLATOR_PAGE}?${q}`;
+}
+
 async function checkTranslateApi() {
   const el = $("#api-status");
   if (!el) return;
+  if (STATIC_MODE) {
+    el.textContent = "In-browser model";
+    el.className = "api-status static";
+    el.title = "Translate opens the in-browser translator (no server)";
+    updateTranslateButton();
+    return;
+  }
   try {
     const res = await fetch(`${TRANSLATE_API}/api/health`, { signal: AbortSignal.timeout(4000) });
     const data = await res.json();
@@ -910,6 +956,11 @@ function updateTranslateButton() {
     return;
   }
   btn.disabled = !text || lines.length === 0 || remaining === 0;
+  if (STATIC_MODE) {
+    btn.title = "Open these ATF lines in the in-browser translator";
+    btn.textContent = !text || lines.length === 0 ? "Translate" : remaining === 0 ? "Done" : "Translate in browser";
+    return;
+  }
   if (!text || lines.length === 0) {
     btn.textContent = "Translate";
   } else if (remaining === 0) {
@@ -939,6 +990,10 @@ function setProgress(done, total, label) {
 async function startTranslate(opts = {}) {
   const text = state.currentText;
   if (!text || state.translating) return;
+  if (STATIC_MODE) {
+    location.href = translatorUrl(text, Array.isArray(text.english) ? text.english.length : 0);
+    return;
+  }
 
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
   if (!contentLines.length) {
@@ -1009,10 +1064,13 @@ async function startTranslate(opts = {}) {
       done += tr.length;
       text.english = [...english];
       text.status = english.length >= contentLines.length ? "english" : "partial_english";
-      text.english_note = `Model draft via local API (${data.model || "T5"} · ${data.device || "?"}). Not a scholarly edition.`;
+      const modelName = String(data.model || "T5").split("/").filter(Boolean).pop(); // never store local paths
+      const today = new Date().toISOString().slice(0, 10);
+      text.english_note = `Machine draft · model ${modelName} · translated ${today} (local API). Not a scholarly translation; verify against a published edition.`;
       text.translation_meta = {
-        model: data.model,
-        device: data.device,
+        kind: "machine_draft",
+        model: modelName,
+        translated_on: today,
         prompt: data.prompt,
         lines_translated: english.length,
         lines_total: contentLines.length,
@@ -1720,7 +1778,7 @@ async function main() {
   initTimeline();
   initMap();
   checkTranslateApi();
-  setInterval(checkTranslateApi, 30000);
+  if (!STATIC_MODE) setInterval(checkTranslateApi, 30000);
 
   try {
     const man = await fetch(`${DATA_BASE}/texts/manifest.json`).then((r) => (r.ok ? r.json() : []));

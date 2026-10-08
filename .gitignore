@@ -11,3 +11,6 @@ web/data
 
 # Large local model files (ONNX); see README "In-browser translator"
 web/models/
+
+# Public build output (scripts/build_site.sh); CI rebuilds it
+dist/

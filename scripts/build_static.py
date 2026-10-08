@@ -123,7 +123,24 @@ def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
     return rows
 
 
-def page(title: str, desc: str, body: str, canonical: str, depth: str = "../") -> str:
+def og_tags(title: str, desc: str, url: str, typ: str = "article") -> str:
+    base = url.split("/t/")[0].rstrip("/") + "/"
+    return (
+        f'<meta property="og:type" content="{typ}">\n'
+        f'<meta property="og:site_name" content="{e(SITE["name"])}">\n'
+        f'<meta property="og:title" content="{e(title)}">\n'
+        f'<meta property="og:description" content="{e(desc)}">\n'
+        f'<meta property="og:url" content="{e(url)}">\n'
+        f'<meta property="og:image" content="{e(base)}og.png">\n'
+        f'<meta property="og:image:width" content="1200">\n'
+        f'<meta property="og:image:height" content="630">\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
+        '<meta name="twitter:creator" content="@roguesamurai">\n'
+        '<meta name="theme-color" content="#0f1114">'
+    )
+
+
+def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", typ: str = "article") -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -132,6 +149,8 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../") -
 <title>{e(title)} · {e(SITE["name"])}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(canonical)}">
+<link rel="icon" href="{depth}favicon.svg" type="image/svg+xml">
+{og_tags(title, desc, canonical, typ)}
 <link rel="stylesheet" href="{depth}css/styles.css">
 <link rel="stylesheet" href="{depth}css/static.css">
 </head>
@@ -259,6 +278,7 @@ def main():
         "Each page is plain HTML: transliteration (where licensing allows), line-by-line machine English, and metadata.</p>"
         f'<ul class="card-list">{"".join(items_html)}</ul>',
         f"{base}t/index.html",
+        typ="website",
     )
     (OUT / "index.html").write_text(idx)
     today = dt.date.today().isoformat()
@@ -266,6 +286,9 @@ def main():
     sm += [f"  <url><loc>{e(u)}</loc><lastmod>{today}</lastmod></url>" for u in urls]
     sm.append("</urlset>")
     (WEB / "sitemap.xml").write_text("\n".join(sm) + "\n")
+    # Note: crawlers only read robots.txt at the host root (ixmon.github.io/robots.txt, i.e. the
+    # user-site repo); this copy documents intent and points to the sitemap for anyone who looks.
+    (WEB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
     for pth in (WEB / "index.html", WEB / "translate.html"):
         apply_site_config(pth)
     print("wrote", OUT / "index.html", "and", WEB / "sitemap.xml", f"({len(urls)} urls)")

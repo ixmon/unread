@@ -1561,10 +1561,22 @@ body.mode-epic .catalog-card .title {
 }
 .era-btn.narrow { font-size: 0; }
 .era-btn.narrow::after { content: "·"; font-size: 0.75rem; }
-.era-btn:hover { color: var(--text); background: var(--bg-hover); }
-.era-btn.active { color: var(--accent-strong); }
+/* Only the current era looks selected: hover is a light text tint, mouse focus leaves no trace,
+   keyboard focus gets an outline ring (not the selected fill). */
+.era-btn:focus { outline: none; }
+.era-btn:focus-visible { outline: 1px solid rgba(196, 120, 74, 0.7); outline-offset: -1px; }
+@media (hover: hover) {
+  .era-btn:not(.active):hover { color: var(--text-dim, var(--text)); }
+}
+.era-btn.active {
+  color: var(--accent-strong);
+  background: rgba(196, 120, 74, 0.16);
+  font-weight: 600;
+}
 .timeline-note {
   margin: 0.3rem 0 0;
   font-size: 0.62rem;
   color: var(--text-faint);
 }
+
+.api-status.static { color: var(--text-faint); border-color: var(--border-soft); }

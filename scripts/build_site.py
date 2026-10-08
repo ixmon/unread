@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+"""Assemble the public static site into dist/ (real files, no symlinks). Python stdlib only.
+
+What the deployed site needs at runtime (everything else stays out):
+  web/ pages, css, js, fonts, tiles, t/ (curated pre-rendered pages), sitemap.xml, robots.txt, og.png
+  data/catalog.json              map/list/filters (metadata only, no English)
+  data/texts/manifest.json       list of packaged texts
+  data/texts/<id>.json           packaged texts: ATF + line data (+ stamped machine English for some)
+  data/atf_unicode_readings.json ATF -> Unicode cuneiform sign map (derived from the eBL sign list)
+Excluded: web/models/ (translator weights come from the Hugging Face Hub), web/data symlink,
+web/data-curated/ and web/site.json (build inputs), data/*_candidates.json, data/interesting_cache_finds.json,
+data/ebl_reading_unicode.json, data/music/ (not used by the site).
+
+Policy (scripts/publish_policy.json):
+  * ATF is copied only from sources with can_republish_atf=true (P-numbers = CDLI). A text from a
+    non-republishable source is shipped with atf/lines stripped (metadata + English only).
+  * Machine English: only what is already packaged in data/texts and the curated t/ pages; every text
+    with English must carry a model/version/date stamp (scripts/stamp_mt.py) or the build fails.
+  * Curated pages for non-republishable sources must not contain ATF cells.
+
+Usage: python3 scripts/build_site.py [--out dist] [--no-clean]
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+WEB = ROOT / "web"
+DATA = ROOT / "data"
+POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
+
+WEB_INCLUDE = ["index.html", "translate.html", "sitemap.xml", "robots.txt", "og.png", "favicon.svg", "css", "js", "fonts", "tiles", "t"]
+DATA_FILES = ["catalog.json", "atf_unicode_readings.json"]
+MAX_FILE = 100 * 1024 * 1024
+STATIC_META = '<meta name="unread-static" content="1" />'
+
+
+def fail(msg: str) -> None:
+    print(f"build_site: ERROR: {msg}", file=sys.stderr)
+    sys.exit(1)
+
+
+def source_of(t: dict) -> str:
+    s = t.get("source_id") or (POLICY["default_source_for_P_numbers"] if str(t.get("id", "")).startswith("P") else None)
+    if not s or s not in POLICY["sources"]:
+        fail(f"text {t.get('id')}: unknown source {s!r} (add it to scripts/publish_policy.json)")
+    return s
+
+
+def copy_tree(src: Path, dst: Path) -> None:
+    # follow symlinks so dist/ only ever holds real files
+    shutil.copytree(src, dst, symlinks=False, ignore=shutil.ignore_patterns(".DS_Store", "*.py", "__pycache__"))
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(ROOT / "dist"))
+    ap.add_argument("--no-clean", action="store_true")
+    a = ap.parse_args()
+    out = Path(a.out).resolve()
+    if out in (ROOT, WEB, DATA) or out == Path("/"):
+        fail(f"refusing to use {out} as output dir")
+    if out.exists() and not a.no_clean:
+        shutil.rmtree(out)
+    out.mkdir(parents=True, exist_ok=True)
+
+    for name in WEB_INCLUDE:
+        src = WEB / name
+        if not src.exists():
+            if name == "og.png":
+                print("build_site: warning: web/og.png missing (OG image)")
+                continue
+            fail(f"missing web/{name}")
+        (copy_tree if src.is_dir() else shutil.copy2)(src, out / name)
+
+    # mark the pages as the static build (no local translate API probing)
+    for page in ("index.html", "translate.html"):
+        p = out / page
+        s = p.read_text(encoding="utf-8")
+        if STATIC_META not in s:
+            s = s.replace('<meta charset="utf-8" />', f'<meta charset="utf-8" />\n    {STATIC_META}', 1)
+            if STATIC_META not in s:
+                fail(f"could not add static marker to {page}")
+            p.write_text(s, encoding="utf-8")
+
+    # data
+    dd = out / "data"
+    (dd / "texts").mkdir(parents=True)
+    for f in DATA_FILES:
+        shutil.copy2(DATA / f, dd / f)
+    cat = json.loads((DATA / "catalog.json").read_text())
+    for it in cat["items"]:
+        source_of(it)
+        if any(k in it for k in ("english", "lines", "atf")):
+            fail(f"catalog item {it['id']} carries text/English; catalog must stay metadata-only")
+
+    me_pol = POLICY["machine_english"]
+    report = {"texts": 0, "atf_texts": 0, "atf_withheld": [], "mt_texts": [], "mt_lines": 0}
+    manifest = json.loads((DATA / "texts" / "manifest.json").read_text())
+    shipped = []
+    for m in manifest:
+        p = DATA / "texts" / f"{m['id']}.json"
+        if not p.exists():
+            fail(f"manifest lists {m['id']} but {p} is missing")
+        t = json.loads(p.read_text(encoding="utf-8"))
+        src = source_of(t)
+        if not POLICY["sources"][src]["can_republish_atf"]:
+            t["atf"] = None
+            for ln in t.get("lines", []):
+                ln.pop("atf", None)
+            t["atf_withheld"] = f"Transliteration not republished ({POLICY['sources'][src]['name']})."
+            report["atf_withheld"].append(t["id"])
+        elif t.get("atf"):
+            report["atf_texts"] += 1
+        eng = t.get("english")
+        n_en = len(eng) if isinstance(eng, list) else (1 if isinstance(eng, str) and eng.strip() else 0)
+        if n_en:
+            tm = t.get("translation_meta") or {}
+            if me_pol.get("require_stamp") and not (tm.get("model") and tm.get("model_version") and tm.get("translated_on")):
+                fail(f"{t['id']}: machine English without model/version/date stamp (run scripts/stamp_mt.py)")
+            cap = me_pol.get("max_lines_per_text")
+            if cap and n_en > cap:
+                fail(f"{t['id']}: {n_en} machine-English lines > policy cap {cap}")
+            report["mt_texts"].append({"id": t["id"], "lines": n_en, "of": tm.get("lines_total"),
+                                       "model": tm["model"], "translated_on": tm["translated_on"]})
+            report["mt_lines"] += n_en
+        (dd / "texts" / p.name).write_text(json.dumps(t, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        shipped.append(m)
+        report["texts"] += 1
+    if me_pol.get("max_texts") and len(report["mt_texts"]) > me_pol["max_texts"]:
+        fail(f"{len(report['mt_texts'])} texts with machine English > policy cap {me_pol['max_texts']}")
+    (dd / "texts" / "manifest.json").write_text(json.dumps(shipped, ensure_ascii=False, separators=(",", ":")))
+
+    # curated pages: ATF only where allowed; count machine English shown there
+    cur = json.loads((WEB / "data-curated" / "curated.json").read_text())
+    report["curated"] = []
+    for c in cur["texts"]:
+        page = out / "t" / (re.sub(r"[^A-Za-z0-9._-]", "_", c["id"]) + ".html")
+        if not page.exists():
+            fail(f"curated page missing: {page.name} (run scripts/build_static.py)")
+        h = page.read_text(encoding="utf-8")
+        can_atf = POLICY["sources"].get(c["source_id"], {}).get("can_republish_atf")
+        if not can_atf and 'class="atf"' in h:
+            fail(f"{page.name}: ATF present but source {c['source_id']} is not republishable")
+        if "Machine draft" not in h or c["translated_on"] not in h:
+            fail(f"{page.name}: missing machine-draft stamp")
+        mm = re.search(r"\((\d+) with machine English\)", h)
+        report["curated"].append({"id": c["id"], "source": c["source_id"], "atf_shown": bool(can_atf),
+                                  "mt_lines": int(mm.group(1)) if mm else None, "model": c["model"],
+                                  "model_version": c["model_version"], "translated_on": c["translated_on"]})
+
+    # sanity: no symlinks, no huge files, no local paths, nothing from web/models
+    total = 0
+    for root, dirs, files in os.walk(out):
+        for n in dirs + files:
+            q = Path(root) / n
+            if q.is_symlink():
+                fail(f"symlink in dist: {q}")
+        for n in files:
+            q = Path(root) / n
+            sz = q.stat().st_size
+            total += sz
+            if sz > MAX_FILE:
+                fail(f"{q} is {sz/1e6:.1f} MB (> 100 MB)")
+            if q.suffix in (".onnx", ".safetensors", ".bin"):
+                fail(f"model weights in dist: {q}")
+            if q.suffix in (".html", ".js", ".json", ".css", ".txt", ".xml"):
+                if "/home/" in q.read_text(encoding="utf-8", errors="ignore"):
+                    fail(f"local filesystem path leaked into {q}")
+
+    try:
+        rev = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    except Exception:
+        rev = ""
+    info = {
+        "built": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "commit": rev,
+        "bytes": total,
+        "packaged_texts": report["texts"],
+        "machine_english": {
+            "packaged_texts_with_mt": len(report["mt_texts"]),
+            "packaged_mt_lines": report["mt_lines"],
+            "curated_pages": len(report["curated"]),
+            "curated_mt_lines": sum(c["mt_lines"] or 0 for c in report["curated"]),
+            "note": "All English on this site is machine draft output (model + version + date stamped), not scholarly translation.",
+        },
+    }
+    (out / "build-info.json").write_text(json.dumps(info, indent=2) + "\n")
+    print(json.dumps({**info, "detail": report}, indent=2, ensure_ascii=False))
+    print(f"build_site: OK -> {out} ({total/1e6:.1f} MB)")
+
+
+if __name__ == "__main__":
+    main()

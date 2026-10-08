@@ -6815,15 +6815,18 @@
     "house",
     "a second time"
   ],
-  "english_note": "Model draft via local API (/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2 · cuda). Not a scholarly edition.",
+  "english_note": "Machine draft · model atf-en-best-v2 (montycrypto/atf-to-english @ d871547) · translated 2026-08-07. First 48 of 834 lines. Not a scholarly translation; verify against a published edition.",
   "status": "partial_english",
   "translation_meta": {
-    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
-    "device": "cuda",
+    "kind": "machine_draft",
+    "model": "atf-en-best-v2",
+    "model_repo": "montycrypto/atf-to-english",
+    "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+    "translated_on": "2026-08-07",
+    "date_basis": "file modification date (translation happened on or before this day)",
     "prompt": "translate Akkadian to English: ",
     "lines_translated": 48,
-    "lines_total": 834,
-    "source": "local_api"
+    "lines_total": 834
   },
   "translation_status": "print_edition",
   "translation_label": "Print edition (no CDLI English)",

@@ -2006,7 +2006,7 @@
     "to return to...",
     "240 cows,"
   ],
-  "english_note": "Model draft via local API (atf-en-best-v2 · cuda). OB Gilgamesh II witness — not a scholarly edition (cf. George, Tigay, etc.).",
+  "english_note": "Machine draft · model atf-en-best-v2 (montycrypto/atf-to-english @ d871547) · translated 2026-08-07. Not a scholarly translation; verify against a published edition. (Gilgamesh II (CBS 07771); cf. published editions.)",
   "status": "english",
   "translation_status": "no_open_english",
   "translation_label": "No open English found",
@@ -2016,14 +2016,18 @@
   "open_english": false,
   "print_edition_likely": false,
   "untranslated_open": true,
-  "has_machine_draft": false,
-  "machine_draft_lines": 0,
+  "has_machine_draft": true,
+  "machine_draft_lines": 217,
   "translation_meta": {
-    "model": "/home/darkstar/cursor/new-cuneiform-translations/../atf-translate-test/models/atf-en-best-v2",
-    "device": "cuda",
+    "kind": "machine_draft",
+    "model": "atf-en-best-v2",
+    "model_repo": "montycrypto/atf-to-english",
+    "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+    "translated_on": "2026-08-07",
+    "date_basis": "file modification date (translation happened on or before this day)",
+    "prompt": "translate Akkadian to English: ",
     "lines_translated": 217,
     "lines_total": 217,
-    "source": "local_api",
     "work": "Gilgamesh II (CBS 07771)"
   }
 }

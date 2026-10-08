@@ -2,6 +2,8 @@
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5";
 
 const PREFIX = "translate Akkadian to English: ";
+// Note: Transformers.js 3.7 has no beam search; num_beams is ignored and decoding is greedy
+// (verified: output == PyTorch greedy, token for token). Python/server drafts use 4 beams.
 const GEN = { num_beams: 4, max_new_tokens: 100, early_stopping: true };
 let pipePromise = null;
 
@@ -10,6 +12,7 @@ function load(cfg) {
   if (cfg.remote) {
     env.allowRemoteModels = true;
     env.allowLocalModels = false;
+    if (cfg.remoteHost) env.remoteHost = cfg.remoteHost; // mirrors / tests (huggingface.co layout)
   } else {
     env.allowRemoteModels = false;
     env.allowLocalModels = true;
@@ -18,6 +21,7 @@ function load(cfg) {
   const t0 = performance.now();
   pipePromise = pipeline("text2text-generation", cfg.model, {
     dtype: cfg.dtype,
+    revision: cfg.revision || "main",
     progress_callback: (p) => {
       if (p.status === "progress" || p.status === "done")
         self.postMessage({ type: "download", file: p.file, loaded: p.loaded ?? p.total, total: p.total });

@@ -38,3 +38,4 @@ body.static-page { overflow: auto; height: auto; }
 a { color: var(--accent-strong); }
 .footer-links { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
 .static-footer .social-link { padding-left: 0; }
+.prefill-src { font-size: 0.85rem; color: var(--text-dim, #9a958a); margin: 0.25rem 0 0.5rem; }

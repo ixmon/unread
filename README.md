@@ -109,23 +109,36 @@ CDLI `translation_source = "no translation"` means **not in CDLI**, not necessar
 
 Runs the ATF→English T5 model fully client-side with Transformers.js v3 in a Web Worker
 (`web/js/translator.js` + `web/js/translator-worker.js`). Per line: prefix
-`translate Akkadian to English: `, 4 beams, max 100 new tokens. Output is labelled as a machine draft.
+`translate Akkadian to English: `, max 100 new tokens. Transformers.js 3.x has no beam search, so the
+browser decodes greedily (identical to PyTorch greedy); the pre-generated drafts used 4 beams in Python.
+Output is labelled as a machine draft with model + date. `?id=P123456[&from=N]` prefills 48 ATF lines of a
+packaged text (the reader's "Translate in browser" button links there on the static site).
 
-Model files are **not in git** (`web/models/` is gitignored, ~470 MB with fp32, ~95 MB int8 only).
-To run locally, export and copy them:
+Weights load by default from the Hugging Face Hub repo set in `DEFAULT_REMOTE_MODEL` (translator.js),
+currently `montycrypto/atf-to-english-onnx`: `onnx/{encoder_model,decoder_model_merged}_quantized.onnx` (int8,
+default) or the fp32 files, plus the patched `tokenizer.json`. The staged upload lives in
+`../atf-translate-test/onnx-export/hf-upload/`. Dev override with local files (gitignored `web/models/`, never deployed):
 
 ```bash
-# export (see ../atf-translate-test/onnx-export/): optimum-cli export onnx --task text2text-generation-with-past
-# + onnxruntime int8 dynamic quantization (EnableSubgraph for decoder_model_merged)
-cp -r ../atf-translate-test/onnx-export/tjs web/models/atf-to-english
-python3 -m http.server -d web 8000   # open http://localhost:8000/translate.html
+cp -r ../atf-translate-test/onnx-export/hf-upload web/models/atf-to-english
+python3 -m http.server -d web 8000   # http://localhost:8000/translate.html?local=1
 ```
 
-Expected layout: `web/models/atf-to-english/{config.json,generation_config.json,tokenizer*.json,special_tokens_map.json}`
-and `onnx/{encoder_model,decoder_model_merged}_quantized.onnx` (int8, default) or the fp32 files.
-Note: the exported `tokenizer.json` uses `Sequence[WhitespaceSplit, Metaspace(prepend_scheme)]`, which Transformers.js 3.7 tokenizes wrongly (garbage output). In the web copy, `pre_tokenizer` and `decoder` are replaced with a single `Metaspace` (`add_prefix_space: true`); token ids then match Python exactly.
-Options: `?dtype=fp32`, or `?model=montycrypto/atf-to-english` to load from the Hugging Face Hub
-(requires an `onnx/` folder in that repo).
+Other options: `?dtype=fp32`, `?model=<hf-id>`, `?revision=<sha>`.
+Note: the exported `tokenizer.json` uses `Sequence[WhitespaceSplit, Metaspace(prepend_scheme)]`, which Transformers.js 3.7
+tokenizes wrongly (garbage output). The web copy uses a single classic T5 `Metaspace` (`add_prefix_space: true`); ids match
+Python on all ATF inputs tested, but it is not byte-for-byte identical on every English string, so it is kept out of the
+PyTorch repo.
+
+## Public build and deploy (`dist/`, GitHub Pages)
+
+`./scripts/build_site.sh` assembles `dist/` (real files, no symlinks; `web/models/` excluded) from `web/` plus the runtime
+data in `data/`: `catalog.json`, `atf_unicode_readings.json`, `texts/manifest.json` and `texts/<id>.json`. Policy lives in
+`scripts/publish_policy.json`: ATF only from sources with `can_republish_atf` (eBL is not), and machine English only as
+already packaged and stamped (`scripts/stamp_mt.py` adds model, version and date). The build fails on unstamped English,
+symlinks, files over 100 MB, model weights or local paths. `.github/workflows/pages.yml` runs the same build on pushes to
+`main` and deploys with `actions/deploy-pages` (repo setting: Pages source = GitHub Actions). The dist page carries
+`<meta name="unread-static">`, so the reader never probes the local translate API there.
 
 ## Curated static pages (`web/t/`)
 

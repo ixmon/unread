@@ -1,0 +1,41 @@
+{
+  "$note": "Publishing policy for the public build (scripts/build_site.py). Snapshot of corpus.sqlite sources table. ATF/line transliterations from a source with can_republish_atf=false are never copied into dist/. Machine English: only what is already packaged in data/texts (stamped by scripts/stamp_mt.py) and the curated pages; set machine_english.max_lines_per_text / max_texts to cap it.",
+  "sources": {
+    "cdli": {
+      "name": "Cuneiform Digital Library Initiative",
+      "license": "CDLI: reuse of catalogue/transliteration data with citation of CDLI; images restricted (not fetched)",
+      "can_republish_atf": true
+    },
+    "oracc": {
+      "name": "Open Richly Annotated Cuneiform Corpus (ORACC)",
+      "license": "CC BY-SA 3.0 (ORACC default); per-file JSON license fields say: This data is released under the CC0 license (133618)",
+      "can_republish_atf": true
+    },
+    "ebl": {
+      "name": "electronic Babylonian Library (eBL), LMU Munich",
+      "license": "MIT (eBL Zenodo dataset); platform terms unverified",
+      "can_republish_atf": false
+    },
+    "tlhdig": {
+      "name": "Thesaurus Linguarum Hethaeorum digitalis (TLHdig) Beta 0.3",
+      "license": "CC BY 4.0",
+      "can_republish_atf": true
+    },
+    "achemenet": {
+      "name": "Linguistically Annotated Achemenet Babylonian Texts (Univ. Helsinki)",
+      "license": "CC BY 4.0",
+      "can_republish_atf": true
+    },
+    "hayden_pairs": {
+      "name": "Hayden's ATF-English training pairs (atf-translate-test/data)",
+      "license": "Derived from CDLI #tr.en and ORACC translations; inherits upstream terms",
+      "can_republish_atf": true
+    }
+  },
+  "default_source_for_P_numbers": "cdli",
+  "machine_english": {
+    "require_stamp": true,
+    "max_texts": null,
+    "max_lines_per_text": null
+  }
+}
