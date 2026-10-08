@@ -700,7 +700,7 @@ function renderMetaCol(text) {
         ${metaRow("Approx. year", yearLabel)}
         ${metaRow("Provenience", text.provenience || text.site)}
         ${metaRow("Site (normalized)", text.site && text.site !== text.provenience ? text.site : null)}
-        ${metaRow("Coordinates", text.lat != null && text.lon != null ? `${text.lat}, ${text.lon}` : null)}
+        ${metaRow("Coordinates", hasKnownFindspot(text) ? `${text.lat}, ${text.lon}` : "find-spot unknown")}
       </dl>
 
       <h3>Publication</h3>
@@ -1271,13 +1271,24 @@ function initMap() {
   ]);
 }
 
+// Find-spots we should not pin: placeholder coordinates from upstream metadata, and
+// proveniences recorded as uncertain/unclear. Those works stay in the list, without a marker.
+const PLACEHOLDER_COORDS = [[51.2297, 58.6555]];
+function hasKnownFindspot(item) {
+  if (!item || item.lat == null || item.lon == null) return false;
+  const lat = Number(item.lat), lon = Number(item.lon);
+  if (PLACEHOLDER_COORDS.some(([a, b]) => Math.abs(lat - a) < 1e-3 && Math.abs(lon - b) < 1e-3)) return false;
+  if (/uncertain|unclear/i.test(item.provenience || "")) return false;
+  return true;
+}
+
 function updateMapMarkers() {
   if (!state.map) return;
 
   // Aggregate filtered items by site
   const bySite = new Map();
   for (const item of state.filtered) {
-    if (item.lat == null || item.lon == null) continue;
+    if (!hasKnownFindspot(item)) continue;
     const key = item.site || `${item.lat},${item.lon}`;
     if (!bySite.has(key)) bySite.set(key, { lat: item.lat, lon: item.lon, site: item.site, items: [] });
     bySite.get(key).items.push(item);
@@ -1338,9 +1349,9 @@ function highlightMapSite(item) {
       item.site && key === item.site
         ? true
         : item.lat != null && Math.abs(marker.getLatLng().lat - item.lat) < 0.01;
-    el.classList.toggle("active", !!match);
+    el.classList.toggle("active", !!match && hasKnownFindspot(item));
   });
-  if (item.lat != null && item.lon != null) {
+  if (hasKnownFindspot(item)) {
     state.map?.panTo([item.lat, item.lon], { animate: true });
   }
 }

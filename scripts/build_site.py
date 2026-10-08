@@ -157,6 +157,19 @@ def main() -> None:
                                   "mt_lines": int(mm.group(1)) if mm else None, "model": c["model"],
                                   "model_version": c["model_version"], "translated_on": c["translated_on"]})
 
+    # category pages: one per curated category, never any ATF (they quote machine English only)
+    report["categories"] = []
+    for cat in cur.get("categories", []):
+        page = out / "t" / "c" / f"{cat['slug']}.html"
+        if not page.exists():
+            fail(f"category page missing: t/c/{cat['slug']}.html (run scripts/build_static.py)")
+        h = page.read_text(encoding="utf-8")
+        if 'class="atf"' in h:
+            fail(f"t/c/{cat['slug']}.html: category pages must not reproduce ATF")
+        if "Machine drafts" not in h or 'property="og:title"' not in h:
+            fail(f"t/c/{cat['slug']}.html: missing machine-draft note or OG tags")
+        report["categories"].append({"slug": cat["slug"], "texts": sum(1 for c in cur["texts"] if cat["slug"] in c.get("categories", []))})
+
     # sanity: no symlinks, no huge files, no local paths, nothing from web/models
     total = 0
     for root, dirs, files in os.walk(out):
@@ -188,6 +201,7 @@ def main() -> None:
         "machine_english": {
             "packaged_texts_with_mt": len(report["mt_texts"]),
             "packaged_mt_lines": report["mt_lines"],
+            "category_pages": len(report["categories"]),
             "curated_pages": len(report["curated"]),
             "curated_mt_lines": sum(c["mt_lines"] or 0 for c in report["curated"]),
             "note": "All English on this site is machine draft output (model + version + date stamped), not scholarly translation.",

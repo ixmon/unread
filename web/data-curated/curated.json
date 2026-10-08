@@ -1,7 +1,86 @@
 {
-  "$schema_note": "Curated static pages. Built by scripts/build_static.py into web/t/<id>.html. Fields per text: id (corpus text id), source_id (corpus.sqlite sources.id), title, blurb, english_source ('site_json' = web/data/texts/<id>.json lines, 'corpus_db' = translations table, author_type='model'), model, model_version, translated_on (YYYY-MM-DD), tags [].",
-  "version": 1,
+  "$schema_note": "Curated static pages. Built by scripts/build_static.py into web/t/<id>.html. Fields per text: id (corpus text id), source_id (corpus.sqlite sources.id), title, blurb, english_source ('site_json' = web/data/texts/<id>.json lines, 'corpus_db' = translations table, author_type='model'), model, model_version, translated_on (YYYY-MM-DD), tags []. v2: categories[] (slug,title,blurb,app_mode?,explainer_html?,coming_soon[]) and per-text categories[] (slugs; a text may be in several, [] = uncategorised) and hooks[] (verbatim substrings of that text's machine English; build_static.py verifies them).",
+  "version": 2,
   "site_base_url": "https://ixmon.github.io/unread/",
+  "categories": [
+    {
+      "slug": "remedies",
+      "title": "Remedies",
+      "app_mode": "remedies",
+      "blurb": "Medical prescriptions from Assyrian and Babylonian healers: plants, oils, beer and the occasional incantation, with instructions for preparing and applying them. Editions are mostly in print (BAM). English here is an unedited machine draft, and drug and plant names are often wrong."
+    },
+    {
+      "slug": "omens",
+      "title": "Omens",
+      "app_mode": "omens",
+      "blurb": "“If… then…” observations from Mesopotamian divination: birds, rivers, the moon and sun, dreams, births, and the entrails of sacrificed sheep. The English shown is an unedited machine draft, and many technical divination terms come out wrong."
+    },
+    {
+      "slug": "epic-hunt",
+      "title": "Epic Hunt",
+      "app_mode": "epic",
+      "blurb": "Narrative and mythological fragments: gods in council, monsters defeated, floods and a goddess's self-praise. Most have only scholarly print editions. The English shown is an unedited machine draft."
+    },
+    {
+      "slug": "math",
+      "title": "Math",
+      "app_mode": "math",
+      "blurb": "School and working mathematics from the 3rd to 1st millennium BCE: multiplication and reciprocal tables, squares, field and canal computations, and a gold-alloy problem. Numbers survive machine translation better than words, but the connecting English is an unedited machine draft.",
+      "explainer_html": "<h2>Reading Babylonian numbers</h2><p>Mesopotamian scribes counted in base 60 (sexagesimal). Each place is worth 60 times the place to its right, just as each decimal place is worth 10 times. So “1 15” means 1×60 + 15 = 75, and “8.00” (as written in the English below) means 8×60 = 480. The same notation is used for fractions: “30” after the units place means 30/60 = ½. Scribes usually did not mark where the units place was, so “1 15” could also mean 1¼ (1 + 15/60); the reader works it out from context. Base 60 survives in our 60 minutes and 360 degrees. A reciprocal table lists, for each number, the number that multiplies with it to make 60 (or 1): “reciprocal 4 and 15” means 4 × 15 = 60. Numbers such as 7 or 59 have no finite reciprocal in base 60, and the tables mark them as missing.</p>"
+    },
+    {
+      "slug": "love-and-fertility",
+      "title": "Love & Fertility",
+      "blurb": "Rituals and recipes for restoring a man's desire (ŠÀ.ZI.GA, “rising of the heart”), and Babylonian love lyrics, several from the cult of Marduk and his consort Zarpanītu. These are fragmentary tablets known mainly from scholarly print editions, and the selection is small. The English is an unedited machine draft."
+    },
+    {
+      "slug": "music",
+      "title": "Music",
+      "blurb": "Texts about making music in Mesopotamia: laments sung by the kalû-priests to drum and harp, a catalogue of the lamenters' repertoire, and an Old Babylonian liturgy with its song sections. The English is an unedited machine draft; instrument names (balaĝ = harp or drum; ub, lilis) are rendered inconsistently. The famous tuning and notation tablets have no transliteration in our corpus yet; they are listed below as coming soon.",
+      "coming_soon": [
+        {
+          "title": "CBS 10996: string-names and tuning text",
+          "designation": "CBS 10996 (OrNS 29, 273)",
+          "site": "Nippur",
+          "period": "Middle Babylonian",
+          "cdli": "P254475",
+          "note": "Lists the nine strings of a lyre and pairs of strings used for intervals. A transliteration is being sought; nothing is shown until we have one."
+        },
+        {
+          "title": "UET 7, 74: retuning a lyre",
+          "designation": "UET 7, 74 (U 7/80; duplicate UET 6/3, 899 = P346936)",
+          "site": "Ur",
+          "period": "Old Babylonian",
+          "cdli": "P347039",
+          "note": "Instructions for retuning a nine-string instrument step by step from one tuning to the next. A transliteration is being sought; nothing is shown until we have one."
+        },
+        {
+          "title": "Hurrian hymn h.6: the oldest notated melody",
+          "designation": "RS 15.30 + 15.49 + 17.387 (h.6)",
+          "site": "Ugarit",
+          "period": "Late Bronze Age (c. 1400–1200 BCE)",
+          "cdli": "P608807",
+          "note": "A hymn to the goddess Nikkal with musical instructions below the text. Our corpus has its catalogue entry only; a transliteration is being sought."
+        },
+        {
+          "title": "KAR 158: catalogue of songs",
+          "designation": "KAR 158",
+          "site": "Assur",
+          "period": "Middle Assyrian",
+          "cdli": "P282615",
+          "note": "A catalogue of song incipits grouped by genre and instrument. A transliteration is being sought."
+        },
+        {
+          "title": "MS 5105: number grid read as music notation",
+          "designation": "Schøyen MS 5105",
+          "site": "find-spot unknown",
+          "period": "Old Babylonian",
+          "cdli": "P254173",
+          "note": "A school tablet with columns of numbers that has been interpreted as scales for a lute. A transliteration is being sought."
+        }
+      ]
+    }
+  ],
   "texts": [
     {
       "id": "K.8790",
@@ -9,10 +88,22 @@
       "title": "Šaziga potency incantation fragment (K.8790)",
       "blurb": "Neo-Assyrian fragment from Nineveh in the ŠA.ZI.GA (male potency) series: plant recipes ‘if a man’s heart does not rise for his wife’, followed by an incantation.",
       "english_source": "corpus_db",
-      "model": "montycrypto/atf-to-english",
+      "model": "atf-en-best-v2",
       "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
       "translated_on": "2026-10-05",
-      "tags": ["magic", "medical", "šaziga", "Neo-Assyrian"]
+      "tags": [
+        "magic",
+        "medical",
+        "šaziga",
+        "Neo-Assyrian"
+      ],
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "to his wife, his heart does not raise..."
+      ],
+      "model_repo": "montycrypto/atf-to-english"
     },
     {
       "id": "P404959",
@@ -23,7 +114,18 @@
       "model": "atf-en-best-v2",
       "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
       "translated_on": "2026-08-07",
-      "tags": ["medicine", "recipes", "Neo-Babylonian"]
+      "tags": [
+        "medicine",
+        "recipes",
+        "Neo-Babylonian"
+      ],
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "You pour oil on his lips, you wipe clean it."
+      ],
+      "model_repo": "montycrypto/atf-to-english"
     },
     {
       "id": "P262784",
@@ -34,7 +136,18 @@
       "model": "atf-en-best-v2",
       "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
       "translated_on": "2026-08-07",
-      "tags": ["epic", "Gilgamesh", "Old Babylonian"]
+      "tags": [
+        "epic",
+        "Gilgamesh",
+        "Old Babylonian"
+      ],
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "I will go to you, Enkidu, like a god,"
+      ],
+      "model_repo": "montycrypto/atf-to-english"
     },
     {
       "id": "P480691",
@@ -45,7 +158,13 @@
       "model": "atf-en-best-v2",
       "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
       "translated_on": "2026-08-07",
-      "tags": ["royal", "monumental"]
+      "tags": [
+        "royal",
+        "monumental"
+      ],
+      "categories": [],
+      "hooks": [],
+      "model_repo": "montycrypto/atf-to-english"
     },
     {
       "id": "P355698",
@@ -56,7 +175,773 @@
       "model": "atf-en-best-v2",
       "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
       "translated_on": "2026-08-07",
-      "tags": ["literary", "liturgy"]
+      "tags": [
+        "literary",
+        "liturgy"
+      ],
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "Who knows your fate, who knows your fate?"
+      ],
+      "model_repo": "montycrypto/atf-to-english"
+    },
+    {
+      "id": "P285450",
+      "source_id": "cdli",
+      "title": "Field guide to medicinal plants (BAM 4, 379)",
+      "blurb": "Neo-Babylonian list from Babylon that describes healing plants by their appearance and names the illness each one treats.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "The plant whose appearance is like a cucumber does not come out, it is the name of the eye plant."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P285108",
+      "source_id": "cdli",
+      "title": "Ear treatments (BAM 1, 003)",
+      "blurb": "Neo-Assyrian prescriptions from Assur for ailments of the ears: drops, mixtures and fumigation.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "You pour oil from the threshing floor. You set (the mixture) into his ears. You set up a censer of juniper."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P270002",
+      "source_id": "cdli",
+      "title": "Remedies left out under the stars (BAM 4, 396)",
+      "blurb": "Middle Babylonian medical text from Nippur; several preparations are left out overnight “under the stars” before use.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "You sit in the star of the 'finger.' After you drink it, then he will recover."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P369126",
+      "source_id": "cdli",
+      "title": "Honey, oil and fumigation (KAR 157)",
+      "blurb": "Neo-Assyrian prescriptions from Assur with overnight preparations and fumigation.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "You set up a censer (made) of cypress and put (it) in its midst and he will recover."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P338416",
+      "source_id": "cdli",
+      "title": "Mouth and tongue ailments (STT 1, 096)",
+      "blurb": "Short Neo-Assyrian tablet from Sultantepe on illnesses of the mouth and tongue.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "If a man is ill with a swollen tongue:"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P285469",
+      "source_id": "cdli",
+      "title": "Remedies with unusual ingredients (BAM 4, 398)",
+      "blurb": "Medical prescriptions from Nippur, including river water and a goose's head.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "You mix the kamku-plant with water from the river, (and) the head of the goose"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P285480",
+      "source_id": "cdli",
+      "title": "Measured beer, wine and oil (BAM 4, 409)",
+      "blurb": "Medical text from Uruk with quantities for each ingredient and a scribal colophon.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "5 liters of beer, 1 liter of beer, wine, 1/2 liter of oil, you set it in fire."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P498964",
+      "source_id": "cdli",
+      "title": "Prescriptions with a prayer to Gula (WAW 36, 469–479)",
+      "blurb": "Medical tablet from Sippar: mixtures for the skin, head and ears, with an incantation to Gula, goddess of healing.",
+      "categories": [
+        "remedies"
+      ],
+      "hooks": [
+        "Incantation: O Gula, most exalted lady, merciful mother, who dwells in the pure heavens"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.4110",
+      "source_id": "ebl",
+      "title": "Birds that enter the palace (Šumma ālu)",
+      "blurb": "Neo-Assyrian omens from the series Šumma ālu (“If a city…”): what it means when birds enter the palace.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If a eagle enters the palace and appears in the west: a strong enemy will attack the land, and the land will be destroyed."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.2049",
+      "source_id": "ebl",
+      "title": "Earthquakes and winds, month by month (Iqqur īpuš)",
+      "blurb": "Neo-Assyrian hemerological omens from Nineveh arranged by month.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If in Nisannu (Month I) the earth quakes: the king's land will defeat him; he will die."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.200",
+      "source_id": "ebl",
+      "title": "Halos around the moon (Enūma Anu Enlil)",
+      "blurb": "Lunar omens from the celestial series Enūma Anu Enlil, copied at Nineveh.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If the Moon is surrounded by a yellow halo, and it does not have a gate: a rebellion will take place in the land"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.47",
+      "source_id": "ebl",
+      "title": "Floods in the city (Šumma ālu)",
+      "blurb": "Neo-Assyrian omens from river floods and their colours.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If the flood becomes visible in the middle of the city: weapons will occur and the throne will become confused."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.2234",
+      "source_id": "ebl",
+      "title": "Solar eclipses by day of the month (Enūma Anu Enlil)",
+      "blurb": "Celestial omens predicting events from the day on which the sun is eclipsed.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If on the 21st day: the king of Akkad will fall with a weapon."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "Sm.801",
+      "source_id": "ebl",
+      "title": "Dreaming of a seal (Ziqīqu)",
+      "blurb": "Dream omens from Nineveh: what it means to dream of receiving or losing a seal.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If a seal is given to the king, his (personal) god will listen to his prayers."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "MLC.1874",
+      "source_id": "ebl",
+      "title": "Reading the coils of the colon (Šumma tīrānu)",
+      "blurb": "Hellenistic extispicy text from Uruk: omens from the shape of a sacrificed sheep's intestines.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "The coils of the colon are like the ribs of the south wind. There will be hunger in the land."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.3688",
+      "source_id": "ebl",
+      "title": "Unusual human births (Šumma izbu)",
+      "blurb": "Neo-Assyrian teratological omens from abnormal births, including twins.",
+      "categories": [
+        "omens"
+      ],
+      "hooks": [
+        "If a woman gives birth to 2 (children) and it is provided with a 'foot'-mark on their necks and their face is split: a flood will take place."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.27776",
+      "source_id": "ebl",
+      "title": "Marduk speaks before Enlil",
+      "blurb": "Neo-Babylonian narrative fragment: Marduk argues his case before Enlil and the gods.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "The king of the gods, Marduk, opens his mouth and speaks favorable words to Enlil."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "VAT.10395",
+      "source_id": "ebl",
+      "title": "Ištar proclaims herself",
+      "blurb": "Neo-Assyrian literary text from Assur in which the goddess praises herself.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "I am Itar in the midst of the flood, in the midst of the flood."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.78962",
+      "source_id": "ebl",
+      "title": "An Old Babylonian creation myth",
+      "blurb": "Nearly complete Old Babylonian Akkadian narrative about the gods.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "Enlil saw him, and the king, the gods, the warriors"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.98977",
+      "source_id": "ebl",
+      "title": "Anu and the flood",
+      "blurb": "Neo-Assyrian flood narrative from Nineveh, related to the Atra-ḫasīs story.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "He became afraid and Anu shouted about the flood"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.47530",
+      "source_id": "ebl",
+      "title": "The defeat of Enutila, Enmešarra and Qingu",
+      "blurb": "Neo-Babylonian mythological fragment about the defeat of divine enemies (print edition: W. G. Lambert, Babylonian Creation Myths).",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "of his 7 sons, with the evil weapon he annihilated them."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.32462",
+      "source_id": "ebl",
+      "title": "Marduk and Enmešarra",
+      "blurb": "Late Babylonian narrative fragment from Babylon.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "To Marduk, his lord, he speaks a word:"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P343019",
+      "source_id": "cdli",
+      "title": "Agušaya, hymn-epic of Ištar (VS 10, 214)",
+      "blurb": "Old Babylonian poem about the warrior goddess Ištar (Agušaya A); print translations exist.",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "the gods of the house have rejoiced over her"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.33483",
+      "source_id": "ebl",
+      "title": "The Murder of Anšar",
+      "blurb": "Neo-Babylonian mythological narrative from Babylon (print edition: Lambert, Babylonian Creation Myths).",
+      "categories": [
+        "epic-hunt"
+      ],
+      "hooks": [
+        "You did not write a word to my hero"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P254848",
+      "source_id": "cdli",
+      "title": "Canal excavation volumes, dated (UET 5, 856)",
+      "blurb": "Old Babylonian problem text from Ur computing earthwork for a canal, dated by a year name.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "37 1/2 ninda, the length, 1/2 ninda, 2 cubits, the height"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P010678",
+      "source_id": "cdli",
+      "title": "Early Dynastic table of squares (SF 082)",
+      "blurb": "One of the oldest known mathematical tables, from Šuruppak (Fara).",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "8.00 (480) (ninda) squared:"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P254847",
+      "source_id": "cdli",
+      "title": "Earth moved for the Takirum canal (UET 5, 855)",
+      "blurb": "Old Babylonian canal problem from Ur, a companion to UET 5, 856.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "soil of the Takirum canal"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P254714",
+      "source_id": "cdli",
+      "title": "Gold alloy computations (RA 78, 41–45 no. 8)",
+      "blurb": "Old Babylonian calculations from Mari weighing gold and reddish gold.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "with 1 1/3 mina 9 (sila3) of gold, 1 5/6 (sila3) of reddish gold"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P257557",
+      "source_id": "cdli",
+      "title": "Reciprocal table (TMN Ist Ni 374)",
+      "blurb": "Old Babylonian school table of reciprocals from Nippur, including numbers that have none.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "reciprocal 4 and 15"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P392704",
+      "source_id": "cdli",
+      "title": "A Syrian times table (KTT 069)",
+      "blurb": "Old Babylonian multiplication table from Tuttul on the Euphrates.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "the 30th (time) 9 times"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P464229",
+      "source_id": "cdli",
+      "title": "Early field and bread arithmetic (AoF 39, 222)",
+      "blurb": "Early Dynastic IIIb computations from Zabalam.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "10 top quality ninda breads"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "P368783",
+      "source_id": "cdli",
+      "title": "Barley capacity table (TMN Ist Ni 3741)",
+      "blurb": "Old Babylonian table of grain capacities from Nippur.",
+      "categories": [
+        "math"
+      ],
+      "hooks": [
+        "3 barig 4 ban2 barley"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "Sm.1514",
+      "source_id": "ebl",
+      "title": "Šaziga ritual fragment (Sm 1514)",
+      "blurb": "Short Neo-Assyrian fragment from Nineveh of the ŠÀ.ZI.GA series for restoring a man's potency.",
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "If a man... to his wife and...."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.3350",
+      "source_id": "ebl",
+      "title": "Šaziga incantations (K 3350)",
+      "blurb": "Tablet from Nineveh with ŠÀ.ZI.GA incantations and rites.",
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "Wording for the heart of a man: to a woman."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.5694",
+      "source_id": "ebl",
+      "title": "Zarpanītu goes down to the garden (K 5694)",
+      "blurb": "Neo-Assyrian love lyric from the cult of Marduk and his consort Zarpanītu.",
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "Zarpanitu went down to the garden, approached the garden"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.6606",
+      "source_id": "ebl",
+      "title": "A lovers' dialogue (K 6606)",
+      "blurb": "Neo-Assyrian love-lyric fragment from Nineveh.",
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "I went up to the quay and stood there."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "BM.45381",
+      "source_id": "ebl",
+      "title": "A long Babylonian love lyric (BM 45381+)",
+      "blurb": "Neo-Babylonian love lyric (print edition: I. Finkel).",
+      "categories": [
+        "love-and-fertility"
+      ],
+      "hooks": [
+        "From my childhood until my lord's presence I shall bring you? in a dream."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.4427",
+      "source_id": "ebl",
+      "title": "Balaĝ lament to Ningirsu (K 4427)",
+      "blurb": "Neo-Assyrian copy of a Sumerian balaĝ lament that names the ub and lilis drums.",
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "he (Ningirsu) has made the holy ub and holy lilis holy for him"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.5040",
+      "source_id": "ebl",
+      "title": "Lament of the balaĝ drum (K 5040)",
+      "blurb": "Sumerian Emesal lament with Akkadian translation, from Nineveh.",
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "When you speak to the storm, the balag drum of lamentation and lamentation, how long will it last?"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.5167",
+      "source_id": "ebl",
+      "title": "Bilingual lament with tigi song (K 5167)",
+      "blurb": "Sumerian–Akkadian lament (Uruk) mentioning the tigi song.",
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "The naggala demon, the nagbura demon, will serve you with tigi."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.4629",
+      "source_id": "ebl",
+      "title": "Bilingual lament with Ashurbanipal's colophon (K 4629)",
+      "blurb": "Long Sumerian–Akkadian lament from Nineveh, ending with the library colophon of Ashurbanipal.",
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "On the bank of the Ezida, the temple of Nabû that is inside Nineveh, my lord, I built."
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
+    },
+    {
+      "id": "K.2529",
+      "source_id": "ebl",
+      "title": "Catalogue of laments and prayers (K 2529)",
+      "blurb": "Nineveh tablet listing the incipits of balaĝ and eršemma laments with a total for each god. The machine English garbles the totals (e.g. “total: 39th year of Enlil” for a count of 39 compositions).",
+      "categories": [
+        "music"
+      ],
+      "hooks": [
+        "The Abzu is pure and Dilmun is pure"
+      ],
+      "english_source": "corpus_db",
+      "model": "atf-en-best-v2",
+      "model_repo": "montycrypto/atf-to-english",
+      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
+      "translated_on": "2026-10-05",
+      "tags": []
     }
   ]
 }
