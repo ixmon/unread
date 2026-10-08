@@ -6,6 +6,7 @@ from the local deep-cuneiform CDLI dump.
 Usage (from repo root):
   python3 scripts/build_catalog.py
   python3 scripts/build_catalog.py --deep-cuneiform ../deep-cuneiform --top 800 --samples 30
+  python3 scripts/fix_catalog_sites.py   # then repair find-spots from the corpus DB
 """
 
 from __future__ import annotations
@@ -75,6 +76,10 @@ def normalize_site(name: str | None):
     if n in SITES:
         lat, lon = SITES[n]
         return n, lat, lon
+    if re.match(r"(uncertain|unclear)\b", n, re.I):
+        # never prefix-match "uncertain (mod. X)" onto another uncertain site (that pinned them all
+        # at Behistun); scripts/fix_catalog_sites.py resolves X from the corpus DB afterwards
+        return name, None, None
     for k, (lat, lon) in SITES.items():
         base = k.split(" (")[0]
         if n.startswith(base) or k.startswith(n.split(" (")[0]):

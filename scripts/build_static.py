@@ -75,6 +75,9 @@ OUT = WEB / "t"
 DEFAULT_DB = ROOT.parent / "unread-db" / "corpus.sqlite"
 
 CATALOG = ROOT / "data" / "catalog.json"
+import sys as _sys  # noqa: E402
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from fix_catalog_sites import usable_site  # noqa: E402
 # Placeholder coordinates seen in upstream metadata (not a real find-spot)
 PLACEHOLDER_COORDS = [(51.2297, 58.6555)]
 # Hooks must not quote lines that depend on known misreads (see training-bugs.md)
@@ -100,13 +103,8 @@ def source_link(src: str, text_id: str) -> str | None:
 
 
 def findspot_known(lat, lon, prov) -> bool:
-    if lat is None or lon is None:
-        return False
-    if any(abs(lat - a) < 1e-3 and abs(lon - b) < 1e-3 for a, b in PLACEHOLDER_COORDS):
-        return False
-    if prov and re.search(r"uncertain|unclear", prov, re.I):
-        return False
-    return True
+    """Same rule as fix_catalog_sites.usable_site (placeholder coords / no usable site -> unknown)."""
+    return usable_site(prov or "", lat, lon)
 
 
 def load_catalog() -> dict:
@@ -242,6 +240,9 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     cat_item = catalog.get(map_id) or catalog.get(tid)
     if not period and cat_item:
         period = cat_item.get("period")
+    # keep CDLI's "?" (uncertain attribution) that the map catalog carries, so both views agree
+    if cat_item and prov and (cat_item.get("provenience") or "").rstrip(" ?") == prov:
+        prov = cat_item["provenience"]
     known = findspot_known(lat, lon, prov)
     s = sources.get(src, {})
     can_atf = bool(s.get("can_republish_atf"))
@@ -253,7 +254,7 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     meta = [
         ("Designation", designation), ("Museum no.", museum), ("Collection", coll), ("Language", language),
         ("Period", period), ("Genre", genre), ("Provenience", prov),
-        ("Findspot", f"{lat:.4f}, {lon:.4f}" if known else "find-spot unknown"),
+        ("Findspot", f"{round(lat, 4)}, {round(lon, 4)}" if known else "find-spot unknown"),
         ("CDLI no.", canon if canon and canon.startswith("P") else None),
         ("Source", f"{s.get('name', src)} — {s.get('license', '')}"),
         ("Lines", f"{n_lines} ({n_en} with machine English)"),

@@ -1271,14 +1271,24 @@ function initMap() {
   ]);
 }
 
-// Find-spots we should not pin: placeholder coordinates from upstream metadata, and
-// proveniences recorded as uncertain/unclear. Those works stay in the list, without a marker.
+// Find-spots we should not pin: placeholder coordinates from upstream metadata, or no usable
+// site at all ("uncertain (mod. uncertain)", "Irisagrig (mod. uncertain)", a region such as
+// "uncertain (mod. Babylonia)"). "uncertain (mod. Abu Salabikh)" etc. are pinned at the named
+// modern site. Same rule as scripts/fix_catalog_sites.py usable_site(). Unpinned works stay in the list.
 const PLACEHOLDER_COORDS = [[51.2297, 58.6555]];
+const FS_UNKNOWN = /^(uncertain|unclear|unknown)$/i;
+const FS_REGION = /^(northern |southern |central )?(babylonia|assyria|mesopotamia|iran|syria|anatolia)$/i;
 function hasKnownFindspot(item) {
   if (!item || item.lat == null || item.lon == null) return false;
   const lat = Number(item.lat), lon = Number(item.lon);
   if (PLACEHOLDER_COORDS.some(([a, b]) => Math.abs(lat - a) < 1e-3 && Math.abs(lon - b) < 1e-3)) return false;
-  if (/uncertain|unclear/i.test(item.provenience || "")) return false;
+  const prov = String(item.provenience || item.site || "").trim().replace(/\s*\?$/, "").trim();
+  const m = prov.match(/^(.*?)\s*\(mod\.\s*(.*?)\)$/);
+  const ancient = (m ? m[1] : prov).trim(), modern = m ? m[2].trim() : "";
+  if (!ancient && !modern) return false;
+  if (modern && FS_UNKNOWN.test(modern)) return false;
+  if (FS_UNKNOWN.test(ancient) && (!modern || FS_REGION.test(modern))) return false;
+  if (FS_REGION.test(ancient) && !modern) return false;
   return true;
 }
 
