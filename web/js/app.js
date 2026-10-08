@@ -43,6 +43,9 @@ const state = {
   map: null,
   markers: {},
   timelineYear: -2000,
+  timeFade: false, // map fading by date; switches on at first slider interaction ("All periods" turns it off)
+  markerGroups: {}, // site key -> { lat, lon, site, items }
+  markerSig: "",
   useOnlineCuneiform: false,
   translating: false,
   apiOk: null,
@@ -1212,9 +1215,6 @@ function initMap() {
 
 function updateMapMarkers() {
   if (!state.map) return;
-  // Clear old
-  Object.values(state.markers).forEach((m) => state.map.removeLayer(m));
-  state.markers = {};
 
   // Aggregate filtered items by site
   const bySite = new Map();
@@ -1225,26 +1225,51 @@ function updateMapMarkers() {
     bySite.get(key).items.push(item);
   }
 
+  // Same set of works as last time (e.g. only the timeline sort changed)? Keep the layers, just restyle.
+  const sig = [...bySite.entries()]
+    .map(([k, g]) => k + ":" + g.items.map((i) => i.id).sort().join(","))
+    .sort()
+    .join("|");
+  if (sig === state.markerSig && Object.keys(state.markers).length === bySite.size) {
+    for (const [key, group] of bySite) state.markerGroups[key] = group;
+    styleMarkersForTime();
+    return;
+  }
+  state.markerSig = sig;
+
+  // Clear old
+  Object.values(state.markers).forEach((m) => state.map.removeLayer(m));
+  state.markers = {};
+  state.markerGroups = {};
+
   for (const [key, group] of bySite) {
     const icon = L.divIcon({
       className: "site-marker",
+      html: '<span class="site-dot"></span>',
       iconSize: [12, 12],
     });
     const marker = L.marker([group.lat, group.lon], { icon }).addTo(state.map);
-    const top = group.items.slice(0, 5);
-    marker.bindPopup(
-      `<strong>${escapeHtml(group.site || "Site")}</strong>
-       ${group.items.length} work(s) in filter<br/>
-       ${top.map((t) => `<a href="#" data-open="${t.id}">${escapeHtml(t.id)}</a>`).join(" · ")}`
-    );
+    marker.bindPopup(() => {
+      // nearest-dated works first when the time browser is active
+      const items = [...(state.markerGroups[key] || group).items];
+      if (state.timeFade) items.sort((a, b) => timeDistance(a, state.timelineYear) - timeDistance(b, state.timelineYear));
+      const top = items.slice(0, 5);
+      return `<strong>${escapeHtml(group.site || "Site")}</strong>
+       ${items.length} work(s) in filter<br/>
+       ${top.map((t) => `<a href="#" data-open="${t.id}">${escapeHtml(t.id)}</a>`).join(" · ")}`;
+    });
     marker.on("click", () => {
-      // select first item at site
-      if (group.items[0]) selectWork(group.items[0].id);
+      // select the nearest-dated item at the site when the time browser is active
+      const items = [...(state.markerGroups[key] || group).items];
+      if (state.timeFade) items.sort((a, b) => timeDistance(a, state.timelineYear) - timeDistance(b, state.timelineYear));
+      if (items[0]) selectWork(items[0].id);
     });
     state.markers[key] = marker;
+    state.markerGroups[key] = group;
   }
 
   $("#map-empty").style.display = bySite.size ? "none" : "flex";
+  styleMarkersForTime();
 }
 
 function highlightMapSite(item) {
@@ -1264,26 +1289,232 @@ function highlightMapSite(item) {
 
 // ─── Timeline ───
 const YEAR_MIN = -3400;
-const YEAR_MAX = -300;
+const YEAR_MAX = -50;
+const YEAR_STEP = 25;
+
+/**
+ * Conventional era bands (approximate; middle chronology, years BCE as negatives).
+ * Bands are contiguous for the track; `dates` gives the conventional label where it differs
+ * from the band edges (e.g. the Neo-Babylonian dynasty begins 626 while Assyria falls 612).
+ */
+const ERAS = [
+  { id: "uruk", short: "Uruk", label: "Uruk IV–III / Jemdet Nasr", start: -3400, end: -2900 },
+  { id: "ed", short: "ED", label: "Early Dynastic I–III", start: -2900, end: -2334 },
+  { id: "akk", short: "Akk", label: "Old Akkadian (Sargonic)", start: -2334, end: -2154 },
+  { id: "lagash2", short: "Lg II", label: "Gutian / Lagash II", start: -2154, end: -2112 },
+  { id: "ur3", short: "Ur III", label: "Ur III", start: -2112, end: -2004 },
+  { id: "ob", short: "OB / OA", label: "Old Babylonian / Old Assyrian", start: -2004, end: -1595 },
+  { id: "mb", short: "MB / MA", label: "Middle Babylonian (Kassite) / Middle Assyrian", start: -1595, end: -911 },
+  { id: "na", short: "NA", label: "Neo-Assyrian", start: -911, end: -612 },
+  { id: "nb", short: "NB", label: "Neo-Babylonian", start: -612, end: -539, dates: "626–539 BCE" },
+  { id: "ach", short: "Ach", label: "Achaemenid", start: -539, end: -331 },
+  { id: "hel", short: "Hell", label: "Hellenistic (Seleucid)", start: -331, end: -63 },
+];
+
+// Map fading: full strength within TIME_FULL years of a work's date range, smooth fade to
+// TIME_MIN_OPACITY at TIME_FAINT years and beyond (never hidden). Undated works stay neutral/dim.
+const TIME_FULL = 150;
+const TIME_FAINT = 600;
+const TIME_MIN_OPACITY = 0.3;
+const TIME_UNDATED_OPACITY = 0.45;
+
+function eraFor(y) {
+  return ERAS.find((e) => y >= e.start && y < e.end) || (y >= ERAS[ERAS.length - 1].end ? ERAS[ERAS.length - 1] : null);
+}
+
+function eraDates(e) {
+  return e.dates || `${Math.abs(e.start)}–${Math.abs(e.end)} BCE`;
+}
+
+/** [from, to] years for a work: its period's conventional range when given, else year ± 50. */
+function itemRange(item) {
+  if (item._range !== undefined) return item._range;
+  let r = null;
+  const m = /(\d{3,4})\s*[-–]\s*(\d{1,4})\s*BC/.exec(item.period || "");
+  if (m) r = [-Number(m[1]), -Number(m[2])];
+  else if (item.year != null) r = [item.year - 50, item.year + 50];
+  item._range = r;
+  return r;
+}
+
+function timeDistance(item, y) {
+  const r = itemRange(item);
+  if (!r) return Infinity;
+  return y < r[0] ? r[0] - y : y > r[1] ? y - r[1] : 0;
+}
+
+/** 1 = in period, 0 = far; null = undated */
+function timeWeight(item, y) {
+  const d = timeDistance(item, y);
+  if (d === Infinity) return null;
+  if (d <= TIME_FULL) return 1;
+  if (d >= TIME_FAINT) return 0;
+  const t = (d - TIME_FULL) / (TIME_FAINT - TIME_FULL);
+  return 1 - t * t * (3 - 2 * t); // smoothstep
+}
+
+function styleMarkersForTime() {
+  const y = state.timelineYear;
+  const fade = state.timeFade;
+  for (const [key, marker] of Object.entries(state.markers)) {
+    const el = marker.getElement();
+    if (!el) continue;
+    const group = state.markerGroups[key];
+    // nearest-dated work at this site decides the marker's strength
+    let w = null;
+    let best = null;
+    if (fade && group) {
+      for (const it of group.items) {
+        const wi = timeWeight(it, y);
+        if (wi != null && (w == null || wi > w || (wi === w && timeDistance(it, y) < timeDistance(best, y)))) {
+          w = wi;
+          best = it;
+        }
+      }
+    }
+    let o = 1;
+    let sc = 1;
+    if (fade) {
+      if (w == null) {
+        o = TIME_UNDATED_OPACITY;
+        sc = 0.75;
+      } else {
+        o = TIME_MIN_OPACITY + (1 - TIME_MIN_OPACITY) * w;
+        sc = 0.6 + 0.4 * w;
+      }
+    }
+    el.style.setProperty("--o", o.toFixed(3));
+    el.style.setProperty("--s", sc.toFixed(3));
+    el.classList.toggle("undated", fade && w == null);
+    el.title = group ? `${group.site || "Site"}${best ? " · nearest: " + (shortPeriod(best.period) || formatYear(best.year)) : ""}` : "";
+    const z = fade ? Math.round((w ?? 0.3) * 1000) : 0;
+    if (marker.options.zIndexOffset !== z) marker.setZIndexOffset(z);
+  }
+}
+
+// Hook for other layers (e.g. a future coastline / sea-level layer):
+//   const off = onTimelineChange((year, { fading, era }) => { ... });
+// Also dispatched as a DOM event: document.addEventListener("unread:timeline", (e) => e.detail.year)
+const timelineListeners = new Set();
+function onTimelineChange(fn) {
+  timelineListeners.add(fn);
+  return () => timelineListeners.delete(fn);
+}
+function emitTimelineChange() {
+  const detail = { year: state.timelineYear, fading: state.timeFade, era: eraFor(state.timelineYear) };
+  for (const fn of timelineListeners) {
+    try {
+      fn(detail.year, detail);
+    } catch (e) {
+      console.error("timeline listener failed", e);
+    }
+  }
+  document.dispatchEvent(new CustomEvent("unread:timeline", { detail }));
+}
+window.UnreadTimeline = {
+  onTimelineChange,
+  ERAS,
+  eraFor,
+  setYear: (y) => setTimelineYear(y),
+  setFading: (on) => setTimeFade(on),
+  get year() {
+    return state.timelineYear;
+  },
+  get fading() {
+    return state.timeFade;
+  },
+};
+
+let timelineRaf = 0;
+let timelineSortTimer = 0;
+function scheduleTimelineFrame() {
+  if (timelineRaf) return;
+  timelineRaf = requestAnimationFrame(() => {
+    timelineRaf = 0;
+    updateTimelineUI();
+    styleMarkersForTime();
+    emitTimelineChange();
+  });
+}
+
+function setTimelineYear(y, { activate = true } = {}) {
+  y = Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(y / YEAR_STEP) * YEAR_STEP));
+  state.timelineYear = y;
+  if (activate) state.timeFade = true;
+  const input = $("#timeline-range");
+  if (input && Number(input.value) !== y) input.value = y;
+  scheduleTimelineFrame();
+  // re-sort the catalog list once dragging settles (markers are restyled per frame, not rebuilt)
+  clearTimeout(timelineSortTimer);
+  timelineSortTimer = setTimeout(applyFilters, 180);
+}
+
+function setTimeFade(on) {
+  state.timeFade = !!on;
+  scheduleTimelineFrame();
+}
+
+const yearPct = (y) => ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
 
 function initTimeline() {
   const input = $("#timeline-range");
   input.min = YEAR_MIN;
   input.max = YEAR_MAX;
+  input.step = YEAR_STEP;
   input.value = state.timelineYear;
-  updateTimelineUI();
-  input.addEventListener("input", () => {
-    state.timelineYear = Number(input.value);
-    updateTimelineUI();
-    applyFilters();
+
+  // era segments on the track + clickable era buttons below it
+  const band = $("#timeline-eraband");
+  const eras = $("#timeline-eras");
+  band.innerHTML = ERAS.map(
+    (e, i) =>
+      `<span class="era-seg era-${i % 2 ? "odd" : "even"}" data-era="${e.id}" style="left:${yearPct(e.start)}%;width:${yearPct(Math.min(e.end, YEAR_MAX)) - yearPct(e.start)}%"></span>`
+  ).join("");
+  eras.innerHTML =
+    ERAS.map((e) => {
+      const w = yearPct(Math.min(e.end, YEAR_MAX)) - yearPct(e.start);
+      return `<button type="button" class="era-btn${w < 3.2 ? " narrow" : ""}" data-era="${e.id}" style="left:${yearPct(e.start)}%;width:${w}%"
+        title="${escapeAttr(e.label + " · c. " + eraDates(e) + " (approx.)")}">${escapeHtml(e.short)}</button>`;
+    }).join("");
+  eras.addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b) return;
+    const e = ERAS.find((x) => x.id === b.dataset.era);
+    if (e) setTimelineYear((e.start + Math.min(e.end, YEAR_MAX)) / 2);
   });
+
+  input.addEventListener("input", () => setTimelineYear(Number(input.value)));
+  input.addEventListener("keydown", (ev) => {
+    // native arrows step 25 years (input.step); Shift+arrow = 100 years
+    if (ev.shiftKey && ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(ev.key)) {
+      ev.preventDefault();
+      const dir = ev.key === "ArrowLeft" || ev.key === "ArrowDown" ? -1 : 1;
+      setTimelineYear(state.timelineYear + dir * 100);
+    }
+  });
+  $("#timeline-all").addEventListener("click", () => setTimeFade(!state.timeFade));
+  updateTimelineUI();
 }
 
 function updateTimelineUI() {
   const y = state.timelineYear;
-  const pct = ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
-  $("#timeline-fill").style.width = `${pct}%`;
+  $("#timeline-fill").style.width = `${yearPct(y)}%`;
   $("#timeline-year").textContent = formatYear(y);
+  const era = eraFor(y);
+  const eraEl = $("#timeline-era");
+  eraEl.textContent = era ? `${era.label} · c. ${eraDates(era)}` : "";
+  eraEl.title = "Conventional dates, approximate (middle chronology)";
+  $$("#timeline-eraband .era-seg, #timeline-eras .era-btn").forEach((el) =>
+    el.classList.toggle("active", !!era && el.dataset.era === era.id)
+  );
+  const panel = $(".timeline-panel");
+  panel.classList.toggle("fading", state.timeFade);
+  const all = $("#timeline-all");
+  all.setAttribute("aria-pressed", String(!state.timeFade));
+  all.title = state.timeFade
+    ? "Show all works at full strength"
+    : "All periods shown — drag the slider (or click an era) to fade works far from the chosen date";
+  $("#timeline-range").setAttribute("aria-valuetext", `${formatYear(y)}${era ? ", " + era.label : ""}`);
 }
 
 function updateTimelineDots() {
@@ -1292,7 +1523,7 @@ function updateTimelineDots() {
   const withYear = state.filtered.filter((i) => i.year != null).slice(0, 80);
   host.innerHTML = withYear
     .map((item) => {
-      const pct = ((item.year - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
+      const pct = yearPct(item.year);
       return `<span class="timeline-dot" style="left:${pct}%" title="${escapeAttr(item.id + " " + formatYear(item.year))}"></span>`;
     })
     .join("");

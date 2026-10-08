@@ -212,9 +212,13 @@
             <div class="timeline-panel">
               <div class="timeline-header">
                 <h3>Time browser</h3>
+                <span class="timeline-era" id="timeline-era" aria-live="polite"></span>
+                <span class="timeline-spacer"></span>
+                <button type="button" class="timeline-all" id="timeline-all" aria-pressed="true">All periods</button>
                 <span class="timeline-year" id="timeline-year">2000 BCE</span>
               </div>
               <div class="timeline-track">
+                <div class="timeline-eraband" id="timeline-eraband" aria-hidden="true"></div>
                 <div class="timeline-rail"></div>
                 <div class="timeline-fill" id="timeline-fill"></div>
                 <div class="timeline-dots" id="timeline-dots"></div>
@@ -223,19 +227,14 @@
                   class="timeline-input"
                   id="timeline-range"
                   min="-3400"
-                  max="-300"
+                  max="-50"
+                  step="25"
                   value="-2000"
-                  aria-label="Approximate year BCE"
+                  aria-label="Approximate year BCE (arrow keys: 25 years, Shift+arrow: 100)"
                 />
               </div>
-              <div class="timeline-ticks">
-                <span>3400 BCE</span>
-                <span>Uruk</span>
-                <span>Ur III</span>
-                <span>OB</span>
-                <span>NA</span>
-                <span>300 BCE</span>
-              </div>
+              <div class="timeline-eras" id="timeline-eras" role="group" aria-label="Jump to era"></div>
+              <p class="timeline-note">Era bands use conventional, approximate dates (middle chronology).</p>
             </div>
           </div>
           <div class="preview-panel" id="preview-panel">
