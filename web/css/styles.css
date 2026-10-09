@@ -1,42 +1,7 @@
 /* New Cuneiform Translations — reader UI
-   Period fonts: eBL / C. Ziegeler & S. Vanseveren (see README credits) */
+   Period fonts: S. Vanséveren & C. Ziegeler via eBL; see web/fonts/fonts.json + README credits */
 
-@font-face {
-  font-family: "Assurbanipal";
-  src: url("../fonts/Assurbanipal.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Esagil";
-  src: url("../fonts/Esagil.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Santakku";
-  src: url("../fonts/Santakku.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "OBFreie";
-  src: url("../fonts/OBFreie.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "SantakkuM";
-  src: url("../fonts/SantakkuM.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "UllikummiA";
-  src: url("../fonts/UllikummiA.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "NotoSansCuneiform";
-  src: url("../fonts/NotoSansCuneiform.woff") format("woff");
-  font-display: swap;
-  unicode-range: U+12000-123FF, U+12400-1247F, U+12480-1254F;
-}
+/* Cuneiform @font-face rules are injected on demand by js/fontmap.js from fonts/fonts.json */
 
 :root {
   --bg: #0f1114;
@@ -58,7 +23,7 @@
   --font-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --font-serif: "Source Serif 4", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
-  --font-cuneiform: "Assurbanipal", "NotoSansCuneiform", serif;
+  --font-cuneiform: "NotoSansCuneiform", serif;
   --radius: 10px;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   --header-h: 56px;
@@ -1257,13 +1222,6 @@ body.mode-epic .catalog-card .title {
   word-break: break-word;
 }
 
-.cuneiform-lines.font-Assurbanipal { font-family: "Assurbanipal", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-Esagil { font-family: "Esagil", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-Santakku { font-family: "Santakku", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-OBFreie { font-family: "OBFreie", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-SantakkuM { font-family: "SantakkuM", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-UllikummiA { font-family: "UllikummiA", "NotoSansCuneiform", serif; }
-.cuneiform-lines.font-NotoSansCuneiform { font-family: "NotoSansCuneiform", serif; }
 
 .reader-empty {
   flex: 1;

@@ -278,14 +278,8 @@
             </div>
             <div class="toolbar-group">
               <label for="font-select">Cuneiform face</label>
-              <select id="font-select" title="Period fonts from eBL (Ziegeler & Vanseveren)">
-                <option value="Assurbanipal">Neo-Assyrian</option>
-                <option value="Esagil">Neo-Babylonian</option>
-                <option value="Santakku">Old Babylonian</option>
-                <option value="OBFreie">OB Literature</option>
-                <option value="SantakkuM">OB Monumental</option>
-                <option value="UllikummiA">Hittite</option>
-                <option value="NotoSansCuneiform">Noto (fallback)</option>
+              <select id="font-select" title="Cuneiform face: automatic by period (eBL converter fonts) or your choice for this session">
+                <option value="">Auto (by period)</option>
               </select>
             </div>
             <div class="view-toggles" role="group" aria-label="Visible panels">
@@ -362,11 +356,12 @@
             <a href="?id=P464229&amp;mode=math">Metrology</a>
           </p>
           <p>
-            Cuneiform faces match the
+            Cuneiform is drawn in a period-matched face, following the
             <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener"
               >eBL converter</a
             >
-            (Neo-Assyrian, Neo-Babylonian, Old Babylonian / Literature / Monumental, Hittite).
+            (Neo-Assyrian, Neo-Babylonian, Old Babylonian cursive / literary / monumental, Hittite; Noto otherwise);
+            the reader's “Cuneiform face” menu overrides it for your session (<a href="#font-credits">font credits</a>).
             Offline ATF→Unicode uses a vendored eBL reading map; optional live conversion hits the
             eBL signs API.
           </p>
@@ -382,15 +377,19 @@
                 Catalogue &amp; ATF: <a href="https://cdli.earth/" target="_blank" rel="noopener">CDLI</a>
                 (cdli-gh bulk dump)
               </li>
-              <li>
-                Period fonts: C. Ziegeler &amp; S. Vanseveren via
-                <a href="https://www.ebl.lmu.de/" target="_blank" rel="noopener">eBL</a> /
-                <a
-                  href="https://github.com/ElectronicBabylonianLiterature/ebl-frontend"
-                  target="_blank"
-                  rel="noopener"
-                  >ebl-frontend</a
-                >
+              <li id="font-credits">
+                Cuneiform fonts (chosen by period, following the
+                <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener">eBL cuneiform converter</a>):
+                <em>Assurbanipal</em> (Neo-Assyrian), <em>Esagil</em> (Neo-Babylonian), <em>Santakku</em> and
+                <em>SantakkuM</em> (Old Babylonian cursive / monumental), <em>UllikummiA</em> (Hittite): fonts created by
+                Sylvie Vanséveren, available on the
+                <a href="https://hethport.net/cuneifont/" target="_blank" rel="noopener">Hethitologie Portal Mainz</a>
+                (free for scholarly use; files as distributed by
+                <a href="https://github.com/ElectronicBabylonianLiterature/ebl-frontend" target="_blank" rel="noopener">eBL</a>).
+                <em>OB Freie</em> (Old Babylonian literary) by Corvin R. Ziegeler / Institut für Altorientalistik, FU Berlin
+                (<a href="https://doi.org/10.17169/refubium-44983" target="_blank" rel="noopener">publication</a>,
+                <a href="fonts/OFL-OBFreie.txt">SIL OFL 1.1</a>).
+                <em>Noto Sans Cuneiform</em> by the Noto project (<a href="fonts/OFL-NotoSansCuneiform.txt">SIL OFL 1.1</a>) for other periods and missing signs.
               </li>
               <li>Map: label-free shaded relief rendered from <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model" target="_blank" rel="noopener">NOAA ETOPO 2022</a> (public domain) and <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> (public domain); no modern roads, borders or labels</li>
               <li>
@@ -415,6 +414,7 @@
       crossorigin=""
     ></script>
     <script src="js/atf2unicode.js"></script>
+    <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

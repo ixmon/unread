@@ -60,25 +60,47 @@ This writes:
 - **Prefer CDLI-untranslated** — hides RINAP / ETCSL / etc. heuristics (`known_elsewhere`)  
 - **Map** — findspots (Leaflet + CARTO dark tiles)  
 - **Time browser** — ranks works near the scrubber year  
-- **Reader** — toggle English / ATF / cuneiform columns; switch eBL period fonts  
+- **Reader** — toggle English / ATF / cuneiform columns; cuneiform face chosen by period (override per session)  
 - **Offline cuneiform** — client-side reading map; optional live eBL API  
 - Deep links: `?mode=omens&id=P480113` · `?mode=omens&kind=extispicy&id=P453398` · `?mode=math&kind=reciprocal&id=P257557`  
 
 ## Fonts
 
-WOFF faces under `web/fonts/` are converted from the research tree (`deep-cuneiform/data/fonts/`), originally from [ebl-frontend](https://github.com/ElectronicBabylonianLiterature/ebl-frontend) (`src/signs/ui/display/fonts/`).
+Cuneiform is drawn in a period-matched face. **One table** decides which: [`web/fonts/fonts.json`](web/fonts/fonts.json)
+(`fonts` = the shipped faces with author/licence/source, `rules` = ordered period/language/genre regexes).
+The reader (`web/js/fontmap.js`), the static text pages (`scripts/build_static.py`) and the catalog builder
+(`scripts/build_catalog.py`, via `scripts/font_map.py`) all read it. `@font-face` rules are added only for the face a
+page actually uses (+ the Noto fallback), with `font-display: swap`. The reader's *Cuneiform face* menu overrides the
+automatic choice for the current browser session.
 
-| Face | eBL label |
-|------|-----------|
-| Assurbanipal | Neo-Assyrian |
-| Esagil | Neo-Babylonian |
-| Santakku | Old Babylonian |
-| OBFreie | Old Babylonian Literature |
-| SantakkuM | Old Babylonian Monumental |
-| UllikummiA | Hittite |
-| NotoSansCuneiform | Broad Unicode fallback |
+| Rule (first match wins) | Face | Basis |
+|------|------|------|
+| language Hittite | UllikummiA | eBL “Hittite” |
+| period Neo-Assyrian | Assurbanipal | eBL “Neo-Assyrian” |
+| period Middle Assyrian | Assurbanipal | extension (no eBL MA face) |
+| period Neo-Babylonian | Esagil | eBL “Neo-Babylonian” |
+| period Late Babylonian / Achaemenid / Hellenistic | Esagil | extension (LB script continues NB forms) |
+| period Old Babylonian + genre Literary | OBFreie | eBL “Old Babylonian Literature” |
+| period Old Babylonian + genre Royal/Monumental | SantakkuM | eBL “Old Babylonian Monumental” |
+| period Old Babylonian (other) | Santakku | eBL “Old Babylonian” (cursive) |
+| everything else (Uruk, ED, Old Akkadian, Lagash II, Ur III, Old Assyrian, Middle Babylonian, Ebla, unknown) | Noto Sans Cuneiform | eBL has no face for these |
 
-**Credit:** fonts developed by **C. Ziegeler** and **S. Vanseveren** (eBL). Check upstream terms before public redistribution outside research use.
+Signs a face lacks fall back to Noto Sans Cuneiform (eBL uses Adobe Blank, which hides them).
+
+### Font credits and licences
+
+- **Assurbanipal, Esagil, Santakku, SantakkuM, UllikummiA**: fonts created by **Sylvie Vanséveren**, available on the
+  [Hethitologie Portal Mainz](https://hethport.net/cuneifont/). Terms: free of charge; may be used for academic and
+  research purposes and on scholarly websites; must not be modified, distributed in modified form, or distributed
+  commercially; credit required. We ship the exact files distributed by
+  [ebl-frontend](https://github.com/ElectronicBabylonianLiterature/ebl-frontend) (commit `9916eb1d`,
+  `src/Assurbanipal.woff2`, `src/signs/ui/display/fonts/*.woff`), not converted by us.
+- **OB Freie** (Old Babylonian literary): © 2024 **Corvin R. Ziegeler** and Institut für Altorientalistik, FU Berlin
+  (Latin glyphs from Junicode by Peter S. Baker), [SIL OFL 1.1](web/fonts/OFL-OBFreie.txt);
+  publication <https://doi.org/10.17169/refubium-44983>. Repackaged from eBL's WOFF to WOFF2 (lossless, no subsetting).
+- **Noto Sans Cuneiform**: Noto project (Google / Monotype), [SIL OFL 1.1](web/fonts/OFL-NotoSansCuneiform.txt). Repackaged as WOFF2.
+- Not shipped: Vanséveren's **Bisitun / Persepolis** (Old Persian; licence would allow scholarly web use, but the site has
+  no Old Persian ATF→Unicode conversion, so they would be unused) and **UllikummiB/C** (partial Hittite variants, unused by eBL).
 
 ## Related projects
 
@@ -102,7 +124,7 @@ CDLI `translation_source = "no translation"` means **not in CDLI**, not necessar
 ## License / attribution
 
 - CDLI catalogue & ATF: follow [CDLI](https://cdli.earth/) terms  
-- eBL fonts & sign list: follow eBL / author terms  
+- Cuneiform fonts: see *Font credits and licences* above; eBL sign list: follow eBL terms  
 - App code in this repo: TBD (add a LICENSE when you publish)
 
 ## In-browser translator (`web/translate.html`)

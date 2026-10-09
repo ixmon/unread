@@ -1,0 +1,73 @@
+{
+  "$note": "Single source for cuneiform fonts and the period/language -> font rule table. Read by web/js/fontmap.js (reader), scripts/font_map.py (build_static.py, build_catalog.py). Rules are tried in order; the first whose regexes (case-insensitive; missing = any) all match wins, else 'default'. Families follow the eBL cuneiform converter (ebl-frontend CuneiformConverterForm.tsx). Vanseveren faces are the exact files distributed in ebl-frontend (commit 9916eb1d), unconverted, because their terms forbid modified copies; the two OFL faces were repackaged as WOFF2 (lossless, no subsetting).",
+  "version": 1,
+  "default": "NotoSansCuneiform",
+  "fallback": "NotoSansCuneiform",
+  "fonts": {
+    "Assurbanipal": {
+      "family": "Assurbanipal", "file": "Assurbanipal.woff2", "format": "woff2",
+      "label": "Neo-Assyrian", "ebl_label": "Neo-Assyrian",
+      "author": "Sylvie Vanséveren", "version": "2.000 (2021)",
+      "license": "Free for academic/scholarly use; no modification or commercial distribution", "license_url": "https://hethport.net/cuneifont/",
+      "source": "ebl-frontend src/Assurbanipal.woff2", "unicode_range": "U+12000-1254F, U+100000-10FFFD"
+    },
+    "Esagil": {
+      "family": "Esagil", "file": "Esagil.woff", "format": "woff",
+      "label": "Neo-Babylonian", "ebl_label": "Neo-Babylonian",
+      "author": "Sylvie Vanséveren (made for eBL)", "version": "1.000 (2021)",
+      "license": "Free for academic/scholarly use; no modification or commercial distribution", "license_url": "https://hethport.net/cuneifont/",
+      "source": "ebl-frontend src/signs/ui/display/fonts/Esagil.woff", "unicode_range": "U+12000-1254F, U+100000-10FFFD"
+    },
+    "Santakku": {
+      "family": "Santakku", "file": "Santakku.woff", "format": "woff",
+      "label": "Old Babylonian (cursive)", "ebl_label": "Old Babylonian",
+      "author": "Sylvie Vanséveren", "version": "1.003 (2007)",
+      "license": "Free for academic/scholarly use; no modification or commercial distribution", "license_url": "https://hethport.net/cuneifont/",
+      "source": "ebl-frontend src/signs/ui/display/fonts/Santakku.woff", "unicode_range": "U+12000-1254F"
+    },
+    "OBFreie": {
+      "family": "OBFreie", "file": "OBFreie.woff2", "format": "woff2",
+      "label": "Old Babylonian literary", "ebl_label": "Old Babylonian Literature",
+      "author": "Corvin R. Ziegeler (with Institut für Altorientalistik, FU Berlin; Latin from Junicode by Peter S. Baker)", "version": "1.2 (2024)",
+      "license": "SIL Open Font License 1.1", "license_url": "fonts/OFL-OBFreie.txt",
+      "source": "ebl-frontend src/signs/ui/display/fonts/OBFreie.woff, repackaged as WOFF2; publication https://doi.org/10.17169/refubium-44983",
+      "unicode_range": "U+12000-1254F, U+E000-E005"
+    },
+    "SantakkuM": {
+      "family": "SantakkuM", "file": "SantakkuM.woff", "format": "woff",
+      "label": "Old Babylonian monumental", "ebl_label": "Old Babylonian Monumental",
+      "author": "Sylvie Vanséveren", "version": "1.003 (2007)",
+      "license": "Free for academic/scholarly use; no modification or commercial distribution", "license_url": "https://hethport.net/cuneifont/",
+      "source": "ebl-frontend src/signs/ui/display/fonts/SantakkuM.woff", "unicode_range": "U+12000-1254F"
+    },
+    "UllikummiA": {
+      "family": "UllikummiA", "file": "UllikummiA.woff", "format": "woff",
+      "label": "Hittite", "ebl_label": "Hittite",
+      "author": "Sylvie Vanséveren", "version": "1.003 (2007)",
+      "license": "Free for academic/scholarly use; no modification or commercial distribution", "license_url": "https://hethport.net/cuneifont/",
+      "source": "ebl-frontend src/signs/ui/display/fonts/UllikummiA.woff", "unicode_range": "U+12000-1254F, U+100000-10FFFD"
+    },
+    "NotoSansCuneiform": {
+      "family": "NotoSansCuneiform", "file": "NotoSansCuneiform.woff2", "format": "woff2",
+      "label": "generic face, any period", "ebl_label": null,
+      "author": "Google / Monotype Design Team (Noto project)", "version": "2.000",
+      "license": "SIL Open Font License 1.1", "license_url": "fonts/OFL-NotoSansCuneiform.txt",
+      "source": "Noto Sans Cuneiform (notofonts), repackaged as WOFF2", "unicode_range": "U+12000-1254F"
+    }
+  },
+  "rules": [
+    {"font": "UllikummiA", "language": "hittite", "basis": "eBL: Hittite"},
+    {"font": "Assurbanipal", "period": "neo-assyrian", "basis": "eBL: Neo-Assyrian"},
+    {"font": "Assurbanipal", "period": "middle assyrian", "basis": "extension: nearest Assyrian face (eBL has no Middle Assyrian face)"},
+    {"font": "Esagil", "period": "neo-babylonian", "basis": "eBL: Neo-Babylonian"},
+    {"font": "Esagil", "period": "late babylonian|achaemenid|hellenistic|seleucid|parthian", "basis": "extension: Late Babylonian script continues Neo-Babylonian forms"},
+    {"font": "OBFreie", "period": "old babylonian", "genre": "literary", "basis": "eBL: Old Babylonian Literature"},
+    {"font": "SantakkuM", "period": "old babylonian", "genre": "royal|monumental", "basis": "eBL: Old Babylonian Monumental"},
+    {"font": "Santakku", "period": "old babylonian", "basis": "eBL: Old Babylonian (cursive)"}
+  ],
+  "excluded": [
+    {"font": "Bisitun, Persepolis (Old Persian, S. Vanséveren)", "why": "Licence allows scholarly web use, but they only cover the Old Persian block (U+103A0-103DF): the site has no Old Persian ATF to Unicode converter and no Old Persian transliteration is shown, so they would be unused."},
+    {"font": "UllikummiB, UllikummiC (Hittite variants, S. Vanséveren)", "why": "Not used by eBL; small partial sets (108 / 25 signs). UllikummiA covers Hittite."},
+    {"font": "Adobe Blank (eBL's missing-glyph fallback)", "why": "eBL hides unmapped glyphs with it; we fall back to Noto Sans Cuneiform so every mapped sign stays visible."}
+  ]
+}

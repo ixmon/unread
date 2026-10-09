@@ -80,6 +80,12 @@ async function loadCatalog() {
   const res = await fetch(`${DATA_BASE}/catalog.json`);
   if (!res.ok) throw new Error("catalog.json missing — run scripts/build_catalog.py");
   state.catalog = await res.json();
+  try {
+    await FontMap.load("fonts/fonts.json");
+  } catch (e) {
+    console.warn("font table:", e);
+  }
+  for (const it of state.catalog.items) it.font = FontMap.fontFor(it);
   const epicN = state.catalog.epic_hunt?.count || state.catalog.items.filter((i) => i.epic_hunt).length;
   const herbN = state.catalog.herbal_remedies?.count || state.catalog.items.filter((i) => i.herbal_remedy).length;
   const omenN = state.catalog.omens?.count || state.catalog.items.filter((i) => i.omen_hunt).length;
@@ -517,7 +523,7 @@ function renderPreview(item, loading, text) {
       <div class="fact"><dt>~Year</dt><dd>${yearLabel}</dd></div>
       <div class="fact"><dt>Site</dt><dd>${escapeHtml(item.site || item.provenience || "—")}</dd></div>
       <div class="fact"><dt>ATF size</dt><dd>${item.content_lines} lines · ${item.chars} chars</dd></div>
-      <div class="fact"><dt>Font</dt><dd>${escapeHtml(item.font || "—")}</dd></div>
+      <div class="fact"><dt>Font</dt><dd title="${escapeAttr(FontMap.info(item.font)?.label || "")}">${escapeHtml(item.font || "—")}</dd></div>
       <div class="fact"><dt>Open English?</dt><dd>${statusSrc.open_english ? "Yes (known digital)" : "No open English found"}</dd></div>
     </dl>
     ${snip ? `<pre class="preview-atf-snip">${escapeHtml(snip)}</pre>` : ""}
@@ -535,8 +541,15 @@ async function openReader(id) {
   }
   state.currentText = text;
   state.selectedId = id;
-  state.font = text.font || "Assurbanipal";
-  $("#font-select").value = state.font;
+  // Font: period/language rule from fonts/fonts.json, unless the reader picked one this session
+  const catItem = state.catalog?.items?.find((x) => x.id === id) || {};
+  const pick = (k) => text[k] || catItem[k] || "";
+  const fontItem = { language: pick("language"), period: pick("period"), genre: pick("genre") };
+  state.fontAuto = FontMap.fontFor(fontItem);
+  state.fontRule = FontMap.ruleFor(fontItem);
+  state.font = FontMap.override() || state.fontAuto;
+  text.font = state.font;
+  $("#font-select").value = FontMap.override();
   renderReader();
 }
 
@@ -718,7 +731,7 @@ function renderMetaCol(text) {
         ${metaRow("Package status", text.status)}
         ${metaRow("Open English?", text.open_english ? "Yes (known digital project)" : "No open English found")}
         ${metaRow("Print edition likely?", text.print_edition_likely ? "Yes" : "No / unknown")}
-        ${metaRow("Font face", text.font)}
+        ${metaRow("Font face", fontDescription())}
         ${metaRow("ATF content lines", text.content_lines)}
         ${metaRow("ATF chars (approx.)", text.chars)}
         ${metaRow(
@@ -1152,17 +1165,40 @@ function renderAtfCol(text) {
   bindLineHover(body);
 }
 
+function fontDescription() {
+  const f = FontMap.info(state.font);
+  if (!f) return state.font || null;
+  const auto = FontMap.info(state.fontAuto);
+  const why = FontMap.override()
+    ? `your choice for this session (period default: ${auto ? auto.family : state.fontAuto})`
+    : state.fontRule
+      ? `by period: ${state.fontRule.basis}`
+      : "default (no period-specific face)";
+  return `${f.family} (${f.label}) by ${f.author}; ${why}`;
+}
+
+function fillFontPicker() {
+  const sel = $("#font-select");
+  if (!sel) return;
+  const opts = [`<option value="">Auto (by period)</option>`].concat(
+    Object.entries(FontMap.fonts()).map(([id, f]) => `<option value="${escapeAttr(id)}">${escapeHtml(f.family)}: ${escapeHtml(f.label)}</option>`)
+  );
+  sel.innerHTML = opts.join("");
+  sel.value = FontMap.override();
+}
+
 async function renderCuneiformCol(text) {
   const body = $("#cuneiform-body");
   const lines = (text.lines || []).filter((l) => l.type === "line");
-  const fontClass = `font-${state.font}`;
+  FontMap.ensure(state.font);
+  const fontStyle = `font-family:${FontMap.stack(state.font)}`;
 
   if (!lines.length) {
     body.innerHTML = `<p style="color:var(--text-faint)">No lines to render.</p>`;
     return;
   }
 
-  body.innerHTML = `<div class="cuneiform-lines ${fontClass}" id="cunei-root"><div style="color:var(--text-faint);font-family:var(--font-ui);font-size:0.85rem">Converting ATF → Unicode…</div></div>`;
+  body.innerHTML = `<div class="cuneiform-lines" id="cunei-root" data-font="${escapeAttr(state.font)}" style='${fontStyle}'><div style="color:var(--text-faint);font-family:var(--font-ui);font-size:0.85rem">Converting ATF → Unicode…</div></div>`;
 
   try {
     await Atf2Unicode.load(`${DATA_BASE}/atf_unicode_readings.json`);
@@ -1202,7 +1238,7 @@ async function renderCuneiformCol(text) {
     }
   }
   root.innerHTML = html;
-  root.className = `cuneiform-lines ${fontClass}`;
+  root.className = "cuneiform-lines";
   bindLineHover(body);
 }
 
@@ -1749,10 +1785,12 @@ function bindEvents() {
   });
 
   $("#font-select").addEventListener("change", (e) => {
-    state.font = e.target.value;
+    FontMap.setOverride(e.target.value); // session only
+    state.font = e.target.value || state.fontAuto || "NotoSansCuneiform";
     if (state.currentText) {
       state.currentText.font = state.font;
       renderCuneiformCol(state.currentText);
+      if (state.readerPanels.meta) renderMetaCol(state.currentText);
     }
   });
 
@@ -1810,6 +1848,7 @@ async function main() {
 
   try {
     await loadCatalog();
+    fillFontPicker();
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108
     const params = new URLSearchParams(location.search);

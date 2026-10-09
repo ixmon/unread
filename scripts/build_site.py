@@ -150,6 +150,8 @@ def main() -> None:
         can_atf = POLICY["sources"].get(c["source_id"], {}).get("can_republish_atf")
         if not can_atf and 'class="atf"' in h:
             fail(f"{page.name}: ATF present but source {c['source_id']} is not republishable")
+        if not can_atf and 'class="cunei"' in h:
+            fail(f"{page.name}: cuneiform derived from ATF present but source {c['source_id']} is not republishable")
         if "Machine draft" not in h or c["translated_on"] not in h:
             fail(f"{page.name}: missing machine-draft stamp")
         mm = re.search(r"\((\d+) with machine English\)", h)
@@ -169,6 +171,17 @@ def main() -> None:
         if "Machine drafts" not in h or 'property="og:title"' not in h:
             fail(f"t/c/{cat['slug']}.html: missing machine-draft note or OG tags")
         report["categories"].append({"slug": cat["slug"], "texts": sum(1 for c in cur["texts"] if cat["slug"] in c.get("categories", []))})
+
+    # fonts: every face in the rule table is shipped, and nothing else
+    ft = json.loads((WEB / "fonts" / "fonts.json").read_text())
+    shipped = {q.name for q in (out / "fonts").iterdir() if q.suffix in (".woff", ".woff2", ".ttf", ".otf")}
+    wanted = {f["file"] for f in ft["fonts"].values()}
+    if shipped != wanted:
+        fail(f"fonts in dist {sorted(shipped)} != fonts.json {sorted(wanted)}")
+    for r in ft["rules"]:
+        if r["font"] not in ft["fonts"]:
+            fail(f"fonts.json rule uses unknown font {r['font']}")
+    report["fonts"] = {"files": sorted(wanted), "bytes": sum((out / "fonts" / n).stat().st_size for n in wanted)}
 
     # sanity: no symlinks, no huge files, no local paths, nothing from web/models
     total = 0

@@ -101,24 +101,10 @@ def period_year(period: str | None):
 
 
 def font_for(period: str, genre: str, language: str) -> str:
-    p = (period or "").lower()
-    g = (genre or "").lower()
-    lang = (language or "").lower()
-    if "hittite" in lang:
-        return "UllikummiA"
-    if "neo-assyrian" in p or "middle assyrian" in p:
-        return "Assurbanipal"
-    if "neo-babylonian" in p or "achaemenid" in p or "late babylonian" in p:
-        return "Esagil"
-    if "old babylonian" in p or "early old babylonian" in p:
-        if "literary" in g:
-            return "OBFreie"
-        if "royal" in g or "monumental" in g:
-            return "SantakkuM"
-        return "Santakku"
-    if "old akkadian" in p or "lagash" in p or "ed iii" in p:
-        return "SantakkuM"
-    return "NotoSansCuneiform"
+    """Cuneiform face from the single rule table web/fonts/fonts.json (see scripts/font_map.py)."""
+    from font_map import font_for as _font_for  # scripts/ is on sys.path (see above)
+
+    return _font_for(language=language, period=period, genre=genre)
 
 
 def build_reading_map(dc: Path, out: Path) -> None:
