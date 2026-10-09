@@ -176,19 +176,26 @@ def match_hooks(item: dict, rows: list[dict]) -> list[dict]:
     return out
 
 
+# Link-preview image (web/og.jpg, 1200x675); absolute URL so every crawler resolves it
+OG_IMAGE = "https://ixmon.github.io/unread/og.jpg"
+OG_IMAGE_ALT = "Unread Atlas: Hunt for unread artifacts"
+
+
 def og_tags(title: str, desc: str, url: str, typ: str = "article") -> str:
-    base = url.split("/t/")[0].rstrip("/") + "/"
     return (
         f'<meta property="og:type" content="{typ}">\n'
         f'<meta property="og:site_name" content="{e(SITE["name"])}">\n'
         f'<meta property="og:title" content="{e(title)}">\n'
         f'<meta property="og:description" content="{e(desc)}">\n'
         f'<meta property="og:url" content="{e(url)}">\n'
-        f'<meta property="og:image" content="{e(base)}og.png">\n'
+        f'<meta property="og:image" content="{e(OG_IMAGE)}">\n'
         f'<meta property="og:image:width" content="1200">\n'
-        f'<meta property="og:image:height" content="630">\n'
+        f'<meta property="og:image:height" content="675">\n'
+        f'<meta property="og:image:alt" content="{e(OG_IMAGE_ALT)}">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         '<meta name="twitter:creator" content="@roguesamurai">\n'
+        f'<meta name="twitter:image" content="{e(OG_IMAGE)}">\n'
+        f'<meta name="twitter:image:alt" content="{e(OG_IMAGE_ALT)}">\n'
         '<meta name="theme-color" content="#0f1114">'
     )
 
