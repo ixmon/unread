@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title data-site-title="Search the corpus">Search the corpus · Unread Atlas</title>
+    <meta name="description" content="Full-text search over cuneiform transliterations (ATF), machine-draft English and open human translations." />
+    <meta name="theme-color" content="#0f1114" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/static.css" />
+    <link rel="stylesheet" href="css/search.css" />
+  </head>
+  <body class="static-page">
+    <header class="static-header">
+      <a class="brand" href="index.html"><!--site:name-->Unread Atlas<!--/site:name--></a>
+      <nav aria-label="Main">
+        <a class="nav-link" href="index.html">Explore &amp; map</a>
+        <a class="nav-link" href="t/index.html">Curated texts</a>
+        <a class="nav-link" href="translate.html">Translator</a>
+        <a class="nav-link active" href="search.html" aria-current="page">Search</a>
+      </nav>
+    </header>
+    <main class="static-main search-main">
+      <h1>Search the corpus</h1>
+      <p class="lede" id="stats-line">Full-text search over transliterations, machine-draft English and open human translations.</p>
+
+      <form id="search-form" class="search-form" role="search" autocomplete="off">
+        <div class="search-row">
+          <label for="q" class="visually-hidden">Search</label>
+          <input type="search" id="q" name="q" class="search-input" placeholder="Gilgamesh · sza3-zi-ga · &quot;eagle palace&quot; · P262784 · K.8790" />
+          <button type="submit" class="btn primary" id="btn-search">Search</button>
+        </div>
+        <div class="scope-row" role="radiogroup" aria-label="Search in">
+          <span class="scope-label">Search in</span>
+          <label class="scope-opt"><input type="radio" name="in" value="all" checked /> <span>All</span></label>
+          <label class="scope-opt"><input type="radio" name="in" value="atf" /> <span>ATF</span></label>
+          <label class="scope-opt"><input type="radio" name="in" value="en" /> <span>English</span></label>
+        </div>
+        <div class="filter-grid">
+          <label>Period <select id="f-period" name="period"><option value="">Any period</option></select></label>
+          <label>Genre <select id="f-genre" name="genre"><option value="">Any genre</option></select></label>
+          <label>Site <select id="f-site" name="site"><option value="">Any site</option></select></label>
+          <label>Source <select id="f-src" name="src"><option value="">Any source</option></select></label>
+        </div>
+        <p class="search-hint">Words are ANDed. <code>"quoted words"</code> or dotted/hyphenated tokens (<code>SA.A</code>, <code>sza3-zi-ga</code>) search as a phrase; <code>word*</code> matches a prefix. ATF accepts <code>š</code> or <code>sz</code>. Filters match any part of the name, so “Nippur” also finds “Nippur (mod. Nuffar)”.</p>
+      </form>
+
+      <div id="status" class="search-status" role="status" aria-live="polite"></div>
+      <section id="results" class="search-results" aria-live="polite"></section>
+      <nav id="pager" class="pager" aria-label="Result pages"></nav>
+      <article id="text-view" class="text-view" hidden></article>
+    </main>
+    <footer class="static-footer">
+      <div class="footer-links"><!--site:links--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:links--></div>
+      English marked <em>machine draft</em> comes from <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a>
+      (atf-en-best-v2, translated 2026-10-05) and is not a scholarly translation. Human English and transliterations are credited to their sources;
+      transliterations are shown only where the source allows republication. Search is served by the Unread Atlas API and is rate-limited per visitor.
+    </footer>
+    <script src="js/search.js"></script>
+  </body>
+</html>
