@@ -4,7 +4,10 @@ import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transfo
 const PREFIX = "translate Akkadian to English: ";
 // Note: Transformers.js 3.7 has no beam search; num_beams is ignored and decoding is greedy
 // (verified: output == PyTorch greedy, token for token). Python/server drafts use 4 beams.
-const GEN = { num_beams: 4, max_new_tokens: 100, early_stopping: true };
+// repetition_penalty 1.2 matches the v4e reference decoding (also in the model's generation_config.json).
+// no_repeat_ngram_size is deliberately off: n-gram 3 cost ~3 BLEU (ATF formulae repeat legitimately).
+// The Python drafts' custom loop-block processor is not available in Transformers.js.
+const GEN = { num_beams: 4, max_new_tokens: 100, early_stopping: true, repetition_penalty: 1.2 };
 let pipePromise = null;
 
 function load(cfg) {

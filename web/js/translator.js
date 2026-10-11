@@ -6,11 +6,15 @@
 //   ?model=<hf-id>     -> another Hub repo, e.g. ?model=montycrypto/atf-to-english
 //   ?model=<name>      -> a local folder web/models/<name>/ (no slash = local)
 //   ?dtype=fp32|q8     -> weights variant (default q8 = int8 *_quantized.onnx)
-//   ?revision=<sha>    -> pin a Hub revision (default "main")
+//   ?revision=<sha>    -> pin a Hub revision (default DEFAULT_REVISION for the default model, else "main")
 //   ?id=P123456[&from=N] -> prefill the textarea with ATF lines of data/texts/<id>.json
 //   window.UNREAD_TRANSLATOR_CONFIG = {model, dtype, revision, localModelPath, remoteHost} also works
 //   (remoteHost is for tests/mirrors only: a server laid out like huggingface.co/<model>/resolve/<rev>/…).
 export const DEFAULT_REMOTE_MODEL = "montycrypto/atf-to-english-onnx";
+// Model version shown on the page, and the Hub commit of DEFAULT_REMOTE_MODEL it was published as.
+// Pinning the commit (not "main") makes returning visitors fetch new files instead of a cached older model.
+export const MODEL_VERSION = "atf-en-best-v4e (2026-10-11)";
+export const DEFAULT_REVISION = "2889e854d3cd1fd8a8d963f2fb0284f80d113339";
 const LOCAL_MODEL = "atf-to-english";
 const PREFILL_LIMIT = 48;
 const params = new URLSearchParams(location.search);
@@ -18,7 +22,7 @@ const cfg = Object.assign(
   {
     model: params.get("model") || (params.get("local") === "1" ? LOCAL_MODEL : DEFAULT_REMOTE_MODEL),
     dtype: params.get("dtype") || "q8",
-    revision: params.get("revision") || "main",
+    revision: params.get("revision") || (params.get("model") ? "main" : DEFAULT_REVISION),
     localModelPath: new URL("models/", location.href).href,
     remoteHost: null,
   },
@@ -26,7 +30,7 @@ const cfg = Object.assign(
 );
 cfg.remote = cfg.model.includes("/"); // HF ids look like owner/name
 const MODEL_LABEL =
-  `atf-en-best-v2 ${cfg.dtype === "q8" ? "int8" : cfg.dtype}` +
+  `${cfg.model === DEFAULT_REMOTE_MODEL || !cfg.remote ? MODEL_VERSION : cfg.model} ${cfg.dtype === "q8" ? "int8" : cfg.dtype}` +
   (cfg.remote ? ` (${cfg.model}${cfg.revision !== "main" ? `@${cfg.revision.slice(0, 7)}` : ""})` : " (local files)");
 
 const $ = (s) => document.querySelector(s);
