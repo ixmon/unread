@@ -1,7 +1,7 @@
 {
   "$schema_note": "Curated static pages. Built by scripts/build_static.py into web/t/<id>.html. Fields per text: id (corpus text id), source_id (corpus.sqlite sources.id), title, blurb, english_source ('site_json' = web/data/texts/<id>.json lines, 'corpus_db' = translations table, author_type='model'), model, model_version, translated_on (YYYY-MM-DD), tags []. v2: categories[] (slug,title,blurb,app_mode?,explainer_html?,coming_soon[]) and per-text categories[] (slugs; a text may be in several, [] = uncategorised) and hooks[] (verbatim substrings of that text's machine English; build_static.py verifies them).",
   "version": 2,
-  "site_base_url": "https://ixmon.github.io/unread/",
+  "site_base_url": "https://unreadatlas.com/",
   "categories": [
     {
       "slug": "remedies",

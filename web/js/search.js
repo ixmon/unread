@@ -9,7 +9,9 @@
 (() => {
   "use strict";
 
-  const API = (new URLSearchParams(location.search).get("api") || "https://d3qsgtzicfbir4.cloudfront.net").replace(/\/+$/, "");
+  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda); elsewhere the API CloudFront URL.
+  const DEFAULT_API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? location.origin + "/api" : "https://d3qsgtzicfbir4.cloudfront.net";
+  const API = (new URLSearchParams(location.search).get("api") || DEFAULT_API).replace(/\/+$/, "");
   const LIMIT = 20;
   const SLOW_MS = 1200; // after this, say we're waking the archive (Lambda cold start ≈ 12 s)
   const TIMEOUT_MS = 35000; // CloudFront origin timeout is 30 s
@@ -50,7 +52,7 @@
 
   function urlFor(s) {
     const p = new URLSearchParams();
-    if (API !== "https://d3qsgtzicfbir4.cloudfront.net") p.set("api", API);
+    if (API !== DEFAULT_API) p.set("api", API);
     if (s.q) p.set("q", s.q);
     if (s.in && s.in !== "all") p.set("in", s.in);
     for (const k of ["period", "genre", "site", "src", "at"]) if (s[k]) p.set(k, s[k]);
@@ -337,7 +339,7 @@
   /** index.html deep link for the map's search-results layer (same query and filters). */
   function mapUrl(s) {
     const p = new URLSearchParams();
-    if (API !== "https://d3qsgtzicfbir4.cloudfront.net") p.set("searchapi", API);
+    if (API !== DEFAULT_API) p.set("searchapi", API);
     if (s.q) p.set("q", s.q);
     if (s.in && s.in !== "all") p.set("in", s.in);
     for (const k of ["period", "genre", "site", "src"]) if (s[k]) p.set(k, s[k]);

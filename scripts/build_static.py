@@ -224,7 +224,7 @@ def match_hooks(item: dict, rows: list[dict]) -> list[dict]:
 
 
 # Link-preview image (web/og.jpg, 1200x675); absolute URL so every crawler resolves it
-OG_IMAGE = "https://ixmon.github.io/unread/og.jpg"
+OG_IMAGE = "https://unreadatlas.com/og.jpg"
 OG_IMAGE_ALT = "Unread Atlas: Hunt for unread artifacts"
 
 
@@ -521,8 +521,8 @@ def main():
     sm += [f"  <url><loc>{e(u)}</loc><lastmod>{today}</lastmod></url>" for u in urls]
     sm.append("</urlset>")
     (WEB / "sitemap.xml").write_text("\n".join(sm) + "\n")
-    # Note: crawlers only read robots.txt at the host root (ixmon.github.io/robots.txt, i.e. the
-    # user-site repo); this copy documents intent and points to the sitemap for anyone who looks.
+    # Note: crawlers only read robots.txt at the host root (unreadatlas.com/robots.txt; the GitHub Pages mirror is ixmon.github.io/unread/, whose
+    # robots lives in the user-site repo); this copy is served at the root of unreadatlas.com and documents intent and points to the sitemap for anyone who looks.
     (WEB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
     # search.html links results to the map reader (catalog / packaged ids) and to t/ pages
     pages = {}

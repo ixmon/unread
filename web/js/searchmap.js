@@ -9,7 +9,9 @@
 (() => {
   "use strict";
 
-  const API = (new URLSearchParams(location.search).get("searchapi") || "https://d3qsgtzicfbir4.cloudfront.net").replace(/\/+$/, "");
+  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda); elsewhere the API CloudFront URL.
+  const DEFAULT_API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? location.origin + "/api" : "https://d3qsgtzicfbir4.cloudfront.net";
+  const API = (new URLSearchParams(location.search).get("searchapi") || DEFAULT_API).replace(/\/+$/, "");
   const FILTERS = ["period", "genre", "site", "src"];
   const SCOPES = { all: "All", atf: "ATF", en: "English", meta: "Catalogue" };
   const PAGE = 20;
@@ -169,7 +171,7 @@
   }
   function searchPageUrl(s, extra = {}) {
     const p = new URLSearchParams();
-    if (API !== "https://d3qsgtzicfbir4.cloudfront.net") p.set("api", API);
+    if (API !== DEFAULT_API) p.set("api", API);
     if (s.q) p.set("q", s.q);
     if (s.in && s.in !== "all") p.set("in", s.in);
     for (const k of FILTERS) if (s[k]) p.set(k, s[k]);
