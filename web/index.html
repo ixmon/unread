@@ -1,437 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <title data-site-title="">Unread Atlas</title>
-    <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
-    <link rel="canonical" href="https://unreadatlas.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Unread Atlas" />
-    <meta property="og:title" content="Unread Atlas" />
-    <meta property="og:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
-    <meta property="og:url" content="https://unreadatlas.com/" />
-    <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
-    <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@roguesamurai" />
-    <meta name="twitter:title" content="Unread Atlas" />
-    <meta name="twitter:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
-    <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
-    <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
-    <meta name="theme-color" content="#0f1114" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <header class="app-header">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <h1>
-          <!--site:name-->Unread Atlas<!--/site:name-->
-          <span class="sub"><!--site:tagline-->first readings · open corpus<!--/site:tagline--></span>
-        </h1>
-      </div>
-      <nav class="header-nav" aria-label="Main">
-        <button type="button" class="nav-btn active" data-view="explore">Explore</button>
-        <button type="button" class="nav-btn" data-view="reader">Reader</button>
-        <button type="button" class="nav-btn" data-view="about">About</button>
-        <a class="nav-link" href="t/index.html">Curated</a>
-        <a class="nav-link" href="translate.html">Translator</a>
-        <a class="nav-link" href="search.html">Search</a>
-      </nav>
-      <div class="header-spacer"></div>
-      <div class="header-meta" id="header-count">Loading…</div>
-      <div class="site-links"><!--site:links--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:links--></div>
-    </header>
-
-    <main class="app-main">
-      <!-- EXPLORE -->
-      <section id="view-explore" class="view active" aria-label="Explore catalog">
-        <aside class="sidebar">
-          <div class="sidebar-section">
-            <h2>Search</h2>
-            <input
-              type="search"
-              id="search"
-              class="search-box"
-              placeholder="P-number, title, site, genre…"
-              autocomplete="off"
-            />
-          </div>
-          <div class="filters">
-            <div class="filter-row">
-              <label for="filter-genre">Genre</label>
-              <select id="filter-genre"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-period">Period</label>
-              <select id="filter-period"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-language">Language</label>
-              <select id="filter-language"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-site">Site</label>
-              <select id="filter-site"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
-              <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
-            </div>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-hide-known" checked />
-              Hide open English (RINAP / ETCSL / CDLI…)
-            </label>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-open-gap" />
-              Only strong open gap (no print series either)
-            </label>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-packaged" />
-              Only packaged samples (full ATF)
-            </label>
-            <label class="checkbox-row epic-hunt-toggle">
-              <input type="checkbox" id="filter-epic-hunt" />
-              <strong>Epic hunt</strong> — large literary / phrase-scored
-            </label>
-            <label class="checkbox-row herbal-toggle">
-              <input type="checkbox" id="filter-herbal" />
-              <strong>Remedies</strong> — plants, recipes, home cures
-            </label>
-            <label class="checkbox-row omen-toggle">
-              <input type="checkbox" id="filter-omens" />
-              <strong>Omens</strong> — body, birth, liver, stars
-            </label>
-            <label class="checkbox-row math-toggle">
-              <input type="checkbox" id="filter-math" />
-              <strong>Math</strong> — tables, metrology, reciprocals
-            </label>
-            <div class="mode-intro" id="mode-intro-omens" hidden>
-              <div class="mode-intro-title">Divination corpus</div>
-              <p>
-                If–then science of the body, birth, liver, and sky. Protases (signs) lead to
-                apodoses (fates). Pick a kind chip or a featured tablet.
-              </p>
-              <div class="kind-chips" id="omen-kind-chips" role="group" aria-label="Omen kinds"></div>
-            </div>
-            <div class="mode-intro" id="mode-intro-math" hidden>
-              <div class="mode-intro-title">School mathematics</div>
-              <p>
-                Sexagesimal tables from Nippur and beyond — reciprocals (igi), multiplication
-                (a-rá), and metrological area/capacity lists. Short tablets are welcome here.
-              </p>
-              <div class="kind-chips" id="math-kind-chips" role="group" aria-label="Math kinds"></div>
-            </div>
-            <div class="featured-row" id="featured-row" hidden>
-              <div class="featured-label">Featured · epic</div>
-              <button type="button" class="btn featured-btn" data-featured="P262784" title="Old Babylonian Gilgamesh II (Nippur)">
-                Gilgamesh II · P262784
-              </button>
-              <button type="button" class="btn featured-btn" data-featured="P273203" title="NA Gilgamesh II fragment">
-                Gilg. II fr. · P273203
-              </button>
-            </div>
-            <div class="featured-row" id="featured-herbal-row" hidden>
-              <div class="featured-label">Featured · remedies</div>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P404959" title="Head fever / headache poultices">
-                Head fever · P404959
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P498964" title="Belly burn, vomit, jaundice, lungs">
-                Belly / lungs · P498964
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P338416" title="Tooth and jaw remedies">
-                Teeth · P338416
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348465" title="Nose and breath remedies">
-                Nose · P348465
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348655" title="Eye salves">
-                Eyes · P348655
-              </button>
-            </div>
-            <div class="featured-row" id="featured-omen-row" hidden>
-              <div class="featured-label">Featured · omens</div>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P480113" title="Physiognomy — moles on face & body (TBP 63)">
-                Moles · P480113
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P365915" title="Skin-spot omens šumma tirku">
-                Skin spots · P365915
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P452591" title="Birth omens (Šumma izbu-type)">
-                Birth · P452591
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P479385" title="Mul.Apin star list">
-                Mul.Apin · P479385
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P453398" title="Extispicy — liver / sacrificial omens">
-                Liver · P453398
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P236901" title="Physiognomy TBP 44">
-                TBP 44 · P236901
-              </button>
-            </div>
-            <div class="featured-row" id="featured-math-row" hidden>
-              <div class="featured-label">Featured · math</div>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P257557" title="Reciprocal (igi) table">
-                Reciprocals · P257557
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P464229" title="Early metrological area table">
-                Metrology · P464229
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P368713" title="Multiplication + metrological tables">
-                Mult. tables · P368713
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P229294" title="Metrology + lexical Nippur">
-                Nippur · P229294
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P493017" title="Multiplication table ×7:30">
-                ×7:30 · P493017
-              </button>
-            </div>
-            <div class="legend-mini">
-              <span class="chip status-fresh">No open English</span>
-              <span class="chip status-print">Print edition</span>
-              <span class="chip status-open">Open English</span>
-              <span class="chip status-machine">Machine draft</span>
-              <span class="chip status-epic">Epic hunt</span>
-              <span class="chip status-herbal">Remedy</span>
-              <span class="chip status-omen">Omen</span>
-              <span class="chip status-math">Math</span>
-            </div>
-          </div>
-          <div class="results-count" id="results-count">—</div>
-          <div class="catalog-list" id="catalog-list" role="listbox" aria-label="Works"></div>
-        </aside>
-
-        <div class="explore-main">
-          <div class="explore-panels">
-            <div class="map-panel">
-              <div id="map" role="application" aria-label="Findspots map"></div>
-              <div class="map-empty" id="map-empty">No geolocated works in current filter</div>
-              <div class="smap" aria-label="Search results on the map">
-                <form class="smap-form" id="smap-form" role="search" autocomplete="off">
-                  <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
-                  <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
-                  <button type="submit" class="btn primary smap-go">Map</button>
-                </form>
-                <div class="smap-chip" id="smap-chip" hidden>
-                  <label class="smap-toggle" title="Show or hide the search-results layer"><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
-                  <span id="smap-summary" aria-live="polite"></span>
-                  <span id="smap-filters" class="smap-filters"></span>
-                  <a id="smap-open" class="smap-link" href="search.html" target="_blank" rel="noopener">List</a>
-                  <button type="button" id="smap-clear" class="smap-link">Clear</button>
-                </div>
-              </div>
-              <aside class="smap-panel" id="smap-panel" hidden aria-label="Search results at this site"></aside>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-header">
-                <h3>Time browser</h3>
-                <span class="timeline-era" id="timeline-era" aria-live="polite"></span>
-                <span class="timeline-spacer"></span>
-                <button type="button" class="timeline-all" id="timeline-all" aria-pressed="true">All periods</button>
-                <span class="timeline-year" id="timeline-year">2000 BCE</span>
-              </div>
-              <div class="timeline-track">
-                <div class="timeline-eraband" id="timeline-eraband" aria-hidden="true"></div>
-                <div class="timeline-rail"></div>
-                <div class="timeline-fill" id="timeline-fill"></div>
-                <div class="timeline-dots" id="timeline-dots"></div>
-                <input
-                  type="range"
-                  class="timeline-input"
-                  id="timeline-range"
-                  min="-3400"
-                  max="-50"
-                  step="25"
-                  value="-2000"
-                  aria-label="Approximate year BCE (arrow keys: 25 years, Shift+arrow: 100)"
-                />
-              </div>
-              <div class="timeline-eras" id="timeline-eras" role="group" aria-label="Jump to era"></div>
-              <p class="timeline-note">Era bands use conventional, approximate dates (middle chronology).</p>
-            </div>
-          </div>
-          <div class="preview-panel" id="preview-panel">
-            <div class="preview-empty">Select a work from the list to preview metadata and open the reader.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- READER -->
-      <section id="view-reader" class="view" aria-label="Text reader">
-        <div class="reader-empty" id="reader-empty">
-          <h2>No work open</h2>
-          <p>Pick something from Explore — literary, royal, omen, medical…</p>
-          <button type="button" class="btn primary" data-view="explore" onclick="document.querySelector('[data-view=explore]').click()">
-            Back to explore
-          </button>
-        </div>
-
-        <div id="reader-shell" style="display: none; flex-direction: column; flex: 1; min-height: 0">
-          <div class="reader-toolbar">
-            <button type="button" class="btn" id="btn-back-explore">← Explore</button>
-            <div class="reader-title-block">
-              <h2 id="reader-title">—</h2>
-              <div class="meta-line" id="reader-meta"></div>
-              <div class="status-row" id="reader-status-badges"></div>
-            </div>
-            <div class="toolbar-group">
-              <label for="font-select">Cuneiform face</label>
-              <select id="font-select" title="Cuneiform face: automatic by period (eBL converter fonts) or your choice for this session">
-                <option value="">Auto (by period)</option>
-              </select>
-            </div>
-            <div class="view-toggles" role="group" aria-label="Visible panels">
-              <button type="button" class="on" data-panel="english">English</button>
-              <button type="button" class="on" data-panel="atf">ATF</button>
-              <button type="button" class="on" data-panel="cuneiform">Cuneiform</button>
-              <button type="button" data-panel="meta" title="Catalogue and publication metadata">Meta</button>
-            </div>
-            <button type="button" class="btn primary" id="btn-translate" title="Call local ATF→English API">
-              Translate
-            </button>
-            <span class="api-status" id="api-status" title="Translate API">API …</span>
-            <label class="checkbox-row" style="font-size: 0.8rem" title="Uses eBL public API (CORS permitting)">
-              <input type="checkbox" id="toggle-online-cunei" />
-              Live eBL convert
-            </label>
-          </div>
-          <div class="translate-progress" id="translate-progress" hidden>
-            <div class="translate-progress-bar"><div class="translate-progress-fill" id="translate-progress-fill"></div></div>
-            <span id="translate-progress-label">Translating…</span>
-          </div>
-
-          <div class="reader-body cols-3" id="reader-body">
-            <div class="reader-col" id="col-english">
-              <div class="col-head"><span>English</span><span>model / draft</span></div>
-              <div class="col-body" id="english-body"></div>
-            </div>
-            <div class="reader-col" id="col-atf">
-              <div class="col-head"><span>ATF</span><span>transliteration</span></div>
-              <div class="col-body" id="atf-body"></div>
-            </div>
-            <div class="reader-col" id="col-cuneiform">
-              <div class="col-head"><span>Cuneiform</span><span>Unicode</span></div>
-              <div class="col-body" id="cuneiform-body"></div>
-            </div>
-            <div class="reader-col" id="col-meta" style="display: none">
-              <div class="col-head"><span>Metadata</span><span>catalogue</span></div>
-              <div class="col-body" id="meta-body"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="view-about" class="view" aria-label="About">
-        <div class="about-card">
-          <h2>About this reader</h2>
-          <p>
-            A browser for <strong>new English readings</strong> of cuneiform works that have ATF
-            transliterations but little or no open English on CDLI — literary, royal, scientific,
-            omen, and letter corpora first.
-          </p>
-          <ul>
-            <li><strong>Explore</strong> — filter ranked candidates from the local CDLI dump</li>
-            <li><strong>Epic hunt</strong> — large literary / phrase-scored shortlist (Gilgamesh II, hymns, …)</li>
-            <li><strong>Remedies</strong> — plant recipes and therapeutic tablets (head, teeth, eyes, belly…)</li>
-            <li><strong>Omens</strong> — physiognomy, birth, skin spots, liver extispicy, Mul.Apin / astral</li>
-            <li><strong>Math</strong> — reciprocal (igi), metrology, multiplication (a-rá) school tables</li>
-            <li><strong>Map &amp; time</strong> — findspots and a period scrubber</li>
-            <li><strong>Reader</strong> — English · ATF · period-style cuneiform side by side</li>
-          </ul>
-          <p>
-            Direct links:
-            <a href="?id=P262784&amp;mode=epic">Gilgamesh II</a>
-            ·
-            <a href="?id=P404959&amp;mode=remedies">Head fever remedies</a>
-            ·
-            <a href="?id=P480113&amp;mode=omens">Mole physiognomy</a>
-            ·
-            <a href="?id=P453398&amp;mode=omens">Liver extispicy</a>
-            ·
-            <a href="?id=P257557&amp;mode=math">Reciprocal table</a>
-            ·
-            <a href="?id=P464229&amp;mode=math">Metrology</a>
-          </p>
-          <p>
-            Cuneiform is drawn in a period-matched face, following the
-            <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener"
-              >eBL converter</a
-            >
-            (Neo-Assyrian, Neo-Babylonian, Old Babylonian cursive / literary / monumental, Hittite; Noto otherwise);
-            the reader's “Cuneiform face” menu overrides it for your session (<a href="#font-credits">font credits</a>).
-            Offline ATF→Unicode uses a vendored eBL reading map; optional live conversion hits the
-            eBL signs API.
-          </p>
-          <p>
-            Translation model integration (local T5 from
-            <code>atf-translate-test</code>, or in-browser Hugging Face later) is the next layer —
-            the English column is ready for line-aligned output.
-          </p>
-          <div class="credits">
-            <strong>Credits &amp; data</strong>
-            <ul>
-              <li>
-                Catalogue &amp; ATF: <a href="https://cdli.earth/" target="_blank" rel="noopener">CDLI</a>
-                (cdli-gh bulk dump)
-              </li>
-              <li id="font-credits">
-                Cuneiform fonts (chosen by period, following the
-                <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener">eBL cuneiform converter</a>):
-                <em>Assurbanipal</em> (Neo-Assyrian), <em>Esagil</em> (Neo-Babylonian), <em>Santakku</em> and
-                <em>SantakkuM</em> (Old Babylonian cursive / monumental), <em>UllikummiA</em> (Hittite): fonts created by
-                Sylvie Vanséveren, available on the
-                <a href="https://hethport.net/cuneifont/" target="_blank" rel="noopener">Hethitologie Portal Mainz</a>
-                (free for scholarly use; files as distributed by
-                <a href="https://github.com/ElectronicBabylonianLiterature/ebl-frontend" target="_blank" rel="noopener">eBL</a>).
-                <em>OB Freie</em> (Old Babylonian literary) by Corvin R. Ziegeler / Institut für Altorientalistik, FU Berlin
-                (<a href="https://doi.org/10.17169/refubium-44983" target="_blank" rel="noopener">publication</a>,
-                <a href="fonts/OFL-OBFreie.txt">SIL OFL 1.1</a>).
-                <em>Noto Sans Cuneiform</em> by the Noto project (<a href="fonts/OFL-NotoSansCuneiform.txt">SIL OFL 1.1</a>) for other periods and missing signs.
-              </li>
-              <li>Map: label-free shaded relief rendered from <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model" target="_blank" rel="noopener">NOAA ETOPO 2022</a> (public domain) and <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> (public domain); no modern roads, borders or labels</li>
-              <li>
-                ATF→EN model research: sibling repos <code>atf-translate-test</code>,
-                <code>deep-cuneiform</code>
-              </li>
-            </ul>
-            <p style="margin-top: 0.75rem">
-              CDLI “no translation” means not recorded in CDLI — some works are published in RINAP,
-              ETCSL, ORACC, etc. The catalog flags likely known projects.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    <script src="js/atf2unicode.js"></script>
-    <script src="js/fontmap.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/searchmap.js"></script>
-  </body>
+<head>
+<meta charset="utf-8" />
+<script>
+  // Old map deep links (index.html?q=…, ?id=…, ?mode=…, #font-credits) moved to map.html: keep them working.
+  (function () {
+    var s = location.search, h = location.hash;
+    if (/[?&](q|id|mode|kind|in|period|genre|site|src|at|api|searchapi)=/.test(s) || /^#(font-credits|about|reader)/.test(h))
+      location.replace("map.html" + s + h);
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<title>Unread Atlas: a space-and-time browser for the unread ancient world</title>
+<meta name="description" content="Explore 462,298 cuneiform tablets by place, date, genre and how much of each has ever been read. Search the corpus, open the map, and read machine-draft English for tablets that have never been translated." />
+<link rel="canonical" href="https://unreadatlas.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Unread Atlas" />
+<meta property="og:title" content="Unread Atlas: 462,298 tablets survive" />
+<meta property="og:description" content="462,298 cuneiform tablets survive. More than half have no text online, and only 5% have been translated into English. Explore them by place, time, genre and translation state." />
+<meta property="og:url" content="https://unreadatlas.com/" />
+<meta property="og:image" content="https://unreadatlas.com/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="675" />
+<meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@roguesamurai" />
+<meta name="twitter:title" content="Unread Atlas: 462,298 tablets survive" />
+<meta name="twitter:description" content="462,298 cuneiform tablets survive. Explore them by place, time, genre and translation state." />
+<meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
+<meta name="theme-color" content="#0b0d12" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="assets/hero-poster.jpg" />
+<link rel="stylesheet" href="assets/browse-common.css" />
+<style>
+:root{--clay:#c4784a;--clay2:#e09560;--lapis:#2f5fa8;--lapis2:#5b8ad6;--gold:#e3c27a;--ink:#0b0d12;--sky:#9fd0ff;--sky2:#6fb4f2}
+html,body{height:auto;overflow-x:hidden;background:var(--ink)}
+#hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--ink) url(assets/hero-poster.jpg) center/cover no-repeat}
+#hero.live{background-image:none}
+#bg,#gl,#ov{position:absolute;inset:0;width:100%;height:100%}
+#bg,#ov{pointer-events:none}
+#hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 40%,rgba(11,13,18,.75) 100%),linear-gradient(to bottom,rgba(11,13,18,0) 70%,var(--ink) 100%)}
+#brand{position:absolute;top:22px;left:28px;z-index:6;font-family:var(--font-serif);font-size:20px;letter-spacing:.06em;color:var(--gold)}
+#brand a{color:inherit}
+#topnav{position:absolute;top:24px;right:28px;z-index:6;display:flex;gap:20px;font-size:13px}
+#topnav a{color:var(--text-dim)}#topnav a:hover{color:var(--gold);text-decoration:none}
+#copy{position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:min(820px,92vw);transition:opacity .8s}
+/* soft dim behind the headline so it reads over the dots */
+#copy::before{content:"";position:absolute;z-index:-1;left:-8%;right:-8%;top:-22%;bottom:-18%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(8,10,14,.72) 0%,rgba(8,10,14,.5) 45%,rgba(8,10,14,0) 72%);filter:blur(6px);pointer-events:none}
+#copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,4.4vw,54px);line-height:1.14;margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.95),0 0 42px rgba(0,0,0,.7)}
+#copy h1 em{font-style:normal;color:var(--gold)}
+#copy p.tag{font-size:clamp(15px,1.7vw,19px);color:#d8d1c3;margin:0 0 26px;text-shadow:0 1px 12px #000}
+#copy p.tag b{color:var(--gold);font-weight:500}
+#sform{display:flex;max-width:520px;margin:0 auto;background:rgba(18,20,26,.85);border:1px solid #33404f;border-radius:999px;padding:5px;backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#sform input{flex:1;min-width:0;background:transparent;border:0;outline:0;padding:10px 18px;font-size:16px;color:var(--text)}
+#sform button{background:linear-gradient(135deg,var(--sky),var(--sky2));color:#0b1a2b;border:0;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
+#sform button:hover{filter:brightness(1.08)}
+#hints{margin-top:12px;font-size:12.5px;color:var(--text-faint);text-shadow:0 1px 8px #000}#hints a{color:#b9c8d8;margin:0 6px}
+body.user #copy{opacity:0;pointer-events:none}
+#legend{position:absolute;left:28px;bottom:28px;z-index:6;background:rgba(14,16,21,.78);border:1px solid #2a2e38;border-radius:10px;padding:10px 13px;font-size:12px;line-height:1.7;backdrop-filter:blur(4px);max-width:290px}
+#legend:empty{display:none}
+#legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
+#legend .n{color:var(--text-dim);margin-left:6px;font-variant-numeric:tabular-nums}
+#maplabel{position:absolute;right:28px;bottom:28px;z-index:6;text-align:right;font-family:var(--font-serif);font-size:20px;color:var(--gold);transition:opacity .5s}
+#maplabel small{display:block;font-family:var(--font-ui);font-size:11.5px;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase}
+#navbar{position:absolute;left:50%;bottom:26px;transform:translate(-50%,20px);z-index:7;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;opacity:0;pointer-events:none;transition:.5s;background:rgba(14,16,21,.88);border:1px solid #2a2e38;border-radius:22px;padding:5px;max-width:94vw}
+body.user #navbar{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#navbar button{background:transparent;border:0;color:var(--text-dim);padding:7px 13px;border-radius:999px;cursor:pointer;font-size:13px}
+#navbar button.on{background:var(--lapis);color:#fff}
+#navbar a{padding:7px 13px;font-size:13px;color:var(--sky)}
+body.user #maplabel{bottom:80px}
+#scrollcue{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:6;color:var(--text-faint);font-size:11px;letter-spacing:.2em;text-transform:uppercase;animation:bob 2.4s infinite}
+body.user #scrollcue{display:none}
+@keyframes bob{50%{transform:translate(-50%,5px)}}
+@media (prefers-reduced-motion:reduce){#scrollcue{animation:none}}
+main{max-width:1180px;margin:0 auto;padding:30px 28px 40px}
+h2{font-family:var(--font-serif);font-weight:500;font-size:28px;margin:46px 0 6px}
+.lede{color:var(--text-dim);margin:0 0 22px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{display:block;background:#14171d;border:1px solid #262a33;border-radius:12px;overflow:hidden;color:var(--text);transition:transform .25s var(--ease),border-color .25s}
+a.card:hover{transform:translateY(-3px);border-color:var(--sky2);text-decoration:none}
+.card img{display:block;width:100%;height:150px;object-fit:cover;background:#0d0f14;border-bottom:1px solid #222}
+.card .b{padding:12px 14px 15px}.card b{font-size:15px;color:var(--gold)}.card p{margin:4px 0 0;color:var(--text-dim);font-size:13px}
+.card.soon{opacity:.62}.card.soon img{filter:grayscale(.7) brightness(.7)}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis2);border:1px solid #2b3d5c;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.two{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:820px){.two{grid-template-columns:1fr}#legend{display:none}#topnav{display:none}#maplabel{font-size:16px;bottom:44px}#brand{left:18px;top:18px}}
+.panel{background:linear-gradient(160deg,#171a21,#12141a);border:1px solid #262a33;border-radius:12px;padding:20px 22px}
+.panel h3{margin:0 0 4px;font-family:var(--font-serif);font-weight:500;font-size:22px}
+.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay2)}
+.muted{color:var(--text-dim)}
+.atf{font-family:var(--font-mono);font-size:12.5px;background:#0d0f14;border:1px solid #23262e;border-radius:8px;padding:10px 12px;color:#d9cfb8;overflow-x:auto;white-space:nowrap;margin-bottom:14px}
+.atf mark{background:rgba(196,120,74,.3);color:#ffd9b8;border-radius:3px;padding:0 2px}
+.btn{display:inline-block;background:transparent;border:1px solid var(--sky2);color:var(--sky);border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:500;margin:4px 6px 0 0}
+.btn:hover{background:var(--sky2);color:#0b1a2b;text-decoration:none}
+.btn.solid{background:var(--lapis);border-color:var(--lapis);color:#fff}
+#rt{min-height:120px}
+#rt .id{font-family:var(--font-serif);font-size:22px;color:var(--gold)}
+.collab{margin-top:46px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;border:1px solid #2b3a4c;background:linear-gradient(120deg,rgba(196,120,74,.10),rgba(47,95,168,.14));border-radius:14px;padding:26px 28px}
+@media(max-width:820px){.collab{grid-template-columns:1fr}}
+.collab h3{margin:0 0 6px;font-family:var(--font-serif);font-weight:500;font-size:24px}
+footer{color:var(--text-faint);font-size:12px;text-align:center;padding:24px 28px 40px;max-width:900px;margin:0 auto}
+footer a{color:var(--text-dim)}
+noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;color:var(--text-dim)}
+</style>
+</head>
+<body>
+<section id="hero" aria-label="Unread Atlas">
+  <canvas id="bg" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas><canvas id="ov" aria-hidden="true"></canvas>
+  <div id="brand"><a href="./">UNREAD ATLAS</a></div>
+  <nav id="topnav" aria-label="Main"><a href="map.html">Map</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="t/index.html">Curated</a><a href="translate.html">Translator</a><a href="#collab">Collaborate</a></nav>
+  <div id="copy">
+    <!-- ================= HEADLINE (edit here only) =================
+         Basis: 223,704 tablets have ATF online (48.4%); 238,594 catalogue-only (51.6%); 21,451 human English (4.6%). -->
+    <h1 id="headline"><em>462,298</em> tablets survive.</h1>
+    <p class="tag" id="subline">More than half have no text online, and only <b>5%</b> have been translated into English.</p>
+    <!-- ============================================ /HEADLINE ============================================ -->
+    <form id="sform" action="search.html" role="search"><input id="q" name="q" placeholder="barley" aria-label="Search the corpus" autocomplete="off" /><button type="submit">Search</button></form>
+    <div id="hints">try <a href="browse.html?q=barley">barley</a><a href="browse.html?q=silver">silver</a><a href="browse.html?q=sheep">sheep</a><a href="map.html">the map</a><a href="#" id="rand1">a random tablet</a></div>
+  </div>
+  <div id="legend"></div>
+  <div id="maplabel"></div>
+  <div id="navbar"></div>
+  <div id="scrollcue">scroll ↓</div>
+  <noscript><p>The animated map needs JavaScript. <a href="map.html">Open the map</a> · <a href="search.html">Search</a></p></noscript>
+</section>
+<main>
+  <h2 id="views">Many ways to look at the same clay</h2>
+  <p class="lede">Every tablet is a point with a place, a date, a genre and a translation state. Each view lays those points out a different way, and your search comes with you between them.</p>
+  <div class="grid" id="cards"></div>
+  <div class="two" id="lead">
+    <div class="panel">
+      <div class="kicker">Featured lead</div>
+      <h3>What plant was <i>tarmuš</i>?</h3>
+      <p class="muted" style="margin:4px 0 12px">Translators render <b>{ú}tar-muš</b> as <b>lupin</b> in published translations, mostly in Neo-Assyrian medical recipes. Many medical tablets from Assur that name it have a transliteration but have never been read in English.</p>
+      <div class="atf">41. _{u2}kur-kur_ <mark>{u2}tar-musz</mark> {u2}_igi_-lim _{u2}igi-nisz_ {u2#}[x ...]</div>
+      <a class="btn" href="search.html?q=tar-musz&amp;in=atf">Search the ATF for tar-muš →</a>
+      <a class="btn" href="search.html?q=lupin">Search the English for lupin →</a>
+    </div>
+    <div class="panel" id="rtp">
+      <div class="kicker">Random tablet</div>
+      <div id="rt"><p class="muted">Drop into a real tablet, with its transliteration, a machine draft and where it was found.</p></div>
+      <button class="btn solid" id="rand2" type="button">Show me a tablet</button>
+    </div>
+  </div>
+  <div class="collab" id="collab">
+    <div><div class="kicker">For museums &amp; scholars</div>
+      <h3>Have unread tablets, or a reading to argue about?</h3>
+      <p class="muted" style="margin:0">We are looking for collections to digitise, specialists to check machine drafts, and partners for exhibitions that use the atlas. Machine translations are labelled with their model version, and the code is open.</p></div>
+    <div><a class="btn" href="https://x.com/roguesamurai" rel="me noopener" target="_blank">Message @roguesamurai on X</a><a class="btn" href="https://github.com/ixmon/unread" rel="noopener" target="_blank">Open an issue on GitHub</a></div>
+  </div>
+</main>
+<footer>Unread Atlas · <a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="t/index.html">Curated texts</a> · <a href="translate.html">Translator</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
+Hero dots: a random 60,000 of 462,298 tablets plus every match for barley, silver and sheep, so shares over-weight those words. Dates are approximate period midpoints. All English on this site is labelled machine draft unless marked otherwise. Coastlines and rivers: <a href="https://www.naturalearthdata.com/">Natural Earth</a>.</footer>
+<script>
+"use strict";
+const STATES_COL=[[0.89,0.76,0.48],[0.36,0.54,0.84],[0.77,0.47,0.29],[0.42,0.40,0.38]]; // human gold, machine lapis, ATF clay, catalogue stone
+const MAPS=[{name:"Geography",sub:"where tablets were found",x:0,y:1},{name:"Time × geography",sub:"east–west against date",x:0,y:2},{name:"Time × translation",sub:"date against how much has been read",x:2,y:4},
+            {name:"Time × genre",sub:"date against genre",x:2,y:3},{name:"Genre × translation",sub:"genre against translation state",x:3,y:4}];
+const BROWSE_VIEW=[0,1,3,2,4]; // MAPS index -> browse.html ring position (?t=)
+const TOUR=[0,1,2,0]; // geography -> time×geo -> time×translation -> back
+const LON=[30,60],LAT=[24,42],YR=[-3600,500];
+const REDUCED=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let D=null,N=0,LAND=null,cnt=[0,0,0,0],navT=0,fade=0,touring=!REDUCED,tourT0=0,user=false,gl=null,prog=null,U=null;
+const P=new URLSearchParams(location.search);
+const ov=document.getElementById('ov'),ctx=ov.getContext('2d'),bgc=document.getElementById('bg'),bctx=bgc.getContext('2d');
+const VS=`attribute vec4 a0;attribute float a1;attribute vec4 a2;
+uniform vec4 wx0;uniform float wx1;uniform vec4 wy0;uniform float wy1;uniform float geoW,dateW,fade,ps;uniform vec4 pad;uniform vec3 sc0,sc1,sc2,sc3;varying vec4 vCol;
+void main(){float px=dot(a0,wx0)+a1*wx1;float py=dot(a0,wy0)+a1*wy1;
+vec2 p=vec2(pad.x+px*(1.0-pad.x-pad.y),pad.w+py*(1.0-pad.z-pad.w));gl_Position=vec4(p*2.0-1.0,0.0,1.0);
+float st=a2.w;vec3 c=st<0.5?sc0:st<1.5?sc1:st<2.5?sc2:sc3;
+float vis=mix(1.0,1.0-geoW,1.0-a2.x)*mix(1.0,1.0-dateW,1.0-a2.y);
+float f=clamp(fade*1.6-a2.z*0.6,0.0,1.0);
+float al=(st<0.5?0.85:0.32)*vis*f;vCol=vec4(c,al);gl_PointSize=(st<0.5?ps*1.35:ps);if(vis*f<0.01)gl_PointSize=0.0;}`;
+const FS=`precision mediump float;varying vec4 vCol;void main(){vec2 d=gl_PointCoord-0.5;if(dot(d,d)>0.25)discard;gl_FragColor=vec4(vCol.rgb*vCol.a,vCol.a);}`;
+function initGL(){
+  gl=document.getElementById('gl').getContext('webgl',{antialias:true,premultipliedAlpha:true,preserveDrawingBuffer:true});if(!gl)return false;
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o};
+  prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);gl.useProgram(prog);
+  U=n=>gl.getUniformLocation(prog,n);STATES_COL.forEach((c,i)=>gl.uniform3fv(U('sc'+i),c));return true}
+function hash(i,k){let x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x)}
+const norm=(v,[a,b])=>Math.min(1,Math.max(0,(v-a)/(b-a))),band=(idx,n,i,k)=>(idx+0.12+0.76*hash(i,k))/n;
+// Dot data is lazy: the static poster shows first, then landing_dots.{json,dat} (~470 KB) load after the page.
+async function load(){
+  if(!initGL())return;
+  const [meta,bin,land]=await Promise.all([fetch('assets/landing_dots.json').then(r=>r.json()),fetch('assets/landing_dots.dat').then(r=>r.arrayBuffer()),fetch('assets/land.json').then(r=>r.json()).catch(()=>null)]);
+  D=meta;LAND=land;N=meta.n;const dv=new DataView(bin);
+  const a0=new Float32Array(N*4),a1=new Float32Array(N),a2=new Float32Array(N*4),ng=D.genres.length,ns=D.states.length;
+  for(let i=0;i<N;i++){const ci=dv.getUint8(i*4),y=dv.getInt16(i*4+1,true),gs=dv.getUint8(i*4+3),g=gs>>4,s=gs&15;
+    const hg=ci!==255,hd=y!==-32768,c=hg?D.coords[ci]:null;cnt[s]++;
+    const v=[hg?norm(c[0]+(hash(i,6)-.5)*.35*Math.sqrt(hash(i,8)),LON):.5+(hash(i,1)-.5)*.3,hg?norm(c[1]+(hash(i,7)-.5)*.35*Math.sqrt(hash(i,8)),LAT):.5+(hash(i,2)-.5)*.3,
+      hd?Math.min(1,Math.max(0,norm(y,YR)+(hash(i,3)-.5)*.025)):.5,band(g,ng,i,4),band(s,ns,i,5)];
+    a0.set(v.slice(0,4),i*4);a1[i]=v[4];a2.set([hg?1:0,hd?1:0,hash(i,9),s],i*4);}
+  const b=(d,l,z)=>{const f=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,f);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);const L=gl.getAttribLocation(prog,l);gl.enableVertexAttribArray(L);gl.vertexAttribPointer(L,z,gl.FLOAT,false,0,0)};
+  b(a0,'a0',4);b(a1,'a1',1);b(a2,'a2',4);
+  legend();buildNavbar();
+  if(P.has('t')){touring=false;navT=+P.get('t');fade=1;} if(P.has('user'))takeControl();
+  if(REDUCED)fade=1;
+  document.getElementById('hero').classList.add('live');
+  tourT0=performance.now();requestAnimationFrame(frame);window.__ready=true;
+}
+// tour: hold 3s at each stop, 3.2s glide
+const HOLD=3000,GLIDE=3200;
+function tourPos(ms){const seg=HOLD+GLIDE,n=TOUR.length-1,t=ms%(seg*n),k=Math.floor(t/seg),r=t-k*seg;const f=r<HOLD?0:(r-HOLD)/GLIDE;return [TOUR[k],TOUR[k+1],f]}
+let pair=[0,0,0],visible=true;
+document.addEventListener('visibilitychange',()=>{visible=!document.hidden});
+function frame(now){
+  if(!user&&!REDUCED)fade=Math.min(1,(now-tourT0)/1800);
+  if(touring&&!P.has('t')){pair=tourPos(Math.max(0,now-tourT0-1200));}
+  if(visible&&scrollY<innerHeight*1.2)draw();requestAnimationFrame(frame);
+}
+function blend(){
+  let i,j,f;
+  if(touring&&!P.has('t')){[i,j,f]=pair;}else{const n=MAPS.length,t=((navT%n)+n)%n;i=Math.floor(t);f=t-i;j=(i+1)%n;}
+  const e=f*f*(3-2*f),wx=[0,0,0,0,0],wy=[0,0,0,0,0];wx[MAPS[i].x]+=1-e;wy[MAPS[i].y]+=1-e;wx[MAPS[j].x]+=e;wy[MAPS[j].y]+=e;return{i,j,e,wx,wy};
+}
+function pads(W,H){return W<700?{l:46,r:12,t:90,b:70}:{l:120,r:60,t:80,b:90}}
+function draw(){
+  if(!D)return;const dpr=Math.min(2,devicePixelRatio||1),hero=document.getElementById('hero'),W=hero.clientWidth,H=hero.clientHeight;
+  for(const c of[gl.canvas,ov,bgc])if(c.width!==W*dpr||c.height!==H*dpr){c.width=W*dpr;c.height=H*dpr}
+  gl.viewport(0,0,W*dpr,H*dpr);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
+  const B=blend();window.__blend=B;const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2,dateW=Math.max(B.wx[2],B.wy[2]),PD=pads(W,H);
+  gl.uniform4f(U('wx0'),...B.wx.slice(0,4));gl.uniform1f(U('wx1'),B.wx[4]);gl.uniform4f(U('wy0'),...B.wy.slice(0,4));gl.uniform1f(U('wy1'),B.wy[4]);
+  gl.uniform1f(U('geoW'),Math.min(1,geoW));gl.uniform1f(U('dateW'),dateW);gl.uniform1f(U('fade'),fade);
+  gl.uniform4f(U('pad'),PD.l/W,PD.r/W,PD.t/H,PD.b/H);gl.uniform1f(U('ps'),(W<700?1.9:2.5)*dpr);
+  gl.drawArrays(gl.POINTS,0,N);basemap(B,W,H,dpr,PD);overlay(B,W,H,dpr,PD);
+  const cur=B.e<.5?MAPS[B.i]:MAPS[B.j];const ml=document.getElementById('maplabel');const html=`<small>${user?'you are on':'now showing'}</small>${cur.name}`;if(ml.innerHTML!==html)ml.innerHTML=html;
+  document.querySelectorAll('#navbar button').forEach((b,k)=>b.classList.toggle('on',MAPS[k]===cur));
+  const ob=document.getElementById('openb');if(ob)ob.href='browse.html?t='+BROWSE_VIEW[MAPS.indexOf(cur)];
+}
+// faint land / lakes / rivers behind the Geography state; fades out as the x axis stops being longitude or y stops being latitude
+let lastLandKey='';
+function basemap(B,W,H,dpr,PD){
+  const a=LAND?Math.min(B.wx[0],B.wy[1])*fade:0,key=a.toFixed(3)+W+'x'+H;if(key===lastLandKey)return;lastLandKey=key;
+  bctx.setTransform(dpr,0,0,dpr,0,0);bctx.clearRect(0,0,W,H);if(a<.01)return;
+  const X=v=>PD.l+norm(v,LON)*(W-PD.l-PD.r),Y=v=>H-(PD.b+norm(v,LAT)*(H-PD.t-PD.b));
+  const X0=v=>PD.l+(v-LON[0])/(LON[1]-LON[0])*(W-PD.l-PD.r),Y0=v=>H-(PD.b+(v-LAT[0])/(LAT[1]-LAT[0])*(H-PD.t-PD.b));
+  const path=r=>{bctx.beginPath();for(let k=0;k<r.length;k+=2){const x=X0(r[k]),y=Y0(r[k+1]);k?bctx.lineTo(x,y):bctx.moveTo(x,y)}};
+  bctx.globalAlpha=a;
+  for(const r of LAND.land){path(r);bctx.closePath();bctx.fillStyle='rgba(120,128,142,.085)';bctx.fill();bctx.strokeStyle='rgba(150,160,176,.30)';bctx.lineWidth=.8;bctx.stroke()}
+  for(const r of LAND.lakes){path(r);bctx.closePath();bctx.fillStyle='#0b0d12';bctx.fill();bctx.strokeStyle='rgba(150,160,176,.22)';bctx.stroke()}
+  bctx.strokeStyle='rgba(110,150,200,.30)';bctx.lineWidth=.9;for(const r of LAND.rivers){path(r);bctx.stroke()}
+  bctx.globalAlpha=1;
+}
+function ticks(d){if(d===0)return[35,40,45,50,55].map(v=>[norm(v,LON),v+'°E']);if(d===1)return[26,30,34,38,42].map(v=>[norm(v,LAT),v+'°N']);
+  if(d===2)return[-3000,-2000,-1000,0].map(v=>[norm(v,YR),v<0?(-v)+' BCE':'1 CE']);const L=d===3?D.genres:D.states;return L.map((s,k)=>[(k+.5)/L.length,s])}
+function overlay(B,W,H,dpr,PD){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);const X=v=>PD.l+v*(W-PD.l-PD.r),Y=v=>H-(PD.b+v*(H-PD.t-PD.b));
+  ctx.font='11px "IBM Plex Sans",sans-serif';
+  for(const[mi,a]of[[B.i,1-B.e],[B.j,B.e]]){if(a<.03)continue;const m=MAPS[mi];ctx.globalAlpha=a*.75*fade;
+    ctx.fillStyle='#6f6a60';ctx.textAlign='center';for(const[v,l]of ticks(m.x))if(m.x<=2)ctx.fillText(l,X(v),H-PD.b+18);
+    ctx.textAlign='left';for(const[v,l]of ticks(m.y))ctx.fillText(W<700&&m.y>2?l.split(' ')[0]:l,6,Y(v)+4);}
+  ctx.globalAlpha=1;
+}
+function legend(){const tot=cnt.reduce((a,b)=>a+b,0);
+  document.getElementById('legend').innerHTML=D.states.map((n,k)=>`<div><span class="sw" style="background:rgb(${STATES_COL[k].map(c=>c*255|0)})"></span>${n}<span class="n">${(cnt[k]/tot*100).toFixed(1)}%</span></div>`).join('')+
+  `<div class="muted" style="font-size:10.5px;margin-top:4px">${N.toLocaleString()} dots sampled from ${D.corpus_tablets.toLocaleString()} tablets · shares are of this sample, which over-weights barley/silver/sheep matches</div>`}
+function buildNavbar(){const nb=document.getElementById('navbar');MAPS.forEach((m,k)=>{const b=document.createElement('button');b.type='button';b.textContent=m.name;b.onclick=e=>{e.stopPropagation();animateTo(k)};nb.appendChild(b)});
+  const a=document.createElement('a');a.id='openb';a.href='browse.html';a.textContent='Open full browser →';nb.appendChild(a)}
+function takeControl(){if(user)return;user=true;fade=1;if(touring&&!P.has('t')){const B=blend();navT=B.e<.5?B.i:B.j;}touring=false;document.body.classList.add('user')}
+function animateTo(k){const n=MAPS.length;let from=navT,d=((k-from)%n+n)%n;if(d>n/2)d-=n;const t0=performance.now(),dur=1100+Math.abs(d)*300;
+  (function st(now){const f=Math.min(1,(now-t0)/dur),e=f<.5?2*f*f:1-2*(1-f)*(1-f);navT=from+d*e;if(f<1)requestAnimationFrame(st);else navT=((k%n)+n)%n})(t0)}
+const heroEl=document.getElementById('hero');
+heroEl.addEventListener('pointerdown',e=>{if(!D||e.target.closest('#copy,#navbar,#topnav,#brand'))return;takeControl()});
+let dragX=null;heroEl.addEventListener('pointermove',e=>{if(!user||e.buttons!==1||e.target.closest('#navbar'))return;if(dragX!=null){navT+=(e.clientX-dragX)/-400;}dragX=e.clientX});
+heroEl.addEventListener('pointerup',()=>dragX=null);
+addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){takeControl();animateTo(Math.round(navT)+(e.key==='ArrowRight'?1:-1))}});
+// Search: the three sampled preset words open the browse view; anything else goes to the corpus search page (search API).
+const PRESETS=['barley','silver','sheep'];
+document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=document.getElementById('q').value.trim()||'barley',k=v.toLowerCase();
+  location.href=PRESETS.includes(k)?`browse.html?q=${encodeURIComponent(k)}`:`search.html?q=${encodeURIComponent(v)}`};
+window.setTour=(i,j,f)=>{P.set('t','x');touring=true;pair=[i,j,f]};
+// ---- view cards: only pages that exist on the live site link anywhere; the rest are marked coming soon
+const CARDS=[["Map","Every find-spot on a relief map, with filters, a timeline and the reader.","map.html","assets/previews/map.jpg"],
+["Search","Search the whole corpus: English, ATF transliteration or catalogue, then show the hits on the map.","search.html?q=barley","assets/previews/search.jpg"],
+["Map of maps","Slide between geography, time, genre and translation state. The dots travel with you.","browse.html?q=barley","assets/previews/browse.jpg"],
+["Curated texts","Hand-picked tablets with transliteration and line-by-line machine drafts.","t/index.html","assets/previews/curated.jpg"],
+["Timeline","The time slider as a second map: brush a few centuries and the dots follow.",null,"assets/previews/timeline.jpg"],
+["Gap view","Each site as a ring: how much is read in English, machine-drafted, ATF only or catalogue only.",null,"assets/previews/gap.jpg"],
+["Word trail","Follow one word across places and centuries, with how translators render it.",null,"assets/previews/trail.jpg"],
+["Related tablets","Tablets linked by shared rare words, find-spot, date and copied passages.",null,null]];
+document.getElementById('cards').innerHTML=CARDS.map(([t,d,h,img])=>{const im=img?`<img src="${img}" alt="" loading="lazy" width="600" height="375">`:`<div style="height:150px;display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:#0d0f14;border-bottom:1px solid #222">graph view</div>`;
+  return h?`<a class="card" href="${h}">${im}<div class="b"><b>${t}</b><p>${d}</p></div></a>`:`<div class="card soon">${im}<div class="b"><b>${t}</b><span class="pill">coming soon</span><p>${d}</p></div></div>`}).join('');
+// ---- random tablet: curated pages in t/ (ATF where licensing allows + machine draft)
+const CURATED="BM.27776 BM.32462 BM.33483 BM.45381 BM.47530 BM.78962 BM.98977 K.200 K.2049 K.2234 K.2529 K.3350 K.3688 K.4110 K.4427 K.4629 K.47 K.5040 K.5167 K.5694 K.6606 K.8790 MLC.1874 P010678 P254714 P254847 P254848 P257557 P262784 P270002 P285108 P285450 P285469 P285480 P338416 P343019 P355698 P368783 P369126 P392704 P404959 P464229 P480691 P498964 Sm.1514 Sm.801 VAT.10395".split(' ');
+const escH=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function randomTablet(go){const id=CURATED[Math.floor(Math.random()*CURATED.length)],url=`t/${id}.html`;if(go){location.href=url;return}
+  const box=document.getElementById('rt');box.innerHTML=`<div class="id">${escH(id.replace('.',' '))}</div><p class="muted">Loading…</p>`;
+  try{const h=await (await fetch(url)).text(),doc=new DOMParser().parseFromString(h,'text/html');
+    const title=(doc.querySelector('h1')||doc.querySelector('title')).textContent.trim(),desc=(doc.querySelector('meta[name=description]')||{}).content||'';
+    box.innerHTML=`<div class="id">${escH(title)}</div><p class="muted" style="font-size:13px">${escH(desc.slice(0,220))}${desc.length>220?'…':''}</p><p><a href="${url}">Open the tablet →</a> · <a href="#" id="rtmore">another</a></p>`;
+    document.getElementById('rtmore').onclick=e=>{e.preventDefault();randomTablet(false)};
+  }catch(e){box.innerHTML=`<div class="id">${escH(id)}</div><p><a href="${url}">Open the tablet →</a></p>`}}
+document.getElementById('rand2').onclick=()=>randomTablet(false);document.getElementById('rand1').onclick=e=>{e.preventDefault();randomTablet(true)};
+// lazy start: after first paint / load, when the browser is idle
+const start=()=>load().catch(e=>console.warn('hero',e));
+if(document.readyState==='complete')(window.requestIdleCallback||setTimeout)(start,{timeout:1200});
+else addEventListener('load',()=>(window.requestIdleCallback||setTimeout)(start,{timeout:1200}));
+</script>
+</body>
 </html>

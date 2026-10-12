@@ -202,7 +202,7 @@
     const page = links.pages[id] || (canon && links.pages[canon]);
     if (page) out.push(`<a href="${esc(page)}">Curated page</a>`);
     const rid = links.reader.has(id) ? id : canon && links.reader.has(canon) ? canon : null;
-    if (rid) out.push(`<a href="index.html?id=${encodeURIComponent(rid)}">Open in map &amp; reader</a>`);
+    if (rid) out.push(`<a href="map.html?id=${encodeURIComponent(rid)}">Open in map &amp; reader</a>`);
     return out;
   }
 
@@ -336,14 +336,14 @@
     return out;
   }
 
-  /** index.html deep link for the map's search-results layer (same query and filters). */
+  /** map.html deep link for the map's search-results layer (same query and filters). */
   function mapUrl(s) {
     const p = new URLSearchParams();
     if (API !== DEFAULT_API) p.set("searchapi", API);
     if (s.q) p.set("q", s.q);
     if (s.in && s.in !== "all") p.set("in", s.in);
     for (const k of ["period", "genre", "site", "src"]) if (s[k]) p.set(k, s[k]);
-    return "index.html?" + p.toString();
+    return "map.html?" + p.toString();
   }
 
   async function runSearch(s, my) {

@@ -1,0 +1,32 @@
+/* Unread Atlas UI mockups: shared styles (same palette as css/styles.css). Exploratory, not used by the live site. */
+:root{--bg:#0f1114;--bg-elev:#171a1f;--bg-panel:#1c2027;--bg-hover:#252a33;--border:#2e3540;--border-soft:#242a33;
+--text:#e8e4dc;--text-dim:#9a958a;--text-faint:#6b665c;--accent:#c4784a;--accent-soft:rgba(196,120,74,.15);--accent-strong:#e09560;
+--green:#6a9b7a;--blue:#6b8fad;--warn:#c4a04a;--danger:#b86a5a;--grey:#5d6470;
+--font-ui:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;--font-serif:"Source Serif 4",Georgia,serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;
+--radius:10px;--shadow:0 8px 32px rgba(0,0,0,.45);--ease:cubic-bezier(.2,.8,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:var(--font-ui);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-strong);text-decoration:none}a:hover{text-decoration:underline}
+button,input,select{font:inherit;color:inherit}
+.leaflet-container{background:#0b0d10;font-family:var(--font-ui)}
+.leaflet-control-attribution{background:rgba(15,17,20,.7)!important;color:var(--text-faint)!important}
+.leaflet-control-attribution a{color:var(--text-dim)!important}
+.leaflet-bar a{background:var(--bg-panel)!important;color:var(--text)!important;border-color:var(--border)!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--bg-panel);color:var(--text);box-shadow:var(--shadow);border:1px solid var(--border)}
+.leaflet-popup-content{margin:12px 14px;font-size:13px;min-width:220px}
+.leaflet-container a.leaflet-popup-close-button{color:var(--text-dim)}
+.brand{position:absolute;top:14px;left:16px;z-index:1000;font-family:var(--font-serif);font-size:17px;color:var(--text);background:rgba(15,17,20,.82);border:1px solid var(--border);border-radius:8px;padding:5px 10px;pointer-events:auto}
+.brand small{display:block;font-family:var(--font-ui);font-size:11px;color:var(--text-dim);letter-spacing:.04em;text-transform:uppercase}
+.brand a{color:inherit}
+.panel{background:rgba(23,26,31,.94);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+.btn{background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;padding:7px 12px;cursor:pointer;color:var(--text)}
+.btn:hover{background:var(--bg-hover)}.btn.on,.btn.primary{background:var(--accent);border-color:var(--accent);color:#1a0f08;font-weight:600}
+.chip{display:inline-flex;gap:6px;align-items:center;background:var(--bg-panel);border:1px solid var(--border);border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--text-dim)}
+.chip b{color:var(--text);font-weight:600}
+.muted{color:var(--text-dim)}.faint{color:var(--text-faint)}.mono{font-family:var(--font-mono);font-size:12px}
+.badge{display:inline-block;border-radius:4px;padding:0 6px;font-size:11px;font-weight:600;line-height:18px}
+.c-human{background:var(--green);color:#0d1a12}.c-machine{background:var(--blue);color:#0c141c}.c-atf_only{background:var(--warn);color:#1d1606}.c-catalogue{background:var(--grey);color:#e8e4dc}
+.mock-note{position:absolute;z-index:1000;font-size:11.5px;color:var(--text-faint);background:rgba(15,17,20,.75);padding:3px 8px;border-radius:6px}
+.spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.site-dot{stroke:#f2c9a6;stroke-width:1;fill:var(--accent);fill-opacity:.55}

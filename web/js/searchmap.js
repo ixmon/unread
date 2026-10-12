@@ -1,9 +1,9 @@
-/* Unread Atlas: "search results on the map" layer (index.html).
+/* Unread Atlas: "search results on the map" layer (map.html).
  * Runs a corpus search against the Unread Atlas API and pins the matching tablets at their find-spots,
  * one circle per site sized by the number of tablets, merged into clusters when circles would overlap.
  *   GET /search/sites?q=&in=&period=&genre=&site=&src=   all matches grouped by find-spot
  *   GET /search?…&at=<site key>                          the results at one find-spot (paged)
- * Deep link: index.html?q=…&in=…&period=…&genre=…&site=…&src=…   (search.html "Show on map" uses this)
+ * Deep link: map.html?q= (old index.html?q= links redirect)…&in=…&period=…&genre=…&site=…&src=…   (search.html "Show on map" uses this)
  * ?searchapi=URL overrides the API base (?api= is the translate API on this page).
  * Loaded after app.js; uses its globals (state, openReader, timeWeight, TIME_* constants). Leaflet only. */
 (() => {
@@ -375,7 +375,7 @@
       ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine draft" : "ATF")}</span> ${esc(sn.text)}</div>`
       : "";
     const readerId = inCatalog(r.id) ? r.id : r.canonical_id && inCatalog(r.canonical_id) ? r.canonical_id : null;
-    const reader = readerId ? ` <a href="index.html?id=${encodeURIComponent(readerId)}" class="smap-reader" data-open="${esc(readerId)}">Map reader</a>` : "";
+    const reader = readerId ? ` <a href="map.html?id=${encodeURIComponent(readerId)}" class="smap-reader" data-open="${esc(readerId)}">Map reader</a>` : "";
     return `<li class="smap-res"><div><a class="smap-id" href="${esc(searchPageUrl(sm.query, { text: tp }))}" target="_blank" rel="noopener">${esc(r.id)}</a>` +
       `${r.designation && r.designation !== r.id ? ` <span class="smap-desig">${esc(r.designation)}</span>` : ""}${reader}</div>` +
       `<div class="smap-facts">${facts}</div>${snip}</li>`;

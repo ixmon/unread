@@ -2,7 +2,7 @@
 """Assemble the public static site into dist/ (real files, no symlinks). Python stdlib only.
 
 What the deployed site needs at runtime (everything else stays out):
-  web/ pages, css, js, fonts, tiles, t/ (curated pre-rendered pages), sitemap.xml, robots.txt, og.jpg (link preview), og.png (old preview, kept)
+  web/ pages (index.html = landing, map.html = map app, browse.html = map of maps, search, translate), assets/ (landing + browse data), css, js, fonts, tiles, t/ (curated pre-rendered pages), sitemap.xml, robots.txt, og.jpg (link preview), og.png (old preview, kept)
   data/catalog.json              map/list/filters (metadata only, no English)
   data/texts/manifest.json       list of packaged texts
   data/texts/<id>.json           packaged texts: ATF + line data (+ stamped machine English for some)
@@ -37,7 +37,7 @@ WEB = ROOT / "web"
 DATA = ROOT / "data"
 POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
 
-WEB_INCLUDE = ["index.html", "translate.html", "search.html", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "css", "js", "fonts", "tiles", "t"]
+WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "css", "js", "fonts", "tiles", "t"]
 DATA_FILES = ["catalog.json", "atf_unicode_readings.json"]
 MAX_FILE = 100 * 1024 * 1024
 STATIC_META = '<meta name="unread-static" content="1" />'
@@ -82,7 +82,7 @@ def main() -> None:
         (copy_tree if src.is_dir() else shutil.copy2)(src, out / name)
 
     # mark the pages as the static build (no local translate API probing)
-    for page in ("index.html", "translate.html"):
+    for page in ("map.html", "translate.html"):
         p = out / page
         s = p.read_text(encoding="utf-8")
         if STATIC_META not in s:
