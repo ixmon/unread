@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>E · Map of maps · Unread Atlas mockup</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="common.css" />
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#0f1115;color:#e6e2d8;font-family:"IBM Plex Sans",system-ui,sans-serif}
+#stage{position:absolute;inset:0}
+canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
+#ov{pointer-events:none}
+#top{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;z-index:5;background:rgba(20,22,28,.88);padding:8px 10px;border-radius:10px;border:1px solid #2a2e38}
+#top input{background:#181b22;color:#eee;border:1px solid #333a46;border-radius:6px;padding:6px 9px;width:150px;font:inherit}
+#top button{background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px}
+#top button.on{background:#c79a3a;color:#111;border-color:#c79a3a}
+#info{position:absolute;right:14px;bottom:78px;z-index:5;background:rgba(20,22,28,.88);padding:10px 12px;border-radius:10px;border:1px solid #2a2e38;font-size:12.5px;max-width:380px;line-height:1.45}
+#info .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 10px;vertical-align:-1px}
+#nav{position:absolute;right:14px;top:14px;width:300px;height:300px;z-index:5;background:rgba(20,22,28,.9);border:1px solid #2a2e38;border-radius:50%;touch-action:none;cursor:grab}
+#nav .node{position:absolute;width:70px;height:54px;margin:-27px 0 0 -35px;border:1px solid #3a4050;border-radius:8px;background:#151821;font-size:10.5px;text-align:center;color:#bbb;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:3px;box-sizing:border-box;cursor:pointer;overflow:hidden}
+#nav .node canvas{width:60px;height:34px;display:block;margin-bottom:2px}
+#nav .node.act{border-color:#c79a3a;color:#f0d9a0}
+#handle{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#c79a3a;box-shadow:0 0 0 4px rgba(199,154,58,.3);pointer-events:none}
+#navlabel{position:absolute;left:0;right:0;top:132px;text-align:center;font-size:12px;color:#ddd;pointer-events:none}
+#navlabel small{display:block;color:#888;font-size:10.5px}
+#brush{position:absolute;border:1px dashed #c79a3a;background:rgba(199,154,58,.08);display:none;z-index:4;pointer-events:none}
+#tip{position:absolute;z-index:6;background:#1b1e26;border:1px solid #3a4050;border-radius:6px;padding:6px 8px;font-size:12px;display:none;pointer-events:none}
+a{color:#e0b860}
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
+<div id="top">
+  <a href="index.html" title="Mockups">◂</a>
+  <input id="q" placeholder="search a word…" value="barley" />
+  <span id="presets"></span>
+  <button id="clearSel" title="Clear selection">clear selection</button>
+</div>
+<div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
+<div id="info">Loading…</div>
+<script>
+// ---- data dims: 0 lon, 1 lat, 2 year, 3 genre, 4 translation state
+const MAPS = [
+  {name:"Geography", sub:"longitude × latitude", x:0, y:1},
+  {name:"Time × geography", sub:"longitude × date", x:0, y:2},
+  {name:"Time × genre", sub:"date × genre", x:2, y:3},
+  {name:"Time × translation", sub:"date × translation state", x:2, y:4},
+  {name:"Genre × translation", sub:"genre × translation state", x:3, y:4},
+];
+const DIMNAME = ["longitude","latitude","date","genre","translation state"];
+const STATE_COL = [[0.36,0.78,0.55],[0.36,0.62,0.95],[0.95,0.62,0.25],[0.85,0.35,0.45]];
+const LON=[30,60], LAT=[24,42], YR=[-3600,500];
+let D, N, vals, flagsBuf, flags, match=null, sel=new Uint8Array(0), term=null;
+let navT = 0; // position around the ring, 0..MAPS.length
+const params = new URLSearchParams(location.search);
+
+const gl = document.getElementById('gl').getContext('webgl', {antialias:true, preserveDrawingBuffer:true});
+const ov = document.getElementById('ov'), ctx = ov.getContext('2d');
+const VS = `
+attribute vec4 a0; attribute float a1; attribute vec4 a2;
+uniform vec4 wx0; uniform float wx1; uniform vec4 wy0; uniform float wy1;
+uniform float geoW, dateW, hasMatch; uniform vec4 pad; uniform float ps;
+varying vec4 vCol;
+uniform vec3 sc0, sc1, sc2, sc3;
+void main(){
+  float px = dot(a0, wx0) + a1*wx1;
+  float py = dot(a0, wy0) + a1*wy1;
+  vec2 p = vec2(pad.x + px*(1.0-pad.x-pad.y), pad.w + py*(1.0-pad.z-pad.w));
+  gl_Position = vec4(p*2.0-1.0, 0.0, 1.0);
+  float st = a2.w;  // state idx encoded in a2.w? (see JS)
+  vec3 c = st < 0.5 ? sc0 : st < 1.5 ? sc1 : st < 2.5 ? sc2 : sc3;
+  float vis = mix(1.0, 1.0-geoW, 1.0-a2.x) * mix(1.0, 1.0-dateW, 1.0-a2.y);
+  float m = mod(a2.z, 2.0); float s = step(1.5, a2.z);
+  float alpha = hasMatch > 0.5 ? (m > 0.5 ? 0.75 : 0.05) : 0.35;
+  if (s > 0.5) { c = vec3(1.0, 0.92, 0.45); alpha = 0.95; }
+  vCol = vec4(c, alpha*vis);
+  gl_PointSize = (s > 0.5 ? ps*1.8 : (hasMatch>0.5 && m>0.5 ? ps*1.25 : ps));
+  if (vis < 0.01) gl_PointSize = 0.0;
+}`;
+const FS = `precision mediump float; varying vec4 vCol;
+void main(){ vec2 d = gl_PointCoord-0.5; float r = dot(d,d); if (r>0.25) discard; gl_FragColor = vec4(vCol.rgb*vCol.a, vCol.a); }`;
+function sh(t,s){const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o}
+const prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER,VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(prog); gl.useProgram(prog);
+const U = n => gl.getUniformLocation(prog, n);
+STATE_COL.forEach((c,i)=>gl.uniform3fv(U('sc'+i), c));
+
+function hash(i,k){ let x = Math.sin(i*12.9898 + k*78.233)*43758.5453; return x - Math.floor(x); }
+function norm(v,[a,b]){ return Math.min(1,Math.max(0,(v-a)/(b-a))); }
+function band(idx,n,i,k){ return (idx + 0.12 + 0.76*hash(i,k)) / n; }
+
+async function load(){
+  D = await (await fetch('data/map_of_maps.json')).json();
+  N = D.tablets.length;
+  vals = new Float32Array(N*5);
+  const a0 = new Float32Array(N*4), a1 = new Float32Array(N); flags = new Float32Array(N*4);
+  const ng = D.genres.length, ns = D.states.length;
+  D.tablets.forEach((t,i)=>{
+    const [id, lon, lat, yr, g, s] = t;
+    const hasGeo = lon!=null, hasDate = yr!=null;
+    const v = [hasGeo? norm(lon + (hash(i,6)-0.5)*0.35*Math.sqrt(hash(i,8)),LON) : 0.5 + (hash(i,1)-0.5)*0.3,
+               hasGeo? norm(lat + (hash(i,7)-0.5)*0.35*Math.sqrt(hash(i,8)),LAT) : 0.5 + (hash(i,2)-0.5)*0.3,
+               hasDate? Math.min(1,Math.max(0, norm(yr,YR) + (hash(i,3)-0.5)*0.025)) : 0.5,
+               band(g,ng,i,4), band(s,ns,i,5)];
+    for(let k=0;k<5;k++) vals[i*5+k]=v[k];
+    a0.set(v.slice(0,4), i*4); a1[i]=v[4];
+    flags.set([hasGeo?1:0, hasDate?1:0, 0, s], i*4);
+  });
+  sel = new Uint8Array(N);
+  const b = (data, loc, size)=>{ const buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf); gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
+    const L=gl.getAttribLocation(prog,loc); gl.enableVertexAttribArray(L); gl.vertexAttribPointer(L,size,gl.FLOAT,false,0,0); return buf; };
+  b(a0,'a0',4); b(a1,'a1',1); flagsBuf = b(flags,'a2',4);
+  // presets
+  const pr = document.getElementById('presets');
+  Object.keys(D.terms).forEach(k=>{ const bt=document.createElement('button'); bt.textContent=k; bt.onclick=()=>{q.value=k;setTerm(k)}; bt.dataset.k=k; pr.appendChild(bt); });
+  const all=document.createElement('button'); all.textContent='all'; all.onclick=()=>{q.value='';setTerm(null)}; pr.appendChild(all);
+  buildNav();
+  navT = parseFloat(params.get('t') || '0');
+  setTerm(params.has('q') ? (params.get('q')||null) : 'barley');
+  addEventListener('resize', draw);
+  window.__ready = true;
+}
+const q = document.getElementById('q');
+q.addEventListener('keydown', e=>{ if(e.key==='Enter') setTerm(q.value.trim().toLowerCase()||null); });
+function setTerm(k){
+  term = k; match = null;
+  if (k && D.terms[k]) { match = new Uint8Array(N); D.terms[k].forEach(i=>match[i]=1); }
+  else if (k) { term = k + ' (not preset)'; }
+  document.querySelectorAll('#presets button').forEach(b=>b.classList.toggle('on', b.dataset.k===k || (!k && !b.dataset.k)));
+  updFlags(); draw();
+}
+function updFlags(){
+  for(let i=0;i<N;i++) flags[i*4+2] = (match && match[i] ? 1 : 0) + (sel[i] ? 2 : 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, flagsBuf); gl.bufferData(gl.ARRAY_BUFFER, flags, gl.DYNAMIC_DRAW);
+}
+
+// ---- blend state from navT
+function blend(){
+  const n = MAPS.length, t = ((navT % n)+n)%n, i = Math.floor(t), f = t - i, j = (i+1)%n;
+  const e = f*f*(3-2*f); // smoothstep
+  const wx = [0,0,0,0,0], wy=[0,0,0,0,0];
+  wx[MAPS[i].x]+=1-e; wy[MAPS[i].y]+=1-e; wx[MAPS[j].x]+=e; wy[MAPS[j].y]+=e;
+  return {i,j,e,wx,wy};
+}
+const PAD = {l:118,r:30,t:30,b:60};
+function draw(){
+  if(!D) return;
+  const dpr = devicePixelRatio||1, W = innerWidth, H = innerHeight;
+  for (const c of [gl.canvas, ov]) { c.width = W*dpr; c.height = H*dpr; }
+  gl.viewport(0,0,W*dpr,H*dpr); gl.clearColor(0.06,0.067,0.085,1); gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  const B = blend(); window.__blend = B;
+  const geoW = (B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW = Math.max(B.wx[2], B.wy[2]);
+  gl.uniform4f(U('wx0'),B.wx[0],B.wx[1],B.wx[2],B.wx[3]); gl.uniform1f(U('wx1'),B.wx[4]);
+  gl.uniform4f(U('wy0'),B.wy[0],B.wy[1],B.wy[2],B.wy[3]); gl.uniform1f(U('wy1'),B.wy[4]);
+  // only fully-geographic axes hide unlocated: geo weight = share of both axes that are lon/lat
+  gl.uniform1f(U('geoW'), Math.min(1, geoW)); gl.uniform1f(U('dateW'), dateW);
+  gl.uniform1f(U('hasMatch'), match?1:0);
+  gl.uniform4f(U('pad'), PAD.l/W, PAD.r/W, PAD.t/H, PAD.b/H);
+  gl.uniform1f(U('ps'), 2.6*dpr);
+  gl.drawArrays(gl.POINTS, 0, N);
+  overlay(B, W, H, dpr, geoW, dateW);
+  info(B, geoW, dateW);
+  updNavUI(B);
+}
+function axisTicks(dim){
+  if (dim===0) return [35,40,45,50,55].map(v=>[norm(v,LON), v+'°E']);
+  if (dim===1) return [26,30,34,38,42].map(v=>[norm(v,LAT), v+'°N']);
+  if (dim===2) return [-3500,-3000,-2500,-2000,-1500,-1000,-500,0].map(v=>[norm(v,YR), v<0? (-v)+' BCE' : v===0? '1 CE':v+' CE']);
+  const L = dim===3 ? D.genres : D.states; return L.map((s,k)=>[(k+0.5)/L.length, s]);
+}
+function overlay(B,W,H,dpr){
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+  const X = v => PAD.l + v*(W-PAD.l-PAD.r), Y = v => H - (PAD.b + v*(H-PAD.t-PAD.b));
+  ctx.font = '11.5px "IBM Plex Sans", sans-serif';
+  for (const [mi, a] of [[B.i, 1-B.e],[B.j, B.e]]) {
+    if (a < 0.03) continue; const m = MAPS[mi];
+    ctx.globalAlpha = a;
+    // x axis: same dim in both maps -> stays put
+    ctx.fillStyle='#9aa0ad'; ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.textAlign='center';
+    for (const [v,l] of axisTicks(m.x)) { const x=X(v); ctx.fillText(l, x, H-PAD.b+18); if(m.x>2){ } else {ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
+    ctx.textAlign='right';
+    for (const [v,l] of axisTicks(m.y)) { const y=Y(v); ctx.fillText(l, PAD.l-8, y+4); if(m.y<=2){ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
+    // band separators for categorical axes
+    ctx.strokeStyle='rgba(255,255,255,0.08)';
+    if (m.y>2){ const n=(m.y===3?D.genres:D.states).length; for(let k=1;k<n;k++){const y=Y(k/n);ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
+    if (m.x>2){ const n=(m.x===3?D.genres:D.states).length; for(let k=1;k<n;k++){const x=X(k/n);ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
+    ctx.fillStyle='#d8c08a'; ctx.textAlign='center'; ctx.font='12.5px "IBM Plex Sans", sans-serif';
+    ctx.fillText(DIMNAME[m.x]+' →', W/2, H-PAD.b+40);
+    ctx.save(); ctx.translate(18, H/2); ctx.rotate(-Math.PI/2); ctx.fillText(DIMNAME[m.y]+' →', 0, 0); ctx.restore();
+    ctx.font = '11.5px "IBM Plex Sans", sans-serif';
+  }
+  ctx.globalAlpha = 1;
+}
+function info(B, geoW, dateW){
+  const m = match ? D.terms[term].length : 0, s = sel.reduce((a,b)=>a+b,0);
+  let byState = [0,0,0,0], selState=[0,0,0,0];
+  for (let i=0;i<N;i++){ const st=D.tablets[i][5]; if(!match||match[i]) byState[st]++; if(sel[i]) selState[st]++; }
+  const label = B.e<0.02 ? MAPS[B.i].name : B.e>0.98 ? MAPS[B.j].name : `${MAPS[B.i].name} → ${MAPS[B.j].name} (${Math.round(B.e*100)}%)`;
+  document.getElementById('info').innerHTML =
+   `<b>${label}</b><br>${match? `<b>${m.toLocaleString()}</b> tablets whose English mentions “${term}”` : term? `“${term}” is not a preset in this static mockup — try barley, silver, sheep` : 'All sampled tablets'} · ${N.toLocaleString()} dots (random ${D.sample_of_all.toLocaleString()} of ${D.corpus_tablets.toLocaleString()} + all preset matches)<br>`+
+   D.states.map((n,k)=>`<span class="sw" style="background:rgb(${STATE_COL[k].map(c=>c*255|0)})"></span>${n} ${byState[k].toLocaleString()}`).join('')+
+   (s? `<br><span style="color:#ffe873">● ${s.toLocaleString()} selected</span> — ${D.states.map((n,k)=>`${n.split(' ')[0]} ${selState[k]}`).join(' · ')}` : '<br><span class="muted">Click a dot or shift-drag to select; the selection travels with you.</span>')+
+   (geoW<0.99 ? '' : '<br><span class="muted">Tablets without a find-spot are hidden here; slide away from Geography to see them.</span>');
+}
+
+// ---- navigator ring
+const nav = document.getElementById('nav'), handle = document.getElementById('handle');
+const R = 112, CX = 150, CY = 150;
+function nodePos(k){ const a = -Math.PI/2 + k/MAPS.length*2*Math.PI; return [CX+R*Math.cos(a), CY+R*Math.sin(a)]; }
+function buildNav(){
+  MAPS.forEach((m,k)=>{
+    const d = document.createElement('div'); d.className='node'; const [x,y]=nodePos(k); d.style.left=x+'px'; d.style.top=y+'px';
+    const c = document.createElement('canvas'); c.width=120; c.height=68; d.appendChild(c); d.appendChild(document.createTextNode(m.name));
+    d.onclick = e=>{ e.stopPropagation(); animateTo(k); };
+    nav.appendChild(d); m.el=d; thumb(c, m);
+  });
+}
+function thumb(c, m){ // tiny CPU scatter of a subsample
+  const x = c.getContext('2d'); x.fillStyle='#0d0f14'; x.fillRect(0,0,120,68);
+  for (let i=0;i<N;i+=23){ const t=D.tablets[i]; if ((m.x<2||m.y<2) && t[1]==null) continue; if ((m.x==2||m.y==2) && t[3]==null) continue;
+    const c0=STATE_COL[t[5]]; x.fillStyle=`rgba(${c0[0]*255|0},${c0[1]*255|0},${c0[2]*255|0},0.5)`;
+    x.fillRect(4+vals[i*5+m.x]*112, 64-vals[i*5+m.y]*60, 1.2,1.2); }
+}
+function updNavUI(B){
+  // handle sits on the arc between the two nodes
+  const n=MAPS.length, a = -Math.PI/2 + (((navT%n)+n)%n)/n*2*Math.PI;
+  handle.style.left = (CX+R*Math.cos(a))+'px'; handle.style.top=(CY+R*Math.sin(a))+'px';
+  MAPS.forEach((m,k)=>m.el.classList.toggle('act', (k===B.i && B.e<0.5) || (k===B.j && B.e>=0.5)));
+  document.getElementById('navlabel').innerHTML = 'map of maps<small>drag around the ring</small>';
+}
+let dragging=false;
+function navFromEvent(e){ const r=nav.getBoundingClientRect(); const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
+  let a = Math.atan2(dy,dx)+Math.PI/2; if(a<0)a+=2*Math.PI; return a/(2*Math.PI)*MAPS.length; }
+nav.addEventListener('pointerdown', e=>{ if(e.target.closest('.node')) return; dragging=true; nav.setPointerCapture(e.pointerId); navT=navFromEvent(e); draw(); });
+nav.addEventListener('pointermove', e=>{ if(!dragging) return; navT=navFromEvent(e); draw(); });
+nav.addEventListener('pointerup', ()=>{ dragging=false; });
+function animateTo(k){ const n=MAPS.length; let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=900+Math.abs(d)*250;
+  (function step(now){ const f=Math.min(1,(now-t0)/dur); navT=from+d*f; draw(); if(f<1) requestAnimationFrame(step); else navT=((k%n)+n)%n; })(t0); }
+window.setNav = t => { navT=t; draw(); };
+
+// ---- picking & brushing (CPU, same blend as shader)
+function screenPos(i,B,W,H){ let px=0,py=0; for(let k=0;k<5;k++){ px+=vals[i*5+k]*B.wx[k]; py+=vals[i*5+k]*B.wy[k]; }
+  return [PAD.l+px*(W-PAD.l-PAD.r), H-(PAD.b+py*(H-PAD.t-PAD.b))]; }
+function visible(i,B){ const t=D.tablets[i]; const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW=Math.max(B.wx[2],B.wy[2]);
+  return (t[1]!=null || geoW<0.9) && (t[3]!=null || dateW<0.9) && (!match || match[i]); }
+const stage = document.getElementById('gl'), brush=document.getElementById('brush'), tip=document.getElementById('tip');
+let bStart=null;
+stage.addEventListener('pointerdown', e=>{ bStart=[e.clientX,e.clientY,e.shiftKey]; });
+stage.addEventListener('pointermove', e=>{
+  if(bStart && bStart[2]){ const [x0,y0]=bStart; Object.assign(brush.style,{display:'block',left:Math.min(x0,e.clientX)+'px',top:Math.min(y0,e.clientY)+'px',width:Math.abs(e.clientX-x0)+'px',height:Math.abs(e.clientY-y0)+'px'}); return; }
+  const i = pick(e.clientX,e.clientY); if(i<0){tip.style.display='none';return;}
+  const t=D.tablets[i]; tip.style.display='block'; tip.style.left=(e.clientX+12)+'px'; tip.style.top=(e.clientY+12)+'px';
+  tip.innerHTML=`<b>${t[0]}</b><br>${t[6]>=0?D.sites[t[6]]:'no find-spot'} · ${t[3]==null?'undated':(t[3]<0?(-t[3])+' BCE':t[3]+' CE')+' (approx.)'}<br>${D.genres[t[4]]} · ${D.states[t[5]]}`;
+});
+stage.addEventListener('pointerup', e=>{
+  if(!bStart) return; const [x0,y0,sh]=bStart; bStart=null; brush.style.display='none';
+  const B=blend(), W=innerWidth, H=innerHeight;
+  if (sh && Math.abs(e.clientX-x0)+Math.abs(e.clientY-y0)>6){
+    const [xa,xb]=[Math.min(x0,e.clientX),Math.max(x0,e.clientX)], [ya,yb]=[Math.min(y0,e.clientY),Math.max(y0,e.clientY)];
+    for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); if(x>=xa&&x<=xb&&y>=ya&&y<=yb) sel[i]=1; }
+  } else { const i=pick(e.clientX,e.clientY); if(i>=0) sel[i]^=1; }
+  updFlags(); draw();
+});
+function pick(cx,cy){ const B=blend(), W=innerWidth, H=innerHeight; let best=-1, bd=36;
+  for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); const d=(x-cx)**2+(y-cy)**2; if(d<bd){bd=d;best=i;} } return best; }
+window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f(D.tablets[i])) sel[i]=1; updFlags(); draw(); };
+document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); };
+load();
+</script>
+</body>
+</html>
