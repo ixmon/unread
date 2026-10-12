@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>F · Landing page · Unread Atlas mockup</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="common.css" />
+<style>
+:root{--clay:#c4784a;--clay2:#e09560;--lapis:#2f5fa8;--lapis2:#5b8ad6;--gold:#e3c27a;--ink:#0b0d12}
+html,body{height:auto;overflow-x:hidden;background:var(--ink)}
+#hero{position:relative;height:100vh;min-height:560px;overflow:hidden}
+#gl,#ov{position:absolute;inset:0;width:100%;height:100%}
+#ov{pointer-events:none}
+#hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 40%,rgba(11,13,18,.75) 100%),linear-gradient(to bottom,rgba(11,13,18,.0) 70%,var(--ink) 100%)}
+#brand{position:absolute;top:22px;left:28px;z-index:6;font-family:var(--font-serif);font-size:20px;letter-spacing:.06em;color:var(--gold)}
+#brand small{font-family:var(--font-ui);font-size:11px;letter-spacing:.14em;color:var(--text-dim);margin-left:10px;text-transform:uppercase}
+#topnav{position:absolute;top:24px;right:28px;z-index:6;display:flex;gap:20px;font-size:13px}
+#topnav a{color:var(--text-dim)}#topnav a:hover{color:var(--gold)}
+#copy{position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:min(820px,92vw);transition:opacity .8s,top .8s}
+#copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,4.6vw,56px);line-height:1.12;margin:0 0 14px;text-shadow:0 2px 24px rgba(0,0,0,.8)}
+#copy h1 em{font-style:normal;color:var(--gold)}
+#copy p.tag{font-size:clamp(14px,1.6vw,18px);color:#cfc8ba;margin:0 0 26px;text-shadow:0 1px 12px #000}
+#sform{display:flex;gap:0;max-width:520px;margin:0 auto;background:rgba(18,20,26,.82);border:1px solid #3a3530;border-radius:999px;padding:5px;backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#sform input{flex:1;background:transparent;border:0;outline:0;padding:10px 18px;font-size:16px;color:var(--text)}
+#sform button{background:linear-gradient(135deg,var(--clay),var(--clay2));color:#1a120c;border:0;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
+#hints{margin-top:12px;font-size:12.5px;color:var(--text-faint)}#hints a{color:var(--text-dim);margin:0 6px}
+body.user #copy{opacity:.0;pointer-events:none}
+#legend{position:absolute;left:28px;bottom:28px;z-index:6;background:rgba(14,16,21,.78);border:1px solid #2a2e38;border-radius:10px;padding:10px 13px;font-size:12px;line-height:1.7;backdrop-filter:blur(4px)}
+#legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
+#legend .n{color:var(--text-dim);margin-left:6px;font-variant-numeric:tabular-nums}
+#maplabel{position:absolute;right:28px;bottom:28px;z-index:6;text-align:right;font-family:var(--font-serif);font-size:20px;color:var(--gold);transition:opacity .5s}
+#maplabel small{display:block;font-family:var(--font-ui);font-size:11.5px;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase}
+#navbar{position:absolute;left:50%;bottom:26px;transform:translate(-50%,20px);z-index:7;display:flex;gap:6px;opacity:0;pointer-events:none;transition:.5s;background:rgba(14,16,21,.88);border:1px solid #2a2e38;border-radius:999px;padding:5px}
+body.user #navbar{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#navbar button{background:transparent;border:0;color:var(--text-dim);padding:7px 13px;border-radius:999px;cursor:pointer;font-size:13px}
+#navbar button.on{background:var(--lapis);color:#fff}
+#navbar a{padding:7px 13px;font-size:13px}
+body.user #maplabel{bottom:80px}
+#scrollcue{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:6;color:var(--text-faint);font-size:11px;letter-spacing:.2em;text-transform:uppercase;animation:bob 2.4s infinite}
+body.user #scrollcue{display:none}
+@keyframes bob{50%{transform:translate(-50%,5px)}}
+main{max-width:1180px;margin:0 auto;padding:30px 28px 80px}
+h2{font-family:var(--font-serif);font-weight:500;font-size:28px;margin:46px 0 6px}
+.lede{color:var(--text-dim);margin:0 0 22px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{display:block;background:#14171d;border:1px solid #262a33;border-radius:12px;overflow:hidden;color:var(--text);transition:transform .25s var(--ease),border-color .25s}
+.card:hover{transform:translateY(-3px);border-color:var(--clay);text-decoration:none}
+.card .img{height:150px;background:#0d0f14 center/cover no-repeat;border-bottom:1px solid #222}
+.card .b{padding:12px 14px 15px}.card b{font-size:15px;color:var(--gold)}.card p{margin:4px 0 0;color:var(--text-dim);font-size:13px}
+.card.soon{opacity:.7}.card.soon .img{display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis2);border:1px solid #2b3d5c;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.two{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:820px){.two{grid-template-columns:1fr}#legend{display:none}#topnav{display:none}#maplabel{font-size:16px}}
+.panel{background:linear-gradient(160deg,#171a21,#12141a);border:1px solid #262a33;border-radius:12px;padding:20px 22px}
+.panel h3{margin:0 0 4px;font-family:var(--font-serif);font-weight:500;font-size:22px}
+.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay2)}
+.atf{font-family:var(--font-mono);font-size:12.5px;background:#0d0f14;border:1px solid #23262e;border-radius:8px;padding:10px 12px;color:#d9cfb8;overflow-x:auto;white-space:nowrap}
+.atf mark{background:rgba(196,120,74,.3);color:#ffd9b8;border-radius:3px;padding:0 2px}
+.leads{list-style:none;padding:0;margin:12px 0}.leads li{padding:6px 0;border-top:1px solid #20242c;display:flex;justify-content:space-between;gap:10px;font-size:13.5px}
+.leads li span{color:var(--text-dim)}
+.btn{display:inline-block;background:transparent;border:1px solid var(--clay);color:var(--clay2);border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:500}
+.btn:hover{background:var(--clay);color:#1a120c;text-decoration:none}
+.btn.solid{background:var(--lapis);border-color:var(--lapis);color:#fff}
+#rt{min-height:140px}
+#rt .id{font-family:var(--font-serif);font-size:22px;color:var(--gold)}
+.collab{margin-top:46px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;border:1px solid #3a2f26;background:linear-gradient(120deg,rgba(196,120,74,.12),rgba(47,95,168,.10));border-radius:14px;padding:26px 28px}
+@media(max-width:820px){.collab{grid-template-columns:1fr}}
+.collab h3{margin:0 0 6px;font-family:var(--font-serif);font-weight:500;font-size:24px}
+footer{color:var(--text-faint);font-size:12px;text-align:center;padding:30px}
+</style>
+</head>
+<body>
+<section id="hero">
+  <canvas id="gl"></canvas><canvas id="ov"></canvas>
+  <div id="brand">UNREAD ATLAS<small>mockup</small></div>
+  <nav id="topnav"><a href="#views">Views</a><a href="#lead">Featured lead</a><a href="#collab">Collaborate</a><a href="index.html">All mockups</a></nav>
+  <div id="copy">
+    <h1><em>462,298</em> tablets survive.<br>About <em>5%</em> have ever been read in English.</h1>
+    <p class="tag">A space-and-time browser for the unread ancient world.</p>
+    <form id="sform"><input id="q" placeholder="barley" aria-label="Search the corpus" /><button>Explore</button></form>
+    <div id="hints">try <a href="e-map-of-maps.html?q=barley">barley</a><a href="e-map-of-maps.html?q=silver">silver</a><a href="d-trails.html?term=tarmush">tarmuš</a><a href="#" id="rand1">a random tablet</a></div>
+  </div>
+  <div id="legend"></div>
+  <div id="maplabel"></div>
+  <div id="navbar"></div>
+  <div id="scrollcue">scroll ↓</div>
+</section>
+<main>
+  <h2 id="views">Many ways to look at the same clay</h2>
+  <p class="lede">Every tablet is a point with a place, a date, a genre and a translation state. Each view below is one way of laying those points out. Your search comes with you between them.</p>
+  <div class="grid" id="cards"></div>
+  <div class="two" id="lead">
+    <div class="panel">
+      <div class="kicker">Featured lead</div>
+      <h3>What plant was <i>tarmuš</i>?</h3>
+      <p class="muted" style="margin:4px 0 12px">Translators render <b>{ú}tar-muš</b> as <b>lupin</b> in 32 published translations. It turns up on 214 tablets, mostly Neo-Assyrian medical recipes, but the medical tablets from Assur have never been read in English. These three share the most plant names with the translated texts:</p>
+      <div class="atf">41. _{u2}kur-kur_ <mark>{u2}tar-musz</mark> {u2}_igi_-lim _{u2}igi-nisz_ {u2#}[x ...]</div>
+      <ul class="leads" id="leads"></ul>
+      <a class="btn" href="d-trails.html?term=tarmush">Follow the word trail →</a>
+    </div>
+    <div class="panel" id="rtp">
+      <div class="kicker">Random tablet</div>
+      <div id="rt"><p class="muted">Drop into a real tablet, with its ATF, the machine draft and where it was found.</p></div>
+      <button class="btn solid" id="rand2">Show me a tablet</button>
+    </div>
+  </div>
+  <div class="collab" id="collab">
+    <div><div class="kicker">For museums &amp; scholars</div>
+      <h3>Have unread tablets, or a reading to argue about?</h3>
+      <p class="muted" style="margin:0">We are looking for collections to digitise, specialists to check machine drafts, and partners for exhibitions that use the atlas. Machine translations are labelled with their model version, and the ATF is open.</p></div>
+    <div><a class="btn" href="#collab" title="placeholder: no contact address yet">Get in touch (placeholder)</a></div>
+  </div>
+  <footer>Unread Atlas · mockup F (exploratory, not the live site) · dots: a random 60,000 of 462,298 tablets plus every match for barley, silver and sheep · dates are approximate period midpoints</footer>
+</main>
+<script>
+const STATES_COL=[[0.89,0.76,0.48],[0.36,0.54,0.84],[0.77,0.47,0.29],[0.42,0.40,0.38]]; // human gold, machine lapis, ATF clay, catalogue stone
+const MAPS=[{name:"Geography",sub:"where tablets were found",x:0,y:1},{name:"Time × geography",sub:"east–west against date",x:0,y:2},{name:"Time × translation",sub:"date against how much has been read",x:2,y:4},
+            {name:"Time × genre",sub:"date against genre",x:2,y:3},{name:"Genre × translation",sub:"genre against translation state",x:3,y:4}];
+const TOUR=[0,1,2,0]; // geography -> time×geo -> time×translation -> back
+const LON=[30,60],LAT=[24,42],YR=[-3600,500];
+let D,N,vals,cnt=[0,0,0,0],navT=0,fade=0,touring=true,tourT0=0,user=false;
+const P=new URLSearchParams(location.search);
+const gl=document.getElementById('gl').getContext('webgl',{antialias:true,preserveDrawingBuffer:true});
+const ov=document.getElementById('ov'),ctx=ov.getContext('2d');
+const VS=`attribute vec4 a0;attribute float a1;attribute vec4 a2;
+uniform vec4 wx0;uniform float wx1;uniform vec4 wy0;uniform float wy1;uniform float geoW,dateW,fade,ps;uniform vec4 pad;uniform vec3 sc0,sc1,sc2,sc3;varying vec4 vCol;
+void main(){float px=dot(a0,wx0)+a1*wx1;float py=dot(a0,wy0)+a1*wy1;
+vec2 p=vec2(pad.x+px*(1.0-pad.x-pad.y),pad.w+py*(1.0-pad.z-pad.w));gl_Position=vec4(p*2.0-1.0,0.0,1.0);
+float st=a2.w;vec3 c=st<0.5?sc0:st<1.5?sc1:st<2.5?sc2:sc3;
+float vis=mix(1.0,1.0-geoW,1.0-a2.x)*mix(1.0,1.0-dateW,1.0-a2.y);
+float f=clamp(fade*1.6-a2.z*0.6,0.0,1.0);
+float al=(st<0.5?0.85:0.32)*vis*f;vCol=vec4(c,al);gl_PointSize=(st<0.5?ps*1.35:ps);if(vis*f<0.01)gl_PointSize=0.0;}`;
+const FS=`precision mediump float;varying vec4 vCol;void main(){vec2 d=gl_PointCoord-0.5;if(dot(d,d)>0.25)discard;gl_FragColor=vec4(vCol.rgb*vCol.a,vCol.a);}`;
+function sh(t,s){const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o}
+const prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);gl.useProgram(prog);
+const U=n=>gl.getUniformLocation(prog,n);STATES_COL.forEach((c,i)=>gl.uniform3fv(U('sc'+i),c));
+function hash(i,k){let x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x)}
+const norm=(v,[a,b])=>Math.min(1,Math.max(0,(v-a)/(b-a))),band=(idx,n,i,k)=>(idx+0.12+0.76*hash(i,k))/n;
+async function load(){
+  D=await (await fetch('data/map_of_maps.json')).json();N=D.tablets.length;vals=new Float32Array(N*5);
+  const a0=new Float32Array(N*4),a1=new Float32Array(N),a2=new Float32Array(N*4),ng=D.genres.length,ns=D.states.length;
+  D.tablets.forEach((t,i)=>{const[id,lon,lat,yr,g,s]=t;const hg=lon!=null,hd=yr!=null;cnt[s]++;
+    const v=[hg?norm(lon+(hash(i,6)-.5)*.35*Math.sqrt(hash(i,8)),LON):.5+(hash(i,1)-.5)*.3,hg?norm(lat+(hash(i,7)-.5)*.35*Math.sqrt(hash(i,8)),LAT):.5+(hash(i,2)-.5)*.3,
+      hd?Math.min(1,Math.max(0,norm(yr,YR)+(hash(i,3)-.5)*.025)):.5,band(g,ng,i,4),band(s,ns,i,5)];
+    for(let k=0;k<5;k++)vals[i*5+k]=v[k];a0.set(v.slice(0,4),i*4);a1[i]=v[4];a2.set([hg?1:0,hd?1:0,hash(i,9),s],i*4);});
+  const b=(d,l,z)=>{const f=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,f);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);const L=gl.getAttribLocation(prog,l);gl.enableVertexAttribArray(L);gl.vertexAttribPointer(L,z,gl.FLOAT,false,0,0)};
+  b(a0,'a0',4);b(a1,'a1',1);b(a2,'a2',4);
+  legend();buildNavbar();
+  if(P.has('t')){touring=false;navT=+P.get('t');fade=1;} if(P.has('user'))takeControl();
+  tourT0=performance.now();requestAnimationFrame(frame);window.__ready=true;
+}
+// tour: pairs (stop, path) -> position along TOUR; hold 3s at each stop, 3.2s glide
+const HOLD=3000,GLIDE=3200;
+function tourPos(ms){const seg=HOLD+GLIDE,n=TOUR.length-1,t=ms%(seg*n),k=Math.floor(t/seg),r=t-k*seg;const f=r<HOLD?0:(r-HOLD)/GLIDE;return [TOUR[k],TOUR[k+1],f]}
+let pair=[0,0,0];
+function frame(now){
+  if(!user)fade=Math.min(1,(now-tourT0)/1800);
+  if(touring&&!P.has('t')){pair=tourPos(Math.max(0,now-tourT0-1200));}
+  draw();requestAnimationFrame(frame);
+}
+function blend(){
+  let i,j,f;
+  if(touring&&!P.has('t')){[i,j,f]=pair;}else{const n=MAPS.length,t=((navT%n)+n)%n;i=Math.floor(t);f=t-i;j=(i+1)%n;}
+  const e=f*f*(3-2*f),wx=[0,0,0,0,0],wy=[0,0,0,0,0];wx[MAPS[i].x]+=1-e;wy[MAPS[i].y]+=1-e;wx[MAPS[j].x]+=e;wy[MAPS[j].y]+=e;return{i,j,e,wx,wy};
+}
+function pads(W,H){return W<700?{l:46,r:12,t:90,b:70}:{l:120,r:60,t:80,b:90}}
+function draw(){
+  if(!D)return;const dpr=devicePixelRatio||1,hero=document.getElementById('hero'),W=hero.clientWidth,H=hero.clientHeight;
+  for(const c of[gl.canvas,ov])if(c.width!==W*dpr||c.height!==H*dpr){c.width=W*dpr;c.height=H*dpr}
+  gl.viewport(0,0,W*dpr,H*dpr);gl.clearColor(.043,.051,.07,1);gl.clear(gl.COLOR_BUFFER_BIT);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
+  const B=blend();window.__blend=B;const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2,dateW=Math.max(B.wx[2],B.wy[2]),PD=pads(W,H);
+  gl.uniform4f(U('wx0'),...B.wx.slice(0,4));gl.uniform1f(U('wx1'),B.wx[4]);gl.uniform4f(U('wy0'),...B.wy.slice(0,4));gl.uniform1f(U('wy1'),B.wy[4]);
+  gl.uniform1f(U('geoW'),Math.min(1,geoW));gl.uniform1f(U('dateW'),dateW);gl.uniform1f(U('fade'),fade);
+  gl.uniform4f(U('pad'),PD.l/W,PD.r/W,PD.t/H,PD.b/H);gl.uniform1f(U('ps'),(W<700?1.9:2.5)*dpr);
+  gl.drawArrays(gl.POINTS,0,N);overlay(B,W,H,dpr,PD);
+  const cur=B.e<.5?MAPS[B.i]:MAPS[B.j];const ml=document.getElementById('maplabel');const html=`<small>${user?'you are on':'now showing'}</small>${cur.name}`;if(ml.innerHTML!==html)ml.innerHTML=html;
+  document.querySelectorAll('#navbar button').forEach((b,k)=>b.classList.toggle('on',MAPS[k]===cur));
+}
+function ticks(d){if(d===0)return[35,40,45,50,55].map(v=>[norm(v,LON),v+'°E']);if(d===1)return[26,30,34,38,42].map(v=>[norm(v,LAT),v+'°N']);
+  if(d===2)return[-3000,-2000,-1000,0].map(v=>[norm(v,YR),v<0?(-v)+' BCE':'1 CE']);const L=d===3?D.genres:D.states;return L.map((s,k)=>[(k+.5)/L.length,s])}
+function overlay(B,W,H,dpr,PD){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);const X=v=>PD.l+v*(W-PD.l-PD.r),Y=v=>H-(PD.b+v*(H-PD.t-PD.b));
+  ctx.font='11px "IBM Plex Sans",sans-serif';
+  for(const[mi,a]of[[B.i,1-B.e],[B.j,B.e]]){if(a<.03)continue;const m=MAPS[mi];ctx.globalAlpha=a*.75*fade;
+    ctx.fillStyle='#6f6a60';ctx.textAlign='center';for(const[v,l]of ticks(m.x))if(m.x<=2)ctx.fillText(l,X(v),H-PD.b+18);
+    ctx.textAlign='left';for(const[v,l]of ticks(m.y))ctx.fillText(W<700&&m.y>2?l.split(' ')[0]:l,6,Y(v)+4);}
+  ctx.globalAlpha=1;
+}
+function legend(){const tot=cnt.reduce((a,b)=>a+b,0);
+  document.getElementById('legend').innerHTML=D.states.map((n,k)=>`<div><span class="sw" style="background:rgb(${STATES_COL[k].map(c=>c*255|0)})"></span>${n}<span class="n">${(cnt[k]/tot*100).toFixed(1)}%</span></div>`).join('')+
+  `<div class="muted" style="font-size:10.5px;margin-top:4px">${N.toLocaleString()} dots sampled from 462,298 tablets · shares are of this sample, which over-weights barley/silver/sheep matches</div>`}
+function buildNavbar(){const nb=document.getElementById('navbar');MAPS.forEach((m,k)=>{const b=document.createElement('button');b.textContent=m.name;b.onclick=e=>{e.stopPropagation();animateTo(k)};nb.appendChild(b)});
+  const a=document.createElement('a');a.href='e-map-of-maps.html?q=barley';a.textContent='Open full browser →';nb.appendChild(a)}
+function takeControl(){if(user)return;user=true;fade=1;if(touring&&!P.has('t')){const B=blend();navT=B.e<.5?B.i:B.j;}touring=false;document.body.classList.add('user')}
+function animateTo(k){const n=MAPS.length;let from=navT,d=((k-from)%n+n)%n;if(d>n/2)d-=n;const t0=performance.now(),dur=1100+Math.abs(d)*300;
+  (function st(now){const f=Math.min(1,(now-t0)/dur),e=f<.5?2*f*f:1-2*(1-f)*(1-f);navT=from+d*e;if(f<1)requestAnimationFrame(st);else navT=((k%n)+n)%n})(t0)}
+const heroEl=document.getElementById('hero');
+heroEl.addEventListener('pointerdown',e=>{if(e.target.closest('#copy,#navbar,#topnav'))return;takeControl()});
+heroEl.addEventListener('wheel',()=>{},{passive:true});
+let dragX=null;heroEl.addEventListener('pointermove',e=>{if(!user||e.buttons!==1||e.target.closest('#navbar'))return;if(dragX!=null){navT+=(e.clientX-dragX)/-400;}dragX=e.clientX});
+heroEl.addEventListener('pointerup',()=>dragX=null);
+addEventListener('keydown',e=>{if(e.target.id==='q')return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){takeControl();animateTo(Math.round(navT)+(e.key==='ArrowRight'?1:-1))}});
+document.getElementById('q').addEventListener('focus',()=>{});
+document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=(document.getElementById('q').value.trim()||'barley').toLowerCase();
+  location.href=(D&&D.terms[v])?`e-map-of-maps.html?q=${encodeURIComponent(v)}`:`../search.html?q=${encodeURIComponent(v)}`};
+window.setTour=(i,j,f)=>{P.set('t','x');touring=true;pair=[i,j,f]};window.__P=P;
+// override for screenshots: ?t= fixes the blend
+// ---- cards
+const CARDS=[["Map","Just the map and a search box. Dots for every find-spot, filters in a drawer.","a-fullscreen.html?q=barley","img/prev-a.jpg"],
+["Timeline","The time slider as a second map: brush a few centuries and the dots follow.","b-timeline.html?q=barley&from=-2150&to=-1950","img/prev-b.jpg"],
+["Gap view","Each site as a ring: how much is read in English, machine-drafted, ATF only or catalogue only.","c-gap.html","img/prev-c.jpg"],
+["Word trail","Follow one word across places and centuries, with how translators render it.","d-trails.html?term=tarmush","img/prev-d.jpg"],
+["Map of maps","Slide between geography, time, genre and translation state. The dots travel with you.","e-map-of-maps.html?q=barley","img/prev-e.jpg"],
+["Related tablets","Tablets linked by shared rare words, find-spot, date and copied passages.",null,null]];
+document.getElementById('cards').innerHTML=CARDS.map(([t,d,h,img])=>h?`<a class="card" href="${h}"><div class="img" style="background-image:url(${img})"></div><div class="b"><b>${t}</b><p>${d}</p></div></a>`
+  :`<div class="card soon"><div class="img">graph view</div><div class="b"><b>${t}</b><span class="pill">coming soon</span><p>${d}</p></div></div>`).join('');
+// ---- featured leads from mockup D data
+fetch('data/word_trails.json').then(r=>r.json()).then(W=>{const t=W.terms.find(x=>x.key==='tarmush');
+  document.getElementById('leads').innerHTML=t.leads.slice(0,3).map(l=>`<li><a href="d-trails.html?term=tarmush">${l.designation}</a><span>${l.site.split(' (')[0]} · ${l.genre} · ${l.n_shared} shared plant words · ATF only</span></li>`).join('')});
+// ---- random tablet: curated pages in ../t/ (have ATF + machine draft); fallback to search
+const CURATED="BM.27776 BM.32462 BM.33483 BM.45381 BM.47530 BM.78962 BM.98977 K.200 K.2049 K.2234 K.2529 K.3350 K.3688 K.4110 K.4427 K.4629 K.47 K.5040 K.5167 K.5694 K.6606 K.8790 MLC.1874 P010678 P254714 P254847 P254848 P257557 P262784 P270002 P285108 P285450 P285469 P285480 P338416 P343019 P355698 P368783 P369126 P392704 P404959 P464229 P480691 P498964 Sm.1514 Sm.801 VAT.10395".split(' ');
+async function randomTablet(go){const id=CURATED[Math.floor(Math.random()*CURATED.length)],url=`../t/${id}.html`;if(go){location.href=url;return}
+  const box=document.getElementById('rt');box.innerHTML=`<div class="id">${id.replace('.',' ')}</div><p class="muted">Loading…</p>`;
+  try{const h=await (await fetch(url)).text(),doc=new DOMParser().parseFromString(h,'text/html');
+    const title=(doc.querySelector('h1')||doc.querySelector('title')).textContent.trim(),desc=(doc.querySelector('meta[name=description]')||{}).content||'';
+    box.innerHTML=`<div class="id">${title}</div><p class="muted" style="font-size:13px">${desc.slice(0,220)}${desc.length>220?'…':''}</p><p><a href="${url}">Open the tablet →</a> · <a href="#" onclick="randomTablet();return false">another</a></p>`;
+  }catch(e){box.innerHTML=`<div class="id">${id}</div><p><a href="${url}">Open the tablet →</a></p>`}}
+document.getElementById('rand2').onclick=()=>randomTablet(false);document.getElementById('rand1').onclick=e=>{e.preventDefault();randomTablet(true)};
+load();
+</script>
+</body>
+</html>
