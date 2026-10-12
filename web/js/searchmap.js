@@ -15,6 +15,10 @@
   const FILTERS = ["period", "genre", "site", "src"];
   const SCOPES = { all: "All", atf: "ATF", en: "English", meta: "Catalogue" };
   const PAGE = 20;
+  // Default layer with no query: every located find-spot in the corpus (counts + periods only, no text),
+  // built by scripts/build_all_sites.py with the API's own aggregation, so its keys work with /search?at=.
+  const ALL_SITES_URL = "assets/all-sites.json";
+  const EMPTY = { q: "", in: "all", period: "", genre: "", site: "", src: "" };
   const SLOW_MS = 1200; // Lambda cold start ≈ 12 s; same UX as search.js
   const TIMEOUT_MS = 35000;
   const CLUSTER_PX = 26; // circles closer than this (centre to centre) merge into one cluster
@@ -195,9 +199,42 @@
       .join("");
   }
 
+  async function showAll() {
+    const my = ++sm.seq;
+    sm.query = { ...EMPTY };
+    sm.all = true;
+    $("#smap-q").value = "";
+    $("#smap-filters").innerHTML = "";
+    $("#smap-open").hidden = $("#smap-clear").hidden = true;
+    closePanel();
+    let d = sm.allData;
+    if (!d) {
+      setChip(spin("Loading the corpus…"), "busy");
+      try {
+        const res = await fetch(ALL_SITES_URL);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        d = sm.allData = await res.json();
+      } catch (e) {
+        if (my === sm.seq) $("#smap-chip").hidden = true;
+        return;
+      }
+    }
+    if (my !== sm.seq) return;
+    sm.data = d;
+    setChip(
+      `Whole corpus: <strong>${fmt(d.total)}</strong> tablets, <strong>${fmt(d.located)}</strong> at <strong>${fmt(d.site_count)}</strong> sites` +
+        ` <span class="smap-dim">(${fmt(d.unlocated)} without location)</span>`, "all");
+    $("#smap-chip").title = "Every tablet in the Unread Atlas corpus with a mappable find-spot. Click a circle to list its tablets; search above to map a word.";
+    sm.visible = true;
+    $("#smap-toggle").checked = true;
+    draw();
+  }
+
   async function run(s, { pushUrl = true } = {}) {
     if (!hasQuery(s)) return clear();
     const my = ++sm.seq;
+    sm.all = false;
+    $("#smap-open").hidden = $("#smap-clear").hidden = false;
     sm.query = s;
     if (pushUrl) writeUrl(s);
     $("#smap-q").value = s.q;
@@ -244,6 +281,7 @@
     closePanel();
     draw();
     writeUrl(null);
+    showAll();
   }
 
   // ─── layer ───
@@ -391,8 +429,8 @@
     panel.hidden = false;
     const sites = [...c.sites].sort((a, b) => b.count - a.count);
     const head = sites.length > 1
-      ? `<h3>${fmt(c.count)} results at ${sites.length} sites</h3>`
-      : `<h3>${esc(sites[0].site)}</h3><p class="smap-sub">${fmt(sites[0].count)} matching tablet${sites[0].count === 1 ? "" : "s"}</p>`;
+      ? `<h3>${fmt(c.count)} ${sm.all ? "tablets" : "results"} at ${sites.length} sites</h3>`
+      : `<h3>${esc(sites[0].site)}</h3><p class="smap-sub">${fmt(sites[0].count)} ${sm.all ? "" : "matching "}tablet${sites[0].count === 1 ? "" : "s"}</p>`;
     const tabs = sites.length > 1
       ? `<div class="smap-sites" role="tablist">${sites.map((s, i) => `<button type="button" role="tab" data-site-key="${esc(s.key)}" class="${i ? "" : "on"}" title="${esc(s.site)} · ${esc(s.key)}">${esc(siteLabel(s, sites))} <span>${esc(short(s.count))}</span></button>`).join("")}</div>`
       : "";
@@ -489,6 +527,7 @@
     document.addEventListener("unread:timeline", styleForTime);
     const s = queryFromUrl();
     if (hasQuery(s)) run(s, { pushUrl: false });
+    else showAll();
   }
 
   window.UnreadSearchMap = { run: (s) => run({ q: "", in: "all", period: "", genre: "", site: "", src: "", ...s }), clear, state: sm };

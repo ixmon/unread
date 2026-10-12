@@ -1712,3 +1712,28 @@ body.mode-epic .catalog-card .title {
 .smap-pager button { font: inherit; font-size: 0.76rem; background: var(--bg-panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 0.15rem 0.5rem; cursor: pointer; }
 /* while a search layer is shown, the catalog pins step back a little (still clickable, drawn on top) */
 .smap-active .site-marker:not(.active) .site-dot { opacity: calc(var(--o, 1) * 0.6); box-shadow: none; }
+
+/* ─── Collapsible left bar (map.html) ─── */
+.filters-toggle { margin-top: 0.6rem; width: 100%; justify-content: flex-start; gap: 0.4rem; }
+.filters-toggle .ft-icon { display: inline-block; transition: transform 0.15s; }
+.filters-toggle.on .ft-icon { transform: rotate(90deg); }
+.sidebar-hint { display: none; margin: 0.6rem 0 0; font-size: 0.78rem; line-height: 1.4; color: var(--text-faint); }
+.sidebar-collapsed .sidebar { width: 230px; }
+.sidebar-collapsed .sidebar .filters,
+.sidebar-collapsed .sidebar .results-count { display: none; }
+.sidebar-collapsed .sidebar .sidebar-hint { display: block; }
+/* collapsed: the curated list only appears while you type in the box */
+.sidebar-collapsed .sidebar:not(:has(#search:not(:placeholder-shown))) .catalog-list { display: none; }
+.map-credits { background: rgba(15, 17, 20, 0.6); padding: 0 6px; border-radius: 4px; font-size: 10.5px; line-height: 16px; }
+.map-credits a { color: var(--text-faint); text-decoration: none; }
+.map-credits a:hover { color: var(--text); }
+@media (max-width: 960px) {
+  .sidebar-collapsed .sidebar { width: 100%; max-height: none; }
+  .sidebar-collapsed .sidebar .sidebar-section { padding: 0.6rem 0.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .sidebar-collapsed .sidebar .sidebar-section h2, .sidebar-collapsed .sidebar .sidebar-hint { display: none; }
+  .sidebar-collapsed .sidebar .search-box { flex: 1; min-width: 0; }
+  .sidebar-collapsed .sidebar .filters-toggle { width: auto; margin-top: 0; }
+  .sidebar-collapsed .sidebar:has(#search:not(:placeholder-shown)) .catalog-list { max-height: 30vh; }
+}
+.smap-link[hidden] { display: none; }
+@media (max-width: 640px) { .smap-chip .smap-dim { display: none; } }
