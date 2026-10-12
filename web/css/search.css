@@ -63,3 +63,4 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
   .human-line { grid-template-columns: 1fr; gap: 0; }
   .search-row { flex-direction: column; }
 }
+.search-status .map-btn { margin-left: auto; padding: 0.25rem 0.7rem; font-size: 0.8rem; text-decoration: none; white-space: nowrap; }

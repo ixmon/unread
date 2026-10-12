@@ -224,6 +224,21 @@
             <div class="map-panel">
               <div id="map" role="application" aria-label="Findspots map"></div>
               <div class="map-empty" id="map-empty">No geolocated works in current filter</div>
+              <div class="smap" aria-label="Search results on the map">
+                <form class="smap-form" id="smap-form" role="search" autocomplete="off">
+                  <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
+                  <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
+                  <button type="submit" class="btn primary smap-go">Map</button>
+                </form>
+                <div class="smap-chip" id="smap-chip" hidden>
+                  <label class="smap-toggle" title="Show or hide the search-results layer"><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
+                  <span id="smap-summary" aria-live="polite"></span>
+                  <span id="smap-filters" class="smap-filters"></span>
+                  <a id="smap-open" class="smap-link" href="search.html" target="_blank" rel="noopener">List</a>
+                  <button type="button" id="smap-clear" class="smap-link">Clear</button>
+                </div>
+              </div>
+              <aside class="smap-panel" id="smap-panel" hidden aria-label="Search results at this site"></aside>
             </div>
             <div class="timeline-panel">
               <div class="timeline-header">
@@ -417,5 +432,6 @@
     <script src="js/atf2unicode.js"></script>
     <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/searchmap.js"></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 /* Unread Atlas corpus search (search.html).
  * Talks to the Unread Atlas search API (aws-cunei-search, Lambda behind CloudFront):
- *   GET /search?q=&period=&genre=&site=&src=&in=all|en|atf|meta&page=&limit=
+ *   GET /search?q=&period=&genre=&site=&src=&in=all|en|atf|meta&page=&limit=&at=
+ *       (at = one find-spot key from /search/sites; set by the map layer's "Open in Search" link)
  *   GET /text/<id | src:id>
  *   GET /stats   (tablets = distinct tablets, texts = per-source records)
  * Everything (query, filters, page, open text) lives in the URL so searches can be shared.
@@ -18,7 +19,7 @@
     ebl: (id) => `https://www.ebl.lmu.de/library/${encodeURIComponent(id)}`,
     oracc: (id, ed) => (ed.project ? `https://oracc.museum.upenn.edu/${ed.project}/${encodeURIComponent(id)}` : `https://oracc.museum.upenn.edu/`),
   };
-  const PARAMS = ["q", "in", "period", "genre", "site", "src", "page"];
+  const PARAMS = ["q", "in", "period", "genre", "site", "src", "page", "at"];
 
   const $ = (s) => document.querySelector(s);
   const form = $("#search-form");
@@ -52,7 +53,7 @@
     if (API !== "https://d3qsgtzicfbir4.cloudfront.net") p.set("api", API);
     if (s.q) p.set("q", s.q);
     if (s.in && s.in !== "all") p.set("in", s.in);
-    for (const k of ["period", "genre", "site", "src"]) if (s[k]) p.set(k, s[k]);
+    for (const k of ["period", "genre", "site", "src", "at"]) if (s[k]) p.set(k, s[k]);
     if (s.page > 1) p.set("page", s.page);
     if (s.text) p.set("text", s.text);
     const qs = p.toString();
@@ -333,11 +334,21 @@
     return out;
   }
 
+  /** index.html deep link for the map's search-results layer (same query and filters). */
+  function mapUrl(s) {
+    const p = new URLSearchParams();
+    if (API !== "https://d3qsgtzicfbir4.cloudfront.net") p.set("searchapi", API);
+    if (s.q) p.set("q", s.q);
+    if (s.in && s.in !== "all") p.set("in", s.in);
+    for (const k of ["period", "genre", "site", "src"]) if (s[k]) p.set(k, s[k]);
+    return "index.html?" + p.toString();
+  }
+
   async function runSearch(s, my) {
     const p = new URLSearchParams();
     if (s.q) p.set("q", s.q);
     p.set("in", s.in);
-    for (const k of ["period", "genre", "site", "src"]) if (s[k]) p.set(k, s[k]);
+    for (const k of ["period", "genre", "site", "src", "at"]) if (s[k]) p.set(k, s[k]);
     p.set("page", s.page);
     p.set("limit", LIMIT);
     resultsEl.innerHTML = "";
@@ -361,7 +372,11 @@
     const to = Math.min(from + d.results.length - 1, total);
     const capped = d.total_is_capped ? "+" : "";
     const reachable = d.pages * d.limit < total ? ` · only the first ${fmt(d.pages * d.limit)} can be paged; narrow the search with filters` : "";
-    setStatus(`<span><strong>${fmt(total)}${capped}</strong> text${total === 1 ? "" : "s"} · showing ${fmt(from)}–${fmt(to)} · ${fmt(d.took_ms)} ms${reachable}</span>`);
+    const at = s.at
+      ? ` · at one find-spot${d.results[0] && known(d.results[0].site) ? ` (${esc(d.results[0].site)})` : ""} <a href="${esc(urlFor({ ...s, at: "", page: 1 }))}" data-text-free>all sites</a>`
+      : "";
+    setStatus(`<span><strong>${fmt(total)}${capped}</strong> text${total === 1 ? "" : "s"}${at} · showing ${fmt(from)}–${fmt(to)} · ${fmt(d.took_ms)} ms${reachable}</span>` +
+      ` <a class="btn map-btn" href="${esc(mapUrl(s))}" title="Pin every match at its find-spot on the map">Show on map</a>`);
     resultsEl.innerHTML = d.results.map((r) => resultHtml(r, terms, s)).join("");
     pagerEl.innerHTML = pagerHtml(s, d.pages);
   }
@@ -448,7 +463,7 @@
   async function showText(s, my) {
     textEl.hidden = false;
     const back = urlFor({ ...s, text: "" });
-    const hasSearch = s.q || s.period || s.genre || s.site || s.src;
+    const hasSearch = s.q || s.period || s.genre || s.site || s.src || s.at;
     const backLink = `<p class="back"><a href="${esc(back)}" data-back>← ${hasSearch ? "Back to results" : "Search"}</a></p>`;
     textEl.innerHTML = backLink;
     setStatus(spin("Loading text…"));
@@ -522,7 +537,7 @@
   });
 
   document.addEventListener("click", (ev) => {
-    const a = ev.target.closest("a[data-page], a[data-text], a[data-back], .search-results .sub a, button[data-retry]");
+    const a = ev.target.closest("a[data-page], a[data-text], a[data-back], a[data-text-free], .search-results .sub a, button[data-retry]");
     if (!a || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return;
     if (a.matches("button[data-retry]")) {
       render();

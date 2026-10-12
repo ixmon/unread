@@ -60,6 +60,7 @@ This writes:
 - **Prefer CDLI-untranslated** — hides RINAP / ETCSL / etc. heuristics (`known_elsewhere`)  
 - **Map** — findspots (Leaflet + CARTO dark tiles)  
 - **Time browser** — ranks works near the scrubber year  
+- **Search results on the map** (`web/js/searchmap.js`) — a corpus search over the Unread Atlas API pinned at find-spots (one circle per site, sized by tablets, merged when they overlap; fades with the time browser). Deep link `index.html?q=barley&period=Ur%20III` (also `in`, `genre`, `site`, `src`; `searchapi=` overrides the API); search.html's “Show on map” button opens it. Uses `GET /search/sites` and `/search?at=<site key>` (private `ixmon/aws-cunei-search`).  
 - **Reader** — toggle English / ATF / cuneiform columns; cuneiform face chosen by period (override per session)  
 - **Offline cuneiform** — client-side reading map; optional live eBL API  
 - Deep links: `?mode=omens&id=P480113` · `?mode=omens&kind=extispicy&id=P453398` · `?mode=math&kind=reciprocal&id=P257557`  

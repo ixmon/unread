@@ -1300,6 +1300,10 @@ function initMap() {
   //   maxZoom: 18,
   // }).addTo(state.map);
 
+  // The map panel's height settles after the catalog and preview render (grid layout); keep Leaflet's
+  // cached size in sync, or fitBounds/panTo work against a stale (taller) viewport.
+  if (window.ResizeObserver) new ResizeObserver(() => state.map.invalidateSize({ pan: false })).observe(state.map.getContainer());
+
   // Fit Mesopotamia + Anatolia
   state.map.fitBounds([
     [28, 34],
