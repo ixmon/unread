@@ -37,7 +37,7 @@ WEB = ROOT / "web"
 DATA = ROOT / "data"
 POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
 
-WEB_INCLUDE = ["index.html", "translate.html", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "css", "js", "fonts", "tiles", "t"]
+WEB_INCLUDE = ["index.html", "translate.html", "search.html", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "css", "js", "fonts", "tiles", "t"]
 DATA_FILES = ["catalog.json", "atf_unicode_readings.json"]
 MAX_FILE = 100 * 1024 * 1024
 STATIC_META = '<meta name="unread-static" content="1" />'
