@@ -2,7 +2,7 @@
  * Talks to the Unread Atlas search API (aws-cunei-search, Lambda behind CloudFront):
  *   GET /search?q=&period=&genre=&site=&src=&in=all|en|atf|meta&page=&limit=
  *   GET /text/<id | src:id>
- *   GET /stats
+ *   GET /stats   (tablets = distinct tablets, texts = per-source records)
  * Everything (query, filters, page, open text) lives in the URL so searches can be shared.
  * No dependencies. */
 (() => {
@@ -234,12 +234,17 @@
       const n = st.texts;
       const srcs = (st.by_source || []).map((s) => SRC_NAMES[s.src] || s.src).join(", ");
       const model = (st.models || [])[0];
+      const tablets = typeof st.tablets === "number" ? st.tablets : null;
+      const lead = tablets
+        ? `Search <strong>${esc(short(tablets))}</strong> tablets (${esc(short(n))} text records from ${esc(srcs)}): `
+        : `Search <strong>${esc(short(n))}</strong> text records from ${esc(srcs)}: `;
       $("#stats-line").innerHTML =
-        `Search <strong>${esc(short(n))}</strong> text records from ${esc(srcs)}: ` +
+        lead +
         `${esc(short(st.atf_lines))} transliteration lines, ${esc(short(st.mt_lines))} lines of machine-draft English` +
         (model ? ` (${esc(model.label)}, ${esc(model.translated_on)})` : "") +
         ` and ${esc(short(st.human_en_lines))} lines of open human translation.`;
-      $("#stats-line").title = `${fmt(n)} records (the same tablet can appear in more than one source), ${fmt(st.texts_with_public_atf)} with republishable ATF; index built ${st.built_at}`;
+      $("#stats-line").title = (tablets ? `${fmt(tablets)} distinct tablets in ` : "") +
+        `${fmt(n)} records (the same tablet can appear in more than one source), ${fmt(st.texts_with_public_atf)} with republishable ATF; index built ${st.built_at}`;
       const s = readState();
       fillSelect($("#f-period"), (st.top_periods || []).map(([v, c]) => [v, `${v} (${short(c)})`]), s.period);
       fillSelect($("#f-genre"), (st.top_genres || []).map(([v, c]) => [v, `${v} (${short(c)})`]), s.genre);
