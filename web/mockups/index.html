@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Map interface mockups · Unread Atlas</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="common.css" />
+<style>
+body{max-width:760px;margin:0 auto;padding:40px 24px}
+h1{font-family:var(--font-serif);font-weight:500;margin:0 0 6px}
+.card{display:block;padding:14px 16px;margin:12px 0;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-elev);color:var(--text)}
+.card:hover{background:var(--bg-hover);text-decoration:none}
+.card b{color:var(--accent-strong);font-size:15px}
+.card span{display:block;color:var(--text-dim);margin-top:3px}
+</style>
+</head>
+<body>
+<h1>Unread Atlas · map interface mockups</h1>
+<p class="muted">Exploratory prototypes, not part of the live site. They use the live search API and static JSON built from corpus.sqlite (scripts/mockups/).</p>
+<a class="card" href="a-fullscreen.html?q=barley"><b>A · Full-screen map + floating search</b><span>Just the map and a search box; filters slide out of a drawer, results summarised in a compact chip.</span></a>
+<a class="card" href="b-timeline.html?q=barley&from=-2150&to=-1950"><b>B · Linked timeline histogram</b><span>The time slider as a second map: per-century bars for the query; brush a window to filter the dots, pan the map to update the bars.</span></a>
+<a class="card" href="c-gap.html"><b>C · Gap view</b><span>Each find-spot as a ring split into human / machine-only / ATF-only / catalogue-only tablets, ranked by untranslated share.</span></a>
+<a class="card" href="d-trails.html?term=tarmush"><b>D · Word trail &amp; research leads</b><span>A plant word (tarmuš, aktam) traced across sites and periods, with how translators render it and a ranked list of unread tablets that use it.</span></a>
+</body>
+</html>

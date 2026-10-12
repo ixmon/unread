@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Mockup D · Word trail & research leads · Unread Atlas</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="common.css" />
+<style>
+body{display:flex;height:100vh}
+.side{width:330px;background:var(--bg-elev);border-right:1px solid var(--border);overflow:auto;padding:14px 16px;flex:none}
+.side.right{width:370px;border-right:0;border-left:1px solid var(--border);padding:0;display:flex;flex-direction:column}
+#map{flex:1;position:relative}
+h2{margin:0 0 2px;font-family:var(--font-serif);font-weight:500;font-size:19px}
+h3{margin:16px 0 6px;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);font-weight:600}
+.terms{display:flex;gap:6px;margin:10px 0 6px}
+.kv{display:flex;flex-wrap:wrap;gap:5px}
+.pbar{display:grid;grid-template-columns:118px 1fr 34px;gap:6px;align-items:center;font-size:12px;margin:2px 0}
+.pbar i{display:block;height:8px;background:var(--accent);border-radius:2px}
+.anchor{font-size:12px;border-left:2px solid var(--green);padding:3px 0 3px 8px;margin:6px 0;color:var(--text-dim)}
+.anchor b{color:var(--text)}
+.anchor q{font-family:var(--font-serif);font-size:13px;color:var(--text);quotes:"“" "”"}
+mark{background:rgba(106,155,122,.3);color:var(--text);border-radius:2px;padding:0 1px}
+.leadhead{padding:14px 16px 10px;border-bottom:1px solid var(--border-soft)}
+#leads{overflow:auto;flex:1}
+.lead{padding:9px 16px;border-bottom:1px solid var(--border-soft);font-size:12.5px}
+.lead:hover{background:var(--bg-hover)}
+.lead .t{display:flex;gap:8px;align-items:baseline}
+.lead .rk{color:var(--text-faint);width:20px;flex:none}
+.lead .nm{font-weight:600}
+.lead .sc{margin-left:auto;color:var(--accent-strong);font-variant-numeric:tabular-nums}
+.lead .m{color:var(--text-faint);margin-left:28px}
+.lead .atf{font-family:var(--font-mono);font-size:11.5px;color:#cfc6b4;margin:3px 0 0 28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lead .sh{margin-left:28px;color:var(--text-dim);font-size:11.5px}
+.grp{padding:6px 16px;background:var(--bg-panel);font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border-soft)}
+.how{font-size:11.5px;color:var(--text-faint);padding:8px 16px;border-top:1px solid var(--border);line-height:1.45}
+.legend{position:absolute;bottom:22px;left:12px;z-index:1000;padding:8px 10px;font-size:12px}
+.legend div{display:flex;gap:6px;align-items:center}
+.sw{width:10px;height:10px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<div class="side" id="left">
+  <h2>Word trail</h2>
+  <div class="muted" style="font-size:12.5px">Every tablet whose transliteration contains a plant word: where, when, how translators render it, and which unread tablets share it.</div>
+  <div class="terms" id="terms"></div>
+  <div id="summary"></div>
+</div>
+<div id="map">
+  <div class="brand"><a href="./">Unread Atlas</a><small>Mockup D · word trail</small></div>
+  <div class="legend panel"><div><span class="sw" style="background:#6a9b7a"></span>has human English (anchor)</div><div><span class="sw" style="background:#6b8fad"></span>machine draft only</div><div><span class="sw" style="background:#c4a04a"></span>ATF only, no English</div></div>
+</div>
+<div class="side right">
+  <div class="leadhead"><h2>Research leads</h2><div class="muted" style="font-size:12.5px" id="leadsub"></div></div>
+  <div id="leads"></div>
+  <div class="how"><b>Ranking (heuristic):</b> ATF-only tablets first, then machine-draft-only. Within each: 3 × plant words shared with the human-translated “anchor” tablets + occurrences of the word + 5 if an anchor sits at the same find-spot. eBL ATF and English are never shown (not republishable).</div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="common.js"></script>
+<script>
+(async () => {
+  const { esc, fmt, siteName, initMap, qs } = MU;
+  const $ = (s) => document.querySelector(s);
+  const map = initMap("map", { center: [34.5, 43.5], zoom: 5 });
+  const layer = L.layerGroup().addTo(map);
+  const d = await (await fetch("data/word_trails.json")).json();
+  const COL = { human: "#6a9b7a", machine: "#6b8fad", atf_only: "#c4a04a" };
+  const LBL = { human: "human English", machine: "machine draft only", atf_only: "ATF only" };
+  $("#terms").innerHTML = d.terms.map((t, i) => `<button class="btn" data-i="${i}">${esc(t.label)}</button>`).join("");
+  document.querySelectorAll("#terms .btn").forEach((b) => (b.onclick = () => show(Number(b.dataset.i))));
+  const plant = (p) => esc(p.replace("{u2}", "ú.").replace("{szim}", "šim.").replace(/sz/g, "š").replace(/s,/g, "ṣ").replace(/t,/g, "ṭ").replace(/h/g, "ḫ"));
+  function show(i) {
+    const t = d.terms[i];
+    document.querySelectorAll("#terms .btn").forEach((b) => b.classList.toggle("on", Number(b.dataset.i) === i));
+    const re = new RegExp("(" + (t.key === "tarmush" ? "tarmu[sš]\\w*|lupin\\w*" : "aktam[\\w-]*") + ")", "gi");
+    const maxP = Math.max(...t.periods.map((p) => p[1]));
+    const withEn = t.anchors.filter((a) => a.en && a.en.length);
+    $("#summary").innerHTML =
+      `<div class="kv" style="margin-top:6px"><span class="chip"><b>${fmt(t.tablets)}</b> tablets</span><span class="chip"><b>${t.sites.length}</b> find-spots</span><span class="chip">${fmt(t.unlocated)} unlocated</span></div>` +
+      `<div class="kv" style="margin-top:5px">${["human", "machine", "atf_only"].map((k) => `<span class="badge c-${k}">${fmt(t.by_cat[k] || 0)} ${LBL[k]}</span>`).join("")}</div>` +
+      `<p class="muted" style="font-size:12.5px;margin:10px 0 0">${esc(t.note)} ATF searched: <span class="mono">${t.atf_like.map(esc).join(", ")}</span></p>` +
+      `<h3>How human translators render it</h3><div class="kv">${t.renderings.map(([w, n]) => `<span class="chip">${esc(w)} <b>${n}</b></span>`).join("")}</div>` +
+      `<div class="faint" style="font-size:11.5px;margin-top:4px">From republishable human English only (ORACC/CDLI); ${fmt(t.anchors.filter((a) => (a.human_srcs || []).join() === "ebl").length)} of ${fmt(t.anchors.length)} anchor tablets have only eBL English (not shown).</div>` +
+      `<h3>When (tablets per period)</h3>${t.periods.map(([p, n]) => `<div class="pbar"><span>${esc(p)}</span><i style="width:${(100 * n) / maxP}%"></i><span class="faint">${n}</span></div>`).join("")}` +
+      `<h3>Anchors with English</h3>${withEn.slice(0, 4).map((a) => `<div class="anchor"><b>${esc(a.designation || a.id)}</b> · ${esc(siteName(a.site) || "no find-spot")}<br><q>${esc(a.en[0].en).replace(re, "<mark>$1</mark>")}</q> <span class="faint">(${esc(a.en[0].src)})</span></div>`).join("")}`;
+    // map
+    layer.clearLayers();
+    for (const s of t.sites) {
+      const tot = s.human + s.machine + s.atf_only;
+      const r = Math.max(5, Math.min(30, 3 * Math.sqrt(tot)));
+      // concentric: outer = all, inner = anchors
+      L.circleMarker([s.lat, s.lon], { radius: r, color: "#c4a04a", weight: 1.5, fillColor: s.atf_only ? "#c4a04a" : "#6b8fad", fillOpacity: 0.35 }).addTo(layer)
+        .bindTooltip(`${esc(siteName(s.site))}: ${tot} tablets — ${s.human} human, ${s.machine} machine, ${s.atf_only} ATF-only`, { direction: "top" });
+      if (s.human) L.circleMarker([s.lat, s.lon], { radius: Math.max(3, 3 * Math.sqrt(s.human)), color: "#d7f0de", weight: 1, fillColor: "#6a9b7a", fillOpacity: 0.9 }).addTo(layer);
+    }
+    if (!qs.get("view") && t.sites.length) map.fitBounds(t.sites.map((s) => [s.lat, s.lon]), { padding: [50, 50], maxZoom: 7 });
+    // leads
+    const L1 = t.leads.filter((l) => l.tier === 1), L2 = t.leads.filter((l) => l.tier === 2);
+    $("#leadsub").innerHTML = `${fmt(t.leads.length)} tablets contain <b>${esc(t.label)}</b> but have no human English: ${L1.length} ATF only, ${L2.length} machine draft only.`;
+    const row = (l, k) => `<div class="lead"><div class="t"><span class="rk">${k}</span><a class="nm" href="../search.html?q=${encodeURIComponent(l.id)}">${esc(l.designation || l.id)}</a><span class="badge c-${l.cat}">${LBL[l.cat]}</span><span class="sc">${l.score}</span></div>` +
+      `<div class="m">${esc(l.id)} · ${esc(siteName(l.site) || "no find-spot")} · ${esc(l.period || "period ?")} · ${l.hits}× · ${l.anchors_at_site} anchors at site</div>` +
+      (l.atf && l.atf[0] ? `<div class="atf" title="${esc(l.atf[0].atf)}">${esc(l.atf[0].line)}: ${esc(l.atf[0].atf)}</div>` : "") +
+      (l.n_shared ? `<div class="sh">shares ${l.n_shared} plant words with anchors: ${l.shared.slice(0, 6).map(plant).join(", ")}${l.n_shared > 6 ? "…" : ""}</div>` : "") + `</div>`;
+    $("#leads").innerHTML = `<div class="grp">ATF only, no English (${L1.length})</div>` + L1.slice(0, 12).map((l, k) => row(l, k + 1)).join("") +
+      `<div class="grp">Machine draft only (${L2.length}, top 12)</div>` + L2.slice(0, 12).map((l, k) => row(l, k + 1)).join("");
+    const p = new URLSearchParams(location.search); p.set("term", t.key); history.replaceState(null, "", "?" + p);
+  }
+  const ti = d.terms.findIndex((t) => t.key === qs.get("term"));
+  show(ti >= 0 ? ti : 0);
+})();
+</script>
+</body>
+</html>

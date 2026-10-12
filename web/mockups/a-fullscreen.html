@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Mockup A · Full-screen map + floating search · Unread Atlas</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="common.css" />
+<style>
+#map{position:fixed;inset:0}
+.searchbar{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:1001;width:min(620px,calc(100vw - 340px));display:flex;flex-direction:column;align-items:center;gap:8px}
+.searchbox{display:flex;width:100%;align-items:center;gap:6px;padding:6px 6px 6px 14px;border-radius:999px}
+.searchbox input{flex:1;background:transparent;border:0;outline:0;font-size:16px;padding:6px 0}
+.searchbox .btn{border-radius:999px}
+.drawer{position:absolute;top:0;right:0;bottom:0;width:320px;z-index:1002;transform:translateX(105%);transition:transform .28s var(--ease);border-radius:0;border-width:0 0 0 1px;padding:18px;overflow:auto}
+.drawer.open{transform:none}
+.drawer h3{margin:0 0 10px;font-family:var(--font-serif);font-weight:500;font-size:18px}
+.drawer label{display:block;font-size:12px;color:var(--text-dim);margin:14px 0 5px;text-transform:uppercase;letter-spacing:.05em}
+.drawer select,.drawer input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:7px 9px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}.seg .btn{padding:5px 10px;font-size:13px}
+.drawer .foot{margin-top:18px;display:flex;gap:8px}
+.drawer .hint{font-size:12px;color:var(--text-faint);margin-top:16px;line-height:1.5}
+.pop h4{margin:0 0 4px;font-size:14px}.pop ul{margin:6px 0 0;padding-left:16px}.pop li{margin:2px 0}
+.chiprow{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="brand"><a href="./">Unread Atlas</a><small>Mockup A · full-screen map</small></div>
+<div class="searchbar">
+  <form class="searchbox panel" id="f">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a958a" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="q" name="q" placeholder="Search 462k tablets — try barley, Gilgamesh, Hammurabi…" autocomplete="off" />
+    <button type="button" class="btn" id="filtersBtn">Filters <span id="nf"></span></button>
+    <button class="btn primary">Search</button>
+  </form>
+  <div class="chiprow" id="chips"></div>
+</div>
+<aside class="drawer panel" id="drawer" aria-label="Filters">
+  <h3>Filters</h3>
+  <label>Search in</label>
+  <div class="seg" id="scope"><button class="btn on" data-v="all">All</button><button class="btn" data-v="en">English</button><button class="btn" data-v="atf">ATF</button><button class="btn" data-v="meta">Catalogue</button></div>
+  <label for="period">Period</label><select id="period"><option value="">Any period</option></select>
+  <label for="genre">Genre</label><select id="genre"><option value="">Any genre</option><option>Administrative</option><option>Legal</option><option>Letter</option><option>Lexical</option><option>Literary</option><option>Royal Inscription</option><option>Medical</option><option>Divination</option><option>Mathematical</option></select>
+  <label for="src">Source</label><select id="src"><option value="">All sources</option><option value="cdli">CDLI</option><option value="oracc">ORACC</option><option value="ebl">eBL</option><option value="tlhdig">TLHdig</option><option value="achemenet">Achemenet</option></select>
+  <div class="foot"><button class="btn primary" id="apply">Apply</button><button class="btn" id="reset">Reset</button><button class="btn" id="close">Close</button></div>
+  <p class="hint">In this layout the timeline, catalogue pins and reader stay hidden until asked for. The full timeline idea is mockup B.</p>
+</aside>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="common.js"></script>
+<script>
+(() => {
+  const { api, esc, fmt, short, siteName, initMap, radius, qs } = MU;
+  const map = initMap("map");
+  const layer = L.layerGroup().addTo(map);
+  const st = { q: qs.get("q") || "", in: qs.get("in") || "all", period: qs.get("period") || "", genre: qs.get("genre") || "", src: qs.get("src") || "" };
+  const $ = (s) => document.querySelector(s);
+  $("#q").value = st.q;
+  const drawer = $("#drawer");
+  $("#filtersBtn").onclick = () => drawer.classList.toggle("open");
+  $("#close").onclick = () => drawer.classList.remove("open");
+  if (qs.get("drawer")) drawer.classList.add("open");
+  document.querySelectorAll("#scope .btn").forEach((b) => (b.onclick = () => { document.querySelectorAll("#scope .btn").forEach((x) => x.classList.toggle("on", x === b)); }));
+  function syncForm() {
+    document.querySelectorAll("#scope .btn").forEach((x) => x.classList.toggle("on", x.dataset.v === st.in));
+    ["period", "genre", "src"].forEach((k) => ($("#" + k).value = st[k]));
+    const n = ["period", "genre", "src"].filter((k) => st[k]).length + (st.in !== "all");
+    $("#nf").textContent = n ? `· ${n}` : "";
+  }
+  api("/stats").then((s) => {
+    for (const [p, n] of s.top_periods.slice(0, 24)) $("#period").insertAdjacentHTML("beforeend", `<option value="${esc(p)}">${esc(p)} (${short(n)})</option>`);
+    syncForm();
+  }).catch(() => {});
+  $("#apply").onclick = () => {
+    st.in = document.querySelector("#scope .on").dataset.v;
+    ["period", "genre", "src"].forEach((k) => (st[k] = $("#" + k).value));
+    drawer.classList.remove("open"); run();
+  };
+  $("#reset").onclick = () => { Object.assign(st, { in: "all", period: "", genre: "", src: "" }); syncForm(); };
+  $("#f").onsubmit = (e) => { e.preventDefault(); st.q = $("#q").value.trim(); run(); };
+  function chips(html) { $("#chips").innerHTML = html; }
+  async function run() {
+    syncForm();
+    layer.clearLayers();
+    if (!st.q) { chips(""); return; }
+    const p = new URLSearchParams({ q: st.q, in: st.in });
+    ["period", "genre", "src"].forEach((k) => st[k] && p.set(k, st[k]));
+    history.replaceState(null, "", "?" + p.toString());
+    chips(`<span class="chip"><span class="spinner"></span> Searching…</span>`);
+    let d;
+    try { d = await api("/search/sites?" + p, (m) => chips(`<span class="chip"><span class="spinner"></span> ${esc(m)}</span>`)); }
+    catch (e) { chips(`<span class="chip">Search failed: ${esc(e.message)}</span>`); return; }
+    const pts = [];
+    for (const s of d.sites) {
+      const c = L.circleMarker([s.lat, s.lon], { radius: radius(s.count), className: "site-dot", weight: 1, color: "#f2c9a6", fillColor: "#c4784a", fillOpacity: 0.55 }).addTo(layer);
+      const per = s.periods.slice(0, 3).map(([p, n]) => `${esc(p)} ${fmt(n)}`).join(" · ");
+      const samp = s.sample.slice(0, 5).map((r) => `<li><a href="../search.html?q=${encodeURIComponent(r.canonical_id || r.id)}">${esc(r.designation || r.id)}</a> <span class="faint">${esc(r.period || "")}</span></li>`).join("");
+      c.bindPopup(`<div class="pop"><h4>${esc(siteName(s.site))}</h4><div><b>${fmt(s.count)}</b> matching tablets</div><div class="muted" style="font-size:12px">${per}</div><ul>${samp}</ul><div style="margin-top:6px"><a href="../search.html?q=${encodeURIComponent(st.q)}&at=${encodeURIComponent(s.key)}">All ${fmt(s.count)} at this site →</a></div></div>`);
+      c.bindTooltip(`${esc(siteName(s.site))}: ${fmt(s.count)}`, { direction: "top" });
+      pts.push([s.lat, s.lon]);
+    }
+    const f = ["period", "genre", "src"].filter((k) => st[k]).map((k) => `<span class="chip">${k}: <b>${esc(st[k])}</b></span>`).join("");
+    chips(`<span class="chip"><b>${fmt(d.total)}</b> tablets</span><span class="chip"><b>${fmt(d.site_count)}</b> sites</span><span class="chip"><b>${fmt(d.unlocated)}</b> without find-spot</span>${f}${d.total_is_capped ? '<span class="chip">capped</span>' : ""}`);
+    if (pts.length && !qs.get("view")) map.fitBounds(pts, { padding: [80, 80], maxZoom: 7 });
+  }
+  syncForm();
+  run();
+})();
+</script>
+</body>
+</html>

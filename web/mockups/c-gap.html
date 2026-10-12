@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Mockup C · Gap view · Unread Atlas</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="common.css" />
+<style>
+body{display:flex;height:100vh}
+#map{flex:1;position:relative}
+aside{width:390px;background:var(--bg-elev);border-left:1px solid var(--border);display:flex;flex-direction:column}
+aside header{padding:14px 16px 10px;border-bottom:1px solid var(--border-soft)}
+aside h2{margin:0 0 4px;font-family:var(--font-serif);font-weight:500;font-size:19px}
+.totals{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:12px;margin-top:8px}
+.totals div{display:flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
+.ctl{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--text-dim);margin-top:10px;flex-wrap:wrap}
+.ctl select{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:3px 6px}
+#list{overflow:auto;flex:1}
+.row{padding:8px 16px;border-bottom:1px solid var(--border-soft);cursor:pointer;display:grid;grid-template-columns:22px 1fr auto;gap:2px 8px;align-items:center}
+.row:hover,.row.sel{background:var(--bg-hover)}
+.row .rk{color:var(--text-faint);font-size:12px}
+.row .nm{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .pct{font-variant-numeric:tabular-nums;color:var(--warn);font-weight:600}
+.row .stack{grid-column:2/4;display:flex;height:7px;border-radius:3px;overflow:hidden;background:#222}
+.row .nums{grid-column:2/4;font-size:11.5px;color:var(--text-faint)}
+.defs{font-size:11.5px;color:var(--text-dim);padding:10px 16px;border-top:1px solid var(--border);line-height:1.45;max-height:170px;overflow:auto}
+.defs b{color:var(--text)}
+.ring{cursor:pointer}
+.legend{position:absolute;bottom:22px;left:14px;z-index:1000;padding:10px 12px;font-size:12px}
+.legend div{display:flex;gap:7px;align-items:center;margin:2px 0}
+</style>
+</head>
+<body>
+<div id="map">
+  <div class="brand"><a href="./">Unread Atlas</a><small>Mockup C · gap view</small></div>
+  <div class="legend panel" id="legend"></div>
+</div>
+<aside>
+  <header>
+    <h2>Where the unread tablets are</h2>
+    <div class="muted" style="font-size:12.5px">Each ring is a find-spot. Size = tablets we hold records for; slices = how far each tablet has got.</div>
+    <div class="totals" id="totals"></div>
+    <div class="ctl">Rank by <select id="sort"><option value="share">untranslated share</option><option value="count">untranslated count</option><option value="nohuman">no human English (count)</option></select>
+      min. tablets <select id="min"><option>100</option><option selected>500</option><option>2000</option></select></div>
+  </header>
+  <div id="list"></div>
+  <div class="defs" id="defs"></div>
+</aside>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="common.js"></script>
+<script>
+(async () => {
+  const { esc, fmt, short, siteName, initMap, qs } = MU;
+  const $ = (s) => document.querySelector(s);
+  const map = initMap("map", { zoom: 5 });
+  const CATS = [["human", "#6a9b7a", "Human English"], ["machine", "#6b8fad", "Machine draft only"], ["atf_only", "#c4a04a", "ATF only (no English)"], ["catalogue", "#5d6470", "Catalogue only (no ATF)"]];
+  const d = await (await fetch("data/gap_sites.json")).json();
+  const T = d.totals, U = d.unlocated;
+  $("#totals").innerHTML = CATS.map(([k, c, l]) => `<div><span class="sw" style="background:${c}"></span>${l}: <b>${fmt(T[k])}</b></div>`).join("") +
+    `<div style="grid-column:1/3" class="faint">${fmt(d.tablets)} tablets · ${fmt(d.site_count)} find-spots · ${fmt(Object.values(U).reduce((a, b) => a + b, 0))} with no usable find-spot (not on the map)</div>`;
+  $("#legend").innerHTML = CATS.map(([k, c, l]) => `<div><span class="sw" style="background:${c}"></span>${l}</div>`).join("");
+  $("#defs").innerHTML = `<b>What the slices mean</b> (one tablet = one canonical ID, counted once across CDLI/ORACC/eBL/TLHdig/Achemenet):<br>` +
+    Object.entries(d.definitions).map(([k, v]) => `<span class="badge c-${k}">${CATS.find((c) => c[0] === k)[2]}</span> ${esc(v)}`).join("<br>") +
+    `<br><b>Not shown:</b> tablets nobody has catalogued. "Catalogue only" is the closest the data gets to "undigitized". "Untranslated" here = ATF only + catalogue only. Data: ${esc(d.built_from)}.`;
+  // donut rings as SVG divIcons
+  const R = (n) => Math.max(7, Math.min(44, 1.1 * Math.pow(n, 0.4)));
+  function ring(s, sel) {
+    const r = R(s.total), w = Math.max(3.5, r * 0.42), rc = r - w / 2, C = 2 * Math.PI * rc;
+    let off = 0, segs = "";
+    for (const [k, c] of CATS) {
+      const f = s[k] / s.total; if (!f) continue;
+      segs += `<circle r="${rc}" cx="${r}" cy="${r}" fill="none" stroke="${c}" stroke-width="${w}" stroke-dasharray="${f * C} ${C}" stroke-dashoffset="${-off * C}" transform="rotate(-90 ${r} ${r})"/>`;
+      off += f;
+    }
+    const html = `<svg width="${2 * r}" height="${2 * r}" class="ring" style="filter:drop-shadow(0 1px 3px #000)">${segs}${sel ? `<circle r="${r - 0.5}" cx="${r}" cy="${r}" fill="none" stroke="#fff" stroke-width="1.5"/>` : ""}</svg>`;
+    return L.divIcon({ html, className: "", iconSize: [2 * r, 2 * r], iconAnchor: [r, r] });
+  }
+  const pop = (s) => `<div style="font-size:13px"><b>${esc(siteName(s.site))}</b><div class="faint">${fmt(s.total)} tablets · ${(s.untranslated_share * 100).toFixed(0)}% untranslated</div>` +
+    CATS.map(([k, c, l]) => `<div><span class="sw" style="background:${c}"></span> ${l}: <b>${fmt(s[k])}</b></div>`).join("") +
+    `<div class="faint" style="margin-top:4px">Main periods: ${s.periods.map(([p, n]) => esc(p) + " " + short(n)).join(", ")}</div></div>`;
+  const markers = new Map();
+  const bySize = [...d.sites].sort((a, b) => b.total - a.total);
+  for (const s of bySize) {
+    const m = L.marker([s.lat, s.lon], { icon: ring(s), zIndexOffset: -Math.round(Math.sqrt(s.total)) }).bindPopup(pop(s)).bindTooltip(`${esc(siteName(s.site))}: ${fmt(s.total)}`).addTo(map);
+    markers.set(s.key, m);
+  }
+  let selKey = null;
+  function select(key, fly = true) {
+    if (selKey && markers.get(selKey)) markers.get(selKey).setIcon(ring(d.sites.find((x) => x.key === selKey)));
+    selKey = key; const s = d.sites.find((x) => x.key === key); const m = markers.get(key);
+    m.setIcon(ring(s, true));
+    if (fly) map.setView([s.lat, s.lon], Math.max(map.getZoom(), 6));
+    m.openPopup();
+    document.querySelectorAll(".row").forEach((r) => r.classList.toggle("sel", r.dataset.k === key));
+  }
+  function list() {
+    const sort = $("#sort").value, min = Number($("#min").value);
+    const key = { share: (s) => s.untranslated_share, count: (s) => s.untranslated, nohuman: (s) => s.no_human }[sort];
+    const rows = d.sites.filter((s) => s.total >= min).sort((a, b) => key(b) - key(a) || b.total - a.total);
+    $("#list").innerHTML = rows.map((s, i) => `<div class="row" data-k="${s.key}"><span class="rk">${i + 1}</span><span class="nm" title="${esc(s.site)}">${esc(siteName(s.site))}</span><span class="pct">${(s.untranslated_share * 100).toFixed(0)}%</span>` +
+      `<span class="stack">${CATS.map(([k, c]) => `<span style="width:${(100 * s[k]) / s.total}%;background:${c}"></span>`).join("")}</span>` +
+      `<span class="nums">${fmt(s.total)} tablets · ${fmt(s.human)} human · ${fmt(s.machine)} machine · ${fmt(s.atf_only)} ATF-only · ${fmt(s.catalogue)} catalogue-only</span></div>`).join("");
+    document.querySelectorAll(".row").forEach((r) => (r.onclick = () => select(r.dataset.k)));
+  }
+  $("#sort").onchange = list; $("#min").onchange = list;
+  if (qs.get("sort")) $("#sort").value = qs.get("sort");
+  list();
+  if (qs.get("select")) { const r = document.querySelectorAll(".row")[Number(qs.get("select")) - 1]; if (r) select(r.dataset.k, !qs.get("view")); }
+})();
+</script>
+</body>
+</html>
