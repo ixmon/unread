@@ -45,6 +45,27 @@ canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
 #brush{position:absolute;border:1px dashed #c79a3a;background:rgba(199,154,58,.08);display:none;z-index:4;pointer-events:none}
 #tip{position:absolute;z-index:6;background:#1b1e26;border:1px solid #3a4050;border-radius:6px;padding:6px 8px;font-size:12px;display:none;pointer-events:none}
 a{color:#e0b860}
+#zoomctl{position:absolute;left:14px;top:72px;z-index:5;display:flex;flex-direction:column;gap:4px}
+#zoomctl button{width:34px;height:34px;background:rgba(20,22,28,.9);color:#ddd;border:1px solid #363c4a;border-radius:8px;font:600 18px "IBM Plex Sans",sans-serif;cursor:pointer}
+#zoomctl button:hover{border-color:#c79a3a;color:#f0d9a0}
+#zoomctl .zl{font-size:10.5px;color:#888;text-align:center}
+.panel{position:absolute;left:58px;top:72px;z-index:7;width:360px;max-height:calc(100% - 150px);overflow:auto;background:rgba(20,22,28,.96);border:1px solid #2a2e38;border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.45;display:none;box-shadow:0 6px 24px rgba(0,0,0,.4)}
+.panel .x{position:absolute;right:8px;top:6px;background:none;border:0;color:#999;font-size:18px;cursor:pointer}
+.panel h3{margin:0 24px 4px 0;font-size:15px;font-weight:600;color:#f0d9a0}
+.panel .meta{color:#9aa0ad;font-size:12px;margin-bottom:8px}
+.panel .st{display:inline-block;border-radius:10px;padding:1px 8px;font-size:11.5px;color:#111;margin-bottom:8px}
+.panel ol{margin:6px 0 8px;padding:0;list-style:none}
+.panel ol li{padding:2px 0;border-bottom:1px solid #22262f}
+.panel ol li .ln{color:#777;font-size:11px;margin-right:6px}
+.panel .atf{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#cfc6b0}
+.panel .btns{display:flex;gap:8px;margin-top:8px}
+.panel .btns a,.panel .btns button{background:#c79a3a;color:#111;border:0;border-radius:6px;padding:6px 10px;font:500 13px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+.panel .btns button.sec{background:#232733;color:#ddd;border:1px solid #363c4a}
+#boxlist{z-index:6}
+#boxlist .row{display:flex;justify-content:space-between;gap:8px;padding:3px 4px;border-bottom:1px solid #22262f;cursor:pointer;font-size:12.5px}
+#boxlist .row:hover{background:#232733}
+#boxlist .row span:last-child{color:#8f96a3;text-align:right}
+#stage.pan{cursor:grabbing}
 </style>
 </head>
 <body>
@@ -56,9 +77,12 @@ a{color:#e0b860}
   <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
   <button id="clearSel" title="Clear selection">clear selection</button>
 </div>
+<div id="zoomctl"><button id="zin" title="Zoom in (+)">+</button><button id="zout" title="Zoom out (−)">−</button><button id="zreset" title="Reset view (0)" style="font-size:14px">⟲</button><div class="zl" id="zlvl">1×</div></div>
+<div id="card" class="panel" role="dialog" aria-label="Tablet"></div>
+<div id="boxlist" class="panel" role="dialog" aria-label="Tablets in box"></div>
 <div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
 <div id="info">Loading…</div>
-<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll turns the wheel</div>
+<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
 <script>
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 // ---- data dims: 0 lon, 1 lat, 2 year, 3 genre, 4 translation state
@@ -81,13 +105,14 @@ const ov = document.getElementById('ov'), ctx = ov.getContext('2d');
 const VS = `
 attribute vec4 a0; attribute float a1; attribute vec4 a2;
 uniform vec4 wx0; uniform float wx1; uniform vec4 wy0; uniform float wy1;
-uniform float geoW, dateW, hasMatch; uniform vec4 pad; uniform float ps;
+uniform float geoW, dateW, hasMatch; uniform vec4 pad; uniform float ps; uniform vec3 view;
 varying vec4 vCol;
 uniform vec3 sc0, sc1, sc2, sc3;
 void main(){
   float px = dot(a0, wx0) + a1*wx1;
   float py = dot(a0, wy0) + a1*wy1;
-  vec2 p = vec2(pad.x + px*(1.0-pad.x-pad.y), pad.w + py*(1.0-pad.z-pad.w));
+  vec2 q = vec2((px-view.x)*view.z+0.5, (py-view.y)*view.z+0.5);
+  vec2 p = vec2(pad.x + q.x*(1.0-pad.x-pad.y), pad.w + q.y*(1.0-pad.z-pad.w));
   gl_Position = vec4(p*2.0-1.0, 0.0, 1.0);
   float st = a2.w;  // state idx encoded in a2.w? (see JS)
   vec3 c = st < 0.5 ? sc0 : st < 1.5 ? sc1 : st < 2.5 ? sc2 : sc3;
@@ -112,7 +137,7 @@ function band(idx,n,i,k){ return (idx + 0.12 + 0.76*hash(i,k)) / n; }
 
 // Full corpus: columnar binary (scripts/build_browse_data.py). T.* typed arrays, NaN = unknown.
 let T, IDS, IDX, REL = {en:{}, atf:{}}, SIGNS = {};
-const API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? '/api' : 'https://unreadatlas.com/api';
+const API = (location.protocol==='file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) ? 'https://unreadatlas.com/api' : '/api'; // previews proxy /api
 async function load(){
   const [meta, bin, idtxt] = await Promise.all([
     fetch('assets/browse_meta.json').then(r=>r.json()), fetch('assets/browse_all.dat').then(r=>r.arrayBuffer()), fetch('assets/browse_ids.txt').then(r=>r.text())]);
@@ -143,11 +168,12 @@ async function load(){
     const L=gl.getAttribLocation(prog,loc); gl.enableVertexAttribArray(L); gl.vertexAttribPointer(L,size,gl.FLOAT,false,0,0); return buf; };
   b(a0,'a0',4); b(a1,'a1',1); flagsBuf = b(flags,'a2',4);
   buildNav();
-  navT = parseFloat(params.get('t') || '0');
+  navT = parseFloat(params.get('t') || '0'); readViewParams(params);
   if (params.get('in')==='en'||params.get('in')==='atf') setMode(params.get('in'));
   const q0 = params.has('q') ? (params.get('q')||'') : 'barley'; q.value = q0;
   addEventListener('resize', draw);
   await setTerm(q0 || null);
+  if (params.get('id') && IDX.has(params.get('id'))) openCard(IDX.get(params.get('id')), false);
   window.__ready = true;
 }
 const q = document.getElementById('q');
@@ -223,8 +249,10 @@ function draw(){
   gl.uniform1f(U('geoW'), Math.min(1, geoW)); gl.uniform1f(U('dateW'), dateW);
   gl.uniform1f(U('hasMatch'), match?1:0);
   gl.uniform4f(U('pad'), PAD.l/W, PAD.r/W, PAD.t/H, PAD.b/H);
-  gl.uniform1f(U('ps'), 2.0*dpr);
-  gl.drawArrays(gl.POINTS, 0, N);
+  gl.uniform1f(U('ps'), 2.0*dpr*Math.min(3, 1+Math.log2(V.z)*0.35)); gl.uniform3f(U('view'), V.cx, V.cy, V.z);
+  gl.enable(gl.SCISSOR_TEST); gl.scissor(PAD.l*dpr, PAD.b*dpr, (W-PAD.l-PAD.r)*dpr, (H-PAD.t-PAD.b)*dpr);
+  gl.drawArrays(gl.POINTS, 0, N); gl.disable(gl.SCISSOR_TEST);
+  document.getElementById('zlvl').textContent = (V.z<10? V.z.toFixed(1) : Math.round(V.z))+'×';
   overlay(B, W, H, dpr, geoW, dateW);
   info(B, geoW, dateW);
   updNavUI(B);
@@ -237,20 +265,21 @@ function axisTicks(dim){
 }
 function overlay(B,W,H,dpr){
   ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
-  const X = v => PAD.l + v*(W-PAD.l-PAD.r), Y = v => H - (PAD.b + v*(H-PAD.t-PAD.b));
+  const X = v => PAD.l + ((v-V.cx)*V.z+0.5)*(W-PAD.l-PAD.r), Y = v => H - (PAD.b + ((v-V.cy)*V.z+0.5)*(H-PAD.t-PAD.b));
+  const inX = x => x>=PAD.l-1 && x<=W-PAD.r+1, inY = y => y>=PAD.t-1 && y<=H-PAD.b+1;
   ctx.font = '11.5px "IBM Plex Sans", sans-serif';
   for (const [mi, a] of [[B.i, 1-B.e],[B.j, B.e]]) {
     if (a < 0.03) continue; const m = MAPS[mi];
     ctx.globalAlpha = a;
     // x axis: same dim in both maps -> stays put
     ctx.fillStyle='#9aa0ad'; ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.textAlign='center';
-    for (const [v,l] of axisTicks(m.x)) { const x=X(v); ctx.fillText(l, x, H-PAD.b+18); if(m.x>2){ } else {ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
+    for (const [v,l] of axisTicks(m.x)) { const x=X(v); if(!inX(x)) continue; ctx.fillText(l, x, H-PAD.b+18); if(m.x>2){ } else {ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
     ctx.textAlign='right';
-    for (const [v,l] of axisTicks(m.y)) { const y=Y(v); ctx.fillText(l, PAD.l-8, y+4); if(m.y<=2){ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
+    for (const [v,l] of axisTicks(m.y)) { const y=Y(v); if(!inY(y)) continue; ctx.fillText(l, PAD.l-8, y+4); if(m.y<=2){ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
     // band separators for categorical axes
     ctx.strokeStyle='rgba(255,255,255,0.08)';
-    if (m.y>2){ const n=(m.y===3?D.genres:D.states).length; for(let k=1;k<n;k++){const y=Y(k/n);ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
-    if (m.x>2){ const n=(m.x===3?D.genres:D.states).length; for(let k=1;k<n;k++){const x=X(k/n);ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
+    if (m.y>2){ const n=(m.y===3?D.genres:D.states).length; for(let k=1;k<n;k++){const y=Y(k/n);if(!inY(y))continue;ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
+    if (m.x>2){ const n=(m.x===3?D.genres:D.states).length; for(let k=1;k<n;k++){const x=X(k/n);if(!inX(x))continue;ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
     ctx.fillStyle='#d8c08a'; ctx.textAlign='center'; ctx.font='12.5px "IBM Plex Sans", sans-serif';
     ctx.fillText(DIMNAME[m.x]+' →', W/2, H-PAD.b+40);
     ctx.save(); ctx.translate(18, H/2); ctx.rotate(-Math.PI/2); ctx.fillText(DIMNAME[m.y]+' →', 0, 0); ctx.restore();
@@ -273,7 +302,7 @@ function info(B, geoW, dateW){
   document.getElementById('info').innerHTML =
    `<b>${label}</b><br>${head} · ${N.toLocaleString()} dots, every tablet in the corpus<br>`+
    D.states.map((n,k)=>`<span class="sw" style="background:rgb(${STATE_COL[k].map(c=>c*255|0)})"></span>${n} ${byState[k].toLocaleString()}`).join('')+
-   (s? `<br><span style="color:#ffe873">● ${s.toLocaleString()} selected</span> — ${D.states.map((n,k)=>`${n.split(' ')[0]} ${selState[k]}`).join(' · ')}` : '<br><span class="muted">Click a dot or shift-drag to select; the selection travels with you.</span>')+
+   (s? `<br><span style="color:#ffe873">● ${s.toLocaleString()} selected</span> — ${D.states.map((n,k)=>`${n.split(' ')[0]} ${selState[k]}`).join(' · ')}` : '<br><span class="muted">Click a dot to read it, click a dense cluster to zoom in, shift-drag to list and select a box; the selection travels with you.</span>')+
    (geoW<0.99 ? '' : '<br><span class="muted">Tablets without a find-spot are hidden here; slide away from Geography to see them.</span>');
 }
 
@@ -285,7 +314,7 @@ function buildNav(){
   MAPS.forEach((m,k)=>{
     const d = document.createElement('div'); d.className='node'; const [x,y]=nodePos(k); d.style.left=x+'px'; d.style.top=y+'px';
     const c = document.createElement('canvas'); c.width=120; c.height=68; d.appendChild(c); d.appendChild(document.createTextNode(m.name));
-    d.onclick = e=>{ e.stopPropagation(); animateTo(k); };
+    d.onclick = e=>{ e.stopPropagation(); animateTo(k); setTimeout(()=>writeURL(true), 50); };
     nav.appendChild(d); m.el=d; thumb(c, m);
   });
 }
@@ -300,7 +329,7 @@ function updNavUI(B){
   const n=MAPS.length, a = -Math.PI/2 + (((navT%n)+n)%n)/n*2*Math.PI;
   handle.style.left = (CX+R*Math.cos(a))+'px'; handle.style.top=(CY+R*Math.sin(a))+'px';
   MAPS.forEach((m,k)=>m.el.classList.toggle('act', (k===B.i && B.e<0.5) || (k===B.j && B.e>=0.5)));
-  document.getElementById('navlabel').innerHTML = 'map of maps<small>drag the ring or scroll</small>';
+  document.getElementById('navlabel').innerHTML = 'map of maps<small>drag the ring or shift+scroll</small>';
 }
 let dragging=false;
 function navFromEvent(e){ const r=nav.getBoundingClientRect(); const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
@@ -310,7 +339,7 @@ nav.addEventListener('pointermove', e=>{ if(!dragging) return; navT=navFromEvent
 nav.addEventListener('pointerup', ()=>{ dragging=false; });
 let animId = 0;
 function animateTo(k, durMs){ const n=MAPS.length; let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=durMs||900+Math.abs(d)*250, my=++animId;
-  (function step(now){ if (my!==animId) return; const f=Math.min(1,(now-t0)/dur), e=durMs? 1-(1-f)**3 : f; navT=from+d*e; draw(); if(f<1) requestAnimationFrame(step); else { navT=((k%n)+n)%n; draw(); } })(t0); }
+  (function step(now){ if (my!==animId) return; const f=Math.min(1,(now-t0)/dur), e=durMs? 1-(1-f)**3 : f; navT=from+d*e; draw(); if(f<1) requestAnimationFrame(step); else { navT=((k%n)+n)%n; draw(); writeURL(false); } })(t0); }
 // ---- scroll / trackpad / touch swipe turns the wheel: momentum, then snaps to the nearest map when idle
 let vel = 0, spinning = false, lastInput = 0;
 function spin(){ spinning = true; animId++;
@@ -318,42 +347,175 @@ function spin(){ spinning = true; animId++;
     if (Math.abs(vel) > 0.0015 || performance.now()-lastInput < 120) requestAnimationFrame(step);
     else { spinning = false; vel = 0; animateTo(Math.round(navT), 420); } })(); }
 function nudge(d){ vel += d; vel = Math.max(-0.12, Math.min(0.12, vel)); lastInput = performance.now(); if (!spinning) spin(); }
-addEventListener('wheel', e=>{ if (e.target.closest && e.target.closest('#top,#info')) return; e.preventDefault();
-  const px = (Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX) * (e.deltaMode===1 ? 16 : e.deltaMode===2 ? 400 : 1);
-  nudge(px * 0.00035); }, {passive:false});
-let swipe = null;
-window.setNav = t => { navT=t; draw(); };
+// ---- view: zoom/pan in plot space (0..1 on both axes). V.z=1 shows everything.
+const V = {cx:0.5, cy:0.5, z:1};
+const ZMAX = 400;
+function plotW(){ return innerWidth-PAD.l-PAD.r; } function plotH(){ return innerHeight-PAD.t-PAD.b; }
+function clampView(){ V.z = Math.min(ZMAX, Math.max(1, V.z)); const h = 0.5/V.z;
+  V.cx = Math.min(1-h, Math.max(h, V.cx)); V.cy = Math.min(1-h, Math.max(h, V.cy)); }
+function toPlot(sx,sy){ return [((sx-PAD.l)/plotW()-0.5)/V.z+V.cx, ((innerHeight-sy-PAD.b)/plotH()-0.5)/V.z+V.cy]; }
+function zoomAt(sx,sy,f){ const [px,py]=toPlot(sx,sy), z0=V.z; V.z=Math.min(ZMAX,Math.max(1,z0*f));
+  V.cx = px-(px-V.cx)*z0/V.z; V.cy = py-(py-V.cy)*z0/V.z; clampView(); }
+function panBy(dx,dy){ V.cx -= dx/plotW()/V.z; V.cy += dy/plotH()/V.z; clampView(); }
+let viewAnim = 0;
+function animView(t, dur=380, push){ const s={...V}, my=++viewAnim, t0=performance.now(), lz0=Math.log(s.z), lz1=Math.log(t.z);
+  (function step(now){ if(my!==viewAnim) return; const f=Math.min(1,(now-t0)/dur), e=1-(1-f)**3;
+    V.z=Math.exp(lz0+(lz1-lz0)*e); V.cx=s.cx+(t.cx-s.cx)*e; V.cy=s.cy+(t.cy-s.cy)*e; clampView(); draw(); if(f<1) requestAnimationFrame(step); else if (push!==undefined) writeURL(push); })(t0); }
+function zoomTarget(sx,sy,f){ const save={...V}; zoomAt(sx,sy,f); const t={...V}; Object.assign(V,save); return t; }
+const centerXY = () => [PAD.l+plotW()/2, PAD.t+plotH()/2];
+function zoomStep(f){ const [x,y]=centerXY(); animView(zoomTarget(x,y,f), 380, true); }
+function resetView(){ animView({cx:.5,cy:.5,z:1}, 380, true); }
 
-// ---- picking & brushing (CPU, same blend as shader)
+// ---- URL state: t (map ring), z/x/y (view), id (open card). Discrete steps push history; continuous moves replace.
+function readViewParams(p){ const z=parseFloat(p.get('z')), x=parseFloat(p.get('x')), y=parseFloat(p.get('y'));
+  if (z>1) { V.z=z; V.cx=x===x?x:.5; V.cy=y===y?y:.5; } else { V.z=1; V.cx=.5; V.cy=.5; } clampView(); }
+let urlTimer = 0;
+function writeURL(push){ clearTimeout(urlTimer);
+  const u = new URL(location); const sp=u.searchParams;
+  const t = ((navT%MAPS.length)+MAPS.length)%MAPS.length; if (Math.abs(t)>1e-3) sp.set('t', +t.toFixed(3)); else sp.delete('t');
+  if (V.z>1.001) { sp.set('z', +V.z.toFixed(2)); sp.set('x', +V.cx.toFixed(4)); sp.set('y', +V.cy.toFixed(4)); } else { sp.delete('z'); sp.delete('x'); sp.delete('y'); }
+  if (cardI>=0) sp.set('id', IDS[cardI]); else sp.delete('id');
+  if (u.href === location.href) return;
+  push ? history.pushState(null,'',u) : history.replaceState(null,'',u); }
+const writeURLSoon = () => { clearTimeout(urlTimer); urlTimer = setTimeout(()=>writeURL(false), 300); };
+addEventListener('popstate', ()=>{ const p=new URLSearchParams(location.search); const s={...V}; readViewParams(p); const t={...V}; Object.assign(V,s);
+  const nt=parseFloat(p.get('t')||'0'); if (Math.abs(nt-navT)>1e-3) { animId++; navT=nt; }
+  animView(t); const id=p.get('id'); if (id && IDX.has(id)) openCard(IDX.get(id), false); else closeCard(false); });
+
+// ---- wheel: plain = zoom at cursor; shift (or over the ring) = turn the map-of-maps wheel
+addEventListener('wheel', e=>{ if (e.target.closest && e.target.closest('#top,#info,.panel')) return; e.preventDefault();
+  const raw = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX, px = raw * (e.deltaMode===1 ? 16 : e.deltaMode===2 ? 400 : 1);
+  if (e.shiftKey || (e.target.closest && e.target.closest('#nav'))) { nudge(px * 0.00035); return; }
+  viewAnim++; zoomAt(e.clientX, e.clientY, Math.exp(-px*(e.ctrlKey?0.01:0.0022))); draw(); writeURLSoon(); }, {passive:false});
+window.setNav = t => { navT=t; draw(); };
+window.__view = V;
+
+// ---- picking & brushing (CPU, same blend + view as shader)
 function screenPos(i,B,W,H){ let px=0,py=0; for(let k=0;k<5;k++){ px+=vals[i*5+k]*B.wx[k]; py+=vals[i*5+k]*B.wy[k]; }
-  return [PAD.l+px*(W-PAD.l-PAD.r), H-(PAD.b+py*(H-PAD.t-PAD.b))]; }
+  return [PAD.l+((px-V.cx)*V.z+0.5)*(W-PAD.l-PAD.r), H-(PAD.b+((py-V.cy)*V.z+0.5)*(H-PAD.t-PAD.b))]; }
 function visible(i,B){ const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW=Math.max(B.wx[2],B.wy[2]);
   return (T.lon[i]===T.lon[i] || geoW<0.9) && (T.yr[i]===T.yr[i] || dateW<0.9) && (!match || match[i]); }
-const stage = document.getElementById('gl'), brush=document.getElementById('brush'), tip=document.getElementById('tip');
-let bStart=null, pendingPick=false;
-stage.addEventListener('pointerdown', e=>{ if (e.pointerType==='touch') { swipe=[e.clientX,e.clientY,e.clientX,performance.now(),false]; } bStart=[e.clientX,e.clientY,e.shiftKey]; });
+const inPlot = (x,y) => x>=PAD.l && x<=innerWidth-PAD.r && y>=PAD.t && y<=innerHeight-PAD.b;
+// nearest visible dot within 6px, plus how many dots sit within 8px (a "cluster")
+function pickInfo(cx,cy){ const B=blend(), W=innerWidth, H=innerHeight; let best=-1, bd=36, n=0;
+  if (!inPlot(cx,cy)) return {best:-1,n:0};
+  for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); const d=(x-cx)**2+(y-cy)**2; if(d<64) n++; if(d<bd){bd=d;best=i;} } return {best,n}; }
+const pick = (cx,cy) => pickInfo(cx,cy).best;
+const stage = document.getElementById('gl'), stageEl=document.getElementById('stage'), brush=document.getElementById('brush'), tip=document.getElementById('tip');
+const fmtYr = yr => !(yr===yr) ? 'undated' : (yr<0?(-yr)+' BCE':yr+' CE')+' (approx.)';
+const siteName = i => T.site[i]!==0xFFFF ? D.sites[T.site[i]] : 'no find-spot';
+const stateSw = k => `background:rgb(${STATE_COL[k].map(c=>c*255|0)})`;
+
+// tablet details from /api/text/<id>, cached
+const META = new Map();
+function fetchText(id){ if (!META.has(id)) META.set(id, fetch(`${API}/text/${encodeURIComponent(id)}`).then(r=>r.ok?r.json():Promise.reject(r.status)).catch(e=>({error:String(e)}))); return META.get(id); }
+const ed = j => (j && j.editions && j.editions[0]) || null;
+// best edition for reading: human English first, then machine English, then ATF
+const hasHum = e => Array.isArray(e.human_en) && e.human_en.some(l=>l&&l.en), hasMt = e => Array.isArray(e.lines) && e.lines.some(l=>l.mt), hasAtf = e => Array.isArray(e.lines) && e.lines.some(l=>l.atf);
+const edBest = j => { const E=(j&&j.editions)||[]; return E.find(hasHum) || E.find(hasMt) || E.find(hasAtf) || E[0] || null; };
+
+// hover tooltip: id, find spot, date instantly; designation + period once fetched (after a short dwell)
+let hoverI=-1, hoverTimer=0;
+function tipHTML(i, e){ const g=D.genres[T.g[i]], st=D.states[T.s[i]];
+  return `<b>${esc(e&&e.designation ? e.designation : IDS[i])}</b>${e&&e.designation?` <span style="color:#888">${esc(IDS[i])}</span>`:''}<br>`+
+    `${e&&e.period ? esc(e.period)+' · ' : ''}${fmtYr(T.yr[i])}<br>${esc(e&&e.site ? e.site : siteName(i))}<br>${g} · ${st}`; }
+function showTip(i, x, y){ tip.style.display='block'; tip.style.left=(x+12)+'px'; tip.style.top=(y+12)+'px';
+  if (i===hoverI) return; hoverI=i; clearTimeout(hoverTimer); tip.innerHTML = tipHTML(i, null);
+  hoverTimer = setTimeout(()=>fetchText(IDS[i]).then(j=>{ if (hoverI===i) tip.innerHTML = tipHTML(i, ed(j)); }), 220); }
+function hideTip(){ tip.style.display='none'; hoverI=-1; clearTimeout(hoverTimer); }
+
+// ---- side card
+const card = document.getElementById('card'); let cardI = -1;
+function openCard(i, push=true){ if (i<0 || i===undefined) return closeCard(push); cardI=i; const id=IDS[i];
+  card.style.display='block';
+  const head = `<button class="x" title="Close (Esc)" onclick="closeCard()">×</button><h3>${esc(id)}</h3>`+
+    `<div class="meta">${esc(siteName(i))} · ${fmtYr(T.yr[i])} · ${D.genres[T.g[i]]}</div><span class="st" style="${stateSw(T.s[i])}">${D.states[T.s[i]]}</span>`;
+  card.innerHTML = head + '<div class="muted">Loading text…</div>' + btns(i);
+  if (push) writeURL(true); draw();
+  fetchText(id).then(j=>{ if (cardI!==i) return; const e=edBest(j), e0=ed(j)||e;
+    if (!e) { card.innerHTML = head + `<div class="muted">No text record available${j&&j.error?` (${esc(j.error)})`:''}.</div>` + btns(i); return; }
+    const meta = [e0.period||e.period, e0.site||e.site, e0.genre||e.genre, e0.language||e.language, e0.museum_no||e.museum_no, e0.collection||e.collection].filter(Boolean).map(esc).join(' · ');
+    let body = '';
+    const hum = Array.isArray(e.human_en) ? e.human_en.filter(l=>l && l.en) : [];
+    const lines = Array.isArray(e.lines) ? e.lines : [];
+    if (hum.length) body = `<div class="muted">Human English${hum[0].author?` · ${esc(hum[0].author)}`:''}${e.src?` · via ${esc(e.src.toUpperCase())}`:''}</div><ol>`+hum.slice(0,6).map(l=>`<li><span class="ln">${esc(l.line||'')}</span>${esc(l.en)}</li>`).join('')+'</ol>'+(hum.length>6?`<div class="muted">…${hum.length-6} more lines</div>`:'');
+    else if (lines.some(l=>l.mt)) body = `<div class="muted">Machine translation, unreviewed${e.model?` (${esc(e.model)})`:''}</div><ol>`+lines.filter(l=>l.mt).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span>${esc(l.mt)}<div class="atf">${esc(l.atf||'')}</div></li>`).join('')+'</ol>';
+    else if (lines.some(l=>l.atf)) body = `<div class="muted">Transliteration (ATF), no English yet</div><ol>`+lines.filter(l=>l.atf).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span><span class="atf">${esc(l.atf)}</span></li>`).join('')+'</ol>';
+    else body = '<div class="muted">Catalogue entry only: no transliteration online.</div>';
+    card.innerHTML = `<button class="x" title="Close (Esc)" onclick="closeCard()">×</button><h3>${esc(e0.designation||e.designation||id)}</h3>`+
+      `<div class="meta">${esc(id)}${meta?' · '+meta:''}</div><span class="st" style="${stateSw(T.s[i])}">${D.states[T.s[i]]}</span>${body}`+btns(i);
+  });
+}
+function btns(i){ return `<div class="btns"><a href="map.html?id=${encodeURIComponent(IDS[i])}">Open in reader →</a><button class="sec" onclick="toggleSel(${i})">${sel[i]?'Unselect':'Select'}</button></div>`; }
+window.toggleSel = i => { sel[i]^=1; updFlags(); draw(); if (cardI===i) { const b=card.querySelector('.btns .sec'); if(b) b.textContent = sel[i]?'Unselect':'Select'; } };
+function closeCard(push=true){ if (cardI<0 && card.style.display!=='block') return; cardI=-1; card.style.display='none'; if (push) writeURL(true); }
+window.openCard = openCard; window.closeCard = closeCard;
+
+// ---- box list (shift-drag)
+const boxlist = document.getElementById('boxlist');
+function showBox(list){ if (!list.length) { boxlist.style.display='none'; return; }
+  list.sort((a,b)=>IDS[a]<IDS[b]?-1:1); const MAXR=300;
+  boxlist.innerHTML = `<button class="x" title="Close" onclick="document.getElementById('boxlist').style.display='none'">×</button><h3>${list.length.toLocaleString()} tablet${list.length>1?'s':''} in the box</h3>`+
+    `<div class="meta">Now selected (yellow). Click one to open it.${list.length>MAXR?` Showing the first ${MAXR}.`:''}</div>`+
+    list.slice(0,MAXR).map(i=>`<div class="row" data-i="${i}"><span><span class="sw" style="${stateSw(T.s[i])};display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px"></span>${esc(IDS[i])}</span><span>${esc(siteName(i).replace(/ \(mod\..*\)/,''))} · ${fmtYr(T.yr[i]).replace(' (approx.)','')}</span></div>`).join('');
+  boxlist.style.display='block'; }
+boxlist.addEventListener('click', e=>{ const r=e.target.closest('.row'); if (r) openCard(+r.dataset.i); });
+
+// ---- pointer: drag pans, shift-drag boxes, click opens a dot or zooms into a cluster, two fingers pinch
+const ptrs = new Map(); let gest = null; let pinch = null; let pendingPick=false;
+stage.addEventListener('pointerdown', e=>{ stage.setPointerCapture(e.pointerId); ptrs.set(e.pointerId,[e.clientX,e.clientY]); viewAnim++;
+  if (ptrs.size===2) { const [a,b]=[...ptrs.values()]; pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]), m:[(a[0]+b[0])/2,(a[1]+b[1])/2]}; gest=null; brush.style.display='none'; return; }
+  gest = {x0:e.clientX, y0:e.clientY, x:e.clientX, y:e.clientY, shift:e.shiftKey, moved:false}; hideTip(); });
 stage.addEventListener('pointermove', e=>{
-  if (swipe && e.pointerType==='touch') { const dx=e.clientX-swipe[2]; if (Math.abs(e.clientX-swipe[0])>12) swipe[4]=true; if (swipe[4]) { navT -= dx/innerWidth*1.6; vel = -dx/innerWidth*0.5; swipe[2]=e.clientX; animId++; draw(); } return; }
-  if (!bStart && pendingPick) return; if (!bStart) { pendingPick = true; requestAnimationFrame(()=>pendingPick=false); }
-  if(bStart && bStart[2]){ const [x0,y0]=bStart; Object.assign(brush.style,{display:'block',left:Math.min(x0,e.clientX)+'px',top:Math.min(y0,e.clientY)+'px',width:Math.abs(e.clientX-x0)+'px',height:Math.abs(e.clientY-y0)+'px'}); return; }
-  const i = pick(e.clientX,e.clientY); if(i<0){tip.style.display='none';return;}
-  tip.style.display='block'; tip.style.left=(e.clientX+12)+'px'; tip.style.top=(e.clientY+12)+'px';
-  const yr=T.yr[i]; tip.innerHTML=`<b>${esc(IDS[i])}</b><br>${T.site[i]!==0xFFFF?esc(D.sites[T.site[i]]):'no find-spot'} · ${!(yr===yr)?'undated':(yr<0?(-yr)+' BCE':yr+' CE')+' (approx.)'}<br>${D.genres[T.g[i]]} · ${D.states[T.s[i]]}`;
+  if (ptrs.has(e.pointerId)) ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+  if (pinch && ptrs.size===2) { const [a,b]=[...ptrs.values()], d=Math.hypot(a[0]-b[0],a[1]-b[1]), m=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+    panBy(m[0]-pinch.m[0], m[1]-pinch.m[1]); if (pinch.d>0) zoomAt(m[0],m[1], d/pinch.d); pinch={d,m}; draw(); writeURLSoon(); return; }
+  if (gest) { if (Math.abs(e.clientX-gest.x0)+Math.abs(e.clientY-gest.y0)>5) gest.moved=true;
+    if (gest.shift) { if (gest.moved) Object.assign(brush.style,{display:'block',left:Math.min(gest.x0,e.clientX)+'px',top:Math.min(gest.y0,e.clientY)+'px',width:Math.abs(e.clientX-gest.x0)+'px',height:Math.abs(e.clientY-gest.y0)+'px'}); return; }
+    if (gest.moved) { stageEl.classList.add('pan'); panBy(e.clientX-gest.x, e.clientY-gest.y); gest.x=e.clientX; gest.y=e.clientY; draw(); writeURLSoon(); }
+    return; }
+  if (e.pointerType==='touch' || pendingPick) return; pendingPick = true; requestAnimationFrame(()=>pendingPick=false);
+  const i = pick(e.clientX,e.clientY); if(i<0){ hideTip(); stage.style.cursor=''; return; } stage.style.cursor='pointer'; showTip(i, e.clientX, e.clientY);
 });
-stage.addEventListener('pointerup', e=>{
-  if (swipe && swipe[4]) { swipe=null; bStart=null; lastInput=0; if (!spinning) spin(); return; } swipe=null;
-  if(!bStart) return; const [x0,y0,sh]=bStart; bStart=null; brush.style.display='none';
-  const B=blend(), W=innerWidth, H=innerHeight;
-  if (sh && Math.abs(e.clientX-x0)+Math.abs(e.clientY-y0)>6){
-    const [xa,xb]=[Math.min(x0,e.clientX),Math.max(x0,e.clientX)], [ya,yb]=[Math.min(y0,e.clientY),Math.max(y0,e.clientY)];
-    for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); if(x>=xa&&x<=xb&&y>=ya&&y<=yb) sel[i]=1; }
-  } else { const i=pick(e.clientX,e.clientY); if(i>=0) sel[i]^=1; }
-  updFlags(); draw();
-});
-function pick(cx,cy){ const B=blend(), W=innerWidth, H=innerHeight; let best=-1, bd=36;
-  for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); const d=(x-cx)**2+(y-cy)**2; if(d<bd){bd=d;best=i;} } return best; }
+function endPtr(e){ ptrs.delete(e.pointerId); stageEl.classList.remove('pan');
+  if (pinch) { if (ptrs.size<2) { pinch=null; gest=null; } return; }
+  const g=gest; gest=null; if (!g) return; brush.style.display='none';
+  if (g.shift && g.moved) { const B=blend(), W=innerWidth, H=innerHeight, list=[];
+    const [xa,xb]=[Math.min(g.x0,e.clientX),Math.max(g.x0,e.clientX)], [ya,yb]=[Math.min(g.y0,e.clientY),Math.max(g.y0,e.clientY)];
+    for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); if(x>=xa&&x<=xb&&y>=ya&&y<=yb&&inPlot(x,y)) { sel[i]=1; list.push(i); } }
+    updFlags(); draw(); showBox(list); return; }
+  if (g.moved) { writeURL(false); return; }
+  if (e.type==='pointercancel') return;
+  const {best,n} = pickInfo(e.clientX,e.clientY);
+  if (g.shift && best>=0) { toggleSel(best); return; }
+  if (n>=12 && V.z<ZMAX) { animView(zoomTarget(e.clientX,e.clientY, Math.min(4, 1+n/12)), 380, true); return; }
+  if (best>=0) openCard(best); else closeCard(); }
+stage.addEventListener('pointerup', endPtr); stage.addEventListener('pointercancel', endPtr);
+stage.addEventListener('pointerleave', e=>{ if (!gest) hideTip(); });
+
+// ---- buttons & keys
+document.getElementById('zin').onclick=()=>zoomStep(2); document.getElementById('zout').onclick=()=>zoomStep(0.5); document.getElementById('zreset').onclick=resetView;
+addEventListener('keydown', e=>{ if (e.target.closest && e.target.closest('input,textarea,select')) return; if (e.metaKey||e.ctrlKey||e.altKey) return;
+  const step = 0.12; let h=true;
+  switch (e.key) {
+    case 'ArrowLeft': viewAnim++; panBy(plotW()*step,0); draw(); writeURLSoon(); break;
+    case 'ArrowRight': viewAnim++; panBy(-plotW()*step,0); draw(); writeURLSoon(); break;
+    case 'ArrowUp': viewAnim++; panBy(0,plotH()*step); draw(); writeURLSoon(); break;
+    case 'ArrowDown': viewAnim++; panBy(0,-plotH()*step); draw(); writeURLSoon(); break;
+    case '+': case '=': zoomStep(1.6); break;
+    case '-': case '_': zoomStep(1/1.6); break;
+    case '0': resetView(); break;
+    case '[': animateTo(Math.round(navT)-1); break;
+    case ']': animateTo(Math.round(navT)+1); break;
+    case 'Escape':
+      if (cardI>=0) closeCard();
+      else if (boxlist.style.display==='block') boxlist.style.display='none';
+      else if (V.z>1.001) { const z=V.z/2.5; animView(z<=1.05?{cx:.5,cy:.5,z:1}:{cx:V.cx,cy:V.cy,z}, 380, true); }
+      break;
+    default: h=false; }
+  if (h) e.preventDefault(); });
 window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f({id:IDS[i],lon:T.lon[i],lat:T.lat[i],year:T.yr[i],genre:T.g[i],state:T.s[i]})) sel[i]=1; updFlags(); draw(); };
-document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); };
+document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); boxlist.style.display='none'; };
 load();
 </script>
 </body>
