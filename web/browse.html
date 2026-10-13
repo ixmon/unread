@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Map of maps: slide between place, time, genre and translation state · Unread Atlas</title>
-<meta name="description" content="Slide 117,000 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
+<meta name="description" content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
 <link rel="canonical" href="https://unreadatlas.com/browse.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unread Atlas" />
@@ -27,6 +27,12 @@ canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
 #top input{background:#181b22;color:#eee;border:1px solid #333a46;border-radius:6px;padding:6px 9px;width:150px;font:inherit}
 #top button{background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px}
 #top button.on{background:#c79a3a;color:#111;border-color:#c79a3a}
+#top .lbl{font-size:12px;color:#8f96a3;white-space:nowrap}
+#mode{display:inline-flex;border:1px solid #363c4a;border-radius:6px;overflow:hidden}
+#mode button{border:0;border-radius:0;padding:5px 7px;font-size:12px}
+#mode button.on{background:#7ec3e6;color:#0d1520}
+#presets button.rel{background:#1c2430;border-color:#2f4256;color:#bfe0f2}
+#stage{touch-action:none}
 #info{position:absolute;right:14px;bottom:78px;z-index:5;background:rgba(20,22,28,.88);padding:10px 12px;border-radius:10px;border:1px solid #2a2e38;font-size:12.5px;max-width:380px;line-height:1.45}
 #info .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 10px;vertical-align:-1px}
 #nav{position:absolute;right:14px;top:14px;width:300px;height:300px;z-index:5;background:rgba(20,22,28,.9);border:1px solid #2a2e38;border-radius:50%;touch-action:none;cursor:grab}
@@ -45,13 +51,14 @@ a{color:#e0b860}
 <div id="stage"><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
 <div id="top">
   <a href="./" title="Unread Atlas home" style="font-family:'Source Serif 4',Georgia,serif;white-space:nowrap">◂ Unread Atlas</a>
-  <input id="q" placeholder="search a word…" value="barley" />
-  <span id="presets"></span>
+  <input id="q" placeholder="English, ATF (kasz) or 𒁉…" value="barley" title="Type a word and press Enter. English, ATF transliteration (kasz, {u2}tar-musz, š or sz) or cuneiform signs." />
+  <span id="mode" title="Search English or ATF; Auto guesses from what you type"><button data-m="auto" class="on">Auto</button><button data-m="en">English</button><button data-m="atf">ATF</button></span>
+  <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
   <button id="clearSel" title="Clear selection">clear selection</button>
 </div>
 <div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
 <div id="info">Loading…</div>
-<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · dates are approximate period midpoints; terms match English (human or machine) only</div>
+<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll turns the wheel</div>
 <script>
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 // ---- data dims: 0 lon, 1 lat, 2 year, 3 genre, 4 translation state
@@ -86,7 +93,7 @@ void main(){
   vec3 c = st < 0.5 ? sc0 : st < 1.5 ? sc1 : st < 2.5 ? sc2 : sc3;
   float vis = mix(1.0, 1.0-geoW, 1.0-a2.x) * mix(1.0, 1.0-dateW, 1.0-a2.y);
   float m = mod(a2.z, 2.0); float s = step(1.5, a2.z);
-  float alpha = hasMatch > 0.5 ? (m > 0.5 ? 0.75 : 0.05) : 0.35;
+  float alpha = hasMatch > 0.5 ? (m > 0.5 ? 0.8 : 0.012) : 0.2;
   if (s > 0.5) { c = vec3(1.0, 0.92, 0.45); alpha = 0.95; }
   vCol = vec4(c, alpha*vis);
   gl_PointSize = (s > 0.5 ? ps*1.8 : (hasMatch>0.5 && m>0.5 ? ps*1.25 : ps));
@@ -103,45 +110,90 @@ function hash(i,k){ let x = Math.sin(i*12.9898 + k*78.233)*43758.5453; return x 
 function norm(v,[a,b]){ return Math.min(1,Math.max(0,(v-a)/(b-a))); }
 function band(idx,n,i,k){ return (idx + 0.12 + 0.76*hash(i,k)) / n; }
 
+// Full corpus: columnar binary (scripts/build_browse_data.py). T.* typed arrays, NaN = unknown.
+let T, IDS, IDX, REL = {en:{}, atf:{}}, SIGNS = {};
+const API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? '/api' : 'https://unreadatlas.com/api';
 async function load(){
-  D = await (await fetch('assets/map_of_maps.json')).json();
-  N = D.tablets.length;
+  const [meta, bin, idtxt] = await Promise.all([
+    fetch('assets/browse_meta.json').then(r=>r.json()), fetch('assets/browse_all.dat').then(r=>r.arrayBuffer()), fetch('assets/browse_ids.txt').then(r=>r.text())]);
+  fetch('assets/browse_related.json').then(r=>r.json()).then(j=>{ REL=j; showRelated(); }).catch(()=>{});
+  fetch('assets/sign_readings.json').then(r=>r.json()).then(j=>{ SIGNS=j; }).catch(()=>{});
+  D = meta; N = meta.n; IDS = idtxt.split('\n'); IDX = new Map(IDS.map((id,i)=>[id,i]));
+  let o = 0; const col = (C, n) => { const a = new C(bin, o, N); o += N*C.BYTES_PER_ELEMENT; return a; };
+  const lonU = col(Uint16Array), latU = col(Uint16Array), yrI = col(Int16Array), gU = col(Uint8Array), sU = col(Uint8Array);
+  const siteU = new Uint16Array(bin.slice(o, o + N*2));
+  T = {lon:new Float32Array(N), lat:new Float32Array(N), yr:new Float32Array(N), g:gU, s:sU, site:siteU};
+  for (let i=0;i<N;i++){ T.lon[i] = lonU[i]===0xFFFF ? NaN : -20 + lonU[i]/65534*100; T.lat[i] = latU[i]===0xFFFF ? NaN : latU[i]/65534*60; T.yr[i] = yrI[i]===-32768 ? NaN : yrI[i]; }
   vals = new Float32Array(N*5);
   const a0 = new Float32Array(N*4), a1 = new Float32Array(N); flags = new Float32Array(N*4);
   const ng = D.genres.length, ns = D.states.length;
-  D.tablets.forEach((t,i)=>{
-    const [id, lon, lat, yr, g, s] = t;
-    const hasGeo = lon!=null, hasDate = yr!=null;
-    const v = [hasGeo? norm(lon + (hash(i,6)-0.5)*0.35*Math.sqrt(hash(i,8)),LON) : 0.5 + (hash(i,1)-0.5)*0.3,
-               hasGeo? norm(lat + (hash(i,7)-0.5)*0.35*Math.sqrt(hash(i,8)),LAT) : 0.5 + (hash(i,2)-0.5)*0.3,
-               hasDate? Math.min(1,Math.max(0, norm(yr,YR) + (hash(i,3)-0.5)*0.025)) : 0.5,
-               band(g,ng,i,4), band(s,ns,i,5)];
-    for(let k=0;k<5;k++) vals[i*5+k]=v[k];
-    a0.set(v.slice(0,4), i*4); a1[i]=v[4];
-    flags.set([hasGeo?1:0, hasDate?1:0, 0, s], i*4);
-  });
+  for (let i=0;i<N;i++){
+    const lon=T.lon[i], lat=T.lat[i], yr=T.yr[i], g=T.g[i], st=T.s[i];
+    const hasGeo = lon===lon, hasDate = yr===yr;
+    const v0 = hasGeo? norm(lon + (hash(i,6)-0.5)*0.35*Math.sqrt(hash(i,8)),LON) : 0.5 + (hash(i,1)-0.5)*0.3,
+          v1 = hasGeo? norm(lat + (hash(i,7)-0.5)*0.35*Math.sqrt(hash(i,8)),LAT) : 0.5 + (hash(i,2)-0.5)*0.3,
+          v2 = hasDate? Math.min(1,Math.max(0, norm(yr,YR) + (hash(i,3)-0.5)*0.025)) : 0.5,
+          v3 = band(g,ng,i,4), v4 = band(st,ns,i,5);
+    vals[i*5]=v0; vals[i*5+1]=v1; vals[i*5+2]=v2; vals[i*5+3]=v3; vals[i*5+4]=v4;
+    a0[i*4]=v0; a0[i*4+1]=v1; a0[i*4+2]=v2; a0[i*4+3]=v3; a1[i]=v4;
+    flags[i*4]=hasGeo?1:0; flags[i*4+1]=hasDate?1:0; flags[i*4+3]=st;
+  }
   sel = new Uint8Array(N);
   const b = (data, loc, size)=>{ const buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf); gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
     const L=gl.getAttribLocation(prog,loc); gl.enableVertexAttribArray(L); gl.vertexAttribPointer(L,size,gl.FLOAT,false,0,0); return buf; };
   b(a0,'a0',4); b(a1,'a1',1); flagsBuf = b(flags,'a2',4);
-  // presets
-  const pr = document.getElementById('presets');
-  Object.keys(D.terms).forEach(k=>{ const bt=document.createElement('button'); bt.textContent=k; bt.onclick=()=>{q.value=k;setTerm(k)}; bt.dataset.k=k; pr.appendChild(bt); });
-  const all=document.createElement('button'); all.textContent='all'; all.onclick=()=>{q.value='';setTerm(null)}; pr.appendChild(all);
   buildNav();
   navT = parseFloat(params.get('t') || '0');
-  setTerm(params.has('q') ? (params.get('q')||null) : 'barley');
+  if (params.get('in')==='en'||params.get('in')==='atf') setMode(params.get('in'));
+  const q0 = params.has('q') ? (params.get('q')||'') : 'barley'; q.value = q0;
   addEventListener('resize', draw);
+  await setTerm(q0 || null);
   window.__ready = true;
 }
 const q = document.getElementById('q');
-q.addEventListener('keydown', e=>{ if(e.key==='Enter') setTerm(q.value.trim().toLowerCase()||null); });
-function setTerm(k){
-  term = k; match = null;
-  if (k && D.terms[k]) { match = new Uint8Array(N); D.terms[k].forEach(i=>match[i]=1); }
-  else if (k) { term = k + ' (not preset)'; }
-  document.querySelectorAll('#presets button').forEach(b=>b.classList.toggle('on', b.dataset.k===k || (!k && !b.dataset.k)));
+q.addEventListener('keydown', e=>{ if(e.key==='Enter') setTerm(q.value.trim()||null); });
+let mode = 'auto', lastScope = 'en', res = null, reqN = 0;
+function setMode(m){ mode = m; document.querySelectorAll('#mode button').forEach(b=>b.classList.toggle('on', b.dataset.m===m)); }
+document.querySelectorAll('#mode button').forEach(b=>b.onclick=()=>{ setMode(b.dataset.m); if (q.value.trim()) setTerm(q.value.trim()); });
+const CUNEI = /[\u{12000}-\u{1254F}]/u;
+const ATF_HINT = /[šŠṣṭḫŋĝ₀-₉{}]|sz|\w-\w|[a-z]\d\b|^\d\(/i;
+const toAscii = s => s.toLowerCase().replace(/š/g,'sz').replace(/ṣ/g,'s,').replace(/ṭ/g,'t,').replace(/ḫ/g,'h').replace(/[ŋĝ]/g,'j').replace(/[₀-₉]/g,c=>String(c.charCodeAt(0)-0x2080));
+const toPretty = s => s.replace(/sz/g,'š').replace(/SZ/g,'Š').replace(/s,/g,'ṣ').replace(/t,/g,'ṭ');
+// cuneiform glyphs -> most common reading, joined with '-' within a word
+function glyphsToAtf(s){ return s.split(/\s+/).map(w=>[...w].map(ch=>CUNEI.test(ch) ? ((SIGNS[ch]||[])[0] || '') : ch).filter(Boolean).join(CUNEI.test(w)?'-':'')).join(' ').trim(); }
+function detect(t){ if (CUNEI.test(t)) return 'atf'; const a = toAscii(t);
+  if (ATF_HINT.test(t)) return 'atf'; if (REL.atf[a] && !REL.en[a.toLowerCase()]) return 'atf'; return 'en'; }
+async function setTerm(k){
+  const my = ++reqN; term = k; match = null; res = null; let scope = 'en', shown = k;
+  if (k) {
+    scope = mode==='auto' ? detect(k) : mode;
+    if (CUNEI.test(k)) { if (!Object.keys(SIGNS).length) SIGNS = await fetch('assets/sign_readings.json').then(r=>r.json()).catch(()=>({})); shown = glyphsToAtf(k); }
+    lastScope = scope; term = shown;
+    showStatus(`Searching ${scope==='atf'?'ATF':'English'} for “${esc(shown)}”…`);
+    showRelated();
+    try {
+      const r = await fetch(`${API}/search/ids?q=${encodeURIComponent(scope==='atf'?toAscii(shown):shown.toLowerCase())}&in=${scope}`);
+      const j = await r.json(); if (my !== reqN) return;
+      if (!r.ok) throw new Error(j.error||r.status);
+      match = new Uint8Array(N); let m = 0;
+      for (const id of j.ids) { const i = IDX.get(id); if (i!==undefined && !match[i]) { match[i]=1; m++; } }
+      res = {total:j.total, shown:m, truncated:j.truncated||j.hits_capped, scope, q:shown, glyph: CUNEI.test(k) ? k : null};
+    } catch(e) { if (my !== reqN) return; res = {error:String(e.message||e), scope, q:shown}; }
+  } else showRelated();
+  const u = new URL(location); if (k) { u.searchParams.set('q', k); u.searchParams.set('in', scope); } else { u.searchParams.delete('q'); u.searchParams.delete('in'); } history.replaceState(null,'',u);
   updFlags(); draw();
+}
+function showStatus(h){ const el=document.getElementById('info'); if (el) el.innerHTML = h; }
+// preset words before a search; afterwards the words that co-occur most with it (NPMI) — "Appears with:"
+function showRelated(){
+  const pr = document.getElementById('presets'), lbl = document.getElementById('plbl'); pr.innerHTML = '';
+  const key = term ? (lastScope==='atf' ? toAscii(term) : term.toLowerCase()) : null;
+  const rel = key ? (REL[lastScope]||{})[key] : null;
+  const mk = (txt, val, cls) => { const bt=document.createElement('button'); bt.textContent=txt; if(cls) bt.className=cls; bt.onclick=()=>{ q.value=val; setTerm(val); }; pr.appendChild(bt); };
+  if (rel && rel.length) { lbl.textContent = 'Appears with:'; rel.slice(0,6).forEach(w=>mk(lastScope==='atf'?toPretty(w):w, lastScope==='atf'?toPretty(w):w, 'rel')); }
+  else if (!term) { lbl.textContent = 'Try:'; ['barley','silver','sheep','kaš'].forEach(w=>mk(w,w)); }
+  else { lbl.textContent = key && Object.keys(REL.en).length ? 'Try:' : ''; if (lbl.textContent) ['barley','silver','sheep','kaš'].forEach(w=>mk(w,w)); }
+  const all=document.createElement('button'); all.textContent='all'; all.title='Show every tablet, no search'; all.onclick=()=>{q.value='';setTerm(null)}; pr.appendChild(all);
 }
 function updFlags(){
   for(let i=0;i<N;i++) flags[i*4+2] = (match && match[i] ? 1 : 0) + (sel[i] ? 2 : 0);
@@ -171,7 +223,7 @@ function draw(){
   gl.uniform1f(U('geoW'), Math.min(1, geoW)); gl.uniform1f(U('dateW'), dateW);
   gl.uniform1f(U('hasMatch'), match?1:0);
   gl.uniform4f(U('pad'), PAD.l/W, PAD.r/W, PAD.t/H, PAD.b/H);
-  gl.uniform1f(U('ps'), 2.6*dpr);
+  gl.uniform1f(U('ps'), 2.0*dpr);
   gl.drawArrays(gl.POINTS, 0, N);
   overlay(B, W, H, dpr, geoW, dateW);
   info(B, geoW, dateW);
@@ -207,12 +259,19 @@ function overlay(B,W,H,dpr){
   ctx.globalAlpha = 1;
 }
 function info(B, geoW, dateW){
-  const m = match ? D.terms[term].length : 0, s = sel.reduce((a,b)=>a+b,0);
+  const s = sel.reduce((a,b)=>a+b,0);
   let byState = [0,0,0,0], selState=[0,0,0,0];
-  for (let i=0;i<N;i++){ const st=D.tablets[i][5]; if(!match||match[i]) byState[st]++; if(sel[i]) selState[st]++; }
+  for (let i=0;i<N;i++){ const st=T.s[i]; if(!match||match[i]) byState[st]++; if(sel[i]) selState[st]++; }
   const label = B.e<0.02 ? MAPS[B.i].name : B.e>0.98 ? MAPS[B.j].name : `${MAPS[B.i].name} → ${MAPS[B.j].name} (${Math.round(B.e*100)}%)`;
+  const where = r => r.scope==='atf' ? 'ATF transliteration contains' : 'English mentions';
+  let head;
+  if (res && res.error) head = `Search for “${esc(res.q)}” failed (${esc(res.error)}). <a href="search.html?q=${encodeURIComponent(res.q)}">Try the search page →</a>`;
+  else if (res) head = `<b>${res.total.toLocaleString()}</b> tablets whose ${where(res)} “${esc(res.scope==='atf'?toPretty(res.q):res.q)}”${res.glyph?` (from ${esc(res.glyph)}; other readings: ${esc([...res.glyph].filter(c=>CUNEI.test(c)).map(c=>(SIGNS[c]||[]).slice(1).join(', ')).join(' / ')||'none')})`:''}`+
+      (res.shown!==res.total || res.truncated ? ` (<b>${res.shown.toLocaleString()}</b> shown${res.truncated?'; list capped at 50,000':''})` : '')+
+      (res.total ? ` · <a href="search.html?q=${encodeURIComponent(res.q)}&in=${res.scope}">read them →</a>` : '');
+  else head = term ? 'Searching…' : 'All tablets';
   document.getElementById('info').innerHTML =
-   `<b>${label}</b><br>${match? `<b>${m.toLocaleString()}</b> tablets whose English mentions “${term}”` : term? `“${esc(term.replace(' (not preset)',''))}” is not one of the sampled words here (barley, silver, sheep). <a href="search.html?q=${encodeURIComponent(term.replace(' (not preset)',''))}">Search the whole corpus for it →</a>` : 'All sampled tablets'} · ${N.toLocaleString()} dots (random ${D.sample_of_all.toLocaleString()} of ${D.corpus_tablets.toLocaleString()} + all preset matches)<br>`+
+   `<b>${label}</b><br>${head} · ${N.toLocaleString()} dots, every tablet in the corpus<br>`+
    D.states.map((n,k)=>`<span class="sw" style="background:rgb(${STATE_COL[k].map(c=>c*255|0)})"></span>${n} ${byState[k].toLocaleString()}`).join('')+
    (s? `<br><span style="color:#ffe873">● ${s.toLocaleString()} selected</span> — ${D.states.map((n,k)=>`${n.split(' ')[0]} ${selState[k]}`).join(' · ')}` : '<br><span class="muted">Click a dot or shift-drag to select; the selection travels with you.</span>')+
    (geoW<0.99 ? '' : '<br><span class="muted">Tablets without a find-spot are hidden here; slide away from Geography to see them.</span>');
@@ -232,8 +291,8 @@ function buildNav(){
 }
 function thumb(c, m){ // tiny CPU scatter of a subsample
   const x = c.getContext('2d'); x.fillStyle='#0d0f14'; x.fillRect(0,0,120,68);
-  for (let i=0;i<N;i+=23){ const t=D.tablets[i]; if ((m.x<2||m.y<2) && t[1]==null) continue; if ((m.x==2||m.y==2) && t[3]==null) continue;
-    const c0=STATE_COL[t[5]]; x.fillStyle=`rgba(${c0[0]*255|0},${c0[1]*255|0},${c0[2]*255|0},0.5)`;
+  for (let i=0;i<N;i+=61){ if ((m.x<2||m.y<2) && !(T.lon[i]===T.lon[i])) continue; if ((m.x==2||m.y==2) && !(T.yr[i]===T.yr[i])) continue;
+    const c0=STATE_COL[T.s[i]]; x.fillStyle=`rgba(${c0[0]*255|0},${c0[1]*255|0},${c0[2]*255|0},0.5)`;
     x.fillRect(4+vals[i*5+m.x]*112, 64-vals[i*5+m.y]*60, 1.2,1.2); }
 }
 function updNavUI(B){
@@ -241,7 +300,7 @@ function updNavUI(B){
   const n=MAPS.length, a = -Math.PI/2 + (((navT%n)+n)%n)/n*2*Math.PI;
   handle.style.left = (CX+R*Math.cos(a))+'px'; handle.style.top=(CY+R*Math.sin(a))+'px';
   MAPS.forEach((m,k)=>m.el.classList.toggle('act', (k===B.i && B.e<0.5) || (k===B.j && B.e>=0.5)));
-  document.getElementById('navlabel').innerHTML = 'map of maps<small>drag around the ring</small>';
+  document.getElementById('navlabel').innerHTML = 'map of maps<small>drag the ring or scroll</small>';
 }
 let dragging=false;
 function navFromEvent(e){ const r=nav.getBoundingClientRect(); const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
@@ -249,25 +308,40 @@ function navFromEvent(e){ const r=nav.getBoundingClientRect(); const dx=e.client
 nav.addEventListener('pointerdown', e=>{ if(e.target.closest('.node')) return; dragging=true; nav.setPointerCapture(e.pointerId); navT=navFromEvent(e); draw(); });
 nav.addEventListener('pointermove', e=>{ if(!dragging) return; navT=navFromEvent(e); draw(); });
 nav.addEventListener('pointerup', ()=>{ dragging=false; });
-function animateTo(k){ const n=MAPS.length; let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=900+Math.abs(d)*250;
-  (function step(now){ const f=Math.min(1,(now-t0)/dur); navT=from+d*f; draw(); if(f<1) requestAnimationFrame(step); else navT=((k%n)+n)%n; })(t0); }
+let animId = 0;
+function animateTo(k, durMs){ const n=MAPS.length; let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=durMs||900+Math.abs(d)*250, my=++animId;
+  (function step(now){ if (my!==animId) return; const f=Math.min(1,(now-t0)/dur), e=durMs? 1-(1-f)**3 : f; navT=from+d*e; draw(); if(f<1) requestAnimationFrame(step); else { navT=((k%n)+n)%n; draw(); } })(t0); }
+// ---- scroll / trackpad / touch swipe turns the wheel: momentum, then snaps to the nearest map when idle
+let vel = 0, spinning = false, lastInput = 0;
+function spin(){ spinning = true; animId++;
+  (function step(){ navT += vel; vel *= 0.88; draw();
+    if (Math.abs(vel) > 0.0015 || performance.now()-lastInput < 120) requestAnimationFrame(step);
+    else { spinning = false; vel = 0; animateTo(Math.round(navT), 420); } })(); }
+function nudge(d){ vel += d; vel = Math.max(-0.12, Math.min(0.12, vel)); lastInput = performance.now(); if (!spinning) spin(); }
+addEventListener('wheel', e=>{ if (e.target.closest && e.target.closest('#top,#info')) return; e.preventDefault();
+  const px = (Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX) * (e.deltaMode===1 ? 16 : e.deltaMode===2 ? 400 : 1);
+  nudge(px * 0.00035); }, {passive:false});
+let swipe = null;
 window.setNav = t => { navT=t; draw(); };
 
 // ---- picking & brushing (CPU, same blend as shader)
 function screenPos(i,B,W,H){ let px=0,py=0; for(let k=0;k<5;k++){ px+=vals[i*5+k]*B.wx[k]; py+=vals[i*5+k]*B.wy[k]; }
   return [PAD.l+px*(W-PAD.l-PAD.r), H-(PAD.b+py*(H-PAD.t-PAD.b))]; }
-function visible(i,B){ const t=D.tablets[i]; const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW=Math.max(B.wx[2],B.wy[2]);
-  return (t[1]!=null || geoW<0.9) && (t[3]!=null || dateW<0.9) && (!match || match[i]); }
+function visible(i,B){ const geoW=(B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW=Math.max(B.wx[2],B.wy[2]);
+  return (T.lon[i]===T.lon[i] || geoW<0.9) && (T.yr[i]===T.yr[i] || dateW<0.9) && (!match || match[i]); }
 const stage = document.getElementById('gl'), brush=document.getElementById('brush'), tip=document.getElementById('tip');
-let bStart=null;
-stage.addEventListener('pointerdown', e=>{ bStart=[e.clientX,e.clientY,e.shiftKey]; });
+let bStart=null, pendingPick=false;
+stage.addEventListener('pointerdown', e=>{ if (e.pointerType==='touch') { swipe=[e.clientX,e.clientY,e.clientX,performance.now(),false]; } bStart=[e.clientX,e.clientY,e.shiftKey]; });
 stage.addEventListener('pointermove', e=>{
+  if (swipe && e.pointerType==='touch') { const dx=e.clientX-swipe[2]; if (Math.abs(e.clientX-swipe[0])>12) swipe[4]=true; if (swipe[4]) { navT -= dx/innerWidth*1.6; vel = -dx/innerWidth*0.5; swipe[2]=e.clientX; animId++; draw(); } return; }
+  if (!bStart && pendingPick) return; if (!bStart) { pendingPick = true; requestAnimationFrame(()=>pendingPick=false); }
   if(bStart && bStart[2]){ const [x0,y0]=bStart; Object.assign(brush.style,{display:'block',left:Math.min(x0,e.clientX)+'px',top:Math.min(y0,e.clientY)+'px',width:Math.abs(e.clientX-x0)+'px',height:Math.abs(e.clientY-y0)+'px'}); return; }
   const i = pick(e.clientX,e.clientY); if(i<0){tip.style.display='none';return;}
-  const t=D.tablets[i]; tip.style.display='block'; tip.style.left=(e.clientX+12)+'px'; tip.style.top=(e.clientY+12)+'px';
-  tip.innerHTML=`<b>${t[0]}</b><br>${t[6]>=0?D.sites[t[6]]:'no find-spot'} · ${t[3]==null?'undated':(t[3]<0?(-t[3])+' BCE':t[3]+' CE')+' (approx.)'}<br>${D.genres[t[4]]} · ${D.states[t[5]]}`;
+  tip.style.display='block'; tip.style.left=(e.clientX+12)+'px'; tip.style.top=(e.clientY+12)+'px';
+  const yr=T.yr[i]; tip.innerHTML=`<b>${esc(IDS[i])}</b><br>${T.site[i]!==0xFFFF?esc(D.sites[T.site[i]]):'no find-spot'} · ${!(yr===yr)?'undated':(yr<0?(-yr)+' BCE':yr+' CE')+' (approx.)'}<br>${D.genres[T.g[i]]} · ${D.states[T.s[i]]}`;
 });
 stage.addEventListener('pointerup', e=>{
+  if (swipe && swipe[4]) { swipe=null; bStart=null; lastInput=0; if (!spinning) spin(); return; } swipe=null;
   if(!bStart) return; const [x0,y0,sh]=bStart; bStart=null; brush.style.display='none';
   const B=blend(), W=innerWidth, H=innerHeight;
   if (sh && Math.abs(e.clientX-x0)+Math.abs(e.clientY-y0)>6){
@@ -278,7 +352,7 @@ stage.addEventListener('pointerup', e=>{
 });
 function pick(cx,cy){ const B=blend(), W=innerWidth, H=innerHeight; let best=-1, bd=36;
   for(let i=0;i<N;i++){ if(!visible(i,B)) continue; const [x,y]=screenPos(i,B,W,H); const d=(x-cx)**2+(y-cy)**2; if(d<bd){bd=d;best=i;} } return best; }
-window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f(D.tablets[i])) sel[i]=1; updFlags(); draw(); };
+window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f({id:IDS[i],lon:T.lon[i],lat:T.lat[i],year:T.yr[i],genre:T.g[i],state:T.s[i]})) sel[i]=1; updFlags(); draw(); };
 document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); };
 load();
 </script>
