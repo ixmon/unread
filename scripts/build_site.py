@@ -184,6 +184,27 @@ def main() -> None:
     if os.environ.get("NO_SEO_PAGES") != "1":
         import build_seo_pages
         report["seo_pages"] = build_seo_pages.main_for(out)
+    # analytics: Cloudflare Web Analytics beacon on every page (incl. generated SEO pages), token from web/site.json.
+    # mtimes are preserved so `aws s3 sync` does not re-upload unchanged pages when only the beacon line is re-added.
+    tok = (json.loads((WEB / "site.json").read_text()).get("analytics") or {}).get("cf_beacon_token", "").strip()
+    if tok:
+        if not re.fullmatch(r"[0-9a-f]{32}", tok):
+            fail("site.json analytics.cf_beacon_token should be the 32-hex Web Analytics site token")
+        snippet = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+                   f"data-cf-beacon='{{\"token\": \"{tok}\"}}'></script>")
+        n = 0
+        for hp in out.rglob("*.html"):
+            st = hp.stat()
+            h = hp.read_text(encoding="utf-8")
+            if "cloudflareinsights.com/beacon" in h or "</body>" not in h:
+                continue
+            i = h.rfind("</body>")
+            hp.write_text(h[:i] + snippet + "\n" + h[i:], encoding="utf-8")
+            os.utime(hp, (st.st_atime, st.st_mtime))
+            n += 1
+        report["analytics"] = {"provider": "cloudflare-web-analytics", "pages": n}
+    else:
+        print("build_site: note: no analytics token in web/site.json; beacon not added")
     # fonts: every face in the rule table is shipped, and nothing else
     ft = json.loads((WEB / "fonts" / "fonts.json").read_text())
     shipped = {q.name for q in (out / "fonts").iterdir() if q.suffix in (".woff", ".woff2", ".ttf", ".otf")}

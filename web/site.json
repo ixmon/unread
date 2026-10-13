@@ -1,6 +1,7 @@
 {
   "$note": "Single source for site name + header/footer links. After editing, run: python3 scripts/build_static.py (patches index.html, translate.html and rebuilds web/t/*).",
   "name": "Unread Atlas",
+  "analytics": {"$note": "Cloudflare Web Analytics (cookieless JS beacon). Paste the public site token from dash.cloudflare.com > Analytics & Logs > Web Analytics; empty = no beacon.", "cf_beacon_token": ""},
   "tagline": "first readings · open corpus",
   "links": [
     {"id": "x", "label": "@roguesamurai", "title": "Hayden on X", "url": "https://x.com/roguesamurai"},
