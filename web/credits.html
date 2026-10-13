@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title data-site-title="Credits &amp; thanks">Credits &amp; thanks · Unread Atlas</title>
+    <meta name="description" content="Thank you to the museums, scholarly projects, open data, fonts and software that make Unread Atlas possible, with their licences." />
+    <link rel="canonical" href="https://unreadatlas.com/credits.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Unread Atlas" />
+    <meta property="og:title" content="Credits &amp; thanks · Unread Atlas" />
+    <meta property="og:url" content="https://unreadatlas.com/credits.html" />
+    <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
+    <meta name="theme-color" content="#0f1114" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/static.css" />
+    <style>
+      .credits-main h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 500; margin: 2.2rem 0 0.5rem; scroll-margin-top: 1rem; }
+      .credits-main dl { margin: 0; }
+      .credits-main dt { font-weight: 600; margin-top: 0.9rem; }
+      .credits-main dd { margin: 0.15rem 0 0; color: var(--text-dim); }
+      .lic { display: inline-block; font-size: 0.78rem; padding: 0 0.45rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text); margin-left: 0.35rem; white-space: nowrap; }
+      .museums { columns: 2 18rem; padding-left: 1.1rem; color: var(--text-dim); }
+      .museums li { break-inside: avoid; margin: 0.1rem 0; }
+      .toc { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body class="static-page">
+    <header class="static-header">
+      <a class="brand" href="./"><!--site:name-->Unread Atlas<!--/site:name--></a>
+      <nav aria-label="Main">
+        <a class="nav-link" href="map.html">Explore &amp; map</a>
+        <a class="nav-link" href="browse.html">Browse</a>
+        <a class="nav-link" href="t/index.html">Curated texts</a>
+        <a class="nav-link" href="translate.html">Translator</a>
+        <a class="nav-link" href="search.html">Search</a>
+        <a class="nav-link active" href="credits.html" aria-current="page">Credits</a>
+      </nav>
+    </header>
+    <main class="static-main credits-main">
+      <h1>Thank you</h1>
+      <p class="lede">
+        Unread Atlas stands on generations of work by excavators, museum curators, cataloguers, epigraphers and
+        programmers, most of whom we will never meet. Every tablet on this site was dug up, conserved, numbered,
+        photographed, copied or transliterated by someone else first. This page is our thank-you to them, and the
+        place where we keep the licences straight.
+      </p>
+      <nav class="toc" aria-label="On this page">
+        <a href="#corpora">Text corpora</a><a href="#museums">Museums &amp; collections</a><a href="#basemap">Map</a>
+        <a href="#fonts">Fonts</a><a href="#model">Translation model</a><a href="#software">Software</a><a href="#notes">Notes</a>
+      </nav>
+
+      <h2 id="corpora">Text corpora</h2>
+      <p>The catalogue, find-spots, transliterations (ATF) and human English translations come from these projects.
+        Transliterations are shown only where the source allows republication.</p>
+      <dl>
+        <dt><a href="https://cdli.earth/" rel="noopener">CDLI</a>, the Cuneiform Digital Library Initiative</dt>
+        <dd>The backbone of the catalogue: around 427,000 records, find-spots, periods, museum numbers and ATF, from the
+          <a href="https://github.com/cdli-gh/data" rel="noopener">cdli-gh bulk data</a>. Reused with citation of CDLI, as CDLI asks.
+          We do not copy CDLI images.</dd>
+        <dt><a href="https://oracc.museum.upenn.edu/" rel="noopener">ORACC</a>, the Open Richly Annotated Cuneiform Corpus, and its many projects</dt>
+        <dd>Lemmatised editions and human translations from RINAP, SAAo, ETCSRI, DCCLT, CAMS and dozens more.
+          <span class="lic">CC BY-SA 3.0</span>. Some ORACC JSON files are marked CC0. Adaptations of ORACC material are shared under the same terms.</dd>
+        <dt><a href="https://www.ebl.lmu.de/" rel="noopener">eBL</a>, the electronic Babylonian Library (LMU Munich)</dt>
+        <dd>Catalogue metadata and the ATF-to-Unicode sign readings used by our <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" rel="noopener">cuneiform converter</a> and font choice.
+          Dataset <span class="lic">MIT</span>. eBL transliterations are searched for discovery only and are not republished here.</dd>
+        <dt><a href="https://www.hethport.uni-wuerzburg.de/TLHdig/" rel="noopener">TLHdig</a>, Thesaurus Linguarum Hethaeorum digitalis</dt>
+        <dd>Hittite and Anatolian texts. <span class="lic">CC BY 4.0</span></dd>
+        <dt>Linguistically Annotated Achemenet Babylonian Texts (University of Helsinki), from <a href="http://www.achemenet.com/" rel="noopener">Achemenet</a></dt>
+        <dd>Achaemenid-period Babylonian archives. <span class="lic">CC BY 4.0</span></dd>
+        <dt><a href="https://etcsl.orinst.ox.ac.uk/" rel="noopener">ETCSL</a>, RINAP, SAA and the print series</dt>
+        <dd>We link to these and flag their tablets as already translated. Their publications are the scholarly record, and our machine drafts are not a substitute for them.</dd>
+      </dl>
+
+      <h2 id="museums">Museums &amp; collections</h2>
+      <p>The tablets live in these institutions, which hold the most tablets in our catalogue. Hundreds of smaller collections and private holdings are credited on each tablet's own record.
+        Thank you for keeping them safe, and for every catalogue entry that made a find-spot or museum number possible.</p>
+      <ul class="museums">
+        <li>British Museum, London</li>
+        <li>Penn Museum, Philadelphia</li>
+        <li>National Museum of Iraq, Baghdad</li>
+        <li>Istanbul Archaeology Museums (Arkeoloji Müzeleri)</li>
+        <li>Museum of Anatolian Civilizations, Ankara</li>
+        <li>Yale Babylonian Collection, New Haven (incl. Nies, Morgan and Newell collections)</li>
+        <li>Vorderasiatisches Museum, Berlin</li>
+        <li>Musée du Louvre, Paris</li>
+        <li>Cornell University, Ithaca</li>
+        <li>National Museum of Syria (Damascus, Aleppo, Idlib, Deir ez-Zor)</li>
+        <li>ISAC Museum (formerly Oriental Institute), University of Chicago</li>
+        <li>Ashmolean Museum, Oxford</li>
+        <li>Harvard Museum of the Ancient Near East</li>
+        <li>Schøyen Collection, Oslo</li>
+        <li>de Liagre Böhl Collection, NINO, Leiden</li>
+        <li>Horn Archaeological Museum, Andrews University</li>
+        <li>Princeton Theological Seminary</li>
+        <li>Free Library of Philadelphia</li>
+        <li>State Hermitage Museum, St Petersburg</li>
+        <li>National Museum of Iran, Tehran</li>
+      </ul>
+
+      <h2 id="basemap">Map</h2>
+      <dl>
+        <dt>Shaded relief: <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model" rel="noopener">NOAA NCEI ETOPO 2022</a></dt>
+        <dd>The map's terrain and sea floor, rendered by us into our own label-free tiles. U.S. Government work, <span class="lic">public domain</span>.
+          NOAA National Centers for Environmental Information (2022), ETOPO 2022 15 Arc-Second Global Relief Model, doi:<a href="https://doi.org/10.25921/fd45-gt74" rel="noopener">10.25921/fd45-gt74</a>.</dd>
+        <dt>Coastlines, rivers and lakes: <a href="https://www.naturalearthdata.com/" rel="noopener">Natural Earth</a></dt>
+        <dd>Made with Natural Earth. <span class="lic">public domain</span>. Used on the map tiles and the home page coastline.</dd>
+        <dt>Find-spots</dt>
+        <dd>Coordinates come from the CDLI and ORACC catalogues. Uncertain or region-only find-spots are not pinned.</dd>
+      </dl>
+
+      <h2 id="fonts">Fonts</h2>
+      <p id="font-credits">Cuneiform is drawn in a face matched to each tablet's period, following the
+        <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" rel="noopener">eBL cuneiform converter</a>.</p>
+      <dl>
+        <dt><em>Assurbanipal</em> (Neo-Assyrian), <em>Esagil</em> (Neo-Babylonian), <em>Santakku</em> and <em>SantakkuM</em> (Old Babylonian cursive and monumental), <em>UllikummiA</em> (Hittite)</dt>
+        <dd>Created by Sylvie Vanséveren, from the <a href="https://hethport.net/cuneifont/" rel="noopener">Hethitologie Portal Mainz</a>.
+          <span class="lic">free for scholarly use</span>. Files as distributed by <a href="https://github.com/ElectronicBabylonianLiterature/ebl-frontend" rel="noopener">eBL</a>.</dd>
+        <dt><em>OB Freie</em> (Old Babylonian literary)</dt>
+        <dd>Corvin R. Ziegeler, Institut für Altorientalistik, FU Berlin (<a href="https://doi.org/10.17169/refubium-44983" rel="noopener">publication</a>). <a class="lic" href="fonts/OFL-OBFreie.txt">SIL OFL 1.1</a></dd>
+        <dt><em>Noto Sans Cuneiform</em></dt>
+        <dd>The Noto project, for other periods and missing signs. <a class="lic" href="fonts/OFL-NotoSansCuneiform.txt">SIL OFL 1.1</a></dd>
+        <dt><em>IBM Plex Sans</em>, <em>IBM Plex Mono</em> and <em>Source Serif 4</em></dt>
+        <dd>The site's text faces, by IBM and Adobe, served by <a href="https://fonts.google.com/" rel="noopener">Google Fonts</a>. <span class="lic">SIL OFL 1.1</span></dd>
+      </dl>
+
+      <h2 id="model">Translation model</h2>
+      <dl>
+        <dt><a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a></dt>
+        <dd>Every English line marked <em>machine draft</em> comes from this model, a fine-tune of Google's
+          <a href="https://huggingface.co/google-t5/t5-small" rel="noopener">T5-small</a> (<span class="lic">Apache 2.0</span>) trained on ATF and English pairs drawn from CDLI and ORACC translations.
+          Model <span class="lic">MIT</span>. The drafts are unreviewed and are not scholarly translations.</dd>
+      </dl>
+
+      <h2 id="software">Software</h2>
+      <dl>
+        <dt><a href="https://leafletjs.com/" rel="noopener">Leaflet</a> 1.9.4</dt>
+        <dd>The interactive map. © Volodymyr Agafonkin and contributors. <span class="lic">BSD 2-Clause</span></dd>
+        <dt><a href="https://huggingface.co/docs/transformers.js" rel="noopener">Transformers.js</a> (Hugging Face)</dt>
+        <dd>Runs the translator in your browser. <span class="lic">Apache 2.0</span></dd>
+        <dt>SQLite, Python, GDAL / rasterio, Shapely, NumPy, Pillow</dt>
+        <dd>Search index, data pipeline and basemap rendering. SQLite <span class="lic">public domain</span>; the rest BSD, MIT or similar permissive licences.</dd>
+      </dl>
+
+      <h2 id="notes">Notes</h2>
+      <p>Unread Atlas is an independent project and is not endorsed by any institution listed here. If we have credited you
+        wrongly, missed you, or you would like a link changed, please tell us on <a href="https://github.com/ixmon/unread/issues" rel="noopener">GitHub</a>
+        or <a href="https://x.com/roguesamurai" rel="noopener">@roguesamurai</a>. We will fix it quickly and gladly.</p>
+    </main>
+    <footer class="static-footer">
+      <div class="footer-links"><!--site:links--><!--/site:links--></div>
+      Unread Atlas · <a href="./">Home</a> · <a href="map.html">Map</a> · <a href="browse.html">Browse</a> · <a href="search.html">Search</a> · <a href="credits.html">Credits</a>
+    </footer>
+  </body>
+</html>

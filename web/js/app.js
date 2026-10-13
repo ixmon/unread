@@ -1260,7 +1260,7 @@ function initMap() {
   if (state.map) return;
   state.map = L.map("map", {
     zoomControl: true,
-    attributionControl: true,
+    attributionControl: false, // basemap is our own public-domain relief: no on-map credit required (see credits.html)
     minZoom: 2,
     maxZoom: 10,
     maxBounds: [[-85.06, -200], [85.06, 200]],
@@ -1272,11 +1272,7 @@ function initMap() {
   // z0-7 cover the whole world (ETOPO 60"); Near East z7-8 come from ETOPO 15" (the z7 files there replace
   // the 60" ones in the same folder); above that tiles are upscaled.
   const RELIEF_URL = "tiles/relief/{z}/{x}/{y}.webp";
-  const RELIEF_ATTR =
-    'Relief: <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model">NOAA ETOPO 2022</a>' +
-    ' &middot; <a href="https://www.naturalearthdata.com/">Natural Earth</a>';
   L.tileLayer(RELIEF_URL, {
-    attribution: RELIEF_ATTR,
     minZoom: 0,
     maxZoom: 10,
     minNativeZoom: 0,
@@ -1293,16 +1289,21 @@ function initMap() {
     noWrap: true,
   }).addTo(state.map);
 
-  // Fallback: CARTO dark basemap (now requires a free API key: https://carto.com/basemaps/apikey)
-  // L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=YOUR_KEY", {
-  //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-  //   subdomains: "abcd",
-  //   maxZoom: 18,
-  // }).addTo(state.map);
-
   // The map panel's height settles after the catalog and preview render (grid layout); keep Leaflet's
   // cached size in sync, or fitBounds/panTo work against a stale (taller) viewport.
   if (window.ResizeObserver) new ResizeObserver(() => state.map.invalidateSize({ pan: false })).observe(state.map.getContainer());
+
+  // Tiny credits link instead of a tile attribution (nothing on the map is legally required).
+  const Credits = L.Control.extend({
+    options: { position: "bottomright" },
+    onAdd() {
+      const d = L.DomUtil.create("div", "leaflet-control map-credits");
+      d.innerHTML = '<a href="credits.html#basemap" title="Map data, software and thanks">Credits</a>';
+      L.DomEvent.disableClickPropagation(d);
+      return d;
+    },
+  });
+  new Credits().addTo(state.map);
 
   // Fit Mesopotamia + Anatolia
   state.map.fitBounds([
@@ -1872,3 +1873,27 @@ async function main() {
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+// ─── Collapsible left bar (state: html.sidebar-collapsed, set early in map.html's head) ───
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("filters-toggle");
+  if (!btn) return;
+  const root = document.documentElement;
+  const sync = () => {
+    const open = !root.classList.contains("sidebar-collapsed");
+    btn.setAttribute("aria-expanded", String(open));
+    btn.classList.toggle("on", open);
+  };
+  const setOpen = (open, remember = true) => {
+    root.classList.toggle("sidebar-collapsed", !open);
+    if (remember) try { localStorage.setItem("ua.sidebar", open ? "open" : "closed"); } catch (_) {}
+    sync();
+    // Leaflet caches the container size; the map widens/narrows with the bar
+    if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
+  };
+  btn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
+  // a mode chip/featured deep link opened later should reveal its featured row
+  document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math").forEach((el) =>
+    el.addEventListener("change", () => el.checked && setOpen(true, false)));
+  sync();
+});

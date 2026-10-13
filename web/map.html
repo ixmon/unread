@@ -39,6 +39,20 @@
       crossorigin=""
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      // Old font-credits anchor now lives on the credits page.
+      if (location.hash === "#font-credits") location.replace("credits.html#fonts");
+      // Left bar: collapsed by default. ?filters=open|closed overrides (not written back, so deep links stay clean);
+      // otherwise the visitor's last choice (localStorage). Mode deep links (?mode=) open it so the featured row shows.
+      (function () {
+        var p = new URLSearchParams(location.search), f = p.get("filters"), open = false;
+        try { open = localStorage.getItem("ua.sidebar") === "open"; } catch (e) {}
+        if (p.get("mode")) open = true;
+        if (f === "open" || f === "1") open = true;
+        if (f === "closed" || f === "0") open = false;
+        document.documentElement.classList.toggle("sidebar-collapsed", !open);
+      })();
+    </script>
   </head>
   <body>
     <header class="app-header">
@@ -67,9 +81,9 @@
     <main class="app-main">
       <!-- EXPLORE -->
       <section id="view-explore" class="view active" aria-label="Explore catalog">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
           <div class="sidebar-section">
-            <h2>Search</h2>
+            <h2>Curated tablets</h2>
             <input
               type="search"
               id="search"
@@ -77,8 +91,12 @@
               placeholder="P-number, title, site, genre…"
               autocomplete="off"
             />
+            <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar-filters" aria-expanded="false">
+              <span class="ft-icon" aria-hidden="true">▸</span> Filters &amp; featured
+            </button>
+            <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine-draft English.</p>
           </div>
-          <div class="filters">
+          <div class="filters" id="sidebar-filters">
             <div class="filter-row">
               <label for="filter-genre">Genre</label>
               <select id="filter-genre"></select>
@@ -382,7 +400,7 @@
               >eBL converter</a
             >
             (Neo-Assyrian, Neo-Babylonian, Old Babylonian cursive / literary / monumental, Hittite; Noto otherwise);
-            the reader's “Cuneiform face” menu overrides it for your session (<a href="#font-credits">font credits</a>).
+            the reader's “Cuneiform face” menu overrides it for your session (<a href="credits.html#fonts">font credits</a>).
             Offline ATF→Unicode uses a vendored eBL reading map; optional live conversion hits the
             eBL signs API.
           </p>
@@ -392,32 +410,11 @@
             the English column is ready for line-aligned output.
           </p>
           <div class="credits">
-            <strong>Credits &amp; data</strong>
-            <ul>
-              <li>
-                Catalogue &amp; ATF: <a href="https://cdli.earth/" target="_blank" rel="noopener">CDLI</a>
-                (cdli-gh bulk dump)
-              </li>
-              <li id="font-credits">
-                Cuneiform fonts (chosen by period, following the
-                <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener">eBL cuneiform converter</a>):
-                <em>Assurbanipal</em> (Neo-Assyrian), <em>Esagil</em> (Neo-Babylonian), <em>Santakku</em> and
-                <em>SantakkuM</em> (Old Babylonian cursive / monumental), <em>UllikummiA</em> (Hittite): fonts created by
-                Sylvie Vanséveren, available on the
-                <a href="https://hethport.net/cuneifont/" target="_blank" rel="noopener">Hethitologie Portal Mainz</a>
-                (free for scholarly use; files as distributed by
-                <a href="https://github.com/ElectronicBabylonianLiterature/ebl-frontend" target="_blank" rel="noopener">eBL</a>).
-                <em>OB Freie</em> (Old Babylonian literary) by Corvin R. Ziegeler / Institut für Altorientalistik, FU Berlin
-                (<a href="https://doi.org/10.17169/refubium-44983" target="_blank" rel="noopener">publication</a>,
-                <a href="fonts/OFL-OBFreie.txt">SIL OFL 1.1</a>).
-                <em>Noto Sans Cuneiform</em> by the Noto project (<a href="fonts/OFL-NotoSansCuneiform.txt">SIL OFL 1.1</a>) for other periods and missing signs.
-              </li>
-              <li>Map: label-free shaded relief rendered from <a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model" target="_blank" rel="noopener">NOAA ETOPO 2022</a> (public domain) and <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> (public domain); no modern roads, borders or labels</li>
-              <li>
-                ATF→EN model research: sibling repos <code>atf-translate-test</code>,
-                <code>deep-cuneiform</code>
-              </li>
-            </ul>
+            <p>
+              <strong>Credits &amp; data.</strong> The catalogue and texts come from CDLI, ORACC, eBL, TLHdig and Achemenet;
+              the tablets themselves from museums around the world. Fonts, map data, software and licences are on the
+              <a href="credits.html">credits &amp; thanks</a> page.
+            </p>
             <p style="margin-top: 0.75rem">
               CDLI “no translation” means not recorded in CDLI — some works are published in RINAP,
               ETCSL, ORACC, etc. The catalog flags likely known projects.
