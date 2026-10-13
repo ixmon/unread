@@ -234,7 +234,7 @@ function blend(){
   wx[MAPS[i].x]+=1-e; wy[MAPS[i].y]+=1-e; wx[MAPS[j].x]+=e; wy[MAPS[j].y]+=e;
   return {i,j,e,wx,wy};
 }
-const PAD = {l:118,r:30,t:30,b:60};
+const PAD = {l:118,r:30,t:30,b:72};
 function draw(){
   if(!D) return;
   const dpr = devicePixelRatio||1, W = innerWidth, H = innerHeight;
@@ -281,7 +281,7 @@ function overlay(B,W,H,dpr){
     if (m.y>2){ const n=(m.y===3?D.genres:D.states).length; for(let k=1;k<n;k++){const y=Y(k/n);if(!inY(y))continue;ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();} }
     if (m.x>2){ const n=(m.x===3?D.genres:D.states).length; for(let k=1;k<n;k++){const x=X(k/n);if(!inX(x))continue;ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,H-PAD.b);ctx.stroke();} }
     ctx.fillStyle='#d8c08a'; ctx.textAlign='center'; ctx.font='12.5px "IBM Plex Sans", sans-serif';
-    ctx.fillText(DIMNAME[m.x]+' →', W/2, H-PAD.b+40);
+    ctx.fillText(DIMNAME[m.x]+' →', W/2, H-PAD.b+36);
     ctx.save(); ctx.translate(18, H/2); ctx.rotate(-Math.PI/2); ctx.fillText(DIMNAME[m.y]+' →', 0, 0); ctx.restore();
     ctx.font = '11.5px "IBM Plex Sans", sans-serif';
   }
@@ -439,7 +439,7 @@ function openCard(i, push=true){ if (i<0 || i===undefined) return closeCard(push
     const hum = Array.isArray(e.human_en) ? e.human_en.filter(l=>l && l.en) : [];
     const lines = Array.isArray(e.lines) ? e.lines : [];
     if (hum.length) body = `<div class="muted">Human English${hum[0].author?` · ${esc(hum[0].author)}`:''}${e.src?` · via ${esc(e.src.toUpperCase())}`:''}</div><ol>`+hum.slice(0,6).map(l=>`<li><span class="ln">${esc(l.line||'')}</span>${esc(l.en)}</li>`).join('')+'</ol>'+(hum.length>6?`<div class="muted">…${hum.length-6} more lines</div>`:'');
-    else if (lines.some(l=>l.mt)) body = `<div class="muted">Machine translation, unreviewed${e.model?` (${esc(e.model)})`:''}</div><ol>`+lines.filter(l=>l.mt).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span>${esc(l.mt)}<div class="atf">${esc(l.atf||'')}</div></li>`).join('')+'</ol>';
+    else if (lines.some(l=>l.mt)) body = `<div class="muted">Machine translation, unreviewed${e.model?` (${esc(typeof e.model==='string'?e.model:(e.model.label||e.model.repo||''))})`.replace(' ()',''):''}</div><ol>`+lines.filter(l=>l.mt).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span>${esc(l.mt)}<div class="atf">${esc(l.atf||'')}</div></li>`).join('')+'</ol>';
     else if (lines.some(l=>l.atf)) body = `<div class="muted">Transliteration (ATF), no English yet</div><ol>`+lines.filter(l=>l.atf).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span><span class="atf">${esc(l.atf)}</span></li>`).join('')+'</ol>';
     else body = '<div class="muted">Catalogue entry only: no transliteration online.</div>';
     card.innerHTML = `<button class="x" title="Close (Esc)" onclick="closeCard()">×</button><h3>${esc(e0.designation||e.designation||id)}</h3>`+
