@@ -15,6 +15,11 @@ Sources (all local, nothing invented):
       2. ORACC ePSD2 Sumerian glossary (gloss-sux.json, CC0): guide words (cf[gw]) of lemmas whose *base*
          is written with this one sign, weighted by attestations; base readings resolved via eBL values,
          else via the OGSL reading index (source label says which),
+      2b. ePSD2 bases resolved directly via the OGSL index (any attestation count; <5 flagged),
+      2c. ORACC Akkadian glossaries (SAAo, RINAP, RIBo; CC0) logographic spellings,
+      2d. eBL public API sign logograms -> eBL dictionary guide words,
+      2e. Wiktionary Sumerian/Akkadian senses (CC BY-SA 4.0),
+      Full per-sign table with all sources: data/sign_glosses/sign_glosses.{json,csv}.
       3. fallback: English words that co-occur with the sign on CDLI line-aligned human translations,
          flagged 'inferred'.
   * OGSL (Oracc Global Sign List, ogsl-sl.json, CC0): extra readings (searchable) and Unicode where eBL lacks it.
@@ -158,7 +163,39 @@ for e in json.load(open(OL / "epsd2_bases.json")):
         if not sg: continue
         key = (e["cf"], e["gw"], e.get("pos", ""))
         eps[sg][key] += k; eps_via[sg][(key, via)] += k
-GLOSS, gcount = {}, collections.Counter()
+# ePSD2 bases resolved directly through the OGSL index (ePSD2 and OGSL share reading conventions); any count
+eps_og = collections.defaultdict(collections.Counter)
+for e in json.load(open(OL / "epsd2_bases.json")):
+    if e.get("pos") in PROPER or e["gw"] in BADGW: continue
+    for b, k in e["bases"]:
+        r = re.sub(r"\{[^}]*\}", "", b)
+        if k > 0 and OGI.get(r) in EBL_IDS: eps_og[OGI[r]][(e["cf"], e["gw"], e.get("pos", ""))] += k
+# ORACC Akkadian glossaries (SAAo, RINAP, RIBo; CC0): logographic spellings LOGO(-complement) -> cf[gw]
+def logo_sign(t):
+    if t in EBL_IDS: return t
+    if "|" + t + "|" in EBL_IDS: return "|" + t + "|"
+    if t in OGS and t in EBL_IDS: return t
+    o = OGI.get(t.lower())
+    return o if o in EBL_IDS else None
+akk = collections.defaultdict(collections.Counter); akk_proj = collections.defaultdict(set)
+for tok, cf, gw, pos, proj, k in json.load(open(OL / "akk/akk_logograms.json")):
+    if gw in BADGW: continue
+    sg = logo_sign(tok)
+    if sg: akk[sg][(cf, gw, pos)] += k; akk_proj[sg].add(proj)
+# Wiktionary (CC BY-SA 4.0) Sumerian / Akkadian senses, keyed by the sign's Unicode string
+WK = json.load(open(DC / "data/wiktionary/wikt_glosses.json"))
+AKKW = re.compile(r"[āēīūâêîûšṣṭḫ]")
+def wikt_for(ch):
+    best = []
+    for d in WK.get(ch or "", []):
+        if d["pos"] == "Determinative" or AKKW.search(d["def"]): continue
+        best.append((0 if d["lang"] == "Sumerian" else 1, d))
+    return [d for _, d in sorted(best, key=lambda t: t[0])]
+EBLG = json.load(open(DC / "data/ebl/ebl_logogram_glosses.json"))  # eBL API sign logograms -> eBL dictionary guide words
+MODEL = {}
+MF = ROOT / "data/sign_glosses/model_inferred.json"
+if MF.exists(): MODEL = json.load(open(MF))
+GLOSS, gcount, ALLSRC = {}, collections.Counter(), collections.defaultdict(list)
 for s in signs:
     sid = s["_id"]
     if s.get("logograms"):  # eBL logogram meanings, if this copy ever carries them
@@ -175,6 +212,32 @@ for s in signs:
             GLOSS[sid] = {"g": keep_[0][0][1], "src": src, "kind": "epsd2",
                           "list": [{"cf": k[0], "gw": k[1], "pos": k[2], "n": n} for k, n in keep_]}
             gcount["epsd2-ogsl" if "OGSL" in src else "epsd2"] += 1; continue
+    c = eps_og.get(sid)
+    if c:
+        top = c.most_common(); mx = top[0][1]
+        keep_ = [(k, n) for k, n in top if n >= 0.05 * mx][:5]
+        low = sum(c.values()) < 5
+        GLOSS[sid] = {"g": keep_[0][0][1], "src": "ORACC ePSD2 glossary (reading via OGSL" + (", <5 attestations)" if low else ")"),
+                      "kind": "epsd2", "list": [{"cf": k[0], "gw": k[1], "pos": k[2], "n": n} for k, n in keep_]}
+        gcount["epsd2-ogsl-direct"] += 1; continue
+    c = akk.get(sid)
+    if c:
+        top = c.most_common(); mx = top[0][1]
+        keep_ = [(k, n) for k, n in top if n >= 0.05 * mx][:5]
+        GLOSS[sid] = {"g": keep_[0][0][1], "src": "ORACC Akkadian glossaries, logogram (" + ", ".join(sorted(akk_proj[sid])) + ")",
+                      "kind": "oracc-akk", "list": [{"cf": k[0], "gw": k[1], "pos": k[2], "n": n} for k, n in keep_]}
+        gcount["oracc-akk"] += 1; continue
+    if sid in EBLG:
+        e0 = EBLG[sid]
+        GLOSS[sid] = {"g": e0[0]["guideWord"], "src": "eBL dictionary guide word (eBL API sign logograms)", "kind": "ebl",
+                      "list": [{"cf": " ".join(x.get("lemma") or []), "gw": x["guideWord"], "pos": " ".join(x.get("pos") or [])} for x in e0[:5]]}
+        gcount["ebl"] += 1; continue
+    ch = uchar(s) or ((OGS.get(sid) or {}).get("utf8"))
+    w = wikt_for(ch)
+    if w:
+        GLOSS[sid] = {"g": w[0]["def"].split(",")[0].strip()[:40], "src": "Wiktionary (%s, CC BY-SA 4.0)%s" % (w[0]["lang"], " - sign sequence" if len(ch) > 1 else ""),
+                      "kind": "wiktionary", "list": [{"gw": d["def"], "pos": d["pos"], "lang": d["lang"]} for d in w[:5]]}
+        gcount["wiktionary"] += 1; continue
     L = gla_lines[sid]
     if L >= 30:
         cand = []
@@ -187,6 +250,10 @@ for s in signs:
             GLOSS[sid] = {"g": cand[0][0], "src": "co-occurrence (inferred)", "kind": "cooc",
                           "list": [{"gw": w, "n": k, "lift": l} for w, k, l in cand], "lines": L}
             gcount["cooc"] += 1; continue
+    m = MODEL.get(sid)
+    if m and m.get("g"):
+        GLOSS[sid] = {"g": m["g"], "src": m["src"], "kind": "model", "list": [{"gw": m["g"]}]}
+        gcount["model"] += 1; continue
     gcount["none"] += 1
 print("gloss coverage", dict(gcount), file=sys.stderr)
 def og_vals(sid):
@@ -214,6 +281,12 @@ for x in index:
     x["ov"] = ov
     if not x["cp"] and x["u"]: x["cp"] = ["U+%X" % ord(c) for c in x["u"]]
     if not x["uname"] and x["u"]: x["uname"] = " / ".join(unicodedata.name(c, "") for c in x["u"]) or None
+# Unread Cuneiform (OFL fork of Noto) composes many no-Unicode compounds at private-use codepoints
+UC = Path("/home/darkstar/cursor/unread-cuneiform/data/compounds.json")
+if UC.exists():
+    pua = {c["sign"]: chr(int(c["pua"][2:], 16)) for c in json.load(open(UC))["composed"]}
+    for x in index:
+        if not x["u"] and x["id"] in pua: x["u"], x["uc"] = pua[x["id"]], True
 index.sort(key=lambda x: -x["n"])
 detail = {}
 for sg, (disp, arch) in SHOW.items():
@@ -238,9 +311,35 @@ for sg, (disp, arch) in SHOW.items():
     detail[ascii_name(sg)] = {"id": sg, "display": disp, "u": uchar(s), "archaic": imgs,
         "top_words": words[sg].most_common(15), "langs": by_lang[sg].most_common(8),
         "sites": [{"site": p, "n": k, "ll": siteLL[p]} for p, k in sites[sg].most_common(25)], "periods": per}
-meta = {"built_from": "corpus.sqlite (read-only) + eBL sign list (vendored test data) + OGSL + ORACC ePSD2 glossary + CDLI proto-cuneiform drawings",
+meta = {"built_from": "corpus.sqlite (read-only) + eBL sign list (vendored test data) + OGSL + ORACC ePSD2 + SAAo/RINAP/RIBo glossaries + eBL API + Wiktionary + CDLI proto-cuneiform drawings",
         "periods": BNAMES, "texts": len(keep), "aligned_lines": eng_n, "reading_conflicts_skipped": conflicts,
         "gloss_coverage": dict(gcount), "ogsl_timestamp": OG.get("UTC-timestamp")}
+GD = ROOT / "data/sign_glosses"; GD.mkdir(parents=True, exist_ok=True)
+rows = []
+for s in signs:
+    sid = s["_id"]; ch = uchar(s) or ((OGS.get(sid) or {}).get("utf8")); G = GLOSS.get(sid)
+    srcs = []
+    for kind, c, lab in (("epsd2", eps.get(sid), "ORACC ePSD2 glossary (CC0)"), ("epsd2-ogsl", eps_og.get(sid), "ORACC ePSD2 glossary via OGSL (CC0)"),
+                         ("oracc-akk", akk.get(sid), "ORACC SAAo/RINAP/RIBo Akkadian glossaries (CC0)")):
+        if c: srcs.append({"kind": kind, "source": lab, "senses": [{"cf": k[0], "gw": k[1], "pos": k[2], "n": n} for k, n in c.most_common(8)]})
+    if sid in EBLG: srcs.append({"kind": "ebl", "source": "eBL API logograms -> eBL dictionary guide words", "senses": [{"cf": " ".join(x.get("lemma") or []), "gw": x["guideWord"], "pos": " ".join(x.get("pos") or [])} for x in EBLG[sid][:8]]})
+    w = wikt_for(ch)
+    if w: srcs.append({"kind": "wiktionary", "source": "en.wiktionary.org (CC BY-SA 4.0)", "senses": [{"gw": d["def"], "pos": d["pos"], "lang": d["lang"]} for d in w[:8]]})
+    if G and G["kind"] == "cooc": srcs.append({"kind": "cooc", "source": "CDLI line-aligned co-occurrence (inferred)", "senses": G["list"]})
+    if sid in MODEL: srcs.append({"kind": "model", "source": MODEL[sid]["src"], "senses": [{"gw": MODEL[sid]["g"]}]})
+    rows.append({"sign": sid, "unicode": ch, "readings": [v["value"] + ("" if v["subIndex"] in (1, None) else str(v["subIndex"])) for v in s["values"]],
+                 "corpus_count": tot[sid], "gloss": G["g"] if G else None, "gloss_kind": G["kind"] if G else None,
+                 "gloss_source": G["src"] if G else None, "all_sources": srcs})
+json.dump({"meta": {"description": "Unread Atlas sign-to-English-gloss table (eBL sign list ids). One row per sign; 'gloss' is the displayed choice, 'all_sources' keeps every candidate with its source. Kinds 'cooc' and 'model' are inferred, not dictionary meanings.",
+                    "licenses": {"ORACC (ePSD2, OGSL, SAAo, RINAP, RIBo)": "CC0", "eBL API guide words": "short guide words from eBL (LMU) public API, attributed",
+                                 "Wiktionary": "CC BY-SA 4.0 (attribution + share-alike apply to rows using it)", "eBL sign list": "MIT (ebl-api repo test data)"},
+                    "coverage": dict(gcount)}, "signs": rows}, open(GD / "sign_glosses.json", "w"), ensure_ascii=False, indent=1)
+import csv
+with open(GD / "sign_glosses.csv", "w", newline="") as f:
+    wr = csv.writer(f); wr.writerow(["sign", "unicode", "readings", "corpus_count", "gloss", "gloss_kind", "gloss_source", "other_glosses"])
+    for r in rows:
+        oth = "; ".join(sorted({x["gw"] for sc in r["all_sources"] for x in sc["senses"] if x.get("gw") and x["gw"] != r["gloss"]})[:8])
+        wr.writerow([r["sign"], r["unicode"] or "", " ".join(r["readings"]), r["corpus_count"], r["gloss"] or "", r["gloss_kind"] or "", r["gloss_source"] or "", oth])
 OUT.mkdir(parents=True, exist_ok=True)
 json.dump({"meta": meta, "signs": index}, open(OUT / "signs_index.json", "w"), ensure_ascii=False, separators=(",", ":"))
 json.dump({"meta": meta, "detail": detail}, open(OUT / "signs_detail.json", "w"), ensure_ascii=False, separators=(",", ":"))
