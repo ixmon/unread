@@ -1,0 +1,12 @@
+const {chromium}=require('/tmp/mshot/node_modules/playwright-core');const D='/home/darkstar/cursor/mockup-shots/g5/';require('fs').mkdirSync(D,{recursive:true});
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1400,height:1000}});
+await p.goto('http://localhost:8791/mockups/g-signs.html?draw=1');await p.waitForFunction(()=>window.__drawReady,null,{timeout:60000});
+const put=async(js,tool)=>{await p.evaluate(([js,tool])=>{const P=window.__pad;P.items.length=0;eval(js).forEach(i=>P.items.push(i));if(tool)P.setTool(tool);P.redraw();P.match()},[js,tool]);await p.waitForTimeout(300)};
+await p.screenshot({path:D+'g5-pad-empty.png'});
+await put(`(()=>{const o=[],W=(a,b)=>({t:'wedge',p:[a,b],w:8});for(const y of [95,225])for(const x of [60,100,140,180])o.push(W([x+36,y-40],[x,y]),W([x+36,y+40],[x,y]));for(const y of [95,225])o.push(W([228,y-50],[228,y+50]));return o})()`,'wedge');
+await p.screenshot({path:D+'g5-wedge-sze.png'});
+await put(`[0,45,90,135].map(d=>{const t=d*Math.PI/180;return {t:'line',p:[[110-60*Math.cos(t),120-60*Math.sin(t)],[110+60*Math.cos(t),120+60*Math.sin(t)]],w:4}})`,'line');
+await p.screenshot({path:D+'g5-thin-an-small.png'});
+await p.click('#fit');await p.waitForTimeout(300);await p.screenshot({path:D+'g5-thin-an-fit.png'});
+await p.evaluate(()=>{const P=window.__pad;P.items.push({t:'erase',p:[[160,40],[160,120]],w:14});P.setTool('erase');P.redraw();P.match()});await p.waitForTimeout(300);
+await p.screenshot({path:D+'g5-eraser.png'});await b.close()})();

@@ -39,8 +39,8 @@ h2{font-family:var(--font-serif);font-weight:500;font-size:19px;margin:0 0 10px;
 .tile .eg{font-size:11.5px;color:#9fd3f0;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:15px}.tile .eg.inf{color:var(--text-faint)}
 .glo td{padding:3px 10px 3px 0}.srcl{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;border:1px solid var(--border-soft);color:var(--text-dim);margin-left:6px}
 .drawwrap{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin:10px 0 16px}
-.pad{background:#f3ead8;border-radius:12px;touch-action:none;cursor:crosshair;box-shadow:0 0 0 1px var(--border-soft)}
-.padbar{display:flex;gap:8px;margin-top:8px}.drawres{flex:1;min-width:320px}
+.pad{background:var(--bg-elev);border-radius:12px;touch-action:none;cursor:crosshair;box-shadow:0 0 0 1px var(--border-soft)}
+.padbar{display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap}.small{font-size:12px}.tool{background:var(--bg-panel);color:var(--text-dim);border:1px solid var(--border-soft);border-radius:8px;padding:5px 10px;font-size:12.5px;cursor:pointer}.tool.on{color:#08121e;background:#f0e2c4;border-color:#f0e2c4}#thk{vertical-align:middle;width:110px}.drawres{flex:1;min-width:320px}
 .tile .ct{font-size:10.5px;color:var(--text-faint)}.tile.star::after{content:"★";position:absolute;top:5px;right:8px;color:var(--gold);font-size:12px}
 .spark{display:flex;gap:1px;height:14px;align-items:flex-end;justify-content:center;margin-top:4px}.spark i{width:7px;background:var(--lapis);border-radius:1px}
 .card{background:var(--bg-elev);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px}
@@ -92,27 +92,50 @@ function go(u){history.pushState(null,"",u);route();scrollTo(0,0)}
 function route(){const q=new URLSearchParams(location.search);q.get("sign")?detail(q.get("sign")):q.get("draw")?drawPage():index(q.get("q")||"")}
 let DRAWP=null;
 async function drawPage(){
+  const B2='style="background:transparent;border:1px solid var(--sky);color:var(--sky)"';
   document.getElementById("app").innerHTML=`<p><a href="g-signs.html" onclick="go(this.href);return false">← All signs</a></p><h1>Draw a sign</h1>
-  <p class="muted">Sketch the sign as you'd see it in print (Neo-Assyrian / Noto style works best). Matches update as you draw; click one to open it.</p>
+  <p class="muted">Sketch the sign as you'd see it in print (Neo-Assyrian / Noto style works best), or stamp wedges with the Wedge tool. Matches update as you draw; click one to open it.</p>
   <div class="drawwrap"><div><canvas id="pad" class="pad" width="320" height="320"></canvas>
-  <div class="padbar"><button class="sbtn sm" id="undo">Undo</button><button class="sbtn sm" id="clr" style="background:transparent;border:1px solid var(--sky);color:var(--sky)">Clear</button></div>
+  <div class="padbar tools"><button class="tool on" data-t="free" title="Freehand pen">✎ Pen</button><button class="tool" data-t="line" title="Click-drag a straight segment">╱ Line</button><button class="tool" data-t="wedge" title="Drag to stamp a wedge: head at the start, tail along the drag">▶ Wedge</button><button class="tool" data-t="erase" title="Eraser">⌫ Eraser</button></div>
+  <div class="padbar"><label class="faint small">Thickness <input type="range" id="thk" min="2" max="24" value="8"> <span id="thkv">8</span></label><label class="faint small"><input type="checkbox" id="snap" checked> snap 15°</label></div>
+  <div class="padbar"><button class="sbtn sm" id="undo">Undo</button><button class="sbtn sm" id="clr" ${B2}>Clear</button><button class="sbtn sm" id="fit" ${B2} title="Scale and centre to the box the stored glyphs use">Fit</button></div>
   <p class="note" id="dstat">Loading sign shapes…</p></div>
   <div class="drawres"><div class="grid" id="dres"></div></div></div>${foot()}`;
-  const cv=document.getElementById("pad"),c=cv.getContext("2d",{willReadFrequently:true});const strokes=[];let cur=null,tmr=null;
-  function redraw(){c.clearRect(0,0,cv.width,cv.height);c.strokeStyle="#000";c.lineCap=c.lineJoin="round";c.lineWidth=14;
-    for(const st of strokes){c.beginPath();st.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));if(st.length==1)c.lineTo(st[0][0]+.1,st[0][1]);c.stroke()}}
+  const cv=document.getElementById("pad"),c=cv.getContext("2d",{willReadFrequently:true});const items=[];let cur=null,tmr=null,tool="free";
+  const INK="#f0e2c4",thk=document.getElementById("thk"),snap=document.getElementById("snap");
+  document.querySelectorAll(".tool").forEach(b=>b.onclick=()=>{tool=b.dataset.t;document.querySelectorAll(".tool").forEach(x=>x.classList.toggle("on",x===b));snap.parentNode.style.opacity=tool==="line"||tool==="wedge"?1:.45});
+  thk.oninput=()=>{document.getElementById("thkv").textContent=thk.value};
+  function snapPt(a,b){if(!snap.checked)return b;const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),st=Math.PI/12,t=Math.round(Math.atan2(dy,dx)/st)*st;return[a[0]+L*Math.cos(t),a[1]+L*Math.sin(t)]}
+  function wedgePoly(a,b){const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L,nx=-uy,ny=ux,hw=.42*L,hl=.32*L,tw=.07*L;
+    return[[a[0]+nx*hw/2,a[1]+ny*hw/2],[a[0]+ux*hl+nx*tw/2,a[1]+uy*hl+ny*tw/2],b,[a[0]+ux*hl-nx*tw/2,a[1]+uy*hl-ny*tw/2],[a[0]-nx*hw/2,a[1]-ny*hw/2]]}
+  // paint items on ctx; wmin = minimum stroke width (used for matching so thin strokes still fill grid cells)
+  function paint(x,list,col,wmin){x.lineCap=x.lineJoin="round";
+    for(const it of list){x.globalCompositeOperation=it.t==="erase"?"destination-out":"source-over";x.fillStyle=x.strokeStyle=col;
+      if(it.t==="wedge"){const P=wedgePoly(it.p[0],it.p[it.p.length-1]);x.beginPath();P.forEach(([px,py],i)=>i?x.lineTo(px,py):x.moveTo(px,py));x.closePath();x.fill();
+        if(wmin){x.lineWidth=wmin*.5;x.stroke()}continue}
+      x.lineWidth=it.t==="erase"?it.w*1.6:Math.max(it.w,wmin||0);x.beginPath();it.p.forEach(([px,py],i)=>i?x.lineTo(px,py):x.moveTo(px,py));if(it.p.length==1)x.lineTo(it.p[0][0]+.1,it.p[0][1]);x.stroke()}
+    x.globalCompositeOperation="source-over"}
+  function redraw(){c.clearRect(0,0,cv.width,cv.height);paint(c,items,INK,0)}
+  function box(list){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const it of list){if(it.t==="erase")continue;const pts=it.t==="wedge"?wedgePoly(it.p[0],it.p[it.p.length-1]):it.p;
+    const r=it.t==="wedge"?0:it.w/2;for(const[px,py]of pts){x0=Math.min(x0,px-r);y0=Math.min(y0,py-r);x1=Math.max(x1,px+r);y1=Math.max(y1,py+r)}}return x1<x0?null:[x0,y0,x1,y1]}
+  // Fit: same frame as SignDraw.toGrid (ink box → centred square with 4% margin each side)
+  function fit(){const bb=box(items);if(!bb)return;const S=Math.max(bb[2]-bb[0],bb[3]-bb[1]),side=S*1.08,k=cv.width/side,cx=(bb[0]+bb[2])/2,cy=(bb[1]+bb[3])/2;
+    for(const it of items){it.p=it.p.map(([px,py])=>[(px-cx)*k+cv.width/2,(py-cy)*k+cv.height/2]);it.w*=k}redraw();sched()}
+  const mcv=document.createElement("canvas");mcv.width=mcv.height=320;const mc=mcv.getContext("2d",{willReadFrequently:true});
+  function matchCanvas(){mc.clearRect(0,0,320,320);const bb=box(items);if(!bb)return mcv;const S=Math.max(bb[2]-bb[0],bb[3]-bb[1]);paint(mc,items,"#000",S*SignDraw.CFG.minStroke);return mcv}
   function pos(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]}
-  cv.onpointerdown=e=>{cv.setPointerCapture(e.pointerId);cur=[pos(e)];strokes.push(cur);redraw();sched()};
-  cv.onpointermove=e=>{if(!cur)return;cur.push(pos(e));redraw();sched()};
-  cv.onpointerup=cv.onpointercancel=()=>{cur=null;sched()};
-  document.getElementById("undo").onclick=()=>{strokes.pop();redraw();sched()};
-  document.getElementById("clr").onclick=()=>{strokes.length=0;redraw();sched()};
+  cv.onpointerdown=e=>{cv.setPointerCapture(e.pointerId);const p=pos(e);cur={t:tool,p:tool==="line"||tool==="wedge"?[p,p]:[p],w:+thk.value};items.push(cur);redraw();sched()};
+  cv.onpointermove=e=>{if(!cur)return;const p=pos(e);if(cur.t==="line"||cur.t==="wedge")cur.p[1]=snapPt(cur.p[0],p);else cur.p.push(p);redraw();sched()};
+  cv.onpointerup=cv.onpointercancel=()=>{if(cur&&cur.t==="wedge"&&Math.hypot(cur.p[1][0]-cur.p[0][0],cur.p[1][1]-cur.p[0][1])<4)items.pop();cur=null;redraw();sched()};
+  document.getElementById("undo").onclick=()=>{items.pop();redraw();sched()};
+  document.getElementById("clr").onclick=()=>{items.length=0;redraw();sched()};
+  document.getElementById("fit").onclick=fit;
   function sched(){clearTimeout(tmr);tmr=setTimeout(match,120)}
-  function match(){const out=document.getElementById("dres");if(!DRAWP||!strokes.length){out.innerHTML="";return}
-    const t0=performance.now(),q=SignDraw.prepQuery(cv);if(!q)return;const r=SignDraw.rank(q,DRAWP,24);
+  function match(){const out=document.getElementById("dres");if(!DRAWP||!items.some(i=>i.t!=="erase")){out.innerHTML="";return}
+    const t0=performance.now(),q=SignDraw.prepQuery(matchCanvas());if(!q)return;const r=SignDraw.rank(q,DRAWP,24);
     out.innerHTML=r.map(([a,sc])=>{const s=IDX.find(x=>x.a===a);return s?tile(s).replace('<div class="ct">',`<div class="ct">${(100*sc).toFixed(0)}% match · `):""}).join("");
     document.getElementById("dstat").textContent=`Top 24 of ${fmt(DRAWP.length)} glyph shapes · ${(performance.now()-t0).toFixed(0)} ms`}
-  window.__pad={strokes,redraw,match};
+  window.__pad={items,redraw,match,fit,matchCanvas,wedgePoly,setTool:t=>document.querySelector(`.tool[data-t="${t}"]`).click()};
   if(!DRAWP){const J=await (await fetch("data/signs_draw.json")).json();
     DRAWP=SignDraw.prepTemplates(J.t.map(([a,k,g8,g16,g32])=>({a,k,g:{8:g8,16:g16,32:g32||null}})))}
   document.getElementById("dstat").textContent=`${fmt(DRAWP.length)} glyph shapes loaded (Noto Sans Cuneiform + Esagil). Start drawing.`;window.__drawReady=1;match()}

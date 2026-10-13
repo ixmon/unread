@@ -27,7 +27,7 @@ function andc(a,b){let s=0;for(let i=0;i<a.length;i++)s+=pc(a[i]&b[i]);return s}
 // tolerant Dice: precision of q inside dilated t, recall of t inside dilated q
 function soft(q,t){const nq=q.c,nt=t.c;if(!nq||!nt)return 0;const p=andc(q.w,t.dw)/nq,r=andc(t.w,q.dw)/nt;return p+r?2*p*r/(p+r):0}
 function dice(q,t){const s=q.c+t.c;return s?2*andc(q.w,t.w)/s:0}
-const CFG={qthr:55,pre:1000,mix:{8:0.5,16:0.5,32:0.5}}; // share of soft (tolerant) vs exact Dice per resolution
+const CFG={minStroke:0.05,qthr:55,pre:1000,mix:{8:0.5,16:0.5,32:0.5}}; // share of soft (tolerant) vs exact Dice per resolution
 function sc(q,t,N){const m=CFG.mix[N];return m*soft(q,t)+(1-m)*dice(q,t)}
 function prep(bits,N){return{w:bitsToWords(bits),dw:bitsToWords(dilate(bits,N)),c:bits.reduce((a,b)=>a+b,0)}}
 function prepQuery(canvas){const q={};for(const N of RES){const b=toGrid(canvas,N,CFG.qthr);if(!b)return null;q[N]=prep(b,N)}return q}
