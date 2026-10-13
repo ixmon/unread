@@ -65,6 +65,9 @@
     {"font": "SantakkuM", "period": "old babylonian", "genre": "royal|monumental", "basis": "eBL: Old Babylonian Monumental"},
     {"font": "Santakku", "period": "old babylonian", "basis": "eBL: Old Babylonian (cursive)"}
   ],
+  "site_only": {
+    "UnreadCuneiform": {"family": "Unread Cuneiform", "file": "UnreadCuneiform.woff2", "format": "woff2", "label": "Composed signs (no Unicode)", "author": "The Noto Project Authors; modifications by Unread Atlas", "license": "SIL OFL 1.1", "license_file": "OFL-UnreadCuneiform.txt", "note": "Used only by signs.html; not offered in the reader font picker."}
+  },
   "excluded": [
     {"font": "Bisitun, Persepolis (Old Persian, S. Vanséveren)", "why": "Licence allows scholarly web use, but they only cover the Old Persian block (U+103A0-103DF): the site has no Old Persian ATF to Unicode converter and no Old Persian transliteration is shown, so they would be unused."},
     {"font": "UllikummiB, UllikummiC (Hittite variants, S. Vanséveren)", "why": "Not used by eBL; small partial sets (108 / 25 signs). UllikummiA covers Hittite."},

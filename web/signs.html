@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cuneiform sign dictionary · Unread Atlas</title>
+<meta name="description" content="Look up any of 2,493 cuneiform signs by name, reading, ATF, English meaning or Unicode, or draw it. See its readings over time, period forms, English glosses with sources, and where it was found." />
+<link rel="canonical" href="https://unreadatlas.com/signs.html" />
+<meta property="og:type" content="website" /><meta property="og:site_name" content="Unread Atlas" />
+<meta property="og:title" content="Cuneiform sign dictionary · Unread Atlas" /><meta property="og:url" content="https://unreadatlas.com/signs.html" />
+<meta property="og:image" content="https://unreadatlas.com/og.jpg" /><meta name="theme-color" content="#0f1114" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/static.css" />
+<style>
+@font-face{font-family:Santakku;src:url(fonts/Santakku.woff) format("woff")}
+@font-face{font-family:OBFreie;src:url(fonts/OBFreie.woff2) format("woff2")}
+@font-face{font-family:Assurbanipal;src:url(fonts/Assurbanipal.woff2) format("woff2")}
+@font-face{font-family:Esagil;src:url(fonts/Esagil.woff) format("woff")}
+@font-face{font-family:UllikummiA;src:url(fonts/UllikummiA.woff) format("woff")}
+@font-face{font-family:NotoCun;src:url(fonts/NotoSansCuneiform.woff2) format("woff2")}
+@font-face{font-family:UnreadCun;src:url(fonts/UnreadCuneiform.woff2) format("woff2")}
+:root{--lapis:#2f4f86;--lapis-soft:rgba(47,79,134,.25);--gold:#d6b25e;--clay:#c4784a;--sky:#8ec5ff}
+.chip{display:inline-flex;gap:6px;align-items:center;background:var(--bg-panel);border:1px solid var(--border);border-radius:999px;padding:4px 11px;font-size:12.5px;color:var(--text-dim)}
+.chip b{color:var(--text);font-weight:600}
+.muted{color:var(--text-dim)}.faint{color:var(--text-faint)}.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px}
+.spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.site-dot{stroke:#f2c9a6;stroke-width:1;fill:var(--accent);fill-opacity:.55}
+.signs-main{max-width:1180px;margin:0 auto;padding:26px 28px 60px;font-size:14px;line-height:1.45}
+.signs-main a.tile,.signs-main a.sbtn{text-decoration:none}
+body,input,button,.chip,.sbtn{font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif,NotoCun,UnreadCun}
+svg text{font-size:10px;fill:var(--text-faint)}
+body{background:radial-gradient(1200px 600px at 20% -10%,rgba(47,79,134,.22),transparent),var(--bg)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:30px;margin:0 0 4px}
+h2{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:19px;margin:0 0 10px;color:var(--gold)}
+.sbar{display:flex;gap:8px;margin:18px 0 8px}
+.sbar input{flex:1;background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:16px}
+.sbtn{background:var(--sky);color:#08121e;border:0;border-radius:10px;padding:0 20px;font-weight:600;cursor:pointer}
+.sbtn.sm{padding:6px 12px;font-size:12.5px;border-radius:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 18px}.chips .chip{cursor:pointer}.chips .chip:hover{border-color:var(--sky);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:10px}
+.tile{display:block;background:var(--bg-elev);border:1px solid var(--border-soft);border-radius:10px;padding:10px 8px 8px;text-align:center;color:var(--text);position:relative}
+.tile:hover{border-color:var(--gold);text-decoration:none;background:var(--bg-hover)}
+.tile .g{font-family:Assurbanipal,NotoCun,UnreadCun;font-size:40px;line-height:54px;height:54px;color:#f0e2c4;overflow:hidden;white-space:nowrap}
+.tile .nm{font-weight:600;font-size:13px}.tile .vv{font-size:11px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .eg{font-size:11.5px;color:#9fd3f0;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:15px}.tile .eg.inf{color:var(--text-faint)}
+.glo td{padding:3px 10px 3px 0}.srcl{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;border:1px solid var(--border-soft);color:var(--text-dim);margin-left:6px}
+.drawwrap{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin:10px 0 16px}
+.pad{background:var(--bg-elev);border-radius:12px;touch-action:none;cursor:crosshair;box-shadow:0 0 0 1px var(--border-soft)}
+.padbar{display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap}.small{font-size:12px}.tool{background:var(--bg-panel);color:var(--text-dim);border:1px solid var(--border-soft);border-radius:8px;padding:5px 10px;font-size:12.5px;cursor:pointer}.tool.on{color:#08121e;background:#f0e2c4;border-color:#f0e2c4}#thk{vertical-align:middle;width:110px}.drawres{flex:1;min-width:320px}
+.tile .ct{font-size:10.5px;color:var(--text-faint)}.tile.star::after{content:"★";position:absolute;top:5px;right:8px;color:var(--gold);font-size:12px}
+.spark{display:flex;gap:1px;height:14px;align-items:flex-end;justify-content:center;margin-top:4px}.spark i{width:7px;background:var(--lapis);border-radius:1px}
+.card{background:var(--bg-elev);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.hero{display:flex;gap:26px;align-items:center}
+.hero .big{font-family:Assurbanipal,NotoCun,UnreadCun;font-size:120px;line-height:1;color:#f3e3c3;text-shadow:0 0 30px rgba(214,178,94,.25);min-width:150px;text-align:center}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;font-size:13px}.kv b{color:var(--text-dim);font-weight:500}
+.forms{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.form{background:var(--bg-panel);border:1px solid var(--border-soft);border-radius:10px;padding:8px;text-align:center;min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.form .gl{font-size:56px;line-height:80px;color:#f3e3c3}.form img{max-width:100%;max-height:80px;filter:invert(.9) sepia(.4);margin:auto;border-radius:4px}
+.form .p{font-size:11.5px;font-weight:600;color:var(--gold)}.form .f{font-size:10.5px;color:var(--text-faint)}
+.form.gap{border-style:dashed;color:var(--text-faint);font-size:11.5px;justify-content:center}
+.vals span{display:inline-block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;background:var(--lapis-soft);border:1px solid #34507a;border-radius:5px;padding:1px 6px;margin:2px}
+.stack{display:flex;flex-direction:column;gap:6px}.row{display:grid;grid-template-columns:140px 1fr 70px;gap:10px;align-items:center;font-size:12.5px}
+.bar{display:flex;height:18px;border-radius:4px;overflow:hidden;background:var(--bg-panel)}.bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--text-dim);margin:8px 0}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}td,th{padding:5px 6px;border-bottom:1px solid var(--border-soft);text-align:left;vertical-align:top}th{color:var(--text-dim);font-weight:500}
+.gw{display:inline-block;background:rgba(106,155,122,.16);border:1px solid #3d5c48;border-radius:5px;padding:0 6px;margin:1px 2px;font-size:12px}
+.scripts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scr{background:var(--bg-panel);border:1px solid var(--border-soft);border-radius:10px;padding:10px 12px;font-size:12.5px}.scr b{color:var(--text)}.scr .tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+.scr.later{border-style:dashed;color:var(--text-faint)}
+.tag.adapt{color:var(--green)}.tag.analog{color:var(--warn)}.tag.later{color:var(--text-faint)}
+.note{font-size:11.5px;color:var(--text-faint);margin-top:8px}
+.srcfoot{font-size:11.5px;color:var(--text-faint);border-top:1px solid var(--border-soft);padding-top:14px;margin-top:30px}
+</style>
+</head>
+<body class="static-page">
+<header class="static-header">
+  <a class="brand" href="./">Unread Atlas</a>
+  <nav aria-label="Main">
+    <a class="nav-link" href="map.html">Explore &amp; map</a>
+    <a class="nav-link" href="browse.html">Browse</a>
+    <a class="nav-link active" href="signs.html" aria-current="page">Signs</a>
+    <a class="nav-link" href="t/index.html">Curated texts</a>
+    <a class="nav-link" href="translate.html">Translator</a>
+    <a class="nav-link" href="search.html">Search</a>
+    <a class="nav-link" href="credits.html">Credits</a>
+  </nav>
+</header>
+<main id="app" class="signs-main"><p class="muted"><span class="spinner"></span> loading sign list…</p></main>
+<footer class="static-footer">Unread Atlas · <a href="./">Home</a> · <a href="map.html">Map</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="search.html">Search</a> · <a href="credits.html#signs">Credits</a></footer>
+<script src="js/sign-draw.js"></script>
+<script>
+const PCOL=["#6b8fad","#2f4f86","#c4784a","#d6b25e","#6a9b7a","#9b6ab8","#b86a5a","#4fa3a5","#8a8f5a","#555"];
+const SHOW=["AN","KA","SZE","GUD","|SAL.TUG2|","GA2"];
+const FORMS=[["Archaic / Uruk","img","CDLI proto-cuneiform drawing (Englund, CC BY 4.0)"],["Early Dynastic",null,"no ED font in repo yet"],
+ ["Old Babylonian (cursive)","Santakku","Santakku, S. Vanséveren"],["OB literary","OBFreie","OBFreie, C. Ziegeler (OFL)"],["Hittite","UllikummiA","Ullikummi A, S. Vanséveren"],
+ ["Neo-Assyrian","Assurbanipal","Assurbanipal, S. Vanséveren"],["Neo-Babylonian","Esagil","Esagil, S. Vanséveren"],["Unicode reference","NotoCun","Noto Sans Cuneiform (OFL)"]];
+const LANG={sux:"Sumerian",akk:"Akkadian",hit:"Hittite",xhu:"Hurrian",uga:"Ugaritic",qpc:"proto-cuneiform",qeb:"Eblaite",elx:"Elamite",xur:"Urartian","?":"unknown",'':"unknown"};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>n.toLocaleString("en-US");
+let IDX,DET,META;
+// the reading to search for: the sign name's own reading if eBL lists it (AN → an), else the first eBL value
+const mainReading=s=>{const nm=norm(s.id||s.a).replace(/[|()]/g,"");return s.v.includes(nm)?nm:(s.v.find(v=>!/ₓ|x$/.test(v))||s.v[0]||"")};
+const norm=s=>s.toLowerCase().replace(/š/g,"sz").replace(/ĝ/g,"g").replace(/ḫ/g,"h").replace(/[₀-₉]/g,c=>"0123456789"["₀₁₂₃₄₅₆₇₈₉".indexOf(c)]).trim();
+async function boot(){
+  const [a,b]=await Promise.all([fetch("assets/signs/signs_index.json").then(r=>r.json()),fetch("assets/signs/signs_detail.json").then(r=>r.json())]);
+  IDX=a.signs;DET=b.detail;META=a.meta;window.__ready=1;route();
+}
+window.onpopstate=route;
+function go(u){history.pushState(null,"",u);route();scrollTo(0,0)}
+function route(){const q=new URLSearchParams(location.search);q.get("sign")?detail(q.get("sign")):q.get("draw")?drawPage():index(q.get("q")||"")}
+let DRAWP=null;
+async function drawPage(){
+  const B2='style="background:transparent;border:1px solid var(--sky);color:var(--sky)"';
+  document.getElementById("app").innerHTML=`<p><a href="signs.html" onclick="go(this.href);return false">← All signs</a></p><h1>Draw a sign</h1>
+  <p class="muted">Sketch the sign as you'd see it in print (Neo-Assyrian / Noto style works best), or stamp wedges with the Wedge tool. Matches update as you draw; click one to open it.</p>
+  <div class="drawwrap"><div><canvas id="pad" class="pad" width="320" height="320"></canvas>
+  <div class="padbar tools"><button class="tool on" data-t="free" title="Freehand pen">✎ Pen</button><button class="tool" data-t="line" title="Click-drag a straight segment">╱ Line</button><button class="tool" data-t="wedge" title="Drag to stamp a wedge: head at the start, tail along the drag">▶ Wedge</button><button class="tool" data-t="erase" title="Eraser">⌫ Eraser</button></div>
+  <div class="padbar"><label class="faint small">Thickness <input type="range" id="thk" min="2" max="24" value="8"> <span id="thkv">8</span></label><label class="faint small"><input type="checkbox" id="snap" checked> snap 15°</label></div>
+  <div class="padbar"><button class="sbtn sm" id="undo">Undo</button><button class="sbtn sm" id="clr" ${B2}>Clear</button><button class="sbtn sm" id="fit" ${B2} title="Scale and centre to the box the stored glyphs use">Fit</button></div>
+  <p class="note" id="dstat">Loading sign shapes…</p></div>
+  <div class="drawres"><div class="grid" id="dres"></div></div></div>${foot()}`;
+  const cv=document.getElementById("pad"),c=cv.getContext("2d",{willReadFrequently:true});const items=[];let cur=null,tmr=null,tool="free";
+  const INK="#f0e2c4",thk=document.getElementById("thk"),snap=document.getElementById("snap");
+  document.querySelectorAll(".tool").forEach(b=>b.onclick=()=>{tool=b.dataset.t;document.querySelectorAll(".tool").forEach(x=>x.classList.toggle("on",x===b));snap.parentNode.style.opacity=tool==="line"||tool==="wedge"?1:.45});
+  thk.oninput=()=>{document.getElementById("thkv").textContent=thk.value};
+  function snapPt(a,b){if(!snap.checked)return b;const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),st=Math.PI/12,t=Math.round(Math.atan2(dy,dx)/st)*st;return[a[0]+L*Math.cos(t),a[1]+L*Math.sin(t)]}
+  function wedgePoly(a,b){const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L,nx=-uy,ny=ux,hw=.42*L,hl=.32*L,tw=.07*L;
+    return[[a[0]+nx*hw/2,a[1]+ny*hw/2],[a[0]+ux*hl+nx*tw/2,a[1]+uy*hl+ny*tw/2],b,[a[0]+ux*hl-nx*tw/2,a[1]+uy*hl-ny*tw/2],[a[0]-nx*hw/2,a[1]-ny*hw/2]]}
+  // paint items on ctx; wmin = minimum stroke width (used for matching so thin strokes still fill grid cells)
+  function paint(x,list,col,wmin){x.lineCap=x.lineJoin="round";
+    for(const it of list){x.globalCompositeOperation=it.t==="erase"?"destination-out":"source-over";x.fillStyle=x.strokeStyle=col;
+      if(it.t==="wedge"){const P=wedgePoly(it.p[0],it.p[it.p.length-1]);x.beginPath();P.forEach(([px,py],i)=>i?x.lineTo(px,py):x.moveTo(px,py));x.closePath();x.fill();
+        if(wmin){x.lineWidth=wmin*.5;x.stroke()}continue}
+      x.lineWidth=it.t==="erase"?it.w*1.6:Math.max(it.w,wmin||0);x.beginPath();it.p.forEach(([px,py],i)=>i?x.lineTo(px,py):x.moveTo(px,py));if(it.p.length==1)x.lineTo(it.p[0][0]+.1,it.p[0][1]);x.stroke()}
+    x.globalCompositeOperation="source-over"}
+  function redraw(){c.clearRect(0,0,cv.width,cv.height);paint(c,items,INK,0)}
+  function box(list){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const it of list){if(it.t==="erase")continue;const pts=it.t==="wedge"?wedgePoly(it.p[0],it.p[it.p.length-1]):it.p;
+    const r=it.t==="wedge"?0:it.w/2;for(const[px,py]of pts){x0=Math.min(x0,px-r);y0=Math.min(y0,py-r);x1=Math.max(x1,px+r);y1=Math.max(y1,py+r)}}return x1<x0?null:[x0,y0,x1,y1]}
+  // Fit: same frame as SignDraw.toGrid (ink box → centred square with 4% margin each side)
+  function fit(){const bb=box(items);if(!bb)return;const S=Math.max(bb[2]-bb[0],bb[3]-bb[1]),side=S*1.08,k=cv.width/side,cx=(bb[0]+bb[2])/2,cy=(bb[1]+bb[3])/2;
+    for(const it of items){it.p=it.p.map(([px,py])=>[(px-cx)*k+cv.width/2,(py-cy)*k+cv.height/2]);it.w*=k}redraw();sched()}
+  const mcv=document.createElement("canvas");mcv.width=mcv.height=320;const mc=mcv.getContext("2d",{willReadFrequently:true});
+  function matchCanvas(){mc.clearRect(0,0,320,320);const bb=box(items);if(!bb)return mcv;const S=Math.max(bb[2]-bb[0],bb[3]-bb[1]);paint(mc,items,"#000",S*SignDraw.CFG.minStroke);return mcv}
+  function pos(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]}
+  cv.onpointerdown=e=>{cv.setPointerCapture(e.pointerId);const p=pos(e);cur={t:tool,p:tool==="line"||tool==="wedge"?[p,p]:[p],w:+thk.value};items.push(cur);redraw();sched()};
+  cv.onpointermove=e=>{if(!cur)return;const p=pos(e);if(cur.t==="line"||cur.t==="wedge")cur.p[1]=snapPt(cur.p[0],p);else cur.p.push(p);redraw();sched()};
+  cv.onpointerup=cv.onpointercancel=()=>{if(cur&&cur.t==="wedge"&&Math.hypot(cur.p[1][0]-cur.p[0][0],cur.p[1][1]-cur.p[0][1])<4)items.pop();cur=null;redraw();sched()};
+  document.getElementById("undo").onclick=()=>{items.pop();redraw();sched()};
+  document.getElementById("clr").onclick=()=>{items.length=0;redraw();sched()};
+  document.getElementById("fit").onclick=fit;
+  function sched(){clearTimeout(tmr);tmr=setTimeout(match,120)}
+  function match(){const out=document.getElementById("dres");if(!DRAWP||!items.some(i=>i.t!=="erase")){out.innerHTML="";return}
+    const t0=performance.now(),q=SignDraw.prepQuery(matchCanvas());if(!q)return;const r=SignDraw.rank(q,DRAWP,24);
+    out.innerHTML=r.map(([a,sc])=>{const s=IDX.find(x=>x.a===a);return s?tile(s).replace('<div class="ct">',`<div class="ct">${(100*sc).toFixed(0)}% match · `):""}).join("");
+    document.getElementById("dstat").textContent=`Top 24 of ${fmt(DRAWP.length)} glyph shapes · ${(performance.now()-t0).toFixed(0)} ms`}
+  window.__pad={items,redraw,match,fit,matchCanvas,wedgePoly,setTool:t=>document.querySelector(`.tool[data-t="${t}"]`).click()};
+  if(!DRAWP){const J=await (await fetch("assets/signs/signs_draw.json")).json();
+    DRAWP=SignDraw.prepTemplates(J.t.map(([a,k,g8,g16,g32])=>({a,k,g:{8:g8,16:g16,32:g32||null}})))}
+  document.getElementById("dstat").textContent=`${fmt(DRAWP.length)} glyph shapes loaded (Noto Sans Cuneiform + Esagil). Start drawing.`;window.__drawReady=1;match()}
+function search(q){
+  q=q.trim();if(!q)return IDX.slice(0,180);
+  const cps=[...q].filter(c=>c.codePointAt(0)>=0x12000&&c.codePointAt(0)<=0x1254F);
+  if(cps.length)return IDX.filter(s=>s.u&&cps.some(c=>s.u.includes(c)));
+  if(/^u\+?[0-9a-f]{5}$/i.test(q)){const h="U+"+q.replace(/^u\+?/i,"").toUpperCase();return IDX.filter(s=>s.cp.includes(h))}
+  const n=norm(q);
+  const ql=q.toLowerCase();
+  const gw=s=>s.gl.map(g=>g.gw.toLowerCase());
+  const exact=IDX.filter(s=>s.a.toLowerCase()===n||s.v.includes(n)||s.ov.includes(n));
+  const eng=IDX.filter(s=>!exact.includes(s)&&s.gs!=="cooc"&&gw(s).includes(ql));
+  const part=IDX.filter(s=>!exact.includes(s)&&!eng.includes(s)&&(s.a.toLowerCase().includes(n)||s.v.some(v=>v.startsWith(n))||s.ov.some(v=>v.startsWith(n))||(s.uname||"").toLowerCase().includes(n)||(ql.length>2&&gw(s).some(w=>w.startsWith(ql)))));
+  return exact.concat(eng,part).slice(0,240);
+}
+function tile(s){const mx=Math.max(1,...s.pb);const star=DET[s.a]?" star":"";
+ return `<a class="tile${star}" href="?sign=${encodeURIComponent(s.a)}" onclick="go(this.href);return false"><div class="g">${s.u?esc(s.u):'<span class="faint" style="font-size:12px">no Unicode</span>'}</div>
+ <div class="nm">${esc(s.id)}</div><div class="vv">${esc(s.v.slice(0,6).join(", "))}</div><div class="eg${s.gs==="cooc"?" inf":""}" title="${esc(s.gsrc||"no English gloss")}">${s.g?esc(s.g)+(s.gs==="cooc"?" ?":""):"&nbsp;"}</div><div class="ct">${fmt(s.n)} uses</div>
+ <div class="spark" title="${META.periods.join(' · ')}">${s.pb.map(v=>`<i style="height:${Math.max(1,14*v/mx)}px"></i>`).join("")}</div></a>`}
+function index(q){
+  const res=search(q);
+  document.getElementById("app").innerHTML=`<h1>Cuneiform sign dictionary</h1>
+  <p class="muted">${fmt(IDX.length)} signs from the eBL sign list, ranked by how often they appear across ${fmt(META.texts)} tablets in the Unread Atlas corpus. Each tile's bars show use by period (${META.periods.join(" → ")}).</p>
+  <form class="sbar" onsubmit="go('?q='+encodeURIComponent(this.q.value));return false"><input name="q" value="${esc(q)}" placeholder="Sign name (KA), reading (dug4), ATF (sze3), English (barley), U+12000 or paste 𒀭" autocomplete="off"><button class="sbtn">Search</button></form>
+  <div class="chips"><span class="faint" style="font-size:12px;padding-top:4px">Featured:</span>${SHOW.map(id=>{const d=Object.values(DET).find(x=>x.id===id||x.id.replace(/₂/g,"2").replace(/Š/g,"SZ")===id);const k=Object.keys(DET).find(k=>DET[k]===d);return d?`<span class="chip" onclick="go('?sign=${encodeURIComponent(k)}')"><b style="font-family:Assurbanipal,NotoCun,UnreadCun;font-size:16px">${esc(d.u||"")}</b>${esc(d.display)}</span>`:""}).join("")}
+  <span class="chip" onclick="go('?q=𒀭')">paste test: 𒀭</span><span class="chip" onclick="go('?q=dug4')">reading: dug4</span><span class="chip" onclick="go('?q=sze3')">ATF: sze3</span><span class="chip" onclick="go('?q=barley')">English: barley</span><span class="chip" onclick="go('?draw=1')" style="border-color:var(--sky);color:var(--sky)">✎ Draw a sign</span></div>
+  <p class="faint" style="font-size:12px">${q?`${res.length} match${res.length==1?"":"es"} for “${esc(q)}”`:"Most frequent signs"} · ★ = full detail page</p>
+  <div class="grid">${res.map(tile).join("")||'<p class="muted">No sign matches.</p>'}</div>${foot()}`;
+}
+function foot(){return `<footer class="srcfoot">Sources: English glosses from ORACC ePSD2 (CC0), ORACC Akkadian glossaries (CC0), the eBL dictionary, Wiktionary (CC BY-SA 4.0), or inferred from CDLI aligned English (marked “inferred”); OGSL (Oracc Global Sign List, CC0) extra readings and Unicode; eBL sign list (values &amp; concordance numbers), Unread Atlas corpus.sqlite (CDLI, ORACC, eBL, TLHdig, Achemenet; counts only, each tablet once), CDLI-aligned human English, CDLI proto-cuneiform sign drawings © R. K. Englund (CC BY 4.0). Fonts: Santakku, Assurbanipal, Esagil, Ullikummi A © Sylvie Vanséveren (free for academic use, unmodified); OBFreie © C. R. Ziegeler (OFL 1.1); Noto Sans Cuneiform (OFL 1.1); Unread Cuneiform (OFL 1.1, Noto fork) for composed no-Unicode signs. <a href="credits.html#signs">Full credits</a>.</footer>`}
+function detail(key){
+  const s=IDX.find(x=>x.a===key)||IDX.find(x=>x.a.toLowerCase()===key.toLowerCase());
+  if(!s){document.getElementById("app").innerHTML=`<p>Unknown sign “${esc(key)}”. <a href="signs.html">Back</a></p>`;return}
+  const d=DET[s.a];const U=s.u||"";
+  const forms=FORMS.map(([p,f,cr])=>{
+    if(f==="img"){const im=d&&d.archaic[0];return im?`<div class="form"><div class="p">${p}</div><img src="assets/signs/${esc(im.file.replace(/^img\/signs\//,"img/"))}" alt="${esc(im.name)}"><div class="f">${esc(im.name)} · ${cr}</div></div>`:`<div class="form gap">${p}<br>no archaic drawing matched</div>`}
+    if(!f)return `<div class="form gap"><div><b>${p}</b><br>${cr}</div></div>`;
+    if(s.uc&&f!=="NotoCun")return `<div class="form gap"><div><b>${p}</b><br>no glyph (no Unicode)</div></div>`;
+    if(s.uc)return `<div class="form"><div class="p">Unread Cuneiform (composed)</div><div class="gl" style="font-family:UnreadCun">${esc(U)}</div><div class="f">built from Noto glyphs (OFL)</div></div>`;
+    return `<div class="form"><div class="p">${p}</div><div class="gl" style="font-family:${f},NotoCun,UnreadCun">${esc(U)}</div><div class="f">${cr}</div></div>`}).join("");
+  const lists=Object.entries(s.lists).map(([k,v])=>`${k} ${esc(v)}`).join(" · ");
+  let html=`<p><a href="signs.html" onclick="go(this.href);return false">← All signs</a></p>
+  <div class="card hero"><div class="big">${esc(U)||"—"}</div><div style="flex:1"><h1>${esc(d?d.display:s.id)}</h1>
+  <div class="kv"><b>eBL name</b><span class="mono">${esc(s.id)}</span><b>Unicode</b><span class="mono">${s.cp.join(" ")||(s.uc?"none (shape composed in Unread Cuneiform, private-use U+"+s.u.codePointAt(0).toString(16).toUpperCase()+")":"none")} ${esc(s.uname||"")}</span>
+  <b>English</b><span>${s.g?`${esc(s.g)}<span class="srcl">${esc(s.gsrc)}</span>`:'<span class="faint">no gloss in our sources</span>'}</span>
+  <b>Sign lists</b><span>${lists||"—"}</span><b>Corpus uses</b><span>${fmt(s.n)} tokens resolved to this sign</span><b>Tablets (live)</b><span id="livecount" class="faint">checking…</span></div>
+  <div style="margin-top:10px;display:flex;gap:8px"><a class="sbtn sm" href="browse.html?q=${encodeURIComponent(U)}">Browse tablets with ${esc(U)}</a><a class="sbtn sm" href="search.html?q=${encodeURIComponent(mainReading(s)||s.a)}" style="background:transparent;border:1px solid var(--sky);color:var(--sky)">Search “${esc(mainReading(s)||s.a)}”</a></div></div></div>
+  ${s.gl.length?`<div class="card"><h2>English gloss <span class="srcl">${esc(s.gsrc)}</span></h2><table class="glo">${s.gs==="cooc"?s.gl.map(g=>`<tr><td><b>${esc(g.gw)}</b></td><td class="faint">${fmt(g.n)} aligned lines · ${g.lift}× usual rate</td></tr>`).join(""):s.gl.map(g=>`<tr><td class="mono">${esc(g.cf)}[${esc(g.gw)}]${esc(g.pos)}</td><td><b>${esc(g.gw)}</b></td><td class="faint">${fmt(g.n)} attestations written with this sign alone</td></tr>`).join("")}</table><p class="note">${s.gs==="cooc"?"Inferred: English words over-represented on CDLI human translations of lines containing this sign. Not a dictionary meaning.":"Guide words of ORACC ePSD2 Sumerian lemmas whose base is written with this single sign, ranked by attestations (CC0)."}</p></div>`:""}
+  <div class="card"><h2>Forms across periods</h2><div class="forms">${forms}</div><p class="note">Same Unicode character rendered in period fonts (the fonts that eBL uses); archaic shape from the CDLI proto-cuneiform sign list. Font glyphs are modern type designs, not tracings of specific tablets. No Early Dynastic or Ur III face is in the repo yet.</p></div>
+  <div class="card"><h2>Readings and values <span class="faint" style="font-size:12px;font-family:"IBM Plex Sans",sans-serif">(${s.v.length}, from the eBL sign list)</span></h2><div class="vals">${s.v.map(v=>`<span>${esc(v)}</span>`).join("")}</div>${s.ov.length?`<p class="note">Also in OGSL: ${s.ov.map(esc).join(", ")}</p>`:""}
+  <p class="note">The vendored eBL list gives values with sub-indices but does not mark which are logographic and which syllabic; below, use is inferred per token (uppercase in Akkadian/Hittite ATF = logogram, {…} = determinative). ₓ = value without a fixed index.</p></div>`;
+  if(d){
+    d.periods.forEach(p=>{if(p.period==="Archaic")p.readings=p.readings.map(([r,n])=>[r.replace(" (logogram)"," (archaic sign name)"),n])});
+    const all={};d.periods.forEach(p=>p.readings.forEach(([r,n])=>all[r]=(all[r]||0)+n));
+    const top=Object.entries(all).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);const col=r=>PCOL[top.indexOf(r)]??"#3a3f48";
+    const rows=d.periods.filter(p=>p.n).map(p=>{const other=p.n-p.readings.filter(([r])=>top.includes(r)).reduce((a,[,n])=>a+n,0);
+      return `<div class="row"><span>${p.period}</span><div class="bar">${p.readings.filter(([r])=>top.includes(r)).map(([r,n])=>`<i title="${esc(r)}: ${fmt(n)}" style="width:${100*n/p.n}%;background:${col(r)}"></i>`).join("")}<i style="width:${100*other/p.n}%;background:#3a3f48" title="other ${fmt(other)}"></i></div><span class="faint">${fmt(p.n)}</span></div>`}).join("");
+    const gl=d.periods.filter(p=>p.glosses.length).map(p=>`<tr><td>${p.period}</td><td>${p.glosses.map(([w,n,l])=>`<span class="gw" title="${n} lines, ${l}× the usual rate">${esc(w)}</span>`).join("")}</td><td class="faint">${fmt(p.gloss_lines)}</td></tr>`).join("");
+    const mx=Math.max(...d.sites.map(x=>x.n));
+    const dots=d.sites.map(x=>{const X=(x.ll[1]-26)/(56-26)*460,Y=(42-x.ll[0])/(42-24)*280;return (x.n>=mx*0.12?`<text x="${(X+8).toFixed(0)}" y="${(Y+3).toFixed(0)}">${esc(x.site.split(" (")[0])}</text>`:"")+`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="${(3+11*Math.sqrt(x.n/mx)).toFixed(1)}" class="site-dot" style="fill:var(--gold);stroke:#f3e3c3"><title>${esc(x.site)}: ${fmt(x.n)} tablets</title></circle>`}).join("");
+    html+=`<div class="card"><h2>Meaning over time</h2><div class="legend">${top.map(r=>`<span><i style="background:${col(r)}"></i>${esc(r)}</span>`).join("")}<span><i style="background:#3a3f48"></i>other</span></div>
+    <div class="stack">${rows}</div><p class="note">How the sign is read on tablets in each period (tokens, each tablet counted once across sources). Periods grouped from CDLI/ORACC labels. Hittite-language tablets mostly lack a period label in the corpus, so their uses appear under “By language”, not here.</p>
+    <h2 style="margin-top:18px">English words that travel with it</h2>${gl?`<table><tr><th>Period</th><th>Words over-represented in human English for lines with this sign</th><th>lines</th></tr>${gl}</table>`:'<p class="muted">Not enough line-aligned human English.</p>'}
+    <p class="note">Only CDLI translations aligned line-by-line (${fmt(META.aligned_lines)} lines). A word shows here if it appears at least 1.5× more often than usual; this is a co-occurrence signal, not a dictionary definition.</p></div>
+    <div class="two"><div class="card"><h2>Top words containing ${esc(U)}</h2><table><tr><th>Word (ATF)</th><th>uses</th><th></th></tr>${d.top_words.map(([w,n])=>`<tr><td class="mono">${esc(w)}</td><td>${fmt(n)}</td><td><a href="browse.html?q=${encodeURIComponent(w)}">browse</a> · <a href="search.html?q=${encodeURIComponent(w)}">search</a></td></tr>`).join("")}</table>
+    </div>
+    <div class="card"><h2>Where it was found</h2><svg viewBox="0 0 460 280" style="width:100%;background:#0b0d10;border-radius:8px">${dots}</svg>
+    <table style="margin-top:8px">${d.sites.slice(0,8).map(x=>`<tr><td>${esc(x.site)}</td><td>${fmt(x.n)} tablets</td></tr>`).join("")}</table>
+    <h2 style="margin-top:14px">By language</h2><div>${d.langs.map(([l,n])=>`<span class="chip"><b>${esc(LANG[l]||l)}</b>${fmt(n)}</span>`).join(" ")}</div></div></div>`;
+  } else html+=`<div class="card"><h2>Use by period</h2><div class="stack">${s.pb.map((v,i)=>`<div class="row"><span>${META.periods[i]}</span><div class="bar"><i style="width:${100*v/Math.max(1,...s.pb)}%;background:var(--lapis)"></i></div><span class="faint">${fmt(v)}</span></div>`).join("")}</div><p class="note">Full readings over time, glosses, words and find-spots are built so far for the ★ signs.</p></div>`;
+  html+=`<div class="card"><h2>Related scripts</h2><div class="scripts">
+  <div class="scr"><span class="tag adapt">cuneiform adaptation</span><br><b>Hittite</b><br>Hittite scribes adopted Mesopotamian cuneiform in the 17th–16th c. BCE and wrote Sumerian words (Sumerograms) and Akkadian words (Akkadograms) inside Hittite text. In the corpus: ${fmt((d&&(d.langs.find(l=>l[0]=="hit")||[])[1])||0)} uses in Hittite.</div>
+  <div class="scr"><span class="tag adapt">cuneiform adaptation</span><br><b>Elamite</b><br>Written in Akkadian-style cuneiform from the later 3rd millennium BCE; Achaemenid Elamite used a reduced set of signs (roughly a hundred or so).</div>
+  <div class="scr"><span class="tag adapt">cuneiform adaptation</span><br><b>Hurrian &amp; Urartian</b><br>Hurrian was written in cuneiform in the 2nd millennium BCE (e.g. the Mitanni letter from Amarna); Urartian royal inscriptions (9th–7th c. BCE) use Neo-Assyrian sign forms.</div>
+  <div class="scr"><span class="tag analog">analog, not descended</span><br><b>Ugaritic alphabet</b><br>A 30-letter alphabet (13th c. BCE) pressed into clay with a stylus. Its wedge shapes were made for the alphabet and are not taken from Mesopotamian signs.</div>
+  <div class="scr"><span class="tag analog">analog, not descended</span><br><b>Old Persian</b><br>A semi-syllabic script of Achaemenid inscriptions, wedge-shaped, with signs designed independently, not borrowed from Mesopotamian values.</div>
+  <div class="scr later"><span class="tag later">coming later</span><br><b>Linear A / Linear B · Hebrew · Greek</b><br>Planned slots for other early scripts. These are not related to cuneiform; they'd get their own dictionaries.</div>
+  </div><p class="note">Only historical relationships are shown here. We don't compare sign shapes across unrelated scripts.</p></div>${foot()}`;
+  document.getElementById("app").innerHTML=html;document.title=(d?d.display:s.id)+" · Cuneiform sign dictionary · Unread Atlas";liveCount(s);
+}
+// live: how many tablets on the site have this sign's main reading in their ATF (search API)
+const API=(location.protocol==="file:"||/^(localhost|127\.0\.0\.1)$/.test(location.hostname))?"https://unreadatlas.com/api":"/api";
+async function liveCount(s){const el=document.getElementById("livecount");if(!el)return;const r0=mainReading(s);if(!r0){el.textContent="no reading to search";return}
+  try{const r=await fetch(`${API}/search/ids?q=${encodeURIComponent(r0)}&in=atf`);const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);
+    if(document.getElementById("livecount")!==el)return;
+    el.innerHTML=`<a href="browse.html?q=${encodeURIComponent(r0)}&in=atf">${fmt(j.total)} tablets</a> have “${esc(r0)}” in their transliteration`;el.className=""}
+  catch(e){el.textContent="search unavailable";}}
+boot();
+</script>
+</body>
+</html>

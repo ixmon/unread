@@ -37,7 +37,7 @@ WEB = ROOT / "web"
 DATA = ROOT / "data"
 POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
 
-WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "credits.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "site.webmanifest", "css", "js", "fonts", "tiles", "t"]
+WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "credits.html", "signs.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "site.webmanifest", "css", "js", "fonts", "tiles", "t"]
 DATA_FILES = ["catalog.json", "atf_unicode_readings.json"]
 MAX_FILE = 100 * 1024 * 1024
 STATIC_META = '<meta name="unread-static" content="1" />'
@@ -182,7 +182,7 @@ def main() -> None:
     # fonts: every face in the rule table is shipped, and nothing else
     ft = json.loads((WEB / "fonts" / "fonts.json").read_text())
     shipped = {q.name for q in (out / "fonts").iterdir() if q.suffix in (".woff", ".woff2", ".ttf", ".otf")}
-    wanted = {f["file"] for f in ft["fonts"].values()}
+    wanted = {f["file"] for f in ft["fonts"].values()} | {f["file"] for f in ft.get("site_only", {}).values()}
     if shipped != wanted:
         fail(f"fonts in dist {sorted(shipped)} != fonts.json {sorted(wanted)}")
     for r in ft["rules"]:
