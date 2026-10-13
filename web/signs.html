@@ -6,7 +6,10 @@
 <meta name="description" content="Look up any of 2,493 cuneiform signs by name, reading, ATF, English meaning or Unicode, or draw it. See its readings over time, period forms, English glosses with sources, and where it was found." />
 <link rel="canonical" href="https://unreadatlas.com/signs.html" />
 <meta property="og:type" content="website" /><meta property="og:site_name" content="Unread Atlas" />
-<meta property="og:title" content="Cuneiform sign dictionary · Unread Atlas" /><meta property="og:url" content="https://unreadatlas.com/signs.html" />
+<meta property="og:title" content="Cuneiform sign dictionary · Unread Atlas" />
+<meta property="og:description" content="Look up any of 2,493 cuneiform signs by name, reading, ATF, English meaning or Unicode, or draw it. Readings over time, period forms and English glosses with sources." />
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Cuneiform sign dictionary · Unread Atlas" />
+<meta name="twitter:description" content="Look up any of 2,493 cuneiform signs by name, reading, ATF, English meaning or Unicode, or draw it. Readings over time, period forms and English glosses with sources." /><meta name="twitter:image" content="https://unreadatlas.com/og.jpg" /><meta property="og:url" content="https://unreadatlas.com/signs.html" />
 <meta property="og:image" content="https://unreadatlas.com/og.jpg" /><meta name="theme-color" content="#0f1114" />
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -103,7 +106,12 @@ const FORMS=[["Archaic / Uruk","img","CDLI proto-cuneiform drawing (Englund, CC 
 const LANG={sux:"Sumerian",akk:"Akkadian",hit:"Hittite",xhu:"Hurrian",uga:"Ugaritic",qpc:"proto-cuneiform",qeb:"Eblaite",elx:"Elamite",xur:"Urartian","?":"unknown",'':"unknown"};
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>n.toLocaleString("en-US");
-let IDX,DET,META;
+let IDX,DET,META,SPAGES=null;
+// canonical + "permanent page" link -> the static sign page (s/<slug>.html)
+async function setSignCanon(a){try{SPAGES=SPAGES||await fetch("assets/signs/sign-pages.json").then(r=>r.json());}catch(e){return}
+  const p=SPAGES[a],l=document.querySelector('link[rel="canonical"]');if(!p)return;if(l)l.href="https://unreadatlas.com/"+p;
+  const h=document.querySelector(".hero h1");if(h&&!document.getElementById("permalink"))h.insertAdjacentHTML("afterend",`<p id="permalink" class="note" style="margin:2px 0 8px"><a href="${p}">Permanent page for this sign →</a></p>`);}
+window.addEventListener("popstate",()=>{if(!new URLSearchParams(location.search).get("sign")){const l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/signs.html"}});
 // the reading to search for: the sign name's own reading if eBL lists it (AN → an), else the first eBL value
 const mainReading=s=>{const nm=norm(s.id||s.a).replace(/[|()]/g,"");return s.v.includes(nm)?nm:(s.v.find(v=>!/ₓ|x$/.test(v))||s.v[0]||"")};
 const norm=s=>s.toLowerCase().replace(/š/g,"sz").replace(/ĝ/g,"g").replace(/ḫ/g,"h").replace(/[₀-₉]/g,c=>"0123456789"["₀₁₂₃₄₅₆₇₈₉".indexOf(c)]).trim();
@@ -194,7 +202,7 @@ function foot(){return `<footer class="srcfoot">Sources: English glosses from OR
 function detail(key){
   const s=IDX.find(x=>x.a===key)||IDX.find(x=>x.a.toLowerCase()===key.toLowerCase());
   if(!s){document.getElementById("app").innerHTML=`<p>Unknown sign “${esc(key)}”. <a href="signs.html">Back</a></p>`;return}
-  const d=DET[s.a];const U=s.u||"";
+  const d=DET[s.a];const U=s.u||"";setSignCanon(s.a);
   const forms=FORMS.map(([p,f,cr])=>{
     if(f==="img"){const im=d&&d.archaic[0];return im?`<div class="form"><div class="p">${p}</div><img src="assets/signs/${esc(im.file.replace(/^img\/signs\//,"img/"))}" alt="${esc(im.name)}"><div class="f">${esc(im.name)} · ${cr}</div></div>`:`<div class="form gap">${p}<br>no archaic drawing matched</div>`}
     if(!f)return `<div class="form gap"><div><b>${p}</b><br>${cr}</div></div>`;

@@ -35,6 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 DATA = ROOT / "data"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
 
 WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "credits.html", "signs.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "site.webmanifest", "css", "js", "fonts", "tiles", "t"]
@@ -179,6 +180,10 @@ def main() -> None:
             fail(f"t/c/{cat['slug']}.html: missing machine-draft note or OG tags")
         report["categories"].append({"slug": cat["slug"], "texts": sum(1 for c in cur["texts"] if cat["slug"] in c.get("categories", []))})
 
+    # SEO wave 1: static tablet pages (human English), sign pages, sitemap index (scripts/build_seo_pages.py)
+    if os.environ.get("NO_SEO_PAGES") != "1":
+        import build_seo_pages
+        report["seo_pages"] = build_seo_pages.main_for(out)
     # fonts: every face in the rule table is shipped, and nothing else
     ft = json.loads((WEB / "fonts" / "fonts.json").read_text())
     shipped = {q.name for q in (out / "fonts").iterdir() if q.suffix in (".woff", ".woff2", ".ttf", ".otf")}

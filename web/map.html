@@ -7,12 +7,12 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <title data-site-title="Map">Map · Unread Atlas</title>
+    <title data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
     <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
     <link rel="canonical" href="https://unreadatlas.com/map.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
-    <meta property="og:title" content="Unread Atlas" />
+    <meta property="og:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta property="og:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta property="og:url" content="https://unreadatlas.com/map.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
@@ -21,7 +21,7 @@
     <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@roguesamurai" />
-    <meta name="twitter:title" content="Unread Atlas" />
+    <meta name="twitter:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta name="twitter:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
@@ -53,6 +53,10 @@
         document.documentElement.classList.toggle("sidebar-collapsed", !open);
       })();
     </script>
+<script>/* reader: point the canonical at the tablet's static page when one exists */
+(function(){var id=new URLSearchParams(location.search).get("id");if(!id)return;
+fetch("assets/tablet-pages.json").then(function(r){return r.ok?r.json():{}}).then(function(m){var p=m[id];if(!p)return;
+var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/"+p;}).catch(function(){});})();</script>
   </head>
   <body>
     <header class="app-header">
