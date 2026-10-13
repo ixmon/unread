@@ -256,7 +256,10 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 <title>{e(title)} · {e(SITE["name"])}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(canonical)}">
+<link rel="icon" href="{depth}favicon.ico" sizes="any">
 <link rel="icon" href="{depth}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{depth}apple-touch-icon.png">
+<link rel="manifest" href="{depth}site.webmanifest">
 {og_tags(title, desc, canonical, typ)}
 <link rel="stylesheet" href="{depth}css/styles.css">
 <link rel="stylesheet" href="{depth}css/static.css">{head_extra}
