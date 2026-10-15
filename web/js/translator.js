@@ -7,7 +7,7 @@
 //   ?model=<name>      -> a local folder web/models/<name>/ (no slash = local)
 //   ?dtype=fp32|q8     -> weights variant (default q8 = int8 *_quantized.onnx)
 //   ?revision=<sha>    -> pin a Hub revision (default DEFAULT_REVISION for the default model, else "main")
-//   ?id=P123456[&from=N] -> prefill the textarea with ATF lines of data/texts/<id>.json
+//   ?id=P123456[&from=N] -> prefill the textarea with ATF lines (bundled data/texts/<id>.json, else /api/text/<id>)
 //   window.UNREAD_TRANSLATOR_CONFIG = {model, dtype, revision, localModelPath, remoteHost} also works
 //   (remoteHost is for tests/mirrors only: a server laid out like huggingface.co/<model>/resolve/<rev>/…).
 export const DEFAULT_REMOTE_MODEL = "montycrypto/atf-to-english-onnx";
@@ -115,12 +115,59 @@ async function run() {
   window.__lastTranslations = rows.map((r) => r.querySelector(".res-en").textContent); // for tests
 }
 
-async function prefillFromText(id, from) {
-  if (!/^[A-Za-z0-9._-]+$/.test(id)) return;
+// Corpus API (same as search.html / map.html): same-origin /api on the live site, the public API elsewhere.
+const TEXT_API = (
+  params.get("textapi") || (location.protocol === "file:" ? "https://unreadatlas.com/api" : `${location.origin}/api`)
+).replace(/\/+$/, "");
+
+/** Bundled sample (data/texts/<id>.json) when the id is in the manifest, else null. */
+async function loadBundled(id) {
   try {
+    const man = await fetch("data/texts/manifest.json").then((r) => (r.ok ? r.json() : []));
+    if (!man.some((m) => m.id === id)) return null;
     const res = await fetch(`data/texts/${encodeURIComponent(id)}.json`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) return null;
     const t = await res.json();
+    return { ...t, atf_source: t.atf_source ? `CDLI, ${t.atf_source}` : "CDLI" };
+  } catch (_) {
+    return null;
+  }
+}
+
+/** /api/text/<id>, adapted to {id, designation, atf_source, lines:[{type,n,atf,surface}]}; or {withheld}. */
+async function loadFromApi(id) {
+  const res = await fetch(`${TEXT_API}/text/${encodeURIComponent(id).replace(/%3A/gi, ":")}`, { headers: { Accept: "application/json" } });
+  if (!res.ok) throw new Error(res.status === 404 ? "not found in the corpus" : `HTTP ${res.status}`);
+  const d = await res.json();
+  const eds = d.editions || [];
+  const hasAtf = (e) => !e.atf_withheld && Array.isArray(e.lines) && e.lines.some((l) => l.atf);
+  const ed = eds.find(hasAtf);
+  if (!ed) {
+    const why = [...new Set(eds.map((e) => e.atf_withheld && `${e.source?.name || e.src}: ${e.atf_withheld}`).filter(Boolean))];
+    return { id: d.id || id, designation: eds[0]?.designation, withheld: why.join(" ") || "No transliteration in the corpus for this tablet." };
+  }
+  return {
+    id: d.id || id,
+    designation: ed.designation,
+    atf_source: ed.source?.name || ed.src,
+    lines: ed.lines.filter((l) => l.atf).map((l) => ({ type: "line", n: l.n, atf: l.atf, surface: l.surface || "" })),
+  };
+}
+
+async function prefillFromText(id, from) {
+  if (!id || id.length > 200) return;
+  try {
+    const t = (await loadBundled(id)) || (await loadFromApi(id));
+    const src = $("#prefill-src");
+    if (t.withheld) {
+      $("#atf-input").value = ""; // don't leave the page's example ATF looking like this tablet's
+      if (src) {
+        src.hidden = false;
+        src.innerHTML = `<strong>No ATF to load for <a href="map.html?id=${encodeURIComponent(t.id)}">${escapeHtml(t.designation || t.id)}</a>.</strong> ` +
+          `${escapeHtml(t.withheld)} <a href="search.html?text=${encodeURIComponent(t.id)}">Catalogue record</a>`;
+      }
+      return setStatus(`ATF for ${id} can't be shown on this site.`);
+    }
     const all = (t.lines || []).filter((l) => l.type === "line" && l.atf);
     const start = Math.max(0, Math.min(from, all.length));
     const chunk = all.slice(start, start + PREFILL_LIMIT);
@@ -130,13 +177,12 @@ async function prefillFromText(id, from) {
     const SURF = { obverse: "o", reverse: "r" };
     const surf = (x) => (x ? SURF[x] ?? x.split(/\s+/).map((w) => w[0]).join("") : "");
     prefill = { text, labels: chunk.map((l) => `${surf(l.surface)} ${l.n ?? ""}`.trim()) };
-    const src = $("#prefill-src");
     if (src) {
       src.hidden = false;
       src.innerHTML = `Loaded ATF lines ${start + 1}–${start + chunk.length} of ${all.length} from
-        <a href="index.html?id=${encodeURIComponent(t.id)}">${escapeHtml(t.designation || t.id)}</a>
-        (transliteration: CDLI${t.atf_source ? `, ${escapeHtml(t.atf_source)}` : ""}).
-        ${start + chunk.length < all.length ? `<a href="?${new URLSearchParams({ ...Object.fromEntries(params), from: String(start + chunk.length) })}">Next ${Math.min(PREFILL_LIMIT, all.length - start - chunk.length)} lines</a>` : ""}`;
+        <a href="map.html?id=${encodeURIComponent(t.id)}">${escapeHtml(t.designation || t.id)}</a>
+        (transliteration: ${escapeHtml(t.atf_source || "CDLI")}).
+        ${start + chunk.length < all.length ? `<a href="?${escapeHtml(String(new URLSearchParams({ ...Object.fromEntries(params), from: String(start + chunk.length) })))}">Next ${Math.min(PREFILL_LIMIT, all.length - start - chunk.length)} lines</a>` : ""}`;
     }
   } catch (err) {
     setStatus(`Could not load ATF for ${id}: ${err.message || err}`);
