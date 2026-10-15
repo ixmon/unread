@@ -17,6 +17,15 @@ const IS_LOCAL_HOST =
 const STATIC_MODE =
   !API_PARAM && (!!document.querySelector('meta[name="unread-static"][content="1"]') || !IS_LOCAL_HOST);
 const TRANSLATOR_PAGE = "translate.html";
+/**
+ * Corpus API (same one search.html and browse.html use) for every tablet that is not one of the
+ * ~50 packaged samples under data/texts/. Same-origin /api on unreadatlas.com; previews served from
+ * another host proxy /api themselves (see .preview/serve.py) or pass ?textapi=https://unreadatlas.com/api.
+ */
+const TEXT_API = (
+  new URLSearchParams(location.search).get("textapi") ||
+  (location.protocol === "file:" ? "https://unreadatlas.com/api" : `${location.origin}/api`)
+).replace(/\/+$/, "");
 const TRANSLATE_CHUNK = 12; // lines per request (server max default 64)
 const TRANSLATE_DEFAULT_LIMIT = 48; // first-pass default; "continue" fills the rest
 
@@ -175,14 +184,24 @@ function renderKindChips() {
 }
 
 async function loadText(id) {
-  // Prefer packaged sample; fall back to thin catalog stub
-  try {
-    const res = await fetch(`${DATA_BASE}/texts/${id}.json`);
-    if (res.ok) return await res.json();
-  } catch (_) {
-    /* ignore */
+  // 1) packaged sample (data/texts/<id>.json, only ~50 of them)
+  if (!state._packagedIds?.length || state._packagedIds.includes(id)) {
+    try {
+      const res = await fetch(`${DATA_BASE}/texts/${encodeURIComponent(id)}.json`);
+      if (res.ok) return await res.json();
+    } catch (_) {
+      /* ignore */
+    }
   }
-  const item = state.catalog.items.find((x) => x.id === id);
+  // 2) the corpus API: every tablet browse.html / search.html can show (ATF + machine/human English)
+  try {
+    const fromApi = await loadTextFromApi(id);
+    if (fromApi) return fromApi;
+  } catch (e) {
+    console.warn("text API:", e);
+  }
+  // 3) thin catalog stub
+  const item = state.catalog?.items?.find((x) => x.id === id);
   if (!item) return null;
   return {
     ...item,
@@ -193,6 +212,112 @@ async function loadText(id) {
       "Full ATF not packaged for this work yet. Sample texts are pre-bundled; expand with scripts/build_catalog.py.",
     status: "stub",
   };
+}
+
+/** Fetch /api/text/<id> and adapt its best edition to the reader's packaged-text shape. */
+async function loadTextFromApi(id) {
+  const res = await fetch(`${TEXT_API}/text/${encodeURIComponent(id).replace(/%3A/gi, ":")}`, {
+    headers: { Accept: "application/json" },
+    signal: AbortSignal.timeout(30000),
+  });
+  if (!res.ok) return null;
+  return apiTextToReader(await res.json(), id);
+}
+
+function apiTextToReader(d, requestedId) {
+  const eds = (d && d.editions) || [];
+  if (!eds.length) return null;
+  const hasHum = (e) => Array.isArray(e.human_en) && e.human_en.some((h) => h && h.en);
+  const hasMt = (e) => (Array.isArray(e.lines) && e.lines.some((l) => l.mt)) || (Array.isArray(e.mt_lines) && e.mt_lines.length);
+  const hasAtf = (e) => Array.isArray(e.lines) && e.lines.some((l) => l.atf);
+  // same preference as the browse card: human English, then machine English, then ATF
+  const ed = eds.find(hasHum) || eds.find(hasMt) || eds.find(hasAtf) || eds[0];
+  const lines = (ed.lines || []).map((l) => ({
+    type: "line",
+    n: l.n != null ? String(l.n) : "",
+    atf: l.atf || "",
+    surface: l.surface || "",
+    column: "",
+    english: l.mt || null,
+  }));
+  const m = ed.model || null;
+  const text = {
+    id: requestedId || d.id || ed.id,
+    canonical_id: d.canonical_id || ed.canonical_id,
+    designation: ed.designation,
+    genre: ed.genre,
+    language: ed.language,
+    period: ed.period,
+    site: ed.site && ed.site !== "unclear" ? ed.site : null,
+    provenience: ed.site && ed.site !== "unclear" ? ed.site : null,
+    lat: ed.lat,
+    lon: ed.lon,
+    museum_no: ed.museum_no,
+    collection: ed.collection,
+    content_lines: lines.length,
+    atf_source: ed.source ? ed.source.name : ed.src,
+    lines,
+    atf: lines.length
+      ? null
+      : [...new Set(eds.map((e) => e.atf_withheld && `${e.source?.name || e.src}: ${e.atf_withheld}`).filter(Boolean))].join(" ") || null,
+    english: null,
+    status: "api",
+    api_source: ed.src,
+  };
+  if (ed.src === "cdli" && /^P\d+$/.test(ed.id || "")) text.cdli_url = `https://cdli.earth/artifacts/${parseInt(ed.id.slice(1), 10)}`;
+  const notes = [];
+  if (hasHum(ed)) {
+    // human translation: its own line labels, not index-aligned to the ATF rows
+    const hum = ed.human_en.filter((h) => h && h.en);
+    text.english = hum.map((h) => h.en);
+    text.english_labels = hum.map((h) => h.line || "");
+    text.english_complete = true;
+    text.english_kind = "human";
+    const credits = [...new Set(hum.map((h) => [h.author && `Translation: ${h.author}`, h.edition && `edition ${h.edition}`, h.license && `licence: ${h.license}`].filter(Boolean).join(", ")))].filter(Boolean);
+    notes.push(`Human translation (${hum.length} lines)`, ...credits);
+    if (ed.source && ed.source.citation) notes.push(`Via ${ed.source.citation}`);
+  } else if (lines.some((l) => l.english)) {
+    // machine draft aligned line-by-line with the ATF
+    text.english = lines.map((l) => l.english || "");
+    text.english_complete = true;
+    text.has_machine_draft = true;
+    text.machine_draft_lines = lines.filter((l) => l.english).length;
+  } else if (Array.isArray(ed.mt_lines) && ed.mt_lines.length) {
+    // machine draft with its own line labels (not aligned to ATF rows)
+    text.english = ed.mt_lines.map((l) => l.mt || "");
+    text.english_labels = ed.mt_lines.map((l) => l.line || "");
+    text.english_complete = true;
+    text.has_machine_draft = true;
+    text.machine_draft_lines = ed.mt_lines.length;
+  }
+  if (text.has_machine_draft && m) {
+    const rev = (m.revision || "").slice(0, 7);
+    notes.push(`Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`);
+    text.translation_meta = { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on };
+  }
+  if (ed.truncated) notes.push("Long text: only the first 3,000 lines are included.");
+  // tablets outside the curated catalog have no translation-status assessment; say so instead of a raw key
+  const inCatalog = state.catalog?.items?.some((x) => x.id === text.id);
+  if (!inCatalog) {
+    if (text.english_kind === "human") {
+      text.translation_status = "open_project";
+      text.translation_short = `Open: ${ed.source?.name ? ed.src.toUpperCase() : "source"}`;
+    } else {
+      text.translation_status = "unknown";
+      text.translation_short = "Corpus text";
+    }
+    text.translation_detail = "From the full corpus (not in the curated catalog); translation status not assessed.";
+  }
+  text.english_note = notes.join(" · ") || null;
+  return text;
+}
+
+/** Content lines still without English (0 when the English is complete or not line-aligned). */
+function englishRemaining(text) {
+  if (!text || text.english_complete) return 0;
+  const total = (text.lines || []).filter((l) => l.type === "line").length;
+  const have = Array.isArray(text.english) ? text.english.length : 0;
+  return Math.max(0, total - have);
 }
 
 // ─── Filters ───
@@ -354,10 +479,12 @@ function statusChip(item) {
 
 function machineChip(text) {
   if (!text) return "";
+  if (text.english_kind === "human") return `<span class="chip status-cdli" title="Human translation from the source edition">Human English</span>`;
   const eng = text.english;
-  const n = Array.isArray(eng) ? eng.length : eng ? 1 : 0;
+  let n = Array.isArray(eng) ? eng.length : eng ? 1 : 0;
   if (!n) return "";
   const total = (text.lines || []).filter((l) => l.type === "line").length;
+  if (text.machine_draft_lines != null) n = text.machine_draft_lines;
   const label = total && n < total ? `Machine draft ${n}/${total}` : `Machine draft (${n})`;
   const tm = text.translation_meta || {};
   const stamp = tm.model ? ` · ${tm.model}${tm.translated_on ? ` · ${tm.translated_on}` : ""}` : "";
@@ -849,7 +976,9 @@ function renderEnglishCol(text) {
   if (text.english && Array.isArray(text.english) && text.english.length) {
     const statusBits = [];
     if (text.translation_label) statusBits.push(text.translation_label);
-    if (text.translation_status === "print_edition") {
+    if (text.english_kind === "human") {
+      /* human translation: credit is in english_note */
+    } else if (text.translation_status === "print_edition") {
       statusBits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
     } else if (text.translation_status === "no_open_english") {
       statusBits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
@@ -859,16 +988,17 @@ function renderEnglishCol(text) {
     const note = [text.english_note, ...statusBits].filter(Boolean).length
       ? `<p class="english-draft-note">${escapeHtml([text.english_note, ...statusBits].filter(Boolean).join(" · "))}</p>`
       : "";
+    const labels = text.english_labels; // own labels => not index-aligned to the ATF rows
     const rows = text.english
       .map((line, i) => {
-        const n = contentLines[i]?.n ?? String(i + 1);
-        return `<div class="line-en" data-i="${i}">
+        const n = labels ? labels[i] || "" : contentLines[i]?.n ?? String(i + 1);
+        return `<div class="line-en"${labels ? "" : ` data-i="${i}"`}>
           <span class="en-ln">${escapeHtml(n)}</span>
-          <span class="en-text">${escapeHtml(line)}</span>
+          <span class="en-text">${line ? escapeHtml(line) : `<span style="color:var(--text-faint)">—</span>`}</span>
         </div>`;
       })
       .join("");
-    const remaining = contentLines.length - text.english.length;
+    const remaining = englishRemaining(text);
     const more =
       remaining > 0
         ? STATIC_MODE
@@ -883,6 +1013,15 @@ function renderEnglishCol(text) {
     $("#btn-continue-translate")?.addEventListener("click", () => startTranslate({ continue: true }));
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
+  } else if (text.status === "api" && !contentLines.length) {
+    body.innerHTML = `
+      <div class="english-placeholder">
+        <div class="badge">Nothing to show here</div>
+        <p>No transliteration or English for this tablet can be shown on this site.</p>
+        ${text.atf ? `<p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">${escapeHtml(text.atf)}</p>` : ""}
+        <p style="margin-top:1rem"><a class="btn" href="search.html?text=${encodeURIComponent(text.id)}">Catalogue record in Search</a></p>
+      </div>`;
+    return;
   } else {
     const lineCount = contentLines.length;
     if (STATIC_MODE) {
@@ -961,7 +1100,7 @@ function updateTranslateButton() {
   const text = state.currentText;
   const lines = (text?.lines || []).filter((l) => l.type === "line");
   const have = Array.isArray(text?.english) ? text.english.length : 0;
-  const remaining = Math.max(0, lines.length - have);
+  const remaining = englishRemaining(text);
 
   if (state.translating) {
     btn.disabled = true;
