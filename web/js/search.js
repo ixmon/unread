@@ -393,7 +393,7 @@
         lastSurface = l.surface;
       }
       rows.push(`<tr><td class="ln">${esc(l.n)}</td><td class="atf">${esc(l.atf)}</td>` +
-        `<td class="mt${l.mt ? "" : " none"}">${l.mt ? esc(l.mt) : ed.model ? "—" : ""}</td></tr>`);
+        `<td class="mt${l.mt ? "" : " none"}${l.mt && l.lowconf ? ' lowconf" title="Low confidence: line is broken' : ""}">${l.mt ? esc(l.mt) : ed.model ? "—" : ""}</td></tr>`);
     }
     return `<table class="lines-table"><thead><tr><th>Line</th><th>ATF (transliteration)</th><th>English (machine draft)</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
   }
@@ -448,7 +448,7 @@
     if (ed.mt_lines && ed.mt_lines.length) {
       body += `<section class="mt-block"><h3>English (machine draft${ed.lines && ed.lines.length ? ", lines not aligned to the ATF above" : ""})</h3>` +
         `<table class="lines-table"><thead><tr><th>Line</th><th>English (machine draft)</th></tr></thead><tbody>` +
-        ed.mt_lines.map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt">${esc(l.mt)}</td></tr>`).join("") +
+        ed.mt_lines.map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt${l.lowconf ? ' lowconf" title="Low confidence: line is broken' : ""}">${esc(l.mt)}</td></tr>`).join("") +
         `</tbody></table></section>`;
     }
     body += humanBlock(ed);

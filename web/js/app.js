@@ -224,6 +224,8 @@ async function loadTextFromApi(id) {
   return apiTextToReader(await res.json(), id);
 }
 
+const LOWCONF_TITLE = "Low confidence: line is broken";
+
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
   if (!eds.length) return null;
@@ -239,6 +241,7 @@ function apiTextToReader(d, requestedId) {
     surface: l.surface || "",
     column: "",
     english: l.mt || null,
+    lowconf: !!(l.mt && l.lowconf), // optional per-line flag from the API (generic: any low-confidence MT line)
   }));
   const m = ed.model || null;
   const text = {
@@ -279,12 +282,14 @@ function apiTextToReader(d, requestedId) {
   } else if (lines.some((l) => l.english)) {
     // machine draft aligned line-by-line with the ATF
     text.english = lines.map((l) => l.english || "");
+    if (lines.some((l) => l.lowconf)) text.english_lowconf = lines.map((l) => l.lowconf);
     text.english_complete = true;
     text.has_machine_draft = true;
     text.machine_draft_lines = lines.filter((l) => l.english).length;
   } else if (Array.isArray(ed.mt_lines) && ed.mt_lines.length) {
     // machine draft with its own line labels (not aligned to ATF rows)
     text.english = ed.mt_lines.map((l) => l.mt || "");
+    if (ed.mt_lines.some((l) => l.lowconf)) text.english_lowconf = ed.mt_lines.map((l) => !!l.lowconf);
     text.english_labels = ed.mt_lines.map((l) => l.line || "");
     text.english_complete = true;
     text.has_machine_draft = true;
@@ -1015,7 +1020,8 @@ function renderEnglishCol(text) {
     const rows = text.english
       .map((line, i) => {
         const n = labels ? labels[i] || "" : contentLines[i]?.n ?? String(i + 1);
-        return `<div class="line-en"${labels ? "" : ` data-i="${i}"`}>
+        const low = line && Array.isArray(text.english_lowconf) && text.english_lowconf[i];
+        return `<div class="line-en${low ? " lowconf" : ""}"${labels ? "" : ` data-i="${i}"`}${low ? ` title="${escapeAttr(LOWCONF_TITLE)}"` : ""}>
           <span class="en-ln">${escapeHtml(n)}</span>
           <span class="en-text">${line ? escapeHtml(line) : `<span style="color:var(--text-faint)">—</span>`}</span>
         </div>`;
