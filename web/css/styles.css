@@ -1242,6 +1242,22 @@ body.mode-epic .catalog-card .title {
   font-weight: 500;
 }
 
+.reader-pending h2 { display: flex; align-items: center; gap: 0.6rem; }
+.reader-pending p { margin: 0; max-width: 32rem; }
+.reader-pending-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+.reader-pending-actions[hidden] { display: none; }
+.reader-pending .spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--blue);
+  animation: smap-spin 0.8s linear infinite;
+  flex: none;
+}
+.reader-pending.failed .spinner { display: none; }
+
 /* ─── About ─── */
 #view-about {
   overflow-y: auto;

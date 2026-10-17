@@ -660,12 +660,19 @@ function renderPreview(item, loading, text) {
 
 // ─── Reader ───
 async function openReader(id) {
+  // While the text loads (the /api Lambda can take seconds on a cold start) the reader shows
+  // "Loading tablet <id>…" instead of its "No work open" empty state; on failure, a retry.
+  const token = (state._readerToken = (state._readerToken || 0) + 1);
+  state.readerPending = { id, failed: false };
   setView("reader");
   const text = await loadText(id);
+  if (token !== state._readerToken) return; // a newer openReader() superseded this one
   if (!text) {
-    toast("Could not load work");
+    state.readerPending = { id, failed: true };
+    renderReader();
     return;
   }
+  state.readerPending = null;
   state.currentText = text;
   state.selectedId = id;
   // Font: period/language rule from fonts/fonts.json, unless the reader picked one this session
@@ -684,7 +691,23 @@ function renderReader() {
   const text = state.currentText;
   const empty = $("#reader-empty");
   const shell = $("#reader-shell");
+  const pending = $("#reader-pending");
+  const p = state.readerPending;
 
+  pending.style.display = p ? "flex" : "none";
+  if (p) {
+    empty.style.display = "none";
+    shell.style.display = "none";
+    pending.classList.toggle("failed", !!p.failed);
+    $("#reader-pending-title span:last-child").textContent = p.failed
+      ? `Couldn't load ${p.id}`
+      : `Loading tablet ${p.id}…`;
+    $("#reader-pending-msg").textContent = p.failed
+      ? "The tablet may not exist, or the server didn't respond. Check the ID, or try again."
+      : "";
+    $("#reader-pending-actions").hidden = !p.failed;
+    return;
+  }
   if (!text) {
     empty.style.display = "flex";
     shell.style.display = "none";
@@ -1828,6 +1851,12 @@ function escapeAttr(s) {
 
 // ─── Events ───
 function bindEvents() {
+  $("#btn-reader-retry")?.addEventListener("click", () => state.readerPending && openReader(state.readerPending.id));
+  $("#btn-reader-pending-explore")?.addEventListener("click", () => {
+    state._readerToken = (state._readerToken || 0) + 1;
+    state.readerPending = null;
+    setView("explore");
+  });
   $$(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => setView(btn.dataset.view));
   });
@@ -1983,6 +2012,13 @@ async function main() {
   checkTranslateApi();
   if (!STATIC_MODE) setInterval(checkTranslateApi, 30000);
 
+  // Deep link ?id=…: show the reader's loading state right away, not the map then "No work open"
+  const deepId = new URLSearchParams(location.search).get("id");
+  if (deepId) {
+    state.readerPending = { id: deepId, failed: false };
+    setView("reader");
+  }
+
   try {
     const man = await fetch(`${DATA_BASE}/texts/manifest.json`).then((r) => (r.ok ? r.json() : []));
     state._packagedIds = man.map((m) => m.id);
@@ -1995,8 +2031,6 @@ async function main() {
     fillFontPicker();
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108
-    const params = new URLSearchParams(location.search);
-    const deepId = params.get("id");
     if (deepId) {
       await openReader(deepId);
     } else {
@@ -2008,6 +2042,7 @@ async function main() {
     console.error(e);
     toast(e.message || "Failed to load catalog");
     $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
+    if (deepId) openReader(deepId); // the text API doesn't need the catalog
   }
 }
 

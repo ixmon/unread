@@ -156,6 +156,8 @@ async function loadFromApi(id) {
 
 async function prefillFromText(id, from) {
   if (!id || id.length > 200) return;
+  const prevStatus = $("#status").textContent, loadingMsg = `Loading ATF for ${id}…`;
+  setStatus(loadingMsg);
   try {
     const t = (await loadBundled(id)) || (await loadFromApi(id));
     const src = $("#prefill-src");
@@ -174,6 +176,7 @@ async function prefillFromText(id, from) {
     if (!chunk.length) return setStatus(`No untranslated ATF lines left in ${id}.`);
     const text = chunk.map((l) => l.atf).join("\n");
     $("#atf-input").value = text;
+    if ($("#status").textContent === loadingMsg) setStatus(prevStatus);
     const SURF = { obverse: "o", reverse: "r" };
     const surf = (x) => (x ? SURF[x] ?? x.split(/\s+/).map((w) => w[0]).join("") : "");
     prefill = { text, labels: chunk.map((l) => `${surf(l.surface)} ${l.n ?? ""}`.trim()) };

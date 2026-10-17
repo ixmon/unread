@@ -312,6 +312,16 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
           </button>
         </div>
 
+        <!-- shown instead of "No work open" while a requested tablet (?id=…) loads, or if it fails -->
+        <div class="reader-empty reader-pending" id="reader-pending" style="display: none" role="status" aria-live="polite">
+          <h2 id="reader-pending-title"><span class="spinner" aria-hidden="true"></span><span>Loading tablet…</span></h2>
+          <p id="reader-pending-msg"></p>
+          <div class="reader-pending-actions" id="reader-pending-actions" hidden>
+            <button type="button" class="btn primary" id="btn-reader-retry">Try again</button>
+            <button type="button" class="btn" id="btn-reader-pending-explore">Back to explore</button>
+          </div>
+        </div>
+
         <div id="reader-shell" style="display: none; flex-direction: column; flex: 1; min-height: 0">
           <div class="reader-toolbar">
             <button type="button" class="btn" id="btn-back-explore">← Explore</button>
