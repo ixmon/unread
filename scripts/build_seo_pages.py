@@ -125,7 +125,7 @@ def page(*, title, desc, canonical, body, ld, active="", og_type="article", head
 </head>
 <body class="static-page">
 <header class="static-header">
-<a class="brand" href="../">{e(SITE["name"])}</a>
+<a class="brand" href="../" title="Unread Atlas home"><img class="brand-mark" src="../assets/logo/logo-nu-shid.svg" width="54" height="28" alt="" />{e(SITE["name"])}</a>
 <nav aria-label="Main">
 {nav}
 </nav>
