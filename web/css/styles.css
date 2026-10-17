@@ -1116,6 +1116,12 @@ body.mode-epic .catalog-card .title {
   min-width: 0;
 }
 
+/* graded machine-English confidence (API `conf` 1..3). Faintest level stays >= 4.5:1 against --bg/--bg-elev
+   (#e8e4dc at 0.52 opacity on #0f1114 = ~4.7:1; 0.66 = ~7:1; 0.82 = ~10:1). */
+.english-prose .line-en.conf-1 .en-text { opacity: 0.82; }
+.english-prose .line-en.conf-2 .en-text { opacity: 0.66; font-style: italic; }
+.english-prose .line-en.conf-3 .en-text { opacity: 0.52; font-style: italic; }
+
 .english-draft-note {
   font-family: var(--font-ui);
   font-size: 0.78rem;
