@@ -63,7 +63,7 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
   <body>
     <header class="app-header">
       <a class="brand" href="./" title="Unread Atlas home">
-        <img class="brand-mark" src="assets/logo/logo-nu-shid.svg" width="54" height="28" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />
+        <img class="brand-mark" src="assets/logo/logo-e.svg" width="54" height="28" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />
         <h1>
           <!--site:name-->Unread Atlas<!--/site:name-->
           <span class="sub"><!--site:tagline-->first readings · open corpus<!--/site:tagline--></span>
@@ -454,5 +454,6 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
     <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
     <script src="js/searchmap.js"></script>
-  </body>
+  <script>/* ?logo=a|b|c|d|e|tablet previews another logo variant from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^([a-e]|tablet)$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
+</body>
 </html>

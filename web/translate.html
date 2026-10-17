@@ -29,7 +29,7 @@
   </head>
   <body class="static-page">
     <header class="static-header">
-      <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo-nu-shid.svg" width="54" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
+      <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo-e.svg" width="54" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
       <nav aria-label="Main">
         <a class="nav-link" href="map.html">Explore &amp; map</a>
         <a class="nav-link" href="browse.html">Browse</a>
@@ -77,5 +77,6 @@ um-ma {d}utu-ki-ib-si ARAD-ka-ma</textarea>
       <p><a href="credits.html">Credits &amp; thanks</a></p>
     </footer>
     <script type="module" src="js/translator.js"></script>
-  </body>
+  <script>/* ?logo=a|b|c|d|e|tablet previews another logo variant from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^([a-e]|tablet)$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
+</body>
 </html>

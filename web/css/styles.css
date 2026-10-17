@@ -95,11 +95,14 @@ input {
 .app-header .brand { flex-shrink: 0; }
 /* the tagline only where the header has room (it used to slide under the nav) */
 @media (max-width: 1599px) { .app-header .brand .sub { display: none; } }
+/* keep the header on one row with nothing overlapping or off-screen from 1024 px up */
+@media (max-width: 1279px) { .app-header .social-link span { display: none; } .app-header { gap: 0.75rem; } }
+@media (max-width: 1179px) { .app-header .header-meta { display: none; } }
 a.brand:hover { text-decoration: none; }
 a.brand:hover h1 { color: #fff; }
 a.brand:hover .brand-mark { filter: brightness(1.12); }
 
-/* Logo: 𒉡𒋃 nu-šid ("not read"), drawn as SVG outlines from Noto Sans Cuneiform (no font needed) */
+/* Logo: 𒉡𒋃 nu-šid ("not read") as flat SVG paths, assets/logo/ (scripts/build_logo.py; no font needed) */
 .brand-mark {
   height: 28px;
   width: auto;
