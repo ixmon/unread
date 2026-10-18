@@ -48,6 +48,20 @@ ICE = [  # ice sheets / glaciers / ice shelves (Natural Earth glaciated areas + 
 LAKE = (110, 130, 140)
 RIVER = (92, 116, 130)
 COAST = (78, 96, 108)
+# shade strength per surface (land, sea, ice) and stroke opacity (coast, river)
+SHADE = (0.55, 0.30, 0.45)
+STROKE = (0.55, 0.9)
+
+# ── "dark" style (--style dark): a flat, computer-map look for the dark UI. Near-black land with only a
+# faint elevation tint and soft hillshade, darker sea, and thin light-slate coastlines/rivers carrying the shape.
+DARK = dict(
+    LAND=[(-500, (33, 37, 44)), (0, (33, 37, 44)), (400, (36, 40, 47)), (1000, (40, 44, 51)), (2000, (45, 49, 56)),
+          (3500, (51, 55, 62)), (8000, (62, 66, 72))],
+    SEA=[(-8000, (8, 10, 14)), (-3000, (10, 13, 18)), (-200, (12, 16, 22)), (0, (15, 20, 27))],
+    ICE=[(0, (52, 57, 63)), (4500, (62, 67, 73))],
+    LAKE=(17, 26, 35), RIVER=(66, 102, 124), COAST=(88, 116, 134),
+    SHADE=(0.32, 0.0, 0.25), STROKE=(0.85, 0.8),
+)
 
 
 def ramp(z, stops):
@@ -113,7 +127,10 @@ def main():
     ap.add_argument("--quality", type=int, default=82)
     ap.add_argument("--band-rows", type=int, default=0, help="process N tile rows at a time (needs zmin == zmax)")
     ap.add_argument("--preview", default=None, help="write a downsampled preview PNG (unbanded only)")
+    ap.add_argument("--style", choices=("relief", "dark"), default="relief", help="palette: atlas relief (default) or dark")
     a = ap.parse_args()
+    if a.style == "dark":
+        globals().update(DARK)
     t0 = time.time()
 
     # ── tile grid ──
@@ -219,15 +236,15 @@ def main():
         shade = np.clip(hs / flat, 0, 1.3)
         del hs
         rgb = ramp(dem, LAND)
-        rgb *= (1 + 0.55 * (shade - 1))[..., None]
+        rgb *= (1 + SHADE[0] * (shade - 1))[..., None]
         if sea.any():
             sea_rgb = ramp(np.minimum(dem, 0), SEA)
-            sea_rgb *= (1 + 0.30 * (shade - 1))[..., None]
+            sea_rgb *= (1 + SHADE[1] * (shade - 1))[..., None]
             rgb[sea] = sea_rgb[sea]
             del sea_rgb
         if ice.any():
             ice_rgb = ramp(np.maximum(dem, 0), ICE)
-            ice_rgb *= (1 + 0.45 * (shade - 1))[..., None]
+            ice_rgb *= (1 + SHADE[2] * (shade - 1))[..., None]
             rgb[ice] = ice_rgb[ice]
             del ice_rgb
         rgb[lake] = LAKE
@@ -249,10 +266,10 @@ def main():
                     d.line(pts, fill=255, width=max(1, int(round(wpx * ss))), joint="curve")
             return np.asarray(im.resize((width, h), Image.BOX), np.float32) / 255.0
 
-        cm = stroke_mask(coast_m)[..., None] * 0.55
+        cm = stroke_mask(coast_m)[..., None] * STROKE[0]
         rgb = rgb * (1 - cm) + np.array(COAST, np.float32) * cm
         del cm
-        rm = stroke_mask(river_m)[..., None] * 0.9
+        rm = stroke_mask(river_m)[..., None] * STROKE[1]
         rgb = rgb * (1 - rm) + np.array(RIVER, np.float32) * rm
         del rm
         return Image.fromarray(np.clip(rgb[pad:-pad], 0, 255).astype(np.uint8), "RGB")

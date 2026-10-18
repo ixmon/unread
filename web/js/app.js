@@ -1441,19 +1441,26 @@ function initMap() {
   // Built by scripts/basemap/render_relief.py; see web/tiles/relief/ATTRIBUTION.md.
   // z0-7 cover the whole world (ETOPO 60"); Near East z7-8 come from ETOPO 15" (the z7 files there replace
   // the 60" ones in the same folder); above that tiles are upscaled.
-  const RELIEF_URL = "tiles/relief/{z}/{x}/{y}.webp";
-  L.tileLayer(RELIEF_URL, {
+  // Default: the dark "computer map" (same renderer, --style dark): world z0-5 from ETOPO 60", Near East z6-8
+  // from ETOPO 15" (scripts/basemap/render_relief.py; /mnt/alpaca/unread-basemap/run_dark.sh).
+  // ?style=relief (or =default / =light) brings back the earlier shaded relief.
+  const dark = !["relief", "default", "light"].includes(new URLSearchParams(location.search).get("style"));
+  const BASE = dark
+    ? { url: "tiles/dark/{z}/{x}/{y}.webp", worldMax: 5, near: 6 }
+    : { url: "tiles/relief/{z}/{x}/{y}.webp", worldMax: 7, near: 7 };
+  if (dark) state.map.getContainer().classList.add("map-dark");
+  L.tileLayer(BASE.url, {
     minZoom: 0,
     maxZoom: 10,
     minNativeZoom: 0,
-    maxNativeZoom: 7,
+    maxNativeZoom: BASE.worldMax,
     bounds: [[-85.0511, -180], [85.0511, 180]],
     noWrap: true,
   }).addTo(state.map);
-  L.tileLayer(RELIEF_URL, {
-    minZoom: 7,
+  L.tileLayer(BASE.url, {
+    minZoom: BASE.near,
     maxZoom: 10,
-    minNativeZoom: 7,
+    minNativeZoom: BASE.near,
     maxNativeZoom: 8,
     bounds: [[22, 24], [46, 62]],
     noWrap: true,
@@ -2057,23 +2064,26 @@ async function main() {
 document.addEventListener("DOMContentLoaded", main);
 
 // ─── Collapsible left bar (state: html.sidebar-collapsed, set early in map.html's head) ───
+// Hidden by default; "☰ Curated & filters" (#sidebar-open, on the map) toggles it, "◂ Hide panel" (#filters-toggle) closes it.
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("filters-toggle");
-  if (!btn) return;
+  const openBtn = document.getElementById("sidebar-open");
+  if (!btn && !openBtn) return;
   const root = document.documentElement;
   const sync = () => {
     const open = !root.classList.contains("sidebar-collapsed");
-    btn.setAttribute("aria-expanded", String(open));
-    btn.classList.toggle("on", open);
+    for (const b of [btn, openBtn]) if (b) { b.setAttribute("aria-expanded", String(open)); b.classList.toggle("on", open); }
   };
   const setOpen = (open, remember = true) => {
     root.classList.toggle("sidebar-collapsed", !open);
-    if (remember) try { localStorage.setItem("ua.sidebar", open ? "open" : "closed"); } catch (_) {}
+    if (remember) try { localStorage.setItem("ua.sidebar.v2", open ? "open" : "closed"); } catch (_) {}
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
+    if (open) document.getElementById("search")?.focus({ preventScroll: true });
   };
-  btn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
+  if (btn) btn.addEventListener("click", () => setOpen(false));
+  if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
   // a mode chip/featured deep link opened later should reveal its featured row
   document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math").forEach((el) =>
     el.addEventListener("change", () => el.checked && setOpen(true, false)));

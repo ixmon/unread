@@ -42,11 +42,13 @@
     <script>
       // Old font-credits anchor now lives on the credits page.
       if (location.hash === "#font-credits") location.replace("credits.html#fonts");
-      // Left bar: collapsed by default. ?filters=open|closed overrides (not written back, so deep links stay clean);
-      // otherwise the visitor's last choice (localStorage). Mode deep links (?mode=) open it so the featured row shows.
+      // Left bar (curated list, filters, Epic hunt / Remedies / Omens / Math, featured): hidden by default so the
+      // map gets the full width. ?filters=open|closed overrides (not written back, so deep links stay clean);
+      // otherwise the visitor's last choice (localStorage; key bumped when "collapsed" became "hidden", so old
+      // "open" choices don't stick). Mode deep links (?mode=) open it so the featured row shows.
       (function () {
         var p = new URLSearchParams(location.search), f = p.get("filters"), open = false;
-        try { open = localStorage.getItem("ua.sidebar") === "open"; } catch (e) {}
+        try { open = localStorage.getItem("ua.sidebar.v2") === "open"; } catch (e) {}
         if (p.get("mode")) open = true;
         if (f === "open" || f === "1") open = true;
         if (f === "closed" || f === "0") open = false;
@@ -60,13 +62,13 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
   </head>
   <body>
     <header class="app-header">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
+      <a class="brand" href="./" title="Unread Atlas home">
+        <img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />
         <h1>
           <!--site:name-->Unread Atlas<!--/site:name-->
           <span class="sub"><!--site:tagline-->first readings · open corpus<!--/site:tagline--></span>
         </h1>
-      </div>
+      </a>
       <nav class="header-nav" aria-label="Main">
         <button type="button" class="nav-btn active" data-view="explore">Explore</button>
         <button type="button" class="nav-btn" data-view="reader">Reader</button>
@@ -96,8 +98,8 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
               placeholder="P-number, title, site, genre…"
               autocomplete="off"
             />
-            <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar-filters" aria-expanded="false">
-              <span class="ft-icon" aria-hidden="true">▸</span> Filters &amp; featured
+            <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
+              <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
             </button>
             <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine-draft English.</p>
           </div>
@@ -254,6 +256,8 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
               <div class="map-empty" id="map-empty">No geolocated works in current filter</div>
               <div class="smap" aria-label="Search results on the map">
                 <form class="smap-form" id="smap-form" role="search" autocomplete="off">
+                  <button type="button" class="btn smap-sidebar-btn" id="sidebar-open" aria-controls="sidebar" aria-expanded="false"
+                    title="Curated tablets, filters, Epic hunt, Remedies, Omens, Math and featured tablets"><span aria-hidden="true">☰</span> Curated &amp; filters</button>
                   <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
                   <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
                   <button type="submit" class="btn primary smap-go">Map</button>
@@ -450,5 +454,5 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
     <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
     <script src="js/searchmap.js"></script>
-  </body>
+</body>
 </html>

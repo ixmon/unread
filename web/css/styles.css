@@ -89,14 +89,24 @@ input {
   align-items: center;
   gap: 0.65rem;
   min-width: 0;
+  color: var(--text);
+  text-decoration: none;
 }
+.app-header .brand { flex-shrink: 0; }
+/* the tagline only where the header has room (it used to slide under the nav) */
+@media (max-width: 1599px) { .app-header .brand .sub { display: none; } }
+/* keep the header on one row with nothing overlapping or off-screen from 1024 px up */
+@media (max-width: 1279px) { .app-header .social-link span { display: none; } .app-header { gap: 0.75rem; } }
+@media (max-width: 1179px) { .app-header .header-meta { display: none; } }
+a.brand:hover { text-decoration: none; }
+a.brand:hover h1 { color: #fff; }
+a.brand:hover .brand-mark { filter: brightness(1.12); }
 
+/* Logo: 𒉡𒋃 nu-šid ("not read") as flat SVG paths, assets/logo/ (scripts/build_logo.py; no font needed) */
 .brand-mark {
-  width: 28px;
   height: 28px;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #d4895a, #8b4a2e);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  width: auto;
+  display: block;
   flex-shrink: 0;
 }
 
@@ -1576,7 +1586,7 @@ body.mode-epic .catalog-card .title {
   pointer-events: none;
 }
 .smap > * { pointer-events: auto; }
-.smap-form { display: flex; gap: 6px; width: min(440px, 100%); }
+.smap-form { display: flex; gap: 6px; width: min(620px, 100%); }
 .smap-input {
   flex: 1;
   min-width: 0;
@@ -1736,26 +1746,17 @@ body.mode-epic .catalog-card .title {
 .smap-active .site-marker:not(.active) .site-dot { opacity: calc(var(--o, 1) * 0.6); box-shadow: none; }
 
 /* ─── Collapsible left bar (map.html) ─── */
+/* Hidden by default (html.sidebar-collapsed); "☰ Curated & filters" on the map opens it, "◂ Hide panel" closes it */
 .filters-toggle { margin-top: 0.6rem; width: 100%; justify-content: flex-start; gap: 0.4rem; }
-.filters-toggle .ft-icon { display: inline-block; transition: transform 0.15s; }
-.filters-toggle.on .ft-icon { transform: rotate(90deg); }
 .sidebar-hint { display: none; margin: 0.6rem 0 0; font-size: 0.78rem; line-height: 1.4; color: var(--text-faint); }
-.sidebar-collapsed .sidebar { width: 230px; }
-.sidebar-collapsed .sidebar .filters,
-.sidebar-collapsed .sidebar .results-count { display: none; }
-.sidebar-collapsed .sidebar .sidebar-hint { display: block; }
-/* collapsed: the curated list only appears while you type in the box */
-.sidebar-collapsed .sidebar:not(:has(#search:not(:placeholder-shown))) .catalog-list { display: none; }
+.sidebar-collapsed .sidebar { display: none; }
+.smap-sidebar-btn { white-space: nowrap; background: rgba(15, 17, 20, 0.88); backdrop-filter: blur(6px); gap: 0.4rem; }
+.smap-sidebar-btn.on { border-color: rgba(196, 120, 74, 0.55); color: var(--accent, #c4784a); }
+@media (max-width: 640px) { .smap-sidebar-btn { font-size: 0; padding: 0.4rem 0.6rem; } .smap-sidebar-btn span { font-size: 1rem; } }
 .map-credits { background: rgba(15, 17, 20, 0.6); padding: 0 6px; border-radius: 4px; font-size: 10.5px; line-height: 16px; }
 .map-credits a { color: var(--text-faint); text-decoration: none; }
 .map-credits a:hover { color: var(--text); }
-@media (max-width: 960px) {
-  .sidebar-collapsed .sidebar { width: 100%; max-height: none; }
-  .sidebar-collapsed .sidebar .sidebar-section { padding: 0.6rem 0.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-  .sidebar-collapsed .sidebar .sidebar-section h2, .sidebar-collapsed .sidebar .sidebar-hint { display: none; }
-  .sidebar-collapsed .sidebar .search-box { flex: 1; min-width: 0; }
-  .sidebar-collapsed .sidebar .filters-toggle { width: auto; margin-top: 0; }
-  .sidebar-collapsed .sidebar:has(#search:not(:placeholder-shown)) .catalog-list { max-height: 30vh; }
-}
+/* Dark "computer map" tiles (tiles/dark, the default; ?style=relief for the old look); keep the empty-tile background dark too */
+.leaflet-container.map-dark { background: #0c0f14; }
 .smap-link[hidden] { display: none; }
 @media (max-width: 640px) { .smap-chip .smap-dim { display: none; } }

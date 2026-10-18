@@ -25,9 +25,11 @@
 <style>
 html,body{margin:0;height:100%;overflow:hidden;background:#0f1115;color:#e6e2d8;font-family:"IBM Plex Sans",system-ui,sans-serif}
 #stage{position:absolute;inset:0}
-canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
+canvas#bm,canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
+#bm{pointer-events:none}
 #ov{pointer-events:none}
 #top{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;z-index:5;background:rgba(20,22,28,.88);padding:8px 10px;border-radius:10px;border:1px solid #2a2e38}
+#top .brand-link{display:inline-flex;align-items:center;gap:7px;font-family:'Source Serif 4',Georgia,serif;white-space:nowrap;color:#e3c27a;text-decoration:none}#top .brand-link img{height:22px;width:auto;display:block}#top .brand-link:hover{color:#fff}
 #top input{background:#181b22;color:#eee;border:1px solid #333a46;border-radius:6px;padding:6px 9px;width:150px;font:inherit}
 #top button{background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px}
 #top button.on{background:#c79a3a;color:#111;border-color:#c79a3a}
@@ -74,9 +76,9 @@ a{color:#e0b860}
 </head>
 <body>
 <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:-1px">Map of maps: every cuneiform tablet by place, time, genre and translation state</h1>
-<div id="stage"><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
+<div id="stage"><canvas id="bm" aria-hidden="true"></canvas><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
 <div id="top">
-  <a href="./" title="Unread Atlas home" style="font-family:'Source Serif 4',Georgia,serif;white-space:nowrap">◂ Unread Atlas</a>
+  <a href="./" title="Unread Atlas home" class="brand-link"><img src="assets/logo/logo.svg" width="46" height="22" alt="" />Unread Atlas</a>
   <input id="q" placeholder="English, ATF (kasz) or 𒁉…" value="barley" title="Type a word and press Enter. English, ATF transliteration (kasz, {u2}tar-musz, š or sz) or cuneiform signs." />
   <span id="mode" title="Search English or ATF; Auto guesses from what you type"><button data-m="auto" class="on">Auto</button><button data-m="en">English</button><button data-m="atf">ATF</button></span>
   <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
@@ -107,6 +109,11 @@ const params = new URLSearchParams(location.search);
 
 const gl = document.getElementById('gl').getContext('webgl', {antialias:true, preserveDrawingBuffer:true});
 const ov = document.getElementById('ov'), ctx = ov.getContext('2d');
+// Dark vector basemap behind the Geography view (Natural Earth 1:50m land, lakes, rivers; same file as the home page).
+// Fades with the Geography share of the map-of-maps blend; ?basemap=0 turns it off.
+const bm = document.getElementById('bm'), bmx = bm.getContext('2d');
+let LAND = null, lastLandKey = '';
+if (params.get('basemap') !== '0') fetch('assets/land.json').then(r=>r.ok?r.json():null).then(j=>{ LAND=j; draw(); }).catch(()=>{});
 const VS = `
 attribute vec4 a0; attribute float a1; attribute vec4 a2;
 uniform vec4 wx0; uniform float wx1; uniform vec4 wy0; uniform float wy1;
@@ -244,7 +251,7 @@ function draw(){
   if(!D) return;
   const dpr = devicePixelRatio||1, W = innerWidth, H = innerHeight;
   for (const c of [gl.canvas, ov]) { c.width = W*dpr; c.height = H*dpr; }
-  gl.viewport(0,0,W*dpr,H*dpr); gl.clearColor(0.06,0.067,0.085,1); gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.viewport(0,0,W*dpr,H*dpr); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
   gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
   const B = blend(); window.__blend = B;
   const geoW = (B.wx[0]+B.wx[1]+B.wy[0]+B.wy[1])/2, dateW = Math.max(B.wx[2], B.wy[2]);
@@ -258,9 +265,26 @@ function draw(){
   gl.enable(gl.SCISSOR_TEST); gl.scissor(PAD.l*dpr, PAD.b*dpr, (W-PAD.l-PAD.r)*dpr, (H-PAD.t-PAD.b)*dpr);
   gl.drawArrays(gl.POINTS, 0, N); gl.disable(gl.SCISSOR_TEST);
   document.getElementById('zlvl').textContent = (V.z<10? V.z.toFixed(1) : Math.round(V.z))+'×';
+  basemap(B, W, H, dpr);
   overlay(B, W, H, dpr, geoW, dateW);
   info(B, geoW, dateW);
   updNavUI(B);
+}
+function basemap(B,W,H,dpr){
+  const a = LAND ? Math.min(B.wx[0], B.wy[1]) : 0, key = [a.toFixed(3),W,H,dpr,V.cx,V.cy,V.z].join();
+  if (key===lastLandKey) return; lastLandKey = key;
+  if (bm.width!==W*dpr || bm.height!==H*dpr) { bm.width=W*dpr; bm.height=H*dpr; }
+  bmx.setTransform(dpr,0,0,dpr,0,0); bmx.clearRect(0,0,W,H); if (a<0.01) return;
+  const pw=W-PAD.l-PAD.r, ph=H-PAD.t-PAD.b;
+  const X = lon => PAD.l + (((lon-LON[0])/(LON[1]-LON[0])-V.cx)*V.z+0.5)*pw, Y = lat => H-(PAD.b + (((lat-LAT[0])/(LAT[1]-LAT[0])-V.cy)*V.z+0.5)*ph);
+  const path = r => { bmx.beginPath(); for (let k=0;k<r.length;k+=2){ const x=X(r[k]), y=Y(r[k+1]); k? bmx.lineTo(x,y) : bmx.moveTo(x,y); } };
+  bmx.save(); bmx.beginPath(); bmx.rect(PAD.l,PAD.t,pw,ph); bmx.clip(); bmx.globalAlpha = a;
+  bmx.fillStyle='#0b0e13'; bmx.fillRect(PAD.l,PAD.t,pw,ph);                       // sea
+  bmx.lineJoin='round'; const lw = Math.min(1.6, 0.8+Math.log2(V.z)*0.2);
+  for (const r of LAND.land){ path(r); bmx.closePath(); bmx.fillStyle='#1c2027'; bmx.fill(); bmx.strokeStyle='rgba(120,150,170,.55)'; bmx.lineWidth=lw; bmx.stroke(); }
+  for (const r of LAND.lakes){ path(r); bmx.closePath(); bmx.fillStyle='#0d1219'; bmx.fill(); bmx.strokeStyle='rgba(120,150,170,.4)'; bmx.lineWidth=lw*0.8; bmx.stroke(); }
+  bmx.strokeStyle='rgba(80,125,155,.6)'; bmx.lineWidth=lw*1.1; for (const r of LAND.rivers){ path(r); bmx.stroke(); }
+  bmx.restore();
 }
 function axisTicks(dim){
   if (dim===0) return [35,40,45,50,55].map(v=>[norm(v,LON), v+'°E']);
