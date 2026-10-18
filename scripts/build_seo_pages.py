@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """SEO wave 1: static, JS-free pages for crawlers, written straight into the build output (not into git).
 
-  <out>/t/<id>.html   one page per tablet with publishable human English (search export, see below);
-                      with --machine-only (or SEO_MACHINE_ONLY=1) also one per tablet that has only machine English
-                      (>= --machine-min-lines lines); the 49 hand-curated pages already in <out>/t/ are left untouched
+  <out>/t/<id>.html   one page per tablet with any English we may show: publishable human English (per the policy
+                      file) and/or machine English (>= --machine-min-lines lines; --human-only restores the old set).
+                      Pages with fewer than --index-min-lines lines of English (default 10) carry
+                      <meta name="robots" content="noindex,follow"> and are left out of the sitemaps.
+                      The 49 hand-curated pages already in <out>/t/ are left untouched (always indexable).
   <out>/s/<slug>.html one page per sign in assets/signs/signs_index.json (2,493)
   <out>/assets/tablet-pages.json, <out>/assets/signs/sign-pages.json   id -> page maps (reader / signs.html canonicals)
   <out>/sitemap.xml   sitemap index -> sitemap-core.xml (the old web/sitemap.xml), sitemap-signs.xml,
@@ -16,8 +18,11 @@ atf_public=1) are already applied there.
 Human English is shown only for sources whose web/assets/translation-policy.json entry has show_human=true
 (the same table the reader's translation tabs use); machine English is always included as page text.
 
+Lines of English for the index threshold = max(publishable human lines, machine lines shown) on the page.
+Machine lines the model flags (tr.conf_level 1..3) are dimmed and labelled like the reader's tooltips.
+
 Usage: build_seo_pages.py OUT_DIR [--search-db PATH] [--base-url URL] [--limit N] [--ids ID,ID]
-                          [--machine-only] [--machine-min-lines N]
+                          [--human-only] [--machine-min-lines N] [--index-min-lines N] [--export-date YYYY-MM-DD]
 """
 from __future__ import annotations
 
@@ -32,6 +37,7 @@ from fix_catalog_sites import usable_site  # noqa: E402
 
 DEFAULT_DB = ROOT.parent / "aws-cunei-search" / "out" / "unread-atlas-search.sqlite"
 SITE = json.loads((WEB / "site.json").read_text())
+CONF_TITLES = {1: "lower confidence: line is broken", 2: "low confidence: few signs survive", 3: "very low confidence: a guess"}
 TR_POLICY = json.loads((WEB / "assets" / "translation-policy.json").read_text()).get("sources", {})
 
 
@@ -40,7 +46,7 @@ def human_ok(src: str) -> bool:
     return (TR_POLICY.get(src) or TR_POLICY.get("unknown") or {}).get("show_human") is True
 OG_IMAGE = "https://unreadatlas.com/og.jpg"
 MAX_LINES = 600          # per page; longer tablets link to the reader for the rest
-SITEMAP_MAX = 50000
+SITEMAP_MAX = 45000      # URLs per tablet sitemap (protocol limit 50,000)
 e = html.escape
 
 # approximate date ranges (BCE negative) for schema.org temporalCoverage; first match wins
@@ -103,7 +109,7 @@ NAV = [("map.html", "Explore &amp; map"), ("browse.html", "Browse"), ("signs.htm
        ("translate.html", "Translator"), ("search.html", "Search"), ("credits.html", "Credits")]
 
 
-def page(*, title, desc, canonical, body, ld, active="", og_type="article", head_extra=""):
+def page(*, title, desc, canonical, body, ld, active="", og_type="article", head_extra="", noindex=False):
     nav = "\n".join(f'<a class="nav-link{" active" if h == active else ""}" href="../{h}">{l}</a>' for h, l in NAV)
     return f"""<!doctype html>
 <html lang="en">
@@ -112,7 +118,7 @@ def page(*, title, desc, canonical, body, ld, active="", og_type="article", head
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)} · {e(SITE["name"])}</title>
 <meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{e(canonical)}">
+<link rel="canonical" href="{e(canonical)}">{chr(10) + '<meta name="robots" content="noindex,follow">' if noindex else ""}
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -131,7 +137,8 @@ def page(*, title, desc, canonical, body, ld, active="", og_type="article", head
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/static.css">
 <style>.crumbs{{font-size:.85rem;color:var(--text-dim)}}.crumbs a{{color:var(--text-dim)}}.lines-table td.atf{{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.85rem}}
-.src-note{{font-size:.85rem;color:var(--text-dim)}}.cta a{{margin-right:1rem}}.gl-table td{{padding:.2rem .8rem .2rem 0}}.vals span{{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.85rem;border:1px solid var(--border);border-radius:5px;padding:0 .4rem;margin:.1rem}}</style>{head_extra}
+.src-note{{font-size:.85rem;color:var(--text-dim)}}.cta a{{margin-right:1rem}}.gl-table td{{padding:.2rem .8rem .2rem 0}}.vals span{{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.85rem;border:1px solid var(--border);border-radius:5px;padding:0 .4rem;margin:.1rem}}
+.lines-table td.conf-1{{opacity:.82}}.lines-table td.conf-2{{opacity:.66;font-style:italic}}.lines-table td.conf-3{{opacity:.52;font-style:italic}}.conf-note{{display:block;font-size:.72rem;font-style:normal;color:var(--text-faint)}}</style>{head_extra}
 {jsonld(ld)}
 </head>
 <body class="static-page">
@@ -156,13 +163,24 @@ def crumbs_ld(items):
 
 
 # ------------------------------------------------------------------ tablets
+def mt_td(m, cf):
+    """Machine-English cell; lines the model flags are dimmed and labelled (same levels as the reader)."""
+    if cf in CONF_TITLES and m:
+        return f'<td class="conf-{cf}" title="{e(CONF_TITLES[cf].capitalize())}">{e(m)}<span class="conf-note">({e(CONF_TITLES[cf])})</span></td>'
+    return f"<td>{e(m or '')}</td>"
+
+
 def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
-                  machine_only: bool = False, machine_min: int = 3, ids: list[str] | None = None):
+                  machine_only: bool = True, machine_min: int = 1, ids: list[str] | None = None,
+                  index_min: int = 10, export_date: str | None = None):
     c = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     c.row_factory = sqlite3.Row
     built_full = json.loads(c.execute("SELECT value FROM meta WHERE key='built_at'").fetchone()[0])
+    if export_date:  # the export's meta.built_at is inherited from its base build; the deploy date is more honest
+        built_full = f"{export_date}T00:00:00Z"
     built = built_full[:10]
     stamp = dt.datetime.fromisoformat(built_full.replace("Z", "+00:00")).timestamp()
+    conf_col = "tr.conf_level" if any(r[1] == "conf_level" for r in c.execute("PRAGMA table_info(tr)")) else "NULL"
     sources = {r["id"]: dict(r) for r in c.execute("SELECT * FROM source")}
     hok = [s for s in sources if human_ok(s)] or ["-"]
     cond = f"(n_human_en>0 AND src IN ({','.join('?' * len(hok))}))" + (" OR n_mt>=?" if machine_only else "")
@@ -177,7 +195,7 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
     tdir = out / "t"
     tdir.mkdir(parents=True, exist_ok=True)
     curated = {p.stem for p in tdir.glob("*.html")}
-    urls, pagemap, skipped = [], {}, 0
+    urls, pagemap, skipped, n_noindex, n_index = [], {}, 0, 0, 0
     for key in keys:
         sl = slug(key)
         url = f"{base}t/{sl}.html"
@@ -186,12 +204,12 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
             skipped += 1
             urls.append(url)
             continue
-        if ":" in key:
+        # canonical ids can contain ':' themselves (TLHdig: "tlh:1029_u"), so try the canonical id first
+        rows = [r for r in c.execute("SELECT * FROM text WHERE canonical_id=? COLLATE NOCASE", (key,)) if r["canonical_id"] == key]
+        by_canonical = bool(rows)
+        if not rows and ":" in key:
             src, i = key.split(":", 1)
             rows = c.execute("SELECT * FROM text WHERE src=? AND id=?", (src, i)).fetchall()
-        else:
-            rows = c.execute("SELECT * FROM text WHERE canonical_id=? COLLATE NOCASE", (key,)).fetchall()
-            rows = [r for r in rows if r["canonical_id"] == key]
         order = {"cdli": 0, "oracc": 1, "tlhdig": 2, "achemenet": 3, "ebl": 4}
         rows = sorted(rows, key=lambda r: order.get(r["src"], 9))
         if not rows:
@@ -216,28 +234,31 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
         lines, mt_meta = [], None
         if atf_row:
             mt = {}
-            for x in c.execute("""SELECT tr.lid, tr.content, ts.author, ts.version, ts.model_label, tr.created FROM tr JOIN tr_source ts ON ts.tsid=tr.tsid
-                                  WHERE tr.rid=? AND tr.human=0""", (atf_row["rid"],)):
+            for x in c.execute(f"""SELECT tr.lid, tr.content, {conf_col} AS conf, ts.author, ts.version, ts.model_label, tr.created FROM tr
+                                  JOIN tr_source ts ON ts.tsid=tr.tsid WHERE tr.rid=? AND tr.human=0""", (atf_row["rid"],)):
                 if x["lid"] is not None:
-                    mt[x["lid"]] = x["content"]
+                    mt[x["lid"]] = (x["content"], x["conf"] or 0)
                 mt_meta = mt_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
             for l in c.execute("SELECT lid, line_no, surface, atf FROM line WHERE rid=? ORDER BY seq LIMIT ?", (atf_row["rid"], MAX_LINES)):
-                lines.append((l["surface"], l["line_no"], l["atf"], mt.get(l["lid"])))
+                m_, cf = mt.get(l["lid"], (None, 0))
+                lines.append((l["surface"], l["line_no"], l["atf"], m_, cf))
         mt_free, mt_free_meta = [], None
         mt_row = next((r for r in rows if r["n_mt"]), None)
-        if mt_row is not None and (mt_row is not atf_row or not any(m for *_, m in lines)):
-            for x in c.execute("""SELECT tr.line_ref, tr.content, ts.author, ts.version, ts.model_label, tr.created FROM tr
+        if mt_row is not None and (mt_row is not atf_row or not any(ln[3] for ln in lines)):
+            for x in c.execute(f"""SELECT tr.line_ref, tr.content, {conf_col} AS conf, ts.author, ts.version, ts.model_label, tr.created FROM tr
                                   JOIN tr_source ts ON ts.tsid=tr.tsid WHERE tr.rid=? AND tr.human=0 ORDER BY tr.trid LIMIT ?""",
                                (mt_row["rid"], MAX_LINES)):
-                mt_free.append((x["line_ref"], x["content"]))
+                mt_free.append((x["line_ref"], x["content"], x["conf"] or 0))
                 mt_free_meta = mt_free_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
-        if not hum and not mt_free and not any(m for *_, m in lines):
+        n_mt_shown = sum(1 for ln in lines if ln[3]) + sum(1 for f in mt_free if f[1])
+        if not hum and not n_mt_shown:
             continue
+        noindex = max(len(hum), n_mt_shown) < index_min
         rng = period_range(period)
         site = site_short(prov) if prov and (geo or not re.search(r"uncertain|unknown", prov, re.I)) else None
-        reader_id = key.split(":", 1)[1] if ":" in key else key
+        reader_id = key if by_canonical else key.split(":", 1)[1]
         en_bits, n_ch = [], 0
-        en_src = [x["content"] for _, x in hum] or [m for *_, m in lines if m] or [m for _, m in mt_free]
+        en_src = [x["content"] for _, x in hum] or [ln[3] for ln in lines if ln[3]] or [f[1] for f in mt_free]
         for content in en_src:
             t_ = re.sub(r"\s+", " ", content or "").strip()
             if len(t_) > 1 and not re.fullmatch(r"[\W\d.…x]+", t_):
@@ -277,11 +298,11 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
         atf_html = ""
         if lines:
             rows_h, cur = [], None
-            for surf, n, atf, m in lines:
+            for surf, n, atf, m, cf in lines:
                 if surf and surf != cur:
                     rows_h.append(f'<tr class="surface-row"><td colspan="3">{e(surf)}</td></tr>')
                     cur = surf
-                rows_h.append(f'<tr><td class="ln">{e(n or "")}</td><td class="atf">{e(atf or "")}</td><td>{e(m or "")}</td></tr>')
+                rows_h.append(f'<tr><td class="ln">{e(n or "")}</td><td class="atf">{e(atf or "")}</td>{mt_td(m, cf)}</tr>')
             s = sources.get(atf_row["src"], {})
             mt_note = (f'<p class="machine-draft"><strong>Machine draft.</strong> The right-hand column is machine English from '
                        f'<code>{e(mt_meta["repo"] or "")}</code> ({e(mt_meta["label"] or mt_meta["rev"])}, {e(mt_meta["on"])}), '
@@ -297,7 +318,7 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                          f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
                          'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.</p>'
                          '<table class="lines-table"><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
-                         + "".join(f'<tr><td class="ln">{e(ln or "")}</td><td>{e(m or "")}</td></tr>' for ln, m in mt_free)
+                         + "".join(f'<tr><td class="ln">{e(ln or "")}</td>{mt_td(m, cf)}</tr>' for ln, m, cf in mt_free)
                          + "</tbody></table>")
         def _li(n, l, lic, cit):
             nm = f'<a href="{e(l)}" rel="noopener">{e(n)}</a>' if l else e(n)
@@ -338,11 +359,16 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
         cw = {k: v for k, v in cw.items() if v not in (None, [], "")}
         ld = {"@context": "https://schema.org", "@graph": [cw, crumbs_ld([("Home", base), ("Tablets", base + "browse.html"), (key, url)])]}
         fp = tdir / f"{sl}.html"
-        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld), encoding="utf-8")
+        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, noindex=noindex), encoding="utf-8")
         os.utime(fp, (stamp, stamp))  # deterministic mtime: `aws s3 sync` re-uploads only pages whose size changed or a newer export
-        urls.append(url)
+        if noindex:
+            n_noindex += 1
+        else:
+            n_index += 1
+            urls.append(url)  # sitemaps carry indexable pages only
     (out / "assets").mkdir(exist_ok=True)
     (out / "assets" / "tablet-pages.json").write_text(json.dumps(pagemap, separators=(",", ":")))
+    build_tablets.counts = {"generated": n_index + n_noindex, "indexable": n_index, "noindex": n_noindex, "curated_kept": skipped}
     return urls, built, skipped
 
 
@@ -467,16 +493,21 @@ def main():
     ap.add_argument("--base-url", default="https://unreadatlas.com/")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--ids", help="comma-separated tablet ids (testing)")
-    ap.add_argument("--machine-only", action="store_true", default=os.environ.get("SEO_MACHINE_ONLY") == "1",
-                    help="also build pages for tablets with machine English but no publishable human English")
-    ap.add_argument("--machine-min-lines", type=int, default=int(os.environ.get("SEO_MACHINE_MIN_LINES", "3")))
+    ap.add_argument("--human-only", action="store_true", default=os.environ.get("SEO_HUMAN_ONLY") == "1",
+                    help="old behaviour: pages only for tablets with publishable human English")
+    ap.add_argument("--machine-min-lines", type=int, default=int(os.environ.get("SEO_MACHINE_MIN_LINES", "1")),
+                    help="machine-only tablets need at least this many machine lines to get a page")
+    ap.add_argument("--index-min-lines", type=int, default=int(os.environ.get("SEO_INDEX_MIN_LINES", "10")),
+                    help="pages with fewer lines of English are noindex,follow and left out of the sitemaps")
+    ap.add_argument("--export-date", default=os.environ.get("SEO_EXPORT_DATE"),
+                    help="date shown on pages / sitemap lastmod (default: the export's meta.built_at)")
     a = ap.parse_args()
     out, base = Path(a.out), a.base_url
     t0 = time.time()
     if not Path(a.search_db).exists():
         sys.exit(f"build_seo_pages: search export not found: {a.search_db} (set SEARCH_DB)")
-    turls, tmod, skipped = build_tablets(out, Path(a.search_db), base, a.limit, a.machine_only, a.machine_min_lines,
-                                         a.ids.split(",") if a.ids else None)
+    turls, tmod, skipped = build_tablets(out, Path(a.search_db), base, a.limit, not a.human_only, a.machine_min_lines,
+                                         a.ids.split(",") if a.ids else None, a.index_min_lines, a.export_date)
     t1 = time.time()
     surls, smod = build_signs(out, base)
     t2 = time.time()
@@ -498,7 +529,8 @@ def main():
     idx = [("sitemap-core.xml", core_mod), ("sitemap-signs.xml", smod)] + parts
     core.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                     + "".join(f"  <sitemap><loc>{base}{n}</loc><lastmod>{m}</lastmod></sitemap>\n" for n, m in idx) + "</sitemapindex>\n")
-    rep = {"tablet_pages": len(turls) - skipped, "tablet_urls": len(turls), "curated_kept": skipped, "sign_pages": len(surls),
+    rep = {"tablet_pages": build_tablets.counts, "tablet_sitemap_urls": len(turls), "index_min_lines": a.index_min_lines,
+           "sign_pages": len(surls),
            "sitemaps": [n for n, _ in idx], "core_urls": len(keep), "secs": {"tablets": round(t1 - t0, 1), "signs": round(t2 - t1, 1)}}
     print("build_seo_pages:", json.dumps(rep))
     return rep
