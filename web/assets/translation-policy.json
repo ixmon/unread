@@ -1,0 +1,76 @@
+{
+  "$note": "Which human English the reader may show, and which tab opens by default. Read by web/js/app.js (translation tabs) and scripts/build_seo_pages.py (crawler pages). A source not listed here falls back to `unknown`: human hidden, machine shown. show_human=false hides that source's human English even if the API ever returns it. `default` picks the tab a reader sees first when the URL has no &tr=; a reader can still switch to any visible tab. Review status: `reviewed` = licence checked against the source's published terms; `needs_review` = Hayden to decide before human English is shown.",
+  "version": 1,
+  "machine_label": "Machine",
+  "sources": {
+    "oracc": {
+      "name": "ORACC",
+      "full_name": "Open Richly Annotated Cuneiform Corpus",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "terms_url": "https://oracc.museum.upenn.edu/doc/about/licensing/",
+      "attribution": "Translation from the ORACC project edition; credit the project and translator.",
+      "show_human": true,
+      "default": "human",
+      "status": "reviewed",
+      "uncertain": "Oracc's default licence is CC BY-SA 3.0 'unless otherwise stated'; individual projects can differ, and our per-file JSON metadata says CC0. We use the stricter CC BY-SA 3.0 and show credit + licence."
+    },
+    "cdli": {
+      "name": "CDLI",
+      "full_name": "Cuneiform Digital Library Initiative",
+      "license": "Free reuse with citation (CDLI terms of use)",
+      "license_url": "https://cdli.earth/terms-of-use",
+      "terms_url": "https://cdli.earth/terms-of-use",
+      "attribution": "Translation from CDLI (https://cdli.earth); cite CDLI and the P-number.",
+      "show_human": true,
+      "default": "human",
+      "status": "reviewed",
+      "uncertain": "Not a CC licence: 'may be freely copied, aggregated and re-used according to common and fair academic practice', with a request to cite CDLI. Commercial use of the text is not addressed explicitly."
+    },
+    "ebl": {
+      "name": "eBL",
+      "full_name": "electronic Babylonian Library (LMU Munich)",
+      "license": "Not cleared for republication",
+      "terms_url": "https://www.ebl.lmu.de/",
+      "show_human": false,
+      "default": "machine",
+      "status": "reviewed",
+      "uncertain": "Zenodo dataset says MIT but platform terms are unverified; eBL ATF and English must not be displayed or republished. The API already strips eBL human English; this is a second guard."
+    },
+    "tlhdig": {
+      "name": "TLHdig",
+      "full_name": "Thesaurus Linguarum Hethaeorum digitalis",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "show_human": false,
+      "default": "machine",
+      "status": "needs_review",
+      "uncertain": "Transliterations are CC BY 4.0; no human English from TLHdig is in the corpus today. Hidden until reviewed."
+    },
+    "achemenet": {
+      "name": "Achemenet",
+      "full_name": "Linguistically Annotated Achemenet Babylonian Texts (Univ. Helsinki)",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "show_human": false,
+      "default": "machine",
+      "status": "needs_review",
+      "uncertain": "No human English from this source is in the corpus today. Hidden until reviewed."
+    },
+    "hayden_pairs": {
+      "name": "Training pairs",
+      "license": "Derived from CDLI/ORACC (inherits upstream terms)",
+      "show_human": false,
+      "default": "machine",
+      "status": "reviewed",
+      "uncertain": "Duplicate of CDLI/ORACC English; excluded from the public export."
+    },
+    "unknown": {
+      "name": "Other source",
+      "license": "Unknown",
+      "show_human": false,
+      "default": "machine",
+      "status": "needs_review"
+    }
+  }
+}

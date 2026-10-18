@@ -221,12 +221,35 @@ async function loadTextFromApi(id) {
     signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) return null;
-  return apiTextToReader(await res.json(), id);
+  const [json] = await Promise.all([res.json(), loadTrPolicy()]);
+  return apiTextToReader(json, id);
 }
 
 // graded machine-English confidence (API field `conf`, 1..3; absent/0 = normal). Generic: any confidence source can set it.
 const CONF_TITLES = { 1: "Lower confidence: line is broken", 2: "Low confidence: few signs survive", 3: "Very low confidence: a guess" };
 const confLevel = (c) => (c === 1 || c === 2 || c === 3 ? c : 0);
+
+// ─── Translation tabs (human editions + machine draft) ───
+// Per-source rules live in assets/translation-policy.json: show_human (may we display that source's human
+// English?) and default ('human' | 'machine': which tab opens first). Unknown sources: human hidden, machine shown.
+const TR_POLICY_FALLBACK = { machine_label: "Machine", sources: { unknown: { name: "Other source", show_human: false, default: "machine" } } };
+let _trPolicyP = null;
+function loadTrPolicy() {
+  return (_trPolicyP ||= fetch("assets/translation-policy.json")
+    .then((r) => (r.ok ? r.json() : TR_POLICY_FALLBACK))
+    .catch(() => TR_POLICY_FALLBACK)
+    .then((p) => (state.trPolicy = p)));
+}
+function trPolicyFor(src) {
+  const all = (state.trPolicy || TR_POLICY_FALLBACK).sources || {};
+  return all[src] || all.unknown || TR_POLICY_FALLBACK.sources.unknown;
+}
+/** Translator name fit for a credit line, or null for placeholders ("uncertain", "ORACC project x/y", …). */
+function cleanTranslator(a) {
+  a = String(a || "").replace(/\s*\((CDLI )?translation_source\)|\s*\(see CDLI record\)/g, "").trim();
+  return !a || /^(uncertain|unknown|check|cdli contributor|no translat|translator not named|oracc project\b)/i.test(a) ? null : a;
+}
+const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
 
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
@@ -234,8 +257,11 @@ function apiTextToReader(d, requestedId) {
   const hasHum = (e) => Array.isArray(e.human_en) && e.human_en.some((h) => h && h.en);
   const hasMt = (e) => (Array.isArray(e.lines) && e.lines.some((l) => l.mt)) || (Array.isArray(e.mt_lines) && e.mt_lines.length);
   const hasAtf = (e) => Array.isArray(e.lines) && e.lines.some((l) => l.atf);
-  // same preference as the browse card: human English, then machine English, then ATF
-  const ed = eds.find(hasHum) || eds.find(hasMt) || eds.find(hasAtf) || eds[0];
+  // human English only from sources the policy lets us show (eBL never, unknown sources not until reviewed)
+  const humEds = eds.filter((e) => hasHum(e) && trPolicyFor(e.src).show_human === true);
+  const mtEd = eds.find((e) => hasMt(e) && hasAtf(e)) || eds.find(hasMt);
+  // ATF column: the machine draft's edition when it has ATF (so MT rows line up), else a human edition, else any ATF
+  const ed = (mtEd && hasAtf(mtEd) && mtEd) || humEds.find(hasAtf) || eds.find(hasAtf) || humEds[0] || mtEd || eds[0];
   const lines = (ed.lines || []).map((l) => ({
     type: "line",
     n: l.n != null ? String(l.n) : "",
@@ -245,7 +271,6 @@ function apiTextToReader(d, requestedId) {
     english: l.mt || null,
     conf: l.mt ? confLevel(l.conf) : 0, // optional per-line confidence level from the API: 1|2|3 = progressively lower; 0 = normal
   }));
-  const m = ed.model || null;
   const text = {
     id: requestedId || d.id || ed.id,
     canonical_id: d.canonical_id || ed.canonical_id,
@@ -270,53 +295,163 @@ function apiTextToReader(d, requestedId) {
     api_source: ed.src,
   };
   if (ed.src === "cdli" && /^P\d+$/.test(ed.id || "")) text.cdli_url = `https://cdli.earth/artifacts/${parseInt(ed.id.slice(1), 10)}`;
-  const notes = [];
-  if (hasHum(ed)) {
-    // human translation: its own line labels, not index-aligned to the ATF rows
-    const hum = ed.human_en.filter((h) => h && h.en);
-    text.english = hum.map((h) => h.en);
-    text.english_labels = hum.map((h) => h.line || "");
-    text.english_complete = true;
-    text.english_kind = "human";
-    const credits = [...new Set(hum.map((h) => [h.author && `Translation: ${h.author}`, h.edition && `edition ${h.edition}`, h.license && `licence: ${h.license}`].filter(Boolean).join(", ")))].filter(Boolean);
-    notes.push(`Human translation (${hum.length} lines)`, ...credits);
-    if (ed.source && ed.source.citation) notes.push(`Via ${ed.source.citation}`);
-  } else if (lines.some((l) => l.english)) {
-    // machine draft aligned line-by-line with the ATF
-    text.english = lines.map((l) => l.english || "");
-    if (lines.some((l) => l.conf)) text.english_conf = lines.map((l) => l.conf);
-    text.english_complete = true;
-    text.has_machine_draft = true;
-    text.machine_draft_lines = lines.filter((l) => l.english).length;
-  } else if (Array.isArray(ed.mt_lines) && ed.mt_lines.length) {
-    // machine draft with its own line labels (not aligned to ATF rows)
-    text.english = ed.mt_lines.map((l) => l.mt || "");
-    if (ed.mt_lines.some((l) => confLevel(l.conf))) text.english_conf = ed.mt_lines.map((l) => confLevel(l.conf));
-    text.english_labels = ed.mt_lines.map((l) => l.line || "");
-    text.english_complete = true;
-    text.has_machine_draft = true;
-    text.machine_draft_lines = ed.mt_lines.length;
+
+  const options = [];
+  const used = new Set();
+  for (const he of humEds) {
+    const pol = trPolicyFor(he.src);
+    const groups = new Map(); // one tab per edition/project within a source
+    for (const h of he.human_en) {
+      if (!h || !h.en) continue;
+      const k = h.edition || he.project || "";
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(h);
+    }
+    for (const [edn, hs] of groups) {
+      let key = he.src;
+      if (used.has(key)) key = `${he.src}-${(edn || String(used.size)).replace(/[^A-Za-z0-9]+/g, "-")}`;
+      used.add(key);
+      const recordUrl =
+        he.src === "cdli" && /^P\d+$/.test(he.id || "")
+          ? `https://cdli.earth/artifacts/${parseInt(he.id.slice(1), 10)}`
+          : he.src === "oracc" && (edn || he.project)
+            ? `https://oracc.museum.upenn.edu/${edn || he.project}/${he.id}`
+            : he.url || he.source?.url || null;
+      options.push({
+        key,
+        kind: "human",
+        src: he.src,
+        label: `${pol.name || he.src.toUpperCase()}${edn ? ` · ${edn}` : ""}`,
+        english: hs.map((h) => h.en),
+        labels: hs.map((h) => h.line || ""),
+        conf: null,
+        translators: [...new Set(hs.map((h) => cleanTranslator(h.author)).filter(Boolean))],
+        source_name: pol.full_name || he.source?.name || pol.name || he.src,
+        edition: edn || null,
+        record_url: recordUrl,
+        license: pol.license || hs.find((h) => h.license)?.license || he.source?.license || "",
+        license_url: pol.license_url || pol.terms_url || null,
+        note: `Human translation (${hs.length} lines)`,
+      });
+    }
   }
-  if (text.has_machine_draft && m) {
-    const rev = (m.revision || "").slice(0, 7);
-    notes.push(`Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`);
-    text.translation_meta = { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on };
+  if (mtEd) {
+    const m = mtEd.model || {};
+    const aligned = mtEd === ed && lines.some((l) => l.english);
+    let english, labels = null, conf;
+    if (aligned) {
+      english = lines.map((l) => l.english || "");
+      conf = lines.map((l) => l.conf);
+    } else {
+      const ml = Array.isArray(mtEd.mt_lines) && mtEd.mt_lines.length
+        ? mtEd.mt_lines
+        : (mtEd.lines || []).filter((l) => l.mt).map((l) => ({ line: [l.surface, l.n].filter(Boolean).join(" "), mt: l.mt, conf: l.conf }));
+      english = ml.map((l) => l.mt || "");
+      labels = ml.map((l) => l.line || "");
+      conf = ml.map((l) => confLevel(l.conf));
+    }
+    const rev = /^[0-9a-f]{12,}$/.test(m.revision || "") ? m.revision.slice(0, 7) : m.revision || ""; // git sha -> short; tags like t5base-H2 kept whole
+    options.push({
+      key: "machine",
+      kind: "machine",
+      src: mtEd.src,
+      label: `${(state.trPolicy || TR_POLICY_FALLBACK).machine_label || "Machine"} (${modelShort(m.label)})`,
+      english,
+      labels,
+      conf: conf.some(Boolean) ? conf : null,
+      n: english.filter(Boolean).length,
+      note: m.repo
+        ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
+        : "Machine draft. Unreviewed machine output, not a scholarly translation.",
+      meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
+    });
   }
-  if (ed.truncated) notes.push("Long text: only the first 3,000 lines are included.");
+  text.translations = options;
+  const defHuman = options.find((o) => o.kind === "human" && trPolicyFor(o.src).default === "human");
+  text.tr_default = (defHuman || options.find((o) => o.kind === "machine") || options[0])?.key || null;
+  text._notes_common = ed.truncated ? ["Long text: only the first 3,000 lines are included."] : [];
+  applyTranslation(text, new URLSearchParams(location.search).get("tr"));
+
   // tablets outside the curated catalog have no translation-status assessment; say so instead of a raw key
   const inCatalog = state.catalog?.items?.some((x) => x.id === text.id);
   if (!inCatalog) {
-    if (text.english_kind === "human") {
+    if (options.some((o) => o.kind === "human")) {
+      const h = options.find((o) => o.kind === "human");
       text.translation_status = "open_project";
-      text.translation_short = `Open: ${ed.source?.name ? ed.src.toUpperCase() : "source"}`;
+      text.translation_short = `Open: ${h.src.toUpperCase()}`;
     } else {
       text.translation_status = "unknown";
       text.translation_short = "Corpus text";
     }
     text.translation_detail = "From the full corpus (not in the curated catalog); translation status not assessed.";
   }
-  text.english_note = notes.join(" · ") || null;
   return text;
+}
+
+/**
+ * Make one translation option the active English. `want` is a tab key ("machine", "oracc", "cdli",
+ * "oracc-<edition>"…) or "human" (first human tab); anything unknown falls back to the policy default.
+ */
+function applyTranslation(text, want) {
+  const opts = text.translations || [];
+  if (!opts.length) {
+    text.english_note = (text._notes_common || []).join(" · ") || null;
+    return;
+  }
+  const o =
+    opts.find((x) => x.key === want) ||
+    (want === "human" ? opts.find((x) => x.kind === "human") : null) ||
+    opts.find((x) => x.key === text.tr_default) ||
+    opts[0];
+  text.tr_active = o.key;
+  text.english = o.english;
+  text.english_labels = o.labels || undefined;
+  text.english_conf = o.conf || undefined;
+  text.english_complete = true;
+  text.english_kind = o.kind === "human" ? "human" : undefined;
+  text.has_machine_draft = o.kind === "machine";
+  text.machine_draft_lines = o.kind === "machine" ? o.n : undefined;
+  text.translation_meta = o.kind === "machine" ? o.meta : undefined;
+  text.english_note = [o.note, ...(text._notes_common || [])].filter(Boolean).join(" · ") || null;
+}
+
+/** Keep the tab choice in the URL (&tr=…) so shared links open the same tab; the default tab drops the param. */
+function setTrParam(key, isDefault) {
+  try {
+    const u = new URL(location.href);
+    if (!key || isDefault) u.searchParams.delete("tr");
+    else u.searchParams.set("tr", key);
+    history.replaceState(history.state, "", u);
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function trTabsHtml(text) {
+  const opts = text.translations || [];
+  if (opts.length < 2) return "";
+  return `<div class="tr-tabs" role="tablist" aria-label="Choose a translation">${opts
+    .map(
+      (o) =>
+        `<button type="button" role="tab" class="tr-tab tr-${o.kind}${o.key === text.tr_active ? " on" : ""}" aria-selected="${o.key === text.tr_active}" data-tr="${escapeAttr(o.key)}" title="${escapeAttr(
+          o.kind === "human" ? `Human translation via ${o.source_name}${o.license ? " · " + o.license : ""}` : "Machine draft from our model (unreviewed)"
+        )}">${escapeHtml(o.label)}</button>`
+    )
+    .join("")}</div>`;
+}
+
+/** Credit + licence line for the active human tab (HTML; every value escaped). */
+function trCreditHtml(text) {
+  const o = (text.translations || []).find((x) => x.key === text.tr_active);
+  if (!o || o.kind !== "human") return "";
+  const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
+  const bits = [
+    o.translators.length ? `Translation: ${escapeHtml(o.translators.join("; "))}` : "Human translation",
+    `via ${link(o.source_name + (o.edition ? ` (${o.edition})` : ""), o.record_url)}`,
+    o.license ? `licence: ${link(o.license, o.license_url)}` : "",
+    `${o.english.length} lines`,
+  ].filter(Boolean);
+  return `<p class="english-draft-note tr-credit">${bits.join(" · ")}</p>`;
 }
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
@@ -1002,6 +1137,8 @@ function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
   updateTranslateButton();
+  const colHead = $("#col-english .col-head span:last-child");
+  if (colHead) colHead.textContent = "model / draft";
 
   if (text.english && Array.isArray(text.english) && text.english.length) {
     const statusBits = [];
@@ -1015,9 +1152,11 @@ function renderEnglishCol(text) {
     } else if (text.open_english) {
       statusBits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
     }
-    const note = [text.english_note, ...statusBits].filter(Boolean).length
-      ? `<p class="english-draft-note">${escapeHtml([text.english_note, ...statusBits].filter(Boolean).join(" · "))}</p>`
-      : "";
+    const noteBits = [text.english_kind === "human" && text.translations ? (text._notes_common || []).join(" · ") : text.english_note, ...statusBits].filter(Boolean);
+    const note =
+      trTabsHtml(text) +
+      trCreditHtml(text) +
+      (noteBits.length ? `<p class="english-draft-note">${escapeHtml(noteBits.join(" · "))}</p>` : "");
     const labels = text.english_labels; // own labels => not index-aligned to the ATF rows
     const rows = text.english
       .map((line, i) => {
@@ -1042,6 +1181,15 @@ function renderEnglishCol(text) {
         : "";
     body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
     $("#btn-continue-translate")?.addEventListener("click", () => startTranslate({ continue: true }));
+    body.querySelectorAll(".tr-tab").forEach((b) =>
+      b.addEventListener("click", () => {
+        if (b.dataset.tr === text.tr_active) return;
+        applyTranslation(text, b.dataset.tr);
+        setTrParam(text.tr_active, text.tr_active === text.tr_default);
+        renderReader(); // badges + English column (ATF/cuneiform unchanged)
+      })
+    );
+    if (colHead) colHead.textContent = text.english_kind === "human" ? "human translation" : "model / draft";
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
   } else if (text.status === "api" && !contentLines.length) {

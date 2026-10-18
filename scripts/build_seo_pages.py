@@ -2,7 +2,8 @@
 """SEO wave 1: static, JS-free pages for crawlers, written straight into the build output (not into git).
 
   <out>/t/<id>.html   one page per tablet with publishable human English (search export, see below);
-                      the 49 hand-curated pages already in <out>/t/ are left untouched
+                      with --machine-only (or SEO_MACHINE_ONLY=1) also one per tablet that has only machine English
+                      (>= --machine-min-lines lines); the 49 hand-curated pages already in <out>/t/ are left untouched
   <out>/s/<slug>.html one page per sign in assets/signs/signs_index.json (2,493)
   <out>/assets/tablet-pages.json, <out>/assets/signs/sign-pages.json   id -> page maps (reader / signs.html canonicals)
   <out>/sitemap.xml   sitemap index -> sitemap-core.xml (the old web/sitemap.xml), sitemap-signs.xml,
@@ -12,7 +13,11 @@ Tablet data comes from the public search export (aws-cunei-search/out/unread-atl
 filtered data the live API serves, so licence rules (eBL ATF and eBL human English withheld, ATF only where
 atf_public=1) are already applied there.
 
-Usage: build_seo_pages.py OUT_DIR [--search-db PATH] [--base-url URL] [--limit N]
+Human English is shown only for sources whose web/assets/translation-policy.json entry has show_human=true
+(the same table the reader's translation tabs use); machine English is always included as page text.
+
+Usage: build_seo_pages.py OUT_DIR [--search-db PATH] [--base-url URL] [--limit N] [--ids ID,ID]
+                          [--machine-only] [--machine-min-lines N]
 """
 from __future__ import annotations
 
@@ -27,6 +32,12 @@ from fix_catalog_sites import usable_site  # noqa: E402
 
 DEFAULT_DB = ROOT.parent / "aws-cunei-search" / "out" / "unread-atlas-search.sqlite"
 SITE = json.loads((WEB / "site.json").read_text())
+TR_POLICY = json.loads((WEB / "assets" / "translation-policy.json").read_text()).get("sources", {})
+
+
+def human_ok(src: str) -> bool:
+    """May this source's human English appear on a public page? Unknown sources: no."""
+    return (TR_POLICY.get(src) or TR_POLICY.get("unknown") or {}).get("show_human") is True
 OG_IMAGE = "https://unreadatlas.com/og.jpg"
 MAX_LINES = 600          # per page; longer tablets link to the reader for the rest
 SITEMAP_MAX = 50000
@@ -145,15 +156,22 @@ def crumbs_ld(items):
 
 
 # ------------------------------------------------------------------ tablets
-def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
+def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
+                  machine_only: bool = False, machine_min: int = 3, ids: list[str] | None = None):
     c = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     c.row_factory = sqlite3.Row
     built_full = json.loads(c.execute("SELECT value FROM meta WHERE key='built_at'").fetchone()[0])
     built = built_full[:10]
     stamp = dt.datetime.fromisoformat(built_full.replace("Z", "+00:00")).timestamp()
     sources = {r["id"]: dict(r) for r in c.execute("SELECT * FROM source")}
+    hok = [s for s in sources if human_ok(s)] or ["-"]
+    cond = f"(n_human_en>0 AND src IN ({','.join('?' * len(hok))}))" + (" OR n_mt>=?" if machine_only else "")
     keys = [r[0] for r in c.execute(
-        "SELECT DISTINCT coalesce(canonical_id, src||':'||id) FROM text WHERE n_human_en>0 ORDER BY 1")]
+        f"SELECT DISTINCT coalesce(canonical_id, src||':'||id) FROM text WHERE {cond} ORDER BY 1",
+        (*hok, *([machine_min] if machine_only else [])))]
+    if ids:
+        want = set(ids)
+        keys = [k for k in keys if k in want or k.split(":", 1)[-1] in want]
     if limit:
         keys = keys[:limit]
     tdir = out / "t"
@@ -185,13 +203,13 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
         geo = next((r for r in rows if r["lat"] is not None and usable_site(r["provenience"] or "", r["lat"], r["lon"])), None)
         prov = (geo["provenience"] if geo else None) or first("provenience")
         # human English: every edition that has it, grouped by translator
-        hum_rows = [r for r in rows if r["n_human_en"]]
+        hum_rows = [r for r in rows if r["n_human_en"] and human_ok(r["src"])]
         hum = []
         for r in hum_rows:
             for x in c.execute("""SELECT tr.line_ref, tr.content, ts.author, ts.license, ts.edition FROM tr JOIN tr_source ts ON ts.tsid=tr.tsid
                                   WHERE tr.rid=? AND tr.human=1 ORDER BY tr.trid LIMIT ?""", (r["rid"], MAX_LINES)):
                 hum.append((r["src"], x))
-        if not hum:
+        if not hum and not machine_only:
             continue
         # transliteration + machine English: first edition whose ATF is public
         atf_row = next((r for r in rows if r["atf_public"] and r["n_lines"]), None)
@@ -205,12 +223,23 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
                 mt_meta = mt_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
             for l in c.execute("SELECT lid, line_no, surface, atf FROM line WHERE rid=? ORDER BY seq LIMIT ?", (atf_row["rid"], MAX_LINES)):
                 lines.append((l["surface"], l["line_no"], l["atf"], mt.get(l["lid"])))
+        mt_free, mt_free_meta = [], None
+        mt_row = next((r for r in rows if r["n_mt"]), None)
+        if mt_row is not None and (mt_row is not atf_row or not any(m for *_, m in lines)):
+            for x in c.execute("""SELECT tr.line_ref, tr.content, ts.author, ts.version, ts.model_label, tr.created FROM tr
+                                  JOIN tr_source ts ON ts.tsid=tr.tsid WHERE tr.rid=? AND tr.human=0 ORDER BY tr.trid LIMIT ?""",
+                               (mt_row["rid"], MAX_LINES)):
+                mt_free.append((x["line_ref"], x["content"]))
+                mt_free_meta = mt_free_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
+        if not hum and not mt_free and not any(m for *_, m in lines):
+            continue
         rng = period_range(period)
         site = site_short(prov) if prov and (geo or not re.search(r"uncertain|unknown", prov, re.I)) else None
         reader_id = key.split(":", 1)[1] if ":" in key else key
         en_bits, n_ch = [], 0
-        for _, x in hum:
-            t_ = re.sub(r"\s+", " ", x["content"] or "").strip()
+        en_src = [x["content"] for _, x in hum] or [m for *_, m in lines if m] or [m for _, m in mt_free]
+        for content in en_src:
+            t_ = re.sub(r"\s+", " ", content or "").strip()
             if len(t_) > 1 and not re.fullmatch(r"[\W\d.…x]+", t_):
                 en_bits.append(t_); n_ch += len(t_) + 1
             if n_ch > 110:
@@ -221,7 +250,7 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
         if sub:
             title = f"{title}: {sub}"
         desc = clip(f"{genre or 'Cuneiform'} tablet{(' from ' + site) if site else ''}{(', ' + period) if period else ''}"
-                    f"{(' (' + human_years(rng) + ')') if rng else ''}, with English translation: “{first_en}”", 157)
+                    f"{(' (' + human_years(rng) + ')') if rng else ''}, with {'English translation' if hum else 'machine English draft'}: “{first_en}”", 157)
         if desc.count("“") > desc.count("”"):
             desc += "”"
         # ---- body
@@ -262,6 +291,14 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
                         + "\n".join(rows_h) + "</tbody></table>"
                         + (f'<p class="src-note">Showing the first {MAX_LINES} lines; <a href="../map.html?id={quote(reader_id)}">open the reader</a> for the rest.</p>'
                            if atf_row["n_lines"] and atf_row["n_lines"] > MAX_LINES else ""))
+        if mt_free:
+            mm = mt_free_meta
+            atf_html += (f'<h2>Machine English (draft)</h2><p class="machine-draft"><strong>Machine draft.</strong> Machine English from '
+                         f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
+                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.</p>'
+                         '<table class="lines-table"><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
+                         + "".join(f'<tr><td class="ln">{e(ln or "")}</td><td>{e(m or "")}</td></tr>' for ln, m in mt_free)
+                         + "</tbody></table>")
         def _li(n, l, lic, cit):
             nm = f'<a href="{e(l)}" rel="noopener">{e(n)}</a>' if l else e(n)
             return f"<li>{nm} · {e(lic)}" + (" · " + e(cit) if cit else "") + "</li>"
@@ -295,8 +332,9 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None):
             if geo:
                 place["geo"] = {"@type": "GeoCoordinates", "latitude": round(geo["lat"], 4), "longitude": round(geo["lon"], 4)}
             cw["locationCreated"] = place
-        cw["workTranslation"] = {"@type": "CreativeWork", "inLanguage": "en", "name": f"English translation of {designation}",
-                                 "author": [{"@type": "Person", "name": a} for a in dict.fromkeys(clean_author(a) for (a, _, _) in by_tr) if a] or None}
+        if by_tr:
+            cw["workTranslation"] = {"@type": "CreativeWork", "inLanguage": "en", "name": f"English translation of {designation}",
+                                     "author": [{"@type": "Person", "name": a} for a in dict.fromkeys(clean_author(a) for (a, _, _) in by_tr) if a] or None}
         cw = {k: v for k, v in cw.items() if v not in (None, [], "")}
         ld = {"@context": "https://schema.org", "@graph": [cw, crumbs_ld([("Home", base), ("Tablets", base + "browse.html"), (key, url)])]}
         fp = tdir / f"{sl}.html"
@@ -428,12 +466,17 @@ def main():
     ap.add_argument("--search-db", default=os.environ.get("SEARCH_DB", str(DEFAULT_DB)))
     ap.add_argument("--base-url", default="https://unreadatlas.com/")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--ids", help="comma-separated tablet ids (testing)")
+    ap.add_argument("--machine-only", action="store_true", default=os.environ.get("SEO_MACHINE_ONLY") == "1",
+                    help="also build pages for tablets with machine English but no publishable human English")
+    ap.add_argument("--machine-min-lines", type=int, default=int(os.environ.get("SEO_MACHINE_MIN_LINES", "3")))
     a = ap.parse_args()
     out, base = Path(a.out), a.base_url
     t0 = time.time()
     if not Path(a.search_db).exists():
         sys.exit(f"build_seo_pages: search export not found: {a.search_db} (set SEARCH_DB)")
-    turls, tmod, skipped = build_tablets(out, Path(a.search_db), base, a.limit)
+    turls, tmod, skipped = build_tablets(out, Path(a.search_db), base, a.limit, a.machine_only, a.machine_min_lines,
+                                         a.ids.split(",") if a.ids else None)
     t1 = time.time()
     surls, smod = build_signs(out, base)
     t2 = time.time()
