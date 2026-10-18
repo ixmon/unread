@@ -329,6 +329,7 @@ function apiTextToReader(d, requestedId) {
         source_name: pol.full_name || he.source?.name || pol.name || he.src,
         edition: edn || null,
         record_url: recordUrl,
+        src_lines: (he.lines || []).map((l) => ({ surface: l.surface || "", n: l.n != null ? String(l.n) : "" })),
         license: pol.license || hs.find((h) => h.license)?.license || he.source?.license || "",
         license_url: pol.license_url || pol.terms_url || null,
         note: `Human translation (${hs.length} lines)`,
@@ -364,6 +365,9 @@ function apiTextToReader(d, requestedId) {
         ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
         : "Machine draft. Unreviewed machine output, not a scholarly translation.",
       meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
+      model_label: m.label || "",
+      translated_on: m.translated_on || "",
+      src_lines: (mtEd.lines || []).map((l) => ({ surface: l.surface || "", n: l.n != null ? String(l.n) : "" })),
     });
   }
   text.translations = options;
@@ -388,9 +392,19 @@ function apiTextToReader(d, requestedId) {
   return text;
 }
 
+/** Resolve a URL/tab token ("machine", "human", "oracc", "oracc-<edition>"…) to an option key, or null. */
+function resolveTrKey(text, k) {
+  const opts = text.translations || [];
+  const o =
+    opts.find((x) => x.key === k) ||
+    (k === "human" ? opts.find((x) => x.kind === "human") : null) ||
+    (k === "machine" ? opts.find((x) => x.kind === "machine") : null);
+  return o ? o.key : null;
+}
+
 /**
- * Make one translation option the active English. `want` is a tab key ("machine", "oracc", "cdli",
- * "oracc-<edition>"…) or "human" (first human tab); anything unknown falls back to the policy default.
+ * Choose which translations are shown. `want` is a key, a comma list ("machine,oracc") or an array; the first
+ * one drives the badges/chips. Anything unknown (or not allowed by the policy) falls back to the policy default.
  */
 function applyTranslation(text, want) {
   const opts = text.translations || [];
@@ -398,11 +412,11 @@ function applyTranslation(text, want) {
     text.english_note = (text._notes_common || []).join(" · ") || null;
     return;
   }
-  const o =
-    opts.find((x) => x.key === want) ||
-    (want === "human" ? opts.find((x) => x.kind === "human") : null) ||
-    opts.find((x) => x.key === text.tr_default) ||
-    opts[0];
+  const list = Array.isArray(want) ? want : String(want || "").split(",");
+  let cols = [...new Set(list.map((k) => resolveTrKey(text, String(k).trim())).filter(Boolean))];
+  if (!cols.length) cols = [text.tr_default || opts[0].key];
+  text.tr_cols = cols;
+  const o = opts.find((x) => x.key === cols[0]);
   text.tr_active = o.key;
   text.english = o.english;
   text.english_labels = o.labels || undefined;
@@ -415,44 +429,253 @@ function applyTranslation(text, want) {
   text.english_note = [o.note, ...(text._notes_common || [])].filter(Boolean).join(" · ") || null;
 }
 
-/** Keep the tab choice in the URL (&tr=…) so shared links open the same tab; the default tab drops the param. */
-function setTrParam(key, isDefault) {
+/** Keep the column choice in the URL (&tr=machine,oracc) so shared links open the same view; the default drops it. */
+function setTrParam(text) {
   try {
+    const cols = text.tr_cols || [];
     const u = new URL(location.href);
-    if (!key || isDefault) u.searchParams.delete("tr");
-    else u.searchParams.set("tr", key);
-    history.replaceState(history.state, "", u);
+    u.searchParams.delete("tr");
+    if (cols.length && !(cols.length === 1 && cols[0] === text.tr_default)) u.searchParams.set("tr", cols.join(","));
+    history.replaceState(history.state, "", u.toString().replace(/%2C/gi, ","));
   } catch (_) {
     /* ignore */
   }
 }
 
-function trTabsHtml(text) {
-  const opts = text.translations || [];
-  if (opts.length < 2) return "";
-  return `<div class="tr-tabs" role="tablist" aria-label="Choose a translation">${opts
-    .map(
-      (o) =>
-        `<button type="button" role="tab" class="tr-tab tr-${o.kind}${o.key === text.tr_active ? " on" : ""}" aria-selected="${o.key === text.tr_active}" data-tr="${escapeAttr(o.key)}" title="${escapeAttr(
-          o.kind === "human" ? `Human translation via ${o.source_name}${o.license ? " · " + o.license : ""}` : "Machine draft from our model (unreviewed)"
-        )}">${escapeHtml(o.label)}</button>`
-    )
-    .join("")}</div>`;
+// ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
+const NARROW_Q = window.matchMedia("(max-width: 760px)");
+const ROMAN = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9, x: 10, xi: 11, xii: 12 };
+/** "obverse col 1" | "o i" | "Obverse Column i" -> "o:1"; "surface a" -> "sa"; "left edge" -> "le"; "" -> "" */
+function normSurf(s) {
+  const t = String(s || "").toLowerCase().replace(/[.,@()]/g, " ").split(/\s+/).filter(Boolean);
+  let side = "", col = "";
+  for (let i = 0; i < t.length; i++) {
+    const w = t[i], nx = t[i + 1] || "";
+    if (/^(obverse|obv|o)$/.test(w)) side = "o";
+    else if (/^(reverse|rev|r)$/.test(w)) side = "r";
+    else if (/^(left|right|top|bottom|lower|upper)$/.test(w) && /^(edge|e)$/.test(nx)) {
+      side = { left: "le", right: "re", top: "te", upper: "te", bottom: "be", lower: "be" }[w];
+      i++;
+    } else if (/^(edge|e|le|re|te|be)$/.test(w)) side = w === "edge" ? "e" : w;
+    else if ((w === "surface" || w === "seal") && nx) {
+      side = w[0] + nx;
+      i++;
+    } else if ((w === "col" || w === "column") && nx) {
+      col = String(ROMAN[nx] || parseInt(nx, 10) || nx);
+      i++;
+    } else if (!col && side && (ROMAN[w] || /^\d+$/.test(w))) col = String(ROMAN[w] || parseInt(w, 10));
+  }
+  return side + (col ? ":" + col : "");
+}
+const normN = (n) => String(n || "").replace(/[′’ʼ]/g, "'").replace(/\s+/g, "").toLowerCase();
+const rowKey = (surface, n) => normSurf(surface) + "|" + normN(n);
+/** "obverse col 1 3'" -> rowKey("obverse col 1", "3'") */
+function rowKeyFromLabel(lab) {
+  const parts = String(lab || "").trim().split(/\s+/);
+  const n = parts.pop() || "";
+  return rowKey(parts.join(" "), n);
 }
 
-/** Credit + licence line for the active human tab (HTML; every value escaped). */
-function trCreditHtml(text) {
-  const o = (text.translations || []).find((x) => x.key === text.tr_active);
-  if (!o || o.kind !== "human") return "";
-  const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
-  const bits = [
-    o.translators.length ? `Translation: ${escapeHtml(o.translators.join("; "))}` : "Human translation",
-    `via ${link(o.source_name + (o.edition ? ` (${o.edition})` : ""), o.record_url)}`,
-    o.license ? `licence: ${link(o.license, o.license_url)}` : "",
-    `${o.english.length} lines`,
-  ].filter(Boolean);
-  return `<p class="english-draft-note tr-credit">${bits.join(" · ")}</p>`;
+/**
+ * Place one translation on the grid rows. Returns { blocks: [{s, e, items}], rate } where s..e are row indices.
+ * - machine aligned to the ATF: one block per row
+ * - CDLI-style labels ("obverse col 1 3'"): matched by surface + line number (works across CDLI/ORACC naming)
+ * - ORACC passages ("Obverse Column i [0:5] …"): lines 0..4 of that surface in the ORACC edition, so a
+ *   paragraph spans the ATF rows it translates
+ * Lines that can't be placed join the passage before them; a column with < 50% placed is shown unaligned.
+ */
+function mapTranslationToRows(o, keyIndex) {
+  if (!o.labels) {
+    const blocks = [];
+    o.english.forEach((t, i) => {
+      if (t) blocks.push({ s: i, e: i, items: [{ t, conf: (o.conf && o.conf[i]) || 0 }] });
+    });
+    return { blocks, rate: 1 };
+  }
+  let groups = null;
+  const blocks = [], orphans = [];
+  let last = null, placed = 0;
+  o.english.forEach((t, j) => {
+    const label = o.labels[j] || "";
+    const item = { t, label, conf: (o.conf && o.conf[j]) || 0 };
+    let idxs = [];
+    const m = label.match(/^(.*?)\[(\d+):(\d+)\]/);
+    if (m && o.src_lines && o.src_lines.length) {
+      if (!groups) {
+        groups = new Map();
+        for (const l of o.src_lines) {
+          const k = normSurf(l.surface);
+          if (!groups.has(k)) groups.set(k, []);
+          groups.get(k).push(l);
+        }
+      }
+      const list = groups.get(normSurf(m[1])) || (groups.size === 1 ? [...groups.values()][0] : null);
+      if (list) idxs = list.slice(+m[2], +m[3]).map((l) => keyIndex.get(rowKey(l.surface, l.n))).filter((x) => x != null);
+    } else if (keyIndex.has(rowKeyFromLabel(label))) idxs = [keyIndex.get(rowKeyFromLabel(label))];
+    if (idxs.length) {
+      placed++;
+      last = { s: Math.min(...idxs), e: Math.max(...idxs), items: [item] };
+      blocks.push(last);
+    } else if (last) last.items.push({ ...item, orphan: true });
+    else orphans.push({ ...item, orphan: true });
+  });
+  blocks.sort((a, b) => a.s - b.s);
+  const merged = [];
+  for (const b of blocks) {
+    const prev = merged[merged.length - 1];
+    if (prev && b.s <= prev.e) {
+      prev.e = Math.max(prev.e, b.e);
+      prev.items.push(...b.items);
+    } else merged.push(b);
+  }
+  if (orphans.length && merged.length) merged[0].items.unshift(...orphans);
+  return { blocks: merged, rate: o.english.length ? placed / o.english.length : 0 };
 }
+
+const isAlignedText = (text) => !!(text && text.status === "api" && (text.translations || []).length);
+/** Columns actually drawn: on narrow screens only the first (the selector still switches it). */
+const visibleTrCols = (text) => (NARROW_Q.matches ? (text.tr_cols || []).slice(0, 1) : text.tr_cols || []);
+const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
+
+function trCreditHtml(o) {
+  const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
+  if (o.kind === "human") {
+    return [
+      o.translators.length ? `Translation: ${escapeHtml(o.translators.join("; "))}` : "Human translation",
+      `via ${link(o.source_name + (o.edition ? ` (${o.edition})` : ""), o.record_url)}`,
+      o.license ? `licence: ${link(o.license, o.license_url)}` : "",
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  }
+  return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
+}
+
+function renderLinesCol(text) {
+  const body = $("#lines-body");
+  const panels = state.readerPanels;
+  const opts = text.translations || [];
+  const narrow = NARROW_Q.matches;
+  const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
+  const content = (text.lines || []).filter((l) => l.type === "line");
+  const atfOn = panels.atf && content.length > 0;
+  // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
+  let rows;
+  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
+  else {
+    const first = cols[0] || opts[0];
+    rows = (first.labels || first.english.map((_, i) => String(i + 1))).map((lab) => ({ n: lab, surface: "", atf: null, key: rowKeyFromLabel(lab) }));
+  }
+  const keyIndex = new Map();
+  rows.forEach((r, i) => {
+    if (!keyIndex.has(r.key)) keyIndex.set(r.key, i);
+  });
+
+  const k = cols.length;
+  const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
+  const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
+  const atfCol = 2, enCol0 = atfOn ? 3 : 2;
+  const remaining = opts.filter((o) => !(text.tr_cols || []).includes(o.key));
+  const html = [];
+
+  // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
+  html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
+  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
+  if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
+  else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
+  const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
+  cols.forEach((o, ci) => {
+    const c = enCol0 + ci;
+    const others = new Set(cols.map((x) => x.key).filter((x) => x !== o.key)); // narrow: hidden columns stay pickable
+    const choices = opts.filter((x) => !others.has(x.key));
+    const pick =
+      choices.length > 1
+        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${choices
+            .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
+            .join("")}</select>`
+        : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
+    const x = k > 1 ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
+    const add =
+      ci === k - 1 && remaining.length && !narrow
+        ? `<select class="tr-add" aria-label="Add a translation column to compare" title="Add a column to compare translations side by side"><option value="">+ compare</option>${remaining
+            .map((r) => `<option value="${escapeAttr(r.key)}">${escapeHtml(trOptLabel(r))}</option>`)
+            .join("")}</select>`
+        : "";
+    html.push(`<div class="lg-head lg-head-en" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
+    const mp = maps[ci];
+    const how =
+      o.labels && mp.rate < 0.5
+        ? " · not line-aligned in the source, shown as one block"
+        : mp.blocks.some((b) => b.e > b.s)
+          ? " · paragraph translation: each passage spans the lines it covers"
+          : "";
+    const withheld = ci === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
+    html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
+  });
+
+  // content rows (surface headings get their own row across the line-number + ATF columns)
+  const rowG = [];
+  let g = 3, lastSurf = null;
+  rows.forEach((r, i) => {
+    if (content.length && r.surface && r.surface !== lastSurf) {
+      html.push(`<div class="lg-break" style="grid-row:${g};grid-column:1 / ${atfOn ? atfCol + 1 : 2}">${escapeHtml(r.surface)}</div>`);
+      g++;
+    }
+    lastSurf = r.surface;
+    rowG[i] = g;
+    html.push(`<div class="lg-cell lg-ln" data-i="${i}" style="grid-row:${g};grid-column:1">${escapeHtml(r.n)}</div>`);
+    if (atfOn) html.push(`<div class="lg-cell lg-atf" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
+    g++;
+  });
+  const itemHtml = (it, showLabel) =>
+    `${showLabel && it.label ? `<span class="lg-range">${escapeHtml(it.label)}</span>` : ""}<span class="en-text">${escapeHtml(it.t)}</span>`;
+  cols.forEach((o, ci) => {
+    const c = enCol0 + ci;
+    const mp = maps[ci];
+    if (!rows.length) return;
+    if (o.labels && mp.rate < 0.5) {
+      html.push(`<div class="lg-cell lg-en lg-free" style="grid-row:${rowG[0]} / ${rowG[rows.length - 1] + 1};grid-column:${c}">${o.english
+        .map((t, j) => `<div class="lg-free-item">${itemHtml({ t, label: o.labels[j] }, true)}</div>`)
+        .join("")}</div>`);
+      return;
+    }
+    for (const b of mp.blocks) {
+      const lv = o.kind === "machine" ? Math.max(...b.items.map((it) => confLevel(it.conf))) : 0;
+      const span = b.e > b.s;
+      const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
+      html.push(
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? "" : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+          .map((it) => itemHtml(it, !!it.orphan))
+          .join(" ")}</div>`
+      );
+    }
+  });
+  if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
+  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
+
+  const setCols = (next) => {
+    applyTranslation(text, next);
+    setTrParam(text);
+    renderReader();
+  };
+  body.querySelectorAll(".tr-pick").forEach((sel) =>
+    sel.addEventListener("change", () => {
+      const next = [...text.tr_cols];
+      next[+sel.dataset.col] = sel.value;
+      setCols(next);
+    })
+  );
+  body.querySelectorAll(".tr-x").forEach((b) =>
+    b.addEventListener("click", () => setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col)))
+  );
+  body.querySelector(".tr-add")?.addEventListener("change", (e) => {
+    if (e.target.value) setCols([...text.tr_cols, e.target.value]);
+  });
+  bindLineHover(body);
+}
+NARROW_Q.addEventListener?.("change", () => {
+  if (state.currentText && isAlignedText(state.currentText)) renderReader();
+});
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
 function englishRemaining(text) {
@@ -898,13 +1121,25 @@ function renderReader() {
   if (n === 3) body.classList.add("cols-3");
   if (n >= 4) body.classList.add("cols-4");
 
-  $("#col-english").style.display = panels.english ? "flex" : "none";
-  $("#col-atf").style.display = panels.atf ? "flex" : "none";
+  // API tablets: one aligned "lines" column (ATF | English versions) instead of separate English + ATF columns
+  const aligned = isAlignedText(text) && (panels.english || panels.atf);
+  $("#col-lines").style.display = aligned ? "flex" : "none";
+  $("#col-english").style.display = !aligned && panels.english ? "flex" : "none";
+  $("#col-atf").style.display = !aligned && panels.atf ? "flex" : "none";
+  body.classList.toggle("custom-cols", aligned);
+  if (aligned) {
+    const k = panels.english ? visibleTrCols(text).length : 0;
+    const hasAtf = panels.atf && (text.lines || []).some((l) => l.type === "line");
+    const w = [`minmax(0,${(hasAtf ? (k <= 1 ? 1 : k === 2 ? 0.8 : 0.62) : 0) + Math.max(k, 0) || 1}fr)`];
+    if (panels.cuneiform) w.push(`minmax(0,${k >= 2 ? 0.6 : 1}fr)`);
+    if (panels.meta) w.push("minmax(0,0.9fr)");
+    body.style.setProperty("--reader-cols", w.join(" "));
+  }
   $("#col-cuneiform").style.display = panels.cuneiform ? "flex" : "none";
   $("#col-meta").style.display = panels.meta ? "flex" : "none";
 
-  renderEnglishCol(text);
-  renderAtfCol(text);
+  renderEnglishCol(text); // aligned API tablets: renders the lines column instead
+  if (!aligned) renderAtfCol(text);
   renderCuneiformCol(text);
   if (panels.meta) {
     renderMetaCol(text);
@@ -1137,8 +1372,10 @@ function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
   updateTranslateButton();
-  const colHead = $("#col-english .col-head span:last-child");
-  if (colHead) colHead.textContent = "model / draft";
+  if (isAlignedText(text) && (state.readerPanels.english || state.readerPanels.atf)) {
+    renderLinesCol(text);
+    return;
+  }
 
   if (text.english && Array.isArray(text.english) && text.english.length) {
     const statusBits = [];
@@ -1152,11 +1389,9 @@ function renderEnglishCol(text) {
     } else if (text.open_english) {
       statusBits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
     }
-    const noteBits = [text.english_kind === "human" && text.translations ? (text._notes_common || []).join(" · ") : text.english_note, ...statusBits].filter(Boolean);
-    const note =
-      trTabsHtml(text) +
-      trCreditHtml(text) +
-      (noteBits.length ? `<p class="english-draft-note">${escapeHtml(noteBits.join(" · "))}</p>` : "");
+    const note = [text.english_note, ...statusBits].filter(Boolean).length
+      ? `<p class="english-draft-note">${escapeHtml([text.english_note, ...statusBits].filter(Boolean).join(" · "))}</p>`
+      : "";
     const labels = text.english_labels; // own labels => not index-aligned to the ATF rows
     const rows = text.english
       .map((line, i) => {
@@ -1181,15 +1416,7 @@ function renderEnglishCol(text) {
         : "";
     body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
     $("#btn-continue-translate")?.addEventListener("click", () => startTranslate({ continue: true }));
-    body.querySelectorAll(".tr-tab").forEach((b) =>
-      b.addEventListener("click", () => {
-        if (b.dataset.tr === text.tr_active) return;
-        applyTranslation(text, b.dataset.tr);
-        setTrParam(text.tr_active, text.tr_active === text.tr_default);
-        renderReader(); // badges + English column (ATF/cuneiform unchanged)
-      })
-    );
-    if (colHead) colHead.textContent = text.english_kind === "human" ? "human translation" : "model / draft";
+
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
   } else if (text.status === "api" && !contentLines.length) {
@@ -1561,14 +1788,14 @@ async function renderCuneiformCol(text) {
 }
 
 function bindLineHover(container) {
-  container.querySelectorAll(".line-row[data-i], .line-en[data-i]").forEach((el) => {
+  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i]").forEach((el) => {
     el.addEventListener("mouseenter", () => highlightLine(el.dataset.i));
     el.addEventListener("mouseleave", () => highlightLine(null));
   });
 }
 
 function highlightLine(i) {
-  $$(".line-row.hl, .line-en.hl").forEach((el) => el.classList.remove("hl"));
+  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
   if (i == null) return;
   $$(`[data-i="${i}"]`).forEach((el) => el.classList.add("hl"));
 }
