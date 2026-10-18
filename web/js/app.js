@@ -429,18 +429,31 @@ function applyTranslation(text, want) {
   text.english_note = [o.note, ...(text._notes_common || [])].filter(Boolean).join(" · ") || null;
 }
 
-/** Keep the column choice in the URL (&tr=machine,oracc) so shared links open the same view; the default drops it. */
+/**
+ * Keep the column choice in the URL (&tr=machine,oracc) so shared links and reloads open the same view; the
+ * policy default drops the param. Each user change is a history entry, so Back/Forward step through views
+ * (popstate below re-applies the URL).
+ */
 function setTrParam(text) {
   try {
     const cols = text.tr_cols || [];
     const u = new URL(location.href);
     u.searchParams.delete("tr");
     if (cols.length && !(cols.length === 1 && cols[0] === text.tr_default)) u.searchParams.set("tr", cols.join(","));
-    history.replaceState(history.state, "", u.toString().replace(/%2C/gi, ","));
+    const next = u.toString().replace(/%2C/gi, ",");
+    if (next !== location.href) history.pushState({ tr: cols.join(",") }, "", next);
   } catch (_) {
     /* ignore */
   }
 }
+window.addEventListener("popstate", () => {
+  const text = state.currentText;
+  if (!text || !text.translations) return;
+  const q = new URLSearchParams(location.search);
+  if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
+  applyTranslation(text, q.get("tr"));
+  renderReader();
+});
 
 // ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
 const NARROW_Q = window.matchMedia("(max-width: 760px)");
@@ -601,7 +614,7 @@ function renderLinesCol(text) {
             .map((r) => `<option value="${escapeAttr(r.key)}">${escapeHtml(trOptLabel(r))}</option>`)
             .join("")}</select>`
         : "";
-    html.push(`<div class="lg-head lg-head-en" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
     const mp = maps[ci];
     const how =
       o.labels && mp.rate < 0.5
@@ -661,7 +674,9 @@ function renderLinesCol(text) {
   body.querySelectorAll(".tr-pick").forEach((sel) =>
     sel.addEventListener("change", () => {
       const next = [...text.tr_cols];
-      next[+sel.dataset.col] = sel.value;
+      const ci = +sel.dataset.col, j = next.indexOf(sel.value);
+      if (j >= 0) next[j] = next[ci]; // picking a column hidden on narrow screens swaps it in, keeping the comparison
+      next[ci] = sel.value;
       setCols(next);
     })
   );
