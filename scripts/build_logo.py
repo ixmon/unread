@@ -2,20 +2,18 @@
 """Draw the Unread Atlas logo as SVG paths (no web font needed at runtime): 𒉡𒋃 nu-šid,
 Sumerian "not counted / not read (out)", NU U+12261 + ŠID U+122C3.
 
-Outlines come from the self-hosted Noto Sans Cuneiform (web/fonts/NotoSansCuneiform.woff2, OFL);
-variant c is redrawn from simple wedge primitives (head + shaft) traced from the same signs.
-Needs: pip install fonttools brotli.   Writes web/assets/logo/*.svg
+Outlines come from the self-hosted Noto Sans Cuneiform (web/fonts/NotoSansCuneiform.woff2, OFL).
+Needs: pip install fonttools brotli.
 
-  logo-f.svg       (a) hollowed: the Noto outlines as an off-white wall drawn inside each sign, dark/transparent
-                   interior; the wall thickens when the image is drawn small (SVG @media)
-  logo-f-dark1.svg (f) in light slate blue-gray, quieter than the white wordmark   <- header default
-  logo-f-dark2.svg (f) in the accent colour at reduced brightness
-  logo-a.svg       Noto signs, off-white, no background
-  logo-c.svg       line art: hollow wedge heads + single-stroke shafts, accent colour
-  favicon.svg      (f) with a heavy wall on a flat dark tile (web/favicon.svg; favicon.ico is rasterised from it)
-  logo-tablet.svg  the first version: dark signs on a clay-gradient rounded tile (not used)
-  logo-dub-nu-shid.svg, logo-la-sasu.svg  wording alternates (dub nu-šid; Akkadian lā šasû, la-ša-su-ú)
-Compare in the header with ?logo=a|c|f|f-dark1|f-dark2.
+  web/assets/logo/logo.svg  the header logo: the Noto outlines as a light-slate wall drawn inside each sign
+                            (hollow wedges, transparent interior); the wall thickens when drawn <= 40 px tall
+  web/favicon.svg           the same on a flat dark rounded tile
+  --app-icon FILE           square, full-bleed dark tile version for the PNG app icons (apple-touch-icon.png,
+                            icon-192.png, icon-512.png); rasterise it (and favicon.svg -> favicon.ico 16/32/48)
+                            in headless Chromium, which renders the clip paths correctly
+  --variants DIR            also write the design alternates that were compared and not shipped
+                            (a solid, c line-art accent, f off-white, f-dark2 clay, the clay tablet and the
+                            dub nu-šid / lā šasû wordings) to DIR, outside web/
 """
 import math
 from pathlib import Path
@@ -30,8 +28,8 @@ OUT = ROOT / "web/assets/logo"
 NU_SHID = "\U00012261\U000122C3"
 TITLE = "nu-šid (Sumerian “not read”): cuneiform signs NU and ŠID"
 OFF, ACC, TILE, EDGE = "#ece6da", "#d08a5c", "#171a20", "#3a3f48"
-SLATE, CLAY = "#8e9bad", "#a9785a"  # f-dark1: light slate blue-gray; f-dark2: the accent at reduced brightness
-FAV = SLATE  # favicon follows the header default
+SLATE, CLAY = "#8e9bad", "#a9785a"  # shipped logo: light slate blue-gray; f-dark2 alternate: accent, dimmed
+FAV = SLATE
 
 
 def outline(font, text, gap=40):
@@ -91,16 +89,16 @@ def hollow(d, wall, small_wall, cid, colour=OFF):
             f'clip-path="url(#{cid})" d="{d}"/>')
 
 
-def favicon(font):
-    """Square dark tile with (f) at a heavy wall, centred, as wide as it can go (the two signs are ~2:1)."""
+def favicon(font, fill=0.96, radius=0.14, wall=190):
+    """Square dark tile with the logo at a heavy wall, centred, as wide as `fill` (the two signs are ~2:1)."""
     d, (x0, y0, x1, y1) = outline(font, NU_SHID)
     w, h = x1 - x0, y1 - y0
-    S = max(w, h) / 0.96  # tile side in font units: signs fill 96 % of the width
+    S = max(w, h) / fill  # tile side in font units
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     vb = [round(cx - S / 2), round(cy - S / 2), round(S), round(S)]
-    body = (f'<rect x="{vb[0]}" y="{vb[1]}" width="{vb[2]}" height="{vb[3]}" rx="{round(S * .14)}" fill="{TILE}"/>'
+    body = (f'<rect x="{vb[0]}" y="{vb[1]}" width="{vb[2]}" height="{vb[3]}" rx="{round(S * radius)}" fill="{TILE}"/>'
             f'<defs><clipPath id="k"><path d="{d}"/></clipPath></defs>'
-            f'<path fill="none" stroke="{FAV}" stroke-width="190" clip-path="url(#k)" d="{d}"/>')
+            f'<path fill="none" stroke="{FAV}" stroke-width="{wall}" clip-path="url(#k)" d="{d}"/>')
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{" ".join(map(str, vb))}"><title>{TITLE}</title>{body}</svg>\n'
 
 
@@ -121,20 +119,32 @@ def flat(font):
         "logo-a.svg": svg(f'<path fill="{OFF}" d="{d}"/>', 0.04),
         "logo-c.svg": svg(f'<path fill="none" stroke="{ACC}" stroke-width="52" stroke-linejoin="round" stroke-linecap="round" d="{line}"/>', 0.08),
         "logo-f.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f"), 0.04),
-        "logo-f-dark1.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f1", colour=SLATE), 0.04),
+        "logo.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid", colour=SLATE), 0.04),
         "logo-f-dark2.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f2", colour=CLAY), 0.04),
     }
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--variants", type=Path, help="also write the unshipped design alternates here")
+    ap.add_argument("--app-icon", type=Path, help="write the full-bleed square app-icon SVG here")
+    args = ap.parse_args()
     font = TTFont(FONT); OUT.mkdir(parents=True, exist_ok=True)
     files = flat(font)
-    files["logo-tablet.svg"] = tablet(font, NU_SHID, TITLE)
-    files["logo-dub-nu-shid.svg"] = tablet(font, "\U0001207E" + NU_SHID, "dub nu-šid (Sumerian “tablet not read”): DUB NU ŠID")
-    files["logo-la-sasu.svg"] = tablet(font, "\U000121B7\U000122AD\U000122E2\U00012311", "lā šasû (Akkadian “not read aloud”): la-ša-su-ú")
-    for name, svg in files.items():
-        (OUT / name).write_text(svg); print("wrote", OUT / name, len(svg), "bytes")
+    logo = files.pop("logo.svg")
+    (OUT / "logo.svg").write_text(logo); print("wrote", OUT / "logo.svg", len(logo), "bytes")
     (ROOT / "web/favicon.svg").write_text(favicon(font)); print("wrote", ROOT / "web/favicon.svg")
+    if args.app_icon:
+        args.app_icon.parent.mkdir(parents=True, exist_ok=True)
+        args.app_icon.write_text(favicon(font, fill=0.80, radius=0, wall=150)); print("wrote", args.app_icon)
+    if args.variants:
+        files["logo-tablet.svg"] = tablet(font, NU_SHID, TITLE)
+        files["logo-dub-nu-shid.svg"] = tablet(font, "\U0001207E" + NU_SHID, "dub nu-šid (Sumerian “tablet not read”): DUB NU ŠID")
+        files["logo-la-sasu.svg"] = tablet(font, "\U000121B7\U000122AD\U000122E2\U00012311", "lā šasû (Akkadian “not read aloud”): la-ša-su-ú")
+        args.variants.mkdir(parents=True, exist_ok=True)
+        for name, svg in files.items():
+            (args.variants / name).write_text(svg); print("wrote", args.variants / name, len(svg), "bytes")
 
 
 if __name__ == "__main__":
