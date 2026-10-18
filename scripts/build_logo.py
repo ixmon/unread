@@ -7,13 +7,15 @@ variant c is redrawn from simple wedge primitives (head + shaft) traced from the
 Needs: pip install fonttools brotli.   Writes web/assets/logo/*.svg
 
   logo-f.svg       (a) hollowed: the Noto outlines as an off-white wall drawn inside each sign, dark/transparent
-                   interior; the wall thickens when the image is drawn small (SVG @media)   <- header default
+                   interior; the wall thickens when the image is drawn small (SVG @media)
+  logo-f-dark1.svg (f) in light slate blue-gray, quieter than the white wordmark   <- header default
+  logo-f-dark2.svg (f) in the accent colour at reduced brightness
   logo-a.svg       Noto signs, off-white, no background
   logo-c.svg       line art: hollow wedge heads + single-stroke shafts, accent colour
   favicon.svg      (f) with a heavy wall on a flat dark tile (web/favicon.svg; favicon.ico is rasterised from it)
   logo-tablet.svg  the first version: dark signs on a clay-gradient rounded tile (not used)
   logo-dub-nu-shid.svg, logo-la-sasu.svg  wording alternates (dub nu-šid; Akkadian lā šasû, la-ša-su-ú)
-Compare in the header with ?logo=a|c|f.
+Compare in the header with ?logo=a|c|f|f-dark1|f-dark2.
 """
 import math
 from pathlib import Path
@@ -28,6 +30,8 @@ OUT = ROOT / "web/assets/logo"
 NU_SHID = "\U00012261\U000122C3"
 TITLE = "nu-šid (Sumerian “not read”): cuneiform signs NU and ŠID"
 OFF, ACC, TILE, EDGE = "#ece6da", "#d08a5c", "#171a20", "#3a3f48"
+SLATE, CLAY = "#8e9bad", "#a9785a"  # f-dark1: light slate blue-gray; f-dark2: the accent at reduced brightness
+FAV = SLATE  # favicon follows the header default
 
 
 def outline(font, text, gap=40):
@@ -78,12 +82,12 @@ def wedge_line(p0, p1):
             f"M{hx:.0f} {hy:.0f}L{x1:.0f} {y1:.0f}")
 
 
-def hollow(d, wall, small_wall, cid):
+def hollow(d, wall, small_wall, cid, colour=OFF):
     """Outline drawn as a wall *inside* the sign (stroke clipped to the glyph), so the silhouette matches (a)
     exactly; strokes thinner than 2 x wall stay solid. small_wall applies when the image renders <= 40 px tall."""
     return (f'<style>.w{{stroke-width:{2 * wall}}}@media (max-height:40px){{.w{{stroke-width:{2 * small_wall}}}}}</style>'
             f'<defs><clipPath id="{cid}"><path d="{d}"/></clipPath></defs>'
-            f'<path class="w" fill="none" stroke="{OFF}" stroke-width="{2 * wall}" stroke-linejoin="miter" '
+            f'<path class="w" fill="none" stroke="{colour}" stroke-width="{2 * wall}" stroke-linejoin="miter" '
             f'clip-path="url(#{cid})" d="{d}"/>')
 
 
@@ -96,7 +100,7 @@ def favicon(font):
     vb = [round(cx - S / 2), round(cy - S / 2), round(S), round(S)]
     body = (f'<rect x="{vb[0]}" y="{vb[1]}" width="{vb[2]}" height="{vb[3]}" rx="{round(S * .14)}" fill="{TILE}"/>'
             f'<defs><clipPath id="k"><path d="{d}"/></clipPath></defs>'
-            f'<path fill="none" stroke="{OFF}" stroke-width="190" clip-path="url(#k)" d="{d}"/>')
+            f'<path fill="none" stroke="{FAV}" stroke-width="190" clip-path="url(#k)" d="{d}"/>')
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{" ".join(map(str, vb))}"><title>{TITLE}</title>{body}</svg>\n'
 
 
@@ -117,6 +121,8 @@ def flat(font):
         "logo-a.svg": svg(f'<path fill="{OFF}" d="{d}"/>', 0.04),
         "logo-c.svg": svg(f'<path fill="none" stroke="{ACC}" stroke-width="52" stroke-linejoin="round" stroke-linecap="round" d="{line}"/>', 0.08),
         "logo-f.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f"), 0.04),
+        "logo-f-dark1.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f1", colour=SLATE), 0.04),
+        "logo-f-dark2.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f2", colour=CLAY), 0.04),
     }
 
 
