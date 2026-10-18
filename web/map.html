@@ -53,10 +53,12 @@
         document.documentElement.classList.toggle("sidebar-collapsed", !open);
       })();
     </script>
-<script>/* reader: point the canonical at the tablet's static page when one exists */
+<script>/* reader: point the canonical at the tablet's static page when that page is indexable. Same id -> file
+   encoding and FNV-1a shard as scripts/build_seo_pages.py (slug, tablet_shard); one ~5 KB shard fetch. */
 (function(){var id=new URLSearchParams(location.search).get("id");if(!id)return;
-fetch("assets/tablet-pages.json").then(function(r){return r.ok?r.json():{}}).then(function(m){var p=m[id];if(!p)return;
-var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/"+p;}).catch(function(){});})();</script>
+var s=id.replace(/[^A-Za-z0-9._-]/gu,"_"),h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0;}
+fetch("assets/tablet-index/"+("0"+(h&255).toString(16)).slice(-2)+".txt").then(function(r){return r.ok?r.text():""}).then(function(t){
+if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/t/"+s+".html";}).catch(function(){});})();</script>
   </head>
   <body>
     <header class="app-header">

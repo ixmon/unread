@@ -7,7 +7,9 @@
                       <meta name="robots" content="noindex,follow"> and are left out of the sitemaps.
                       The 49 hand-curated pages already in <out>/t/ are left untouched (always indexable).
   <out>/s/<slug>.html one page per sign in assets/signs/signs_index.json (2,493)
-  <out>/assets/tablet-pages.json, <out>/assets/signs/sign-pages.json   id -> page maps (reader / signs.html canonicals)
+  <out>/assets/tablet-index/00.txt … ff.txt   indexable page slugs, sharded by tablet_shard(slug) (~5 KB each);
+                      map.html computes slug + shard from ?id= and fetches one shard to set its canonical
+  <out>/assets/signs/sign-pages.json   sign id -> page map (signs.html canonicals)
   <out>/sitemap.xml   sitemap index -> sitemap-core.xml (the old web/sitemap.xml), sitemap-signs.xml,
                       sitemap-tablets-N.xml (<= 50,000 URLs each)
 
@@ -89,7 +91,20 @@ def clean_author(a):
 
 
 def slug(text_id: str) -> str:
+    # mirrored in web/map.html (JS: id.replace(/[^A-Za-z0-9._-]/gu, "_")); keep the two in sync
     return re.sub(r"[^A-Za-z0-9._-]", "_", text_id)
+
+
+TABLET_SHARDS = 256
+
+
+def tablet_shard(sl: str) -> str:
+    """FNV-1a 32-bit over the (ASCII) slug, low byte as 2 hex digits; mirrored in web/map.html."""
+    h = 0x811C9DC5
+    for ch in sl:
+        h ^= ord(ch)
+        h = (h * 0x01000193) & 0xFFFFFFFF
+    return f"{h & 0xFF:02x}"
 
 
 def jsonld(obj) -> str:
@@ -195,11 +210,11 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
     tdir = out / "t"
     tdir.mkdir(parents=True, exist_ok=True)
     curated = {p.stem for p in tdir.glob("*.html")}
-    urls, pagemap, skipped, n_noindex, n_index = [], {}, 0, 0, 0
+    urls, skipped, n_noindex, n_index = [], 0, 0, 0
+    indexable = set(curated)  # hand-written pages are always indexable
     for key in keys:
         sl = slug(key)
         url = f"{base}t/{sl}.html"
-        pagemap[key] = f"t/{sl}.html"
         if sl in curated:           # hand-curated page wins, unchanged
             skipped += 1
             urls.append(url)
@@ -365,9 +380,17 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
             n_noindex += 1
         else:
             n_index += 1
+            indexable.add(sl)
             urls.append(url)  # sitemaps carry indexable pages only
-    (out / "assets").mkdir(exist_ok=True)
-    (out / "assets" / "tablet-pages.json").write_text(json.dumps(pagemap, separators=(",", ":")))
+    # canonical lookup for the reader: indexable slugs in 256 small shards (one ~5 KB fetch per tablet view)
+    idir = out / "assets" / "tablet-index"
+    idir.mkdir(parents=True, exist_ok=True)
+    shards = {f"{i:02x}": [] for i in range(TABLET_SHARDS)}
+    for sl in indexable:
+        shards[tablet_shard(sl)].append(sl)
+    for name, sls in shards.items():
+        (idir / f"{name}.txt").write_text("\n".join(sorted(sls)) + ("\n" if sls else ""))
+    (out / "assets" / "tablet-pages.json").unlink(missing_ok=True)
     build_tablets.counts = {"generated": n_index + n_noindex, "indexable": n_index, "noindex": n_noindex, "curated_kept": skipped}
     return urls, built, skipped
 
