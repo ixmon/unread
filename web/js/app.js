@@ -3,19 +3,6 @@
  */
 
 const DATA_BASE = "data";
-const API_PARAM = new URLSearchParams(location.search).get("api");
-/** Local translate API (same host as the page, port 42226). Override with ?api=http://host:port */
-const TRANSLATE_API = API_PARAM || `${location.protocol}//${location.hostname}:42226`;
-/**
- * Static mode (public GitHub Pages build): no local translate API is probed; "Translate" opens the
- * in-browser translator instead. On when the page carries <meta name="unread-static" content="1">
- * (added by scripts/build_site.sh) or is not served from a local/LAN host. ?api=… always re-enables the API.
- */
-const IS_LOCAL_HOST =
-  /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[::1\]$)/.test(location.hostname) ||
-  location.hostname.endsWith(".local");
-const STATIC_MODE =
-  !API_PARAM && (!!document.querySelector('meta[name="unread-static"][content="1"]') || !IS_LOCAL_HOST);
 const TRANSLATOR_PAGE = "translate.html";
 /**
  * Corpus API (same one search.html and browse.html use) for every tablet that is not one of the
@@ -26,8 +13,6 @@ const TEXT_API = (
   new URLSearchParams(location.search).get("textapi") ||
   (location.protocol === "file:" ? "https://unreadatlas.com/api" : `${location.origin}/api`)
 ).replace(/\/+$/, "");
-const TRANSLATE_CHUNK = 12; // lines per request (server max default 64)
-const TRANSLATE_DEFAULT_LIMIT = 48; // first-pass default; "continue" fills the rest
 
 const OMEN_KIND_LABELS = {
   physiognomy: "Physiognomy",
@@ -65,9 +50,6 @@ const state = {
   timeFade: false, // map fading by date; switches on at first slider interaction ("All periods" turns it off)
   markerGroups: {}, // site key -> { lat, lon, site, items }
   markerSig: "",
-  useOnlineCuneiform: false,
-  translating: false,
-  apiOk: null,
   omenKind: null, // subtype chip filter when omens mode on
   mathKind: null,
 };
@@ -1386,7 +1368,6 @@ async function maybeFetchCdliMeta(text, force = false) {
 function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
-  updateTranslateButton();
   if (isAlignedText(text) && (state.readerPanels.english || state.readerPanels.atf)) {
     renderLinesCol(text);
     return;
@@ -1421,16 +1402,11 @@ function renderEnglishCol(text) {
     const remaining = englishRemaining(text);
     const more =
       remaining > 0
-        ? STATIC_MODE
-          ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
-               <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
-             </p>`
-          : `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
-             <button type="button" class="btn" id="btn-continue-translate" style="margin-left:0.5rem">Continue</button>
+        ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+             <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
            </p>`
         : "";
     body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
-    $("#btn-continue-translate")?.addEventListener("click", () => startTranslate({ continue: true }));
 
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
@@ -1445,8 +1421,7 @@ function renderEnglishCol(text) {
     return;
   } else {
     const lineCount = contentLines.length;
-    if (STATIC_MODE) {
-      body.innerHTML = `
+    body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
         <p>No machine draft is published for this text yet.</p>
@@ -1458,236 +1433,16 @@ function renderEnglishCol(text) {
           ${lineCount ? `<a class="btn primary" href="${escapeAttr(translatorUrl(text, 0))}">Open in the in-browser translator</a>` : ""}
         </p>
       </div>`;
-      bindLineHover(body);
-      return;
-    }
-    body.innerHTML = `
-      <div class="english-placeholder">
-        <div class="badge">Awaiting first English</div>
-        <p>${escapeHtml(text.english_note || "No model translation yet.")}</p>
-        <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
-          ${lineCount} ATF content lines ready.
-          Uses the local translate API at <code>${escapeHtml(TRANSLATE_API)}</code>
-          (model: atf-en-best-v2).
-        </p>
-        <p style="margin-top:1rem">
-          <button type="button" class="btn primary" id="btn-translate-stub">Translate with local model</button>
-        </p>
-      </div>`;
-    $("#btn-translate-stub")?.addEventListener("click", () => startTranslate());
   }
   bindLineHover(body);
 }
 
-// ─── Translate API ───
+// ─── In-browser translator link ───
 /** Link to translate.html prefilled with this text's ATF lines (starting at line index `from`). */
 function translatorUrl(text, from = 0) {
   const q = new URLSearchParams({ id: text.id });
   if (from > 0) q.set("from", String(from));
   return `${TRANSLATOR_PAGE}?${q}`;
-}
-
-async function checkTranslateApi() {
-  const el = $("#api-status");
-  if (!el) return;
-  if (STATIC_MODE) {
-    el.textContent = "In-browser model";
-    el.className = "api-status static";
-    el.title = "Translate opens the in-browser translator (no server)";
-    updateTranslateButton();
-    return;
-  }
-  try {
-    const res = await fetch(`${TRANSLATE_API}/api/health`, { signal: AbortSignal.timeout(4000) });
-    const data = await res.json();
-    state.apiOk = !!data.ok;
-    el.textContent = data.model_loaded
-      ? `API · ${data.device || "ready"}`
-      : "API · idle";
-    el.className = "api-status up";
-    el.title = data.model_path || TRANSLATE_API;
-  } catch {
-    state.apiOk = false;
-    el.textContent = "API · offline";
-    el.className = "api-status down";
-    el.title = `Cannot reach ${TRANSLATE_API} — run ./scripts/serve_api.sh`;
-  }
-  updateTranslateButton();
-}
-
-function updateTranslateButton() {
-  const btn = $("#btn-translate");
-  if (!btn) return;
-  const text = state.currentText;
-  const lines = (text?.lines || []).filter((l) => l.type === "line");
-  const have = Array.isArray(text?.english) ? text.english.length : 0;
-  const remaining = englishRemaining(text);
-
-  if (state.translating) {
-    btn.disabled = true;
-    btn.textContent = "Translating…";
-    return;
-  }
-  btn.disabled = !text || lines.length === 0 || remaining === 0;
-  if (STATIC_MODE) {
-    btn.title = "Open these ATF lines in the in-browser translator";
-    btn.textContent = !text || lines.length === 0 ? "Translate" : remaining === 0 ? "Done" : "Translate in browser";
-    return;
-  }
-  if (!text || lines.length === 0) {
-    btn.textContent = "Translate";
-  } else if (remaining === 0) {
-    btn.textContent = "Done";
-  } else if (have > 0) {
-    btn.textContent = `Continue (${remaining})`;
-  } else {
-    btn.textContent = `Translate (${Math.min(TRANSLATE_DEFAULT_LIMIT, lines.length)})`;
-  }
-}
-
-function setProgress(done, total, label) {
-  const wrap = $("#translate-progress");
-  const fill = $("#translate-progress-fill");
-  const lab = $("#translate-progress-label");
-  if (!wrap) return;
-  if (total <= 0) {
-    wrap.hidden = true;
-    return;
-  }
-  wrap.hidden = false;
-  const pct = Math.round((done / total) * 100);
-  fill.style.width = `${pct}%`;
-  lab.textContent = label || `${done} / ${total}`;
-}
-
-async function startTranslate(opts = {}) {
-  const text = state.currentText;
-  if (!text || state.translating) return;
-  if (STATIC_MODE) {
-    location.href = translatorUrl(text, Array.isArray(text.english) ? text.english.length : 0);
-    return;
-  }
-
-  const contentLines = (text.lines || []).filter((l) => l.type === "line");
-  if (!contentLines.length) {
-    toast("No ATF lines to translate");
-    return;
-  }
-
-  // health check
-  try {
-    const h = await fetch(`${TRANSLATE_API}/api/health`, { signal: AbortSignal.timeout(5000) });
-    if (!h.ok) throw new Error("health failed");
-    state.apiOk = true;
-    $("#api-status").className = "api-status busy";
-    $("#api-status").textContent = "API · working";
-  } catch {
-    state.apiOk = false;
-    toast(`Translate API offline at ${TRANSLATE_API}. Run ./scripts/serve_api.sh on the host.`);
-    checkTranslateApi();
-    return;
-  }
-
-  const existing = Array.isArray(text.english) ? [...text.english] : [];
-  const startIdx = opts.continue || opts.full ? existing.length : existing.length;
-  // first click: translate up to DEFAULT_LIMIT total; continue: rest (or +DEFAULT_LIMIT chunks)
-  let endIdx;
-  if (opts.full) {
-    endIdx = contentLines.length;
-  } else if (opts.continue || existing.length > 0) {
-    endIdx = contentLines.length; // finish remaining
-  } else {
-    endIdx = Math.min(contentLines.length, TRANSLATE_DEFAULT_LIMIT);
-  }
-
-  if (startIdx >= endIdx) {
-    toast("Already translated");
-    updateTranslateButton();
-    return;
-  }
-
-  state.translating = true;
-  updateTranslateButton();
-  const total = endIdx - startIdx;
-  let done = 0;
-  setProgress(0, total, `Starting… 0 / ${total}`);
-
-  const english = existing.slice(0, startIdx);
-  // pad if somehow shorter
-  while (english.length < startIdx) english.push("");
-
-  try {
-    for (let i = startIdx; i < endIdx; i += TRANSLATE_CHUNK) {
-      const chunk = contentLines.slice(i, Math.min(i + TRANSLATE_CHUNK, endIdx));
-      const lines = chunk.map((l) => l.atf);
-      const res = await fetch(`${TRANSLATE_API}/api/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || `HTTP ${res.status}`);
-      }
-      const tr = data.translations || [];
-      for (let j = 0; j < tr.length; j++) {
-        english.push(tr[j]);
-        if (contentLines[i + j]) contentLines[i + j].english = tr[j];
-      }
-      done += tr.length;
-      text.english = [...english];
-      text.status = english.length >= contentLines.length ? "english" : "partial_english";
-      const modelName = String(data.model || "T5").split("/").filter(Boolean).pop(); // never store local paths
-      const today = new Date().toISOString().slice(0, 10);
-      text.english_note = `Machine draft · model ${modelName} · translated ${today} (local API). Not a scholarly translation; verify against a published edition.`;
-      text.translation_meta = {
-        kind: "machine_draft",
-        model: modelName,
-        translated_on: today,
-        prompt: data.prompt,
-        lines_translated: english.length,
-        lines_total: contentLines.length,
-        source: "local_api",
-      };
-      setProgress(done, total, `Translated ${english.length} / ${contentLines.length} lines`);
-      // live update English column without wiping ATF scroll too hard
-      renderEnglishCol(text);
-    }
-
-    // persist if packaged
-    try {
-      const save = await fetch(`${TRANSLATE_API}/api/translate/save`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: text.id,
-          english: text.english,
-          english_note: text.english_note,
-          status: text.status,
-          meta: text.translation_meta,
-        }),
-      });
-      const saveData = await save.json();
-      if (save.ok && saveData.ok) {
-        toast(`Saved ${saveData.count} lines → data/texts/${text.id}.json`);
-      } else if (save.status === 404) {
-        toast(`Translated ${english.length} lines (not packaged — not saved to disk)`);
-      } else {
-        toast(`Translated ${english.length} lines (save: ${saveData.error || "failed"})`);
-      }
-    } catch {
-      toast(`Translated ${english.length} lines (could not save)`);
-    }
-  } catch (e) {
-    console.error(e);
-    toast(`Translate failed: ${e.message || e}`);
-  } finally {
-    state.translating = false;
-    setProgress(0, 0);
-    updateTranslateButton();
-    checkTranslateApi();
-    renderEnglishCol(text);
-  }
 }
 
 function renderAtfCol(text) {
@@ -1774,15 +1529,7 @@ async function renderCuneiformCol(text) {
     const cached = state.cuneiformCache.get(line.atf);
     let result = cached;
     if (!result) {
-      if (state.useOnlineCuneiform) {
-        try {
-          result = await Atf2Unicode.convertLineOnline(line.atf);
-        } catch {
-          result = Atf2Unicode.convertLine(line.atf);
-        }
-      } else {
-        result = Atf2Unicode.convertLine(line.atf);
-      }
+      result = Atf2Unicode.convertLine(line.atf); // offline sign-reading map (data/atf_unicode_readings.json)
       state.cuneiformCache.set(line.atf, result);
     }
     const dim = result.coverage < 0.4 ? "opacity:0.55" : "";
@@ -2380,18 +2127,6 @@ function bindEvents() {
 
   $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
 
-  $("#btn-translate")?.addEventListener("click", () => {
-    const text = state.currentText;
-    const have = Array.isArray(text?.english) ? text.english.length : 0;
-    startTranslate({ continue: have > 0 });
-  });
-
-  $("#toggle-online-cunei")?.addEventListener("change", (e) => {
-    state.useOnlineCuneiform = e.target.checked;
-    state.cuneiformCache.clear();
-    if (state.currentText) renderCuneiformCol(state.currentText);
-    toast(e.target.checked ? "Using live eBL sign API when possible" : "Offline reading map only");
-  });
 }
 
 function debounce(fn, ms) {
@@ -2407,8 +2142,6 @@ async function main() {
   bindEvents();
   initTimeline();
   initMap();
-  checkTranslateApi();
-  if (!STATIC_MODE) setInterval(checkTranslateApi, 30000);
 
   // Deep link ?id=…: show the reader's loading state right away, not the map then "No work open"
   const deepId = new URLSearchParams(location.search).get("id");

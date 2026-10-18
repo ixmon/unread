@@ -766,63 +766,6 @@ body.mode-epic .catalog-card .title {
   cursor: not-allowed;
 }
 
-.api-status {
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  color: var(--text-faint);
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  white-space: nowrap;
-}
-
-.api-status.up {
-  color: var(--green);
-  border-color: rgba(106, 155, 122, 0.35);
-}
-
-.api-status.down {
-  color: var(--danger);
-  border-color: rgba(184, 106, 90, 0.35);
-}
-
-.api-status.busy {
-  color: var(--warn);
-  border-color: rgba(196, 160, 74, 0.35);
-}
-
-.translate-progress {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.4rem 1.25rem 0.55rem;
-  border-bottom: 1px solid var(--border-soft);
-  background: var(--bg-panel);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-}
-
-.translate-progress[hidden] {
-  display: none !important;
-}
-
-.translate-progress-bar {
-  flex: 1;
-  max-width: 280px;
-  height: 6px;
-  background: var(--bg);
-  border-radius: 99px;
-  overflow: hidden;
-  border: 1px solid var(--border-soft);
-}
-
-.translate-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #8b4a2e, var(--accent));
-  transition: width 0.2s var(--ease);
-}
-
 .preview-facts {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -1559,7 +1502,6 @@ body.mode-epic .catalog-card .title {
   color: var(--text-faint);
 }
 
-.api-status.static { color: var(--text-faint); border-color: var(--border-soft); }
 
 /* ─── Search results on the map (js/searchmap.js) ─── */
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
