@@ -266,7 +266,7 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 </head>
 <body class="static-page">
 <header class="static-header">
-<a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo-e.svg" width="54" height="28" alt="" />{e(SITE["name"])}</a>
+<a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo-f.svg" width="58" height="28" alt="" />{e(SITE["name"])}</a>
 <nav aria-label="Main">
 <a class="nav-link" href="{depth}map.html">Explore &amp; map</a>
 <a class="nav-link" href="{depth}t/index.html">Curated texts</a>

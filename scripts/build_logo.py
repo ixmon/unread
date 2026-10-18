@@ -3,17 +3,17 @@
 Sumerian "not counted / not read (out)", NU U+12261 + ŠID U+122C3.
 
 Outlines come from the self-hosted Noto Sans Cuneiform (web/fonts/NotoSansCuneiform.woff2, OFL);
-variants c and e are redrawn from simple wedge primitives (head + shaft) traced from the same signs.
+variant c is redrawn from simple wedge primitives (head + shaft) traced from the same signs.
 Needs: pip install fonttools brotli.   Writes web/assets/logo/*.svg
 
-  logo-e.svg       geometric redraw, off-white, shafts pixel-snapped to 2 px at 28 px tall   <- header default
+  logo-f.svg       (a) hollowed: the Noto outlines as an off-white wall drawn inside each sign, dark/transparent
+                   interior; the wall thickens when the image is drawn small (SVG @media)   <- header default
   logo-a.svg       Noto signs, off-white, no background
-  logo-b.svg       Noto signs, off-white, on a flat dark tile with a thin outline
   logo-c.svg       line art: hollow wedge heads + single-stroke shafts, accent colour
-  logo-d.svg       Noto signs, monochrome accent colour
-  logo-tablet.svg  the first version: dark signs on a clay-gradient rounded tile
+  favicon.svg      (f) with a heavy wall on a flat dark tile (web/favicon.svg; favicon.ico is rasterised from it)
+  logo-tablet.svg  the first version: dark signs on a clay-gradient rounded tile (not used)
   logo-dub-nu-shid.svg, logo-la-sasu.svg  wording alternates (dub nu-šid; Akkadian lā šasû, la-ša-su-ú)
-Preview any of them in the header with ?logo=a|b|c|d|e|tablet.
+Compare in the header with ?logo=a|c|f.
 """
 import math
 from pathlib import Path
@@ -71,14 +71,6 @@ def _frame(p0, p1):
     return x0, y0, x1, y1, ux, uy, -uy, ux
 
 
-def wedge_poly(p0, p1, t):
-    x0, y0, x1, y1, ux, uy, nx, ny = _frame(p0, p1)
-    hx, hy = x0 + ux * HL, y0 + uy * HL
-    pts = [(x0 + nx * HW / 2, y0 + ny * HW / 2), (hx + nx * t / 2, hy + ny * t / 2), (x1 + nx * t / 2, y1 + ny * t / 2),
-           (x1 - nx * t / 2, y1 - ny * t / 2), (hx - nx * t / 2, hy - ny * t / 2), (x0 - nx * HW / 2, y0 - ny * HW / 2)]
-    return "M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z"
-
-
 def wedge_line(p0, p1):
     x0, y0, x1, y1, ux, uy, nx, ny = _frame(p0, p1)
     hx, hy = x0 + ux * HL, y0 + uy * HL
@@ -86,38 +78,45 @@ def wedge_line(p0, p1):
             f"M{hx:.0f} {hy:.0f}L{x1:.0f} {y1:.0f}")
 
 
+def hollow(d, wall, small_wall, cid):
+    """Outline drawn as a wall *inside* the sign (stroke clipped to the glyph), so the silhouette matches (a)
+    exactly; strokes thinner than 2 x wall stay solid. small_wall applies when the image renders <= 40 px tall."""
+    return (f'<style>.w{{stroke-width:{2 * wall}}}@media (max-height:40px){{.w{{stroke-width:{2 * small_wall}}}}}</style>'
+            f'<defs><clipPath id="{cid}"><path d="{d}"/></clipPath></defs>'
+            f'<path class="w" fill="none" stroke="{OFF}" stroke-width="{2 * wall}" stroke-linejoin="miter" '
+            f'clip-path="url(#{cid})" d="{d}"/>')
+
+
+def favicon(font):
+    """Square dark tile with (f) at a heavy wall, centred, as wide as it can go (the two signs are ~2:1)."""
+    d, (x0, y0, x1, y1) = outline(font, NU_SHID)
+    w, h = x1 - x0, y1 - y0
+    S = max(w, h) / 0.96  # tile side in font units: signs fill 96 % of the width
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    vb = [round(cx - S / 2), round(cy - S / 2), round(S), round(S)]
+    body = (f'<rect x="{vb[0]}" y="{vb[1]}" width="{vb[2]}" height="{vb[3]}" rx="{round(S * .14)}" fill="{TILE}"/>'
+            f'<defs><clipPath id="k"><path d="{d}"/></clipPath></defs>'
+            f'<path fill="none" stroke="{OFF}" stroke-width="190" clip-path="url(#k)" d="{d}"/>')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{" ".join(map(str, vb))}"><title>{TITLE}</title>{body}</svg>\n'
+
+
 def flat(font):
     d, (bx0, by0, bx1, by1) = outline(font, NU_SHID)
     GX, GY, GW, GH = bx0, by0, bx1 - bx0, by1 - by0
 
-    def svg(body, pad, tile=False, exact=False):
+    def svg(body, pad, tile=False):
         p = GH * pad
         vb = [GX - p, GY - p, GW + 2 * p, GH + 2 * p]
-        vb = [round(v, 2) for v in vb] if exact else [round(v) for v in vb]
+        vb = [round(v) for v in vb]
         bg = (f'<rect x="{vb[0] + 18}" y="{vb[1] + 18}" width="{vb[2] - 36}" height="{vb[3] - 36}" rx="{round(vb[3] * .07)}" '
               f'fill="{TILE}" stroke="{EDGE}" stroke-width="36"/>') if tile else ""
         return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{" ".join(map(str, vb))}"><title>{TITLE}</title>{bg}{body}</svg>\n'
 
-    # (e): snap horizontal/vertical shafts to whole pixels at 28 px tall, 2 px wide
-    pad_e = 0.06
-    vbx, vby, u = GX - GH * pad_e, GY - GH * pad_e, GH * (1 + 2 * pad_e) / 28
-    sx = lambda v: vbx + round((v - vbx) / u) * u
-    sy = lambda v: vby + round((v - vby) / u) * u
-
-    def snapped(a, b):
-        (x0, y0), (x1, y1) = a, b
-        if y0 == y1: y0 = y1 = sy(y0)
-        if x0 == x1: x0 = x1 = sx(x0)
-        return (x0, y0), (x1, y1)
-
-    geo = "".join(wedge_poly(*snapped(a, b), t=2 * u) for a, b in WEDGES)
     line = "".join(wedge_line(a, b) for a, b in WEDGES)
     return {
         "logo-a.svg": svg(f'<path fill="{OFF}" d="{d}"/>', 0.04),
-        "logo-b.svg": svg(f'<path fill="{OFF}" d="{d}"/>', 0.20, tile=True),
         "logo-c.svg": svg(f'<path fill="none" stroke="{ACC}" stroke-width="52" stroke-linejoin="round" stroke-linecap="round" d="{line}"/>', 0.08),
-        "logo-d.svg": svg(f'<path fill="{ACC}" d="{d}"/>', 0.04),
-        "logo-e.svg": svg(f'<path fill="{OFF}" d="{geo}"/>', pad_e, exact=True),
+        "logo-f.svg": svg(hollow(d, wall=34, small_wall=48, cid="nu-shid-f"), 0.04),
     }
 
 
@@ -129,6 +128,7 @@ def main():
     files["logo-la-sasu.svg"] = tablet(font, "\U000121B7\U000122AD\U000122E2\U00012311", "lā šasû (Akkadian “not read aloud”): la-ša-su-ú")
     for name, svg in files.items():
         (OUT / name).write_text(svg); print("wrote", OUT / name, len(svg), "bytes")
+    (ROOT / "web/favicon.svg").write_text(favicon(font)); print("wrote", ROOT / "web/favicon.svg")
 
 
 if __name__ == "__main__":

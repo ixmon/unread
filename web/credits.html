@@ -36,7 +36,7 @@
   </head>
   <body class="static-page">
     <header class="static-header">
-      <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo-e.svg" width="54" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
+      <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo-f.svg" width="58" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
       <nav aria-label="Main">
         <a class="nav-link" href="map.html">Explore &amp; map</a>
         <a class="nav-link" href="browse.html">Browse</a>
@@ -187,6 +187,6 @@
       <div class="footer-links"><!--site:links--><!--/site:links--></div>
       Unread Atlas · <a href="./">Home</a> · <a href="map.html">Map</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="search.html">Search</a> · <a href="credits.html">Credits</a>
     </footer>
-  <script>/* ?logo=a|b|c|d|e|tablet previews another logo variant from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^([a-e]|tablet)$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
+  <script>/* ?logo=a|c|f compares the logo variants from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^[acf]$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
 </body>
 </html>

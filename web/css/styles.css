@@ -1756,7 +1756,7 @@ body.mode-epic .catalog-card .title {
 .map-credits { background: rgba(15, 17, 20, 0.6); padding: 0 6px; border-radius: 4px; font-size: 10.5px; line-height: 16px; }
 .map-credits a { color: var(--text-faint); text-decoration: none; }
 .map-credits a:hover { color: var(--text); }
-/* ?style=dark: dark "computer map" tiles (tiles/dark); keep the empty-tile background dark too */
+/* Dark "computer map" tiles (tiles/dark, the default; ?style=relief for the old look); keep the empty-tile background dark too */
 .leaflet-container.map-dark { background: #0c0f14; }
 .smap-link[hidden] { display: none; }
 @media (max-width: 640px) { .smap-chip .smap-dim { display: none; } }

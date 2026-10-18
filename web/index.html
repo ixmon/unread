@@ -114,7 +114,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
 <body>
 <section id="hero" aria-label="Unread Atlas">
   <canvas id="bg" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas><canvas id="ov" aria-hidden="true"></canvas>
-  <div id="brand"><a href="./" title="Unread Atlas home"><img src="assets/logo/logo-e.svg" width="66" height="34" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />UNREAD ATLAS</a></div>
+  <div id="brand"><a href="./" title="Unread Atlas home"><img src="assets/logo/logo-f.svg" width="71" height="34" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />UNREAD ATLAS</a></div>
   <nav id="topnav" aria-label="Main"><a href="map.html">Map</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Curated</a><a href="translate.html">Translator</a><a href="#collab">Collaborate</a></nav>
   <div id="copy">
     <!-- ================= HEADLINE (edit here only) =================
@@ -306,6 +306,6 @@ const start=()=>load().catch(e=>console.warn('hero',e));
 if(document.readyState==='complete')(window.requestIdleCallback||setTimeout)(start,{timeout:1200});
 else addEventListener('load',()=>(window.requestIdleCallback||setTimeout)(start,{timeout:1200}));
 </script>
-<script>/* ?logo=a|b|c|d|e|tablet previews another logo variant from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^([a-e]|tablet)$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
+<script>/* ?logo=a|c|f compares the logo variants from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^[acf]$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
 </body>
 </html>

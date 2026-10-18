@@ -78,7 +78,7 @@ a{color:#e0b860}
 <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:-1px">Map of maps: every cuneiform tablet by place, time, genre and translation state</h1>
 <div id="stage"><canvas id="bm" aria-hidden="true"></canvas><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
 <div id="top">
-  <a href="./" title="Unread Atlas home" class="brand-link"><img src="assets/logo/logo-e.svg" width="43" height="22" alt="" />Unread Atlas</a>
+  <a href="./" title="Unread Atlas home" class="brand-link"><img src="assets/logo/logo-f.svg" width="46" height="22" alt="" />Unread Atlas</a>
   <input id="q" placeholder="English, ATF (kasz) or 𒁉…" value="barley" title="Type a word and press Enter. English, ATF transliteration (kasz, {u2}tar-musz, š or sz) or cuneiform signs." />
   <span id="mode" title="Search English or ATF; Auto guesses from what you type"><button data-m="auto" class="on">Auto</button><button data-m="en">English</button><button data-m="atf">ATF</button></span>
   <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
@@ -547,6 +547,6 @@ window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f({id:
 document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); boxlist.style.display='none'; };
 load();
 </script>
-<script>/* ?logo=a|b|c|d|e|tablet previews another logo variant from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^([a-e]|tablet)$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
+<script>/* ?logo=a|c|f compares the logo variants from assets/logo/ (scripts/build_logo.py) */(function(){var v=new URLSearchParams(location.search).get("logo");if(!/^[acf]$/.test(v||""))return;document.querySelectorAll('img[src*="assets/logo/logo-"]').forEach(function(i){i.src=i.getAttribute("src").replace(/logo-[a-z-]+\.svg$/,"logo-"+v+".svg")})})();</script>
 </body>
 </html>

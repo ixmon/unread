@@ -1441,9 +1441,10 @@ function initMap() {
   // Built by scripts/basemap/render_relief.py; see web/tiles/relief/ATTRIBUTION.md.
   // z0-7 cover the whole world (ETOPO 60"); Near East z7-8 come from ETOPO 15" (the z7 files there replace
   // the 60" ones in the same folder); above that tiles are upscaled.
-  // ?style=dark swaps in the dark "computer map" prototype (same renderer, --style dark): world z0-5 from
-  // ETOPO 60", Near East z6-8 from ETOPO 15" (scripts/basemap/render_relief.py; /mnt/alpaca/unread-basemap/run_dark.sh).
-  const dark = new URLSearchParams(location.search).get("style") === "dark";
+  // Default: the dark "computer map" (same renderer, --style dark): world z0-5 from ETOPO 60", Near East z6-8
+  // from ETOPO 15" (scripts/basemap/render_relief.py; /mnt/alpaca/unread-basemap/run_dark.sh).
+  // ?style=relief (or =default / =light) brings back the earlier shaded relief.
+  const dark = !["relief", "default", "light"].includes(new URLSearchParams(location.search).get("style"));
   const BASE = dark
     ? { url: "tiles/dark/{z}/{x}/{y}.webp", worldMax: 5, near: 6 }
     : { url: "tiles/relief/{z}/{x}/{y}.webp", worldMax: 7, near: 7 };
