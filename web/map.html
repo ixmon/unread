@@ -55,10 +55,12 @@
         document.documentElement.classList.toggle("sidebar-collapsed", !open);
       })();
     </script>
-<script>/* reader: point the canonical at the tablet's static page when one exists */
+<script>/* reader: point the canonical at the tablet's static page when that page is indexable. Same id -> file
+   encoding and FNV-1a shard as scripts/build_seo_pages.py (slug, tablet_shard); one ~5 KB shard fetch. */
 (function(){var id=new URLSearchParams(location.search).get("id");if(!id)return;
-fetch("assets/tablet-pages.json").then(function(r){return r.ok?r.json():{}}).then(function(m){var p=m[id];if(!p)return;
-var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/"+p;}).catch(function(){});})();</script>
+var s=id.replace(/[^A-Za-z0-9._-]/gu,"_"),h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0;}
+fetch("assets/tablet-index/"+("0"+(h&255).toString(16)).slice(-2)+".txt").then(function(r){return r.ok?r.text():""}).then(function(t){
+if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unreadatlas.com/t/"+s+".html";}).catch(function(){});})();</script>
   </head>
   <body>
     <header class="app-header">
@@ -346,21 +348,12 @@ var l=document.querySelector('link[rel="canonical"]');if(l)l.href="https://unrea
               <button type="button" class="on" data-panel="cuneiform">Cuneiform</button>
               <button type="button" data-panel="meta" title="Catalogue and publication metadata">Meta</button>
             </div>
-            <button type="button" class="btn primary" id="btn-translate" title="Call local ATF→English API">
-              Translate
-            </button>
-            <span class="api-status" id="api-status" title="Translate API">API …</span>
-            <label class="checkbox-row" style="font-size: 0.8rem" title="Uses eBL public API (CORS permitting)">
-              <input type="checkbox" id="toggle-online-cunei" />
-              Live eBL convert
-            </label>
-          </div>
-          <div class="translate-progress" id="translate-progress" hidden>
-            <div class="translate-progress-bar"><div class="translate-progress-fill" id="translate-progress-fill"></div></div>
-            <span id="translate-progress-label">Translating…</span>
           </div>
 
           <div class="reader-body cols-3" id="reader-body">
+            <div class="reader-col" id="col-lines" style="display: none">
+              <div class="col-body" id="lines-body"></div>
+            </div>
             <div class="reader-col" id="col-english">
               <div class="col-head"><span>English</span><span>model / draft</span></div>
               <div class="col-body" id="english-body"></div>

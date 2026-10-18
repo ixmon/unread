@@ -132,36 +132,9 @@ const Atf2Unicode = (() => {
     };
   }
 
-  /**
-   * Optional: hit live eBL API for a full line (better coverage when online).
-   * GET https://www.ebl.lmu.de/api/signs/transliteration/{atf}
-   */
-  async function convertLineOnline(atfLine) {
-    const cleaned = atfLine
-      .replace(/[#?!*]/g, "")
-      .replace(/[{}]/g, "")
-      .trim()
-      .toLowerCase();
-    if (!cleaned) return { text: "", coverage: 1, source: "empty" };
-    const url = `https://www.ebl.lmu.de/api/signs/transliteration/${encodeURIComponent(cleaned)}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`eBL API ${res.status}`);
-    const data = await res.json();
-    // data: [{ unicode: [cp, ...] }, ...]
-    const text = (data || [])
-      .map((entry) => {
-        const u = entry.unicode || [];
-        if (u[0] === 9999) return " ";
-        return cpsToString(u);
-      })
-      .join("");
-    return { text, coverage: 1, source: "ebl-api" };
-  }
-
   return {
     load,
     convertLine,
-    convertLineOnline,
     ready: () => !!map,
   };
 })();

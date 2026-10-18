@@ -3,19 +3,6 @@
  */
 
 const DATA_BASE = "data";
-const API_PARAM = new URLSearchParams(location.search).get("api");
-/** Local translate API (same host as the page, port 42226). Override with ?api=http://host:port */
-const TRANSLATE_API = API_PARAM || `${location.protocol}//${location.hostname}:42226`;
-/**
- * Static mode (public GitHub Pages build): no local translate API is probed; "Translate" opens the
- * in-browser translator instead. On when the page carries <meta name="unread-static" content="1">
- * (added by scripts/build_site.sh) or is not served from a local/LAN host. ?api=… always re-enables the API.
- */
-const IS_LOCAL_HOST =
-  /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[::1\]$)/.test(location.hostname) ||
-  location.hostname.endsWith(".local");
-const STATIC_MODE =
-  !API_PARAM && (!!document.querySelector('meta[name="unread-static"][content="1"]') || !IS_LOCAL_HOST);
 const TRANSLATOR_PAGE = "translate.html";
 /**
  * Corpus API (same one search.html and browse.html use) for every tablet that is not one of the
@@ -26,8 +13,6 @@ const TEXT_API = (
   new URLSearchParams(location.search).get("textapi") ||
   (location.protocol === "file:" ? "https://unreadatlas.com/api" : `${location.origin}/api`)
 ).replace(/\/+$/, "");
-const TRANSLATE_CHUNK = 12; // lines per request (server max default 64)
-const TRANSLATE_DEFAULT_LIMIT = 48; // first-pass default; "continue" fills the rest
 
 const OMEN_KIND_LABELS = {
   physiognomy: "Physiognomy",
@@ -65,9 +50,6 @@ const state = {
   timeFade: false, // map fading by date; switches on at first slider interaction ("All periods" turns it off)
   markerGroups: {}, // site key -> { lat, lon, site, items }
   markerSig: "",
-  useOnlineCuneiform: false,
-  translating: false,
-  apiOk: null,
   omenKind: null, // subtype chip filter when omens mode on
   mathKind: null,
 };
@@ -221,12 +203,35 @@ async function loadTextFromApi(id) {
     signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) return null;
-  return apiTextToReader(await res.json(), id);
+  const [json] = await Promise.all([res.json(), loadTrPolicy()]);
+  return apiTextToReader(json, id);
 }
 
 // graded machine-English confidence (API field `conf`, 1..3; absent/0 = normal). Generic: any confidence source can set it.
 const CONF_TITLES = { 1: "Lower confidence: line is broken", 2: "Low confidence: few signs survive", 3: "Very low confidence: a guess" };
 const confLevel = (c) => (c === 1 || c === 2 || c === 3 ? c : 0);
+
+// ─── Translation tabs (human editions + machine draft) ───
+// Per-source rules live in assets/translation-policy.json: show_human (may we display that source's human
+// English?) and default ('human' | 'machine': which tab opens first). Unknown sources: human hidden, machine shown.
+const TR_POLICY_FALLBACK = { machine_label: "Machine", sources: { unknown: { name: "Other source", show_human: false, default: "machine" } } };
+let _trPolicyP = null;
+function loadTrPolicy() {
+  return (_trPolicyP ||= fetch("assets/translation-policy.json")
+    .then((r) => (r.ok ? r.json() : TR_POLICY_FALLBACK))
+    .catch(() => TR_POLICY_FALLBACK)
+    .then((p) => (state.trPolicy = p)));
+}
+function trPolicyFor(src) {
+  const all = (state.trPolicy || TR_POLICY_FALLBACK).sources || {};
+  return all[src] || all.unknown || TR_POLICY_FALLBACK.sources.unknown;
+}
+/** Translator name fit for a credit line, or null for placeholders ("uncertain", "ORACC project x/y", …). */
+function cleanTranslator(a) {
+  a = String(a || "").replace(/\s*\((CDLI )?translation_source\)|\s*\(see CDLI record\)/g, "").trim();
+  return !a || /^(uncertain|unknown|check|cdli contributor|no translat|translator not named|oracc project\b)/i.test(a) ? null : a;
+}
+const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
 
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
@@ -234,8 +239,11 @@ function apiTextToReader(d, requestedId) {
   const hasHum = (e) => Array.isArray(e.human_en) && e.human_en.some((h) => h && h.en);
   const hasMt = (e) => (Array.isArray(e.lines) && e.lines.some((l) => l.mt)) || (Array.isArray(e.mt_lines) && e.mt_lines.length);
   const hasAtf = (e) => Array.isArray(e.lines) && e.lines.some((l) => l.atf);
-  // same preference as the browse card: human English, then machine English, then ATF
-  const ed = eds.find(hasHum) || eds.find(hasMt) || eds.find(hasAtf) || eds[0];
+  // human English only from sources the policy lets us show (eBL never, unknown sources not until reviewed)
+  const humEds = eds.filter((e) => hasHum(e) && trPolicyFor(e.src).show_human === true);
+  const mtEd = eds.find((e) => hasMt(e) && hasAtf(e)) || eds.find(hasMt);
+  // ATF column: the machine draft's edition when it has ATF (so MT rows line up), else a human edition, else any ATF
+  const ed = (mtEd && hasAtf(mtEd) && mtEd) || humEds.find(hasAtf) || eds.find(hasAtf) || humEds[0] || mtEd || eds[0];
   const lines = (ed.lines || []).map((l) => ({
     type: "line",
     n: l.n != null ? String(l.n) : "",
@@ -245,7 +253,6 @@ function apiTextToReader(d, requestedId) {
     english: l.mt || null,
     conf: l.mt ? confLevel(l.conf) : 0, // optional per-line confidence level from the API: 1|2|3 = progressively lower; 0 = normal
   }));
-  const m = ed.model || null;
   const text = {
     id: requestedId || d.id || ed.id,
     canonical_id: d.canonical_id || ed.canonical_id,
@@ -270,54 +277,402 @@ function apiTextToReader(d, requestedId) {
     api_source: ed.src,
   };
   if (ed.src === "cdli" && /^P\d+$/.test(ed.id || "")) text.cdli_url = `https://cdli.earth/artifacts/${parseInt(ed.id.slice(1), 10)}`;
-  const notes = [];
-  if (hasHum(ed)) {
-    // human translation: its own line labels, not index-aligned to the ATF rows
-    const hum = ed.human_en.filter((h) => h && h.en);
-    text.english = hum.map((h) => h.en);
-    text.english_labels = hum.map((h) => h.line || "");
-    text.english_complete = true;
-    text.english_kind = "human";
-    const credits = [...new Set(hum.map((h) => [h.author && `Translation: ${h.author}`, h.edition && `edition ${h.edition}`, h.license && `licence: ${h.license}`].filter(Boolean).join(", ")))].filter(Boolean);
-    notes.push(`Human translation (${hum.length} lines)`, ...credits);
-    if (ed.source && ed.source.citation) notes.push(`Via ${ed.source.citation}`);
-  } else if (lines.some((l) => l.english)) {
-    // machine draft aligned line-by-line with the ATF
-    text.english = lines.map((l) => l.english || "");
-    if (lines.some((l) => l.conf)) text.english_conf = lines.map((l) => l.conf);
-    text.english_complete = true;
-    text.has_machine_draft = true;
-    text.machine_draft_lines = lines.filter((l) => l.english).length;
-  } else if (Array.isArray(ed.mt_lines) && ed.mt_lines.length) {
-    // machine draft with its own line labels (not aligned to ATF rows)
-    text.english = ed.mt_lines.map((l) => l.mt || "");
-    if (ed.mt_lines.some((l) => confLevel(l.conf))) text.english_conf = ed.mt_lines.map((l) => confLevel(l.conf));
-    text.english_labels = ed.mt_lines.map((l) => l.line || "");
-    text.english_complete = true;
-    text.has_machine_draft = true;
-    text.machine_draft_lines = ed.mt_lines.length;
+
+  const options = [];
+  const used = new Set();
+  for (const he of humEds) {
+    const pol = trPolicyFor(he.src);
+    const groups = new Map(); // one tab per edition/project within a source
+    for (const h of he.human_en) {
+      if (!h || !h.en) continue;
+      const k = h.edition || he.project || "";
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(h);
+    }
+    for (const [edn, hs] of groups) {
+      let key = he.src;
+      if (used.has(key)) key = `${he.src}-${(edn || String(used.size)).replace(/[^A-Za-z0-9]+/g, "-")}`;
+      used.add(key);
+      const recordUrl =
+        he.src === "cdli" && /^P\d+$/.test(he.id || "")
+          ? `https://cdli.earth/artifacts/${parseInt(he.id.slice(1), 10)}`
+          : he.src === "oracc" && (edn || he.project)
+            ? `https://oracc.museum.upenn.edu/${edn || he.project}/${he.id}`
+            : he.url || he.source?.url || null;
+      options.push({
+        key,
+        kind: "human",
+        src: he.src,
+        label: `${pol.name || he.src.toUpperCase()}${edn ? ` · ${edn}` : ""}`,
+        english: hs.map((h) => h.en),
+        labels: hs.map((h) => h.line || ""),
+        conf: null,
+        translators: [...new Set(hs.map((h) => cleanTranslator(h.author)).filter(Boolean))],
+        source_name: pol.full_name || he.source?.name || pol.name || he.src,
+        edition: edn || null,
+        record_url: recordUrl,
+        src_lines: (he.lines || []).map((l) => ({ surface: l.surface || "", n: l.n != null ? String(l.n) : "" })),
+        license: pol.license || hs.find((h) => h.license)?.license || he.source?.license || "",
+        license_url: pol.license_url || pol.terms_url || null,
+        note: `Human translation (${hs.length} lines)`,
+      });
+    }
   }
-  if (text.has_machine_draft && m) {
-    const rev = (m.revision || "").slice(0, 7);
-    notes.push(`Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`);
-    text.translation_meta = { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on };
+  if (mtEd) {
+    const m = mtEd.model || {};
+    const aligned = mtEd === ed && lines.some((l) => l.english);
+    let english, labels = null, conf;
+    if (aligned) {
+      english = lines.map((l) => l.english || "");
+      conf = lines.map((l) => l.conf);
+    } else {
+      const ml = Array.isArray(mtEd.mt_lines) && mtEd.mt_lines.length
+        ? mtEd.mt_lines
+        : (mtEd.lines || []).filter((l) => l.mt).map((l) => ({ line: [l.surface, l.n].filter(Boolean).join(" "), mt: l.mt, conf: l.conf }));
+      english = ml.map((l) => l.mt || "");
+      labels = ml.map((l) => l.line || "");
+      conf = ml.map((l) => confLevel(l.conf));
+    }
+    const rev = /^[0-9a-f]{12,}$/.test(m.revision || "") ? m.revision.slice(0, 7) : m.revision || ""; // git sha -> short; tags like t5base-H2 kept whole
+    options.push({
+      key: "machine",
+      kind: "machine",
+      src: mtEd.src,
+      label: `${(state.trPolicy || TR_POLICY_FALLBACK).machine_label || "Machine"} (${modelShort(m.label)})`,
+      english,
+      labels,
+      conf: conf.some(Boolean) ? conf : null,
+      n: english.filter(Boolean).length,
+      note: m.repo
+        ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
+        : "Machine draft. Unreviewed machine output, not a scholarly translation.",
+      meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
+      model_label: m.label || "",
+      translated_on: m.translated_on || "",
+      src_lines: (mtEd.lines || []).map((l) => ({ surface: l.surface || "", n: l.n != null ? String(l.n) : "" })),
+    });
   }
-  if (ed.truncated) notes.push("Long text: only the first 3,000 lines are included.");
+  text.translations = options;
+  const defHuman = options.find((o) => o.kind === "human" && trPolicyFor(o.src).default === "human");
+  text.tr_default = (defHuman || options.find((o) => o.kind === "machine") || options[0])?.key || null;
+  text._notes_common = ed.truncated ? ["Long text: only the first 3,000 lines are included."] : [];
+  applyTranslation(text, new URLSearchParams(location.search).get("tr"));
+
   // tablets outside the curated catalog have no translation-status assessment; say so instead of a raw key
   const inCatalog = state.catalog?.items?.some((x) => x.id === text.id);
   if (!inCatalog) {
-    if (text.english_kind === "human") {
+    if (options.some((o) => o.kind === "human")) {
+      const h = options.find((o) => o.kind === "human");
       text.translation_status = "open_project";
-      text.translation_short = `Open: ${ed.source?.name ? ed.src.toUpperCase() : "source"}`;
+      text.translation_short = `Open: ${h.src.toUpperCase()}`;
     } else {
       text.translation_status = "unknown";
       text.translation_short = "Corpus text";
     }
     text.translation_detail = "From the full corpus (not in the curated catalog); translation status not assessed.";
   }
-  text.english_note = notes.join(" · ") || null;
   return text;
 }
+
+/** Resolve a URL/tab token ("machine", "human", "oracc", "oracc-<edition>"…) to an option key, or null. */
+function resolveTrKey(text, k) {
+  const opts = text.translations || [];
+  const o =
+    opts.find((x) => x.key === k) ||
+    (k === "human" ? opts.find((x) => x.kind === "human") : null) ||
+    (k === "machine" ? opts.find((x) => x.kind === "machine") : null);
+  return o ? o.key : null;
+}
+
+/**
+ * Choose which translations are shown. `want` is a key, a comma list ("machine,oracc") or an array; the first
+ * one drives the badges/chips. Anything unknown (or not allowed by the policy) falls back to the policy default.
+ */
+function applyTranslation(text, want) {
+  const opts = text.translations || [];
+  if (!opts.length) {
+    text.english_note = (text._notes_common || []).join(" · ") || null;
+    return;
+  }
+  const list = Array.isArray(want) ? want : String(want || "").split(",");
+  let cols = [...new Set(list.map((k) => resolveTrKey(text, String(k).trim())).filter(Boolean))];
+  if (!cols.length) cols = [text.tr_default || opts[0].key];
+  text.tr_cols = cols;
+  const o = opts.find((x) => x.key === cols[0]);
+  text.tr_active = o.key;
+  text.english = o.english;
+  text.english_labels = o.labels || undefined;
+  text.english_conf = o.conf || undefined;
+  text.english_complete = true;
+  text.english_kind = o.kind === "human" ? "human" : undefined;
+  text.has_machine_draft = o.kind === "machine";
+  text.machine_draft_lines = o.kind === "machine" ? o.n : undefined;
+  text.translation_meta = o.kind === "machine" ? o.meta : undefined;
+  text.english_note = [o.note, ...(text._notes_common || [])].filter(Boolean).join(" · ") || null;
+}
+
+/**
+ * Keep the column choice in the URL (&tr=machine,oracc) so shared links and reloads open the same view; the
+ * policy default drops the param. Each user change is a history entry, so Back/Forward step through views
+ * (popstate below re-applies the URL).
+ */
+function setTrParam(text) {
+  try {
+    const cols = text.tr_cols || [];
+    const u = new URL(location.href);
+    u.searchParams.delete("tr");
+    if (cols.length && !(cols.length === 1 && cols[0] === text.tr_default)) u.searchParams.set("tr", cols.join(","));
+    const next = u.toString().replace(/%2C/gi, ",");
+    if (next !== location.href) history.pushState({ tr: cols.join(",") }, "", next);
+  } catch (_) {
+    /* ignore */
+  }
+}
+window.addEventListener("popstate", () => {
+  const text = state.currentText;
+  if (!text || !text.translations) return;
+  const q = new URLSearchParams(location.search);
+  if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
+  applyTranslation(text, q.get("tr"));
+  renderReader();
+});
+
+// ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
+const NARROW_Q = window.matchMedia("(max-width: 760px)");
+const ROMAN = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9, x: 10, xi: 11, xii: 12 };
+/** "obverse col 1" | "o i" | "Obverse Column i" -> "o:1"; "surface a" -> "sa"; "left edge" -> "le"; "" -> "" */
+function normSurf(s) {
+  const t = String(s || "").toLowerCase().replace(/[.,@()]/g, " ").split(/\s+/).filter(Boolean);
+  let side = "", col = "";
+  for (let i = 0; i < t.length; i++) {
+    const w = t[i], nx = t[i + 1] || "";
+    if (/^(obverse|obv|o)$/.test(w)) side = "o";
+    else if (/^(reverse|rev|r)$/.test(w)) side = "r";
+    else if (/^(left|right|top|bottom|lower|upper)$/.test(w) && /^(edge|e)$/.test(nx)) {
+      side = { left: "le", right: "re", top: "te", upper: "te", bottom: "be", lower: "be" }[w];
+      i++;
+    } else if (/^(edge|e|le|re|te|be)$/.test(w)) side = w === "edge" ? "e" : w;
+    else if ((w === "surface" || w === "seal") && nx) {
+      side = w[0] + nx;
+      i++;
+    } else if ((w === "col" || w === "column") && nx) {
+      col = String(ROMAN[nx] || parseInt(nx, 10) || nx);
+      i++;
+    } else if (!col && side && (ROMAN[w] || /^\d+$/.test(w))) col = String(ROMAN[w] || parseInt(w, 10));
+  }
+  return side + (col ? ":" + col : "");
+}
+const normN = (n) => String(n || "").replace(/[′’ʼ]/g, "'").replace(/\s+/g, "").toLowerCase();
+const rowKey = (surface, n) => normSurf(surface) + "|" + normN(n);
+/** "obverse col 1 3'" -> rowKey("obverse col 1", "3'") */
+function rowKeyFromLabel(lab) {
+  const parts = String(lab || "").trim().split(/\s+/);
+  const n = parts.pop() || "";
+  return rowKey(parts.join(" "), n);
+}
+
+/**
+ * Place one translation on the grid rows. Returns { blocks: [{s, e, items}], rate } where s..e are row indices.
+ * - machine aligned to the ATF: one block per row
+ * - CDLI-style labels ("obverse col 1 3'"): matched by surface + line number (works across CDLI/ORACC naming)
+ * - ORACC passages ("Obverse Column i [0:5] …"): lines 0..4 of that surface in the ORACC edition, so a
+ *   paragraph spans the ATF rows it translates
+ * Lines that can't be placed join the passage before them; a column with < 50% placed is shown unaligned.
+ */
+function mapTranslationToRows(o, keyIndex) {
+  if (!o.labels) {
+    const blocks = [];
+    o.english.forEach((t, i) => {
+      if (t) blocks.push({ s: i, e: i, items: [{ t, conf: (o.conf && o.conf[i]) || 0 }] });
+    });
+    return { blocks, rate: 1 };
+  }
+  let groups = null;
+  const blocks = [], orphans = [];
+  let last = null, placed = 0;
+  o.english.forEach((t, j) => {
+    const label = o.labels[j] || "";
+    const item = { t, label, conf: (o.conf && o.conf[j]) || 0 };
+    let idxs = [];
+    const m = label.match(/^(.*?)\[(\d+):(\d+)\]/);
+    if (m && o.src_lines && o.src_lines.length) {
+      if (!groups) {
+        groups = new Map();
+        for (const l of o.src_lines) {
+          const k = normSurf(l.surface);
+          if (!groups.has(k)) groups.set(k, []);
+          groups.get(k).push(l);
+        }
+      }
+      const list = groups.get(normSurf(m[1])) || (groups.size === 1 ? [...groups.values()][0] : null);
+      if (list) idxs = list.slice(+m[2], +m[3]).map((l) => keyIndex.get(rowKey(l.surface, l.n))).filter((x) => x != null);
+    } else if (keyIndex.has(rowKeyFromLabel(label))) idxs = [keyIndex.get(rowKeyFromLabel(label))];
+    if (idxs.length) {
+      placed++;
+      last = { s: Math.min(...idxs), e: Math.max(...idxs), items: [item] };
+      blocks.push(last);
+    } else if (last) last.items.push({ ...item, orphan: true });
+    else orphans.push({ ...item, orphan: true });
+  });
+  blocks.sort((a, b) => a.s - b.s);
+  const merged = [];
+  for (const b of blocks) {
+    const prev = merged[merged.length - 1];
+    if (prev && b.s <= prev.e) {
+      prev.e = Math.max(prev.e, b.e);
+      prev.items.push(...b.items);
+    } else merged.push(b);
+  }
+  if (orphans.length && merged.length) merged[0].items.unshift(...orphans);
+  return { blocks: merged, rate: o.english.length ? placed / o.english.length : 0 };
+}
+
+const isAlignedText = (text) => !!(text && text.status === "api" && (text.translations || []).length);
+/** Columns actually drawn: on narrow screens only the first (the selector still switches it). */
+const visibleTrCols = (text) => (NARROW_Q.matches ? (text.tr_cols || []).slice(0, 1) : text.tr_cols || []);
+const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
+
+function trCreditHtml(o) {
+  const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
+  if (o.kind === "human") {
+    return [
+      o.translators.length ? `Translation: ${escapeHtml(o.translators.join("; "))}` : "Human translation",
+      `via ${link(o.source_name + (o.edition ? ` (${o.edition})` : ""), o.record_url)}`,
+      o.license ? `licence: ${link(o.license, o.license_url)}` : "",
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  }
+  return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
+}
+
+function renderLinesCol(text) {
+  const body = $("#lines-body");
+  const panels = state.readerPanels;
+  const opts = text.translations || [];
+  const narrow = NARROW_Q.matches;
+  const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
+  const content = (text.lines || []).filter((l) => l.type === "line");
+  const atfOn = panels.atf && content.length > 0;
+  // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
+  let rows;
+  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
+  else {
+    const first = cols[0] || opts[0];
+    rows = (first.labels || first.english.map((_, i) => String(i + 1))).map((lab) => ({ n: lab, surface: "", atf: null, key: rowKeyFromLabel(lab) }));
+  }
+  const keyIndex = new Map();
+  rows.forEach((r, i) => {
+    if (!keyIndex.has(r.key)) keyIndex.set(r.key, i);
+  });
+
+  const k = cols.length;
+  const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
+  const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
+  const atfCol = 2, enCol0 = atfOn ? 3 : 2;
+  const remaining = opts.filter((o) => !(text.tr_cols || []).includes(o.key));
+  const html = [];
+
+  // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
+  html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
+  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
+  if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
+  else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
+  const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
+  cols.forEach((o, ci) => {
+    const c = enCol0 + ci;
+    const others = new Set(cols.map((x) => x.key).filter((x) => x !== o.key)); // narrow: hidden columns stay pickable
+    const choices = opts.filter((x) => !others.has(x.key));
+    const pick =
+      choices.length > 1
+        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${choices
+            .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
+            .join("")}</select>`
+        : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
+    const x = k > 1 ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
+    const add =
+      ci === k - 1 && remaining.length && !narrow
+        ? `<select class="tr-add" aria-label="Add a translation column to compare" title="Add a column to compare translations side by side"><option value="">+ compare</option>${remaining
+            .map((r) => `<option value="${escapeAttr(r.key)}">${escapeHtml(trOptLabel(r))}</option>`)
+            .join("")}</select>`
+        : "";
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
+    const mp = maps[ci];
+    const how =
+      o.labels && mp.rate < 0.5
+        ? " · not line-aligned in the source, shown as one block"
+        : mp.blocks.some((b) => b.e > b.s)
+          ? " · paragraph translation: each passage spans the lines it covers"
+          : "";
+    const withheld = ci === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
+    html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
+  });
+
+  // content rows (surface headings get their own row across the line-number + ATF columns)
+  const rowG = [];
+  let g = 3, lastSurf = null;
+  rows.forEach((r, i) => {
+    if (content.length && r.surface && r.surface !== lastSurf) {
+      html.push(`<div class="lg-break" style="grid-row:${g};grid-column:1 / ${atfOn ? atfCol + 1 : 2}">${escapeHtml(r.surface)}</div>`);
+      g++;
+    }
+    lastSurf = r.surface;
+    rowG[i] = g;
+    html.push(`<div class="lg-cell lg-ln" data-i="${i}" style="grid-row:${g};grid-column:1">${escapeHtml(r.n)}</div>`);
+    if (atfOn) html.push(`<div class="lg-cell lg-atf" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
+    g++;
+  });
+  const itemHtml = (it, showLabel) =>
+    `${showLabel && it.label ? `<span class="lg-range">${escapeHtml(it.label)}</span>` : ""}<span class="en-text">${escapeHtml(it.t)}</span>`;
+  cols.forEach((o, ci) => {
+    const c = enCol0 + ci;
+    const mp = maps[ci];
+    if (!rows.length) return;
+    if (o.labels && mp.rate < 0.5) {
+      html.push(`<div class="lg-cell lg-en lg-free" style="grid-row:${rowG[0]} / ${rowG[rows.length - 1] + 1};grid-column:${c}">${o.english
+        .map((t, j) => `<div class="lg-free-item">${itemHtml({ t, label: o.labels[j] }, true)}</div>`)
+        .join("")}</div>`);
+      return;
+    }
+    for (const b of mp.blocks) {
+      const lv = o.kind === "machine" ? Math.max(...b.items.map((it) => confLevel(it.conf))) : 0;
+      const span = b.e > b.s;
+      const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
+      html.push(
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? "" : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+          .map((it) => itemHtml(it, !!it.orphan))
+          .join(" ")}</div>`
+      );
+    }
+  });
+  if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
+  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
+
+  const setCols = (next) => {
+    applyTranslation(text, next);
+    setTrParam(text);
+    renderReader();
+  };
+  body.querySelectorAll(".tr-pick").forEach((sel) =>
+    sel.addEventListener("change", () => {
+      const next = [...text.tr_cols];
+      const ci = +sel.dataset.col, j = next.indexOf(sel.value);
+      if (j >= 0) next[j] = next[ci]; // picking a column hidden on narrow screens swaps it in, keeping the comparison
+      next[ci] = sel.value;
+      setCols(next);
+    })
+  );
+  body.querySelectorAll(".tr-x").forEach((b) =>
+    b.addEventListener("click", () => setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col)))
+  );
+  body.querySelector(".tr-add")?.addEventListener("change", (e) => {
+    if (e.target.value) setCols([...text.tr_cols, e.target.value]);
+  });
+  bindLineHover(body);
+}
+NARROW_Q.addEventListener?.("change", () => {
+  if (state.currentText && isAlignedText(state.currentText)) renderReader();
+});
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
 function englishRemaining(text) {
@@ -763,13 +1118,25 @@ function renderReader() {
   if (n === 3) body.classList.add("cols-3");
   if (n >= 4) body.classList.add("cols-4");
 
-  $("#col-english").style.display = panels.english ? "flex" : "none";
-  $("#col-atf").style.display = panels.atf ? "flex" : "none";
+  // API tablets: one aligned "lines" column (ATF | English versions) instead of separate English + ATF columns
+  const aligned = isAlignedText(text) && (panels.english || panels.atf);
+  $("#col-lines").style.display = aligned ? "flex" : "none";
+  $("#col-english").style.display = !aligned && panels.english ? "flex" : "none";
+  $("#col-atf").style.display = !aligned && panels.atf ? "flex" : "none";
+  body.classList.toggle("custom-cols", aligned);
+  if (aligned) {
+    const k = panels.english ? visibleTrCols(text).length : 0;
+    const hasAtf = panels.atf && (text.lines || []).some((l) => l.type === "line");
+    const w = [`minmax(0,${(hasAtf ? (k <= 1 ? 1 : k === 2 ? 0.8 : 0.62) : 0) + Math.max(k, 0) || 1}fr)`];
+    if (panels.cuneiform) w.push(`minmax(0,${k >= 2 ? 0.6 : 1}fr)`);
+    if (panels.meta) w.push("minmax(0,0.9fr)");
+    body.style.setProperty("--reader-cols", w.join(" "));
+  }
   $("#col-cuneiform").style.display = panels.cuneiform ? "flex" : "none";
   $("#col-meta").style.display = panels.meta ? "flex" : "none";
 
-  renderEnglishCol(text);
-  renderAtfCol(text);
+  renderEnglishCol(text); // aligned API tablets: renders the lines column instead
+  if (!aligned) renderAtfCol(text);
   renderCuneiformCol(text);
   if (panels.meta) {
     renderMetaCol(text);
@@ -1001,7 +1368,10 @@ async function maybeFetchCdliMeta(text, force = false) {
 function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
-  updateTranslateButton();
+  if (isAlignedText(text) && (state.readerPanels.english || state.readerPanels.atf)) {
+    renderLinesCol(text);
+    return;
+  }
 
   if (text.english && Array.isArray(text.english) && text.english.length) {
     const statusBits = [];
@@ -1032,16 +1402,12 @@ function renderEnglishCol(text) {
     const remaining = englishRemaining(text);
     const more =
       remaining > 0
-        ? STATIC_MODE
-          ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
-               <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
-             </p>`
-          : `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
-             <button type="button" class="btn" id="btn-continue-translate" style="margin-left:0.5rem">Continue</button>
+        ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+             <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
            </p>`
         : "";
     body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
-    $("#btn-continue-translate")?.addEventListener("click", () => startTranslate({ continue: true }));
+
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
   } else if (text.status === "api" && !contentLines.length) {
@@ -1055,8 +1421,7 @@ function renderEnglishCol(text) {
     return;
   } else {
     const lineCount = contentLines.length;
-    if (STATIC_MODE) {
-      body.innerHTML = `
+    body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
         <p>No machine draft is published for this text yet.</p>
@@ -1068,236 +1433,16 @@ function renderEnglishCol(text) {
           ${lineCount ? `<a class="btn primary" href="${escapeAttr(translatorUrl(text, 0))}">Open in the in-browser translator</a>` : ""}
         </p>
       </div>`;
-      bindLineHover(body);
-      return;
-    }
-    body.innerHTML = `
-      <div class="english-placeholder">
-        <div class="badge">Awaiting first English</div>
-        <p>${escapeHtml(text.english_note || "No model translation yet.")}</p>
-        <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
-          ${lineCount} ATF content lines ready.
-          Uses the local translate API at <code>${escapeHtml(TRANSLATE_API)}</code>
-          (model: atf-en-best-v2).
-        </p>
-        <p style="margin-top:1rem">
-          <button type="button" class="btn primary" id="btn-translate-stub">Translate with local model</button>
-        </p>
-      </div>`;
-    $("#btn-translate-stub")?.addEventListener("click", () => startTranslate());
   }
   bindLineHover(body);
 }
 
-// ─── Translate API ───
+// ─── In-browser translator link ───
 /** Link to translate.html prefilled with this text's ATF lines (starting at line index `from`). */
 function translatorUrl(text, from = 0) {
   const q = new URLSearchParams({ id: text.id });
   if (from > 0) q.set("from", String(from));
   return `${TRANSLATOR_PAGE}?${q}`;
-}
-
-async function checkTranslateApi() {
-  const el = $("#api-status");
-  if (!el) return;
-  if (STATIC_MODE) {
-    el.textContent = "In-browser model";
-    el.className = "api-status static";
-    el.title = "Translate opens the in-browser translator (no server)";
-    updateTranslateButton();
-    return;
-  }
-  try {
-    const res = await fetch(`${TRANSLATE_API}/api/health`, { signal: AbortSignal.timeout(4000) });
-    const data = await res.json();
-    state.apiOk = !!data.ok;
-    el.textContent = data.model_loaded
-      ? `API · ${data.device || "ready"}`
-      : "API · idle";
-    el.className = "api-status up";
-    el.title = data.model_path || TRANSLATE_API;
-  } catch {
-    state.apiOk = false;
-    el.textContent = "API · offline";
-    el.className = "api-status down";
-    el.title = `Cannot reach ${TRANSLATE_API} — run ./scripts/serve_api.sh`;
-  }
-  updateTranslateButton();
-}
-
-function updateTranslateButton() {
-  const btn = $("#btn-translate");
-  if (!btn) return;
-  const text = state.currentText;
-  const lines = (text?.lines || []).filter((l) => l.type === "line");
-  const have = Array.isArray(text?.english) ? text.english.length : 0;
-  const remaining = englishRemaining(text);
-
-  if (state.translating) {
-    btn.disabled = true;
-    btn.textContent = "Translating…";
-    return;
-  }
-  btn.disabled = !text || lines.length === 0 || remaining === 0;
-  if (STATIC_MODE) {
-    btn.title = "Open these ATF lines in the in-browser translator";
-    btn.textContent = !text || lines.length === 0 ? "Translate" : remaining === 0 ? "Done" : "Translate in browser";
-    return;
-  }
-  if (!text || lines.length === 0) {
-    btn.textContent = "Translate";
-  } else if (remaining === 0) {
-    btn.textContent = "Done";
-  } else if (have > 0) {
-    btn.textContent = `Continue (${remaining})`;
-  } else {
-    btn.textContent = `Translate (${Math.min(TRANSLATE_DEFAULT_LIMIT, lines.length)})`;
-  }
-}
-
-function setProgress(done, total, label) {
-  const wrap = $("#translate-progress");
-  const fill = $("#translate-progress-fill");
-  const lab = $("#translate-progress-label");
-  if (!wrap) return;
-  if (total <= 0) {
-    wrap.hidden = true;
-    return;
-  }
-  wrap.hidden = false;
-  const pct = Math.round((done / total) * 100);
-  fill.style.width = `${pct}%`;
-  lab.textContent = label || `${done} / ${total}`;
-}
-
-async function startTranslate(opts = {}) {
-  const text = state.currentText;
-  if (!text || state.translating) return;
-  if (STATIC_MODE) {
-    location.href = translatorUrl(text, Array.isArray(text.english) ? text.english.length : 0);
-    return;
-  }
-
-  const contentLines = (text.lines || []).filter((l) => l.type === "line");
-  if (!contentLines.length) {
-    toast("No ATF lines to translate");
-    return;
-  }
-
-  // health check
-  try {
-    const h = await fetch(`${TRANSLATE_API}/api/health`, { signal: AbortSignal.timeout(5000) });
-    if (!h.ok) throw new Error("health failed");
-    state.apiOk = true;
-    $("#api-status").className = "api-status busy";
-    $("#api-status").textContent = "API · working";
-  } catch {
-    state.apiOk = false;
-    toast(`Translate API offline at ${TRANSLATE_API}. Run ./scripts/serve_api.sh on the host.`);
-    checkTranslateApi();
-    return;
-  }
-
-  const existing = Array.isArray(text.english) ? [...text.english] : [];
-  const startIdx = opts.continue || opts.full ? existing.length : existing.length;
-  // first click: translate up to DEFAULT_LIMIT total; continue: rest (or +DEFAULT_LIMIT chunks)
-  let endIdx;
-  if (opts.full) {
-    endIdx = contentLines.length;
-  } else if (opts.continue || existing.length > 0) {
-    endIdx = contentLines.length; // finish remaining
-  } else {
-    endIdx = Math.min(contentLines.length, TRANSLATE_DEFAULT_LIMIT);
-  }
-
-  if (startIdx >= endIdx) {
-    toast("Already translated");
-    updateTranslateButton();
-    return;
-  }
-
-  state.translating = true;
-  updateTranslateButton();
-  const total = endIdx - startIdx;
-  let done = 0;
-  setProgress(0, total, `Starting… 0 / ${total}`);
-
-  const english = existing.slice(0, startIdx);
-  // pad if somehow shorter
-  while (english.length < startIdx) english.push("");
-
-  try {
-    for (let i = startIdx; i < endIdx; i += TRANSLATE_CHUNK) {
-      const chunk = contentLines.slice(i, Math.min(i + TRANSLATE_CHUNK, endIdx));
-      const lines = chunk.map((l) => l.atf);
-      const res = await fetch(`${TRANSLATE_API}/api/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || `HTTP ${res.status}`);
-      }
-      const tr = data.translations || [];
-      for (let j = 0; j < tr.length; j++) {
-        english.push(tr[j]);
-        if (contentLines[i + j]) contentLines[i + j].english = tr[j];
-      }
-      done += tr.length;
-      text.english = [...english];
-      text.status = english.length >= contentLines.length ? "english" : "partial_english";
-      const modelName = String(data.model || "T5").split("/").filter(Boolean).pop(); // never store local paths
-      const today = new Date().toISOString().slice(0, 10);
-      text.english_note = `Machine draft · model ${modelName} · translated ${today} (local API). Not a scholarly translation; verify against a published edition.`;
-      text.translation_meta = {
-        kind: "machine_draft",
-        model: modelName,
-        translated_on: today,
-        prompt: data.prompt,
-        lines_translated: english.length,
-        lines_total: contentLines.length,
-        source: "local_api",
-      };
-      setProgress(done, total, `Translated ${english.length} / ${contentLines.length} lines`);
-      // live update English column without wiping ATF scroll too hard
-      renderEnglishCol(text);
-    }
-
-    // persist if packaged
-    try {
-      const save = await fetch(`${TRANSLATE_API}/api/translate/save`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: text.id,
-          english: text.english,
-          english_note: text.english_note,
-          status: text.status,
-          meta: text.translation_meta,
-        }),
-      });
-      const saveData = await save.json();
-      if (save.ok && saveData.ok) {
-        toast(`Saved ${saveData.count} lines → data/texts/${text.id}.json`);
-      } else if (save.status === 404) {
-        toast(`Translated ${english.length} lines (not packaged — not saved to disk)`);
-      } else {
-        toast(`Translated ${english.length} lines (save: ${saveData.error || "failed"})`);
-      }
-    } catch {
-      toast(`Translated ${english.length} lines (could not save)`);
-    }
-  } catch (e) {
-    console.error(e);
-    toast(`Translate failed: ${e.message || e}`);
-  } finally {
-    state.translating = false;
-    setProgress(0, 0);
-    updateTranslateButton();
-    checkTranslateApi();
-    renderEnglishCol(text);
-  }
 }
 
 function renderAtfCol(text) {
@@ -1384,15 +1529,7 @@ async function renderCuneiformCol(text) {
     const cached = state.cuneiformCache.get(line.atf);
     let result = cached;
     if (!result) {
-      if (state.useOnlineCuneiform) {
-        try {
-          result = await Atf2Unicode.convertLineOnline(line.atf);
-        } catch {
-          result = Atf2Unicode.convertLine(line.atf);
-        }
-      } else {
-        result = Atf2Unicode.convertLine(line.atf);
-      }
+      result = Atf2Unicode.convertLine(line.atf); // offline sign-reading map (data/atf_unicode_readings.json)
       state.cuneiformCache.set(line.atf, result);
     }
     const dim = result.coverage < 0.4 ? "opacity:0.55" : "";
@@ -1413,14 +1550,14 @@ async function renderCuneiformCol(text) {
 }
 
 function bindLineHover(container) {
-  container.querySelectorAll(".line-row[data-i], .line-en[data-i]").forEach((el) => {
+  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i]").forEach((el) => {
     el.addEventListener("mouseenter", () => highlightLine(el.dataset.i));
     el.addEventListener("mouseleave", () => highlightLine(null));
   });
 }
 
 function highlightLine(i) {
-  $$(".line-row.hl, .line-en.hl").forEach((el) => el.classList.remove("hl"));
+  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
   if (i == null) return;
   $$(`[data-i="${i}"]`).forEach((el) => el.classList.add("hl"));
 }
@@ -1997,18 +2134,6 @@ function bindEvents() {
 
   $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
 
-  $("#btn-translate")?.addEventListener("click", () => {
-    const text = state.currentText;
-    const have = Array.isArray(text?.english) ? text.english.length : 0;
-    startTranslate({ continue: have > 0 });
-  });
-
-  $("#toggle-online-cunei")?.addEventListener("change", (e) => {
-    state.useOnlineCuneiform = e.target.checked;
-    state.cuneiformCache.clear();
-    if (state.currentText) renderCuneiformCol(state.currentText);
-    toast(e.target.checked ? "Using live eBL sign API when possible" : "Offline reading map only");
-  });
 }
 
 function debounce(fn, ms) {
@@ -2024,8 +2149,6 @@ async function main() {
   bindEvents();
   initTimeline();
   initMap();
-  checkTranslateApi();
-  if (!STATIC_MODE) setInterval(checkTranslateApi, 30000);
 
   // Deep link ?id=…: show the reader's loading state right away, not the map then "No work open"
   const deepId = new URLSearchParams(location.search).get("id");
