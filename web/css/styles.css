@@ -1759,6 +1759,23 @@ body.mode-epic .catalog-card .title {
 .lg-en.conf-2 .en-text { opacity: 0.66; font-style: italic; }
 .lg-en.conf-3 .en-text { opacity: 0.52; font-style: italic; }
 .lg-cell.hl { background: var(--accent-soft); }
+mark.find-hit {
+  background: rgba(224, 149, 96, 0.45);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 0.08em;
+}
+.lg-cell.find-line,
+.line-row.find-line,
+.line-en.find-line {
+  background: rgba(224, 149, 96, 0.12);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.find-note {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--accent-strong);
+}
 @media (max-width: 960px) {
   .reader-body.custom-cols { grid-template-columns: 1fr; }
   #col-lines { min-height: 60vh; }

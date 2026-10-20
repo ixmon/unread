@@ -1021,6 +1021,177 @@ function renderPreview(item, loading, text) {
 }
 
 // ─── Reader ───
+// Search opens the reader as map.html?id=<text>&find=<query>. `find` (not `q`: that drives the
+// map search layer) highlights the same words search.js marks and scrolls the first hit into view.
+let findLineIdx = new Set();
+
+const FIND_ATF = { š: "sz", ṣ: "s,", ṭ: "t,", ḫ: "h", ŋ: "j", ĝ: "j", "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9" };
+const findAtfAscii = (s) => s.replace(/[šṣṭḫŋĝ₀-₉]/gi, (c) => {
+  const m = FIND_ATF[c.toLowerCase()];
+  return c === c.toLowerCase() ? m : m.toUpperCase();
+});
+const findFold = (s) => s.normalize("NFD").replace(/\p{M}/gu, "");
+
+/** Same term rules as search.js `termsFor`: phrases, word*, š/sz, accents. */
+function findTerms(q) {
+  const out = new Map();
+  for (const m of String(q || "").matchAll(/"([^"]*)"|(\S+)/g)) {
+    const raw = m[1] ?? m[2];
+    if (m[1] == null && /^(AND|OR|NOT|NEAR)$/.test(raw)) continue;
+    const words = raw.match(/[\p{L}\p{N}_]+/gu) || [];
+    const prefix = words.length === 1 && raw.endsWith("*");
+    for (const w of words) {
+      for (const v of new Set([w, findAtfAscii(w), findFold(w), findFold(findAtfAscii(w))])) {
+        if (v) out.set(v.toLowerCase(), prefix || out.get(v.toLowerCase()));
+      }
+    }
+  }
+  return out;
+}
+
+function compileFind(q) {
+  const terms = findTerms(q);
+  if (!terms.size) return null;
+  const words = [...terms.keys()].sort((a, b) => b.length - a.length);
+  const alt = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  return { terms, re: new RegExp(`(?<![\\p{L}\\p{N}_])(${alt})([\\p{L}\\p{N}_]*)`, "giu") };
+}
+
+/** null, or a list of {text, mark} covering `text`. */
+function findSpans(text, find) {
+  if (!text || !find) return null;
+  find.re.lastIndex = 0;
+  const parts = [];
+  let last = 0;
+  let hit = false;
+  for (const m of String(text).matchAll(find.re)) {
+    if (m[2] && !find.terms.get(m[1].toLowerCase())) continue;
+    hit = true;
+    if (m.index > last) parts.push({ text: text.slice(last, m.index), mark: false });
+    parts.push({ text: m[0], mark: true });
+    last = m.index + m[0].length;
+  }
+  if (!hit) return null;
+  if (last < text.length) parts.push({ text: text.slice(last), mark: false });
+  return parts;
+}
+
+function lineHits(text, find) {
+  return !!findSpans(text, find);
+}
+
+/** If the open column doesn't contain the search term but another translation does, show that one. */
+function maybePreferFindColumn(text) {
+  const params = new URLSearchParams(location.search);
+  const q = (params.get("find") || "").trim();
+  if (!q || params.get("tr") || !text || !(text.translations || []).length) return;
+  const find = compileFind(q);
+  if (!find) return;
+  const cur = text.translations.find((o) => o.key === text.tr_active);
+  if (cur && (cur.english || []).some((t) => lineHits(t, find))) return;
+  if ((text.lines || []).some((l) => l.atf && lineHits(l.atf, find))) return;
+  const alt = text.translations.find((o) => o.key !== text.tr_active && (o.english || []).some((t) => lineHits(t, find)));
+  if (alt) applyTranslation(text, [alt.key]);
+}
+
+function highlightElement(el, find) {
+  const existing = el.querySelector("mark.find-hit");
+  if (existing) return existing;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
+      if (node.parentElement && node.parentElement.closest("mark")) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  let first = null;
+  for (const node of nodes) {
+    const spans = findSpans(node.nodeValue, find);
+    if (!spans) continue;
+    const frag = document.createDocumentFragment();
+    for (const s of spans) {
+      if (!s.mark) {
+        frag.appendChild(document.createTextNode(s.text));
+        continue;
+      }
+      const mark = document.createElement("mark");
+      mark.className = "find-hit";
+      mark.textContent = s.text;
+      frag.appendChild(mark);
+      if (!first) first = mark;
+    }
+    node.parentNode.replaceChild(frag, node);
+  }
+  return first;
+}
+
+function paintFindLines() {
+  document.querySelectorAll(".find-line").forEach((el) => el.classList.remove("find-line"));
+  for (const i of findLineIdx) {
+    let sel = `[data-i="${i}"]`;
+    try { sel = `[data-i="${CSS.escape(i)}"]`; } catch (_) { /* keep the raw selector */ }
+    document.querySelectorAll(sel).forEach((el) => el.classList.add("find-line"));
+  }
+}
+
+/** Scroll only this column's own scroller, so a sibling column (cuneiform) stays put on a phone. */
+function scrollColBody(el) {
+  const col = el.closest(".col-body");
+  if (!col || col.scrollHeight <= col.clientHeight + 4) return;
+  const er = el.getBoundingClientRect();
+  const sr = col.getBoundingClientRect();
+  col.scrollTop += er.top - sr.top - (col.clientHeight - er.height) / 2;
+}
+
+function scrollFindTarget(el) {
+  scrollColBody(el);
+  const col = el.closest(".col-body");
+  if (col && col.scrollHeight > col.clientHeight + 4) return;
+  const outer = el.closest(".reader-body");
+  if (!outer || outer.scrollHeight <= outer.clientHeight + 4) return;
+  const er = el.getBoundingClientRect();
+  const sr = outer.getBoundingClientRect();
+  outer.scrollTop += er.top - sr.top - (outer.clientHeight - er.height) / 2;
+}
+
+function applySearchFind() {
+  const q = (new URLSearchParams(location.search).get("find") || "").trim();
+  findLineIdx = new Set();
+  const note = document.getElementById("find-note");
+  if (!q) {
+    if (note) note.hidden = true;
+    paintFindLines();
+    return;
+  }
+  const find = compileFind(q);
+  let first = null;
+  if (find) {
+    const sel = "#lines-body .lg-atf, #lines-body .en-text, #atf-body .line-row .atf, #english-body .en-text";
+    for (const el of document.querySelectorAll(sel)) {
+      const col = el.closest(".reader-col");
+      if (col && col.style.display === "none") continue;
+      const mark = highlightElement(el, find);
+      if (!mark) continue;
+      const row = mark.closest("[data-i]") || el.closest("[data-i]");
+      if (row && row.dataset.i != null) findLineIdx.add(row.dataset.i);
+      if (!first) first = mark;
+    }
+  }
+  paintFindLines();
+  if (note) {
+    note.hidden = false;
+    const n = findLineIdx.size;
+    note.textContent = first
+      ? (n ? `${n} line${n === 1 ? "" : "s"} match “${q}”` : `Matches for “${q}” are highlighted`)
+      : `No lines shown here match “${q}”`;
+  }
+  if (first) scrollFindTarget(first);
+  const cHit = document.querySelector("#cuneiform-body .find-line");
+  if (cHit) scrollColBody(cHit);
+}
+
 async function openReader(id) {
   // While the text loads (the /api Lambda can take seconds on a cold start) the reader shows
   // "Loading tablet <id>…" instead of its "No work open" empty state; on failure, a retry.
@@ -1046,6 +1217,7 @@ async function openReader(id) {
   state.font = FontMap.override() || state.fontAuto;
   text.font = state.font;
   $("#font-select").value = FontMap.override();
+  maybePreferFindColumn(text);
   renderReader();
 }
 
@@ -1057,7 +1229,12 @@ function renderReader() {
   const p = state.readerPending;
 
   pending.style.display = p ? "flex" : "none";
+  const hideFindNote = () => {
+    const note = document.getElementById("find-note");
+    if (note) note.hidden = true;
+  };
   if (p) {
+    hideFindNote();
     empty.style.display = "none";
     shell.style.display = "none";
     pending.classList.toggle("failed", !!p.failed);
@@ -1071,6 +1248,7 @@ function renderReader() {
     return;
   }
   if (!text) {
+    hideFindNote();
     empty.style.display = "flex";
     shell.style.display = "none";
     return;
@@ -1095,6 +1273,18 @@ function renderReader() {
   ]
     .filter(Boolean)
     .join(" · ");
+  const findQ = (new URLSearchParams(location.search).get("find") || "").trim();
+  let findNote = document.getElementById("find-note");
+  if (findQ) {
+    if (!findNote) {
+      findNote = document.createElement("div");
+      findNote.id = "find-note";
+      findNote.className = "find-note";
+      $("#reader-meta").insertAdjacentElement("afterend", findNote);
+    }
+    findNote.hidden = false;
+    findNote.textContent = `Matches for “${findQ}”`;
+  } else if (findNote) findNote.hidden = true;
   const badgeHost = $("#reader-status-badges");
   if (badgeHost) {
     badgeHost.innerHTML = [
@@ -1142,6 +1332,7 @@ function renderReader() {
     renderMetaCol(text);
     maybeFetchCdliMeta(text);
   }
+  applySearchFind();
 }
 
 function metaRow(label, value, { html = false } = {}) {
@@ -1547,6 +1738,9 @@ async function renderCuneiformCol(text) {
   root.innerHTML = html;
   root.className = "cuneiform-lines";
   bindLineHover(body);
+  paintFindLines();
+  const cHit = document.querySelector("#cuneiform-body .find-line");
+  if (cHit) scrollColBody(cHit);
 }
 
 function bindLineHover(container) {
