@@ -199,12 +199,25 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
   }
 
   // ─── links to the rest of the site ───
+  // Reader deep link: map.html?id=<same id the text API uses>. `find` carries the search
+  // so the reader can highlight matches. (`q` on map.html is the map search layer.)
+  function readerHref(id, q) {
+    const p = new URLSearchParams();
+    p.set("id", id);
+    if (q && String(q).trim()) p.set("find", String(q).trim());
+    return "map.html?" + p.toString();
+  }
+
+  function readerLink(id, q, name) {
+    if (!id) return "";
+    const who = name ? `Open ${name} in the reader` : "Open in the reader";
+    return `<a class="btn primary open-reader" href="${esc(readerHref(id, q))}" aria-label="${esc(who)}">Open in reader</a>`;
+  }
+
   function siteLinks(id, canon) {
     const out = [];
     const page = links.pages[id] || (canon && links.pages[canon]);
     if (page) out.push(`<a href="${esc(page)}">Curated page</a>`);
-    const rid = links.reader.has(id) ? id : canon && links.reader.has(canon) ? canon : null;
-    if (rid) out.push(`<a href="map.html?id=${encodeURIComponent(rid)}">Open in map &amp; reader</a>`);
     return out;
   }
 
@@ -313,9 +326,11 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     if (r.n_mt_lines) badges.push(`<span class="badge badge-draft">machine draft · ${fmt(r.n_mt_lines)} lines</span>`);
     if (!r.atf_public) badges.push(`<span class="badge badge-withheld">no ATF shown</span>`);
     const extra = siteLinks(r.id, r.canonical_id);
+    const reader = readerLink(textParam(r), s.q, r.designation || r.id);
     return `<div class="result">
       <div class="result-head"><a class="result-id" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.id)}</a>
-        ${r.designation && r.designation !== r.id ? `<a class="result-title" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.designation)}</a>` : ""} ${badges.join(" ")}</div>
+        ${r.designation && r.designation !== r.id ? `<a class="result-title" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.designation)}</a>` : ""} ${badges.join(" ")}
+        ${reader}</div>
       <div class="result-facts">${facts}</div>
       ${r.snippets && r.snippets.length ? `<ul class="snips">${r.snippets.map((x) => snippetHtml(x, terms)).join("")}</ul>` : ""}
       ${extra.length ? `<div class="result-links">${extra.join("")}</div>` : ""}
@@ -464,12 +479,19 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     </section>`;
   }
 
-  async function showText(s, my) {
-    textEl.hidden = false;
+  function textToolbar(s, name) {
     const back = urlFor({ ...s, text: "" });
     const hasSearch = s.q || s.period || s.genre || s.site || s.src || s.at;
-    const backLink = `<p class="back"><a href="${esc(back)}" data-back>← ${hasSearch ? "Back to results" : "Search"}</a></p>`;
-    textEl.innerHTML = backLink;
+    return `<div class="text-toolbar">
+      <p class="back"><a href="${esc(back)}" data-back>← ${hasSearch ? "Back to results" : "Search"}</a></p>
+      ${readerLink(s.text, s.q, name || s.text)}
+    </div>`;
+  }
+
+  async function showText(s, my) {
+    textEl.hidden = false;
+    const toolbar = textToolbar(s);
+    textEl.innerHTML = toolbar;
     setStatus(spin("Loading text…"));
     let d;
     try {
@@ -484,10 +506,11 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     // Editions sharing a canonical id: the requested one first, then the rest, each with its own licence rules.
     const main = eds[0] || {};
     document.title = `${main.designation || d.id} · Search · Unread Atlas`;
+    const toolbarNamed = textToolbar(s, main.designation || main.id || s.text);
     const others = eds.length > 1
       ? `<p class="other-eds">Also in: ${eds.slice(1).map((e, i) => `<a href="#ed-${i + 1}">${esc(SRC_NAMES[e.src] || e.src)} ${esc(e.id)}</a>`).join(", ")}</p>`
       : "";
-    textEl.innerHTML = backLink + others + eds.map(editionHtml).join("") +
+    textEl.innerHTML = toolbarNamed + others + eds.map(editionHtml).join("") +
       `<p class="sub">${esc(d.notice || "")}</p>`;
     window.scrollTo(0, 0);
   }

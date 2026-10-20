@@ -23,7 +23,10 @@
 .spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); border-top-color: var(--accent); animation: spin 0.8s linear infinite; flex: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .result { padding: 0.85rem 0; border-bottom: 1px solid var(--border-soft); }
-.result-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; }
+.result-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; }
+.result-head .open-reader { margin-left: auto; text-decoration: none; min-height: 44px; padding: 0.4rem 0.95rem; font-size: 0.88rem; flex: 0 0 auto; }
+.open-reader:hover { text-decoration: none; }
+.open-reader:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
 .result-id { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-strong); text-decoration: none; }
 .result-title { font-weight: 600; color: var(--text); text-decoration: none; font-size: 1.02rem; }
 .result-title:hover, .result-id:hover { text-decoration: underline; }
@@ -46,6 +49,14 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
 .pager .cur { color: var(--text); background: var(--accent-soft); border-color: rgba(196, 120, 74, 0.45); }
 .pager .gap { border: none; }
 /* text view */
+.text-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1rem;
+  margin: 0.2rem 0 1rem; padding: 0.85rem 1rem;
+  background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+  position: sticky; top: 0; z-index: 3;
+}
+.text-toolbar .back { margin: 0; font-size: 0.9rem; }
+.text-toolbar .open-reader { text-decoration: none; min-height: 44px; padding: 0.55rem 1.15rem; font-size: 1rem; }
 .text-view .back { font-size: 0.85rem; }
 .edition { margin: 1.2rem 0 2rem; padding-top: 0.6rem; border-top: 1px solid var(--border-soft); }
 .edition h2 { font-family: var(--font-serif); font-weight: 500; margin: 0.2rem 0; font-size: 1.45rem; }
@@ -65,5 +76,8 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
   .snip { grid-template-columns: 1fr; gap: 0; }
   .human-line { grid-template-columns: 1fr; gap: 0; }
   .search-row { flex-direction: column; }
+  .result-head .open-reader { margin-left: 0; flex: 1 0 100%; justify-content: center; }
+  .text-toolbar { align-items: stretch; }
+  .text-toolbar .open-reader { justify-content: center; width: 100%; }
 }
 .search-status .map-btn { margin-left: auto; padding: 0.25rem 0.7rem; font-size: 0.8rem; text-decoration: none; white-space: nowrap; }
