@@ -182,6 +182,7 @@ async function load(){
   b(a0,'a0',4); b(a1,'a1',1); flagsBuf = b(flags,'a2',4);
   buildNav();
   navT = BrowseState.sanitizeNavT(params.get('t'), MAPS.length); readViewParams(params); placeHandle();
+  writeURL(false); // drop a non-finite t/z/x/y so the fallback is what gets reloaded
   if (params.get('in')==='en'||params.get('in')==='atf') setMode(params.get('in'));
   const q0 = params.has('q') ? (params.get('q')||'') : 'barley'; q.value = q0;
   addEventListener('resize', draw);
