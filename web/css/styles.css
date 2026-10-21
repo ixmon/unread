@@ -1804,3 +1804,10 @@ mark.find-hit {
 .aw-pop .aw-miss{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:3px;padding:0 4px;margin:1px 0}
 .aw-pop ul{margin:4px 0;padding-left:16px}
 .aw-on .site-marker,.aw-on .smap-marker{display:none}
+.aw-pop .aw-h2{font-weight:600;color:var(--accent-strong);margin:6px 0 2px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.aw-pop .aw-about p{margin:2px 0 4px}
+.aw-pop .aw-about>div{margin:2px 0}
+.aw-pop .aw-lab{font-weight:600;color:#bbb}
+.aw-pop .aw-ref{font-size:9px;vertical-align:super;margin-left:1px;text-decoration:none}
+.aw-pop .aw-about li{margin:2px 0}
+.aw-popup-known .leaflet-popup-content{overflow-y:auto;overscroll-behavior:contain}

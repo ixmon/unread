@@ -28,8 +28,22 @@
     });
     return m;
   }
+  // compact "About the find": each fact carries its own source links ([1], [2] ...)
+  function aboutFind(k) {
+    if (!(k.summary || k.discovered_by || k.excavations || (k.highlights || []).length || (k.news || []).length)) return "";
+    const refs = [], idx = (src) => { let i = refs.findIndex((r) => r.url === src.url); if (i < 0) { refs.push(src); i = refs.length - 1; } return i + 1; };
+    const cite = (f) => (f && f.sources || []).map((src) => `<a class="aw-ref" href="${esc(src.url)}" target="_blank" rel="noopener" title="${esc(src.citation)}">[${idx(src)}]</a>`).join("");
+    const fact = (lab, f) => f ? `<div><span class="aw-lab">${lab}</span> ${esc(f.text)}${cite(f)}</div>` : "";
+    let h = `<div class="aw-about"><div class="aw-h2">About the find</div>`;
+    if (k.summary) h += `<p>${esc(k.summary.text)}${cite(k.summary)}</p>`;
+    h += fact("Discovered:", k.discovered_by);
+    if (k.excavations) h += `<div><span class="aw-lab">Excavated:</span> ${esc(k.excavations.years)}. ${esc(k.excavations.team)}${cite(k.excavations)}</div>`;
+    if ((k.highlights || []).length) h += `<ul>${k.highlights.map((x) => `<li>${esc(x.text)}${cite(x)}</li>`).join("")}</ul>`;
+    if ((k.news || []).length) h += `<div class="aw-lab">News</div><ul>${k.news.map((n) => `<li>${esc(n.date)} · <a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></li>`).join("")}</ul>`;
+    return h + `</div>`;
+  }
   function knownMarker(k) {
-    const icon = L.divIcon({ className: "aw-known", html: "<span>?</span>", iconSize: [22, 22], iconAnchor: [11, 11] });
+    const icon = L.divIcon({ className: "aw-known", html: "<span>?</span>", iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -16] });
     const m = L.marker([k.lat, k.lon], { icon, zIndexOffset: 1000, title: k.site + " — known, unpublished" });
     m.bindPopup(`<div class="aw-pop aw-pop-known"><div class="aw-tag">Known · unpublished</div><b>${esc(k.site)}</b>
       <div class="aw-sub">${esc(k.modern_name || "")}</div>
@@ -37,8 +51,11 @@
       <div class="aw-sub">${esc(k.est_note || "")}</div>
       <div>Status: <b>${esc(k.status.replace(/-/g, " "))}</b></div>
       <div>Missing: ${k.missing.map((x) => `<span class="aw-miss">${esc(x === "atf" ? "transliteration" : x)}</span>`).join(" ")}</div>
+      ${aboutFind(k)}
+      <div class="aw-h2">Sources</div>
       <ul>${k.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.citation)}</a></li>`).join("")}</ul>
-      <div class="aw-sub">Coordinates: ${esc(k.coord_source)} · last checked ${esc(k.last_checked)}</div></div>`, { maxWidth: 340 });
+      <div class="aw-sub">Coordinates: ${esc(k.coord_source)} · last checked ${esc(k.last_checked)}</div></div>`,
+      { maxWidth: 360, minWidth: 280, maxHeight: Math.max(220, Math.round(window.innerHeight * 0.55)), autoPanPaddingTopLeft: [20, 60], autoPanPaddingBottomRight: [20, 20], className: "aw-popup-known" });
     m._awKnownId = k.id;
     return m;
   }

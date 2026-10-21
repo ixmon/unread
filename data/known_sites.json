@@ -10,7 +10,7 @@
       "lon": 45.3594,
       "coord_source": "Wikipedia 'Tell Kunara' (35°31′10″N 45°21′34″E); consistent with Tenu 2020 ('about 10 km south-west of Sulaymaniyah, on the bank of the Tanjaro River'). No Pleiades place found.",
       "est_tablets": 146,
-      "est_note": "~146 Akkadian administrative tablets and fragments, c. 2200–2100 BCE; more found in 2026",
+      "est_note": "146 tablets and other inscribed objects (Paris 1, Apr 2026), Akkadian administrative texts, c. 2200–2100 BCE",
       "period": "Late 3rd millennium BCE (Old Akkadian / Ur III)",
       "language": "Akkadian",
       "status": "preliminary-report",
@@ -27,10 +27,162 @@
         {
           "citation": "A. Tenu, B. Chiti, Ph. Clancier, F. Marchand, J. Monerie, 'Kunara. Rapport préliminaire sur la sixième campagne de fouilles (2018)', Akkadica 141/1 (2020) 25-69",
           "url": "https://doi.org/10.21825/akkadica.99671"
+        },
+        {
+          "citation": "A. Tenu, 'Kunara: An Early Bronze Age City in the Zagros Foothills. The 2018 and 2019 Seasons', Proc. 12th ICAANE vol. 2 (2023) 603-617",
+          "url": "https://doi.org/10.13173/9783447119030.603"
+        },
+        {
+          "citation": "A. Tenu, 'The Eighth Excavation Campaign (2022) in Kunara', Proc. 13th ICAANE vol. 2 (2025) 359-374",
+          "url": "https://doi.org/10.13173/9783447123761.359"
+        },
+        {
+          "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+          "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+        },
+        {
+          "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+          "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
         }
       ],
       "last_checked": "2026-10-21",
-      "linked_provenience": null
+      "linked_provenience": null,
+      "discovered_by": {
+        "text": "First surveyed in 1943 by Sabri Shukri (Iraqi Directorate General of Antiquities); re-examined in C. Kepinski's Upper Tanjaro survey (2011), whose geomagnetics revealed a 60×30 m monumental building.",
+        "sources": [
+          {
+            "citation": "Wikipedia, 'Tell Kunara'",
+            "url": "https://en.wikipedia.org/wiki/Tell_Kunara"
+          }
+        ]
+      },
+      "excavations": {
+        "years": "2012–2013, 2015–2019, 2022–2023",
+        "team": "French archaeological mission of the Peramagron (CNRS), directed by Christine Kepinski (2012) and Aline Tenu (CNRS, since 2015), with support from the French Ministry for Europe and Foreign Affairs. Epigraphy: Philippe Clancier (lead) and Julien Monerie (Paris 1), Grégory Chambon (EHESS), Laurent Colonna d'Istria (Liège).",
+        "sources": [
+          {
+            "citation": "Wikipedia, 'Tell Kunara'",
+            "url": "https://en.wikipedia.org/wiki/Tell_Kunara"
+          },
+          {
+            "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+            "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+          },
+          {
+            "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+            "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+          },
+          {
+            "citation": "A. Tenu, 'The Eighth Excavation Campaign (2022) in Kunara', Proc. 13th ICAANE vol. 2 (2025) 359-374",
+            "url": "https://doi.org/10.13173/9783447123761.359"
+          }
+        ]
+      },
+      "summary": {
+        "text": "A ~10 ha Bronze Age town on the Tanjaro River, burned at the end of the 3rd millennium BCE. Its 146 tablets and other inscribed objects are the oldest writing found in the Sulaymaniyah region and the first 3rd-millennium tablets from Iraqi Kurdistan. They are Akkadian administrative records of flour and grain, using local place and personal names. The city's ancient name is unknown; the team suggests it was a main centre, perhaps the capital, of Lullubum.",
+        "sources": [
+          {
+            "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+            "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+          },
+          {
+            "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+            "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+          },
+          {
+            "citation": "Wikipedia, 'Tell Kunara'",
+            "url": "https://en.wikipedia.org/wiki/Tell_Kunara"
+          }
+        ]
+      },
+      "highlights": [
+        {
+          "text": "Area C cellar: an archive of 100+ tablets recording flour in and out (barley, emmer, wheat, maybe malt), a likely 'flour office'.",
+          "sources": [
+            {
+              "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+              "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+            }
+          ]
+        },
+        {
+          "text": "Area E (2018): a poorly preserved archive in a 20 m+ building; one grain tablet (M. 632) names the previously unknown 'gur of Subartu' capacity unit.",
+          "sources": [
+            {
+              "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+              "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+            },
+            {
+              "citation": "A. Tenu, 'The 2019 work in Kunara' (ArScAn report)",
+              "url": "https://arscan.parisnanterre.fr/wp-content/uploads/2023/12/Kunara_2019_Eng.pdf"
+            }
+          ]
+        },
+        {
+          "text": "Two texts mention an ensi (governor or king) whose name is unknown; a sukkal (minister) also appears.",
+          "sources": [
+            {
+              "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+              "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+            },
+            {
+              "citation": "CSMC, Univ. Hamburg, 'A new cuneiform archive discovered in 2018 at Kunara in Iraqi Kurdistan' (31 Mar 2019)",
+              "url": "https://www.csmc.uni-hamburg.de/publications/mesopotamia/2019-03-31.html"
+            }
+          ]
+        },
+        {
+          "text": "Dated c. 2200–2100 BCE (Period V) on radiocarbon and archaeological grounds.",
+          "sources": [
+            {
+              "citation": "Wikipedia, 'Tell Kunara'",
+              "url": "https://en.wikipedia.org/wiki/Tell_Kunara"
+            },
+            {
+              "citation": "A. Tenu, 'The Eighth Excavation Campaign (2022) in Kunara', Proc. 13th ICAANE vol. 2 (2025) 359-374",
+              "url": "https://doi.org/10.13173/9783447123761.359"
+            }
+          ]
+        },
+        {
+          "text": "Condition: fire-damaged; tablets need long cleaning, and of the 2018 Area E finds only two still had readable signs.",
+          "sources": [
+            {
+              "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+              "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+            },
+            {
+              "citation": "A. Tenu, 'The 2019 work in Kunara' (ArScAn report)",
+              "url": "https://arscan.parisnanterre.fr/wp-content/uploads/2023/12/Kunara_2019_Eng.pdf"
+            }
+          ]
+        },
+        {
+          "text": "Held in Sulaymaniyah: studied in the Directorate of Antiquities labs; excavated finds are in the Sulaymaniyah Museum.",
+          "sources": [
+            {
+              "citation": "Université Paris 1 Panthéon-Sorbonne, 'Le site archéologique de Kunara, quand les tablettes d'argile révèlent l'histoire' (14 Apr 2026)",
+              "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+            },
+            {
+              "citation": "Wikipedia, 'Tell Kunara'",
+              "url": "https://en.wikipedia.org/wiki/Tell_Kunara"
+            }
+          ]
+        }
+      ],
+      "news": [
+        {
+          "date": "2026-04-14",
+          "title": "Paris 1: Clancier on the 146 tablets and the ritual quarter; new digs planned for autumn 2026",
+          "url": "https://recherche.pantheonsorbonne.fr/actualite/le-site-archeologique-de-kunara-quand-tablettes-dargile-revelent-lhistoire"
+        },
+        {
+          "date": "2026-06-03",
+          "title": "Le Figaro: 'La découverte d'une cité oubliée vieille de 4000 ans aux confins de la Mésopotamie'",
+          "url": "https://www.lefigaro.fr/sciences/la-decouverte-d-une-cite-oubliee-vielle-de-4000-ans-aux-confins-de-la-mesopotamie-revelee-par-des-archeologues-20260603"
+        }
+      ]
     }
   ]
 }
