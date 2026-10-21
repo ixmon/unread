@@ -1,0 +1,36 @@
+{
+  "note": "Sites known to hold cuneiform tablets that are not (yet) in any ingested corpus. Curated by hand; not in the live DB.",
+  "sites": [
+    {
+      "id": "girdi-kunara",
+      "site": "Girdi Kunara (Tell Kunara)",
+      "modern_name": "Kunara, on the Tanjaro River, ~10 km SW of Sulaymaniyah",
+      "country": "Iraq (Kurdistan Region)",
+      "lat": 35.5194,
+      "lon": 45.3594,
+      "coord_source": "Wikipedia 'Tell Kunara' (35°31′10″N 45°21′34″E); consistent with Tenu 2020 ('about 10 km south-west of Sulaymaniyah, on the bank of the Tanjaro River'). No Pleiades place found.",
+      "est_tablets": 146,
+      "est_note": "~146 Akkadian administrative tablets and fragments, c. 2200–2100 BCE; more found in 2026",
+      "period": "Late 3rd millennium BCE (Old Akkadian / Ur III)",
+      "language": "Akkadian",
+      "status": "preliminary-report",
+      "missing": [
+        "photo",
+        "atf",
+        "translation"
+      ],
+      "sources": [
+        {
+          "citation": "A. Tenu, 'The 2016-2017 Excavation Seasons in Kunara (Iraqi Kurdistan)', Proc. 11th ICAANE vol. 2 (2020) 435-444",
+          "url": "https://shs.hal.science/halshs-03022473"
+        },
+        {
+          "citation": "A. Tenu, B. Chiti, Ph. Clancier, F. Marchand, J. Monerie, 'Kunara. Rapport préliminaire sur la sixième campagne de fouilles (2018)', Akkadica 141/1 (2020) 25-69",
+          "url": "https://doi.org/10.21825/akkadica.99671"
+        }
+      ],
+      "last_checked": "2026-10-21",
+      "linked_provenience": null
+    }
+  ]
+}
