@@ -1949,3 +1949,8 @@ body:not(.show-preambles) .lg-credit { display: none; }
 .lg-pop a { color: var(--accent-strong); }
 .lg-pop-opt { display: flex; gap: 0.4rem; align-items: center; margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--border-soft); color: var(--text-faint); cursor: pointer; }
 .lg-en.lg-span.hl { background: var(--accent-soft); border-left-color: var(--accent-strong); }
+
+/* surface marker (obverse/reverse…) lives inside the first line's number cell, not as its own row */
+.lg-surf { display: block; font-family: var(--font-ui); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); line-height: 1.1; white-space: nowrap; }
+.line-row .ln .lg-surf { margin-bottom: 1px; }
+.lg-cell.lg-surf-start, .line-row.lg-surf-start { border-top: 1px dashed var(--border); }

@@ -627,17 +627,24 @@ function renderLinesGrid(body, text, keys, wantAtf) {
   });
 
   // content rows (surface headings get their own row across the line-number + ATF columns)
+  // Surface changes (obverse → reverse …) are NOT their own grid rows: an extra row exists only in the
+  // line-number + ATF columns, so it pushed every translation column down (the stray "O" + dashed rule at the top).
+  // Instead the first line of each surface carries a small tag in its line-number cell, and later surfaces
+  // get a dashed rule on top of that row in every column, so all columns stay level.
   const rowG = [];
+  const surfStart = new Set();
   let g = 3, lastSurf = null;
   rows.forEach((r, i) => {
+    let tag = "";
     if (content.length && r.surface && r.surface !== lastSurf) {
-      html.push(`<div class="lg-break" style="grid-row:${g};grid-column:1 / ${atfOn ? atfCol + 1 : 2}">${escapeHtml(r.surface)}</div>`);
-      g++;
+      tag = `<span class="lg-surf" title="${escapeAttr(surfaceLabel(r.surface))}">${escapeHtml(surfaceShort(r.surface))}</span>`;
+      if (lastSurf !== null) surfStart.add(i);
     }
     lastSurf = r.surface;
     rowG[i] = g;
-    html.push(`<div class="lg-cell lg-ln" data-i="${i}" style="grid-row:${g};grid-column:1">${escapeHtml(r.n)}</div>`);
-    if (atfOn) html.push(`<div class="lg-cell lg-atf" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
+    const sc = surfStart.has(i) ? " lg-surf-start" : "";
+    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${tag}${escapeHtml(r.n)}</div>`);
+    if (atfOn) html.push(`<div class="lg-cell lg-atf${sc}" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
     g++;
   });
   const itemHtml = (it, showLabel) =>
@@ -657,7 +664,7 @@ function renderLinesGrid(body, text, keys, wantAtf) {
       const span = b.e > b.s;
       const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
       html.push(
-        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? ` data-s="${b.s}" data-e="${b.e}"` : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${surfStart.has(b.s) ? " lg-surf-start" : ""}${lv ? ` conf-${lv}` : ""}"${span ? ` data-s="${b.s}" data-e="${b.e}"` : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
           .map((it) => itemHtml(it, !!it.orphan))
           .join(" ")}</div>`
       );
@@ -1763,6 +1770,24 @@ function translatorUrl(text, from = 0) {
   return `${TRANSLATOR_PAGE}?${q}`;
 }
 
+const SURF_NAMES = [
+  [/^(obverse|obv\.?|o)$/, "obv.", "Obverse"], [/^(reverse|rev\.?|r)$/, "rev.", "Reverse"],
+  [/^(left edge|le)$/, "l.e.", "Left edge"], [/^(right edge|re)$/, "r.e.", "Right edge"],
+  [/^(top edge|upper edge|te|ue)$/, "t.e.", "Top edge"], [/^(bottom edge|lower edge|be|lo\.? ?e\.?)$/, "b.e.", "Bottom edge"],
+  [/^(edge|e)$/, "edge", "Edge"],
+];
+/** ATF surface ("o", "obverse col 1", "o i", "left edge") -> short tag ("obv. 1") and full label ("Obverse, column 1"). */
+function parseSurface(s) {
+  const raw = String(s || "").trim();
+  const m = raw.toLowerCase().match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  const side = (m && m[1]) || raw.toLowerCase(), col = m && m[2];
+  const hit = SURF_NAMES.find(([re]) => re.test(side));
+  const short = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
+  return { short: col ? `${short} ${col}` : short, label: hit ? hit[2] + (col ? `, column ${col}` : "") : raw };
+}
+const surfaceShort = (s) => parseSurface(s).short;
+const surfaceLabel = (s) => parseSurface(s).label;
+
 function renderAtfCol(text) {
   const body = $("#atf-body");
   const lines = text.lines || [];
@@ -1778,15 +1803,16 @@ function renderAtfCol(text) {
   for (const line of lines) {
     if (line.type === "line") {
       const surf = [line.surface, line.column].filter(Boolean).join(" · ");
-      if (surf && surf !== `${lastSurface} · ${lastCol}`.replace(/^ · | · $/g, "")) {
-        if (line.surface !== lastSurface || line.column !== lastCol) {
-          html += `<div class="surface-break">${escapeHtml(surf)}</div>`;
-          lastSurface = line.surface;
-          lastCol = line.column;
-        }
+      // surface/column change: a tag in the line-number cell (not a separate row, which offset the first line)
+      let tag = "", sc = "";
+      if (surf && (line.surface !== lastSurface || line.column !== lastCol)) {
+        tag = `<span class="lg-surf" title="${escapeAttr(surf)}">${escapeHtml(surfaceShort(line.surface) + (line.column ? " " + line.column : ""))}</span>`;
+        if (i > 0) sc = " lg-surf-start";
+        lastSurface = line.surface;
+        lastCol = line.column;
       }
-      html += `<div class="line-row" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
-        <span class="ln">${escapeHtml(line.n)}</span>
+      html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
+        <span class="ln">${tag}${escapeHtml(line.n)}</span>
         <span class="atf">${escapeHtml(line.atf)}</span>
       </div>`;
       i += 1;
