@@ -528,9 +528,33 @@ function mapTranslationToRows(o, keyIndex) {
 }
 
 const isAlignedText = (text) => !!(text && text.status === "api" && (text.translations || []).length);
-/** Columns actually drawn: on narrow screens only the first (the selector still switches it). */
-const visibleTrCols = (text) => (NARROW_Q.matches ? (text.tr_cols || []).slice(0, 1) : text.tr_cols || []);
+/** Index into tr_cols of the translation a narrow screen is showing while comparing. */
+function trFocus(text) {
+  const n = (text.tr_cols || []).length;
+  const i = text.tr_focus | 0;
+  return i >= 0 && i < n ? i : 0;
+}
+/**
+ * Columns drawn in the grid. Desktop shows every compared column. A narrow screen keeps one
+ * translation beside the ATF and moves between the others with tabs or a swipe, so compare is
+ * never dropped just because the viewport is small.
+ */
+const visibleTrCols = (text) => {
+  const cols = text.tr_cols || [];
+  if (!NARROW_Q.matches) return cols;
+  if (cols.length > 1) return [cols[trFocus(text)]];
+  return cols.slice(0, 1);
+};
+/** Side-by-side pair opened by "Compare translations": machine draft, then the first human edition the policy allows. */
+function defaultCompareCols(text) {
+  const opts = text.translations || [];
+  const machine = opts.find((o) => o.kind === "machine");
+  const human = opts.find((o) => o.kind === "human");
+  if (machine && human && machine.key !== human.key) return [machine.key, human.key];
+  return opts.slice(0, 2).map((o) => o.key);
+}
 const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
+const trTabLabel = (o) => (o.kind === "machine" ? "Machine" : String(o.label || "Translation").split(" · ")[0]);
 
 function trCreditHtml(o) {
   const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
@@ -551,6 +575,8 @@ function renderLinesCol(text) {
   const panels = state.readerPanels;
   const opts = text.translations || [];
   const narrow = NARROW_Q.matches;
+  const allKeys = text.tr_cols || [];
+  const narrowCompare = !!(narrow && panels.english && allKeys.length > 1);
   const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
   const content = (text.lines || []).filter((l) => l.type === "line");
   const atfOn = panels.atf && content.length > 0;
@@ -570,7 +596,11 @@ function renderLinesCol(text) {
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
   const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
-  const remaining = opts.filter((o) => !(text.tr_cols || []).includes(o.key));
+  const comparing = allKeys.length > 1;
+  const compareBtn =
+    opts.length >= 2 && !comparing
+      ? `<button type="button" class="tr-compare">Compare translations</button>`
+      : "";
   const html = [];
 
   // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
@@ -579,32 +609,39 @@ function renderLinesCol(text) {
   if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
   else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
   const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
-  cols.forEach((o, ci) => {
-    const c = enCol0 + ci;
-    const others = new Set(cols.map((x) => x.key).filter((x) => x !== o.key)); // narrow: hidden columns stay pickable
-    const choices = opts.filter((x) => !others.has(x.key));
+  cols.forEach((o, vi) => {
+    const c = enCol0 + vi;
+    const ci = allKeys.indexOf(o.key);
     const pick =
-      choices.length > 1
-        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${choices
+      opts.length > 1
+        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${opts
             .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
             .join("")}</select>`
         : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
-    const x = k > 1 ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
-    const add =
-      ci === k - 1 && remaining.length && !narrow
-        ? `<select class="tr-add" aria-label="Add a translation column to compare" title="Add a column to compare translations side by side"><option value="">+ compare</option>${remaining
-            .map((r) => `<option value="${escapeAttr(r.key)}">${escapeHtml(trOptLabel(r))}</option>`)
-            .join("")}</select>`
-        : "";
-    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
-    const mp = maps[ci];
+    const tabs = narrowCompare
+      ? `<div class="tr-tabs" role="tablist" aria-label="Translations to compare">${allKeys
+          .map((key, i) => {
+            const t = opts.find((x) => x.key === key);
+            if (!t) return "";
+            const on = i === trFocus(text);
+            return `<button type="button" class="tr-tab" role="tab" id="tr-tab-${i}" data-focus="${i}" aria-selected="${on ? "true" : "false"}" aria-controls="tr-panel" tabindex="${on ? "0" : "-1"}">${escapeHtml(trTabLabel(t))}</button>`;
+          })
+          .join("")}</div><span class="tr-swipe-hint">Swipe</span>`
+      : "";
+    const x = comparing && !narrowCompare ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
+    const close = narrowCompare
+      ? `<button type="button" class="tr-x" data-col="${ci}" title="Close comparison" aria-label="Close comparison">×</button>`
+      : "";
+    const add = vi === cols.length - 1 ? compareBtn : "";
+    html.push(`<div class="lg-head lg-head-en"${narrowCompare ? ' id="tr-panel"' : ""} data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${tabs}${pick}${x}${close}${add}</div>`);
+    const mp = maps[vi];
     const how =
       o.labels && mp.rate < 0.5
         ? " · not line-aligned in the source, shown as one block"
         : mp.blocks.some((b) => b.e > b.s)
           ? " · paragraph translation: each passage spans the lines it covers"
           : "";
-    const withheld = ci === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
+    const withheld = vi === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
     html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
   });
 
@@ -646,28 +683,66 @@ function renderLinesCol(text) {
     }
   });
   if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
-  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
+  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}${narrowCompare ? " lg-narrow-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
 
   const setCols = (next) => {
     applyTranslation(text, next);
+    if ((text.tr_cols || []).length <= (text.tr_focus | 0)) text.tr_focus = 0;
     setTrParam(text);
     renderReader();
   };
   body.querySelectorAll(".tr-pick").forEach((sel) =>
     sel.addEventListener("change", () => {
       const next = [...text.tr_cols];
-      const ci = +sel.dataset.col, j = next.indexOf(sel.value);
-      if (j >= 0) next[j] = next[ci]; // picking a column hidden on narrow screens swaps it in, keeping the comparison
+      const ci = +sel.dataset.col;
+      const j = next.indexOf(sel.value);
+      if (j >= 0 && j !== ci) next[j] = next[ci]; // the other column keeps a different source
       next[ci] = sel.value;
       setCols(next);
     })
   );
   body.querySelectorAll(".tr-x").forEach((b) =>
-    b.addEventListener("click", () => setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col)))
+    b.addEventListener("click", () => {
+      if (narrowCompare) setCols([(text.tr_cols || [])[trFocus(text)]]);
+      else setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col));
+    })
   );
-  body.querySelector(".tr-add")?.addEventListener("change", (e) => {
-    if (e.target.value) setCols([...text.tr_cols, e.target.value]);
+  body.querySelector(".tr-compare")?.addEventListener("click", () => {
+    text.tr_focus = 0;
+    setCols(defaultCompareCols(text));
   });
+  const focusTab = (i) => {
+    text.tr_focus = i;
+    renderReader();
+    document.querySelector(`#lines-body .tr-tab[data-focus="${i}"]`)?.focus();
+  };
+  body.querySelectorAll(".tr-tab").forEach((b) => b.addEventListener("click", () => focusTab(+b.dataset.focus)));
+  body.querySelector(".tr-tabs")?.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const n = (text.tr_cols || []).length;
+    if (n < 2) return;
+    focusTab((trFocus(text) + (e.key === "ArrowRight" ? 1 : -1) + n) % n);
+  });
+  const grid = body.querySelector(".lines-grid");
+  if (narrowCompare && grid) {
+    let swipe = null;
+    grid.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, { passive: true });
+    grid.addEventListener("touchend", (e) => {
+      if (!swipe) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - swipe.x;
+      const dy = t.clientY - swipe.y;
+      swipe = null;
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+      const n = (text.tr_cols || []).length;
+      if (n < 2) return;
+      focusTab((trFocus(text) + (dx < 0 ? 1 : -1) + n) % n);
+    }, { passive: true });
+  }
   bindLineHover(body);
 }
 NARROW_Q.addEventListener?.("change", () => {
