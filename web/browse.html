@@ -72,6 +72,8 @@ a{color:#e0b860}
 #boxlist .row:hover{background:#232733}
 #boxlist .row span:last-child{color:#8f96a3;text-align:right}
 #stage.pan{cursor:grabbing}
+#how{position:absolute;left:14px;bottom:36px;z-index:8;max-width:min(560px,calc(100vw - 28px));max-height:70vh;overflow:auto;display:none;font-size:13px;line-height:1.55;padding:12px 16px}
+#how.open{display:block}#how h2{font-size:15px;margin:0 0 6px}#how p{margin:0 0 8px;color:#c9ccd3}#how .x{float:right;background:none;border:0;color:#aaa;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -89,8 +91,20 @@ a{color:#e0b860}
 <div id="boxlist" class="panel" role="dialog" aria-label="Tablets in box"></div>
 <div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
 <div id="info">Loading…</div>
-<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
+<div id="how" class="panel" role="dialog" aria-label="How this visualization works"><button class="x" id="howx" title="Close">×</button><h2>How this visualization works</h2>
+<p>Every tablet is a dot placed by two of: find-spot longitude and latitude, approximate date (period midpoint), genre, and translation state. Slide between maps and the dots travel; anything you select stays selected.</p>
+<p><b>The moving dots on the home page are a sample.</b> Each dot is one tablet, but not every tablet: <span data-dots="n">116,813</span> are shown, a random <span data-dots="sample_random">60,000</span> drawn from all <span data-stat="tablets">462,298</span>, plus every tablet whose English (human or machine) contains barley, silver or sheep (<span data-dots="term_matches">65,250</span>; some are in both groups), so those example searches show complete results. Every word match has English, so tablets with English make up far more of those dots than of the corpus. The percentages in the home-page legend are shares of the dots shown; for the whole corpus see <a href="map.html?view=stats">Stats</a>. This page, by contrast, draws every tablet.</p></div>
+<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · <a href="#how" id="howlink">how this visualization works</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
 <script src="js/browse-state.js"></script>
+<script>
+(()=>{const P=document.getElementById('how');let loaded=false;
+function fill(){if(loaded)return;loaded=true;
+ fetch('assets/landing_dots.json').then(r=>r.json()).then(D=>{if(!D.n&&D.N)D.n=D.N;P.querySelectorAll('[data-dots]').forEach(e=>{const v=D[e.dataset.dots];if(typeof v==='number')e.textContent=v.toLocaleString()})}).catch(()=>{});
+ fetch('corpus_stats.json').then(r=>r.json()).then(S=>P.querySelectorAll('[data-stat]').forEach(e=>{const v=S[e.dataset.stat];if(typeof v==='number')e.textContent=v.toLocaleString()})).catch(()=>{});}
+function sync(){const o=location.hash==='#how';P.classList.toggle('open',o);if(o)fill()}
+document.getElementById('howx').onclick=()=>{history.pushState(null,'',location.pathname+location.search);sync()};
+addEventListener('hashchange',sync);addEventListener('popstate',sync);sync();})();
+</script>
 <script>
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 // ---- data dims: 0 lon, 1 lat, 2 year, 3 genre, 4 translation state

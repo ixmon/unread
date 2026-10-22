@@ -1,18 +1,19 @@
 {
  "tablets": 462298,
  "with_text": 223678,
- "human_en": 21457,
+ "human_en": 21451,
  "machine_en": 165344,
- "any_en": 186801,
+ "any_en": 186795,
  "text_no_en": 36909,
+ "catalogue_only": 238594,
  "with_coords": 341225,
  "place_names": 772,
  "mapped": 316227,
  "map_points": 465,
- "catalogue_only": 238620,
  "corpus_built_at": "2026-10-05T04:06:14Z",
  "unmapped_coords": 24998,
  "pct_human_en": 5,
+ "pct_no_human_en": 95,
  "pct_catalogue_only": 52,
  "pct1": {
   "with_text": 48.4,
@@ -108,7 +109,7 @@
    }
   ]
  },
- "generated_at": "2026-10-22T06:28:34Z",
+ "generated_at": "2026-10-22T17:07:35Z",
  "notes": {
   "tablets": "distinct COALESCE(canonical_id,id)",
   "records": "rows in texts (one per source listing)",
@@ -117,10 +118,11 @@
  "queries": {
   "tablets": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts",
   "with_text": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE has_atf=1",
-  "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human'",
-  "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model'",
-  "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en'",
+  "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+  "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+  "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
   "text_no_en": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=1) WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
+  "catalogue_only": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=0) WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
   "with_coords": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE lat IS NOT NULL",
   "place_names": "SELECT COUNT(DISTINCT provenience) FROM texts WHERE lat IS NOT NULL",
   "mapped": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE usable_site(provenience,lat,lon)=1",

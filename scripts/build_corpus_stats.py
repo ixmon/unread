@@ -21,11 +21,14 @@ from pathlib import Path
 Q = {
     "tablets": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts",
     "with_text": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE has_atf=1",
-    "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human'",
-    "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model'",
-    "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en'",
+    "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+    "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+    "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
     "text_no_en": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=1) "
                   "WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
+    # catalogue entry only = no transliteration AND no English (26 tablets have English but no ATF; they count under English)
+    "catalogue_only": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=0) "
+                      "WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
     "with_coords": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE lat IS NOT NULL",
     "place_names": "SELECT COUNT(DISTINCT provenience) FROM texts WHERE lat IS NOT NULL",
     # Map rule (same as the search API's sites() / usable_site): a named find-spot, not
@@ -46,10 +49,12 @@ _s = importlib.util.spec_from_file_location("ua_api", ap_py); _m = importlib.uti
 con.create_function("usable_site", 3, _m._usable_site, deterministic=True)
 out = {k: con.execute(q).fetchone()[0] for k, q in Q.items()}
 row = con.execute("SELECT value FROM build_info WHERE key='built_at'").fetchone()
-out["catalogue_only"] = out["tablets"] - out["with_text"]
+# English counts only tablets in the catalogue (6 human-English IDs have no catalogue row); the four groups partition the corpus
+assert out["human_en"] + out["machine_en"] + out["text_no_en"] + out["catalogue_only"] == out["tablets"], "reading groups do not sum to tablets"
 out["corpus_built_at"] = row[0] if row else None
 out["unmapped_coords"] = out["with_coords"] - out["mapped"]
 out["pct_human_en"] = round(100 * out["human_en"] / out["tablets"])
+out["pct_no_human_en"] = 100 - out["pct_human_en"]
 out["pct_catalogue_only"] = round(100 * out["catalogue_only"] / out["tablets"])
 # one-decimal shares of all catalogued tablets (home "What's here", Stats page, hero caption)
 out["pct1"] = {k: round(100 * out[k] / out["tablets"], 1) for k in ("with_text", "human_en", "machine_en", "any_en", "text_no_en", "catalogue_only", "with_coords", "mapped")}
