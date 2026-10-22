@@ -459,13 +459,31 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
       const ebl = ed.src === "ebl" || (ed.source && ed.source.atf_public === false);
       body += `<p class="withheld">${ebl ? "<strong>Transliteration not republishable.</strong> " : ""}${esc(ed.atf_withheld)}</p>`;
     }
+    // the API returns ATF-less mt_lines (eBL) in DB row order; show them in line order when every label ends in a number
+    const sortedMtLines = (ml) => {
+      const SIDES = { obverse: 0, obv: 0, o: 0, edge: 1, bottom: 2, reverse: 3, rev: 3, r: 3, top: 4, left: 5, right: 6 };
+      const k = (l) => {
+        const t = String(l.line || "").toLowerCase().replace(/[′’ʼ]/g, "'").trim().split(/\s+/);
+        const m = /^(\d+)'?[a-z]?$/.exec(t.pop() || "");
+        if (!m) return null;
+        let side = 0, col = 0;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] in SIDES) side = SIDES[t[i]];
+          else if (/^(col|column)$/.test(t[i]) && t[i + 1]) col = parseInt(t[++i], 10) || 0;
+        }
+        return [side, col, parseInt(m[1], 10)];
+      };
+      const ks = ml.map(k);
+      if (ks.some((x) => !x)) return ml;
+      return ml.map((l, i) => [l, i, ks[i]]).sort((a, b) => a[2][0] - b[2][0] || a[2][1] - b[2][1] || a[2][2] - b[2][2] || a[1] - b[1]).map((x) => x[0]);
+    };
     const hasMt = (ed.lines || []).some((l) => l.mt) || (ed.mt_lines || []).length;
     if (hasMt) body += modelLabel(ed.model);
     if (ed.lines && ed.lines.length) body += linesTable(ed);
     if (ed.mt_lines && ed.mt_lines.length) {
       body += `<section class="mt-block"><h3>English (machine draft${ed.lines && ed.lines.length ? ", lines not aligned to the ATF above" : ""})</h3>` +
         `<table class="lines-table"><thead><tr><th>Line</th><th>English (machine draft)</th></tr></thead><tbody>` +
-        ed.mt_lines.map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt${CONF_T[l.conf] ? ` conf-${l.conf}" title="${CONF_T[l.conf]}` : ""}">${esc(l.mt)}</td></tr>`).join("") +
+        sortedMtLines(ed.mt_lines).map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt${CONF_T[l.conf] ? ` conf-${l.conf}" title="${CONF_T[l.conf]}` : ""}">${esc(l.mt)}</td></tr>`).join("") +
         `</tbody></table></section>`;
     }
     body += humanBlock(ed);

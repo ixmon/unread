@@ -1941,3 +1941,18 @@ mark.find-hit {
   #col-lines { min-height: 0; }
   .lines-body-extra { padding: 0 0 2rem; }
 }
+
+/* Column preambles: hidden by default (ⓘ popover in each header); body.show-preambles shows them inline */
+body:not(.show-preambles) .lg-credit { display: none; }
+.lg-info { background: none; border: 0; color: var(--text-faint); cursor: pointer; font-size: 0.95rem; padding: 0 0.2rem; margin-left: 0.4rem; line-height: 1; flex: none; }
+.lg-head-en .lg-info { margin-left: auto; }
+.lg-info:hover, .lg-info:focus-visible { color: var(--accent-strong); }
+.lg-pop { position: fixed; z-index: 3000; background: var(--bg-elev, #2a2420); color: var(--text, #eee); border: 1px solid var(--border-soft); border-radius: 8px; padding: 0.65rem 0.75rem; font-size: 0.82rem; line-height: 1.45; box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+.lg-pop a { color: var(--accent-strong); }
+.lg-pop-opt { display: flex; gap: 0.4rem; align-items: center; margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--border-soft); color: var(--text-faint); cursor: pointer; }
+.lg-en.lg-span.hl { background: var(--accent-soft); border-left-color: var(--accent-strong); }
+
+/* surface marker (obverse/reverse…) lives inside the first line's number cell, not as its own row */
+.lg-surf { display: block; font-family: var(--font-ui); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); line-height: 1.1; white-space: nowrap; }
+.line-row .ln .lg-surf { margin-bottom: 1px; }
+.lg-cell.lg-surf-start, .line-row.lg-surf-start { border-top: 1px dashed var(--border); }
