@@ -86,9 +86,9 @@ async function loadCatalog() {
     const k = (n) => (n >= 10000 ? `${Math.round(n / 1000)}k` : n.toLocaleString("en-US"));
     const el = $("#header-count");
     if (cs) {
-      el.innerHTML = `<span class="meta-corpus">${k(cs.tablets)} tablets · ${k(cs.with_text)} with text · ${k(cs.human_en)} human English · ${k(cs.machine_en)} machine draft</span>` +
-        `<span class="meta-curated">Featured: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
-      el.title = `${cs.tablets.toLocaleString("en-US")} tablets known · ${cs.with_text.toLocaleString("en-US")} with transliteration online · ${cs.human_en.toLocaleString("en-US")} with human English · ${cs.machine_en.toLocaleString("en-US")} with machine English only (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
+      el.innerHTML = `<span class="meta-corpus">${k(cs.tablets)} tablets catalogued · ${k(cs.with_text)} with transliteration · ${k(cs.human_en)} with human English · ${k(cs.machine_en)} machine draft only${cs.mapped ? ` · ${k(cs.mapped)} mapped` : ""}</span>` +
+        `<span class="meta-curated">Featured sets: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
+      el.title = `${cs.tablets.toLocaleString("en-US")} tablets catalogued · ${cs.with_text.toLocaleString("en-US")} with transliteration online · ${cs.human_en.toLocaleString("en-US")} with human English · ${cs.machine_en.toLocaleString("en-US")} with a machine draft and no human English${cs.mapped ? ` · ${cs.mapped.toLocaleString("en-US")} with a named find-spot on the map (${cs.map_points} map points)` : ""} (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
     }
   });
   // Featured rows

@@ -222,8 +222,8 @@
     if (my !== sm.seq) return;
     sm.data = d;
     setChip(
-      `Whole corpus: <strong>${fmt(d.total)}</strong> tablets, <strong>${fmt(d.located)}</strong> at <strong>${fmt(d.site_count)}</strong> sites` +
-        ` <span class="smap-dim">(${fmt(d.unlocated)} without location)</span>`, "all");
+      `Whole corpus: <strong>${fmt(d.total)}</strong> tablets catalogued, <strong>${fmt(d.located)}</strong> with a named find-spot at <strong>${fmt(d.site_count)}</strong> map points` +
+        ` <span class="smap-dim">(${fmt(d.unlocated)} without a named find-spot)</span>`, "all");
     $("#smap-chip").title = "Every tablet in the Unread Atlas corpus with a mappable find-spot. Click a circle to list its tablets; search above to map a word.";
     sm.visible = true;
     $("#smap-toggle").checked = true;
@@ -261,7 +261,7 @@
     const capped = d.total_is_capped ? "+" : "";
     setChip(
       `<strong>${fmt(d.total)}${capped}</strong> result${d.total === 1 ? "" : "s"} at <strong>${fmt(d.site_count)}</strong> site${d.site_count === 1 ? "" : "s"}` +
-        ` <span class="smap-dim">(${fmt(d.unlocated)} without location)</span>`
+        ` <span class="smap-dim">(${fmt(d.unlocated)} without a named find-spot)</span>`
     );
     $("#smap-chip").title =
       `${fmt(d.total)} distinct tablets (${fmt(d.records)} text records) match; ${fmt(d.located)} have a mappable find-spot, ` +
