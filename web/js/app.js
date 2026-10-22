@@ -434,6 +434,7 @@ window.addEventListener("popstate", () => {
   const q = new URLSearchParams(location.search);
   if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
   applyTranslation(text, q.get("tr"));
+  state.readerPanels.english = true;
   renderReader();
 });
 
@@ -542,8 +543,7 @@ function trFocus(text) {
 const visibleTrCols = (text) => {
   const cols = text.tr_cols || [];
   if (!NARROW_Q.matches) return cols;
-  if (cols.length > 1) return [cols[trFocus(text)]];
-  return cols.slice(0, 1);
+  return cols.slice(0, 1); // the rest become their own slides (renderTrSlides)
 };
 /** Side-by-side pair opened by "Compare translations": machine draft, then the first human edition the policy allows. */
 function defaultCompareCols(text) {
@@ -570,16 +570,24 @@ function trCreditHtml(o) {
   return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
 }
 
+/** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
+function trChipSub(o) {
+  if (o.kind === "machine") return "machine draft";
+  return o.license ? `human · ${o.license}` : "human";
+}
+
 function renderLinesCol(text) {
-  const body = $("#lines-body");
-  const panels = state.readerPanels;
+  // Wide screens: ATF plus every chosen translation side by side in one aligned grid. Narrow screens:
+  // ATF plus the first translation here; each further translation gets its own slide (renderTrSlides).
+  const keys = state.readerPanels.english ? visibleTrCols(text) : [];
+  renderLinesGrid($("#lines-body"), text, keys, state.readerPanels.atf);
+}
+
+function renderLinesGrid(body, text, keys, wantAtf) {
   const opts = text.translations || [];
-  const narrow = NARROW_Q.matches;
-  const allKeys = text.tr_cols || [];
-  const narrowCompare = !!(narrow && panels.english && allKeys.length > 1);
-  const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
+  const cols = keys.map((k) => opts.find((o) => o.key === k)).filter(Boolean);
   const content = (text.lines || []).filter((l) => l.type === "line");
-  const atfOn = panels.atf && content.length > 0;
+  const atfOn = wantAtf && content.length > 0;
   // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
   let rows;
   if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
@@ -596,14 +604,9 @@ function renderLinesCol(text) {
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
   const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
-  const comparing = allKeys.length > 1;
-  const compareBtn =
-    opts.length >= 2 && !comparing
-      ? `<button type="button" class="tr-compare">Compare translations</button>`
-      : "";
   const html = [];
 
-  // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
+  // row 1: the gray header bar (sticky) naming each column; row 2: per-column credit / licence
   html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
   if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
   if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
@@ -611,29 +614,7 @@ function renderLinesCol(text) {
   const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
   cols.forEach((o, vi) => {
     const c = enCol0 + vi;
-    const ci = allKeys.indexOf(o.key);
-    const pick =
-      opts.length > 1
-        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${opts
-            .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
-            .join("")}</select>`
-        : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
-    const tabs = narrowCompare
-      ? `<div class="tr-tabs" role="tablist" aria-label="Translations to compare">${allKeys
-          .map((key, i) => {
-            const t = opts.find((x) => x.key === key);
-            if (!t) return "";
-            const on = i === trFocus(text);
-            return `<button type="button" class="tr-tab" role="tab" id="tr-tab-${i}" data-focus="${i}" aria-selected="${on ? "true" : "false"}" aria-controls="tr-panel" tabindex="${on ? "0" : "-1"}">${escapeHtml(trTabLabel(t))}</button>`;
-          })
-          .join("")}</div><span class="tr-swipe-hint">Swipe</span>`
-      : "";
-    const x = comparing && !narrowCompare ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
-    const close = narrowCompare
-      ? `<button type="button" class="tr-x" data-col="${ci}" title="Close comparison" aria-label="Close comparison">×</button>`
-      : "";
-    const add = vi === cols.length - 1 ? compareBtn : "";
-    html.push(`<div class="lg-head lg-head-en"${narrowCompare ? ' id="tr-panel"' : ""} data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${tabs}${pick}${x}${close}${add}</div>`);
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}"><span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span></div>`);
     const mp = maps[vi];
     const how =
       o.labels && mp.rate < 0.5
@@ -683,70 +664,141 @@ function renderLinesCol(text) {
     }
   });
   if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
-  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}${narrowCompare ? " lg-narrow-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
-
-  const setCols = (next) => {
-    applyTranslation(text, next);
-    if ((text.tr_cols || []).length <= (text.tr_focus | 0)) text.tr_focus = 0;
-    setTrParam(text);
-    renderReader();
-  };
-  body.querySelectorAll(".tr-pick").forEach((sel) =>
-    sel.addEventListener("change", () => {
-      const next = [...text.tr_cols];
-      const ci = +sel.dataset.col;
-      const j = next.indexOf(sel.value);
-      if (j >= 0 && j !== ci) next[j] = next[ci]; // the other column keeps a different source
-      next[ci] = sel.value;
-      setCols(next);
-    })
-  );
-  body.querySelectorAll(".tr-x").forEach((b) =>
-    b.addEventListener("click", () => {
-      if (narrowCompare) setCols([(text.tr_cols || [])[trFocus(text)]]);
-      else setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col));
-    })
-  );
-  body.querySelector(".tr-compare")?.addEventListener("click", () => {
-    text.tr_focus = 0;
-    setCols(defaultCompareCols(text));
-  });
-  const focusTab = (i) => {
-    text.tr_focus = i;
-    renderReader();
-    document.querySelector(`#lines-body .tr-tab[data-focus="${i}"]`)?.focus();
-  };
-  body.querySelectorAll(".tr-tab").forEach((b) => b.addEventListener("click", () => focusTab(+b.dataset.focus)));
-  body.querySelector(".tr-tabs")?.addEventListener("keydown", (e) => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    e.preventDefault();
-    const n = (text.tr_cols || []).length;
-    if (n < 2) return;
-    focusTab((trFocus(text) + (e.key === "ArrowRight" ? 1 : -1) + n) % n);
-  });
-  const grid = body.querySelector(".lines-grid");
-  if (narrowCompare && grid) {
-    let swipe = null;
-    grid.addEventListener("touchstart", (e) => {
-      if (e.touches.length !== 1) return;
-      swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }, { passive: true });
-    grid.addEventListener("touchend", (e) => {
-      if (!swipe) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - swipe.x;
-      const dy = t.clientY - swipe.y;
-      swipe = null;
-      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
-      const n = (text.tr_cols || []).length;
-      if (n < 2) return;
-      focusTab((trFocus(text) + (dx < 0 ? 1 : -1) + n) % n);
-    }, { passive: true });
-  }
+  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
   bindLineHover(body);
 }
+
+/** Narrow screens: one extra slide per additional translation chip that is on (line numbers + that translation). */
+function renderTrSlides(text) {
+  $$("#reader-body .tr-slide").forEach((el) => el.remove());
+  if (!NARROW_Q.matches || !isAlignedText(text) || !state.readerPanels.english) return;
+  let after = $("#col-lines");
+  (text.tr_cols || []).slice(1).forEach((key, j) => {
+    const col = document.createElement("div");
+    col.className = "reader-col tr-slide";
+    col.id = `col-tr-${j + 1}`;
+    col.style.display = "flex";
+    col.innerHTML = `<div class="col-body lines-body-extra"></div>`;
+    after.insertAdjacentElement("afterend", col);
+    after = col;
+    renderLinesGrid(col.firstElementChild, text, [key], false);
+  });
+}
+
+/** Chip row: one chip per available translation (aligned tablets) or one English chip, then ATF, Cuneiform, Meta. */
+function renderReaderChips(text) {
+  const host = $("#reader-chips");
+  if (!host) return;
+  const panels = state.readerPanels;
+  const content = (text.lines || []).filter((l) => l.type === "line");
+  const aligned = isAlignedText(text);
+  host.querySelectorAll(".pchip-tr").forEach((el) => el.remove());
+  const enChip = host.querySelector('[data-panel="english"]');
+  const status = text.translation_short || "";
+  if (aligned) {
+    enChip.hidden = true;
+    const on = panels.english ? text.tr_cols || [] : [];
+    const frag = (text.translations || [])
+      .map((o) => {
+        const i = on.indexOf(o.key);
+        return `<button type="button" class="pchip pchip-tr${i >= 0 ? " on" : ""} pchip-${o.kind}" data-tr="${escapeAttr(o.key)}" data-slide="${i <= 0 ? "col-lines" : `col-tr-${i}`}" aria-pressed="${i >= 0}" title="${escapeAttr(trOptLabel(o))}"><span class="pchip-name">${escapeHtml(o.kind === "machine" ? "⚙ Machine" : trTabLabel(o))}</span><span class="pchip-sub">${escapeHtml(trChipSub(o))}</span></button>`;
+      })
+      .join("");
+    enChip.insertAdjacentHTML("beforebegin", frag);
+  } else {
+    const has = !!(Array.isArray(text.english) ? text.english.length : text.english);
+    enChip.hidden = false;
+    enChip.disabled = !has;
+    enChip.dataset.slide = "col-english";
+    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine draft") + (status ? ` · ${status}` : "") : status || "none yet";
+  }
+  const atfChip = host.querySelector('[data-panel="atf"]');
+  atfChip.disabled = !content.length;
+  atfChip.dataset.slide = aligned ? "col-lines" : "col-atf";
+  atfChip.querySelector(".pchip-sub").textContent = content.length ? "transliteration" : text.atf ? "withheld" : "none";
+  const cuChip = host.querySelector('[data-panel="cuneiform"]');
+  cuChip.disabled = !content.length;
+  cuChip.dataset.slide = "col-cuneiform";
+  cuChip.querySelector(".pchip-sub").textContent = content.length ? "Unicode" : "none";
+  host.querySelector('[data-panel="meta"]').dataset.slide = "col-meta";
+  host.querySelectorAll("[data-panel]").forEach((b) => {
+    const v = !!panels[b.dataset.panel] && !b.disabled;
+    b.classList.toggle("on", v);
+    b.setAttribute("aria-pressed", String(v));
+  });
+  host.querySelectorAll(".pchip-tr").forEach((b) => b.addEventListener("click", () => onChip(b)));
+  syncSlideChip();
+}
+
+/** Turn a chip's panel / translation on or off. Narrow: a tap on an off chip turns it on and slides to it,
+ *  a tap on an on chip slides to it, and a tap on the chip already in view turns it off. */
+function onChip(btn) {
+  const text = state.currentText;
+  if (!text || btn.disabled) return;
+  const panels = state.readerPanels;
+  const on = btn.classList.contains("on");
+  if (NARROW_Q.matches && on && !btn.classList.contains("current")) {
+    scrollToSlide(btn.dataset.slide);
+    return;
+  }
+  const wouldBeEmpty = (nextPanels) => !Object.values(nextPanels).some(Boolean);
+  if (btn.dataset.tr) {
+    const key = btn.dataset.tr;
+    let cols = panels.english ? [...(text.tr_cols || [])] : [];
+    cols = on ? cols.filter((k) => k !== key) : [...cols, key];
+    if (!cols.length) {
+      if (wouldBeEmpty({ ...panels, english: false })) return;
+      panels.english = false;
+    } else {
+      panels.english = true;
+      applyTranslation(text, cols);
+      setTrParam(text);
+    }
+  } else {
+    const key = btn.dataset.panel;
+    if (wouldBeEmpty({ ...panels, [key]: !on })) return;
+    panels[key] = !on;
+  }
+  renderReader();
+  if (!on) {
+    const slide = btn.dataset.tr ? $(`#reader-chips [data-tr="${CSS.escape(btn.dataset.tr)}"]`)?.dataset.slide : btn.dataset.slide;
+    scrollToSlide(slide);
+  }
+}
+
+function scrollToSlide(id) {
+  if (!NARROW_Q.matches || !id) return;
+  const body = $("#reader-body");
+  const el = document.getElementById(id);
+  if (!el || el.style.display === "none") return;
+  body.scrollTo({ left: el.offsetLeft - body.offsetLeft, behavior: "smooth" });
+}
+
+/** Mark the chip(s) whose slide is in view (narrow); chips are the slider's tab indicator. */
+function syncSlideChip() {
+  const host = $("#reader-chips");
+  const body = $("#reader-body");
+  if (!host || !body) return;
+  let cur = null;
+  if (NARROW_Q.matches) {
+    const mid = body.scrollLeft + body.clientWidth / 2;
+    for (const el of body.children) {
+      if (el.style.display === "none" || !el.offsetWidth) continue;
+      const x = el.offsetLeft - body.offsetLeft;
+      if (mid >= x && mid < x + el.offsetWidth) cur = el.id;
+    }
+  }
+  host.querySelectorAll(".pchip").forEach((b) => {
+    const c = !!cur && b.classList.contains("on") && b.dataset.slide === cur;
+    b.classList.toggle("current", c);
+    if (c) b.setAttribute("aria-current", "true");
+    else b.removeAttribute("aria-current");
+  });
+  const curChip = host.querySelector(".pchip.current");
+  if (curChip && host.scrollWidth > host.clientWidth) curChip.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
 NARROW_Q.addEventListener?.("change", () => {
-  if (state.currentText && isAlignedText(state.currentText)) renderReader();
+  if (state.currentText) renderReader();
 });
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
@@ -1363,8 +1415,6 @@ function renderReader() {
   const badgeHost = $("#reader-status-badges");
   if (badgeHost) {
     badgeHost.innerHTML = [
-      statusChip(text),
-      machineChip(text),
       text.epic_hunt ? `<span class="chip status-epic">Epic</span>` : "",
       text.herbal_remedy ? `<span class="chip status-herbal">Remedy</span>` : "",
       text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
@@ -1401,6 +1451,8 @@ function renderReader() {
   $("#col-meta").style.display = panels.meta ? "flex" : "none";
 
   renderEnglishCol(text); // aligned API tablets: renders the lines column instead
+  renderTrSlides(text);
+  renderReaderChips(text);
   if (!aligned) renderAtfCol(text);
   renderCuneiformCol(text);
   if (panels.meta) {
@@ -2388,18 +2440,13 @@ function bindEvents() {
     }
   });
 
-  $$(".view-toggles button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.panel;
-      // keep at least one panel
-      const next = !state.readerPanels[key];
-      const count = Object.values({ ...state.readerPanels, [key]: next }).filter(Boolean).length;
-      if (count === 0) return;
-      state.readerPanels[key] = next;
-      btn.classList.toggle("on", next);
-      renderReader();
-    });
-  });
+  $$("#reader-chips [data-panel]").forEach((btn) => btn.addEventListener("click", () => onChip(btn)));
+  let slideRaf = 0;
+  $("#reader-body")?.addEventListener("scroll", () => {
+    cancelAnimationFrame(slideRaf);
+    slideRaf = requestAnimationFrame(syncSlideChip);
+  }, { passive: true });
+  initNavToggle();
 
   $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
 
@@ -2411,6 +2458,36 @@ function debounce(fn, ms) {
     clearTimeout(t);
     t = setTimeout(() => fn(...args), ms);
   };
+}
+
+/** Header nav: a Menu button below 760px (aria-expanded; closes on link click, Esc, or a tap outside). */
+function initNavToggle() {
+  const btn = $("#nav-toggle");
+  const nav = $("#header-nav");
+  if (!btn || !nav) return;
+  const set = (open) => {
+    btn.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("open", open);
+  };
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    set(open);
+    if (open) nav.querySelector(".nav-btn, .nav-link")?.focus();
+  });
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest(".nav-btn, .nav-link")) set(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+      set(false);
+      btn.focus();
+    }
+  });
+  document.addEventListener("pointerdown", (e) => {
+    if (btn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target) && !btn.contains(e.target)) set(false);
+  });
+  NARROW_Q.addEventListener?.("change", () => set(false));
 }
 
 // ─── Boot ───
