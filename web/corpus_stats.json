@@ -1,0 +1,15 @@
+{
+ "tablets": 462298,
+ "with_text": 223678,
+ "human_en": 21457,
+ "machine_en": 165344,
+ "any_en": 186801,
+ "corpus_built_at": "2026-10-05T04:06:14Z",
+ "queries": {
+  "tablets": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts",
+  "with_text": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE has_atf=1",
+  "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human'",
+  "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model'",
+  "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en'"
+ }
+}

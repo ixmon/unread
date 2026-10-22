@@ -81,7 +81,16 @@ async function loadCatalog() {
   const herbN = state.catalog.herbal_remedies?.count || state.catalog.items.filter((i) => i.herbal_remedy).length;
   const omenN = state.catalog.omens?.count || state.catalog.items.filter((i) => i.omen_hunt).length;
   const mathN = state.catalog.math?.count || state.catalog.items.filter((i) => i.math_hunt).length;
-  $("#header-count").textContent = `${state.catalog.count} works · ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math`;
+  // Header: whole-corpus counts (web/corpus_stats.json, scripts/build_corpus_stats.py); curated sets labelled as featured
+  fetch("corpus_stats.json").then((r) => (r.ok ? r.json() : null)).catch(() => null).then((cs) => {
+    const k = (n) => (n >= 10000 ? `${Math.round(n / 1000)}k` : n.toLocaleString("en-US"));
+    const el = $("#header-count");
+    if (cs) {
+      el.innerHTML = `<span class="meta-corpus">${k(cs.tablets)} tablets · ${k(cs.with_text)} with text · ${k(cs.human_en)} human English · ${k(cs.machine_en)} machine draft</span>` +
+        `<span class="meta-curated">Featured: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
+      el.title = `${cs.tablets.toLocaleString("en-US")} tablets known · ${cs.with_text.toLocaleString("en-US")} with transliteration online · ${cs.human_en.toLocaleString("en-US")} with human English · ${cs.machine_en.toLocaleString("en-US")} with machine English only (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
+    }
+  });
   // Featured rows
   const featRow = $("#featured-row");
   if (featRow && (state.catalog.epic_hunt?.featured || []).length) {
