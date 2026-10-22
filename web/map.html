@@ -77,6 +77,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <nav class="header-nav" id="header-nav" aria-label="Main">
         <button type="button" class="nav-btn active" data-view="explore">Explore</button>
         <button type="button" class="nav-btn" data-view="reader">Reader</button>
+        <button type="button" class="nav-btn" data-view="stats">Stats</button>
         <button type="button" class="nav-btn" data-view="about">About</button>
         <a class="nav-link" href="./">Home</a>
         <a class="nav-link" href="browse.html">Browse</a>
@@ -86,7 +87,6 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
         <a class="nav-link" href="search.html">Search</a>
       </nav>
       <div class="header-spacer"></div>
-      <div class="header-meta" id="header-count" title="Whole corpus (corpus.sqlite)"><span class="meta-corpus"><span data-stat="tablets">462,298</span> tablets catalogued</span></div>
     </header>
 
     <main class="app-main">
@@ -388,29 +388,12 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             published and lays it out so everyone can read it unfiltered.
           </p>
           <h3>What's here</h3>
-          <ul class="about-stats">
-            <li><strong data-stat="tablets">462,298</strong> tablets catalogued (each counted once, even when several projects list it)</li>
-            <li><strong data-stat="with_text">223,678</strong> of them with a transliteration (ATF text) online</li>
-            <li><strong data-stat="human_en">21,457</strong> with an English translation by human scholars</li>
-            <li><strong data-stat="machine_en">165,344</strong> with a machine English draft and no human English yet</li>
-            <li><strong data-stat="text_no_en">36,909</strong> with a transliteration but no English of any kind</li>
-            <li><strong data-stat="catalogue_only">238,620</strong> known only from a catalogue entry (no transliteration online)</li>
-            <li><strong data-stat="mapped">316,227</strong> with a named find-spot, shown on the map at <strong data-stat="map_points">465</strong> points</li>
-          </ul>
           <p>
-            The catalogue merges records from five open projects. Counted as tablets (records listing the same tablet
-            merged): CDLI <span data-stat="sources.cdli.tablets">426,657</span>, ORACC <span data-stat="sources.oracc.tablets">133,313</span>, eBL <span data-stat="sources.ebl.tablets">34,315</span>
-            (<span data-stat="sources.ebl.records">34,398</span> records), TLHdig for Hittite <span data-stat="sources.tlhdig.tablets">23,675</span> (<span data-stat="sources.tlhdig.records">23,713</span> records)
-            and Achemenet <span data-stat="sources.achemenet.tablets">2,830</span>. Many tablets appear in more than one project, which is why these add up to more than <span data-stat="tablets">462,298</span>.
-            Sources use <span data-stat="periods.labels">64</span> period labels, from proto-cuneiform to the Achaemenid empire. The largest, counted as tablets
-            carrying the label: <span data-stat="periods.top.0.label">Ur III</span> <span data-stat="periods.top.0.tablets">112,310</span> (<span data-stat="periods.top.0.records">194,293</span> records),
-            <span data-stat="periods.top.1.label">Old Babylonian</span> <span data-stat="periods.top.1.tablets">76,742</span> and <span data-stat="periods.top.2.label">Neo-Assyrian</span> <span data-stat="periods.top.2.tablets">39,762</span>.
-            By language label: <span data-stat="languages.top.0.label">Akkadian</span> <span data-stat="languages.top.0.tablets">170,426</span> and <span data-stat="languages.top.1.label">Sumerian</span> <span data-stat="languages.top.1.tablets">154,873</span>
-            tablets (<span data-stat="languages.top.1.records">253,347</span> <span data-stat="languages.top.1.label">Sumerian</span> records), then Hittite, Elamite, Ugaritic and others,
-            <span data-stat="languages.labels">119</span> language labels in all. A tablet can carry different labels in different sources.
-            Of the catalogued tablets, <span data-stat="with_coords">341,225</span> have coordinates. <span data-stat="unmapped_coords">24,998</span> of those are only placed as “uncertain”, “unknown”
-            or a region, so the map leaves them out; the other <span data-stat="mapped">316,227</span> sit at <span data-stat="map_points">465</span> map points (<span data-stat="place_names">772</span> differently spelled
-            place names share those points). Figures from the corpus built <span data-stat="corpus_built_at">2026-10-05</span>.
+            <strong data-stat="tablets">462,298</strong> cuneiform tablets catalogued from five open projects (CDLI, ORACC, eBL, TLHdig and Achemenet),
+            each counted once. <strong data-stat="with_text">223,678</strong> have a transliteration online,
+            <strong data-stat="human_en">21,457</strong> have English by human scholars and <strong data-stat="machine_en">165,344</strong> more have a machine draft.
+            <strong data-stat="mapped">316,227</strong> are on the map. Every figure, by source, period and language, is on the
+            <a href="?view=stats" data-goto-view="stats">Stats page</a>.
           </p>
           <h3>The machine English</h3>
           <p>
@@ -451,6 +434,14 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           </div>
           <h3 id="contact">Contact</h3>
           <p class="contact-links"><!--site:contact--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:contact--></p>
+        </div>
+      </section>
+      <!-- STATS: filled from corpus_stats.json by renderStats() in app.js -->
+      <section id="view-stats" class="view" aria-label="Corpus statistics">
+        <div class="about-card stats-card" id="stats-card">
+          <h2>Corpus statistics</h2>
+          <p class="stats-lede">What Unread Atlas holds, and exactly what each number counts.</p>
+          <div id="stats-body"><p class="stats-loading">Loading figures…</p></div>
         </div>
       </section>
     </main>

@@ -121,7 +121,10 @@ def main():
         buf += struct.pack("<BhB", k, -32768 if t[3] is None else int(t[3]), (t[4] << 4) | t[5])
     dots = {"note": "Hero sample derived from map_of_maps.json by scripts/build_landing_assets.py; dots in landing_dots.dat",
             "n": len(D["tablets"]), "corpus_tablets": D["corpus_tablets"], "genres": D["genres"], "states": D["states"],
-            "presets": sorted(D["terms"]), "coords": coords}
+            "presets": sorted(D["terms"]), "coords": coords,
+            # how the sample was drawn (home-page caption): random draw + every preset-word match
+            "sample_random": D.get("sample_of_all"), "term_matches": len(set().union(*map(set, D["terms"].values()))),
+            "term_counts": {k: len(v) for k, v in D["terms"].items()}}
     (A / "landing_dots.json").write_text(json.dumps(dots, separators=(",", ":")))
     (A / "landing_dots.dat").write_bytes(bytes(buf))
     for n in ("land.json", "landing_dots.json", "landing_dots.dat", "map_of_maps.json"):

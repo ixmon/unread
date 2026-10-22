@@ -14,6 +14,16 @@
  "unmapped_coords": 24998,
  "pct_human_en": 5,
  "pct_catalogue_only": 52,
+ "pct1": {
+  "with_text": 48.4,
+  "human_en": 4.6,
+  "machine_en": 35.8,
+  "any_en": 40.4,
+  "text_no_en": 8.0,
+  "catalogue_only": 51.6,
+  "with_coords": 73.8,
+  "mapped": 68.4
+ },
  "sources": {
   "cdli": {
    "records": 426657,

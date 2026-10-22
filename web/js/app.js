@@ -81,17 +81,9 @@ async function loadCatalog() {
   const herbN = state.catalog.herbal_remedies?.count || state.catalog.items.filter((i) => i.herbal_remedy).length;
   const omenN = state.catalog.omens?.count || state.catalog.items.filter((i) => i.omen_hunt).length;
   const mathN = state.catalog.math?.count || state.catalog.items.filter((i) => i.math_hunt).length;
-  // Header: whole-corpus counts (web/corpus_stats.json, scripts/build_corpus_stats.py); curated sets labelled as featured
-  loadCorpusStats().then((cs) => {
-    if (!cs) return;
-    const k = (n) => (n >= 10000 ? `${Math.round(n / 1000)}k` : n.toLocaleString("en-US"));
-    const f = (n) => n.toLocaleString("en-US");
-    const el = $("#header-count");
-    // short labels so the whole line fits from 1024 px up; exact figures + definitions in the hover title
-    el.innerHTML = `<span class="meta-corpus"><span title="tablets catalogued (distinct tablets)">${k(cs.tablets)} catalogued</span> · <span title="with a transliteration online">${k(cs.with_text)} transliterated</span> · <span title="with human English">${k(cs.human_en)} human English</span> · <span title="machine English draft, no human English">${k(cs.machine_en)} machine only</span> · <span title="with a named find-spot on the map">${k(cs.mapped)} mapped</span></span>` +
-      `<span class="meta-curated">Featured sets: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
-    el.title = `${f(cs.tablets)} tablets catalogued · ${f(cs.with_text)} with transliteration online · ${f(cs.human_en)} with human English · ${f(cs.machine_en)} with a machine draft and no human English · ${f(cs.mapped)} with a named find-spot on the map (${cs.map_points} map points) (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
-  });
+  // Featured-set sizes for the Stats page (corpus figures there come from corpus_stats.json)
+  state.featuredCounts = { epic: epicN, remedies: herbN, omens: omenN, math: mathN };
+  if (state.view === "stats") renderStats();
   // Featured rows
   const featRow = $("#featured-row");
   if (featRow && (state.catalog.epic_hunt?.featured || []).length) {
@@ -482,7 +474,7 @@ function viewUrl(view, id) {
     u.searchParams.set("id", id);
   } else {
     for (const k of READER_PARAMS) u.searchParams.delete(k);
-    if (view === "about" || view === "reader") u.searchParams.set("view", view);
+    if (view === "about" || view === "reader" || view === "stats") u.searchParams.set("view", view);
   }
   return u.toString().replace(/%2C/gi, ",");
 }
@@ -511,7 +503,7 @@ function routeFromUrl() {
     return;
   }
   const v = q.get("view");
-  setView(v === "about" || v === "reader" ? v : "explore", "none");
+  setView(v === "about" || v === "reader" || v === "stats" ? v : "explore", "none");
 }
 window.addEventListener("popstate", routeFromUrl);
 
@@ -2478,6 +2470,7 @@ function setView(name, hist = "push") {
   if (name === "reader") {
     renderReader();
   }
+  if (name === "stats") renderStats();
 }
 
 // ─── Utils ───
@@ -2503,6 +2496,14 @@ function bindEvents() {
   });
   $$(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => setView(btn.dataset.view));
+  });
+  // in-page links to another view (About → Stats) switch views without a reload
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest?.("a[data-goto-view]");
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    setView(a.dataset.gotoView);
+    $("#view-" + a.dataset.gotoView)?.scrollTo?.(0, 0);
   });
 
   $("#search").addEventListener("input", debounce(applyFilters, 150));
@@ -2674,7 +2675,7 @@ async function main() {
     setView("reader", "none");
   } else {
     const v = new URLSearchParams(location.search).get("view");
-    if (v === "about" || v === "reader") setView(v, "none");
+    if (v === "about" || v === "reader" || v === "stats") setView(v, "none");
   }
 
   try {
@@ -2742,9 +2743,82 @@ function loadCorpusStats() {
       const key = n.dataset.stat;
       let v = key.split(".").reduce((o, p) => (o == null ? o : o[p]), cs);
       if (v == null) return;
-      n.textContent = typeof v === "number" ? v.toLocaleString("en-US") : key === "corpus_built_at" ? String(v).slice(0, 10) : String(v);
+      n.textContent = typeof v === "number" ? (key.startsWith("pct1.") ? v.toFixed(1) : v.toLocaleString("en-US")) : key === "corpus_built_at" ? String(v).slice(0, 10) : String(v);
     });
     return cs;
   });
   return _corpusStats;
+}
+
+// ─── Stats view (?view=stats): every corpus figure from corpus_stats.json, labelled by what it counts ───
+function renderStats() {
+  const body = $("#stats-body");
+  if (!body) return;
+  loadCorpusStats().then((cs) => {
+    if (!cs) {
+      body.innerHTML = `<p class="stats-loading">The figures file (corpus_stats.json) could not be loaded.</p>`;
+      return;
+    }
+    const f = (n) => (typeof n === "number" ? n.toLocaleString("en-US") : "–");
+    const pc = (n) => (cs.tablets ? ((100 * n) / cs.tablets).toFixed(1) + "%" : "");
+    const day = (s) => String(s || "").slice(0, 10);
+    const row = (n, label, note, share = true) =>
+      `<tr><td class="num">${f(n)}</td><td>${label}${note ? `<div class="stats-note">${note}</div>` : ""}</td><td class="pct">${share ? pc(n) : ""}</td></tr>`;
+    const bar = (n, max) => `<span class="stats-bar"><i style="width:${max ? Math.max(0.5, (100 * n) / max).toFixed(1) : 0}%"></i></span>`;
+    const SRC = { cdli: "CDLI", oracc: "ORACC", ebl: "eBL", tlhdig: "TLHdig (Hittite)", achemenet: "Achemenet" };
+    const srcRows = Object.entries(cs.sources || {}).sort((a, b) => b[1].tablets - a[1].tablets);
+    const maxSrc = Math.max(...srcRows.map(([, v]) => v.tablets), 1);
+    const labelTable = (obj) => {
+      const top = obj?.top || [];
+      const max = Math.max(...top.map((t) => t.tablets), 1);
+      return `<table class="stats-table"><thead><tr><th>Label</th><th class="num">Tablets</th><th class="num">Records</th><th class="barcol" aria-hidden="true"></th></tr></thead><tbody>${top
+        .map((t) => `<tr><td>${escapeHtml(t.label)}</td><td class="num">${f(t.tablets)}</td><td class="num">${f(t.records)}</td><td class="barcol">${bar(t.tablets, max)}</td></tr>`)
+        .join("")}</tbody></table><p class="stats-note">${f(obj?.labels)} labels in all; ${f(obj?.unlabelled_records)} records carry none. Showing the ${top.length} largest.</p>`;
+    };
+    const fc = state.featuredCounts;
+    body.innerHTML = `
+      <h3>The catalogue</h3>
+      <p class="stats-note">A <b>tablet</b> is one physical object, counted once even when several projects list it. Percentages are of all ${f(cs.tablets)} catalogued tablets.</p>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.tablets, "<b>tablets catalogued</b>", "every tablet with a record in at least one source", false)}
+        ${row(cs.with_text, "with a transliteration (ATF text) online")}
+        ${row(cs.any_en, "with English of any kind (human or machine)")}
+      </tbody></table>
+      <h3>What can be read</h3>
+      <p class="stats-note">These four groups do not overlap.</p>
+      <div class="stats-stack" role="img" aria-label="Catalogued tablets by what is online">
+        <i class="s-h" style="width:${pc(cs.human_en)}"></i><i class="s-m" style="width:${pc(cs.machine_en)}"></i><i class="s-a" style="width:${pc(cs.text_no_en)}"></i><i class="s-c" style="width:${pc(cs.catalogue_only)}"></i>
+      </div>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.human_en, '<em class="sw s-h"></em>with English by human scholars', "published translations from the source projects")}
+        ${row(cs.machine_en, '<em class="sw s-m"></em>machine English draft only', "no human English online; draft from our ATF-to-English model, labelled as such")}
+        ${row(cs.text_no_en, '<em class="sw s-a"></em>transliteration but no English yet')}
+        ${row(cs.catalogue_only, '<em class="sw s-c"></em>catalogue entry only', "known from a catalogue record; no transliteration online")}
+      </tbody></table>
+      <h3>On the map</h3>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.with_coords, "tablets with coordinates in a source", `${f(cs.place_names)} differently spelled place names`)}
+        ${row(cs.mapped, "<b>tablets on the map</b> (a named find-spot)", `${f(cs.unmapped_coords)} more are placed only as “uncertain”, “unknown” or a region, so the map leaves them out`)}
+        ${row(cs.map_points, "map points", "spellings of the same place share one point", false)}
+      </tbody></table>
+      <h3>By source project</h3>
+      <p class="stats-note"><b>Records</b> are a source's own listings; a project can list one tablet more than once. Many tablets appear in several projects, so the tablet column adds up to more than ${f(cs.tablets)}.</p>
+      <table class="stats-table"><thead><tr><th>Source</th><th class="num">Tablets</th><th class="num">Records</th><th class="barcol" aria-hidden="true"></th></tr></thead><tbody>${srcRows
+        .map(([k, v]) => `<tr><td>${SRC[k] || escapeHtml(k)}</td><td class="num">${f(v.tablets)}</td><td class="num">${f(v.records)}</td><td class="barcol">${bar(v.tablets, maxSrc)}</td></tr>`)
+        .join("")}</tbody></table>
+      <h3>Largest periods</h3>
+      <p class="stats-note">Tablets carrying the label in at least one source; one tablet can carry different labels in different sources.</p>
+      ${labelTable(cs.periods)}
+      <h3>Largest languages</h3>
+      ${labelTable(cs.languages)}
+      ${fc ? `<h3>Featured sets</h3>
+      <p class="stats-note">Tablets in the themed sets of the Explore panel (☰ Curated &amp; filters).</p>
+      <table class="stats-table"><tbody>
+        <tr><td class="num">${f(fc.epic)}</td><td><a href="?mode=epic">Epic hunt</a></td></tr>
+        <tr><td class="num">${f(fc.remedies)}</td><td><a href="?mode=remedies">Remedies</a></td></tr>
+        <tr><td class="num">${f(fc.omens)}</td><td><a href="?mode=omens">Omens</a></td></tr>
+        <tr><td class="num">${f(fc.math)}</td><td><a href="?mode=math">Math</a></td></tr>
+      </tbody></table>` : ""}
+      <p class="stats-foot">Corpus built ${day(cs.corpus_built_at)} · figures generated ${day(cs.generated_at)} from that build (<a href="corpus_stats.json">corpus_stats.json</a>, with the exact queries).</p>`;
+  });
 }

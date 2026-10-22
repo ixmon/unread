@@ -51,6 +51,8 @@ out["corpus_built_at"] = row[0] if row else None
 out["unmapped_coords"] = out["with_coords"] - out["mapped"]
 out["pct_human_en"] = round(100 * out["human_en"] / out["tablets"])
 out["pct_catalogue_only"] = round(100 * out["catalogue_only"] / out["tablets"])
+# one-decimal shares of all catalogued tablets (home "What's here", Stats page, hero caption)
+out["pct1"] = {k: round(100 * out[k] / out["tablets"], 1) for k in ("with_text", "human_en", "machine_en", "any_en", "text_no_en", "catalogue_only", "with_coords", "mapped")}
 T = "COUNT(DISTINCT COALESCE(canonical_id,id))"
 out["sources"] = {r[0]: {"records": r[1], "tablets": r[2]} for r in con.execute(
     f"SELECT source_id, COUNT(*), {T} FROM texts GROUP BY 1 ORDER BY 2 DESC")}
