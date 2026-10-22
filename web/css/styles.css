@@ -99,6 +99,20 @@ input {
 @media (max-width: 1279px) { .app-header .social-link span { display: none; } .app-header { gap: 0.75rem; } }
 .app-header .header-meta { display: flex; flex-direction: column; line-height: 1.25; text-align: right; white-space: nowrap; }
 .header-meta .meta-curated { font-size: 0.68rem; opacity: 0.8; }
+.header-meta .meta-corpus { font-size: 0.78rem; }
+/* each figure stays whole; the line wraps between figures instead of running off the right edge */
+.header-meta .meta-corpus > span { white-space: nowrap; }
+.app-header .header-meta { min-width: 0; flex-shrink: 1; }
+@media (max-width: 1599px) {
+  .header-meta .meta-curated { display: none; }
+  .header-meta .meta-corpus { font-size: 0.72rem; white-space: normal; max-width: 25rem; }
+}
+@media (min-width: 1150px) and (max-width: 1279px) {
+  .app-header .header-meta { flex-shrink: 0; width: 12.5rem; }
+  .header-meta .meta-corpus { font-size: 0.58rem; line-height: 1.15; }
+}
+/* tablet widths: the desktop nav already fills the row, so the figures live on About (and the phone header) */
+@media (min-width: 761px) and (max-width: 1149px) { .app-header .header-meta { display: none; } }
 @media (max-width: 1179px) { .header-meta .meta-curated { display: none; } }
 .about-stats strong { font-variant-numeric: tabular-nums; }
 .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -1225,11 +1239,19 @@ body.mode-epic .catalog-card .title {
 #view-about {
   overflow-y: auto;
   padding: 2rem;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+@media (max-width: 600px) { #view-about { padding: 1rem 0.75rem; } .about-card { padding: 1.25rem; } }
 
 .about-card {
+  /* flex child of a fixed-height scroller: never shrink below its text (was clipping the last line) */
+  flex: 0 0 auto;
+  height: auto;
+  align-self: flex-start;
   max-width: 640px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -1404,7 +1426,8 @@ body.mode-epic .catalog-card .title {
 }
 
 @media (max-width: 640px) {
-  .app-header .header-meta { font-size: 0.66rem; white-space: normal; max-width: 9.5rem; }
+  .app-header .header-meta { font-size: 0.66rem; white-space: normal; max-width: 13.5rem; }
+  .app-header .header-meta .meta-corpus { font-size: 0.58rem; line-height: 1.2; max-width: none; }
 
   .preview-facts {
     grid-template-columns: 1fr 1fr;

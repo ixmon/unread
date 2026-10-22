@@ -11,6 +11,99 @@
  "map_points": 465,
  "catalogue_only": 238620,
  "corpus_built_at": "2026-10-05T04:06:14Z",
+ "unmapped_coords": 24998,
+ "pct_human_en": 5,
+ "pct_catalogue_only": 52,
+ "sources": {
+  "cdli": {
+   "records": 426657,
+   "tablets": 426657
+  },
+  "oracc": {
+   "records": 133313,
+   "tablets": 133313
+  },
+  "ebl": {
+   "records": 34398,
+   "tablets": 34315
+  },
+  "tlhdig": {
+   "records": 23713,
+   "tablets": 23675
+  },
+  "achemenet": {
+   "records": 2830,
+   "tablets": 2830
+  }
+ },
+ "periods": {
+  "labels": 64,
+  "unlabelled_records": 79051,
+  "top": [
+   {
+    "label": "Ur III",
+    "records": 194293,
+    "tablets": 112310
+   },
+   {
+    "label": "Old Babylonian",
+    "records": 85428,
+    "tablets": 76742
+   },
+   {
+    "label": "Neo-Assyrian",
+    "records": 64254,
+    "tablets": 39762
+   },
+   {
+    "label": "Neo-Babylonian",
+    "records": 41319,
+    "tablets": 38197
+   },
+   {
+    "label": "Middle Babylonian",
+    "records": 18749,
+    "tablets": 16827
+   }
+  ]
+ },
+ "languages": {
+  "labels": 119,
+  "unlabelled_records": 90876,
+  "top": [
+   {
+    "label": "Akkadian",
+    "records": 201743,
+    "tablets": 170426
+   },
+   {
+    "label": "Sumerian",
+    "records": 253347,
+    "tablets": 154873
+   },
+   {
+    "label": "Hittite",
+    "records": 35274,
+    "tablets": 30916
+   },
+   {
+    "label": "Akkadian; Sumerian",
+    "records": 10033,
+    "tablets": 9222
+   },
+   {
+    "label": "Proto-cuneiform",
+    "records": 14042,
+    "tablets": 8240
+   }
+  ]
+ },
+ "generated_at": "2026-10-22T06:28:34Z",
+ "notes": {
+  "tablets": "distinct COALESCE(canonical_id,id)",
+  "records": "rows in texts (one per source listing)",
+  "periods/languages tablets": "distinct tablets carrying that label in at least one source; a tablet can carry labels from several sources"
+ },
  "queries": {
   "tablets": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts",
   "with_text": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE has_atf=1",

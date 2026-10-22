@@ -7,12 +7,12 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <title data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
+    <title data-stat-tpl="Map of {tablets} cuneiform tablets" data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
     <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
     <link rel="canonical" href="https://unreadatlas.com/map.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
-    <meta property="og:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta property="og:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta property="og:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta property="og:url" content="https://unreadatlas.com/map.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
@@ -21,7 +21,7 @@
     <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@roguesamurai" />
-    <meta name="twitter:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta name="twitter:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta name="twitter:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
@@ -86,7 +86,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
         <a class="nav-link" href="search.html">Search</a>
       </nav>
       <div class="header-spacer"></div>
-      <div class="header-meta" id="header-count" title="Whole corpus (corpus.sqlite)"><span class="meta-corpus">462,298 tablets · 223,678 with text · 186,801 in English</span></div>
+      <div class="header-meta" id="header-count" title="Whole corpus (corpus.sqlite)"><span class="meta-corpus"><span data-stat="tablets">462,298</span> tablets catalogued</span></div>
     </header>
 
     <main class="app-main">
@@ -389,23 +389,28 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           </p>
           <h3>What's here</h3>
           <ul class="about-stats">
-            <li><strong>462,298</strong> tablets catalogued (each counted once, even when several projects list it)</li>
-            <li><strong>223,678</strong> of them with a transliteration (ATF text) online</li>
-            <li><strong>21,457</strong> with an English translation by human scholars</li>
-            <li><strong>165,344</strong> with a machine English draft and no human English yet</li>
-            <li><strong>36,909</strong> with a transliteration but no English of any kind</li>
-            <li><strong>238,620</strong> known only from a catalogue entry (no transliteration online)</li>
-            <li><strong>316,227</strong> with a named find-spot, shown on the map at <strong>465</strong> points</li>
+            <li><strong data-stat="tablets">462,298</strong> tablets catalogued (each counted once, even when several projects list it)</li>
+            <li><strong data-stat="with_text">223,678</strong> of them with a transliteration (ATF text) online</li>
+            <li><strong data-stat="human_en">21,457</strong> with an English translation by human scholars</li>
+            <li><strong data-stat="machine_en">165,344</strong> with a machine English draft and no human English yet</li>
+            <li><strong data-stat="text_no_en">36,909</strong> with a transliteration but no English of any kind</li>
+            <li><strong data-stat="catalogue_only">238,620</strong> known only from a catalogue entry (no transliteration online)</li>
+            <li><strong data-stat="mapped">316,227</strong> with a named find-spot, shown on the map at <strong data-stat="map_points">465</strong> points</li>
           </ul>
           <p>
-            The records come from five open projects: CDLI (426,657 tablets), ORACC (133,313), eBL (34,315),
-            TLHdig for Hittite (23,675) and Achemenet (2,830). Many tablets appear in more than one.
-            They span 64 period labels, from proto-cuneiform to the Achaemenid empire, with Ur III (194,293 records),
-            Old Babylonian (85,428) and Neo-Assyrian (64,254) the largest. Most are in Sumerian (253,347) or
-            Akkadian (201,743), followed by Hittite, Elamite, Ugaritic and others, 119 language labels in all.
-            Of the catalogued tablets, 341,225 have coordinates. 24,998 of those are only placed as “uncertain”, “unknown”
-            or a region, so the map leaves them out; the other 316,227 sit at 465 map points (772 differently spelled
-            place names share those points).
+            The catalogue merges records from five open projects. Counted as tablets (records listing the same tablet
+            merged): CDLI <span data-stat="sources.cdli.tablets">426,657</span>, ORACC <span data-stat="sources.oracc.tablets">133,313</span>, eBL <span data-stat="sources.ebl.tablets">34,315</span>
+            (<span data-stat="sources.ebl.records">34,398</span> records), TLHdig for Hittite <span data-stat="sources.tlhdig.tablets">23,675</span> (<span data-stat="sources.tlhdig.records">23,713</span> records)
+            and Achemenet <span data-stat="sources.achemenet.tablets">2,830</span>. Many tablets appear in more than one project, which is why these add up to more than <span data-stat="tablets">462,298</span>.
+            Sources use <span data-stat="periods.labels">64</span> period labels, from proto-cuneiform to the Achaemenid empire. The largest, counted as tablets
+            carrying the label: <span data-stat="periods.top.0.label">Ur III</span> <span data-stat="periods.top.0.tablets">112,310</span> (<span data-stat="periods.top.0.records">194,293</span> records),
+            <span data-stat="periods.top.1.label">Old Babylonian</span> <span data-stat="periods.top.1.tablets">76,742</span> and <span data-stat="periods.top.2.label">Neo-Assyrian</span> <span data-stat="periods.top.2.tablets">39,762</span>.
+            By language label: <span data-stat="languages.top.0.label">Akkadian</span> <span data-stat="languages.top.0.tablets">170,426</span> and <span data-stat="languages.top.1.label">Sumerian</span> <span data-stat="languages.top.1.tablets">154,873</span>
+            tablets (<span data-stat="languages.top.1.records">253,347</span> <span data-stat="languages.top.1.label">Sumerian</span> records), then Hittite, Elamite, Ugaritic and others,
+            <span data-stat="languages.labels">119</span> language labels in all. A tablet can carry different labels in different sources.
+            Of the catalogued tablets, <span data-stat="with_coords">341,225</span> have coordinates. <span data-stat="unmapped_coords">24,998</span> of those are only placed as “uncertain”, “unknown”
+            or a region, so the map leaves them out; the other <span data-stat="mapped">316,227</span> sit at <span data-stat="map_points">465</span> map points (<span data-stat="place_names">772</span> differently spelled
+            place names share those points). Figures from the corpus built <span data-stat="corpus_built_at">2026-10-05</span>.
           </p>
           <h3>The machine English</h3>
           <p>

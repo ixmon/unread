@@ -82,14 +82,15 @@ async function loadCatalog() {
   const omenN = state.catalog.omens?.count || state.catalog.items.filter((i) => i.omen_hunt).length;
   const mathN = state.catalog.math?.count || state.catalog.items.filter((i) => i.math_hunt).length;
   // Header: whole-corpus counts (web/corpus_stats.json, scripts/build_corpus_stats.py); curated sets labelled as featured
-  fetch("corpus_stats.json").then((r) => (r.ok ? r.json() : null)).catch(() => null).then((cs) => {
+  loadCorpusStats().then((cs) => {
+    if (!cs) return;
     const k = (n) => (n >= 10000 ? `${Math.round(n / 1000)}k` : n.toLocaleString("en-US"));
+    const f = (n) => n.toLocaleString("en-US");
     const el = $("#header-count");
-    if (cs) {
-      el.innerHTML = `<span class="meta-corpus">${k(cs.tablets)} tablets catalogued · ${k(cs.with_text)} with transliteration · ${k(cs.human_en)} with human English · ${k(cs.machine_en)} machine draft only${cs.mapped ? ` · ${k(cs.mapped)} mapped` : ""}</span>` +
-        `<span class="meta-curated">Featured sets: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
-      el.title = `${cs.tablets.toLocaleString("en-US")} tablets catalogued · ${cs.with_text.toLocaleString("en-US")} with transliteration online · ${cs.human_en.toLocaleString("en-US")} with human English · ${cs.machine_en.toLocaleString("en-US")} with a machine draft and no human English${cs.mapped ? ` · ${cs.mapped.toLocaleString("en-US")} with a named find-spot on the map (${cs.map_points} map points)` : ""} (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
-    }
+    // short labels so the whole line fits from 1024 px up; exact figures + definitions in the hover title
+    el.innerHTML = `<span class="meta-corpus"><span title="tablets catalogued (distinct tablets)">${k(cs.tablets)} catalogued</span> · <span title="with a transliteration online">${k(cs.with_text)} transliterated</span> · <span title="with human English">${k(cs.human_en)} human English</span> · <span title="machine English draft, no human English">${k(cs.machine_en)} machine only</span> · <span title="with a named find-spot on the map">${k(cs.mapped)} mapped</span></span>` +
+      `<span class="meta-curated">Featured sets: ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math</span>`;
+    el.title = `${f(cs.tablets)} tablets catalogued · ${f(cs.with_text)} with transliteration online · ${f(cs.human_en)} with human English · ${f(cs.machine_en)} with a machine draft and no human English · ${f(cs.mapped)} with a named find-spot on the map (${cs.map_points} map points) (corpus built ${String(cs.corpus_built_at).slice(0, 10)})`;
   });
   // Featured rows
   const featRow = $("#featured-row");
@@ -2731,3 +2732,19 @@ document.addEventListener("DOMContentLoaded", () => {
     el.addEventListener("change", () => el.checked && setOpen(true, false)));
   sync();
 });
+
+// Single source of truth for corpus numbers: web/corpus_stats.json (scripts/build_corpus_stats.py).
+// Fills every [data-stat="key"] (dotted paths ok) so header, About and banners never hardcode figures.
+let _corpusStats;
+function loadCorpusStats() {
+  _corpusStats ||= fetch("corpus_stats.json").then((r) => (r.ok ? r.json() : null)).catch(() => null).then((cs) => {
+    if (cs) document.querySelectorAll("[data-stat]").forEach((n) => {
+      const key = n.dataset.stat;
+      let v = key.split(".").reduce((o, p) => (o == null ? o : o[p]), cs);
+      if (v == null) return;
+      n.textContent = typeof v === "number" ? v.toLocaleString("en-US") : key === "corpus_built_at" ? String(v).slice(0, 10) : String(v);
+    });
+    return cs;
+  });
+  return _corpusStats;
+}
