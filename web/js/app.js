@@ -233,6 +233,36 @@ function cleanTranslator(a) {
 }
 const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
 
+/**
+ * The text API returns ATF-less mt_lines (eBL) in database row order, not line order (Asb.h came back 6,3,2,4,7,1,5).
+ * Sort them by a natural line key: surface order (obv, rev, edges…), column, then the numeric line number (3' / 10a ok).
+ * Stable, so lines with unparseable labels keep their relative order.
+ */
+const SURF_ORDER = ["", "o", "e", "be", "r", "te", "le", "re"];
+function mtLineSortKey(label) {
+  const parts = String(label || "").trim().split(/\s+/);
+  const last = parts.pop() || "";
+  const m = /^(\d+)(\D*)$/.exec(last.replace(/[′’ʼ]/g, "'"));
+  if (!m) return null;
+  const surf = normSurf(parts.join(" "));
+  const [side, col] = surf.split(":");
+  let si = SURF_ORDER.indexOf(side || "");
+  if (si < 0) si = SURF_ORDER.length;
+  return [si, parseInt(col || "0", 10) || 0, parseInt(m[1], 10), m[2]];
+}
+function sortMtLines(ml) {
+  const keyed = ml.map((l, i) => ({ l, i, k: mtLineSortKey(l.line) }));
+  if (keyed.some((x) => !x.k)) return ml; // can't parse every label: leave the API order alone
+  keyed.sort((a, b) => {
+    for (let j = 0; j < 4; j++) {
+      const x = a.k[j], y = b.k[j];
+      if (x !== y) return x < y ? -1 : 1;
+    }
+    return a.i - b.i;
+  });
+  return keyed.map((x) => x.l);
+}
+
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
   if (!eds.length) return null;
@@ -327,7 +357,7 @@ function apiTextToReader(d, requestedId) {
       conf = lines.map((l) => l.conf);
     } else {
       const ml = Array.isArray(mtEd.mt_lines) && mtEd.mt_lines.length
-        ? mtEd.mt_lines
+        ? sortMtLines(mtEd.mt_lines)
         : (mtEd.lines || []).filter((l) => l.mt).map((l) => ({ line: [l.surface, l.n].filter(Boolean).join(" "), mt: l.mt, conf: l.conf }));
       english = ml.map((l) => l.mt || "");
       labels = ml.map((l) => l.line || "");
@@ -428,15 +458,52 @@ function setTrParam(text) {
     /* ignore */
   }
 }
-window.addEventListener("popstate", () => {
-  const text = state.currentText;
-  if (!text || !text.translations) return;
+/**
+ * Routing: the URL is the source of truth for the view. ?id=<tablet>[&tr=…][&find=…] = reader on that tablet;
+ * ?view=about | ?view=reader (no tablet) = those views; neither = Explore. Every user view switch pushes an entry
+ * (setView/openReader), and popstate re-renders from the URL, so Back/Forward walk About ⇄ Reader ⇄ Explore.
+ */
+const READER_PARAMS = ["id", "tr", "find", "mode"];
+function viewUrl(view, id) {
+  const u = new URL(location.href);
+  u.searchParams.delete("view");
+  if (view === "reader" && id) {
+    if (u.searchParams.get("id") !== id) for (const k of READER_PARAMS) u.searchParams.delete(k);
+    u.searchParams.set("id", id);
+  } else {
+    for (const k of READER_PARAMS) u.searchParams.delete(k);
+    if (view === "about" || view === "reader") u.searchParams.set("view", view);
+  }
+  return u.toString().replace(/%2C/gi, ",");
+}
+function syncUrl(view, id, mode) {
+  if (mode === "none") return;
+  const next = viewUrl(view, id);
+  if (next === location.href) return;
+  try {
+    if (mode === "replace") history.replaceState({ view, id: id || null }, "", next);
+    else history.pushState({ view, id: id || null }, "", next);
+  } catch (_) {
+    /* ignore */
+  }
+}
+function routeFromUrl() {
   const q = new URLSearchParams(location.search);
-  if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
-  applyTranslation(text, q.get("tr"));
-  state.readerPanels.english = true;
-  renderReader();
-});
+  const id = q.get("id");
+  if (id) {
+    const text = state.currentText;
+    if (text && text.id === id && !state.readerPending) {
+      if (text.translations) applyTranslation(text, q.get("tr"));
+      setView("reader", "none");
+    } else {
+      openReader(id, "none");
+    }
+    return;
+  }
+  const v = q.get("view");
+  setView(v === "about" || v === "reader" ? v : "explore", "none");
+}
+window.addEventListener("popstate", routeFromUrl);
 
 // ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
 const NARROW_Q = window.matchMedia("(max-width: 760px)");
@@ -1326,12 +1393,13 @@ function applySearchFind() {
   if (cHit) scrollColBody(cHit);
 }
 
-async function openReader(id) {
+async function openReader(id, hist = "push") {
+  syncUrl("reader", id, hist);
   // While the text loads (the /api Lambda can take seconds on a cold start) the reader shows
   // "Loading tablet <id>…" instead of its "No work open" empty state; on failure, a retry.
   const token = (state._readerToken = (state._readerToken || 0) + 1);
   state.readerPending = { id, failed: false };
-  setView("reader");
+  setView("reader", "none");
   const text = await loadText(id);
   if (token !== state._readerToken) return; // a newer openReader() superseded this one
   if (!text) {
@@ -2385,7 +2453,11 @@ function shortPeriod(p) {
 }
 
 // ─── View routing ───
-function setView(name) {
+function setView(name, hist = "push") {
+  if (hist !== "none") {
+    const id = name === "reader" ? state.readerPending?.id || state.currentText?.id : null;
+    syncUrl(name, id, hist);
+  }
   state.view = name;
   $$(".view").forEach((v) => v.classList.remove("active"));
   $$(`.nav-btn`).forEach((b) => b.classList.toggle("active", b.dataset.view === name));
@@ -2589,7 +2661,10 @@ async function main() {
   const deepId = new URLSearchParams(location.search).get("id");
   if (deepId) {
     state.readerPending = { id: deepId, failed: false };
-    setView("reader");
+    setView("reader", "none");
+  } else {
+    const v = new URLSearchParams(location.search).get("view");
+    if (v === "about" || v === "reader") setView(v, "none");
   }
 
   try {
@@ -2605,7 +2680,7 @@ async function main() {
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108
     if (deepId) {
-      await openReader(deepId);
+      await openReader(deepId, "none");
     } else {
       const first =
         state.filtered.find((i) => state._packagedIds.includes(i.id)) || state.filtered[0];
@@ -2615,7 +2690,7 @@ async function main() {
     console.error(e);
     toast(e.message || "Failed to load catalog");
     $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
-    if (deepId) openReader(deepId); // the text API doesn't need the catalog
+    if (deepId) openReader(deepId, "none"); // the text API doesn't need the catalog
   }
 }
 
