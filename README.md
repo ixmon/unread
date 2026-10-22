@@ -163,6 +163,20 @@ symlinks, files over 100 MB, model weights or local paths. `.github/workflows/pa
 `main` and deploys with `actions/deploy-pages` (repo setting: Pages source = GitHub Actions). The dist page carries
 `<meta name="unread-static">`, so the reader never probes the local translate API there.
 
+## Corpus numbers (`web/corpus_stats.json`)
+
+Every corpus figure on the site (map header, About, home hero, browse/credits text, `<title>`/og/twitter/JSON-LD
+descriptions) comes from one file, `web/corpus_stats.json`, written by `scripts/build_corpus_stats.py` from
+`~/cursor/unread-db/corpus.sqlite`. It holds `generated_at`, `corpus_built_at`, the counts, per-source records vs
+tablets, top period/language labels, and the SQL behind each count. "Tablets" are distinct
+`COALESCE(canonical_id,id)`; "records" are source listings (one tablet listed by CDLI and ORACC is 2 records).
+
+- **Rebuild it after any corpus or translation update** (new corpus.sqlite, new machine English, new source):
+  `python3 scripts/build_corpus_stats.py`. `./scripts/build_site.sh` runs it automatically when the DB is present.
+- Pages never hardcode figures: mark them `<span data-stat="key">` (dotted paths such as `sources.cdli.tablets`)
+  or `data-stat-tpl="… {tablets} …"` on `<meta>`/`<title>`. The script stamps current values into the HTML (for
+  crawlers, link previews and no-JS), and the browser refills `data-stat` elements from the JSON at runtime.
+
 ## Curated static pages (`web/t/`)
 
 `python3 scripts/build_static.py` reads `web/data-curated/curated.json` plus `../unread-db/corpus.sqlite`

@@ -7,12 +7,12 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <title data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
+    <title data-stat-tpl="Map of {tablets} cuneiform tablets" data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
     <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
     <link rel="canonical" href="https://unreadatlas.com/map.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
-    <meta property="og:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta property="og:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta property="og:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta property="og:url" content="https://unreadatlas.com/map.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
@@ -21,7 +21,7 @@
     <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@roguesamurai" />
-    <meta name="twitter:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta name="twitter:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta name="twitter:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
@@ -77,6 +77,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <nav class="header-nav" id="header-nav" aria-label="Main">
         <button type="button" class="nav-btn active" data-view="explore">Explore</button>
         <button type="button" class="nav-btn" data-view="reader">Reader</button>
+        <button type="button" class="nav-btn" data-view="stats">Stats</button>
         <button type="button" class="nav-btn" data-view="about">About</button>
         <a class="nav-link" href="./">Home</a>
         <a class="nav-link" href="browse.html">Browse</a>
@@ -86,8 +87,6 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
         <a class="nav-link" href="search.html">Search</a>
       </nav>
       <div class="header-spacer"></div>
-      <div class="header-meta" id="header-count">Loading…</div>
-      <div class="site-links"><!--site:links--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:links--></div>
     </header>
 
     <main class="app-main">
@@ -380,49 +379,47 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <!-- ABOUT -->
       <section id="view-about" class="view" aria-label="About">
         <div class="about-card">
-          <h2>About this reader</h2>
+          <h2>About Unread Atlas</h2>
+          <h3>Why this exists</h3>
           <p>
-            A browser for <strong>new English readings</strong> of cuneiform works that have ATF
-            transliterations but little or no open English on CDLI — literary, royal, scientific,
-            omen, and letter corpora first.
+            These are humanity's oldest known writings: receipts, prayers, letters, lullabies and science.
+            For generations, reading them took a PhD, a trip to a faraway land and luck at the museum, and
+            most of us only saw them through someone else's filter. Unread Atlas gathers what is openly
+            published and lays it out so everyone can read it unfiltered.
           </p>
+          <h3>What's here</h3>
+          <p>
+            <strong data-stat="tablets">462,298</strong> cuneiform tablets catalogued from five open projects (CDLI, ORACC, eBL, TLHdig and Achemenet),
+            each counted once. <strong data-stat="with_text">223,678</strong> have a transliteration online,
+            <strong data-stat="human_en">21,451</strong> have English by human scholars and <strong data-stat="machine_en">165,344</strong> more have a machine draft.
+            <strong data-stat="mapped">316,227</strong> are on the map. Every figure, by source, period and language, is on the
+            <a href="?view=stats" data-goto-view="stats">Stats page</a>.
+          </p>
+          <h3>The machine English</h3>
+          <p>
+            Where no human translation is online, the English column shows a draft from our own T5 model,
+            <a href="https://huggingface.co/montycrypto/atf-to-english" target="_blank" rel="noopener">montycrypto/atf-to-english</a>,
+            which reads ATF one line at a time. It is labelled “Machine draft” everywhere it appears, and the
+            reader can show it side by side with human English wherever both exist.
+          </p>
+          <h3>Ways in</h3>
           <ul>
-            <li><strong>Explore</strong> — filter ranked candidates from the local CDLI dump</li>
-            <li><strong>Epic hunt</strong> — large literary / phrase-scored shortlist (Gilgamesh II, hymns, …)</li>
-            <li><strong>Remedies</strong> — plant recipes and therapeutic tablets (head, teeth, eyes, belly…)</li>
-            <li><strong>Omens</strong> — physiognomy, birth, skin spots, liver extispicy, Mul.Apin / astral</li>
-            <li><strong>Math</strong> — reciprocal (igi), metrology, multiplication (a-rá) school tables</li>
-            <li><strong>Map &amp; time</strong> — findspots and a period scrubber</li>
-            <li><strong>Reader</strong> — English · ATF · period-style cuneiform side by side</li>
+            <li><strong>Map &amp; time</strong>: find-spots and a period scrubber</li>
+            <li><strong>Reader</strong>: English, ATF and period-style cuneiform side by side</li>
+            <li><strong>Search</strong>, <strong>Browse</strong> and <strong>Signs</strong> across the whole corpus</li>
+            <li><strong>Featured</strong>: hand-picked sets of epic, remedy, omen and math tablets</li>
           </ul>
           <p>
-            Direct links:
-            <a href="?id=P262784&amp;mode=epic">Gilgamesh II</a>
-            ·
-            <a href="?id=P404959&amp;mode=remedies">Head fever remedies</a>
-            ·
-            <a href="?id=P480113&amp;mode=omens">Mole physiognomy</a>
-            ·
-            <a href="?id=P453398&amp;mode=omens">Liver extispicy</a>
-            ·
-            <a href="?id=P257557&amp;mode=math">Reciprocal table</a>
-            ·
-            <a href="?id=P464229&amp;mode=math">Metrology</a>
+            Start with
+            <a href="?id=P262784&amp;mode=epic">Gilgamesh II</a> ·
+            <a href="?id=P404959&amp;mode=remedies">head fever remedies</a> ·
+            <a href="?id=P480113&amp;mode=omens">mole physiognomy</a> ·
+            <a href="?id=P257557&amp;mode=math">a reciprocal table</a>
           </p>
           <p>
             Cuneiform is drawn in a period-matched face, following the
-            <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener"
-              >eBL converter</a
-            >
-            (Neo-Assyrian, Neo-Babylonian, Old Babylonian cursive / literary / monumental, Hittite; Noto otherwise);
-            the reader's “Cuneiform face” menu overrides it for your session (<a href="credits.html#fonts">font credits</a>).
-            Offline ATF→Unicode uses a vendored eBL reading map; optional live conversion hits the
-            eBL signs API.
-          </p>
-          <p>
-            Translation model integration (local T5 from
-            <code>atf-translate-test</code>, or in-browser Hugging Face later) is the next layer —
-            the English column is ready for line-aligned output.
+            <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener">eBL converter</a>;
+            the reader's “Cuneiform face” menu lets you pick another (<a href="credits.html#fonts">font credits</a>).
           </p>
           <div class="credits">
             <p>
@@ -435,6 +432,16 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               ETCSL, ORACC, etc. The catalog flags likely known projects.
             </p>
           </div>
+          <h3 id="contact">Contact</h3>
+          <p class="contact-links"><!--site:contact--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:contact--></p>
+        </div>
+      </section>
+      <!-- STATS: filled from corpus_stats.json by renderStats() in app.js -->
+      <section id="view-stats" class="view" aria-label="Corpus statistics">
+        <div class="about-card stats-card" id="stats-card">
+          <h2>Corpus statistics</h2>
+          <p class="stats-lede">What Unread Atlas holds, and exactly what each number counts.</p>
+          <div id="stats-body"><p class="stats-loading">Loading figures…</p></div>
         </div>
       </section>
     </main>

@@ -97,7 +97,25 @@ input {
 @media (max-width: 1599px) { .app-header .brand .sub { display: none; } }
 /* keep the header on one row with nothing overlapping or off-screen from 1024 px up */
 @media (max-width: 1279px) { .app-header .social-link span { display: none; } .app-header { gap: 0.75rem; } }
-@media (max-width: 1179px) { .app-header .header-meta { display: none; } }
+.app-header .header-meta { display: flex; flex-direction: column; line-height: 1.25; text-align: right; white-space: nowrap; }
+.header-meta .meta-curated { font-size: 0.68rem; opacity: 0.8; }
+.header-meta .meta-corpus { font-size: 0.78rem; }
+/* each figure stays whole; the line wraps between figures instead of running off the right edge */
+.header-meta .meta-corpus > span { white-space: nowrap; }
+.app-header .header-meta { min-width: 0; flex-shrink: 1; }
+@media (max-width: 1599px) {
+  .header-meta .meta-curated { display: none; }
+  .header-meta .meta-corpus { font-size: 0.72rem; white-space: normal; max-width: 25rem; }
+}
+@media (min-width: 1150px) and (max-width: 1279px) {
+  .app-header .header-meta { flex-shrink: 0; width: 12.5rem; }
+  .header-meta .meta-corpus { font-size: 0.58rem; line-height: 1.15; }
+}
+/* tablet widths: the desktop nav already fills the row, so the figures live on About (and the phone header) */
+@media (min-width: 761px) and (max-width: 1149px) { .app-header .header-meta { display: none; } }
+@media (max-width: 1179px) { .header-meta .meta-curated { display: none; } }
+.about-stats strong { font-variant-numeric: tabular-nums; }
+.contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 a.brand:hover { text-decoration: none; }
 a.brand:hover h1 { color: #fff; }
 a.brand:hover .brand-mark { filter: brightness(1.12); }
@@ -1218,14 +1236,22 @@ body.mode-epic .catalog-card .title {
 .reader-pending.failed .spinner { display: none; }
 
 /* ─── About ─── */
-#view-about {
+#view-about, #view-stats {
   overflow-y: auto;
   padding: 2rem;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+@media (max-width: 600px) { #view-about, #view-stats { padding: 1rem 0.75rem; } .about-card { padding: 1.25rem; } }
 
 .about-card {
+  /* flex child of a fixed-height scroller: never shrink below its text (was clipping the last line) */
+  flex: 0 0 auto;
+  height: auto;
+  align-self: flex-start;
   max-width: 640px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -1400,9 +1426,8 @@ body.mode-epic .catalog-card .title {
 }
 
 @media (max-width: 640px) {
-  .header-meta {
-    display: none;
-  }
+  .app-header .header-meta { font-size: 0.66rem; white-space: normal; max-width: 13.5rem; }
+  .app-header .header-meta .meta-corpus { font-size: 0.58rem; line-height: 1.2; max-width: none; }
 
   .preview-facts {
     grid-template-columns: 1fr 1fr;
@@ -1954,3 +1979,31 @@ body:not(.show-preambles) .lg-credit { display: none; }
 .lg-surf { display: block; font-family: var(--font-ui); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); line-height: 1.1; white-space: nowrap; }
 .line-row .ln .lg-surf { margin-bottom: 1px; }
 .lg-cell.lg-surf-start, .line-row.lg-surf-start { border-top: 1px dashed var(--border); }
+
+/* ─── Stats view (?view=stats) ─── */
+.stats-card { max-width: 760px; }
+.stats-card h3 { margin: 1.6rem 0 0.4rem; font-family: var(--font-serif); font-weight: 500; }
+.stats-lede, .stats-loading { color: var(--text-dim); }
+.stats-note { color: var(--text-dim); font-size: 0.82rem; line-height: 1.5; margin: 0.15rem 0 0.5rem; }
+.stats-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.stats-table th { text-align: left; font-weight: 500; color: var(--text-dim); font-size: 0.78rem; border-bottom: 1px solid var(--border); padding: 0.3rem 0.5rem; }
+.stats-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+.stats-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stats-main td.num { color: var(--accent-strong); font-weight: 600; width: 7.5rem; }
+.stats-table .pct { text-align: right; color: var(--text-dim); font-variant-numeric: tabular-nums; width: 3.5rem; }
+.stats-table .barcol { width: 32%; }
+.stats-table .stats-note { margin: 0.15rem 0 0; font-size: 0.78rem; }
+.stats-bar { display: block; height: 8px; background: var(--border-soft); border-radius: 4px; overflow: hidden; margin-top: 0.45em; }
+.stats-bar i { display: block; height: 100%; background: var(--accent); }
+.stats-stack { display: flex; height: 14px; border-radius: 7px; overflow: hidden; margin: 0.4rem 0 0.6rem; background: var(--border-soft); }
+.stats-stack i { display: block; height: 100%; }
+.s-h { background: #e3c27a; } .s-m { background: #5b8ad6; } .s-a { background: #c4784a; } .s-c { background: #3a404c; }
+.stats-table em.sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.45rem; }
+.stats-foot { margin-top: 1.5rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-dim); }
+@media (max-width: 520px) {
+  .stats-table .barcol { display: none; }
+  .stats-main td.num { width: 5.8rem; }
+  .stats-table { font-size: 0.86rem; }
+}
+/* phone: keep the visually hidden label inside its chip (was widening the page to 398px) */
+.pchip-face { position: relative; }

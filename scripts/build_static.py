@@ -58,7 +58,8 @@ def apply_site_config(path: Path) -> None:
     <title data-site-title="Prefix">…</title>   -> "Prefix · <name>" (or just <name> if prefix is empty)
     <!--site:name-->…<!--/site:name-->           -> site name
     <!--site:tagline-->…<!--/site:tagline-->     -> tagline
-    <!--site:links-->…<!--/site:links-->         -> X / GitHub links
+    <!--site:links-->…<!--/site:links-->         -> emptied (X / GitHub moved out of the header)
+    <!--site:contact-->…<!--/site:contact-->     -> X / GitHub links (About page "Contact")
     """
     t = path.read_text()
     name = html.escape(SITE["name"])
@@ -69,7 +70,9 @@ def apply_site_config(path: Path) -> None:
     t = re.sub(r"<!--site:name-->.*?<!--/site:name-->", f"<!--site:name-->{name}<!--/site:name-->", t, flags=re.S)
     t = re.sub(r"<!--site:tagline-->.*?<!--/site:tagline-->",
                f"<!--site:tagline-->{html.escape(SITE.get('tagline', ''))}<!--/site:tagline-->", t, flags=re.S)
-    t = re.sub(r"<!--site:links-->.*?<!--/site:links-->", f"<!--site:links-->{site_links_html()}<!--/site:links-->", t, flags=re.S)
+    # X / GitHub live in the About page's Contact section, not the top header
+    t = re.sub(r"\s*<div class=\"site-links\"><!--site:links-->.*?<!--/site:links--></div>", "", t, flags=re.S)
+    t = re.sub(r"<!--site:contact-->.*?<!--/site:contact-->", f"<!--site:contact-->{site_links_html()}<!--/site:contact-->", t, flags=re.S)
     path.write_text(t)
     print("site config applied to", path)
 OUT = WEB / "t"

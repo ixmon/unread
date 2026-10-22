@@ -1,0 +1,131 @@
+{
+ "tablets": 462298,
+ "with_text": 223678,
+ "human_en": 21451,
+ "machine_en": 165344,
+ "any_en": 186795,
+ "text_no_en": 36909,
+ "catalogue_only": 238594,
+ "with_coords": 341225,
+ "place_names": 772,
+ "mapped": 316227,
+ "map_points": 465,
+ "corpus_built_at": "2026-10-05T04:06:14Z",
+ "unmapped_coords": 24998,
+ "pct_human_en": 5,
+ "pct_no_human_en": 95,
+ "pct_catalogue_only": 52,
+ "pct1": {
+  "with_text": 48.4,
+  "human_en": 4.6,
+  "machine_en": 35.8,
+  "any_en": 40.4,
+  "text_no_en": 8.0,
+  "catalogue_only": 51.6,
+  "with_coords": 73.8,
+  "mapped": 68.4
+ },
+ "sources": {
+  "cdli": {
+   "records": 426657,
+   "tablets": 426657
+  },
+  "oracc": {
+   "records": 133313,
+   "tablets": 133313
+  },
+  "ebl": {
+   "records": 34398,
+   "tablets": 34315
+  },
+  "tlhdig": {
+   "records": 23713,
+   "tablets": 23675
+  },
+  "achemenet": {
+   "records": 2830,
+   "tablets": 2830
+  }
+ },
+ "periods": {
+  "labels": 64,
+  "unlabelled_records": 79051,
+  "top": [
+   {
+    "label": "Ur III",
+    "records": 194293,
+    "tablets": 112310
+   },
+   {
+    "label": "Old Babylonian",
+    "records": 85428,
+    "tablets": 76742
+   },
+   {
+    "label": "Neo-Assyrian",
+    "records": 64254,
+    "tablets": 39762
+   },
+   {
+    "label": "Neo-Babylonian",
+    "records": 41319,
+    "tablets": 38197
+   },
+   {
+    "label": "Middle Babylonian",
+    "records": 18749,
+    "tablets": 16827
+   }
+  ]
+ },
+ "languages": {
+  "labels": 119,
+  "unlabelled_records": 90876,
+  "top": [
+   {
+    "label": "Akkadian",
+    "records": 201743,
+    "tablets": 170426
+   },
+   {
+    "label": "Sumerian",
+    "records": 253347,
+    "tablets": 154873
+   },
+   {
+    "label": "Hittite",
+    "records": 35274,
+    "tablets": 30916
+   },
+   {
+    "label": "Akkadian; Sumerian",
+    "records": 10033,
+    "tablets": 9222
+   },
+   {
+    "label": "Proto-cuneiform",
+    "records": 14042,
+    "tablets": 8240
+   }
+  ]
+ },
+ "generated_at": "2026-10-22T17:07:35Z",
+ "notes": {
+  "tablets": "distinct COALESCE(canonical_id,id)",
+  "records": "rows in texts (one per source listing)",
+  "periods/languages tablets": "distinct tablets carrying that label in at least one source; a tablet can carry labels from several sources"
+ },
+ "queries": {
+  "tablets": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts",
+  "with_text": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE has_atf=1",
+  "human_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='human' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+  "machine_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND author_type='model' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+  "any_en": "SELECT COUNT(DISTINCT canonical_id) FROM translations WHERE lang='en' AND canonical_id IN (SELECT COALESCE(canonical_id,id) FROM texts)",
+  "text_no_en": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=1) WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
+  "catalogue_only": "SELECT COUNT(*) FROM (SELECT COALESCE(canonical_id,id) c FROM texts GROUP BY c HAVING MAX(has_atf)=0) WHERE c NOT IN (SELECT canonical_id FROM translations WHERE lang='en' AND canonical_id IS NOT NULL)",
+  "with_coords": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE lat IS NOT NULL",
+  "place_names": "SELECT COUNT(DISTINCT provenience) FROM texts WHERE lat IS NOT NULL",
+  "mapped": "SELECT COUNT(DISTINCT COALESCE(canonical_id,id)) FROM texts WHERE usable_site(provenience,lat,lon)=1",
+  "map_points": "SELECT COUNT(DISTINCT printf('%.3f,%.3f',lat,lon)) FROM texts WHERE usable_site(provenience,lat,lon)=1"
+ }
+}
