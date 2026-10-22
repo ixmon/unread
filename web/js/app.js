@@ -608,13 +608,13 @@ function renderLinesGrid(body, text, keys, wantAtf) {
 
   // row 1: the gray header bar (sticky) naming each column; row 2: per-column credit / licence
   html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
-  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
-  if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
+  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span><button type="button" class="lg-info" data-info="atf" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
+  if (atfOn) html.push(`<div class="lg-credit" data-for="atf" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
   else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
   const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
   cols.forEach((o, vi) => {
     const c = enCol0 + vi;
-    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}"><span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span></div>`);
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}"><span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span><button type="button" class="lg-info" data-info="${escapeAttr(o.key)}" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
     const mp = maps[vi];
     const how =
       o.labels && mp.rate < 0.5
@@ -623,7 +623,7 @@ function renderLinesGrid(body, text, keys, wantAtf) {
           ? " · paragraph translation: each passage spans the lines it covers"
           : "";
     const withheld = vi === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
-    html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
+    html.push(`<div class="lg-credit lg-credit-en" data-for="${escapeAttr(o.key)}" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
   });
 
   // content rows (surface headings get their own row across the line-number + ATF columns)
@@ -657,7 +657,7 @@ function renderLinesGrid(body, text, keys, wantAtf) {
       const span = b.e > b.s;
       const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
       html.push(
-        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? "" : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? ` data-s="${b.s}" data-e="${b.e}"` : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
           .map((it) => itemHtml(it, !!it.orphan))
           .join(" ")}</div>`
       );
@@ -1871,17 +1871,80 @@ async function renderCuneiformCol(text) {
 }
 
 function bindLineHover(container) {
-  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i]").forEach((el) => {
-    el.addEventListener("mouseenter", () => highlightLine(el.dataset.i));
+  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i], .lg-cell[data-s]").forEach((el) => {
+    el.addEventListener("mouseenter", () => (el.dataset.s != null ? highlightLine(+el.dataset.s, +el.dataset.e) : highlightLine(el.dataset.i)));
     el.addEventListener("mouseleave", () => highlightLine(null));
+  });
+  bindColumnInfo(container);
+}
+
+/**
+ * Highlight row i (or rows i..e) in every column. Passage cells (ORACC paragraphs spanning rows s..e) light up
+ * whenever any row they cover is hovered, and hovering a passage lights every row it covers.
+ */
+function highlightLine(i, e) {
+  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
+  if (i == null) return;
+  const s = +i, end = e == null ? s : +e;
+  for (let k = s; k <= end; k++) $$(`[data-i="${k}"]`).forEach((el) => el.classList.add("hl"));
+  $$(".lg-cell[data-s]").forEach((el) => {
+    if (+el.dataset.s <= end && +el.dataset.e >= s) el.classList.add("hl");
   });
 }
 
-function highlightLine(i) {
-  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
-  if (i == null) return;
-  $$(`[data-i="${i}"]`).forEach((el) => el.classList.add("hl"));
+// ─── Column preambles: ⓘ popover per column + one global "show inline" toggle (localStorage, default hidden) ───
+const PREAMBLE_KEY = "unread.showPreambles";
+function applyPreambles() {
+  const on = localStorage.getItem(PREAMBLE_KEY) === "1";
+  document.body.classList.toggle("show-preambles", on);
+  $$(".preamble-toggle").forEach((b) => {
+    b.setAttribute("aria-pressed", String(on));
+    b.classList.toggle("on", on);
+  });
 }
+function setPreambles(on) {
+  localStorage.setItem(PREAMBLE_KEY, on ? "1" : "0");
+  applyPreambles();
+}
+function closeColumnInfo() {
+  const pop = $("#lg-pop");
+  if (pop) pop.remove();
+}
+function bindColumnInfo(container) {
+  container.querySelectorAll(".lg-info").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const open = $("#lg-pop");
+      if (open && open._btn === btn) return closeColumnInfo();
+      closeColumnInfo();
+      const src = [...container.querySelectorAll(".lg-credit[data-for]")].find((c) => c.dataset.for === btn.dataset.info);
+      if (!src) return;
+      const pop = document.createElement("div");
+      pop.id = "lg-pop";
+      pop.className = "lg-pop";
+      pop._btn = btn;
+      pop.setAttribute("role", "dialog");
+      pop.innerHTML = src.innerHTML + `<label class="lg-pop-opt"><input type="checkbox" class="lg-pop-inline"${localStorage.getItem(PREAMBLE_KEY) === "1" ? " checked" : ""}> Show these notes at the top of every column</label>`;
+      document.body.appendChild(pop);
+      const r = btn.getBoundingClientRect();
+      const w = Math.min(340, window.innerWidth - 16);
+      pop.style.width = w + "px";
+      pop.style.left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)) + "px";
+      pop.style.top = r.bottom + 6 + "px";
+      pop.addEventListener("click", (e) => e.stopPropagation());
+      pop.querySelector(".lg-pop-inline").addEventListener("change", (e) => setPreambles(e.target.checked));
+    });
+  });
+}
+document.addEventListener("click", closeColumnInfo);
+document.addEventListener("keydown", (e) => e.key === "Escape" && closeColumnInfo());
+window.addEventListener("scroll", (e) => { if (!(e.target.closest && e.target.closest("#lg-pop"))) closeColumnInfo(); }, true);
+function initPreambles() {
+  applyPreambles();
+  $$(".preamble-toggle").forEach((b) => b.addEventListener("click", () => setPreambles(localStorage.getItem(PREAMBLE_KEY) !== "1")));
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPreambles);
+else initPreambles();
 
 // ─── Map ───
 function initMap() {
