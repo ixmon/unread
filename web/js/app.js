@@ -233,6 +233,36 @@ function cleanTranslator(a) {
 }
 const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
 
+/**
+ * The text API returns ATF-less mt_lines (eBL) in database row order, not line order (Asb.h came back 6,3,2,4,7,1,5).
+ * Sort them by a natural line key: surface order (obv, rev, edges…), column, then the numeric line number (3' / 10a ok).
+ * Stable, so lines with unparseable labels keep their relative order.
+ */
+const SURF_ORDER = ["", "o", "e", "be", "r", "te", "le", "re"];
+function mtLineSortKey(label) {
+  const parts = String(label || "").trim().split(/\s+/);
+  const last = parts.pop() || "";
+  const m = /^(\d+)(\D*)$/.exec(last.replace(/[′’ʼ]/g, "'"));
+  if (!m) return null;
+  const surf = normSurf(parts.join(" "));
+  const [side, col] = surf.split(":");
+  let si = SURF_ORDER.indexOf(side || "");
+  if (si < 0) si = SURF_ORDER.length;
+  return [si, parseInt(col || "0", 10) || 0, parseInt(m[1], 10), m[2]];
+}
+function sortMtLines(ml) {
+  const keyed = ml.map((l, i) => ({ l, i, k: mtLineSortKey(l.line) }));
+  if (keyed.some((x) => !x.k)) return ml; // can't parse every label: leave the API order alone
+  keyed.sort((a, b) => {
+    for (let j = 0; j < 4; j++) {
+      const x = a.k[j], y = b.k[j];
+      if (x !== y) return x < y ? -1 : 1;
+    }
+    return a.i - b.i;
+  });
+  return keyed.map((x) => x.l);
+}
+
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
   if (!eds.length) return null;
@@ -327,7 +357,7 @@ function apiTextToReader(d, requestedId) {
       conf = lines.map((l) => l.conf);
     } else {
       const ml = Array.isArray(mtEd.mt_lines) && mtEd.mt_lines.length
-        ? mtEd.mt_lines
+        ? sortMtLines(mtEd.mt_lines)
         : (mtEd.lines || []).filter((l) => l.mt).map((l) => ({ line: [l.surface, l.n].filter(Boolean).join(" "), mt: l.mt, conf: l.conf }));
       english = ml.map((l) => l.mt || "");
       labels = ml.map((l) => l.line || "");
@@ -428,14 +458,52 @@ function setTrParam(text) {
     /* ignore */
   }
 }
-window.addEventListener("popstate", () => {
-  const text = state.currentText;
-  if (!text || !text.translations) return;
+/**
+ * Routing: the URL is the source of truth for the view. ?id=<tablet>[&tr=…][&find=…] = reader on that tablet;
+ * ?view=about | ?view=reader (no tablet) = those views; neither = Explore. Every user view switch pushes an entry
+ * (setView/openReader), and popstate re-renders from the URL, so Back/Forward walk About ⇄ Reader ⇄ Explore.
+ */
+const READER_PARAMS = ["id", "tr", "find", "mode"];
+function viewUrl(view, id) {
+  const u = new URL(location.href);
+  u.searchParams.delete("view");
+  if (view === "reader" && id) {
+    if (u.searchParams.get("id") !== id) for (const k of READER_PARAMS) u.searchParams.delete(k);
+    u.searchParams.set("id", id);
+  } else {
+    for (const k of READER_PARAMS) u.searchParams.delete(k);
+    if (view === "about" || view === "reader") u.searchParams.set("view", view);
+  }
+  return u.toString().replace(/%2C/gi, ",");
+}
+function syncUrl(view, id, mode) {
+  if (mode === "none") return;
+  const next = viewUrl(view, id);
+  if (next === location.href) return;
+  try {
+    if (mode === "replace") history.replaceState({ view, id: id || null }, "", next);
+    else history.pushState({ view, id: id || null }, "", next);
+  } catch (_) {
+    /* ignore */
+  }
+}
+function routeFromUrl() {
   const q = new URLSearchParams(location.search);
-  if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
-  applyTranslation(text, q.get("tr"));
-  renderReader();
-});
+  const id = q.get("id");
+  if (id) {
+    const text = state.currentText;
+    if (text && text.id === id && !state.readerPending) {
+      if (text.translations) applyTranslation(text, q.get("tr"));
+      setView("reader", "none");
+    } else {
+      openReader(id, "none");
+    }
+    return;
+  }
+  const v = q.get("view");
+  setView(v === "about" || v === "reader" ? v : "explore", "none");
+}
+window.addEventListener("popstate", routeFromUrl);
 
 // ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
 const NARROW_Q = window.matchMedia("(max-width: 760px)");
@@ -542,8 +610,7 @@ function trFocus(text) {
 const visibleTrCols = (text) => {
   const cols = text.tr_cols || [];
   if (!NARROW_Q.matches) return cols;
-  if (cols.length > 1) return [cols[trFocus(text)]];
-  return cols.slice(0, 1);
+  return cols.slice(0, 1); // the rest become their own slides (renderTrSlides)
 };
 /** Side-by-side pair opened by "Compare translations": machine draft, then the first human edition the policy allows. */
 function defaultCompareCols(text) {
@@ -570,16 +637,24 @@ function trCreditHtml(o) {
   return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
 }
 
+/** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
+function trChipSub(o) {
+  if (o.kind === "machine") return "machine draft";
+  return o.license ? `human · ${o.license}` : "human";
+}
+
 function renderLinesCol(text) {
-  const body = $("#lines-body");
-  const panels = state.readerPanels;
+  // Wide screens: ATF plus every chosen translation side by side in one aligned grid. Narrow screens:
+  // ATF plus the first translation here; each further translation gets its own slide (renderTrSlides).
+  const keys = state.readerPanels.english ? visibleTrCols(text) : [];
+  renderLinesGrid($("#lines-body"), text, keys, state.readerPanels.atf);
+}
+
+function renderLinesGrid(body, text, keys, wantAtf) {
   const opts = text.translations || [];
-  const narrow = NARROW_Q.matches;
-  const allKeys = text.tr_cols || [];
-  const narrowCompare = !!(narrow && panels.english && allKeys.length > 1);
-  const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
+  const cols = keys.map((k) => opts.find((o) => o.key === k)).filter(Boolean);
   const content = (text.lines || []).filter((l) => l.type === "line");
-  const atfOn = panels.atf && content.length > 0;
+  const atfOn = wantAtf && content.length > 0;
   // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
   let rows;
   if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
@@ -596,44 +671,17 @@ function renderLinesCol(text) {
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
   const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
-  const comparing = allKeys.length > 1;
-  const compareBtn =
-    opts.length >= 2 && !comparing
-      ? `<button type="button" class="tr-compare">Compare translations</button>`
-      : "";
   const html = [];
 
-  // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
+  // row 1: the gray header bar (sticky) naming each column; row 2: per-column credit / licence
   html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
-  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
-  if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
+  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span><button type="button" class="lg-info" data-info="atf" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
+  if (atfOn) html.push(`<div class="lg-credit" data-for="atf" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
   else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
   const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
   cols.forEach((o, vi) => {
     const c = enCol0 + vi;
-    const ci = allKeys.indexOf(o.key);
-    const pick =
-      opts.length > 1
-        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${opts
-            .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
-            .join("")}</select>`
-        : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
-    const tabs = narrowCompare
-      ? `<div class="tr-tabs" role="tablist" aria-label="Translations to compare">${allKeys
-          .map((key, i) => {
-            const t = opts.find((x) => x.key === key);
-            if (!t) return "";
-            const on = i === trFocus(text);
-            return `<button type="button" class="tr-tab" role="tab" id="tr-tab-${i}" data-focus="${i}" aria-selected="${on ? "true" : "false"}" aria-controls="tr-panel" tabindex="${on ? "0" : "-1"}">${escapeHtml(trTabLabel(t))}</button>`;
-          })
-          .join("")}</div><span class="tr-swipe-hint">Swipe</span>`
-      : "";
-    const x = comparing && !narrowCompare ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
-    const close = narrowCompare
-      ? `<button type="button" class="tr-x" data-col="${ci}" title="Close comparison" aria-label="Close comparison">×</button>`
-      : "";
-    const add = vi === cols.length - 1 ? compareBtn : "";
-    html.push(`<div class="lg-head lg-head-en"${narrowCompare ? ' id="tr-panel"' : ""} data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${tabs}${pick}${x}${close}${add}</div>`);
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}"><span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span><button type="button" class="lg-info" data-info="${escapeAttr(o.key)}" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
     const mp = maps[vi];
     const how =
       o.labels && mp.rate < 0.5
@@ -642,21 +690,28 @@ function renderLinesCol(text) {
           ? " · paragraph translation: each passage spans the lines it covers"
           : "";
     const withheld = vi === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
-    html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
+    html.push(`<div class="lg-credit lg-credit-en" data-for="${escapeAttr(o.key)}" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
   });
 
   // content rows (surface headings get their own row across the line-number + ATF columns)
+  // Surface changes (obverse → reverse …) are NOT their own grid rows: an extra row exists only in the
+  // line-number + ATF columns, so it pushed every translation column down (the stray "O" + dashed rule at the top).
+  // Instead the first line of each surface carries a small tag in its line-number cell, and later surfaces
+  // get a dashed rule on top of that row in every column, so all columns stay level.
   const rowG = [];
+  const surfStart = new Set();
   let g = 3, lastSurf = null;
   rows.forEach((r, i) => {
+    let tag = "";
     if (content.length && r.surface && r.surface !== lastSurf) {
-      html.push(`<div class="lg-break" style="grid-row:${g};grid-column:1 / ${atfOn ? atfCol + 1 : 2}">${escapeHtml(r.surface)}</div>`);
-      g++;
+      tag = `<span class="lg-surf" title="${escapeAttr(surfaceLabel(r.surface))}">${escapeHtml(surfaceShort(r.surface))}</span>`;
+      if (lastSurf !== null) surfStart.add(i);
     }
     lastSurf = r.surface;
     rowG[i] = g;
-    html.push(`<div class="lg-cell lg-ln" data-i="${i}" style="grid-row:${g};grid-column:1">${escapeHtml(r.n)}</div>`);
-    if (atfOn) html.push(`<div class="lg-cell lg-atf" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
+    const sc = surfStart.has(i) ? " lg-surf-start" : "";
+    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${tag}${escapeHtml(r.n)}</div>`);
+    if (atfOn) html.push(`<div class="lg-cell lg-atf${sc}" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
     g++;
   });
   const itemHtml = (it, showLabel) =>
@@ -676,77 +731,148 @@ function renderLinesCol(text) {
       const span = b.e > b.s;
       const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
       html.push(
-        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? "" : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${surfStart.has(b.s) ? " lg-surf-start" : ""}${lv ? ` conf-${lv}` : ""}"${span ? ` data-s="${b.s}" data-e="${b.e}"` : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
           .map((it) => itemHtml(it, !!it.orphan))
           .join(" ")}</div>`
       );
     }
   });
   if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
-  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}${narrowCompare ? " lg-narrow-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
-
-  const setCols = (next) => {
-    applyTranslation(text, next);
-    if ((text.tr_cols || []).length <= (text.tr_focus | 0)) text.tr_focus = 0;
-    setTrParam(text);
-    renderReader();
-  };
-  body.querySelectorAll(".tr-pick").forEach((sel) =>
-    sel.addEventListener("change", () => {
-      const next = [...text.tr_cols];
-      const ci = +sel.dataset.col;
-      const j = next.indexOf(sel.value);
-      if (j >= 0 && j !== ci) next[j] = next[ci]; // the other column keeps a different source
-      next[ci] = sel.value;
-      setCols(next);
-    })
-  );
-  body.querySelectorAll(".tr-x").forEach((b) =>
-    b.addEventListener("click", () => {
-      if (narrowCompare) setCols([(text.tr_cols || [])[trFocus(text)]]);
-      else setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col));
-    })
-  );
-  body.querySelector(".tr-compare")?.addEventListener("click", () => {
-    text.tr_focus = 0;
-    setCols(defaultCompareCols(text));
-  });
-  const focusTab = (i) => {
-    text.tr_focus = i;
-    renderReader();
-    document.querySelector(`#lines-body .tr-tab[data-focus="${i}"]`)?.focus();
-  };
-  body.querySelectorAll(".tr-tab").forEach((b) => b.addEventListener("click", () => focusTab(+b.dataset.focus)));
-  body.querySelector(".tr-tabs")?.addEventListener("keydown", (e) => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    e.preventDefault();
-    const n = (text.tr_cols || []).length;
-    if (n < 2) return;
-    focusTab((trFocus(text) + (e.key === "ArrowRight" ? 1 : -1) + n) % n);
-  });
-  const grid = body.querySelector(".lines-grid");
-  if (narrowCompare && grid) {
-    let swipe = null;
-    grid.addEventListener("touchstart", (e) => {
-      if (e.touches.length !== 1) return;
-      swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }, { passive: true });
-    grid.addEventListener("touchend", (e) => {
-      if (!swipe) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - swipe.x;
-      const dy = t.clientY - swipe.y;
-      swipe = null;
-      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
-      const n = (text.tr_cols || []).length;
-      if (n < 2) return;
-      focusTab((trFocus(text) + (dx < 0 ? 1 : -1) + n) % n);
-    }, { passive: true });
-  }
+  body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
   bindLineHover(body);
 }
+
+/** Narrow screens: one extra slide per additional translation chip that is on (line numbers + that translation). */
+function renderTrSlides(text) {
+  $$("#reader-body .tr-slide").forEach((el) => el.remove());
+  if (!NARROW_Q.matches || !isAlignedText(text) || !state.readerPanels.english) return;
+  let after = $("#col-lines");
+  (text.tr_cols || []).slice(1).forEach((key, j) => {
+    const col = document.createElement("div");
+    col.className = "reader-col tr-slide";
+    col.id = `col-tr-${j + 1}`;
+    col.style.display = "flex";
+    col.innerHTML = `<div class="col-body lines-body-extra"></div>`;
+    after.insertAdjacentElement("afterend", col);
+    after = col;
+    renderLinesGrid(col.firstElementChild, text, [key], false);
+  });
+}
+
+/** Chip row: one chip per available translation (aligned tablets) or one English chip, then ATF, Cuneiform, Meta. */
+function renderReaderChips(text) {
+  const host = $("#reader-chips");
+  if (!host) return;
+  const panels = state.readerPanels;
+  const content = (text.lines || []).filter((l) => l.type === "line");
+  const aligned = isAlignedText(text);
+  host.querySelectorAll(".pchip-tr").forEach((el) => el.remove());
+  const enChip = host.querySelector('[data-panel="english"]');
+  const status = text.translation_short || "";
+  if (aligned) {
+    enChip.hidden = true;
+    const on = panels.english ? text.tr_cols || [] : [];
+    const frag = (text.translations || [])
+      .map((o) => {
+        const i = on.indexOf(o.key);
+        return `<button type="button" class="pchip pchip-tr${i >= 0 ? " on" : ""} pchip-${o.kind}" data-tr="${escapeAttr(o.key)}" data-slide="${i <= 0 ? "col-lines" : `col-tr-${i}`}" aria-pressed="${i >= 0}" title="${escapeAttr(trOptLabel(o))}"><span class="pchip-name">${escapeHtml(o.kind === "machine" ? "⚙ Machine" : trTabLabel(o))}</span><span class="pchip-sub">${escapeHtml(trChipSub(o))}</span></button>`;
+      })
+      .join("");
+    enChip.insertAdjacentHTML("beforebegin", frag);
+  } else {
+    const has = !!(Array.isArray(text.english) ? text.english.length : text.english);
+    enChip.hidden = false;
+    enChip.disabled = !has;
+    enChip.dataset.slide = "col-english";
+    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine draft") + (status ? ` · ${status}` : "") : status || "none yet";
+  }
+  const atfChip = host.querySelector('[data-panel="atf"]');
+  atfChip.disabled = !content.length;
+  atfChip.dataset.slide = aligned ? "col-lines" : "col-atf";
+  atfChip.querySelector(".pchip-sub").textContent = content.length ? "transliteration" : text.atf ? "withheld" : "none";
+  const cuChip = host.querySelector('[data-panel="cuneiform"]');
+  cuChip.disabled = !content.length;
+  cuChip.dataset.slide = "col-cuneiform";
+  cuChip.querySelector(".pchip-sub").textContent = content.length ? "Unicode" : "none";
+  host.querySelector('[data-panel="meta"]').dataset.slide = "col-meta";
+  host.querySelectorAll("[data-panel]").forEach((b) => {
+    const v = !!panels[b.dataset.panel] && !b.disabled;
+    b.classList.toggle("on", v);
+    b.setAttribute("aria-pressed", String(v));
+  });
+  host.querySelectorAll(".pchip-tr").forEach((b) => b.addEventListener("click", () => onChip(b)));
+  syncSlideChip();
+}
+
+/** Turn a chip's panel / translation on or off. Narrow: a tap on an off chip turns it on and slides to it,
+ *  a tap on an on chip slides to it, and a tap on the chip already in view turns it off. */
+function onChip(btn) {
+  const text = state.currentText;
+  if (!text || btn.disabled) return;
+  const panels = state.readerPanels;
+  const on = btn.classList.contains("on");
+  if (NARROW_Q.matches && on && !btn.classList.contains("current")) {
+    scrollToSlide(btn.dataset.slide);
+    return;
+  }
+  const wouldBeEmpty = (nextPanels) => !Object.values(nextPanels).some(Boolean);
+  if (btn.dataset.tr) {
+    const key = btn.dataset.tr;
+    let cols = panels.english ? [...(text.tr_cols || [])] : [];
+    cols = on ? cols.filter((k) => k !== key) : [...cols, key];
+    if (!cols.length) {
+      if (wouldBeEmpty({ ...panels, english: false })) return;
+      panels.english = false;
+    } else {
+      panels.english = true;
+      applyTranslation(text, cols);
+      setTrParam(text);
+    }
+  } else {
+    const key = btn.dataset.panel;
+    if (wouldBeEmpty({ ...panels, [key]: !on })) return;
+    panels[key] = !on;
+  }
+  renderReader();
+  if (!on) {
+    const slide = btn.dataset.tr ? $(`#reader-chips [data-tr="${CSS.escape(btn.dataset.tr)}"]`)?.dataset.slide : btn.dataset.slide;
+    scrollToSlide(slide);
+  }
+}
+
+function scrollToSlide(id) {
+  if (!NARROW_Q.matches || !id) return;
+  const body = $("#reader-body");
+  const el = document.getElementById(id);
+  if (!el || el.style.display === "none") return;
+  body.scrollTo({ left: el.offsetLeft - body.offsetLeft, behavior: "smooth" });
+}
+
+/** Mark the chip(s) whose slide is in view (narrow); chips are the slider's tab indicator. */
+function syncSlideChip() {
+  const host = $("#reader-chips");
+  const body = $("#reader-body");
+  if (!host || !body) return;
+  let cur = null;
+  if (NARROW_Q.matches) {
+    const mid = body.scrollLeft + body.clientWidth / 2;
+    for (const el of body.children) {
+      if (el.style.display === "none" || !el.offsetWidth) continue;
+      const x = el.offsetLeft - body.offsetLeft;
+      if (mid >= x && mid < x + el.offsetWidth) cur = el.id;
+    }
+  }
+  host.querySelectorAll(".pchip").forEach((b) => {
+    const c = !!cur && b.classList.contains("on") && b.dataset.slide === cur;
+    b.classList.toggle("current", c);
+    if (c) b.setAttribute("aria-current", "true");
+    else b.removeAttribute("aria-current");
+  });
+  const curChip = host.querySelector(".pchip.current");
+  if (curChip && host.scrollWidth > host.clientWidth) curChip.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
 NARROW_Q.addEventListener?.("change", () => {
-  if (state.currentText && isAlignedText(state.currentText)) renderReader();
+  if (state.currentText) renderReader();
 });
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
@@ -1267,12 +1393,13 @@ function applySearchFind() {
   if (cHit) scrollColBody(cHit);
 }
 
-async function openReader(id) {
+async function openReader(id, hist = "push") {
+  syncUrl("reader", id, hist);
   // While the text loads (the /api Lambda can take seconds on a cold start) the reader shows
   // "Loading tablet <id>…" instead of its "No work open" empty state; on failure, a retry.
   const token = (state._readerToken = (state._readerToken || 0) + 1);
   state.readerPending = { id, failed: false };
-  setView("reader");
+  setView("reader", "none");
   const text = await loadText(id);
   if (token !== state._readerToken) return; // a newer openReader() superseded this one
   if (!text) {
@@ -1363,8 +1490,6 @@ function renderReader() {
   const badgeHost = $("#reader-status-badges");
   if (badgeHost) {
     badgeHost.innerHTML = [
-      statusChip(text),
-      machineChip(text),
       text.epic_hunt ? `<span class="chip status-epic">Epic</span>` : "",
       text.herbal_remedy ? `<span class="chip status-herbal">Remedy</span>` : "",
       text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
@@ -1401,6 +1526,8 @@ function renderReader() {
   $("#col-meta").style.display = panels.meta ? "flex" : "none";
 
   renderEnglishCol(text); // aligned API tablets: renders the lines column instead
+  renderTrSlides(text);
+  renderReaderChips(text);
   if (!aligned) renderAtfCol(text);
   renderCuneiformCol(text);
   if (panels.meta) {
@@ -1711,6 +1838,24 @@ function translatorUrl(text, from = 0) {
   return `${TRANSLATOR_PAGE}?${q}`;
 }
 
+const SURF_NAMES = [
+  [/^(obverse|obv\.?|o)$/, "obv.", "Obverse"], [/^(reverse|rev\.?|r)$/, "rev.", "Reverse"],
+  [/^(left edge|le)$/, "l.e.", "Left edge"], [/^(right edge|re)$/, "r.e.", "Right edge"],
+  [/^(top edge|upper edge|te|ue)$/, "t.e.", "Top edge"], [/^(bottom edge|lower edge|be|lo\.? ?e\.?)$/, "b.e.", "Bottom edge"],
+  [/^(edge|e)$/, "edge", "Edge"],
+];
+/** ATF surface ("o", "obverse col 1", "o i", "left edge") -> short tag ("obv. 1") and full label ("Obverse, column 1"). */
+function parseSurface(s) {
+  const raw = String(s || "").trim();
+  const m = raw.toLowerCase().match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  const side = (m && m[1]) || raw.toLowerCase(), col = m && m[2];
+  const hit = SURF_NAMES.find(([re]) => re.test(side));
+  const short = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
+  return { short: col ? `${short} ${col}` : short, label: hit ? hit[2] + (col ? `, column ${col}` : "") : raw };
+}
+const surfaceShort = (s) => parseSurface(s).short;
+const surfaceLabel = (s) => parseSurface(s).label;
+
 function renderAtfCol(text) {
   const body = $("#atf-body");
   const lines = text.lines || [];
@@ -1726,15 +1871,16 @@ function renderAtfCol(text) {
   for (const line of lines) {
     if (line.type === "line") {
       const surf = [line.surface, line.column].filter(Boolean).join(" · ");
-      if (surf && surf !== `${lastSurface} · ${lastCol}`.replace(/^ · | · $/g, "")) {
-        if (line.surface !== lastSurface || line.column !== lastCol) {
-          html += `<div class="surface-break">${escapeHtml(surf)}</div>`;
-          lastSurface = line.surface;
-          lastCol = line.column;
-        }
+      // surface/column change: a tag in the line-number cell (not a separate row, which offset the first line)
+      let tag = "", sc = "";
+      if (surf && (line.surface !== lastSurface || line.column !== lastCol)) {
+        tag = `<span class="lg-surf" title="${escapeAttr(surf)}">${escapeHtml(surfaceShort(line.surface) + (line.column ? " " + line.column : ""))}</span>`;
+        if (i > 0) sc = " lg-surf-start";
+        lastSurface = line.surface;
+        lastCol = line.column;
       }
-      html += `<div class="line-row" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
-        <span class="ln">${escapeHtml(line.n)}</span>
+      html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
+        <span class="ln">${tag}${escapeHtml(line.n)}</span>
         <span class="atf">${escapeHtml(line.atf)}</span>
       </div>`;
       i += 1;
@@ -1819,17 +1965,80 @@ async function renderCuneiformCol(text) {
 }
 
 function bindLineHover(container) {
-  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i]").forEach((el) => {
-    el.addEventListener("mouseenter", () => highlightLine(el.dataset.i));
+  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i], .lg-cell[data-s]").forEach((el) => {
+    el.addEventListener("mouseenter", () => (el.dataset.s != null ? highlightLine(+el.dataset.s, +el.dataset.e) : highlightLine(el.dataset.i)));
     el.addEventListener("mouseleave", () => highlightLine(null));
+  });
+  bindColumnInfo(container);
+}
+
+/**
+ * Highlight row i (or rows i..e) in every column. Passage cells (ORACC paragraphs spanning rows s..e) light up
+ * whenever any row they cover is hovered, and hovering a passage lights every row it covers.
+ */
+function highlightLine(i, e) {
+  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
+  if (i == null) return;
+  const s = +i, end = e == null ? s : +e;
+  for (let k = s; k <= end; k++) $$(`[data-i="${k}"]`).forEach((el) => el.classList.add("hl"));
+  $$(".lg-cell[data-s]").forEach((el) => {
+    if (+el.dataset.s <= end && +el.dataset.e >= s) el.classList.add("hl");
   });
 }
 
-function highlightLine(i) {
-  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
-  if (i == null) return;
-  $$(`[data-i="${i}"]`).forEach((el) => el.classList.add("hl"));
+// ─── Column preambles: ⓘ popover per column + one global "show inline" toggle (localStorage, default hidden) ───
+const PREAMBLE_KEY = "unread.showPreambles";
+function applyPreambles() {
+  const on = localStorage.getItem(PREAMBLE_KEY) === "1";
+  document.body.classList.toggle("show-preambles", on);
+  $$(".preamble-toggle").forEach((b) => {
+    b.setAttribute("aria-pressed", String(on));
+    b.classList.toggle("on", on);
+  });
 }
+function setPreambles(on) {
+  localStorage.setItem(PREAMBLE_KEY, on ? "1" : "0");
+  applyPreambles();
+}
+function closeColumnInfo() {
+  const pop = $("#lg-pop");
+  if (pop) pop.remove();
+}
+function bindColumnInfo(container) {
+  container.querySelectorAll(".lg-info").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const open = $("#lg-pop");
+      if (open && open._btn === btn) return closeColumnInfo();
+      closeColumnInfo();
+      const src = [...container.querySelectorAll(".lg-credit[data-for]")].find((c) => c.dataset.for === btn.dataset.info);
+      if (!src) return;
+      const pop = document.createElement("div");
+      pop.id = "lg-pop";
+      pop.className = "lg-pop";
+      pop._btn = btn;
+      pop.setAttribute("role", "dialog");
+      pop.innerHTML = src.innerHTML + `<label class="lg-pop-opt"><input type="checkbox" class="lg-pop-inline"${localStorage.getItem(PREAMBLE_KEY) === "1" ? " checked" : ""}> Show these notes at the top of every column</label>`;
+      document.body.appendChild(pop);
+      const r = btn.getBoundingClientRect();
+      const w = Math.min(340, window.innerWidth - 16);
+      pop.style.width = w + "px";
+      pop.style.left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)) + "px";
+      pop.style.top = r.bottom + 6 + "px";
+      pop.addEventListener("click", (e) => e.stopPropagation());
+      pop.querySelector(".lg-pop-inline").addEventListener("change", (e) => setPreambles(e.target.checked));
+    });
+  });
+}
+document.addEventListener("click", closeColumnInfo);
+document.addEventListener("keydown", (e) => e.key === "Escape" && closeColumnInfo());
+window.addEventListener("scroll", (e) => { if (!(e.target.closest && e.target.closest("#lg-pop"))) closeColumnInfo(); }, true);
+function initPreambles() {
+  applyPreambles();
+  $$(".preamble-toggle").forEach((b) => b.addEventListener("click", () => setPreambles(localStorage.getItem(PREAMBLE_KEY) !== "1")));
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPreambles);
+else initPreambles();
 
 // ─── Map ───
 function initMap() {
@@ -2244,7 +2453,11 @@ function shortPeriod(p) {
 }
 
 // ─── View routing ───
-function setView(name) {
+function setView(name, hist = "push") {
+  if (hist !== "none") {
+    const id = name === "reader" ? state.readerPending?.id || state.currentText?.id : null;
+    syncUrl(name, id, hist);
+  }
   state.view = name;
   $$(".view").forEach((v) => v.classList.remove("active"));
   $$(`.nav-btn`).forEach((b) => b.classList.toggle("active", b.dataset.view === name));
@@ -2388,18 +2601,13 @@ function bindEvents() {
     }
   });
 
-  $$(".view-toggles button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.panel;
-      // keep at least one panel
-      const next = !state.readerPanels[key];
-      const count = Object.values({ ...state.readerPanels, [key]: next }).filter(Boolean).length;
-      if (count === 0) return;
-      state.readerPanels[key] = next;
-      btn.classList.toggle("on", next);
-      renderReader();
-    });
-  });
+  $$("#reader-chips [data-panel]").forEach((btn) => btn.addEventListener("click", () => onChip(btn)));
+  let slideRaf = 0;
+  $("#reader-body")?.addEventListener("scroll", () => {
+    cancelAnimationFrame(slideRaf);
+    slideRaf = requestAnimationFrame(syncSlideChip);
+  }, { passive: true });
+  initNavToggle();
 
   $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
 
@@ -2413,6 +2621,36 @@ function debounce(fn, ms) {
   };
 }
 
+/** Header nav: a Menu button below 760px (aria-expanded; closes on link click, Esc, or a tap outside). */
+function initNavToggle() {
+  const btn = $("#nav-toggle");
+  const nav = $("#header-nav");
+  if (!btn || !nav) return;
+  const set = (open) => {
+    btn.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("open", open);
+  };
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    set(open);
+    if (open) nav.querySelector(".nav-btn, .nav-link")?.focus();
+  });
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest(".nav-btn, .nav-link")) set(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+      set(false);
+      btn.focus();
+    }
+  });
+  document.addEventListener("pointerdown", (e) => {
+    if (btn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target) && !btn.contains(e.target)) set(false);
+  });
+  NARROW_Q.addEventListener?.("change", () => set(false));
+}
+
 // ─── Boot ───
 async function main() {
   bindEvents();
@@ -2423,7 +2661,10 @@ async function main() {
   const deepId = new URLSearchParams(location.search).get("id");
   if (deepId) {
     state.readerPending = { id: deepId, failed: false };
-    setView("reader");
+    setView("reader", "none");
+  } else {
+    const v = new URLSearchParams(location.search).get("view");
+    if (v === "about" || v === "reader") setView(v, "none");
   }
 
   try {
@@ -2439,7 +2680,7 @@ async function main() {
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108
     if (deepId) {
-      await openReader(deepId);
+      await openReader(deepId, "none");
     } else {
       const first =
         state.filtered.find((i) => state._packagedIds.includes(i.id)) || state.filtered[0];
@@ -2449,7 +2690,7 @@ async function main() {
     console.error(e);
     toast(e.message || "Failed to load catalog");
     $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
-    if (deepId) openReader(deepId); // the text API doesn't need the catalog
+    if (deepId) openReader(deepId, "none"); // the text API doesn't need the catalog
   }
 }
 
