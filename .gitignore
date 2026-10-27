@@ -14,3 +14,4 @@ web/models/
 
 # Public build output (scripts/build_site.sh); CI rebuilds it
 dist/
+.local-test/
