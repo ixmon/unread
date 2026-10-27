@@ -74,3 +74,85 @@ a { color: var(--accent-strong); }
 .model-toolbar { margin: 0.35rem 0 0.75rem; }
 .model-toolbar.toolbar-group { display: inline-flex; }
 .results-sep { margin: 1rem 0 0.5rem; color: var(--text-faint); font-size: 0.75rem; font-family: "IBM Plex Mono", monospace; letter-spacing: 0.02em; }
+
+
+/* Contextual open actions on curated / static tablet pages */
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.9rem 0 1.1rem;
+}
+.page-actions .btn {
+  text-decoration: none;
+  white-space: nowrap;
+}
+.page-actions .btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.meta-table tr.meta-source th,
+.meta-table tr.meta-source td {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.meta-ext {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-decoration-color: rgba(154, 149, 138, 0.45);
+  text-underline-offset: 0.15em;
+}
+.meta-ext:hover {
+  color: var(--accent-strong);
+  text-decoration-color: var(--accent-strong);
+}
+.ext-label {
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  margin-left: 0.15rem;
+}
+@media (max-width: 640px) {
+  .page-actions {
+    gap: 0.45rem;
+  }
+  .page-actions .btn {
+    flex: 1 1 calc(50% - 0.45rem);
+    justify-content: center;
+    text-align: center;
+    padding: 0.55rem 0.7rem;
+  }
+  .page-actions .btn:last-child {
+    flex-basis: 100%;
+  }
+}
+
+
+.machine-draft-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+.machine-draft-bar strong { color: var(--warn); font-weight: 600; }
+.static-info {
+  background: none;
+  border: 0;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0 0.2rem;
+  line-height: 1;
+}
+.static-info:hover, .static-info:focus-visible { color: var(--accent-strong); }
+.machine-draft-pop {
+  border-left: 3px solid var(--warn);
+  padding: 0.5rem 0.75rem;
+  background: rgba(196, 160, 74, 0.08);
+  color: var(--text);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  max-width: 42rem;
+}
+.machine-draft-pop code { font-family: "IBM Plex Mono", monospace; font-size: 0.85em; }

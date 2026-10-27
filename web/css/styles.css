@@ -2173,3 +2173,48 @@ body.model-modal-open { overflow: hidden; }
   font-weight: 500;
 }
 .model-modal-actions { gap: 0.5rem; }
+
+
+/* Machine provenance ⓘ (next to cog) — keeps long notes out of the English column body */
+.mt-info {
+  background: none;
+  border: 0;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0 0.15rem;
+  line-height: 1;
+  flex: none;
+}
+.mt-info:hover, .mt-info:focus-visible {
+  color: var(--accent-strong);
+  outline: none;
+}
+.mt-info-pop {
+  position: fixed;
+  z-index: 80;
+  background: var(--bg-elev, #1b1e26);
+  border: 1px solid var(--border, #2a2e38);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  color: var(--text, #e6e2d8);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  max-height: min(50vh, 280px);
+  overflow: auto;
+}
+.mt-info-pop-body { margin: 0; }
+.english-more-note {
+  border-left: 3px solid var(--border);
+  padding: 0.45rem 0.7rem;
+  margin: 0.6rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+body:not(.show-preambles) .mt-credit-short { display: none; }
+body.show-preambles .mt-credit-full { display: none; }
+body.show-preambles .mt-credit-short { display: inline; }
+
+.filter-count { color: var(--text-faint); font-weight: 400; font-size: 0.85em; margin-left: 0.25rem; }
+.unread-toggle strong, .no-english-toggle strong, .not-online-toggle strong { color: var(--text); }

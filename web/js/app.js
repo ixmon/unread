@@ -83,6 +83,20 @@ async function loadCatalog() {
   const mathN = state.catalog.math?.count || state.catalog.items.filter((i) => i.math_hunt).length;
   // Featured-set sizes for the Stats page (corpus figures there come from corpus_stats.json)
   state.featuredCounts = { epic: epicN, remedies: herbN, omens: omenN, math: mathN };
+  const items = state.catalog.items || [];
+  state.translationListCounts = {
+    unread: items.filter((i) => i.translation_status === "no_open_english").length,
+    noEnglish: items.filter((i) => !i.open_english).length,
+    notOnline: items.filter((i) => i.translation_status === "print_edition").length,
+  };
+  const fillCount = (key, n) => {
+    document.querySelectorAll(`[data-count="${key}"]`).forEach((el) => {
+      el.textContent = n ? `(${n.toLocaleString()})` : "";
+    });
+  };
+  fillCount("unread", state.translationListCounts.unread);
+  fillCount("no-english", state.translationListCounts.noEnglish);
+  fillCount("not-online", state.translationListCounts.notOnline);
   if (state.view === "stats") renderStats();
   // Featured rows
   const featRow = $("#featured-row");
@@ -110,6 +124,18 @@ async function loadCatalog() {
   if (mode === "epic") {
     const eh = $("#filter-epic-hunt");
     if (eh) eh.checked = true;
+  }
+  if (mode === "unread") {
+    const ug = $("#filter-open-gap");
+    if (ug) ug.checked = true;
+  }
+  if (mode === "no-english" || mode === "no_english") {
+    const ne = $("#filter-no-english");
+    if (ne) ne.checked = true;
+  }
+  if (mode === "not-online" || mode === "not_online" || mode === "print") {
+    const no = $("#filter-not-online");
+    if (no) no.checked = true;
   }
   if (mode === "remedies" || mode === "herbal") {
     const hr = $("#filter-herbal");
@@ -636,7 +662,10 @@ function trCreditHtml(o) {
       .filter(Boolean)
       .join(" · ");
   }
-  return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
+  const short = `Machine draft · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""} · unreviewed, not a scholarly translation`;
+  const full = o.note || short;
+  // Full provenance is shown via the header ⓘ popover (lg-credit); keep a short summary for the rare inline-preamble mode.
+  return `<span class="mt-credit-full">${escapeHtml(full)}</span><span class="mt-credit-short" hidden>${escapeHtml(short)}</span>`;
 }
 
 /** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
@@ -918,7 +947,9 @@ function applyFilters() {
   const site = $("#filter-site").value;
   const minLines = Number($("#filter-min-lines").value) || 0;
   const hideOpenEnglish = $("#filter-hide-known").checked;
-  const onlyOpenGap = $("#filter-open-gap")?.checked;
+  const onlyOpenGap = $("#filter-open-gap")?.checked; // Unread list
+  const onlyNoEnglish = $("#filter-no-english")?.checked;
+  const onlyNotOnline = $("#filter-not-online")?.checked;
   const onlyPackaged = $("#filter-packaged").checked;
   const epicHunt = $("#filter-epic-hunt")?.checked;
   const herbalMode = $("#filter-herbal")?.checked;
@@ -961,7 +992,12 @@ function applyFilters() {
     // Hide works that already have open digital English (RINAP/ETCSL/CDLI…)
     // In epic hunt, still hide open_project ETCSLish when this is checked
     if (hideOpenEnglish && item.open_english) return false;
+    // Unread: translation_status === no_open_english (no CDLI English, no open-project/series hit)
     if (onlyOpenGap && item.translation_status !== "no_open_english") return false;
+    // No English: open_english === false (Unread ∪ Not online ∪ other unknowns)
+    if (onlyNoEnglish && item.open_english) return false;
+    // Not online: print_edition (human English in print scholarship, not found as open digital)
+    if (onlyNotOnline && item.translation_status !== "print_edition") return false;
     if (onlyPackaged && !packaged.has(item.id)) return false;
     if (q) {
       const markers = item.epic_markers ? Object.keys(item.epic_markers).join(" ") : "";
@@ -1765,29 +1801,52 @@ async function maybeFetchCdliMeta(text, force = false) {
   }
 }
 
+
+/** Full Machine/English provenance for the header ⓘ popover (not inlined in the column body). */
+function englishProvenanceText(text) {
+  if (!text) return "";
+  const bits = [];
+  if (text.english_note) bits.push(text.english_note);
+  if (text.english_kind === "human") {
+    /* credit lives in english_note */
+  } else if (text.translation_status === "print_edition") {
+    bits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
+  } else if (text.translation_status === "no_open_english") {
+    bits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
+  } else if (text.open_english) {
+    bits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
+  } else if (text.translation_label) {
+    bits.push(text.translation_label);
+  }
+  // Dedup while preserving order
+  const seen = new Set();
+  const out = [];
+  for (const b of bits) {
+    const t = String(b || "").trim();
+    if (!t || seen.has(t)) continue;
+    seen.add(t);
+    out.push(t);
+  }
+  return out.join(" · ");
+}
+
 function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
   if (isAlignedText(text) && (state.readerPanels.english || state.readerPanels.atf)) {
+    text._englishProvenance = englishProvenanceText(text);
+    // Enrich machine lg-credit with catalog status bits when the option note is short.
+    const mach = (text.translations || []).find((o) => o.kind === "machine");
+    if (mach && text._englishProvenance && (!mach.note || mach.note.length < text._englishProvenance.length)) {
+      mach.note = text._englishProvenance;
+    }
     renderLinesCol(text);
     return;
   }
 
   if (text.english && Array.isArray(text.english) && text.english.length) {
-    const statusBits = [];
-    if (text.translation_label) statusBits.push(text.translation_label);
-    if (text.english_kind === "human") {
-      /* human translation: credit is in english_note */
-    } else if (text.translation_status === "print_edition") {
-      statusBits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
-    } else if (text.translation_status === "no_open_english") {
-      statusBits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
-    } else if (text.open_english) {
-      statusBits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
-    }
-    const note = [text.english_note, ...statusBits].filter(Boolean).length
-      ? `<p class="english-draft-note">${escapeHtml([text.english_note, ...statusBits].filter(Boolean).join(" · "))}</p>`
-      : "";
+    // Provenance lives on the column-header ⓘ (next to the cog), not in the body — keeps lines level.
+    text._englishProvenance = englishProvenanceText(text);
     const labels = text.english_labels; // own labels => not index-aligned to the ATF rows
     const rows = text.english
       .map((line, i) => {
@@ -1802,11 +1861,11 @@ function renderEnglishCol(text) {
     const remaining = englishRemaining(text);
     const more =
       remaining > 0
-        ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+        ? `<p class="english-more-note">${remaining} further ATF lines not yet translated.
              <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
            </p>`
         : "";
-    body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
+    body.innerHTML = `<div class="english-prose">${rows}</div>${more}`;
 
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
@@ -2529,6 +2588,8 @@ function bindEvents() {
   $("#filter-hide-known").addEventListener("change", applyFilters);
   $("#filter-open-gap")?.addEventListener("change", applyFilters);
   $("#filter-packaged").addEventListener("change", applyFilters);
+  $("#filter-no-english")?.addEventListener("change", applyFilters);
+  $("#filter-not-online")?.addEventListener("change", applyFilters);
   $("#filter-epic-hunt")?.addEventListener("change", applyFilters);
   $("#filter-herbal")?.addEventListener("change", applyFilters);
   $("#filter-omens")?.addEventListener("change", applyFilters);
@@ -2741,7 +2802,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btn) btn.addEventListener("click", () => setOpen(false));
   if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
   // a mode chip/featured deep link opened later should reveal its featured row
-  document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math").forEach((el) =>
+  document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math,#filter-open-gap,#filter-no-english,#filter-not-online").forEach((el) =>
     el.addEventListener("change", () => el.checked && setOpen(true, false)));
   sync();
 });
@@ -2934,6 +2995,11 @@ function renderStats() {
 
   window.UnreadReader = {
     getText: () => state.currentText,
+    getEnglishProvenance: () => {
+      const t = state.currentText;
+      if (!t) return "";
+      return t._englishProvenance || englishProvenanceText(t);
+    },
     hasCannedMachine,
     getAtfLines,
     setLiveMachineLines,

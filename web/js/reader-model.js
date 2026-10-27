@@ -64,6 +64,7 @@ function ensureChrome(head, { aligned }) {
         <span class="mt-progress-text" data-mt-progress-text
               role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></span>
       </div>
+      <button type="button" class="mt-info" data-mt-info aria-label="Machine draft provenance" title="Machine draft provenance" aria-expanded="false" aria-haspopup="dialog">ⓘ</button>
       <button type="button" class="mt-cog" data-mt-cog aria-label="Choose machine translation source" title="Machine translation source">
         <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
           <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.57.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.68.22l2.39-.96c.5.4 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.57-.23 1.12-.54 1.63-.94l2.39.96c.25.12.54.02.68-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z"/>
@@ -81,9 +82,102 @@ function ensureChrome(head, { aligned }) {
       head.appendChild(tools);
     }
     tools.querySelector("[data-mt-cog]").addEventListener("click", onCogClick);
+    const infoBtn = tools.querySelector("[data-mt-info]");
+    if (infoBtn) bindMtInfo(infoBtn);
   }
   return tools;
 }
+
+function provenanceText() {
+  const fn = api()?.getEnglishProvenance;
+  if (typeof fn === "function") {
+    const t = fn();
+    if (t) return t;
+  }
+  const text = api()?.getText?.();
+  if (!text) return "Machine draft. Unreviewed machine output, not a scholarly translation.";
+  const bits = [text.english_note, text.translation_label, text.translation_detail].filter(Boolean);
+  return bits.join(" · ") || "Machine draft. Unreviewed machine output, not a scholarly translation.";
+}
+
+function closeMtInfo() {
+  const pop = document.getElementById("mt-info-pop");
+  if (!pop) return;
+  const btn = pop._btn;
+  pop.remove();
+  if (btn) btn.setAttribute("aria-expanded", "false");
+}
+
+function openMtInfo(btn) {
+  closeMtInfo();
+  const pop = document.createElement("div");
+  pop.id = "mt-info-pop";
+  pop.className = "mt-info-pop";
+  pop.setAttribute("role", "dialog");
+  pop.setAttribute("aria-label", "Machine draft provenance");
+  pop._btn = btn;
+  const body = provenanceText();
+  pop.innerHTML = `<p class="mt-info-pop-body"></p>`;
+  pop.querySelector(".mt-info-pop-body").textContent = body;
+  document.body.appendChild(pop);
+  btn.setAttribute("aria-expanded", "true");
+  const r = btn.getBoundingClientRect();
+  const w = Math.min(360, window.innerWidth - 16);
+  pop.style.width = w + "px";
+  pop.style.left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)) + "px";
+  pop.style.top = r.bottom + 6 + "px";
+  pop.addEventListener("click", (e) => e.stopPropagation());
+}
+
+function bindMtInfo(btn) {
+  if (btn.dataset.bound) return;
+  btn.dataset.bound = "1";
+  let ignoreClick = false;
+  const show = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (ignoreClick) return;
+    const open = document.getElementById("mt-info-pop");
+    if (open && open._btn === btn) closeMtInfo();
+    else openMtInfo(btn);
+  };
+  btn.addEventListener("click", show);
+  // Hover (desktop): open on enter, close on leave of btn+popover
+  btn.addEventListener("mouseenter", () => {
+    if (window.matchMedia("(hover: hover)").matches) openMtInfo(btn);
+  });
+  btn.addEventListener("mouseleave", () => {
+    if (!window.matchMedia("(hover: hover)").matches) return;
+    setTimeout(() => {
+      const pop = document.getElementById("mt-info-pop");
+      if (pop && !pop.matches(":hover") && document.activeElement !== btn) closeMtInfo();
+    }, 120);
+  });
+  // Focus opens for keyboard users; ignore the click that often follows a tap-focus on mobile.
+  btn.addEventListener("focus", () => {
+    openMtInfo(btn);
+    ignoreClick = true;
+    setTimeout(() => {
+      ignoreClick = false;
+    }, 400);
+  });
+  btn.addEventListener("blur", () => {
+    setTimeout(() => {
+      const pop = document.getElementById("mt-info-pop");
+      if (pop && !pop.contains(document.activeElement) && document.activeElement !== btn) closeMtInfo();
+    }, 0);
+  });
+}
+
+document.addEventListener("click", (e) => {
+  const pop = document.getElementById("mt-info-pop");
+  if (!pop) return;
+  if (e.target.closest && (e.target.closest("#mt-info-pop") || e.target.closest("[data-mt-info]"))) return;
+  closeMtInfo();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMtInfo();
+});
 
 function setProgress(tools, { pct, label, hidden }) {
   const box = tools.querySelector("[data-mt-progress]");

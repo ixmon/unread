@@ -132,9 +132,20 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <input type="checkbox" id="filter-hide-known" checked />
               Hide open English (RINAP / ETCSL / CDLI…)
             </label>
-            <label class="checkbox-row">
+            <label class="checkbox-row unread-toggle">
               <input type="checkbox" id="filter-open-gap" />
-              Only strong open gap (no print series either)
+              <strong>Unread</strong> — no open English found
+              <span class="filter-count" data-count="unread"></span>
+            </label>
+            <label class="checkbox-row no-english-toggle">
+              <input type="checkbox" id="filter-no-english" />
+              <strong>No English</strong> — none known online
+              <span class="filter-count" data-count="no-english"></span>
+            </label>
+            <label class="checkbox-row not-online-toggle">
+              <input type="checkbox" id="filter-not-online" />
+              <strong>Not online</strong> — print edition only
+              <span class="filter-count" data-count="not-online"></span>
             </label>
             <label class="checkbox-row">
               <input type="checkbox" id="filter-packaged" />

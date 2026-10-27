@@ -290,16 +290,44 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
         if desc.count("“") > desc.count("”"):
             desc += "”"
         # ---- body
-        meta = [("Designation", designation), ("ID", key), ("Museum no.", museum), ("Collection", coll), ("Language", lang),
-                ("Period", f"{period}{(' · ' + human_years(rng)) if rng else ''}" if period else None), ("Genre", genre),
-                ("Find spot", prov), ("Coordinates", f"{geo['lat']:.4f}, {geo['lon']:.4f}" if geo else None)]
-        meta_html = "".join(f"<tr><th>{e(k)}</th><td>{e(str(v))}</td></tr>" for k, v in meta if v)
         srcs = []
         for r in rows:
             s = sources.get(r["src"], {})
-            link = f"https://cdli.earth/{quote(r['id'])}" if r["src"] == "cdli" else (
-                f"https://oracc.museum.upenn.edu/{quote(r['project'] or '')}/{quote(r['id'])}" if r["src"] == "oracc" and r["project"] else s.get("url"))
+            # Prefer CDLI artifact URLs (numeric id); ORACC project pages when project is known.
+            if r["src"] == "cdli":
+                link = f"https://cdli.earth/artifacts/{quote(str(r['id']).lstrip('P').lstrip('0'))}"
+            elif r["src"] == "oracc" and r["project"]:
+                link = f"https://oracc.museum.upenn.edu/{quote(r['project'] or '')}/{quote(r['id'])}"
+            elif r["src"] == "ebl":
+                link = f"https://www.ebl.lmu.de/library/{quote(r['id'])}"
+            else:
+                link = s.get("url")
             srcs.append((s.get("name", r["src"]), link, s.get("license", ""), s.get("citation", "")))
+        source_bits = []
+        seen_links = set()
+        for name, link, _lic, _cit in srcs:
+            if not link or link in seen_links:
+                continue
+            seen_links.add(link)
+            source_bits.append(
+                f'<a class="meta-ext" href="{e(link)}" rel="noopener">{e(name)}</a>'
+                f' <span class="ext-label">(external)</span>'
+            )
+        source_html = " · ".join(source_bits) if source_bits else None
+        meta = [("Designation", designation, False), ("ID", key, False), ("Museum no.", museum, False),
+                ("Collection", coll, False), ("Language", lang, False),
+                ("Period", f"{period}{(' · ' + human_years(rng)) if rng else ''}" if period else None, False),
+                ("Genre", genre, False), ("Find spot", prov, False),
+                ("Coordinates", f"{geo['lat']:.4f}, {geo['lon']:.4f}" if geo else None, False),
+                ("Source", source_html, True)]
+        meta_rows = []
+        for k, v, raw in meta:
+            if not v:
+                continue
+            cell = v if raw else e(str(v))
+            cls = ' class="meta-source"' if k == "Source" else ""
+            meta_rows.append(f"<tr{cls}><th>{e(k)}</th><td>{cell}</td></tr>")
+        meta_html = "".join(meta_rows)
         by_tr = {}
         for src, x in hum:
             by_tr.setdefault((x["author"] or "translator not named", x["license"] or sources.get(src, {}).get("license", ""), src), []).append(x)
@@ -344,7 +372,7 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
 <p class="crumbs"><a href="../">Home</a> › <a href="../browse.html">Tablets</a> › {e(key)}</p>
 <h1>{e(designation)}{(' <small class="faint">(' + e(key) + ')</small>') if designation != key else ''}</h1>
 <p class="lede">{e(sub)}{(' · ' + e(human_years(rng))) if rng else ''}</p>
-<p class="cta"><a href="../map.html?id={quote(reader_id)}">Open in the reader &amp; map →</a><a href="{browse_q}">See it among all tablets</a></p>
+<p class="page-actions"><a class="btn primary" href="../map.html?id={quote(reader_id)}">Open in Reader</a><a class="btn" href="{browse_q}">Open in Map</a><a class="btn" href="../translate.html?id={quote(reader_id)}">In-Browser Translator</a></p>
 <table class="meta-table">{meta_html}</table>
 {"".join(hum_html)}
 {atf_html}
