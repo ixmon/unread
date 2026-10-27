@@ -6,15 +6,23 @@
 //   ?model=<hf-id>     -> another Hub repo, e.g. ?model=montycrypto/atf-to-english
 //   ?model=<name>      -> a local folder web/models/<name>/ (no slash = local)
 //   ?dtype=fp32|q8     -> weights variant (default q8 = int8 *_quantized.onnx)
-//   ?revision=<sha>    -> pin a Hub revision (default DEFAULT_REVISION for the default model, else "main")
+//   ?revision=<sha|tag>-> pin a Hub revision (default DEFAULT_REVISION for the default model, else "main")
+//                        ?revision=v4e-2026-10-11 loads the previous ~94 MB T5-small build (mobile/low-memory fallback)
 //   ?id=P123456[&from=N] -> prefill the textarea with ATF lines (bundled data/texts/<id>.json, else /api/text/<id>)
 //   window.UNREAD_TRANSLATOR_CONFIG = {model, dtype, revision, localModelPath, remoteHost} also works
 //   (remoteHost is for tests/mirrors only: a server laid out like huggingface.co/<model>/resolve/<rev>/…).
 export const DEFAULT_REMOTE_MODEL = "montycrypto/atf-to-english-onnx";
 // Model version shown on the page, and the Hub commit of DEFAULT_REMOTE_MODEL it was published as.
 // Pinning the commit (not "main") makes returning visitors fetch new files instead of a cached older model.
-export const MODEL_VERSION = "atf-en-best-v4e (2026-10-11)";
-export const DEFAULT_REVISION = "2889e854d3cd1fd8a8d963f2fb0284f80d113339";
+export const MODEL_VERSION = "B2c (2026-10-27)";
+// Pin the Hub commit (not "main") so returning visitors fetch the new files instead of a cached older model.
+// Fill NEW_SHA after the B2c ONNX upload lands; until then this file still points at the tagged v4e build.
+export const DEFAULT_REVISION = "cb93faed82ce9440a03755ae0a8b12eba0db3bbb";
+// Previous T5-small browser build (~94 MB). Select with ?revision=v4e-2026-10-11 (or the sha below).
+// Recommended on phones / low-memory devices until a smaller B2c quant lands.
+export const V4E_REVISION = "v4e-2026-10-11";
+export const V4E_SHA = "2889e854d3cd1fd8a8d963f2fb0284f80d113339";
+export const V4E_MODEL_VERSION = "atf-en-best-v4e (2026-10-11)";
 const LOCAL_MODEL = "atf-to-english";
 const PREFILL_LIMIT = 48;
 const params = new URLSearchParams(location.search);
@@ -29,8 +37,13 @@ const cfg = Object.assign(
   window.UNREAD_TRANSLATOR_CONFIG || {},
 );
 cfg.remote = cfg.model.includes("/"); // HF ids look like owner/name
+const isV4e =
+  cfg.revision === V4E_REVISION || cfg.revision === V4E_SHA || String(cfg.revision || "").startsWith("2889e854");
+const versionLabel = cfg.model === DEFAULT_REMOTE_MODEL || !cfg.remote
+  ? (isV4e ? V4E_MODEL_VERSION : MODEL_VERSION)
+  : cfg.model;
 const MODEL_LABEL =
-  `${cfg.model === DEFAULT_REMOTE_MODEL || !cfg.remote ? MODEL_VERSION : cfg.model} ${cfg.dtype === "q8" ? "int8" : cfg.dtype}` +
+  `${versionLabel} ${cfg.dtype === "q8" ? "int8" : cfg.dtype}` +
   (cfg.remote ? ` (${cfg.model}${cfg.revision !== "main" ? `@${cfg.revision.slice(0, 7)}` : ""})` : " (local files)");
 
 const $ = (s) => document.querySelector(s);
