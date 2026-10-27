@@ -18,13 +18,16 @@ filtered data the live API serves, so licence rules (eBL ATF and eBL human Engli
 atf_public=1) are already applied there.
 
 Human English is shown only for sources whose web/assets/translation-policy.json entry has show_human=true
-(the same table the reader's translation tabs use); machine English is always included as page text.
+(the same table the reader's translation tabs use). Machine English: the first --mt-html-lines lines
+(default 5) are in the HTML for SEO; the rest load client-side from the rate-limited /api/text/<id>
+endpoint (see docs/moat.md and web/js/static-mt.js). ATF stays in HTML when atf_public=1.
 
 Lines of English for the index threshold = max(publishable human lines, machine lines shown) on the page.
 Machine lines the model flags (tr.conf_level 1..3) are dimmed and labelled like the reader's tooltips.
 
 Usage: build_seo_pages.py OUT_DIR [--search-db PATH] [--base-url URL] [--limit N] [--ids ID,ID]
-                          [--human-only] [--machine-min-lines N] [--index-min-lines N] [--export-date YYYY-MM-DD]
+                          [--human-only] [--machine-min-lines N] [--index-min-lines N]
+                          [--mt-html-lines N] [--export-date YYYY-MM-DD]
 """
 from __future__ import annotations
 
@@ -124,7 +127,7 @@ NAV = [("map.html", "Explore &amp; map"), ("browse.html", "Browse"), ("signs.htm
        ("translate.html", "Translator"), ("search.html", "Search"), ("credits.html", "Credits")]
 
 
-def page(*, title, desc, canonical, body, ld, active="", og_type="article", head_extra="", noindex=False):
+def page(*, title, desc, canonical, body, ld, active="", og_type="article", head_extra="", noindex=False, scripts=""):
     nav = "\n".join(f'<a class="nav-link{" active" if h == active else ""}" href="../{h}">{l}</a>' for h, l in NAV)
     return f"""<!doctype html>
 <html lang="en">
@@ -167,6 +170,7 @@ def page(*, title, desc, canonical, body, ld, active="", og_type="article", head
 {body}
 </main>
 <footer class="static-footer">{e(SITE["name"])} · <a href="../">Home</a> · <a href="../browse.html">Browse</a> · <a href="../signs.html">Signs</a> · <a href="../t/index.html">Curated texts</a> · <a href="../credits.html">Credits &amp; thanks</a></footer>
+{scripts}
 </body>
 </html>
 """
@@ -178,16 +182,19 @@ def crumbs_ld(items):
 
 
 # ------------------------------------------------------------------ tablets
-def mt_td(m, cf):
-    """Machine-English cell; lines the model flags are dimmed and labelled (same levels as the reader)."""
+def mt_td(m, cf, pending=False):
+    """Machine-English cell; lines the model flags are dimmed and labelled (same levels as the reader).
+    pending=True: empty cell filled later by web/js/static-mt.js from /api/text/<id>."""
+    if pending:
+        return '<td class="mt mt-pending" aria-hidden="true"></td>'
     if cf in CONF_TITLES and m:
-        return f'<td class="conf-{cf}" title="{e(CONF_TITLES[cf].capitalize())}">{e(m)}<span class="conf-note">({e(CONF_TITLES[cf])})</span></td>'
-    return f"<td>{e(m or '')}</td>"
+        return f'<td class="mt conf-{cf}" title="{e(CONF_TITLES[cf].capitalize())}">{e(m)}<span class="conf-note">({e(CONF_TITLES[cf])})</span></td>'
+    return f'<td class="mt">{e(m or "")}</td>'
 
 
 def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                   machine_only: bool = True, machine_min: int = 1, ids: list[str] | None = None,
-                  index_min: int = 10, export_date: str | None = None):
+                  index_min: int = 10, export_date: str | None = None, mt_html_lines: int = 5):
     c = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     c.row_factory = sqlite3.Row
     built_full = json.loads(c.execute("SELECT value FROM meta WHERE key='built_at'").fetchone()[0])
@@ -339,30 +346,71 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                             + "".join(f'<tr><td class="ln">{e(x["line_ref"] or "")}</td><td>{e(x["content"] or "")}</td></tr>' for x in xs)
                             + "</tbody></table>")
         atf_html = ""
+        mt_lazy = False
+        mt_teaser_cap = max(0, int(mt_html_lines))
+        mt_seen = 0  # shared across ATF-aligned + free-MT tables so the HTML teaser is global
         if lines:
             rows_h, cur = [], None
             for surf, n, atf, m, cf in lines:
                 if surf and surf != cur:
                     rows_h.append(f'<tr class="surface-row"><td colspan="3">{e(surf)}</td></tr>')
                     cur = surf
-                rows_h.append(f'<tr><td class="ln">{e(n or "")}</td><td class="atf">{e(atf or "")}</td>{mt_td(m, cf)}</tr>')
+                pending = False
+                if m:
+                    mt_seen += 1
+                    pending = mt_teaser_cap > 0 and mt_seen > mt_teaser_cap
+                cell = mt_td(None, 0, pending=True) if pending else mt_td(m, cf)
+                if pending:
+                    mt_lazy = True
+                rows_h.append(
+                    f'<tr data-line-n="{e(n or "")}"><td class="ln">{e(n or "")}</td>'
+                    f'<td class="atf">{e(atf or "")}</td>{cell}</tr>'
+                )
             s = sources.get(atf_row["src"], {})
             mt_note = (f'<p class="machine-draft"><strong>Machine draft.</strong> The right-hand column is machine English from '
                        f'<code>{e(mt_meta["repo"] or "")}</code> ({e(mt_meta["label"] or mt_meta["rev"])}, {e(mt_meta["on"])}), '
-                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation.</p>') if mt_meta else ""
+                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation. '
+                       f'This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
+                       'the rest load from the corpus API in your browser.</p>') if mt_meta else ""
+            tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
+                         f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
             atf_html = (f'<h2>Transliteration (ATF)</h2><p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
-                        '<table class="lines-table"><thead><tr><th>Line</th><th>ATF</th><th>Machine English (draft)</th></tr></thead><tbody>'
+                        f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine English (draft)</th></tr></thead><tbody>'
                         + "\n".join(rows_h) + "</tbody></table>"
                         + (f'<p class="src-note">Showing the first {MAX_LINES} lines; <a href="../map.html?id={quote(reader_id)}">open the reader</a> for the rest.</p>'
                            if atf_row["n_lines"] and atf_row["n_lines"] > MAX_LINES else ""))
         if mt_free:
             mm = mt_free_meta
+            free_rows = []
+            for ln, m, cf in mt_free:
+                pending = False
+                if m:
+                    mt_seen += 1
+                    pending = mt_teaser_cap > 0 and mt_seen > mt_teaser_cap
+                if pending:
+                    mt_lazy = True
+                cell = mt_td(None, 0, pending=True) if pending else mt_td(m, cf)
+                free_rows.append(f'<tr data-line-n="{e(ln or "")}"><td class="ln">{e(ln or "")}</td>{cell}</tr>')
+            tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
+                         f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
             atf_html += (f'<h2>Machine English (draft)</h2><p class="machine-draft"><strong>Machine draft.</strong> Machine English from '
                          f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
-                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.</p>'
-                         '<table class="lines-table"><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
-                         + "".join(f'<tr><td class="ln">{e(ln or "")}</td>{mt_td(m, cf)}</tr>' for ln, m, cf in mt_free)
-                         + "</tbody></table>")
+                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation. '
+                         f'This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
+                         'the rest load from the corpus API in your browser.</p>'
+                         f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
+                         + "".join(free_rows) + "</tbody></table>")
+        rest_mt = max(0, n_mt_shown - mt_teaser_cap) if mt_teaser_cap > 0 else 0
+        if mt_lazy and rest_mt:
+            atf_html += (
+                f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
+                f'<span class="mt-load-status">Loading the rest of the machine draft '
+                f'({rest_mt} more line{"s" if rest_mt != 1 else ""})…</span></p>'
+                f'<noscript><p class="src-note">JavaScript is required to load the rest of the machine draft '
+                f'({rest_mt} more lines). <a href="../map.html?id={quote(reader_id)}">Open in Reader</a>, '
+                f'use the <a href="../translate.html?id={quote(reader_id)}">in-browser translator</a>, '
+                f'or <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">download the model</a>.</p></noscript>'
+            )
         def _li(n, l, lic, cit):
             nm = f'<a href="{e(l)}" rel="noopener">{e(n)}</a>' if l else e(n)
             return f"<li>{nm} · {e(lic)}" + (" · " + e(cit) if cit else "") + "</li>"
@@ -401,8 +449,9 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                                      "author": [{"@type": "Person", "name": a} for a in dict.fromkeys(clean_author(a) for (a, _, _) in by_tr) if a] or None}
         cw = {k: v for k, v in cw.items() if v not in (None, [], "")}
         ld = {"@context": "https://schema.org", "@graph": [cw, crumbs_ld([("Home", base), ("Tablets", base + "browse.html"), (key, url)])]}
+        mt_scripts = '<script defer src="../js/static-mt.js"></script>' if mt_lazy else ""
         fp = tdir / f"{sl}.html"
-        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, noindex=noindex), encoding="utf-8")
+        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, noindex=noindex, scripts=mt_scripts), encoding="utf-8")
         os.utime(fp, (stamp, stamp))  # deterministic mtime: `aws s3 sync` re-uploads only pages whose size changed or a newer export
         if noindex:
             n_noindex += 1
@@ -419,7 +468,8 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
     for name, sls in shards.items():
         (idir / f"{name}.txt").write_text("\n".join(sorted(sls)) + ("\n" if sls else ""))
     (out / "assets" / "tablet-pages.json").unlink(missing_ok=True)
-    build_tablets.counts = {"generated": n_index + n_noindex, "indexable": n_index, "noindex": n_noindex, "curated_kept": skipped}
+    build_tablets.counts = {"generated": n_index + n_noindex, "indexable": n_index, "noindex": n_noindex,
+                            "curated_kept": skipped, "mt_html_lines": mt_html_lines}
     return urls, built, skipped
 
 
@@ -552,13 +602,16 @@ def main():
                     help="pages with fewer lines of English are noindex,follow and left out of the sitemaps")
     ap.add_argument("--export-date", default=os.environ.get("SEO_EXPORT_DATE"),
                     help="date shown on pages / sitemap lastmod (default: the export's meta.built_at)")
+    ap.add_argument("--mt-html-lines", type=int, default=int(os.environ.get("SEO_MT_HTML_LINES", "5")),
+                    help="machine-English lines kept in the static HTML (rest load via /api/text); 0 = all in HTML")
     a = ap.parse_args()
     out, base = Path(a.out), a.base_url
     t0 = time.time()
     if not Path(a.search_db).exists():
         sys.exit(f"build_seo_pages: search export not found: {a.search_db} (set SEARCH_DB)")
     turls, tmod, skipped = build_tablets(out, Path(a.search_db), base, a.limit, not a.human_only, a.machine_min_lines,
-                                         a.ids.split(",") if a.ids else None, a.index_min_lines, a.export_date)
+                                         a.ids.split(",") if a.ids else None, a.index_min_lines, a.export_date,
+                                         a.mt_html_lines)
     t1 = time.time()
     surls, smod = build_signs(out, base)
     t2 = time.time()

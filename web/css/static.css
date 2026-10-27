@@ -156,3 +156,30 @@ a { color: var(--accent-strong); }
   max-width: 42rem;
 }
 .machine-draft-pop code { font-family: "IBM Plex Mono", monospace; font-size: 0.85em; }
+
+/* Modest moat: teaser MT in HTML; rest filled by js/static-mt.js from /api/text */
+.mt-load-bar {
+  margin: 0.75rem 0 0.25rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.02);
+}
+.mt-load-bar .mt-load-error { color: var(--warn); }
+.mt-load-bar .btn.mt-retry {
+  margin: 0 0.25rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.85rem;
+}
+td.mt-pending {
+  min-width: 6rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.03) 4px,
+    rgba(255, 255, 255, 0.03) 8px
+  );
+}
