@@ -1,4 +1,4 @@
-// Reader Machine-column cog: choose canned vs in-browser (B2c / Compact v4e),
+// Reader Machine-column cog: choose cached vs in-browser (B2c / Compact v4e),
 // show download progress, label each machine line with its source.
 import {
   resolveReaderSource,
@@ -6,7 +6,7 @@ import {
   setSavedChoice,
   getSavedChoice,
   MODELS,
-  CANNED,
+  CACHED,
   sourceTag,
   modelLabelFor,
 } from "./model-choice.js";
@@ -23,9 +23,11 @@ function api() {
   return window.UnreadReader || null;
 }
 
-function hasCanned(text) {
+function hasCached(text) {
   if (!text) return false;
-  if (typeof api()?.hasCannedMachine === "function") return !!api().hasCannedMachine(text);
+  const bridge = api();
+  if (typeof bridge?.hasCachedMachine === "function") return !!bridge.hasCachedMachine(text);
+  if (typeof bridge?.hasCannedMachine === "function") return !!bridge.hasCannedMachine(text); // legacy
   if ((text.translations || []).some((o) => o.kind === "machine" && (o.english || []).some(Boolean))) return true;
   if (Array.isArray(text.english) && text.english.some(Boolean) && text.english_kind !== "human") return true;
   if (text.has_machine_draft) return true;
@@ -203,8 +205,8 @@ function setSourceLabel(tools, id) {
   el.textContent = tag;
   el.dataset.source = id || "";
   el.title =
-    id === "canned"
-      ? CANNED.blurb
+    id === "cached"
+      ? CACHED.blurb
       : id === "b2c" || id === "v4e"
         ? MODELS[id].blurb
         : "";
@@ -261,12 +263,12 @@ function updateAllProgress(p) {
 async function onCogClick(ev) {
   ev.preventDefault();
   const text = api()?.getText?.() || null;
-  const canned = hasCanned(text);
-  const current = activeSource || getSavedChoice() || (canned ? "canned" : null) || "b2c";
+  const cached = hasCached(text);
+  const current = activeSource || getSavedChoice() || (cached ? "cached" : null) || "b2c";
   const picked = await openModelModal({
     mode: "reader",
-    hasCanned: canned,
-    preselect: current === "canned" && !canned ? (preferFallback()) : current,
+    hasCached: cached,
+    preselect: current === "cached" && !cached ? (preferFallback()) : current,
     allowDismiss: true,
   });
   if (!picked) return;
@@ -274,22 +276,22 @@ async function onCogClick(ev) {
 }
 
 function preferFallback() {
-  return resolveReaderSource({ hasCanned: false }).id;
+  return resolveReaderSource({ hasCached: false }).id;
 }
 
 async function applySource(id, { fromCog = false } = {}) {
   const text = api()?.getText?.();
   if (!text) return;
-  const canned = hasCanned(text);
+  const cached = hasCached(text);
 
-  if (id === "canned") {
-    if (!canned) return;
+  if (id === "cached") {
+    if (!cached) return;
     abortLive();
-    setSavedChoice("canned");
-    activeSource = "canned";
-    api()?.restoreCannedMachine?.();
+    setSavedChoice("cached");
+    activeSource = "cached";
+    api()?.restoreCachedMachine?.();
     // restore triggers re-render → our listener re-injects chrome
-    injectChrome("canned");
+    injectChrome("cached");
     updateAllProgress({ hidden: true });
     return;
   }
@@ -393,16 +395,16 @@ function onRendered() {
     injectChrome(activeSource);
     return;
   }
-  const canned = hasCanned(text);
-  const resolved = resolveReaderSource({ hasCanned: canned });
+  const cached = hasCached(text);
+  const resolved = resolveReaderSource({ hasCached: cached });
 
-  // Always show cog when Machine/English column is up and (canned exists OR ATF available)
+  // Always show cog when Machine/English column is up and (cached exists OR ATF available)
   const lines = atfLines(text);
-  if (!canned && !lines.length) return;
+  if (!cached && !lines.length) return;
 
   injectChrome(resolved.awaitingChoice ? null : resolved.id);
 
-  // Auto-apply saved/URL browser model; never auto-download when awaitingChoice (no canned, never picked).
+  // Auto-apply saved/URL browser model; never auto-download when awaitingChoice (no cached, never picked).
   if (resolved.awaitingChoice) {
     activeSource = null;
     // Show a muted label so the cog is discoverable
@@ -417,11 +419,11 @@ function onRendered() {
     return;
   }
 
-  if (resolved.id === "canned") {
-    activeSource = "canned";
-    // Ensure canned content is showing (e.g. after a prior live run on another text)
-    if (api()?.isLiveMachine?.()) api()?.restoreCannedMachine?.();
-    injectChrome("canned");
+  if (resolved.id === "cached") {
+    activeSource = "cached";
+    // Ensure cached content is showing (e.g. after a prior live run on another text)
+    if (api()?.isLiveMachine?.()) api()?.restoreCachedMachine?.();
+    injectChrome("cached");
     return;
   }
 

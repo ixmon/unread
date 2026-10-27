@@ -1906,7 +1906,7 @@ function translatorUrl(text, from = 0) {
     const pref = localStorage.getItem("unread.translator.model");
     if (pref === "v4e") q.set("revision", "v4e-2026-10-11");
     else if (pref === "b2c") q.set("revision", "cb93faed82ce9440a03755ae0a8b12eba0db3bbb");
-    // pref === "canned" → no revision; translate.html will prompt for an in-browser model
+    // pref === "cached" → no revision; translate.html will prompt for an in-browser model
   } catch (_) { /* private mode */ }
   return `${TRANSLATOR_PAGE}?${q}`;
 }
@@ -2896,14 +2896,14 @@ function renderStats() {
   });
 }
 
-// ─── Bridge for js/reader-model.js (ES module): canned vs in-browser Machine column ───
+// ─── Bridge for js/reader-model.js (ES module): cached vs in-browser Machine column ───
 (function () {
-  const cannedBackup = new WeakMap(); // text -> { english, note, translationsMachine }
+  const cachedBackup = new WeakMap(); // text -> { english, note, translationsMachine }
 
-  function snapshotCanned(text) {
-    if (!text || cannedBackup.has(text)) return;
+  function snapshotCached(text) {
+    if (!text || cachedBackup.has(text)) return;
     const machine = (text.translations || []).find((o) => o.kind === "machine");
-    cannedBackup.set(text, {
+    cachedBackup.set(text, {
       english: Array.isArray(text.english) ? text.english.slice() : text.english,
       english_note: text.english_note,
       english_labels: text.english_labels,
@@ -2916,7 +2916,7 @@ function renderStats() {
     });
   }
 
-  function hasCannedMachine(text) {
+  function hasCachedMachine(text) {
     if (!text) return false;
     if ((text.translations || []).some((o) => o.kind === "machine" && (o.english || []).some(Boolean))) return true;
     if (Array.isArray(text.english) && text.english.some(Boolean) && text.english_kind !== "human") return true;
@@ -2931,8 +2931,8 @@ function renderStats() {
   function setLiveMachineLines(lines, meta = {}) {
     const text = state.currentText;
     if (!text) return;
-    snapshotCanned(text);
-    const bak = cannedBackup.get(text);
+    snapshotCached(text);
+    const bak = cachedBackup.get(text);
     bak.live = true;
     const note =
       meta.label
@@ -2967,11 +2967,11 @@ function renderStats() {
     renderReader();
   }
 
-  function restoreCannedMachine() {
+  function restoreCachedMachine() {
     const text = state.currentText;
     if (!text) return;
-    snapshotCanned(text);
-    const bak = cannedBackup.get(text);
+    snapshotCached(text);
+    const bak = cachedBackup.get(text);
     if (!bak) return;
     bak.live = false;
     const machine = (text.translations || []).find((o) => o.kind === "machine");
@@ -3000,14 +3000,14 @@ function renderStats() {
       if (!t) return "";
       return t._englishProvenance || englishProvenanceText(t);
     },
-    hasCannedMachine,
+    hasCachedMachine,
     getAtfLines,
     setLiveMachineLines,
-    restoreCannedMachine,
+    restoreCachedMachine,
     isLiveMachine: () => {
       const text = state.currentText;
       if (!text) return false;
-      const bak = cannedBackup.get(text);
+      const bak = cachedBackup.get(text);
       return !!(bak && bak.live);
     },
   };

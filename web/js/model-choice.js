@@ -1,5 +1,5 @@
 // Shared translation-source choice for translate.html and the map.html reader (cog).
-// Sources: canned (pre-computed site drafts), B2c in-browser, Compact v4e in-browser.
+// Sources: cached (pre-computed site drafts), B2c in-browser, Compact v4e in-browser.
 // URL ?revision= / ?model= override; otherwise localStorage; otherwise a context default.
 
 export const STORAGE_KEY = "unread.translator.model";
@@ -9,7 +9,7 @@ export const B2C_REVISION = "cb93faed82ce9440a03755ae0a8b12eba0db3bbb";
 export const V4E_REVISION = "v4e-2026-10-11";
 export const V4E_SHA = "2889e854d3cd1fd8a8d963f2fb0284f80d113339";
 
-/** @typedef {'canned'|'b2c'|'v4e'} SourceId */
+/** @typedef {'cached'|'b2c'|'v4e'} SourceId */
 /** @typedef {'b2c'|'v4e'} ModelId */
 
 export const MODELS = {
@@ -35,13 +35,15 @@ export const MODELS = {
   },
 };
 
-export const CANNED = {
-  id: "canned",
-  label: "Pre-computed",
-  shortLabel: "canned",
+export const CACHED = {
+  id: "cached",
+  label: "Cached translation",
+  shortLabel: "cached",
   blurb: "Machine draft already shipped with this text (no download)",
-  radioHint: "Pre-computed translation (canned machine draft shipped with the site — no download)",
+  radioHint: "Cached translation shipped with this text — no download",
 };
+/** @deprecated use CACHED */
+export const CANNED = CACHED;
 
 export function isV4eRevision(rev) {
   const r = String(rev || "");
@@ -70,35 +72,41 @@ export function defaultModelId() {
 }
 
 /**
- * Default source for the reader: canned when the text has one; else device model
+ * Default source for the reader: cached when the text has one; else device model
  * (but caller must not auto-download — only preselect in the modal).
- * @param {{ hasCanned?: boolean }} [ctx]
+ * @param {{ hasCached?: boolean, hasCanned?: boolean }} [ctx]
  * @returns {SourceId}
  */
 export function defaultSourceId(ctx = {}) {
-  if (ctx.hasCanned) return "canned";
+  if (ctx.hasCached || ctx.hasCanned) return "cached";
   return defaultModelId();
 }
 
 /** @returns {SourceId|null} */
 export function getSavedChoice() {
   try {
-    const v = localStorage.getItem(STORAGE_KEY);
-    if (v === "b2c" || v === "v4e" || v === "canned") return v;
+    let v = localStorage.getItem(STORAGE_KEY);
+    // Migrate legacy "canned" → "cached"
+    if (v === "canned") {
+      try { localStorage.setItem(STORAGE_KEY, "cached"); } catch (_) { /* ignore */ }
+      v = "cached";
+    }
+    if (v === "b2c" || v === "v4e" || v === "cached") return v;
   } catch (_) { /* private mode */ }
   return null;
 }
 
 /** @param {SourceId} id */
 export function setSavedChoice(id) {
-  if (id !== "b2c" && id !== "v4e" && id !== "canned") return;
+  if (id === "canned") id = "cached"; // accept legacy callers
+  if (id !== "b2c" && id !== "v4e" && id !== "cached") return;
   try { localStorage.setItem(STORAGE_KEY, id); } catch (_) { /* ignore */ }
 }
 
 /**
  * Resolve which in-browser model to use (translate.html / URL).
  * URL ?revision= / ?model= wins; else saved b2c/v4e; else device default.
- * Saved "canned" is ignored here (no canned on translate.html) → falls through to device default + prompt.
+ * Saved "cached" is ignored here (no site draft on translate.html) → falls through to device default + prompt.
  */
 export function resolveChoice(params = new URLSearchParams(typeof location !== "undefined" ? location.search : "")) {
   const urlModel = params.get("model");
@@ -121,19 +129,20 @@ export function resolveChoice(params = new URLSearchParams(typeof location !== "
   if (saved === "b2c" || saved === "v4e") {
     return { id: saved, custom: false, model: DEFAULT_REMOTE_MODEL, fromUrl: false, needsPrompt: false, ...MODELS[saved] };
   }
-  // saved canned or null → prompt for an in-browser model on translate.html
+  // saved cached or null → prompt for an in-browser model on translate.html
   const id = defaultModelId();
   return { id, custom: false, model: DEFAULT_REMOTE_MODEL, fromUrl: false, needsPrompt: true, ...MODELS[id] };
 }
 
 /**
- * Resolve reader source (canned / b2c / v4e). URL ?revision= forces a browser model.
- * @param {{ hasCanned: boolean, params?: URLSearchParams }} opts
+ * Resolve reader source (cached / b2c / v4e). URL ?revision= forces a browser model.
+ * @param {{ hasCached?: boolean, hasCanned?: boolean, params?: URLSearchParams }} opts
  */
 export function resolveReaderSource(opts) {
   const params = opts.params || new URLSearchParams(typeof location !== "undefined" ? location.search : "");
   const urlRev = params.get("revision");
   const urlModel = params.get("model");
+  const hasCached = !!(opts.hasCached ?? opts.hasCanned);
   if (urlRev || (urlModel && (urlModel === "b2c" || urlModel === "v4e" || urlModel === DEFAULT_REMOTE_MODEL))) {
     let id = "b2c";
     if (urlModel === "v4e" || isV4eRevision(urlRev)) id = "v4e";
@@ -141,16 +150,17 @@ export function resolveReaderSource(opts) {
     else if (urlRev) id = isV4eRevision(urlRev) ? "v4e" : "b2c";
     return { id, fromUrl: true, needsPrompt: false };
   }
-  if (urlModel === "canned") return { id: "canned", fromUrl: true, needsPrompt: false };
+  // Accept legacy ?model=canned as cached
+  if (urlModel === "cached" || urlModel === "canned") return { id: "cached", fromUrl: true, needsPrompt: false };
   const saved = getSavedChoice();
-  if (saved === "canned" && opts.hasCanned) return { id: "canned", fromUrl: false, needsPrompt: false };
+  if (saved === "cached" && hasCached) return { id: "cached", fromUrl: false, needsPrompt: false };
   if (saved === "b2c" || saved === "v4e") return { id: saved, fromUrl: false, needsPrompt: false };
-  if (saved === "canned" && !opts.hasCanned) {
-    // remembered canned but this text has none — fall back to device default, prompt via cog (no auto-download)
+  if (saved === "cached" && !hasCached) {
+    // remembered cached but this text has none — fall back to device default, prompt via cog (no auto-download)
     return { id: defaultModelId(), fromUrl: false, needsPrompt: false, awaitingChoice: true };
   }
-  if (opts.hasCanned) return { id: "canned", fromUrl: false, needsPrompt: false };
-  // No canned: do not auto-download; show placeholder until the visitor uses the cog.
+  if (hasCached) return { id: "cached", fromUrl: false, needsPrompt: false };
+  // No cached draft: do not auto-download; show placeholder until the visitor uses the cog.
   return { id: defaultModelId(), fromUrl: false, needsPrompt: false, awaitingChoice: true };
 }
 
@@ -165,16 +175,19 @@ function focusable(root) {
  *   preselect?: SourceId,
  *   title?: string,
  *   lede?: string,
- *   hasCanned?: boolean,
+ *   hasCached?: boolean,
+ *   hasCanned?: boolean, // legacy alias of hasCached
  *   allowDismiss?: boolean,
  *   mode?: 'reader'|'translate',
  * }} [opts]
  * @returns {Promise<SourceId|null>} null if dismissed
  */
 export function openModelModal(opts = {}) {
-  const mode = opts.mode || (opts.hasCanned ? "reader" : "translate");
-  const hasCanned = !!opts.hasCanned && mode === "reader";
-  const pre = opts.preselect || (hasCanned ? "canned" : defaultModelId());
+  const hasCachedOpt = !!(opts.hasCached ?? opts.hasCanned);
+  const mode = opts.mode || (hasCachedOpt ? "reader" : "translate");
+  const hasCached = hasCachedOpt && mode === "reader";
+  const preRaw = opts.preselect || (hasCached ? "cached" : defaultModelId());
+  const pre = preRaw === "canned" ? "cached" : preRaw;
   const allowDismiss = opts.allowDismiss !== false && mode === "reader";
 
   return new Promise((resolve) => {
@@ -182,11 +195,11 @@ export function openModelModal(opts = {}) {
     if (prev) prev.remove();
 
     const options = [];
-    if (hasCanned) {
+    if (hasCached) {
       options.push({
-        value: "canned",
-        title: "Pre-computed translation",
-        blurb: CANNED.radioHint,
+        value: "cached",
+        title: "Cached translation",
+        blurb: CACHED.radioHint,
       });
     }
     options.push(
@@ -236,7 +249,7 @@ export function openModelModal(opts = {}) {
     const readId = () => {
       const v = form.elements.model.value;
       if (v === "v4e") return "v4e";
-      if (v === "canned") return "canned";
+      if (v === "cached" || v === "canned") return "cached";
       return "b2c";
     };
 
@@ -337,7 +350,7 @@ export function modelLabelFor(id, dtype = "q8") {
 }
 
 export function sourceTag(id) {
-  if (id === "canned") return "canned";
+  if (id === "cached" || id === "canned") return "cached";
   if (id === "v4e") return "v4e";
   if (id === "b2c") return "B2c";
   return String(id || "");
