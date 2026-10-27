@@ -348,6 +348,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               </span>
               <button type="button" class="pchip" data-panel="meta" aria-pressed="false" title="Catalogue and publication metadata"><span class="pchip-name">Meta</span><span class="pchip-sub" data-sub="meta">catalogue</span></button>
               <button type="button" class="pchip preamble-toggle" aria-pressed="false" title="Show each column's source, licence and notes at its top (otherwise behind the ⓘ in each column header)"><span class="pchip-name">ⓘ Notes</span><span class="pchip-sub">source · licence</span></button>
+              <div id="reader-model-toolbar" class="model-select-group pchip-model"></div>
               <span class="pchip-tags" id="reader-status-badges"></span>
             </div>
           </div>
@@ -456,6 +457,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
     <script src="js/atf2unicode.js"></script>
     <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
+    <script type="module" src="js/reader-model.js"></script>
     <script src="js/searchmap.js"></script>
 </body>
 </html>

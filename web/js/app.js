@@ -1822,7 +1822,7 @@ function renderEnglishCol(text) {
         <p>No machine draft is published for this text yet.</p>
         <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
           ${lineCount} ATF content lines ready. You can draft English yourself with the in-browser
-          translator (model atf-en-best-v2, ≈95 MB download on first use, runs on your device).
+          translator (B2c ~810 MB or Compact v4e ~94 MB; choose on first use, runs on your device).
         </p>
         <p style="margin-top:1rem">
           ${lineCount ? `<a class="btn primary" href="${escapeAttr(translatorUrl(text, 0))}">Open in the in-browser translator</a>` : ""}
@@ -1837,6 +1837,12 @@ function renderEnglishCol(text) {
 function translatorUrl(text, from = 0) {
   const q = new URLSearchParams({ id: text.id });
   if (from > 0) q.set("from", String(from));
+  // Carry the visitor's saved in-browser model choice (set from the reader toolbar or translate modal).
+  try {
+    const pref = localStorage.getItem("unread.translator.model");
+    if (pref === "v4e") q.set("revision", "v4e-2026-10-11");
+    else if (pref === "b2c") q.set("revision", "cb93faed82ce9440a03755ae0a8b12eba0db3bbb");
+  } catch (_) { /* private mode */ }
   return `${TRANSLATOR_PAGE}?${q}`;
 }
 

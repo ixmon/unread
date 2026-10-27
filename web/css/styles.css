@@ -2007,3 +2007,107 @@ body:not(.show-preambles) .lg-credit { display: none; }
 }
 /* phone: keep the visually hidden label inside its chip (was widening the page to 398px) */
 .pchip-face { position: relative; }
+/* ─── Model choice modal + toolbar select ─── */
+body.model-modal-open { overflow: hidden; }
+.model-modal-root {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem;
+}
+.model-modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(8, 10, 12, 0.72);
+  backdrop-filter: blur(2px);
+}
+.model-modal {
+  position: relative;
+  width: min(440px, 100%);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1.35rem 1.4rem 1.2rem;
+  outline: none;
+}
+.model-modal h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.model-modal-lede {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.model-option {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.75rem 0.85rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  cursor: pointer;
+}
+.model-option:has(input:checked),
+.model-option:focus-within {
+  border-color: rgba(196, 120, 74, 0.55);
+  background: var(--accent-soft);
+}
+.model-option input { margin-top: 0.25rem; accent-color: var(--accent); }
+.model-option-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.model-option-title { font-weight: 600; color: var(--text); }
+.model-option-blurb { font-size: 0.82rem; color: var(--text-dim); line-height: 1.35; }
+.model-modal-actions { display: flex; justify-content: flex-end; margin-top: 0.85rem; }
+.model-select-group select { max-width: 11.5rem; }
+.model-select-note {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  max-width: 11rem;
+  line-height: 1.3;
+}
+.result-row[data-model] .res-en::before {
+  content: attr(data-model-badge);
+  display: none;
+}
+.result-row[data-model] .res-model-tag {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  vertical-align: middle;
+}
+
+/* Model select nestled in the reader chip row (main UI) */
+.reader-chips .model-select-group.pchip-model {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.15rem;
+  padding: 0.15rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.reader-chips .model-select-group.pchip-model select {
+  max-width: 10.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.15rem;
+}
+.reader-chips .model-select-group .model-select-note {
+  display: none; /* chip row is tight; title/aria cover the blurb */
+}
+@media (min-width: 1100px) {
+  .reader-chips .model-select-group .model-select-note {
+    display: inline;
+    max-width: 9.5rem;
+  }
+}

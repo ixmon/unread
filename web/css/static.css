@@ -71,3 +71,6 @@ a { color: var(--accent-strong); }
   .lines-table td.atf, .lines-table td.cunei { overflow-wrap: anywhere; word-break: break-all; }
   .lines-table td.cunei { font-size: 1.1rem; }
 }
+.model-toolbar { margin: 0.35rem 0 0.75rem; }
+.model-toolbar.toolbar-group { display: inline-flex; }
+.results-sep { margin: 1rem 0 0.5rem; color: var(--text-faint); font-size: 0.75rem; font-family: "IBM Plex Mono", monospace; letter-spacing: 0.02em; }
