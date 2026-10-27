@@ -1,5 +1,6 @@
-// Shared B2c vs Compact v4e choice for translate.html and the map.html reader toolbar.
-// URL ?revision= / ?model= override; otherwise localStorage; otherwise a device default.
+// Shared translation-source choice for translate.html and the map.html reader (cog).
+// Sources: canned (pre-computed site drafts), B2c in-browser, Compact v4e in-browser.
+// URL ?revision= / ?model= override; otherwise localStorage; otherwise a context default.
 
 export const STORAGE_KEY = "unread.translator.model";
 
@@ -8,6 +9,7 @@ export const B2C_REVISION = "cb93faed82ce9440a03755ae0a8b12eba0db3bbb";
 export const V4E_REVISION = "v4e-2026-10-11";
 export const V4E_SHA = "2889e854d3cd1fd8a8d963f2fb0284f80d113339";
 
+/** @typedef {'canned'|'b2c'|'v4e'} SourceId */
 /** @typedef {'b2c'|'v4e'} ModelId */
 
 export const MODELS = {
@@ -19,7 +21,7 @@ export const MODELS = {
     revision: B2C_REVISION,
     sizeMB: 810,
     blurb: "Best quality · ~810 MB download · desktop recommended",
-    radioHint: "B2c (best quality, ~810 MB download, desktop recommended)",
+    radioHint: "B2c in-browser (best quality, ~810 MB download, desktop recommended)",
   },
   v4e: {
     id: "v4e",
@@ -29,8 +31,16 @@ export const MODELS = {
     revision: V4E_REVISION,
     sizeMB: 94,
     blurb: "Faster · ~94 MB · for phones / low memory",
-    radioHint: "Compact v4e (~94 MB, faster, for phones/low memory)",
+    radioHint: "Compact v4e in-browser (~94 MB, faster, for phones/low memory)",
   },
+};
+
+export const CANNED = {
+  id: "canned",
+  label: "Pre-computed",
+  shortLabel: "canned",
+  blurb: "Machine draft already shipped with this text (no download)",
+  radioHint: "Pre-computed translation (canned machine draft shipped with the site — no download)",
 };
 
 export function isV4eRevision(rev) {
@@ -46,12 +56,10 @@ export function preferCompact() {
       const ua = navigator.userAgent || "";
       if (/Mobi|Android|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua)) return true;
     }
-    if (typeof window !== "undefined") {
-      if (window.matchMedia) {
-        if (window.matchMedia("(max-width: 720px)").matches) return true;
-        if (window.matchMedia("(pointer: coarse)").matches && window.matchMedia("(max-width: 1024px)").matches)
-          return true;
-      }
+    if (typeof window !== "undefined" && window.matchMedia) {
+      if (window.matchMedia("(max-width: 720px)").matches) return true;
+      if (window.matchMedia("(pointer: coarse)").matches && window.matchMedia("(max-width: 1024px)").matches)
+        return true;
     }
   } catch (_) { /* ignore */ }
   return false;
@@ -61,25 +69,36 @@ export function defaultModelId() {
   return preferCompact() ? "v4e" : "b2c";
 }
 
-/** @returns {ModelId|null} */
+/**
+ * Default source for the reader: canned when the text has one; else device model
+ * (but caller must not auto-download — only preselect in the modal).
+ * @param {{ hasCanned?: boolean }} [ctx]
+ * @returns {SourceId}
+ */
+export function defaultSourceId(ctx = {}) {
+  if (ctx.hasCanned) return "canned";
+  return defaultModelId();
+}
+
+/** @returns {SourceId|null} */
 export function getSavedChoice() {
   try {
     const v = localStorage.getItem(STORAGE_KEY);
-    if (v === "b2c" || v === "v4e") return v;
+    if (v === "b2c" || v === "v4e" || v === "canned") return v;
   } catch (_) { /* private mode */ }
   return null;
 }
 
-/** @param {ModelId} id */
+/** @param {SourceId} id */
 export function setSavedChoice(id) {
-  if (id !== "b2c" && id !== "v4e") return;
+  if (id !== "b2c" && id !== "v4e" && id !== "canned") return;
   try { localStorage.setItem(STORAGE_KEY, id); } catch (_) { /* ignore */ }
 }
 
 /**
- * Resolve which model to use.
- * URL ?revision= / ?model= wins; else saved choice; else device default.
- * When URL forces a non-default-repo model, returns { custom: true, ... }.
+ * Resolve which in-browser model to use (translate.html / URL).
+ * URL ?revision= / ?model= wins; else saved b2c/v4e; else device default.
+ * Saved "canned" is ignored here (no canned on translate.html) → falls through to device default + prompt.
  */
 export function resolveChoice(params = new URLSearchParams(typeof location !== "undefined" ? location.search : "")) {
   const urlModel = params.get("model");
@@ -99,11 +118,40 @@ export function resolveChoice(params = new URLSearchParams(typeof location !== "
     return { id, custom: false, model: DEFAULT_REMOTE_MODEL, revision: urlRev, fromUrl: true, needsPrompt: false, ...MODELS[id] };
   }
   const saved = getSavedChoice();
-  if (saved) {
+  if (saved === "b2c" || saved === "v4e") {
     return { id: saved, custom: false, model: DEFAULT_REMOTE_MODEL, fromUrl: false, needsPrompt: false, ...MODELS[saved] };
   }
+  // saved canned or null → prompt for an in-browser model on translate.html
   const id = defaultModelId();
   return { id, custom: false, model: DEFAULT_REMOTE_MODEL, fromUrl: false, needsPrompt: true, ...MODELS[id] };
+}
+
+/**
+ * Resolve reader source (canned / b2c / v4e). URL ?revision= forces a browser model.
+ * @param {{ hasCanned: boolean, params?: URLSearchParams }} opts
+ */
+export function resolveReaderSource(opts) {
+  const params = opts.params || new URLSearchParams(typeof location !== "undefined" ? location.search : "");
+  const urlRev = params.get("revision");
+  const urlModel = params.get("model");
+  if (urlRev || (urlModel && (urlModel === "b2c" || urlModel === "v4e" || urlModel === DEFAULT_REMOTE_MODEL))) {
+    let id = "b2c";
+    if (urlModel === "v4e" || isV4eRevision(urlRev)) id = "v4e";
+    else if (urlModel === "b2c") id = "b2c";
+    else if (urlRev) id = isV4eRevision(urlRev) ? "v4e" : "b2c";
+    return { id, fromUrl: true, needsPrompt: false };
+  }
+  if (urlModel === "canned") return { id: "canned", fromUrl: true, needsPrompt: false };
+  const saved = getSavedChoice();
+  if (saved === "canned" && opts.hasCanned) return { id: "canned", fromUrl: false, needsPrompt: false };
+  if (saved === "b2c" || saved === "v4e") return { id: saved, fromUrl: false, needsPrompt: false };
+  if (saved === "canned" && !opts.hasCanned) {
+    // remembered canned but this text has none — fall back to device default, prompt via cog (no auto-download)
+    return { id: defaultModelId(), fromUrl: false, needsPrompt: false, awaitingChoice: true };
+  }
+  if (opts.hasCanned) return { id: "canned", fromUrl: false, needsPrompt: false };
+  // No canned: do not auto-download; show placeholder until the visitor uses the cog.
+  return { id: defaultModelId(), fromUrl: false, needsPrompt: false, awaitingChoice: true };
 }
 
 function focusable(root) {
@@ -112,15 +160,39 @@ function focusable(root) {
 }
 
 /**
- * Show the first-load model chooser. Resolves with the chosen ModelId.
- * @param {{ preselect?: ModelId, title?: string }} [opts]
- * @returns {Promise<ModelId>}
+ * Model / source chooser modal.
+ * @param {{
+ *   preselect?: SourceId,
+ *   title?: string,
+ *   lede?: string,
+ *   hasCanned?: boolean,
+ *   allowDismiss?: boolean,
+ *   mode?: 'reader'|'translate',
+ * }} [opts]
+ * @returns {Promise<SourceId|null>} null if dismissed
  */
 export function openModelModal(opts = {}) {
-  const pre = opts.preselect || defaultModelId();
+  const mode = opts.mode || (opts.hasCanned ? "reader" : "translate");
+  const hasCanned = !!opts.hasCanned && mode === "reader";
+  const pre = opts.preselect || (hasCanned ? "canned" : defaultModelId());
+  const allowDismiss = opts.allowDismiss !== false && mode === "reader";
+
   return new Promise((resolve) => {
     const prev = document.getElementById("model-choice-modal");
     if (prev) prev.remove();
+
+    const options = [];
+    if (hasCanned) {
+      options.push({
+        value: "canned",
+        title: "Pre-computed translation",
+        blurb: CANNED.radioHint,
+      });
+    }
+    options.push(
+      { value: "b2c", title: "B2c", blurb: MODELS.b2c.radioHint },
+      { value: "v4e", title: "Compact v4e", blurb: MODELS.v4e.radioHint },
+    );
 
     const wrap = document.createElement("div");
     wrap.id = "model-choice-modal";
@@ -128,24 +200,21 @@ export function openModelModal(opts = {}) {
     wrap.innerHTML = `
       <div class="model-modal-backdrop" data-backdrop></div>
       <div class="model-modal" role="dialog" aria-modal="true" aria-labelledby="model-modal-title" tabindex="-1">
-        <h2 id="model-modal-title">${opts.title || "Choose a translation model"}</h2>
-        <p class="model-modal-lede">The model runs on this device. Pick once — you can change it later in the toolbar.</p>
+        <h2 id="model-modal-title">${opts.title || (mode === "reader" ? "Machine translation source" : "Choose a translation model")}</h2>
+        <p class="model-modal-lede">${opts.lede || (mode === "reader"
+          ? "Pick the English shown in the Machine column. In-browser models download once, then stay cached."
+          : "The model runs on this device. Pick once — you can change it later in the toolbar.")}</p>
         <form class="model-modal-form">
+          ${options.map((o) => `
           <label class="model-option">
-            <input type="radio" name="model" value="b2c" ${pre === "b2c" ? "checked" : ""} />
+            <input type="radio" name="model" value="${o.value}" ${pre === o.value ? "checked" : ""} />
             <span class="model-option-body">
-              <span class="model-option-title">B2c</span>
-              <span class="model-option-blurb">${MODELS.b2c.radioHint}</span>
+              <span class="model-option-title">${o.title}</span>
+              <span class="model-option-blurb">${o.blurb}</span>
             </span>
-          </label>
-          <label class="model-option">
-            <input type="radio" name="model" value="v4e" ${pre === "v4e" ? "checked" : ""} />
-            <span class="model-option-body">
-              <span class="model-option-title">Compact v4e</span>
-              <span class="model-option-blurb">${MODELS.v4e.radioHint}</span>
-            </span>
-          </label>
+          </label>`).join("")}
           <div class="model-modal-actions">
+            ${allowDismiss ? `<button type="button" class="btn" data-cancel>Cancel</button>` : ""}
             <button type="submit" class="btn primary" data-confirm>Continue</button>
           </div>
         </form>
@@ -164,19 +233,31 @@ export function openModelModal(opts = {}) {
       resolve(id);
     };
 
+    const readId = () => {
+      const v = form.elements.model.value;
+      if (v === "v4e") return "v4e";
+      if (v === "canned") return "canned";
+      return "b2c";
+    };
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const id = form.elements.model.value === "v4e" ? "v4e" : "b2c";
+      const id = readId();
       setSavedChoice(id);
       close(id);
     });
 
+    wrap.querySelector("[data-cancel]")?.addEventListener("click", () => close(null));
+
     wrap.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        const id = form.elements.model.value === "v4e" ? "v4e" : "b2c";
-        setSavedChoice(id);
-        close(id);
+        if (allowDismiss) close(null);
+        else {
+          const id = readId();
+          setSavedChoice(id);
+          close(id);
+        }
         return;
       }
       if (e.key !== "Tab") return;
@@ -193,7 +274,6 @@ export function openModelModal(opts = {}) {
       }
     });
 
-    // Don't dismiss on backdrop click — choosing a model is required before load.
     requestAnimationFrame(() => {
       dialog.focus();
       const checked = form.querySelector('input[name="model"]:checked');
@@ -203,7 +283,7 @@ export function openModelModal(opts = {}) {
 }
 
 /**
- * Mount a compact <select> for the reader / translator toolbar.
+ * Compact <select> for translate.html toolbar (in-browser models only).
  * @param {HTMLElement} host
  * @param {{ value: ModelId, onChange: (id: ModelId) => void, disabled?: boolean }} opts
  */
@@ -254,4 +334,11 @@ export function modelLabelFor(id, dtype = "q8") {
   const rev = String(m.revision);
   const short = /^[0-9a-f]{7,}$/i.test(rev) ? rev.slice(0, 7) : rev;
   return `${m.versionLabel} ${dtype === "q8" ? "int8" : dtype} (${DEFAULT_REMOTE_MODEL}@${short})`;
+}
+
+export function sourceTag(id) {
+  if (id === "canned") return "canned";
+  if (id === "v4e") return "v4e";
+  if (id === "b2c") return "B2c";
+  return String(id || "");
 }

@@ -37,8 +37,15 @@ function load(cfg) {
     dtype: cfg.dtype,
     revision: cfg.revision || "main",
     progress_callback: (p) => {
-      if (p.status === "progress" || p.status === "done")
-        self.postMessage({ type: "download", file: p.file, loaded: p.loaded ?? p.total, total: p.total });
+      if (p.status === "progress" || p.status === "done" || p.status === "initiate") {
+        self.postMessage({
+          type: "download",
+          file: p.file,
+          loaded: p.status === "initiate" ? 0 : (p.loaded ?? 0),
+          total: p.total || 0,
+          status: p.status,
+        });
+      }
     },
   }).then((p) => {
     self.postMessage({ type: "ready", ms: Math.round(performance.now() - t0), v4e: isV4e(cfg) });

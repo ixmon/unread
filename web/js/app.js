@@ -1537,7 +1537,12 @@ function renderReader() {
     maybeFetchCdliMeta(text);
   }
   applySearchFind();
+  // Let the reader-model module (cog / live MT) sync after each paint.
+  try {
+    document.dispatchEvent(new CustomEvent("unread:reader-rendered", { detail: { id: text && text.id } }));
+  } catch (_) { /* ignore */ }
 }
+
 
 function metaRow(label, value, { html = false } = {}) {
   if (value == null || value === "" || value === false) return "";
@@ -1837,11 +1842,12 @@ function renderEnglishCol(text) {
 function translatorUrl(text, from = 0) {
   const q = new URLSearchParams({ id: text.id });
   if (from > 0) q.set("from", String(from));
-  // Carry the visitor's saved in-browser model choice (set from the reader toolbar or translate modal).
+  // Carry the visitor's saved in-browser model choice (set from the reader cog or translate modal).
   try {
     const pref = localStorage.getItem("unread.translator.model");
     if (pref === "v4e") q.set("revision", "v4e-2026-10-11");
     else if (pref === "b2c") q.set("revision", "cb93faed82ce9440a03755ae0a8b12eba0db3bbb");
+    // pref === "canned" → no revision; translate.html will prompt for an in-browser model
   } catch (_) { /* private mode */ }
   return `${TRANSLATOR_PAGE}?${q}`;
 }
@@ -2828,3 +2834,115 @@ function renderStats() {
       <p class="stats-foot">Corpus built ${day(cs.corpus_built_at)} · figures generated ${day(cs.generated_at)} from that build (<a href="corpus_stats.json">corpus_stats.json</a>, with the exact queries).</p>`;
   });
 }
+
+// ─── Bridge for js/reader-model.js (ES module): canned vs in-browser Machine column ───
+(function () {
+  const cannedBackup = new WeakMap(); // text -> { english, note, translationsMachine }
+
+  function snapshotCanned(text) {
+    if (!text || cannedBackup.has(text)) return;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    cannedBackup.set(text, {
+      english: Array.isArray(text.english) ? text.english.slice() : text.english,
+      english_note: text.english_note,
+      english_labels: text.english_labels,
+      english_conf: text.english_conf,
+      machineEnglish: machine && Array.isArray(machine.english) ? machine.english.slice() : null,
+      machineNote: machine ? machine.note : null,
+      machineLabel: machine ? machine.label : null,
+      machineModelLabel: machine ? machine.model_label : null,
+      live: false,
+    });
+  }
+
+  function hasCannedMachine(text) {
+    if (!text) return false;
+    if ((text.translations || []).some((o) => o.kind === "machine" && (o.english || []).some(Boolean))) return true;
+    if (Array.isArray(text.english) && text.english.some(Boolean) && text.english_kind !== "human") return true;
+    if (text.has_machine_draft) return true;
+    return false;
+  }
+
+  function getAtfLines(text) {
+    return (text.lines || []).filter((l) => l.type === "line" && l.atf).map((l) => l.atf);
+  }
+
+  function setLiveMachineLines(lines, meta = {}) {
+    const text = state.currentText;
+    if (!text) return;
+    snapshotCanned(text);
+    const bak = cannedBackup.get(text);
+    bak.live = true;
+    const note =
+      meta.label
+        ? `Machine draft · in-browser ${meta.label}. Unreviewed machine output, not a scholarly translation.`
+        : text.english_note;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    if (machine) {
+      machine.english = lines.slice();
+      machine.n = lines.filter(Boolean).length;
+      machine.model_label = meta.label || machine.model_label;
+      machine.note = note;
+      machine._liveSource = meta.modelId || "b2c";
+      if (meta.rerender !== false) applyTranslation(text, "machine");
+    } else {
+      text.english = lines.slice();
+      text.english_note = note;
+      text.english_kind = undefined;
+      text.has_machine_draft = true;
+      text._liveSource = meta.modelId || "b2c";
+    }
+    if (meta.rerender === false) {
+      // Soft DOM update for progressive translate (avoid full reader remount).
+      const rows = document.querySelectorAll("#english-body .line-en .en-text, .lg-en.lg-machine .en-text");
+      rows.forEach((el, i) => {
+        if (i >= lines.length) return;
+        const tag = el.querySelector(".mt-line-tag");
+        const tagHtml = tag ? tag.outerHTML : "";
+        el.innerHTML = tagHtml + (lines[i] ? escapeHtml(lines[i]) : `<span style="color:var(--text-faint)">…</span>`);
+      });
+      return;
+    }
+    renderReader();
+  }
+
+  function restoreCannedMachine() {
+    const text = state.currentText;
+    if (!text) return;
+    snapshotCanned(text);
+    const bak = cannedBackup.get(text);
+    if (!bak) return;
+    bak.live = false;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    if (machine && bak.machineEnglish) {
+      machine.english = bak.machineEnglish.slice();
+      machine.n = bak.machineEnglish.filter(Boolean).length;
+      machine.note = bak.machineNote;
+      machine.label = bak.machineLabel;
+      machine.model_label = bak.machineModelLabel;
+      delete machine._liveSource;
+      applyTranslation(text, text.tr_key || "machine");
+    } else if (bak.english != null) {
+      text.english = Array.isArray(bak.english) ? bak.english.slice() : bak.english;
+      text.english_note = bak.english_note;
+      text.english_labels = bak.english_labels;
+      text.english_conf = bak.english_conf;
+      delete text._liveSource;
+    }
+    renderReader();
+  }
+
+  window.UnreadReader = {
+    getText: () => state.currentText,
+    hasCannedMachine,
+    getAtfLines,
+    setLiveMachineLines,
+    restoreCannedMachine,
+    isLiveMachine: () => {
+      const text = state.currentText;
+      if (!text) return false;
+      const bak = cannedBackup.get(text);
+      return !!(bak && bak.live);
+    },
+  };
+})();
