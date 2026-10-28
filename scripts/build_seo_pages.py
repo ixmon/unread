@@ -367,11 +367,12 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                     f'<td class="atf">{e(atf or "")}</td>{cell}</tr>'
                 )
             s = sources.get(atf_row["src"], {})
+            teaser_note = (f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
+                           'the rest load from the corpus API in your browser.') if mt_lazy else ""
             mt_note = (f'<p class="machine-draft"><strong>Machine draft.</strong> The right-hand column is machine English from '
                        f'<code>{e(mt_meta["repo"] or "")}</code> ({e(mt_meta["label"] or mt_meta["rev"])}, {e(mt_meta["on"])}), '
-                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation. '
-                       f'This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                       'the rest load from the corpus API in your browser.</p>') if mt_meta else ""
+                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation.'
+                       f'{teaser_note}</p>') if mt_meta else ""
             tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
                          f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
             atf_html = (f'<h2>Transliteration (ATF)</h2><p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
@@ -393,11 +394,12 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                 free_rows.append(f'<tr data-line-n="{e(ln or "")}"><td class="ln">{e(ln or "")}</td>{cell}</tr>')
             tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
                          f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
+            teaser_note = (f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
+                           'the rest load from the corpus API in your browser.') if mt_lazy else ""
             atf_html += (f'<h2>Machine English (draft)</h2><p class="machine-draft"><strong>Machine draft.</strong> Machine English from '
                          f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
-                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation. '
-                         f'This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                         'the rest load from the corpus API in your browser.</p>'
+                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.'
+                         f'{teaser_note}</p>'
                          f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
                          + "".join(free_rows) + "</tbody></table>")
         rest_mt = max(0, n_mt_shown - mt_teaser_cap) if mt_teaser_cap > 0 else 0
