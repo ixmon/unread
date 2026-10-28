@@ -155,10 +155,14 @@
 
       <h2 id="model">Translation model</h2>
       <dl>
-        <dt><a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a></dt>
-        <dd>Every English line marked <em>machine draft</em> comes from this model, a fine-tune of Google's
-          <a href="https://huggingface.co/google-t5/t5-small" rel="noopener">T5-small</a> (<span class="lic">Apache 2.0</span>) trained on ATF and English pairs drawn from CDLI and ORACC translations.
-          Model <span class="lic">MIT</span>. The drafts are unreviewed and are not scholarly translations.</dd>
+        <dt><a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a> (B2c)</dt>
+        <dd>Every English line marked <em>machine draft</em> on the site is a cached draft from <strong>B2c</strong>,
+          a fine-tune of Google's <a href="https://huggingface.co/google-t5/t5-large" rel="noopener">T5-large</a>
+          (<span class="lic">Apache 2.0</span>) trained on ATF and English pairs drawn from CDLI and ORACC translations
+          (checkpoint <span class="lic">ckpt-22000-hybrid-ct2bf16</span>, also published for in-browser use as
+          <a href="https://huggingface.co/montycrypto/atf-to-english-onnx" rel="noopener">montycrypto/atf-to-english-onnx</a>).
+          Model <span class="lic">MIT</span>. A smaller <strong>Compact v4e</strong> (T5-small) build remains available
+          in the on-device translator for phones and low-memory devices. The drafts are unreviewed and are not scholarly translations.</dd>
       </dl>
 
       <h2 id="software">Software</h2>

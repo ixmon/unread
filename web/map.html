@@ -408,7 +408,8 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           </p>
           <h3>The machine English</h3>
           <p>
-            Where no human translation is online, the English column shows a draft from our own T5 model,
+            Where no human translation is online, the English column shows a cached draft from <strong>B2c</strong>
+            (T5-large),
             <a href="https://huggingface.co/montycrypto/atf-to-english" target="_blank" rel="noopener">montycrypto/atf-to-english</a>,
             which reads ATF one line at a time. It is labelled “Machine draft” everywhere it appears, and the
             reader can show it side by side with human English wherever both exist.
@@ -469,5 +470,6 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
     <script src="js/app.js"></script>
     <script type="module" src="js/reader-model.js"></script>
     <script src="js/searchmap.js"></script>
+    <script src="js/awaiting.js"></script>
 </body>
 </html>

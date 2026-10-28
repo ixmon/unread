@@ -22,6 +22,7 @@ Usage: python3 scripts/build_static.py [--db PATH] [--base-url URL]
 from __future__ import annotations
 
 import argparse
+import os
 import datetime as dt
 import html
 import json
@@ -35,6 +36,24 @@ WEB = ROOT / "web"
 CURATED = WEB / "data-curated" / "curated.json"
 SITE_JSON = WEB / "site.json"  # site name + header/footer links (single source)
 SITE = json.loads(SITE_JSON.read_text())
+
+# Machine-English lines kept in static HTML; the rest load via /api/text (docs/moat.md).
+MT_HTML_LINES = int(__import__("os").environ.get("SEO_MT_HTML_LINES", "5"))
+
+def mt_teaser_lines(n_mt: int, cap: int = 5) -> int:
+    """Machine-English lines to embed in static HTML (modest moat).
+
+    min(cap, floor(n_mt / 2)), at least 1 when n_mt >= 2; 0 when n_mt <= 1
+    (a one-line draft stays API-only). cap <= 0 restores the old all-in-HTML behaviour.
+    """
+    n = max(0, int(n_mt or 0))
+    if n <= 1:
+        return 0
+    c = int(cap)
+    if c <= 0:
+        return n
+    return max(1, min(c, n // 2))
+
 
 ICONS = {
     "x": '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg>',
@@ -179,10 +198,13 @@ def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
                 cur = surf
             rows.append({"kind": "line", "n": ln.get("n", ""), "atf": ln.get("atf", ""), "english": ln.get("english") or ""})
         return rows
+    # UNREAD_MT_DB (preview): translations live in attached schema mtalt
+    dbs = {r[1] for r in db.execute("PRAGMA database_list")}
+    tr_table = "mtalt.translations" if "mtalt" in dbs else "translations"
     tr = {
         r[0]: r[1]
         for r in db.execute(
-            "SELECT line_ref, content FROM translations WHERE text_id=? AND source_id=? AND lang='en' "
+            f"SELECT line_ref, content FROM {tr_table} WHERE text_id=? AND source_id=? AND lang='en' "
             "AND author_type='model' AND version=?",
             (tid, src, item["model_version"]),
         )
@@ -250,7 +272,7 @@ def og_tags(title: str, desc: str, url: str, typ: str = "article") -> str:
     )
 
 
-def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", typ: str = "article", head_extra: str = "", foot_extra: str = "") -> str:
+def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", typ: str = "article", head_extra: str = "", foot_extra: str = "", scripts: str = "") -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -305,6 +327,7 @@ document.querySelectorAll(".static-info").forEach((btn) => {{
   document.addEventListener("keydown", (e) => {{ if (e.key === "Escape") close(); }});
 }});
 </script>
+{scripts}
 </body>
 </html>
 """
@@ -389,11 +412,58 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         meta_rows.append(f"<tr{cls}><th>{e(k)}</th><td>{cell}</td></tr>")
     meta_html = "".join(meta_rows)
 
+    trs = []
+    mt_lazy = False
+    mt_seen = 0
+    n_en_total = sum(1 for r in rows if r["kind"] == "line" and r["english"])
+    mt_teaser_cap = mt_teaser_lines(n_en_total, MT_HTML_LINES)
+    colspan = 4 if can_atf else 2
+    for r in rows:
+        if r["kind"] == "surface":
+            trs.append(f'<tr class="surface-row"><td colspan="{colspan}">{e(r["label"])}</td></tr>')
+            continue
+        atf_cell = ""
+        if can_atf:
+            cu, cov = atf_to_unicode(r["atf"])
+            dim = ' style="opacity:0.55"' if cov < 0.4 else ""
+            atf_cell = (f'<td class="atf">{e(r["atf"])}</td>'
+                        f'<td class="cunei" lang="und-Xsux"{dim} title="{round(cov * 100)}% of signs mapped">{e(cu or "·")}</td>')
+        pending = False
+        if r["english"]:
+            mt_seen += 1
+            pending = mt_seen > mt_teaser_cap  # cap 0 (n_mt<=1) defers every MT line to /api
+        if pending:
+            mt_lazy = True
+            en_cell = '<td class="mt mt-pending" aria-hidden="true"></td>'
+        else:
+            en_cell = f'<td class="mt">{e(r["english"])}</td>'
+        trs.append(f'<tr data-line-n="{e(r["n"])}"><td class="ln">{e(r["n"])}</td>{atf_cell}{en_cell}</tr>')
+    atf_head = '<th>ATF</th><th>Cuneiform</th>' if can_atf else ""
+    rest_mt = max(0, n_en_total - mt_teaser_cap)
+    tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" data-mt-teaser="{mt_teaser_cap}"'
+                 if mt_lazy else ' class="lines-table"')
+    load_bar = ""
+    if mt_lazy and rest_mt:
+        load_bar = (
+            f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
+            f'<span class="mt-load-status">Loading the rest of the machine draft '
+            f'({rest_mt} more line{"s" if rest_mt != 1 else ""})…</span></p>'
+            f'<noscript><p class="src-note">JavaScript is required to load the rest of the machine draft '
+            f'({rest_mt} more lines). <a href="../map.html?id={quote(reader_id)}">Open in Reader</a>, '
+            f'use the <a href="../translate.html?id={quote(reader_id)}">in-browser translator</a>, '
+            f'or <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">download the model</a>.</p></noscript>'
+        )
+    teaser_bit = (
+        ' Machine English on this page loads from the corpus API in your browser.'
+        if mt_teaser_cap == 0 else
+        f' The first {mt_teaser_cap} machine lines are in the HTML for search engines; '
+        f'the rest load from the corpus API in your browser.'
+    ) if mt_lazy else ""
     draft_full = (
         f'English generated by model <code>{e(item["model"])}</code>'
         f'{(" (" + e(item["model_repo"]) + ")") if item.get("model_repo") else ""} '
         f'(version {e(item["model_version"])}) on {e(item["translated_on"])}, '
-        f'line by line from the ATF. Not a scholarly translation.'
+        f'line by line from the ATF. Not a scholarly translation.{teaser_bit}'
     )
     # Compact label + ⓘ disclosure keeps the long provenance out of the line table flow (mobile + desktop).
     draft = (
@@ -404,19 +474,6 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         f'</p>'
         f'<div id="draft-note" class="machine-draft-pop" hidden>{draft_full}</div>'
     )
-    trs = []
-    for r in rows:
-        if r["kind"] == "surface":
-            trs.append(f'<tr class="surface-row"><td colspan="{4 if can_atf else 2}">{e(r["label"])}</td></tr>')
-            continue
-        atf_cell = ""
-        if can_atf:
-            cu, cov = atf_to_unicode(r["atf"])
-            dim = ' style="opacity:0.55"' if cov < 0.4 else ""
-            atf_cell = (f'<td class="atf">{e(r["atf"])}</td>'
-                        f'<td class="cunei" lang="und-Xsux"{dim} title="{round(cov * 100)}% of signs mapped">{e(cu or "·")}</td>')
-        trs.append(f'<tr><td class="ln">{e(r["n"])}</td>{atf_cell}<td>{e(r["english"])}</td></tr>')
-    atf_head = '<th>ATF</th><th>Cuneiform</th>' if can_atf else ""
     withheld = (
         ""
         if can_atf
@@ -438,12 +495,13 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
 <table class="meta-table">{meta_html}</table>
 {draft}
 {withheld}
-<table class="lines-table">
+<table{tbl_attrs}>
 <thead><tr><th>Line</th>{atf_head}<th>English (machine draft)</th></tr></thead>
 <tbody>
 {chr(10).join(trs)}
 </tbody>
 </table>
+{load_bar}
 </article>"""
     url = f"{base_url}t/{slug(tid)}.html"
     card = {
@@ -458,7 +516,8 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         foot_extra = (f'<div class="font-credit">Cuneiform: <em>{e(finfo["family"])}</em> by {e(finfo["author"])} '
                       f'({e(finfo["license"])}); converted offline from the ATF with the eBL reading map. '
                       f'<a href="../credits.html#fonts">Font credits</a>.</div>')
-    return page(item["title"], item.get("blurb", ""), body, url, head_extra=head_extra, foot_extra=foot_extra), url, card
+    mt_scripts = '<script defer src="../js/static-mt.js"></script>' if mt_lazy else ""
+    return page(item["title"], item.get("blurb", ""), body, url, head_extra=head_extra, foot_extra=foot_extra, scripts=mt_scripts), url, card
 
 
 def first_sentence(t: str) -> str:
@@ -507,6 +566,10 @@ def main():
     cur = json.loads(CURATED.read_text())
     base = (a.base_url or cur.get("site_base_url", "")).rstrip("/") + "/"
     db = sqlite3.connect(f"file:{a.db}?mode=ro", uri=True)
+    mt_db = os.environ.get("UNREAD_MT_DB")
+    if mt_db:
+        db.execute("ATTACH DATABASE ? AS mtalt", (mt_db,))
+        print(f"build_static: attached UNREAD_MT_DB as mtalt -> {mt_db}")
     db.row_factory = None
     sources = {
         r[0]: {"name": r[1], "license": r[2], "can_republish_atf": r[3]}
@@ -591,7 +654,24 @@ def main():
     (WEB / "sitemap.xml").write_text("\n".join(sm) + "\n")
     # Note: crawlers only read robots.txt at the host root (unreadatlas.com/robots.txt; the GitHub Pages mirror is ixmon.github.io/unread/, whose
     # robots lives in the user-site repo); this copy is served at the root of unreadatlas.com and documents intent and points to the sitemap for anyone who looks.
-    (WEB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
+    # Keep any extra bot rules already in robots.txt (e.g. AhrefsBot/SemrushBot Crawl-delay).
+    robots_path = WEB / "robots.txt"
+    existing = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
+    # Always refresh the sitemap line; preserve User-agent blocks beyond the default Allow.
+    head = f"User-agent: *\nAllow: /\n\n"
+    extras = []
+    for block in existing.split("\n\n"):
+        b = block.strip()
+        if not b:
+            continue
+        if b.lower().startswith("user-agent: *") or b.lower().startswith("sitemap:"):
+            continue
+        extras.append(b)
+    body = head
+    if extras:
+        body += "\n\n".join(extras) + "\n\n"
+    body += f"Sitemap: {base}sitemap.xml\n"
+    robots_path.write_text(body)
     # search.html links results to the map reader (catalog / packaged ids) and to t/ pages
     pages = {}
     for cd in cards:

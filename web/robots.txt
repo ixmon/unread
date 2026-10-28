@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
 Sitemap: https://unreadatlas.com/sitemap.xml
