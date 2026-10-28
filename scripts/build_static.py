@@ -39,6 +39,21 @@ SITE = json.loads(SITE_JSON.read_text())
 # Machine-English lines kept in static HTML; the rest load via /api/text (docs/moat.md).
 MT_HTML_LINES = int(__import__("os").environ.get("SEO_MT_HTML_LINES", "5"))
 
+def mt_teaser_lines(n_mt: int, cap: int = 5) -> int:
+    """Machine-English lines to embed in static HTML (modest moat).
+
+    min(cap, floor(n_mt / 2)), at least 1 when n_mt >= 2; 0 when n_mt <= 1
+    (a one-line draft stays API-only). cap <= 0 restores the old all-in-HTML behaviour.
+    """
+    n = max(0, int(n_mt or 0))
+    if n <= 1:
+        return 0
+    c = int(cap)
+    if c <= 0:
+        return n
+    return max(1, min(c, n // 2))
+
+
 ICONS = {
     "x": '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg>',
     "github": '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>',
@@ -396,8 +411,8 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     trs = []
     mt_lazy = False
     mt_seen = 0
-    mt_teaser_cap = max(0, MT_HTML_LINES)
     n_en_total = sum(1 for r in rows if r["kind"] == "line" and r["english"])
+    mt_teaser_cap = mt_teaser_lines(n_en_total, MT_HTML_LINES)
     colspan = 4 if can_atf else 2
     for r in rows:
         if r["kind"] == "surface":
@@ -412,7 +427,7 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         pending = False
         if r["english"]:
             mt_seen += 1
-            pending = mt_teaser_cap > 0 and mt_seen > mt_teaser_cap
+            pending = mt_seen > mt_teaser_cap  # cap 0 (n_mt<=1) defers every MT line to /api
         if pending:
             mt_lazy = True
             en_cell = '<td class="mt mt-pending" aria-hidden="true"></td>'
@@ -420,7 +435,7 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
             en_cell = f'<td class="mt">{e(r["english"])}</td>'
         trs.append(f'<tr data-line-n="{e(r["n"])}"><td class="ln">{e(r["n"])}</td>{atf_cell}{en_cell}</tr>')
     atf_head = '<th>ATF</th><th>Cuneiform</th>' if can_atf else ""
-    rest_mt = max(0, n_en_total - mt_teaser_cap) if mt_teaser_cap > 0 else 0
+    rest_mt = max(0, n_en_total - mt_teaser_cap)
     tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" data-mt-teaser="{mt_teaser_cap}"'
                  if mt_lazy else ' class="lines-table"')
     load_bar = ""
@@ -435,6 +450,8 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
             f'or <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">download the model</a>.</p></noscript>'
         )
     teaser_bit = (
+        ' Machine English on this page loads from the corpus API in your browser.'
+        if mt_teaser_cap == 0 else
         f' The first {mt_teaser_cap} machine lines are in the HTML for search engines; '
         f'the rest load from the corpus API in your browser.'
     ) if mt_lazy else ""

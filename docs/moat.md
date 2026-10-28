@@ -24,12 +24,18 @@ HTML still carries full SEO value:
 - publishable human English per `translation-policy.json` (unchanged)
 - schema.org `ArchiveComponent` + breadcrumbs (already present)
 
-Machine English is split:
+Machine English is split by `mt_teaser_lines(n_mt, cap)`:
 
-| Where | How many lines |
+| `n_mt` | Lines in static HTML |
 | --- | --- |
-| Static HTML | first **5** machine lines (`--mt-html-lines`, env `SEO_MT_HTML_LINES`; `0` = old behaviour) |
-| Browser | the rest, filled by `web/js/static-mt.js` from **`GET /api/text/<id>`** |
+| 0 or 1 | **0** (full draft only via API; a one-line text is not teased) |
+| 2+ | **min(cap, ⌊n_mt / 2⌋)**, at least **1** (default `cap` = 5 via `--mt-html-lines` / `SEO_MT_HTML_LINES`) |
+| `cap` ≤ 0 | all lines in HTML (old behaviour, for experiments) |
+
+Examples with default cap 5: 2→1, 3→1, 4→2, 9→4, 10→5, 52→5.
+
+The rest of the draft loads in the browser from **`GET /api/text/<id>`** via `web/js/static-mt.js`
+(auto-fetch on page load; retry + Reader / translator / HF links on failure).
 
 No predictable static `/*.json` of full drafts is written. The API path is already behind the
 CloudFront WAF on the search distribution.
@@ -59,30 +65,32 @@ for cheaper full-draft fetches. The current `/text/<id>` payload is enough.
 
 An MCP server would wrap the same public endpoints (`/search`, `/search/ids`, `/search/sites`,
 `/text/<id>`, `/stats`) with tool descriptions. No new data plane. Prefer that over scraping `/t/`.
+A 429 on full-draft fetches should point agents there (and to the HF model) instead of retrying.
 
 ## Proposed rate-limit / WAF changes (**do not apply yet**)
 
 Context: on 2026-10-27 about **20k** `/t/*.html` opens came from a scraper that slipped past the
-`visits.py` bot UA filter. Those were static HTML fetches (today: full MT in the page). After this
-moat, the same scraper only gets the 5-line teaser unless it calls `/api/text/*`.
+`visits.py` bot UA filter. Those were static HTML fetches (today’s live site still has full MT in
+the page). After this moat, the same scraper only gets the HTML teaser unless it calls `/api/text/*`.
 
 Current API WAF (`unread-atlas-search-waf`, CloudFront scope, us-east-1): **300 requests / 5 minutes / IP**.
 
-Proposed (Hayden to approve before `deploy.sh waf` / console edits):
+Proposed (Hayden approved numbers; apply only after an explicit go-ahead / the Wed review):
 
-| Rule | Limit | Why |
+| Surface | Limit | Purpose |
 | --- | --- | --- |
-| API `/text*` (URI path) | **120 requests / 5 min / IP** | ~24 tablets/min sustained; human browsing fine; caps bulk full-JSON at ~1.4k tablets/hour/IP |
-| API `/search*` | keep **300 / 5 min / IP** | search is snippet-sized and already capped in Lambda |
-| Optional Lambda soft cap | **2,000 `/text` responses / UTC day / IP hash** | stops slow-drip scrapers under the 5-min window |
-| Site CloudFront (HTML) | optional **2,000 req / 5 min / IP** | bounds `/t/` hammering; do **not** block known good crawlers by UA |
+| API `/text*` (full drafts) | **60 requests / minute / IP** (WAF rate rule) | ~1 tablet/sec burst ceiling for humans; bounds bulk JSON |
+| API `/text*` | **200 responses / UTC day / IP** (Lambda soft cap) | stops slow-drip scrapers under the per-minute window |
+| API `/text*` on 429 | Friendly JSON/HTML message pointing to the **MCP/API**, the site Reader, and the **HF model** download (`montycrypto/atf-to-english`) — not a hard block with no alternative |
+| API `/search*` | keep **300 / 5 min / IP** | server protection; search is snippet-sized and already capped in Lambda |
+| Site CloudFront (general HTML, `/t/` etc.) | about **2,000 req / 5 min / IP** | server protection only, not a data moat |
 | `visits.py` | report IPs with **>100 `/t/*.html` / min** even when UA looks human | analytics only; no auto-ban |
 
 Do **not** add robots `Disallow` for GPTBot / ClaudeBot / etc.
 
-## Open decisions
+## Open decisions (resolved 2026-10-27)
 
-1. Is **5** HTML teaser lines the right default (vs 3 or 10)?
-2. Auto-fetch full draft on page load (current) vs click-to-load?
-3. Apply the `/text*` WAF 120/5min change now, or wait for the Wed 2026-10-28 rate-limit review?
-4. Should curated `web/t/*.html` be regenerated in the same PR (needs `build_static.py` + corpus DB)?
+1. Teaser length: **min(5, ⌊50%⌋), ≥1 if n_mt≥2, 0 if n_mt≤1** — done.
+2. Auto-fetch full draft on page load — keep.
+3. Apply the `/text*` 60/min + 200/day limits — **not yet**; wait for explicit deploy / Wed review.
+4. Regenerate curated `web/t/*.html` in the same PR — still open (needs corpus DB + `build_static.py` run).
