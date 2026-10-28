@@ -88,9 +88,9 @@
       "title": "Šaziga potency incantation fragment (K.8790)",
       "blurb": "Neo-Assyrian fragment from Nineveh in the ŠA.ZI.GA (male potency) series: plant recipes ‘if a man’s heart does not rise for his wife’, followed by an incantation.",
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": [
         "magic",
         "medical",
@@ -101,9 +101,9 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "to his wife, his heart does not raise..."
+        "If DITTO, urtu-plant, arariānu-plant . . ."
       ],
-      "model_repo": "montycrypto/atf-to-english"
+      "model_repo": "montycrypto/t5large-B2c"
     },
     {
       "id": "P404959",
@@ -196,13 +196,13 @@
         "remedies"
       ],
       "hooks": [
-        "The plant whose appearance is like a cucumber does not come out, it is the name of the eye plant."
+        "You put a plant of ditto, a plant of gilittu-disease on the neck of a man."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -214,13 +214,13 @@
         "remedies"
       ],
       "hooks": [
-        "You pour oil from the threshing floor. You set (the mixture) into his ears. You set up a censer of juniper."
+        "You pound a garlic, you shave his head and you bandage him. Then he will not be cured for 3 days."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -232,13 +232,13 @@
         "remedies"
       ],
       "hooks": [
-        "You sit in the star of the 'finger.' After you drink it, then he will recover."
+        "seed of dog's tongue plant, seed of a lizard"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -250,13 +250,13 @@
         "remedies"
       ],
       "hooks": [
-        "You set up a censer (made) of cypress and put (it) in its midst and he will recover."
+        "You put pressed cypress oil on his anus and he will recover."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -268,13 +268,13 @@
         "remedies"
       ],
       "hooks": [
-        "If a man is ill with a swollen tongue:"
+        "If a man has been seized by a duganu-disease: his head afflicts him, he cannot stand up; he is ill."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -286,13 +286,13 @@
         "remedies"
       ],
       "hooks": [
-        "You mix the kamku-plant with water from the river, (and) the head of the goose"
+        "You boil it down in first-class beer in a copper kettle, you remove it with a leather bag."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -304,13 +304,13 @@
         "remedies"
       ],
       "hooks": [
-        "5 liters of beer, 1 liter of beer, wine, 1/2 liter of oil, you set it in fire."
+        "Tag of Marduk and Ninurta: a thornbush of the river may he smother."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -322,13 +322,13 @@
         "remedies"
       ],
       "hooks": [
-        "Incantation: O Gula, most exalted lady, merciful mother, who dwells in the pure heavens"
+        "You mix them together, you mix 1/2 shekel of flour, and then 1 ninda of syrup,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -340,13 +340,13 @@
         "omens"
       ],
       "hooks": [
-        "If a eagle enters the palace and appears in the west: a strong enemy will attack the land, and the land will be destroyed."
+        "There will be peace between the kings and the singer will reach the desired audience gift."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -358,13 +358,13 @@
         "omens"
       ],
       "hooks": [
-        "If in Nisannu (Month I) the earth quakes: the king's land will defeat him; he will die."
+        "If in Elul (VI) the land will become poor."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -376,13 +376,13 @@
         "omens"
       ],
       "hooks": [
-        "If the Moon is surrounded by a yellow halo, and it does not have a gate: a rebellion will take place in the land"
+        "If its gate is obstructed towards the north: there will be trouble in the land."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -394,13 +394,13 @@
         "omens"
       ],
       "hooks": [
-        "If the flood becomes visible in the middle of the city: weapons will occur and the throne will become confused."
+        "If a kukullu-plant is to swell up in a new break:"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -412,13 +412,13 @@
         "omens"
       ],
       "hooks": [
-        "If on the 21st day: the king of Akkad will fall with a weapon."
+        "If on the 13th day the king goes in triumph,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -430,13 +430,13 @@
         "omens"
       ],
       "hooks": [
-        "If a seal is given to the king, his (personal) god will listen to his prayers."
+        "If he gives him donkey tallow: he will be clear."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -448,13 +448,13 @@
         "omens"
       ],
       "hooks": [
-        "The coils of the colon are like the ribs of the south wind. There will be hunger in the land."
+        "The coils of the colon are like the head of a scepter; the prince's army will have no opponent."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -466,13 +466,13 @@
         "omens"
       ],
       "hooks": [
-        "If a woman gives birth to 2 (children) and it is provided with a 'foot'-mark on their necks and their face is split: a flood will take place."
+        "If a woman gives birth to 3 boys and they are dead: that land will expand."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -484,13 +484,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "The king of the gods, Marduk, opens his mouth and speaks favorable words to Enlil."
+        "And may he see garments that he does not know."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -502,13 +502,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "I am Itar in the midst of the flood, in the midst of the flood."
+        "Among them the blood has flowed, he has poured, and I, Ištar,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -520,13 +520,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "Enlil saw him, and the king, the gods, the warriors"
+        "You have made me tremble, Oh you!"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -538,13 +538,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "He became afraid and Anu shouted about the flood"
+        "They stood at his side, they looked at him."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -556,13 +556,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "of his 7 sons, with the evil weapon he annihilated them."
+        "They are occupied with the sea, and their guard is stretched out."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -574,13 +574,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "To Marduk, his lord, he speaks a word:"
+        "You shall not kill me in heaven and earth,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -592,13 +592,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "the gods of the house have rejoiced over her"
+        "I do not cease to be angry with you,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -610,13 +610,13 @@
         "epic-hunt"
       ],
       "hooks": [
-        "You did not write a word to my hero"
+        "Anšar was not dwelling, his son Anu was not dwelling"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -628,13 +628,13 @@
         "math"
       ],
       "hooks": [
-        "37 1/2 ninda, the length, 1/2 ninda, 2 cubits, the height"
+        "its soil: 1/2 iku surface area, 17 sar;"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -646,13 +646,13 @@
         "math"
       ],
       "hooks": [
-        "8.00 (480) (ninda) squared:"
+        "10.00 (600) (ninda) squared:"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -664,13 +664,13 @@
         "math"
       ],
       "hooks": [
-        "soil of the Takirum canal"
+        "its soil: 44 2/3 (volume-)sar;"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -682,13 +682,13 @@
         "math"
       ],
       "hooks": [
-        "with 1 1/3 mina 9 (sila3) of gold, 1 5/6 (sila3) of reddish gold"
+        "for 1 1/3 mina 2 shekels of silver"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -700,13 +700,13 @@
         "math"
       ],
       "hooks": [
-        "reciprocal 4 and 15"
+        "the inverse of 34 is not 0;01"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -717,14 +717,12 @@
       "categories": [
         "math"
       ],
-      "hooks": [
-        "the 30th (time) 9 times"
-      ],
+      "hooks": [],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -736,13 +734,13 @@
         "math"
       ],
       "hooks": [
-        "10 top quality ninda breads"
+        "temple administrator of Ur-Inanna, temple administrator of Zabalam"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -754,13 +752,13 @@
         "math"
       ],
       "hooks": [
-        "3 barig 4 ban2 barley"
+        "2 barig 2 ban2 barley"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -772,13 +770,13 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "If a man... to his wife and...."
+        "He drinks dog's tongue in beer and"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -790,13 +788,13 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "Wording for the heart of a man: to a woman."
+        "[Wording (of an incantation)] to bring [a man's heart] to a woman."
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -808,13 +806,13 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "Zarpanitu went down to the garden, approached the garden"
+        "Zarpanitu is thrown into the garden, he keeps circling around the gardener"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -826,13 +824,13 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "I went up to the quay and stood there."
+        "king of kings, man of Babylon,"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -844,13 +842,13 @@
         "love-and-fertility"
       ],
       "hooks": [
-        "From my childhood until my lord's presence I shall bring you? in a dream."
+        "I have walked (as) your maid, not"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -862,13 +860,13 @@
         "music"
       ],
       "hooks": [
-        "he (Ningirsu) has made the holy ub and holy lilis holy for him"
+        "Great hero, wild bull of the Ebabbar"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -880,13 +878,13 @@
         "music"
       ],
       "hooks": [
-        "When you speak to the storm, the balag drum of lamentation and lamentation, how long will it last?"
+        "May the heart of Great Mountain Father Enlil know your prayer"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -898,13 +896,13 @@
         "music"
       ],
       "hooks": [
-        "The naggala demon, the nagbura demon, will serve you with tigi."
+        "Oh, woe my fate, singer, oh my fate!"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -916,13 +914,13 @@
         "music"
       ],
       "hooks": [
-        "On the bank of the Ezida, the temple of Nabû that is inside Nineveh, my lord, I built."
+        "The mother praying for the Enitentu temple"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     },
     {
@@ -934,13 +932,13 @@
         "music"
       ],
       "hooks": [
-        "The Abzu is pure and Dilmun is pure"
+        "You should not cast your net over the one who has a friend"
       ],
       "english_source": "corpus_db",
-      "model": "atf-en-best-v2",
-      "model_repo": "montycrypto/atf-to-english",
-      "model_version": "d871547f92875415dbbc7f4a37fd65e35f8ac97d",
-      "translated_on": "2026-10-05",
+      "model": "B2c",
+      "model_repo": "montycrypto/t5large-B2c",
+      "model_version": "ckpt-22000-hybrid-ct2bf16",
+      "translated_on": "2026-10-28",
       "tags": []
     }
   ]

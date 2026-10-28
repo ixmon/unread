@@ -22,6 +22,7 @@ Usage: python3 scripts/build_static.py [--db PATH] [--base-url URL]
 from __future__ import annotations
 
 import argparse
+import os
 import datetime as dt
 import html
 import json
@@ -197,10 +198,13 @@ def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
                 cur = surf
             rows.append({"kind": "line", "n": ln.get("n", ""), "atf": ln.get("atf", ""), "english": ln.get("english") or ""})
         return rows
+    # UNREAD_MT_DB (preview): translations live in attached schema mtalt
+    dbs = {r[1] for r in db.execute("PRAGMA database_list")}
+    tr_table = "mtalt.translations" if "mtalt" in dbs else "translations"
     tr = {
         r[0]: r[1]
         for r in db.execute(
-            "SELECT line_ref, content FROM translations WHERE text_id=? AND source_id=? AND lang='en' "
+            f"SELECT line_ref, content FROM {tr_table} WHERE text_id=? AND source_id=? AND lang='en' "
             "AND author_type='model' AND version=?",
             (tid, src, item["model_version"]),
         )
@@ -562,6 +566,10 @@ def main():
     cur = json.loads(CURATED.read_text())
     base = (a.base_url or cur.get("site_base_url", "")).rstrip("/") + "/"
     db = sqlite3.connect(f"file:{a.db}?mode=ro", uri=True)
+    mt_db = os.environ.get("UNREAD_MT_DB")
+    if mt_db:
+        db.execute("ATTACH DATABASE ? AS mtalt", (mt_db,))
+        print(f"build_static: attached UNREAD_MT_DB as mtalt -> {mt_db}")
     db.row_factory = None
     sources = {
         r[0]: {"name": r[1], "license": r[2], "can_republish_atf": r[3]}
@@ -646,7 +654,24 @@ def main():
     (WEB / "sitemap.xml").write_text("\n".join(sm) + "\n")
     # Note: crawlers only read robots.txt at the host root (unreadatlas.com/robots.txt; the GitHub Pages mirror is ixmon.github.io/unread/, whose
     # robots lives in the user-site repo); this copy is served at the root of unreadatlas.com and documents intent and points to the sitemap for anyone who looks.
-    (WEB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
+    # Keep any extra bot rules already in robots.txt (e.g. AhrefsBot/SemrushBot Crawl-delay).
+    robots_path = WEB / "robots.txt"
+    existing = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
+    # Always refresh the sitemap line; preserve User-agent blocks beyond the default Allow.
+    head = f"User-agent: *\nAllow: /\n\n"
+    extras = []
+    for block in existing.split("\n\n"):
+        b = block.strip()
+        if not b:
+            continue
+        if b.lower().startswith("user-agent: *") or b.lower().startswith("sitemap:"):
+            continue
+        extras.append(b)
+    body = head
+    if extras:
+        body += "\n\n".join(extras) + "\n\n"
+    body += f"Sitemap: {base}sitemap.xml\n"
+    robots_path.write_text(body)
     # search.html links results to the map reader (catalog / packaged ids) and to t/ pages
     pages = {}
     for cd in cards:
