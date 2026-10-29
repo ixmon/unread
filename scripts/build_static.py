@@ -286,6 +286,9 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 <link rel="apple-touch-icon" href="{depth}apple-touch-icon.png">
 <link rel="manifest" href="{depth}site.webmanifest">
 {og_tags(title, desc, canonical, typ)}
+<link rel="preload" href="{depth}fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{depth}fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{depth}css/ui-fonts.css">
 <link rel="stylesheet" href="{depth}css/styles.css">
 <link rel="stylesheet" href="{depth}css/static.css">{head_extra}
 </head>

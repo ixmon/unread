@@ -153,6 +153,9 @@ def page(*, title, desc, canonical, body, ld, active="", og_type="article", head
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{OG_IMAGE}">
 <meta name="theme-color" content="#0f1114">
+<link rel="preload" href="../fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/ui-fonts.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/static.css">
 <style>.crumbs{{font-size:.85rem;color:var(--text-dim)}}.crumbs a{{color:var(--text-dim)}}.lines-table td.atf{{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.85rem}}
