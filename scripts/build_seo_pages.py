@@ -390,7 +390,7 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
             atf_html = (f'<h2>Transliteration (ATF)</h2><p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
                         f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine translation</th></tr></thead><tbody>'
                         + "\n".join(rows_h) + "</tbody></table>"
-                        + (f'<p class="src-note">Showing the first {MAX_LINES} lines; <a href="../map.html?id={quote(reader_id)}">open the reader</a> for the rest.</p>'
+                        + (f'<p class="src-note"><a href="../map.html?id={quote(reader_id)}">Open in Reader</a> for the full tablet.</p>'
                            if atf_row["n_lines"] and atf_row["n_lines"] > MAX_LINES else ""))
         if mt_free:
             mm = mt_free_meta
