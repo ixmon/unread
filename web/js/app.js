@@ -226,8 +226,12 @@ async function loadText(id) {
 
 /** Fetch /api/text/<id> and adapt its best edition to the reader's packaged-text shape. */
 async function loadTextFromApi(id) {
+  let hdrs = { Accept: "application/json" };
+  if (window.UnreadToken && window.UnreadToken.headers) {
+    try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+  }
   const res = await fetch(`${TEXT_API}/text/${encodeURIComponent(id).replace(/%3A/gi, ":")}`, {
-    headers: { Accept: "application/json" },
+    headers: hdrs,
     signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) return null;

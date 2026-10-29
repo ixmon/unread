@@ -90,7 +90,11 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     let res;
     try {
-      res = await fetch(API + path, { signal: ctl.signal, headers: { Accept: "application/json" } });
+      var hdrs = { Accept: "application/json" };
+      if (path.indexOf("/text/") === 0 && window.UnreadToken && window.UnreadToken.headers) {
+        try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+      }
+      res = await fetch(API + path, { signal: ctl.signal, headers: hdrs });
     } catch (e) {
       // CORS-less responses (CloudFront WAF 403, throttled 429) also land here: the browser hides them.
       throw new ApiError(e.name === "AbortError" ? "timeout" : "network", e.message);

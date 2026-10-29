@@ -125,10 +125,14 @@
     setStatus(bar, "Loading…");
     var ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
     try {
+      var hdrs = { Accept: "application/json" };
+      if (window.UnreadToken && window.UnreadToken.headers) {
+        try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+      }
       var res = await fetch(
         apiBase() + "/text/" + encodeURIComponent(id).replace(/%3A/gi, ":"),
         {
-          headers: { Accept: "application/json" },
+          headers: hdrs,
           signal: ctl && ctl.signal,
         }
       );

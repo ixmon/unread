@@ -509,7 +509,8 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         foot_extra = (f'<div class="font-credit">Cuneiform: <em>{e(finfo["family"])}</em> by {e(finfo["author"])} '
                       f'({e(finfo["license"])}); converted offline from the ATF with the eBL reading map. '
                       f'<a href="../credits.html#fonts">Font credits</a>.</div>')
-    mt_scripts = '<script defer src="../js/static-mt.js"></script>' if mt_lazy else ""
+    mt_scripts = ('<script defer src="../js/browser-token.js"></script>'
+                      '<script defer src="../js/static-mt.js"></script>') if mt_lazy else ""
     return page(item["title"], item.get("blurb", ""), body, url, head_extra=head_extra, foot_extra=foot_extra, scripts=mt_scripts), url, card
 
 

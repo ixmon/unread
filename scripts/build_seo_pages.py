@@ -458,7 +458,8 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                                      "author": [{"@type": "Person", "name": a} for a in dict.fromkeys(clean_author(a) for (a, _, _) in by_tr) if a] or None}
         cw = {k: v for k, v in cw.items() if v not in (None, [], "")}
         ld = {"@context": "https://schema.org", "@graph": [cw, crumbs_ld([("Home", base), ("Tablets", base + "browse.html"), (key, url)])]}
-        mt_scripts = '<script defer src="../js/static-mt.js"></script>' if mt_lazy else ""
+        mt_scripts = ('<script defer src="../js/browser-token.js"></script>'
+                      '<script defer src="../js/static-mt.js"></script>') if mt_lazy else ""
         fp = tdir / f"{sl}.html"
         fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, noindex=noindex, scripts=mt_scripts), encoding="utf-8")
         os.utime(fp, (stamp, stamp))  # deterministic mtime: `aws s3 sync` re-uploads only pages whose size changed or a newer export
