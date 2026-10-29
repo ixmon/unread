@@ -36,3 +36,15 @@ succeeds in shadow mode and is logged.
   that is &lt;1k Lambda invocations/day — pennies/month on top of the existing search function.
 - No new AWS services required for shadow mode (no DynamoDB; mint cap is in-process best-effort).
 - Negligible CloudWatch log volume.
+
+## Related preview work still waiting on Hayden (not this branch alone)
+
+Already on `ui-tweaks-nav-mt` / earlier preview branches, **not live**:
+
+1. Shared Explore nav + short MT stamp + teaser-copy removal
+2. Self-hosted IBM Plex / Source Serif 4 (GDPR; live still hits Google Fonts)
+3. Moat teaser MT in `/t/` HTML (full draft via `/api/text`)
+4. Awaiting-work map layer
+5. Crawl-delay for AhrefsBot / SemrushBot in robots.txt
+6. Lambda NOTICE wording scrub (source patched, API not redeployed)
+7. Optional later: self-host Leaflet + translator CDN; WAF rate rule for SEO bots (~$1/mo); API-key signup age checkbox
