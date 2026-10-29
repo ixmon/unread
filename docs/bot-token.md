@@ -1,7 +1,7 @@
 # Quiet browser-check token (step 1, shadow mode)
 
 Status: **preview only** on branch `bot-token-shadow` (off `ui-tweaks-nav-mt`).
-Local preview: `python3 .preview/serve_token.py 8850` → http://127.0.0.1:8850/
+Local preview: `python3 scripts/serve_token_preview.py (or .preview/serve_token.py) 8850` → http://127.0.0.1:8850/
 (Does not replace the :8840 UI-tweaks preview, which still proxies `/api` to production.)
 
 ## Design
