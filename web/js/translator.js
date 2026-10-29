@@ -261,7 +261,7 @@ async function run() {
   const date = new Date().toISOString().slice(0, 10);
   const dl = $("#draft-label");
   dl.hidden = false;
-  dl.textContent = `Machine draft, model ${MODEL_LABEL}, ${date}. Not a scholarly translation; verify against a published edition.`;
+  dl.textContent = `Machine translation · ${MODEL_LABEL} · ${date}`;
   setStatus(stopRequested ? "Stopped." : `Done (${MODELS[modelId]?.shortLabel || modelId}).`);
   running = false;
   $("#btn-run").disabled = false; $("#btn-stop").disabled = true;

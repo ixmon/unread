@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <title data-stat-tpl="Map of {tablets} cuneiform tablets" data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
-    <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
+    <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine translations." />
     <link rel="canonical" href="https://unreadatlas.com/map.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
@@ -79,12 +79,12 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
         <button type="button" class="nav-btn" data-view="reader">Reader</button>
         <button type="button" class="nav-btn" data-view="stats">Stats</button>
         <button type="button" class="nav-btn" data-view="about">About</button>
-        <a class="nav-link" href="./">Home</a>
         <a class="nav-link" href="browse.html">Browse</a>
         <a class="nav-link" href="signs.html">Signs</a>
         <a class="nav-link" href="t/index.html">Curated</a>
         <a class="nav-link" href="translate.html">Translator</a>
         <a class="nav-link" href="search.html">Search</a>
+        <a class="nav-link" href="credits.html">Credits</a>
       </nav>
       <div class="header-spacer"></div>
     </header>
@@ -105,7 +105,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
               <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
             </button>
-            <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine-draft English.</p>
+            <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine translation.</p>
           </div>
           <div class="filters" id="sidebar-filters">
             <div class="filter-row">
@@ -253,7 +253,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <span class="chip status-fresh">No open English</span>
               <span class="chip status-print">Print edition</span>
               <span class="chip status-open">Open English</span>
-              <span class="chip status-machine">Machine draft</span>
+              <span class="chip status-machine">Machine translation</span>
               <span class="chip status-epic">Epic hunt</span>
               <span class="chip status-herbal">Remedy</span>
               <span class="chip status-omen">Omen</span>
@@ -402,16 +402,16 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           <p>
             <strong data-stat="tablets">462,298</strong> cuneiform tablets catalogued from five open projects (CDLI, ORACC, eBL, TLHdig and Achemenet),
             each counted once. <strong data-stat="with_text">223,678</strong> have a transliteration online,
-            <strong data-stat="human_en">21,451</strong> have English by human scholars and <strong data-stat="machine_en">165,344</strong> more have a machine draft.
+            <strong data-stat="human_en">21,451</strong> have English by human scholars and <strong data-stat="machine_en">165,344</strong> more have a machine translation.
             <strong data-stat="mapped">316,227</strong> are on the map. Every figure, by source, period and language, is on the
             <a href="?view=stats" data-goto-view="stats">Stats page</a>.
           </p>
           <h3>The machine English</h3>
           <p>
-            Where no human translation is online, the English column shows a cached draft from <strong>B2c</strong>
+            Where no human translation is online, the English column shows a cached translation from <strong>B2c</strong>
             (T5-large),
             <a href="https://huggingface.co/montycrypto/atf-to-english" target="_blank" rel="noopener">montycrypto/atf-to-english</a>,
-            which reads ATF one line at a time. It is labelled “Machine draft” everywhere it appears, and the
+            which reads ATF one line at a time. It is labelled “Machine translation” everywhere it appears, and the
             reader can show it side by side with human English wherever both exist.
           </p>
           <h3>Ways in</h3>

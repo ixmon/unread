@@ -124,7 +124,7 @@ def clip(t, n):
     return t if len(t) <= n else t[: n - 1].rsplit(" ", 1)[0] + "…"
 
 
-NAV = [("map.html", "Explore &amp; map"), ("browse.html", "Browse"), ("signs.html", "Signs"), ("t/index.html", "Curated texts"),
+NAV = [("map.html", "Explore"), ("browse.html", "Browse"), ("signs.html", "Signs"), ("t/index.html", "Curated"),
        ("translate.html", "Translator"), ("search.html", "Search"), ("credits.html", "Credits")]
 
 
@@ -383,20 +383,12 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                     f'<td class="atf">{e(atf or "")}</td>{cell}</tr>'
                 )
             s = sources.get(atf_row["src"], {})
-            teaser_note = (
-                ' Machine English on this page loads from the corpus API in your browser.'
-                if mt_teaser_cap == 0 else
-                f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                'the rest load from the corpus API in your browser.'
-            ) if mt_lazy else ""
-            mt_note = (f'<p class="machine-draft"><strong>Machine draft.</strong> The right-hand column is machine English from '
-                       f'<code>{e(mt_meta["repo"] or "")}</code> ({e(mt_meta["label"] or mt_meta["rev"])}, {e(mt_meta["on"])}), '
-                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation.'
-                       f'{teaser_note}</p>') if mt_meta else ""
+            teaser_note = ""
+            mt_note = (f'<p class="machine-draft"><strong>Machine translation · {e(mt_meta["label"] or mt_meta["rev"] or "model")} · {e(mt_meta["on"])}</strong></p>') if mt_meta else ""
             tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
                          f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
             atf_html = (f'<h2>Transliteration (ATF)</h2><p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
-                        f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine English (draft)</th></tr></thead><tbody>'
+                        f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine translation</th></tr></thead><tbody>'
                         + "\n".join(rows_h) + "</tbody></table>"
                         + (f'<p class="src-note">Showing the first {MAX_LINES} lines; <a href="../map.html?id={quote(reader_id)}">open the reader</a> for the rest.</p>'
                            if atf_row["n_lines"] and atf_row["n_lines"] > MAX_LINES else ""))
@@ -414,28 +406,16 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                 free_rows.append(f'<tr data-line-n="{e(ln or "")}"><td class="ln">{e(ln or "")}</td>{cell}</tr>')
             tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
                          f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
-            teaser_note = (
-                ' Machine English on this page loads from the corpus API in your browser.'
-                if mt_teaser_cap == 0 else
-                f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                'the rest load from the corpus API in your browser.'
-            ) if mt_lazy else ""
-            atf_html += (f'<h2>Machine English (draft)</h2><p class="machine-draft"><strong>Machine draft.</strong> Machine English from '
-                         f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
-                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.'
-                         f'{teaser_note}</p>'
-                         f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
+            teaser_note = ""
+            atf_html += (f'<h2>Machine translation</h2><p class="machine-draft"><strong>Machine translation · {e(mm["label"] or mm["rev"] or "model")} · {e(mm["on"])}</strong></p>'
+                         f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine translation</th></tr></thead><tbody>'
                          + "".join(free_rows) + "</tbody></table>")
         rest_mt = max(0, n_mt_shown - mt_teaser_cap)
         if mt_lazy and rest_mt:
             atf_html += (
                 f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
-                f'<span class="mt-load-status">Loading the rest of the machine draft '
-                f'({rest_mt} more line{"s" if rest_mt != 1 else ""})…</span></p>'
-                f'<noscript><p class="src-note">JavaScript is required to load the rest of the machine draft '
-                f'({rest_mt} more lines). <a href="../map.html?id={quote(reader_id)}">Open in Reader</a>, '
-                f'use the <a href="../translate.html?id={quote(reader_id)}">in-browser translator</a>, '
-                f'or <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">download the model</a>.</p></noscript>'
+                f'<span class="mt-load-status"><button type="button" class="btn mt-retry">Show full translation</button></span></p>'
+                f'<noscript><p class="src-note"><a href="../map.html?id={quote(reader_id)}">Open in Reader</a></p></noscript>'
             )
         def _li(n, l, lic, cit):
             nm = f'<a href="{e(l)}" rel="noopener">{e(n)}</a>' if l else e(n)

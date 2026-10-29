@@ -402,8 +402,8 @@ function apiTextToReader(d, requestedId) {
       conf: conf.some(Boolean) ? conf : null,
       n: english.filter(Boolean).length,
       note: m.repo
-        ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
-        : "Machine draft. Unreviewed machine output, not a scholarly translation.",
+        ? `Machine translation · ${modelShort(m.label) || m.label || "model"}${m.translated_on ? ` · ${m.translated_on}` : ""}`
+        : "Machine translation",
       meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
       model_label: m.label || "",
       translated_on: m.translated_on || "",
@@ -648,6 +648,19 @@ function defaultCompareCols(text) {
   if (machine && human && machine.key !== human.key) return [machine.key, human.key];
   return opts.slice(0, 2).map((o) => o.key);
 }
+/** Drop legacy disclaimer / teaser phrases from machine-translation notes. */
+function scrubMtNote(s) {
+  if (!s) return s;
+  let t = String(s);
+  t = t.replace(/\s*Unreviewed machine output,?\s*/gi, " ");
+  t = t.replace(/\s*not a scholarly translation[^.]*\.?/gi, "");
+  t = t.replace(/\s*verify against a published edition\.?/gi, "");
+  t = t.replace(/\s*The first \d+ machine lines are in the HTML for search engines;?\s*the rest load from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\s*Machine English on this page loads from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\bMachine draft\b/g, "Machine translation");
+  return t.replace(/\s{2,}/g, " ").replace(/\s·\s*$/,"").trim();
+}
+
 const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
 const trTabLabel = (o) => (o.kind === "machine" ? "Machine" : String(o.label || "Translation").split(" · ")[0]);
 
@@ -662,15 +675,15 @@ function trCreditHtml(o) {
       .filter(Boolean)
       .join(" · ");
   }
-  const short = `Machine draft · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""} · unreviewed, not a scholarly translation`;
-  const full = o.note || short;
+  const short = `Machine translation · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""}`;
+  const full = scrubMtNote(o.note || short);
   // Full provenance is shown via the header ⓘ popover (lg-credit); keep a short summary for the rare inline-preamble mode.
   return `<span class="mt-credit-full">${escapeHtml(full)}</span><span class="mt-credit-short" hidden>${escapeHtml(short)}</span>`;
 }
 
 /** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
 function trChipSub(o) {
-  if (o.kind === "machine") return "machine draft";
+  if (o.kind === "machine") return "machine translation";
   return o.license ? `human · ${o.license}` : "human";
 }
 
@@ -815,7 +828,7 @@ function renderReaderChips(text) {
     enChip.hidden = false;
     enChip.disabled = !has;
     enChip.dataset.slide = "col-english";
-    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine draft") + (status ? ` · ${status}` : "") : status || "none yet";
+    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine translation") + (status ? ` · ${status}` : "") : status || "none yet";
   }
   const atfChip = host.querySelector('[data-panel="atf"]');
   atfChip.disabled = !content.length;
@@ -1086,10 +1099,10 @@ function machineChip(text) {
   if (!n) return "";
   const total = (text.lines || []).filter((l) => l.type === "line").length;
   if (text.machine_draft_lines != null) n = text.machine_draft_lines;
-  const label = total && n < total ? `Machine draft ${n}/${total}` : `Machine draft (${n})`;
+  const label = total && n < total ? `Machine translation ${n}/${total}` : `Machine translation (${n})`;
   const tm = text.translation_meta || {};
   const stamp = tm.model ? ` · ${tm.model}${tm.translated_on ? ` · ${tm.translated_on}` : ""}` : "";
-  return `<span class="chip status-machine" title="Machine English${escapeAttr(stamp)} — not a scholarly translation">${label}</span>`;
+  return `<span class="chip status-machine" title="Machine translation${escapeAttr(stamp)}">${label}</span>`;
 }
 
 function markerChips(item) {
@@ -1610,7 +1623,7 @@ function renderMetaCol(text) {
     text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
     text.math_hunt ? `<span class="chip status-math">${escapeHtml(MATH_KIND_LABELS[text.math_kind] || "Math")}</span>` : "",
     text.has_machine_draft || (Array.isArray(text.english) && text.english.length)
-      ? `<span class="chip status-machine">Machine draft</span>`
+      ? `<span class="chip status-machine">Machine translation</span>`
       : "",
   ]
     .filter(Boolean)
@@ -1805,12 +1818,19 @@ async function maybeFetchCdliMeta(text, force = false) {
 /** Full Machine/English provenance for the header ⓘ popover (not inlined in the column body). */
 function englishProvenanceText(text) {
   if (!text) return "";
+  // Machine column ⓘ: short stamp only (model · date), no disclaimer / status essay.
+  const machine = (text.translations || []).find((o) => o.key === "machine" || o.kind === "machine");
+  if (machine && text.english_kind !== "human") {
+    const label = machine.model_label || (text.translation_meta && text.translation_meta.model) || "B2c";
+    const on = machine.translated_on || (text.translation_meta && text.translation_meta.translated_on) || "";
+    return scrubMtNote(`Machine translation · ${label}${on ? ` · ${on}` : ""}`);
+  }
   const bits = [];
-  if (text.english_note) bits.push(text.english_note);
+  if (text.english_note) bits.push(scrubMtNote(text.english_note));
   if (text.english_kind === "human") {
     /* credit lives in english_note */
   } else if (text.translation_status === "print_edition") {
-    bits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
+    bits.push("Scholars translated this in print — this English is a machine translation for comparison.");
   } else if (text.translation_status === "no_open_english") {
     bits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
   } else if (text.open_english) {
@@ -1883,7 +1903,7 @@ function renderEnglishCol(text) {
     body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
-        <p>No machine draft is published for this text yet.</p>
+        <p>No machine translation is published for this text yet.</p>
         <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
           ${lineCount} ATF content lines ready. You can draft English yourself with the in-browser
           translator (B2c ~810 MB or Compact v4e ~94 MB; choose on first use, runs on your device).
@@ -2936,7 +2956,7 @@ function renderStats() {
     bak.live = true;
     const note =
       meta.label
-        ? `Machine draft · in-browser ${meta.label}. Unreviewed machine output, not a scholarly translation.`
+        ? `Machine translation · in-browser ${meta.label}`
         : text.english_note;
     const machine = (text.translations || []).find((o) => o.kind === "machine");
     if (machine) {

@@ -410,7 +410,7 @@
     const facts = [r.period, r.genre, SRC_NAMES[r.src] || r.src].filter(Boolean).map(esc).join(" · ");
     const sn = (r.snippets || [])[0];
     const snip = sn && sn.kind !== "meta"
-      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine draft" : "ATF")}</span> ${esc(sn.text)}</div>`
+      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine translation" : "ATF")}</span> ${esc(sn.text)}</div>`
       : "";
     const readerId = inCatalog(r.id) ? r.id : r.canonical_id && inCatalog(r.canonical_id) ? r.canonical_id : null;
     const reader = readerId ? ` <a href="map.html?id=${encodeURIComponent(readerId)}" class="smap-reader" data-open="${esc(readerId)}">Map reader</a>` : "";

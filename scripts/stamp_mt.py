@@ -4,7 +4,7 @@
 Every packaged text that carries model English gets a public-safe stamp:
   translation_meta = {model, model_repo, model_version, translated_on, date_basis,
                       lines_translated, lines_total, prompt, kind: "machine_draft"}
-  english_note     = "Machine draft · model … · translated YYYY-MM-DD · … Not a scholarly translation."
+  english_note     = "Machine translation · <model> · YYYY-MM-DD"
 Local filesystem paths and device names are dropped (they were written by the local
 translate API). translated_on is kept if already set; otherwise it is taken from the
 file's modification date (UTC) and date_basis says so.
@@ -34,8 +34,7 @@ def note_for(m: dict) -> str:
     if m["lines_total"] and m["lines_translated"] < m["lines_total"]:
         part = f" First {m['lines_translated']} of {m['lines_total']} lines."
     return (
-        f"Machine draft · model {m['model']} ({m['model_repo']} @ {m['model_version'][:7]}) · "
-        f"translated {m['translated_on']}.{part} Not a scholarly translation; verify against a published edition."
+        f"Machine translation · {m['model']} · {m['translated_on']}{part}"
     )
 
 
