@@ -182,6 +182,62 @@ def load_catalog() -> dict:
     return {i["id"]: i for i in items}
 
 
+
+def surface_short_label(surf: str) -> tuple[str, str]:
+    """Return (short, full) Assyriological surface label for static page gutters.
+    obverse/reverse -> o/r; edges -> le.e/re.e/t.e/b.e/u.e/lo.e; columns as roman numerals.
+    """
+    import re
+    raw = " ".join(str(surf or "").replace("·", " ").replace("|", " ").split())
+    if not raw:
+        return "", ""
+    low = raw.lower()
+    to_roman = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x",
+                "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"]
+
+    def roman(col: str) -> str:
+        s = (col or "").lower().rstrip(".")
+        if not s:
+            return ""
+        if re.fullmatch(r"[ivxlcdm]+", s):
+            return s
+        try:
+            n = int(s)
+        except ValueError:
+            return s
+        return to_roman[n] if 1 <= n < len(to_roman) else s
+
+    names = [
+        (r"^(obverse|obv\.?|o)$", "o", "Obverse"),
+        (r"^(reverse|rev\.?|r)$", "r", "Reverse"),
+        (r"^(left[ -]?edge|le\.e\.?|le)$", "le.e", "Left edge"),
+        (r"^(right[ -]?edge|re\.e\.?|re)$", "re.e", "Right edge"),
+        (r"^(top[ -]?edge|t\.e\.?|te)$", "t.e", "Top edge"),
+        (r"^(upper[ -]?edge|u\.e\.?|ue)$", "u.e", "Upper edge"),
+        (r"^(bottom[ -]?edge|b\.e\.?|be)$", "b.e", "Bottom edge"),
+        (r"^(lower[ -]?edge|lo\.e\.?|loe)$", "lo.e", "Lower edge"),
+        (r"^(edge|e)$", "e", "Edge"),
+        (r"^(seal)$", "seal", "Seal"),
+        (r"^(fragment|frag\.?)$", "frag", "Fragment"),
+    ]
+    m = re.match(r"^surface\s+([a-z0-9]+)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$", low)
+    if m:
+        col = roman(m.group(2) or "")
+        short = f"surf. {m.group(1)}" + (f" {col}" if col else "")
+        lab = f"Surface {m.group(1)}" + (f", column {col}" if col else "")
+        return short, lab
+    m = re.match(r"^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$", low)
+    side = (m.group(1) if m else low).strip()
+    col = roman(m.group(2) if m else "")
+    for pat, short_s, lab_s in names:
+        if re.match(pat, side):
+            short = f"{short_s} {col}".strip() if col else short_s
+            lab = lab_s + (f", column {col}" if col else "")
+            return short, lab
+    short_s = side if len(side) <= 6 else side[:5] + "."
+    short = f"{short_s} {col}".strip() if col else short_s
+    return short, raw
+
 def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
     """Return [{kind:'line'|'surface', n, atf, english}]"""
     tid, src = item["id"], item["source_id"]
@@ -426,7 +482,8 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     colspan = 4 if can_atf else 2
     for r in rows:
         if r["kind"] == "surface":
-            trs.append(f'<tr class="surface-row"><td colspan="{colspan}">{e(r["label"])}</td></tr>')
+            short, full = surface_short_label(r["label"])
+            trs.append(f'<tr class="surface-row"><td colspan="{colspan}" title="{e(full)}">{e(short)}</td></tr>')
             continue
         atf_cell = ""
         if can_atf:

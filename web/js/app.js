@@ -701,11 +701,13 @@ function renderLinesCol(text) {
 function renderLinesGrid(body, text, keys, wantAtf) {
   const opts = text.translations || [];
   const cols = keys.map((k) => opts.find((o) => o.key === k)).filter(Boolean);
-  const content = (text.lines || []).filter((l) => l.type === "line");
+  // Prefer attachMetaNotes so $ / # from packaged ATF ride on the adjacent row (API editions usually omit them).
+  const attached = attachMetaNotes(text.lines || []);
+  const content = attached.length ? attached : (text.lines || []).filter((l) => l.type === "line");
   const atfOn = wantAtf && content.length > 0;
   // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
   let rows;
-  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
+  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, column: l.column, atf: l.atf, key: rowKey(l.surface, l.n), _notes: l._notes || [] }));
   else {
     const first = cols[0] || opts[0];
     rows = (first.labels || first.english.map((_, i) => String(i + 1))).map((lab) => ({ n: lab, surface: "", atf: null, key: rowKeyFromLabel(lab) }));
@@ -717,7 +719,7 @@ function renderLinesGrid(body, text, keys, wantAtf) {
 
   const k = cols.length;
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
-  const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
+  const tmpl = [content.length ? "3.2rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
   const html = [];
 
@@ -752,13 +754,15 @@ function renderLinesGrid(body, text, keys, wantAtf) {
   rows.forEach((r, i) => {
     let tag = "";
     if (content.length && r.surface && r.surface !== lastSurf) {
-      tag = `<span class="lg-surf" title="${escapeAttr(surfaceLabel(r.surface))}">${escapeHtml(surfaceShort(r.surface))}</span>`;
+      const ps = parseSurface(r.surface, r.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
       if (lastSurf !== null) surfStart.add(i);
     }
     lastSurf = r.surface;
     rowG[i] = g;
     const sc = surfStart.has(i) ? " lg-surf-start" : "";
-    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${tag}${escapeHtml(r.n)}</div>`);
+    const mark = atfNotesMarker(r._notes);
+    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${mark}${tag}<span class="ln-n">${escapeHtml(r.n)}</span></div>`);
     if (atfOn) html.push(`<div class="lg-cell lg-atf${sc}" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
     g++;
   });
@@ -1935,23 +1939,108 @@ function translatorUrl(text, from = 0) {
   return `${TRANSLATOR_PAGE}?${q}`;
 }
 
+/** Conventional Assyriological surface abbreviations for the reader gutter. */
 const SURF_NAMES = [
-  [/^(obverse|obv\.?|o)$/, "obv.", "Obverse"], [/^(reverse|rev\.?|r)$/, "rev.", "Reverse"],
-  [/^(left edge|le)$/, "l.e.", "Left edge"], [/^(right edge|re)$/, "r.e.", "Right edge"],
-  [/^(top edge|upper edge|te|ue)$/, "t.e.", "Top edge"], [/^(bottom edge|lower edge|be|lo\.? ?e\.?)$/, "b.e.", "Bottom edge"],
-  [/^(edge|e)$/, "edge", "Edge"],
+  [/^(obverse|obv\.?|o)$/, "o", "Obverse"],
+  [/^(reverse|rev\.?|r)$/, "r", "Reverse"],
+  [/^(left[ -]?edge|le\.e\.?|le)$/, "le.e", "Left edge"],
+  [/^(right[ -]?edge|re\.e\.?|re)$/, "re.e", "Right edge"],
+  [/^(top[ -]?edge|t\.e\.?|te)$/, "t.e", "Top edge"],
+  [/^(upper[ -]?edge|u\.e\.?|ue)$/, "u.e", "Upper edge"],
+  [/^(bottom[ -]?edge|b\.e\.?|be)$/, "b.e", "Bottom edge"],
+  [/^(lower[ -]?edge|lo\.e\.?|loe)$/, "lo.e", "Lower edge"],
+  [/^(edge|e)$/, "e", "Edge"],
+  [/^(seal)$/, "seal", "Seal"],
+  [/^(fragment|frag\.?)$/, "frag", "Fragment"],
 ];
-/** ATF surface ("o", "obverse col 1", "o i", "left edge") -> short tag ("obv. 1") and full label ("Obverse, column 1"). */
-function parseSurface(s) {
-  const raw = String(s || "").trim();
-  const m = raw.toLowerCase().match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
-  const side = (m && m[1]) || raw.toLowerCase(), col = m && m[2];
-  const hit = SURF_NAMES.find(([re]) => re.test(side));
-  const short = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
-  return { short: col ? `${short} ${col}` : short, label: hit ? hit[2] + (col ? `, column ${col}` : "") : raw };
+const TO_ROMAN = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"];
+function toRomanCol(col) {
+  const s = String(col || "").toLowerCase().replace(/\.$/, "").trim();
+  if (!s) return "";
+  if (/^[ivxlcdm]+$/.test(s)) return s;
+  const n = parseInt(s, 10);
+  if (n >= 1 && n < TO_ROMAN.length) return TO_ROMAN[n];
+  return s;
 }
-const surfaceShort = (s) => parseSurface(s).short;
-const surfaceLabel = (s) => parseSurface(s).label;
+/** ATF surface ("o", "obverse col 1", "o i", "left edge") + optional column -> short tag ("o ii") and full label. */
+function parseSurface(s, column) {
+  let raw = String(s || "").trim();
+  const colExtra = String(column || "").trim();
+  if (colExtra) raw = raw ? `${raw} ${colExtra}` : colExtra;
+  raw = raw.replace(/\s*[·|]\s*/g, " ").replace(/\s+/g, " ").trim();
+  const low = raw.toLowerCase();
+  // surface a/b … (keep letter)
+  const surfM = low.match(/^surface\s+([a-z0-9]+)\b(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  if (surfM) {
+    const col = toRomanCol(surfM[2] || "");
+    return {
+      short: col ? `surf. ${surfM[1]} ${col}` : `surf. ${surfM[1]}`,
+      label: col ? `Surface ${surfM[1]}, column ${col}` : `Surface ${surfM[1]}`,
+    };
+  }
+  const m = low.match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  let side = ((m && m[1]) || low).trim();
+  let col = toRomanCol((m && m[2]) || "");
+  // "column 2" alone (no face) — rare
+  if (/^col(?:umn)?\.?$/.test(side) && col) {
+    return { short: col, label: `Column ${col}` };
+  }
+  const hit = SURF_NAMES.find(([re]) => re.test(side));
+  const shortSide = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
+  const labelSide = hit ? hit[2] : raw;
+  return {
+    short: col ? `${shortSide} ${col}` : shortSide,
+    label: hit ? labelSide + (col ? `, column ${col}` : "") : raw,
+  };
+}
+const surfaceShort = (s, column) => parseSurface(s, column).short;
+const surfaceLabel = (s, column) => parseSurface(s, column).label;
+
+/** Embedded ATF English (#tr.en: …) — omit from the ATF column (not a margin note). */
+function isAtfTrLine(line) {
+  return /^#tr\b/i.test(String((line && (line.text || line.atf)) || "").trim());
+}
+/** $ rulings / # comments (not #tr) / << >> — useful, but must not take a grid row. */
+function isAtfMetaLine(line) {
+  if (!line || isAtfTrLine(line)) return false;
+  if (line.type === "note" || line.type === "raw") return true;
+  const t = String(line.text || line.atf || "").trim();
+  if (!t) return false;
+  if (t.startsWith("$") || t.startsWith(">>") || t.startsWith("<<")) return true;
+  if (t.startsWith("#")) return true;
+  return false;
+}
+function metaLineText(line) {
+  return String(line.text || line.atf || "").replace(/^\$\s*/, "$ ").trim();
+}
+/** Attach meta lines to the preceding content line (or the next when they lead). Drop #tr lines. */
+function attachMetaNotes(lines) {
+  const out = [];
+  let pending = [];
+  for (const line of lines || []) {
+    if (isAtfTrLine(line)) continue;
+    if (isAtfMetaLine(line)) {
+      const t = metaLineText(line);
+      if (!t) continue;
+      if (out.length) out[out.length - 1]._notes.push(t);
+      else pending.push(t);
+      continue;
+    }
+    if (line.type && line.type !== "line") continue;
+    const row = Object.assign({}, line, { type: "line", _notes: pending.slice() });
+    pending = [];
+    out.push(row);
+  }
+  if (pending.length && out.length) out[0]._notes = pending.concat(out[0]._notes);
+  return out;
+}
+function atfNotesMarker(notes) {
+  if (!notes || !notes.length) return "";
+  const tip = notes.join(" · ");
+  const onlyRuling = notes.length === 1 && /^\$\s*single ruling$/i.test(notes[0]);
+  const glyph = onlyRuling ? "—" : "ⓘ";
+  return `<button type="button" class="atf-note-mark" title="${escapeAttr(tip)}" aria-label="${escapeAttr("ATF note: " + tip)}">${glyph}</button>`;
+}
 
 function renderAtfCol(text) {
   const body = $("#atf-body");
@@ -1961,29 +2050,28 @@ function renderAtfCol(text) {
     return;
   }
 
+  // $ / # meta lines become margin markers on the adjacent content line — never their own rows
+  const content = attachMetaNotes(lines);
   let html = "";
   let lastSurface = "";
   let lastCol = "";
   let i = 0;
-  for (const line of lines) {
-    if (line.type === "line") {
-      const surf = [line.surface, line.column].filter(Boolean).join(" · ");
-      // surface/column change: a tag in the line-number cell (not a separate row, which offset the first line)
-      let tag = "", sc = "";
-      if (surf && (line.surface !== lastSurface || line.column !== lastCol)) {
-        tag = `<span class="lg-surf" title="${escapeAttr(surf)}">${escapeHtml(surfaceShort(line.surface) + (line.column ? " " + line.column : ""))}</span>`;
-        if (i > 0) sc = " lg-surf-start";
-        lastSurface = line.surface;
-        lastCol = line.column;
-      }
-      html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
-        <span class="ln">${tag}${escapeHtml(line.n)}</span>
+  for (const line of content) {
+    const surfKey = [line.surface, line.column].filter(Boolean).join(" · ");
+    let tag = "", sc = "";
+    if (surfKey && (line.surface !== lastSurface || line.column !== lastCol)) {
+      const ps = parseSurface(line.surface, line.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
+      if (i > 0) sc = " lg-surf-start";
+      lastSurface = line.surface;
+      lastCol = line.column;
+    }
+    const mark = atfNotesMarker(line._notes);
+    html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
+        <span class="ln">${mark}${tag}<span class="ln-n">${escapeHtml(line.n)}</span></span>
         <span class="atf">${escapeHtml(line.atf)}</span>
       </div>`;
-      i += 1;
-    } else if (line.type === "note") {
-      html += `<div class="line-row note">${escapeHtml(line.text)}</div>`;
-    }
+    i += 1;
   }
   body.innerHTML = `<div class="atf-lines">${html}</div>`;
   bindLineHover(body);
@@ -2065,6 +2153,16 @@ function bindLineHover(container) {
   container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i], .lg-cell[data-s]").forEach((el) => {
     el.addEventListener("mouseenter", () => (el.dataset.s != null ? highlightLine(+el.dataset.s, +el.dataset.e) : highlightLine(el.dataset.i)));
     el.addEventListener("mouseleave", () => highlightLine(null));
+  });
+  // ATF note markers: tap toggles the CSS tip (hover/focus already covered)
+  container.querySelectorAll(".atf-note-mark").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const open = btn.classList.contains("is-open");
+      container.querySelectorAll(".atf-note-mark.is-open").forEach((b) => b.classList.remove("is-open"));
+      if (!open) btn.classList.add("is-open");
+    });
   });
   bindColumnInfo(container);
 }
