@@ -92,14 +92,6 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <section id="view-explore" class="view active" aria-label="Explore catalog">
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-section">
-            <input
-              type="search"
-              id="search"
-              class="search-box"
-              placeholder="P262784, barley, Gilgamesh, site, genre…"
-              autocomplete="off"
-              aria-label="Search curated list or the corpus"
-            />
             <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
               <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
             </button>
@@ -108,7 +100,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           <details class="sidebar-acc" id="acc-layers">
             <summary>Map layers</summary>
             <div class="sidebar-acc-body">
-              <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine translation.</p>
+              <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated theme tablets with a known find-spot.</p>
               <label class="checkbox-row">
                 <input type="checkbox" id="sidebar-smap-toggle" checked />
                 Corpus find-spots on the map
@@ -148,139 +140,136 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           <details class="sidebar-acc" id="acc-curated">
             <summary>Curated search</summary>
             <div class="sidebar-acc-body filters" id="sidebar-filters">
-            <div class="filter-row">
-              <label for="filter-genre">Genre</label>
-              <select id="filter-genre"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-period">Period</label>
-              <select id="filter-period"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-language">Language</label>
-              <select id="filter-language"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-site">Site</label>
-              <select id="filter-site"></select>
-            </div>
-            <div class="filter-row">
-              <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
-              <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
-            </div>
-            <label class="checkbox-row epic-hunt-toggle">
-              <input type="checkbox" id="filter-epic-hunt" />
-              <strong>Epic hunt</strong> — large literary / phrase-scored
-            </label>
-            <label class="checkbox-row herbal-toggle">
-              <input type="checkbox" id="filter-herbal" />
-              <strong>Remedies</strong> — plants, recipes, home cures
-            </label>
-            <label class="checkbox-row omen-toggle">
-              <input type="checkbox" id="filter-omens" />
-              <strong>Omens</strong> — body, birth, liver, stars
-            </label>
-            <label class="checkbox-row math-toggle">
-              <input type="checkbox" id="filter-math" />
-              <strong>Math</strong> — tables, metrology, reciprocals
-            </label>
-            <div class="mode-intro" id="mode-intro-omens" hidden>
-              <div class="mode-intro-title">Divination corpus</div>
-              <p>
-                If–then science of the body, birth, liver, and sky. Protases (signs) lead to
-                apodoses (fates). Pick a kind chip or a featured tablet.
-              </p>
-              <div class="kind-chips" id="omen-kind-chips" role="group" aria-label="Omen kinds"></div>
-            </div>
-            <div class="mode-intro" id="mode-intro-math" hidden>
-              <div class="mode-intro-title">School mathematics</div>
-              <p>
-                Sexagesimal tables from Nippur and beyond — reciprocals (igi), multiplication
-                (a-rá), and metrological area/capacity lists. Short tablets are welcome here.
-              </p>
-              <div class="kind-chips" id="math-kind-chips" role="group" aria-label="Math kinds"></div>
-            </div>
-            <div class="featured-row" id="featured-row" hidden>
-              <div class="featured-label">Featured · epic</div>
-              <button type="button" class="btn featured-btn" data-featured="P262784" title="Old Babylonian Gilgamesh II (Nippur)">
-                Gilgamesh II · P262784
-              </button>
-              <button type="button" class="btn featured-btn" data-featured="P273203" title="NA Gilgamesh II fragment">
-                Gilg. II fr. · P273203
-              </button>
-            </div>
-            <div class="featured-row" id="featured-herbal-row" hidden>
-              <div class="featured-label">Featured · remedies</div>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P404959" title="Head fever / headache poultices">
-                Head fever · P404959
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P498964" title="Belly burn, vomit, jaundice, lungs">
-                Belly / lungs · P498964
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P338416" title="Tooth and jaw remedies">
-                Teeth · P338416
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348465" title="Nose and breath remedies">
-                Nose · P348465
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348655" title="Eye salves">
-                Eyes · P348655
-              </button>
-            </div>
-            <div class="featured-row" id="featured-omen-row" hidden>
-              <div class="featured-label">Featured · omens</div>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P480113" title="Physiognomy — moles on face & body (TBP 63)">
-                Moles · P480113
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P365915" title="Skin-spot omens šumma tirku">
-                Skin spots · P365915
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P452591" title="Birth omens (Šumma izbu-type)">
-                Birth · P452591
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P479385" title="Mul.Apin star list">
-                Mul.Apin · P479385
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P453398" title="Extispicy — liver / sacrificial omens">
-                Liver · P453398
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P236901" title="Physiognomy TBP 44">
-                TBP 44 · P236901
-              </button>
-            </div>
-            <div class="featured-row" id="featured-math-row" hidden>
-              <div class="featured-label">Featured · math</div>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P257557" title="Reciprocal (igi) table">
-                Reciprocals · P257557
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P464229" title="Early metrological area table">
-                Metrology · P464229
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P368713" title="Multiplication + metrological tables">
-                Mult. tables · P368713
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P229294" title="Metrology + lexical Nippur">
-                Nippur · P229294
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P493017" title="Multiplication table ×7:30">
-                ×7:30 · P493017
-              </button>
-            </div>
-            <div class="legend-mini">
-              <span class="chip status-fresh">No open English</span>
-              <span class="chip status-print">Print edition</span>
-              <span class="chip status-open">Open English</span>
-              <span class="chip status-machine">Machine translation</span>
-              <span class="chip status-epic">Epic hunt</span>
-              <span class="chip status-herbal">Remedy</span>
-              <span class="chip status-omen">Omen</span>
-              <span class="chip status-math">Math</span>
-            </div>
+              <label class="checkbox-row epic-hunt-toggle">
+                <input type="checkbox" id="filter-epic-hunt" />
+                <strong>Epic hunt</strong> — large literary / phrase-scored
+              </label>
+              <label class="checkbox-row herbal-toggle">
+                <input type="checkbox" id="filter-herbal" />
+                <strong>Remedies</strong> — plants, recipes, home cures
+              </label>
+              <label class="checkbox-row omen-toggle">
+                <input type="checkbox" id="filter-omens" />
+                <strong>Omens</strong> — body, birth, liver, stars
+              </label>
+              <label class="checkbox-row math-toggle">
+                <input type="checkbox" id="filter-math" />
+                <strong>Math</strong> — tables, metrology, reciprocals
+              </label>
+              <div class="mode-intro" id="mode-intro-omens" hidden>
+                <div class="mode-intro-title">Divination corpus</div>
+                <p>
+                  If–then science of the body, birth, liver, and sky. Protases (signs) lead to
+                  apodoses (fates). Pick a kind chip or a featured tablet.
+                </p>
+                <div class="kind-chips" id="omen-kind-chips" role="group" aria-label="Omen kinds"></div>
+              </div>
+              <div class="mode-intro" id="mode-intro-math" hidden>
+                <div class="mode-intro-title">School mathematics</div>
+                <p>
+                  Sexagesimal tables from Nippur and beyond — reciprocals (igi), multiplication
+                  (a-rá), and metrological area/capacity lists. Short tablets are welcome here.
+                </p>
+                <div class="kind-chips" id="math-kind-chips" role="group" aria-label="Math kinds"></div>
+              </div>
+              <div class="featured-row" id="featured-row" hidden>
+                <div class="featured-label">Featured · epic</div>
+                <button type="button" class="btn featured-btn" data-featured="P262784" title="Old Babylonian Gilgamesh II (Nippur)">
+                  Gilgamesh II · P262784
+                </button>
+                <button type="button" class="btn featured-btn" data-featured="P273203" title="NA Gilgamesh II fragment">
+                  Gilg. II fr. · P273203
+                </button>
+              </div>
+              <div class="featured-row" id="featured-herbal-row" hidden>
+                <div class="featured-label">Featured · remedies</div>
+                <button type="button" class="btn featured-btn herbal-btn" data-featured="P404959" title="Head fever / headache poultices">
+                  Head fever · P404959
+                </button>
+                <button type="button" class="btn featured-btn herbal-btn" data-featured="P498964" title="Belly burn, vomit, jaundice, lungs">
+                  Belly / lungs · P498964
+                </button>
+                <button type="button" class="btn featured-btn herbal-btn" data-featured="P338416" title="Tooth and jaw remedies">
+                  Teeth · P338416
+                </button>
+                <button type="button" class="btn featured-btn herbal-btn" data-featured="P348465" title="Nose and breath remedies">
+                  Nose · P348465
+                </button>
+                <button type="button" class="btn featured-btn herbal-btn" data-featured="P348655" title="Eye salves">
+                  Eyes · P348655
+                </button>
+              </div>
+              <div class="featured-row" id="featured-omen-row" hidden>
+                <div class="featured-label">Featured · omens</div>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P480113" title="Physiognomy — moles on face & body (TBP 63)">
+                  Moles · P480113
+                </button>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P365915" title="Skin-spot omens šumma tirku">
+                  Skin spots · P365915
+                </button>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P452591" title="Birth omens (Šumma izbu-type)">
+                  Birth · P452591
+                </button>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P479385" title="Mul.Apin star list">
+                  Mul.Apin · P479385
+                </button>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P453398" title="Extispicy — liver / sacrificial omens">
+                  Liver · P453398
+                </button>
+                <button type="button" class="btn featured-btn omen-btn" data-featured="P236901" title="Physiognomy TBP 44">
+                  TBP 44 · P236901
+                </button>
+              </div>
+              <div class="featured-row" id="featured-math-row" hidden>
+                <div class="featured-label">Featured · math</div>
+                <button type="button" class="btn featured-btn math-btn" data-featured="P257557" title="Reciprocal (igi) table">
+                  Reciprocals · P257557
+                </button>
+                <button type="button" class="btn featured-btn math-btn" data-featured="P464229" title="Early metrological area table">
+                  Metrology · P464229
+                </button>
+                <button type="button" class="btn featured-btn math-btn" data-featured="P368713" title="Multiplication + metrological tables">
+                  Mult. tables · P368713
+                </button>
+                <button type="button" class="btn featured-btn math-btn" data-featured="P229294" title="Metrology + lexical Nippur">
+                  Nippur · P229294
+                </button>
+                <button type="button" class="btn featured-btn math-btn" data-featured="P493017" title="Multiplication table ×7:30">
+                  ×7:30 · P493017
+                </button>
+              </div>
+              <div class="filter-row">
+                <label for="filter-genre">Genre</label>
+                <select id="filter-genre"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-period">Period</label>
+                <select id="filter-period"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-language">Language</label>
+                <select id="filter-language"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-site">Site</label>
+                <select id="filter-site"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
+                <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
+              </div>
+              <div class="legend-mini">
+                <span class="chip status-fresh">No open English</span>
+                <span class="chip status-print">Print edition</span>
+                <span class="chip status-open">Open English</span>
+                <span class="chip status-machine">Machine translation</span>
+                <span class="chip status-epic">Epic hunt</span>
+                <span class="chip status-herbal">Remedy</span>
+                <span class="chip status-omen">Omen</span>
+                <span class="chip status-math">Math</span>
+              </div>
             </div>
           </details>
-
-          <div class="results-count" id="results-count">—</div>
-          <div class="catalog-list" id="catalog-list" role="listbox" aria-label="Works"></div>
         </aside>
 
         <div class="explore-main">
@@ -292,8 +281,8 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                 <form class="smap-form" id="smap-form" role="search" autocomplete="off">
                   <button type="button" class="btn smap-sidebar-btn" id="sidebar-open" aria-controls="sidebar" aria-expanded="false"
                     title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
-                  <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
-                  <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
+                  <label for="smap-q" class="visually-hidden">Search the corpus or open a tablet by ID</label>
+                  <input type="search" id="smap-q" class="smap-input" placeholder="P262784, Gilgamesh, barley, lamaštu…" />
                   <button type="submit" class="btn primary smap-go">Map</button>
                 </form>
                 <div class="smap-chip" id="smap-chip" hidden>
@@ -335,7 +324,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             </div>
           </div>
           <div class="preview-panel" id="preview-panel">
-            <div class="preview-empty">Select a work from the list to preview metadata and open the reader.</div>
+            <div class="preview-empty">Select a pin on the map, or search a tablet ID, to preview metadata and open the reader.</div>
           </div>
         </div>
       </section>

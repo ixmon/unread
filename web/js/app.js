@@ -951,6 +951,7 @@ function populateFilterOptions() {
 
 function fillSelect(sel, values) {
   const el = $(sel);
+  if (!el) return;
   const cur = el.value;
   el.innerHTML = `<option value="">All</option>` + values.map((v) => `<option value="${escapeAttr(v)}">${escapeHtml(v)}</option>`).join("");
   if (values.includes(cur)) el.value = cur;
@@ -961,7 +962,7 @@ function uniqueSorted(arr) {
 }
 
 function applyFilters() {
-  const q = ($("#search").value || "").trim().toLowerCase();
+  const q = (($("#search")?.value) || "").trim().toLowerCase();
   const genre = $("#filter-genre").value;
   const period = $("#filter-period").value;
   const language = $("#filter-language").value;
@@ -985,6 +986,10 @@ function applyFilters() {
   document.body.classList.toggle("mode-herbal", !!herbalMode);
   document.body.classList.toggle("mode-omen", !!omenMode);
   document.body.classList.toggle("mode-math", !!mathMode);
+  if (epicHunt || herbalMode || omenMode || mathMode) {
+    const d = document.getElementById("acc-curated");
+    if (d && !d.open) d.open = true;
+  }
   const omenIntro = $("#mode-intro-omens");
   const mathIntro = $("#mode-intro-math");
   if (omenIntro) omenIntro.hidden = !omenMode;
@@ -1084,7 +1089,7 @@ function applyFilters() {
     );
   }
   const mode = modes.length ? ` · ${modes.join(" + ")}` : "";
-  $("#results-count").textContent = `${state.filtered.length} works${mode}`;
+  const rc = $("#results-count"); if (rc) rc.textContent = `${state.filtered.length} works${mode}`;
 }
 
 function statusChip(item) {
@@ -1129,6 +1134,7 @@ function markerChips(item) {
 
 function renderCatalogList() {
   const list = $("#catalog-list");
+  if (!list) return; // sidebar list removed; pins + preview still use state.filtered
   const packaged = new Set(state._packagedIds || []);
   const epicMode = $("#filter-epic-hunt")?.checked;
   const max = 200;
@@ -2729,63 +2735,40 @@ function bindEvents() {
     $("#view-" + a.dataset.gotoView)?.scrollTo?.(0, 0);
   });
 
-  $("#search").addEventListener("input", debounce(applyFilters, 150));
-  // Primary sidebar search: IDs open a tablet; other terms also map a corpus search.
-  (function wirePrimarySearch() {
-    const box = $("#search");
-    if (!box) return;
-    const ID_RE = /^(?:P\d+|Q\d+|X\d+|BM\.\d+|K\.\d+|MLC\.\d+|VAT\s*\d+|AO\s*\d+)$/i;
-    const runCorpus = (q) => {
-      if (window.UnreadSearchMap && typeof UnreadSearchMap.run === "function") {
-        UnreadSearchMap.run({ q, in: "all" });
-      }
-    };
-    const openId = (id) => {
-      const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
-      if (hit && typeof selectWork === "function") {
-        selectWork(hit.id);
-        return true;
-      }
-      if (typeof openReader === "function") {
-        openReader(id);
-        return true;
-      }
-      return false;
-    };
-    box.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter") return;
-      e.preventDefault();
-      const q = (box.value || "").trim();
-      if (!q) {
-        applyFilters();
-        if (window.UnreadSearchMap) UnreadSearchMap.clear();
-        return;
-      }
-      if (ID_RE.test(q)) {
-        applyFilters();
-        if (!openId(q)) runCorpus(q);
-        return;
-      }
-      applyFilters();
-      runCorpus(q);
-    });
-  })();
+  $("#search")?.addEventListener("input", debounce(applyFilters, 150));
+  // Shared ID open for map search box (sidebar search removed).
+  window.UnreadOpenId = function openById(id) {
+    const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
+    if (hit && typeof selectWork === "function") selectWork(hit.id); // pin + preview when they return to map
+    if (typeof openReader === "function") {
+      openReader(id); // jump to / open the tablet (same as featured buttons)
+      return true;
+    }
+    return !!hit;
+  };
   ["filter-genre", "filter-period", "filter-language", "filter-site"].forEach((id) => {
     $(`#${id}`).addEventListener("change", applyFilters);
   });
-  $("#filter-min-lines").addEventListener("input", () => {
-    $("#min-lines-val").textContent = $("#filter-min-lines").value;
+  $("#filter-min-lines")?.addEventListener("input", () => {
+    const v = $("#min-lines-val");
+    if (v) v.textContent = $("#filter-min-lines").value;
     applyFilters();
   });
   $("#filter-hide-known").addEventListener("change", applyFilters);
   $("#filter-open-gap")?.addEventListener("change", applyFilters);
-  $("#filter-packaged").addEventListener("change", applyFilters);
+  $("#filter-packaged")?.addEventListener("change", applyFilters);
   $("#filter-no-english")?.addEventListener("change", applyFilters);
   $("#filter-not-online")?.addEventListener("change", applyFilters);
-  $("#filter-epic-hunt")?.addEventListener("change", applyFilters);
-  $("#filter-herbal")?.addEventListener("change", applyFilters);
-  $("#filter-omens")?.addEventListener("change", applyFilters);
-  $("#filter-math")?.addEventListener("change", applyFilters);
+  const openCuratedAcc = () => {
+    const d = document.getElementById("acc-curated");
+    if (d) d.open = true;
+  };
+  ["filter-epic-hunt", "filter-herbal", "filter-omens", "filter-math"].forEach((id) => {
+    $(`#${id}`)?.addEventListener("change", (e) => {
+      if (e.target.checked) openCuratedAcc();
+      applyFilters();
+    });
+  });
 
   $("#omen-kind-chips")?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-kind]");
@@ -2853,7 +2836,7 @@ function bindEvents() {
     openFeatured(btn.dataset.featured, "math");
   });
 
-  $("#catalog-list").addEventListener("click", (e) => {
+  $("#catalog-list")?.addEventListener("click", (e) => {
     const card = e.target.closest(".catalog-card");
     if (card) selectWork(card.dataset.id);
   });
@@ -2965,7 +2948,7 @@ async function main() {
   } catch (e) {
     console.error(e);
     toast(e.message || "Failed to load catalog");
-    $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
+    const clErr = $("#catalog-list"); if (clErr) clErr.innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`; else toast(e.message);
     if (deepId) openReader(deepId, "none"); // the text API doesn't need the catalog
   }
 }
@@ -2989,7 +2972,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
-    if (open) document.getElementById("search")?.focus({ preventScroll: true });
+    if (open) (document.getElementById("smap-q") || document.getElementById("search"))?.focus({ preventScroll: true });
   };
   if (btn) btn.addEventListener("click", () => setOpen(false));
   if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));

@@ -480,10 +480,18 @@
   // ─── wiring ───
   function init() {
     if (!state.map) return setTimeout(init, 50);
+    // CDLI P/Q/X ids, plus common museum sigla (K., BM., Sm., VAT, AO, MLC).
+    const ID_RE = /^(?:P\d+|Q\d+|X\d+|BM\.?\s*\d+|K\.?\s*\d+|MLC\.?\s*\d+|VAT\s*\d+|AO\s*\d+|Sm\.?\s*\d+)$/i;
     $("#smap-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const s = { ...(sm.query || queryFromUrl()), q: $("#smap-q").value.trim() };
+      const raw = $("#smap-q").value.trim();
+      const s = { ...(sm.query || queryFromUrl()), q: raw };
       if (!hasQuery(s)) return clear();
+      // Exact tablet IDs: jump to / open that tablet (reader). Free-form terms still map the corpus.
+      if (ID_RE.test(raw)) {
+        const opened = typeof window.UnreadOpenId === "function" && window.UnreadOpenId(raw);
+        if (opened) return;
+      }
       run(s);
     });
     $("#smap-clear").addEventListener("click", clear);
