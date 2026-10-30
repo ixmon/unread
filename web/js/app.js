@@ -939,7 +939,7 @@ function englishRemaining(text) {
 function populateFilterOptions() {
   const items = state.catalog.items;
   const genres = uniqueSorted(items.map((i) => i.genre).filter(Boolean));
-  const periods = uniqueSorted(items.map((i) => i.period).filter(Boolean));
+  const periods = uniqueSorted(items.map((i) => periodFacetKey(i.period)).filter(Boolean));
   const langs = uniqueSorted(items.map((i) => i.language).filter(Boolean));
   const sites = uniqueSorted(items.map((i) => i.site || i.provenience).filter(Boolean));
 
@@ -1006,7 +1006,7 @@ function applyFilters() {
     if (omenMode && state.omenKind && item.omen_kind !== state.omenKind) return false;
     if (mathMode && state.mathKind && item.math_kind !== state.mathKind) return false;
     if (genre && item.genre !== genre) return false;
-    if (period && item.period !== period) return false;
+    if (period && periodFacetKey(item.period) !== period) return false;
     if (language && item.language !== language) return false;
     if (site && item.site !== site && item.provenience !== site) return false;
     if (item.content_lines < lineFloor) return false;
@@ -2644,7 +2644,37 @@ function formatYear(y) {
 
 function shortPeriod(p) {
   if (!p) return "";
-  return p.replace(/\s*\(ca\.[^)]+\)/, "").replace(/\s*\([^)]*BC[^)]*\)/, "").trim() || p;
+  const uncertain = /\?\s*$/.test(String(p).trim());
+  let s = String(p)
+    .replace(/\s*\(ca\.[^)]+\)/g, "")
+    .replace(/\s*\([^)]*BC[^)]*\)/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .trim();
+  if (!s) return p;
+  return uncertain ? s + "?" : s;
+}
+
+/** Dropdown/facet key: fold trailing ? and date-parens into the base period. */
+function periodFacetKey(p) {
+  if (!p) return "";
+  let s = String(p)
+    .replace(/\s*\((?:ca\.|c\.)?[^)]*\d[^)]*\)\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .replace(/\.$/, "")
+    .trim();
+  const aliases = {
+    "Early Dynastic I-II": "ED I-II",
+    "Early Dynastic IIIa": "ED IIIa",
+    "Early Dynastic IIIA": "ED IIIa",
+    "Early Dynastic IIIb": "ED IIIb",
+    "Early Dynastic IIIB": "ED IIIb",
+    "Lagaš II": "Lagash II",
+    "Neo Assyrian": "Neo-Assyrian",
+    "Neo Babylonian": "Neo-Babylonian",
+  };
+  return aliases[s] || s;
 }
 
 // ─── View routing ───
