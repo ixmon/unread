@@ -129,7 +129,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
 <section id="hero" aria-label="Unread Atlas">
   <canvas id="bg" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas><canvas id="ov" aria-hidden="true"></canvas>
   <div id="brand"><a href="./" title="Unread Atlas home"><img src="assets/logo/logo.svg" width="71" height="34" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />UNREAD ATLAS</a></div>
-  <nav id="topnav" aria-label="Main"><a href="map.html">Explore</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Curated</a><a href="translate.html">Translator</a><a href="search.html">Search</a><a href="credits.html">Credits</a><a href="map.html?view=stats">Stats</a><a href="#collab">Collaborate</a></nav>
+  <nav id="topnav" aria-label="Main"><a href="map.html">Explore</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Research</a><a href="translate.html">Translator</a><a href="map.html?view=stats">Stats</a><a href="credits.html">Credits</a><a href="map.html?view=about">About</a><a href="#collab">Collaborate</a></nav>
   <div id="copy">
     <!-- ================= HEADLINE (edit here only) ================= Numbers: web/corpus_stats.json (scripts/build_corpus_stats.py stamps them here). -->
     <h1 id="headline"><em data-stat="pct_no_human_en">95</em>% of cuneiform tablets have never been translated into English by a scholar.</h1>
@@ -193,7 +193,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
     <div><a class="btn" href="https://x.com/roguesamurai" rel="me noopener" target="_blank">Message @roguesamurai on X</a><a class="btn" href="https://github.com/ixmon/unread" rel="noopener" target="_blank">Open an issue on GitHub</a></div>
   </div>
 </main>
-<footer>Unread Atlas · <a href="map.html">Explore</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Curated</a> · <a href="translate.html">Translator</a> · <a href="search.html">Search</a> · <a href="map.html?view=stats">Stats</a> · <a href="credits.html">Credits</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
+<footer>Unread Atlas · <a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="map.html?view=stats">Stats</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
 How the moving dots were chosen: <a href="browse.html#how">how this visualization works</a>. All English on this site is labelled machine translation unless marked otherwise. Coastlines and rivers: Natural Earth (<a href="credits.html#basemap">credits</a>).</footer>
 <script>
 "use strict";
@@ -318,7 +318,7 @@ window.setTour=(i,j,f)=>{P.set('t','x');touring=true;pair=[i,j,f]};
 const CARDS=[["Map","Every find-spot on a relief map, with filters, a timeline and the reader.","map.html","assets/previews/map.jpg"],
 ["Search","Search the whole corpus: English, ATF transliteration or catalogue, then show the hits on the map.","search.html?q=barley","assets/previews/search.jpg"],
 ["Map of maps","Slide between geography, time, genre and translation state. The dots travel with you.","browse.html?q=barley","assets/previews/browse.jpg"],
-["Curated texts","Hand-picked tablets with transliteration and line-by-line machine translations.","t/index.html","assets/previews/curated.jpg"],
+["Research","Hand-picked tablets with transliteration and line-by-line machine translations.","t/index.html","assets/previews/curated.jpg"],
 ["Timeline","The time slider as a second map: brush a few centuries and the dots follow.",null,"assets/previews/timeline.jpg"],
 ["Gap view","Each site as a ring: how much is read in English, machine-drafted, ATF only or catalogue only.",null,"assets/previews/gap.jpg"],
 ["Word trail","Follow one word across places and centuries, with how translators render it.",null,"assets/previews/trail.jpg"],

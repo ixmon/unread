@@ -353,12 +353,13 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 <a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo.svg" width="58" height="28" alt="" />{e(SITE["name"])}</a>
 <nav aria-label="Main">
 <a class="nav-link" href="{depth}map.html">Explore</a>
+<a class="nav-link" href="{depth}search.html">Search</a>
 <a class="nav-link" href="{depth}browse.html">Browse</a>
 <a class="nav-link" href="{depth}signs.html">Signs</a>
-<a class="nav-link" href="{depth}t/index.html">Curated</a>
+<a class="nav-link" href="{depth}t/index.html">Research</a>
 <a class="nav-link" href="{depth}translate.html">Translator</a>
-<a class="nav-link" href="{depth}search.html">Search</a>
 <a class="nav-link" href="{depth}credits.html">Credits</a>
+<a class="nav-link" href="{depth}map.html?view=about">About</a>
 </nav>
 </header>
 <main class="static-main">
@@ -663,7 +664,7 @@ def main():
             if soon else ""
         )
         body = (
-            f'<p class="crumbs"><a href="../index.html">Curated texts</a> / {e(c["title"])}</p>'
+            f'<p class="crumbs"><a href="../index.html">Research</a> / {e(c["title"])}</p>'
             f'<h1>{e(c["title"])}</h1><p class="lede">{e(c["blurb"])}</p>'
             '<p class="machine-draft"><strong>Machine translation.</strong> Every English quotation here is output of an '
             "ATF-to-English model. Each card names its source; cards marked "
@@ -689,9 +690,9 @@ def main():
         f'<h2>Other curated texts</h2><ul class="tcard-grid">{"".join(text_card(cd, "") for cd in other)}</ul>' if other else ""
     )
     idx = page(
-        "Curated texts",
+        "Research",
         "Hand-picked cuneiform texts with machine-draft English, grouped into remedies, omens, epics, math, love and music.",
-        "<h1>Curated texts</h1><p class=\"lede\">Hand-picked tablets with machine translation, grouped by theme. "
+        "<h1>Research</h1><p class=\"lede\">Curated texts and topic pages (Sumeripedia) for the unread ancient world. Hand-picked tablets with machine translation, grouped by theme. "
         "Each text page is plain HTML: transliteration (where licensing allows), line-by-line machine English, and metadata.</p>"
         f'<ul class="cat-grid">{"".join(tiles)}</ul>{other_html}',
         f"{base}t/index.html",

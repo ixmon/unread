@@ -227,6 +227,7 @@
     $("#smap-chip").title = "Every tablet in the Unread Atlas corpus with a mappable find-spot. Click a circle to list its tablets; search above to map a word.";
     sm.visible = true;
     $("#smap-toggle").checked = true;
+    const st = $("#sidebar-smap-toggle"); if (st) st.checked = true;
     draw();
   }
 
@@ -268,6 +269,7 @@
       `${fmt(d.unlocated)} have none or only an uncertain one. ${d.took_ms} ms.`;
     sm.visible = true;
     $("#smap-toggle").checked = true;
+    const st2 = $("#sidebar-smap-toggle"); if (st2) st2.checked = true;
     draw(true);
   }
 
@@ -487,9 +489,20 @@
     $("#smap-clear").addEventListener("click", clear);
     $("#smap-toggle").addEventListener("change", (e) => {
       sm.visible = e.target.checked;
+      const side = $("#sidebar-smap-toggle");
+      if (side) side.checked = e.target.checked;
       if (!sm.visible) closePanel();
       draw();
     });
+    const sideToggle = $("#sidebar-smap-toggle");
+    if (sideToggle) {
+      sideToggle.addEventListener("change", (e) => {
+        sm.visible = e.target.checked;
+        $("#smap-toggle").checked = e.target.checked;
+        if (!sm.visible) closePanel();
+        draw();
+      });
+    }
     $(".smap").addEventListener("click", (e) => {
       const f = e.target.closest("[data-unfilter]");
       if (f && sm.query) {

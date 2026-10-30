@@ -2730,6 +2730,46 @@ function bindEvents() {
   });
 
   $("#search").addEventListener("input", debounce(applyFilters, 150));
+  // Primary sidebar search: IDs open a tablet; other terms also map a corpus search.
+  (function wirePrimarySearch() {
+    const box = $("#search");
+    if (!box) return;
+    const ID_RE = /^(?:P\d+|Q\d+|X\d+|BM\.\d+|K\.\d+|MLC\.\d+|VAT\s*\d+|AO\s*\d+)$/i;
+    const runCorpus = (q) => {
+      if (window.UnreadSearchMap && typeof UnreadSearchMap.run === "function") {
+        UnreadSearchMap.run({ q, in: "all" });
+      }
+    };
+    const openId = (id) => {
+      const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
+      if (hit && typeof selectWork === "function") {
+        selectWork(hit.id);
+        return true;
+      }
+      if (typeof openReader === "function") {
+        openReader(id);
+        return true;
+      }
+      return false;
+    };
+    box.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      const q = (box.value || "").trim();
+      if (!q) {
+        applyFilters();
+        if (window.UnreadSearchMap) UnreadSearchMap.clear();
+        return;
+      }
+      if (ID_RE.test(q)) {
+        applyFilters();
+        if (!openId(q)) runCorpus(q);
+        return;
+      }
+      applyFilters();
+      runCorpus(q);
+    });
+  })();
   ["filter-genre", "filter-period", "filter-language", "filter-site"].forEach((id) => {
     $(`#${id}`).addEventListener("change", applyFilters);
   });

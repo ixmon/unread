@@ -59,12 +59,13 @@ STATIC_META = '<meta name="unread-static" content="1">'
 
 NAV = [
     ("map.html", "Explore"),
+    ("search.html", "Search"),
     ("browse.html", "Browse"),
     ("signs.html", "Signs"),
-    ("t/index.html", "Curated"),
+    ("t/index.html", "Research"),
     ("translate.html", "Translator"),
-    ("search.html", "Search"),
     ("credits.html", "Credits"),
+    ("map.html?view=about", "About"),
 ]
 
 PERIOD_RANGES = [(re.compile(p, re.I), a, b) for p, a, b in [
@@ -293,7 +294,7 @@ def page_shell(*, title, desc, canonical, body, ld, active="", og_type="article"
 <main class="static-main">
 {body}
 </main>
-<footer class="static-footer">{e(SITE["name"])} · <a href="{e(_asset('', ap))}">Home</a> · <a href="{e(_asset('browse.html', ap))}">Browse</a> · <a href="{e(_asset('signs.html', ap))}">Signs</a> · <a href="{e(_asset('t/index.html', ap))}">Curated texts</a> · <a href="{e(_asset('credits.html', ap))}">Credits &amp; thanks</a></footer>
+<footer class="static-footer">{e(SITE["name"])} · <a href="{e(_asset('', ap))}">Home</a> · <a href="{e(_asset('browse.html', ap))}">Browse</a> · <a href="{e(_asset('signs.html', ap))}">Signs</a> · <a href="{e(_asset('t/index.html', ap))}">Research</a> · <a href="{e(_asset('credits.html', ap))}">Credits &amp; thanks</a></footer>
 {scripts}
 {beacon}</body>
 </html>

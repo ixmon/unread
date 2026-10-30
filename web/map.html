@@ -74,15 +74,15 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       </button>
       <nav class="header-nav" id="header-nav" aria-label="Main">
         <button type="button" class="nav-btn active" data-view="explore">Explore</button>
-        <button type="button" class="nav-btn" data-view="reader">Reader</button>
-        <button type="button" class="nav-btn" data-view="stats">Stats</button>
-        <button type="button" class="nav-btn" data-view="about">About</button>
+        <a class="nav-link" href="search.html">Search</a>
         <a class="nav-link" href="browse.html">Browse</a>
         <a class="nav-link" href="signs.html">Signs</a>
-        <a class="nav-link" href="t/index.html">Curated</a>
+        <a class="nav-link" href="t/index.html">Research</a>
         <a class="nav-link" href="translate.html">Translator</a>
-        <a class="nav-link" href="search.html">Search</a>
+        <button type="button" class="nav-btn" data-view="reader">Reader</button>
+        <button type="button" class="nav-btn" data-view="stats">Stats</button>
         <a class="nav-link" href="credits.html">Credits</a>
+        <button type="button" class="nav-btn" data-view="about">About</button>
       </nav>
       <div class="header-spacer"></div>
     </header>
@@ -92,20 +92,62 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <section id="view-explore" class="view active" aria-label="Explore catalog">
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-section">
-            <h2>Curated tablets</h2>
             <input
               type="search"
               id="search"
               class="search-box"
-              placeholder="P-number, title, site, genre…"
+              placeholder="P262784, barley, Gilgamesh, site, genre…"
               autocomplete="off"
+              aria-label="Search curated list or the corpus"
             />
             <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
               <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
             </button>
-            <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine translation.</p>
           </div>
-          <div class="filters" id="sidebar-filters">
+
+          <details class="sidebar-acc" id="acc-layers">
+            <summary>Map layers</summary>
+            <div class="sidebar-acc-body">
+              <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine translation.</p>
+              <label class="checkbox-row">
+                <input type="checkbox" id="sidebar-smap-toggle" checked />
+                Corpus find-spots on the map
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="filter-packaged" />
+                Only packaged samples (full ATF)
+              </label>
+            </div>
+          </details>
+
+          <details class="sidebar-acc" id="acc-unread" open>
+            <summary>Unread / No English / Not online</summary>
+            <div class="sidebar-acc-body">
+              <label class="checkbox-row">
+                <input type="checkbox" id="filter-hide-known" checked />
+                Hide open English (RINAP / ETCSL / CDLI…)
+              </label>
+              <label class="checkbox-row unread-toggle">
+                <input type="checkbox" id="filter-open-gap" />
+                <strong>Unread</strong> — no open English found
+                <span class="filter-count" data-count="unread"></span>
+              </label>
+              <label class="checkbox-row no-english-toggle">
+                <input type="checkbox" id="filter-no-english" />
+                <strong>No English</strong> — none known online
+                <span class="filter-count" data-count="no-english"></span>
+              </label>
+              <label class="checkbox-row not-online-toggle">
+                <input type="checkbox" id="filter-not-online" />
+                <strong>Not online</strong> — print edition only
+                <span class="filter-count" data-count="not-online"></span>
+              </label>
+            </div>
+          </details>
+
+          <details class="sidebar-acc" id="acc-curated">
+            <summary>Curated search</summary>
+            <div class="sidebar-acc-body filters" id="sidebar-filters">
             <div class="filter-row">
               <label for="filter-genre">Genre</label>
               <select id="filter-genre"></select>
@@ -126,29 +168,6 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
               <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
             </div>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-hide-known" checked />
-              Hide open English (RINAP / ETCSL / CDLI…)
-            </label>
-            <label class="checkbox-row unread-toggle">
-              <input type="checkbox" id="filter-open-gap" />
-              <strong>Unread</strong> — no open English found
-              <span class="filter-count" data-count="unread"></span>
-            </label>
-            <label class="checkbox-row no-english-toggle">
-              <input type="checkbox" id="filter-no-english" />
-              <strong>No English</strong> — none known online
-              <span class="filter-count" data-count="no-english"></span>
-            </label>
-            <label class="checkbox-row not-online-toggle">
-              <input type="checkbox" id="filter-not-online" />
-              <strong>Not online</strong> — print edition only
-              <span class="filter-count" data-count="not-online"></span>
-            </label>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-packaged" />
-              Only packaged samples (full ATF)
-            </label>
             <label class="checkbox-row epic-hunt-toggle">
               <input type="checkbox" id="filter-epic-hunt" />
               <strong>Epic hunt</strong> — large literary / phrase-scored
@@ -257,7 +276,9 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <span class="chip status-omen">Omen</span>
               <span class="chip status-math">Math</span>
             </div>
-          </div>
+            </div>
+          </details>
+
           <div class="results-count" id="results-count">—</div>
           <div class="catalog-list" id="catalog-list" role="listbox" aria-label="Works"></div>
         </aside>
@@ -270,13 +291,13 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <div class="smap" aria-label="Search results on the map">
                 <form class="smap-form" id="smap-form" role="search" autocomplete="off">
                   <button type="button" class="btn smap-sidebar-btn" id="sidebar-open" aria-controls="sidebar" aria-expanded="false"
-                    title="Curated tablets, filters, Epic hunt, Remedies, Omens, Math and featured tablets"><span aria-hidden="true">☰</span> Curated &amp; filters</button>
+                    title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
                   <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
                   <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
                   <button type="submit" class="btn primary smap-go">Map</button>
                 </form>
                 <div class="smap-chip" id="smap-chip" hidden>
-                  <label class="smap-toggle" title="Show or hide the search-results layer"><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
+                  <label class="smap-toggle smap-toggle-hidden" title="Show or hide the search-results layer" hidden><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
                   <span id="smap-summary" aria-live="polite"></span>
                   <span id="smap-filters" class="smap-filters"></span>
                   <a id="smap-open" class="smap-link" href="search.html" target="_blank" rel="noopener">List</a>

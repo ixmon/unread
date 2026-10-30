@@ -2307,3 +2307,44 @@ body.show-preambles .mt-credit-short { display: inline; }
 .aw-pop .aw-ref{font-size:9px;vertical-align:super;margin-left:1px;text-decoration:none}
 .aw-pop .aw-about li{margin:2px 0}
 .aw-popup-known .leaflet-popup-content{overflow-y:auto;overscroll-behavior:contain}
+
+
+/* Sidebar accordions (map Explore panel) */
+.sidebar-acc {
+  border-top: 1px solid #2a2e38;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-acc > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold, #e3c27a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+.sidebar-acc > summary::-webkit-details-marker { display: none; }
+.sidebar-acc > summary::after {
+  content: "▾";
+  font-size: 11px;
+  color: var(--text-dim, #9aa3b2);
+  transition: transform 0.15s;
+}
+.sidebar-acc:not([open]) > summary::after { transform: rotate(-90deg); }
+.sidebar-acc-body {
+  padding: 0 14px 12px;
+}
+.sidebar-acc .filters { padding: 0; border: 0; }
+.sidebar-section { padding-bottom: 8px; }
+.sidebar-section .search-box { margin-bottom: 8px; }
+.smap-toggle-hidden,
+.smap-toggle[hidden] { display: none !important; }
+/* Whole-corpus default chip is hidden; search-result chips still show */
+.smap-chip.all { display: none !important; }
