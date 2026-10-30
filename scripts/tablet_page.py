@@ -301,15 +301,29 @@ def page_shell(*, title, desc, canonical, body, ld, active="", og_type="article"
 
 
 def resolve_rows(c: sqlite3.Connection, key: str) -> list[sqlite3.Row]:
-    """Resolve a tablet key (canonical_id or src:id) to text rows, CDLI-first."""
-    rows = [r for r in c.execute("SELECT * FROM text WHERE canonical_id=? COLLATE NOCASE", (key,))
-            if r["canonical_id"] == key]
-    if not rows and ":" in key:
-        src, i = key.split(":", 1)
-        rows = list(c.execute("SELECT * FROM text WHERE src=? AND id=?", (src, i)))
-    if not rows:
-        # bare P-number / id match
-        rows = list(c.execute("SELECT * FROM text WHERE id=? COLLATE NOCASE", (key,)))
+    """Resolve a tablet key (canonical_id or src:id) to text rows, CDLI-first.
+
+    Also accepts SEO filename stems from slug(): ebl:Asb.h -> ebl_Asb.h.
+    """
+    candidates = [key]
+    if ":" not in key and "_" in key:
+        for src in ("ebl", "oracc", "tlhdig", "achemenet", "cdli"):
+            prefix = src + "_"
+            if key.startswith(prefix):
+                candidates.append(f"{src}:{key[len(prefix):]}")
+                break
+    rows: list[sqlite3.Row] = []
+    for cand in candidates:
+        rows = [r for r in c.execute("SELECT * FROM text WHERE canonical_id=? COLLATE NOCASE", (cand,))
+                if r["canonical_id"] == cand]
+        if not rows and ":" in cand:
+            src, i = cand.split(":", 1)
+            rows = list(c.execute("SELECT * FROM text WHERE src=? AND id=?", (src, i)))
+        if not rows:
+            # bare P-number / id match
+            rows = list(c.execute("SELECT * FROM text WHERE id=? COLLATE NOCASE", (cand,)))
+        if rows:
+            break
     order = {"cdli": 0, "oracc": 1, "tlhdig": 2, "achemenet": 3, "ebl": 4}
     return sorted(rows, key=lambda r: order.get(r["src"], 9))
 
@@ -516,9 +530,14 @@ def render_tablet_html(
             f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
             f'data-mt-teaser="{mt_teaser_cap}"'
         ) if mt_lazy else ' class="lines-table"'
+        _load_bar = (
+            f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{max(0, n_mt_shown - mt_teaser_cap)}">'
+            f'<span class="mt-load-status"></span></p>'
+        ) if mt_lazy else ""
         atf_html = (
             f'<h2>Transliteration (ATF)</h2>'
             f'<p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
+            f'{_load_bar}'
             f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine translation</th></tr></thead><tbody>'
             + "\n".join(rows_h) + "</tbody></table>"
             + (f'<p class="src-note"><a href="{e(_asset(f"map.html?id={quote(reader_id)}", ap))}">'
@@ -541,19 +560,27 @@ def render_tablet_html(
             f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
             f'data-mt-teaser="{mt_teaser_cap}"'
         ) if mt_lazy else ' class="lines-table"'
+        _load_bar_free = (
+            f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{max(0, n_mt_shown - mt_teaser_cap)}">'
+            f'<span class="mt-load-status"></span></p>'
+        ) if mt_lazy and '<p class="mt-load-bar"' not in atf_html else ""
         atf_html += (
             f'<h2>Machine translation</h2>'
             f'<p class="machine-draft"><strong>Machine translation · '
             f'{e(mm["label"] or mm["rev"] or "model")} · {e(mm["on"])}</strong></p>'
+            f'{_load_bar_free}'
             f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine translation</th></tr></thead><tbody>'
             + "".join(free_rows) + "</tbody></table>"
         )
     rest_mt = max(0, n_mt_shown - mt_teaser_cap)
     if mt_lazy and rest_mt:
+        # Status sits above the lines table (injected when the table is built). Noscript fallback:
+        if '<p class="mt-load-bar"' not in atf_html:
+            atf_html = (
+                f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
+                f'<span class="mt-load-status"></span></p>'
+            ) + atf_html
         atf_html += (
-            f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
-            f'<span class="mt-load-status"><button type="button" class="btn mt-retry">'
-            f'Show full translation</button></span></p>'
             f'<noscript><p class="src-note"><a href="{e(_asset(f"map.html?id={quote(reader_id)}", ap))}">'
             f'Open in Reader</a></p></noscript>'
         )
@@ -618,7 +645,6 @@ def render_tablet_html(
     mt_scripts = ""
     if mt_lazy:
         mt_scripts = (
-            f'<script defer src="{e(_asset("js/browser-token.js", ap))}"></script>'
             f'<script defer src="{e(_asset("js/static-mt.js", ap))}"></script>'
         )
 

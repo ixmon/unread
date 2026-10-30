@@ -1,6 +1,7 @@
 /**
- * Fill deferred machine-English cells on static /t/ pages from /api/text/<id>.
- * Visitors see a "Show full translation" control; no teaser/API copy in the UI.
+ * Fill deferred machine-English cells on /t/ pages from /api/text/<id>.
+ * Real browsers load the full translation automatically; a retry control remains
+ * on failure. No teaser/API copy in the UI.
  */
 (function () {
   "use strict";
@@ -119,10 +120,22 @@
     return '<a href="../map.html?id=' + encodeURIComponent(id) + '">Open in Reader</a>';
   }
 
+  function offerRetry(bar, id) {
+    setStatus(
+      bar,
+      '<button type="button" class="btn mt-retry">Show full translation</button> · '
+        + readerLink(id),
+      true
+    );
+    var btn = bar.querySelector(".mt-retry");
+    if (btn) btn.addEventListener("click", function () { loadBar(bar); });
+  }
+
   async function loadBar(bar) {
     var id = bar.getAttribute("data-text-id");
     if (!id) return;
-    setStatus(bar, "Loading…");
+    bar.hidden = false;
+    setStatus(bar, "Loading full translation…");
     var ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
     try {
       var hdrs = { Accept: "application/json" };
@@ -147,26 +160,35 @@
       bar.setAttribute("data-mt-loaded", "1");
       bar.hidden = true;
     } catch (err) {
-      setStatus(
-        bar,
-        '<button type="button" class="btn mt-retry">Show full translation</button> · '
-          + readerLink(id),
-        true
-      );
-      var btn = bar.querySelector(".mt-retry");
-      if (btn) btn.addEventListener("click", function () { loadBar(bar); });
+      offerRetry(bar, id);
+    }
+  }
+
+  function likelyAutomated() {
+    try {
+      return !!(navigator && navigator.webdriver);
+    } catch (e) {
+      return false;
     }
   }
 
   function offerButton(bar) {
     if (bar.getAttribute("data-mt-loaded") === "1") return;
+    var id = bar.getAttribute("data-text-id") || "";
     setStatus(bar, '<button type="button" class="btn mt-retry">Show full translation</button>');
     var btn = bar.querySelector(".mt-retry");
     if (btn) btn.addEventListener("click", function () { loadBar(bar); });
   }
 
   function boot() {
-    document.querySelectorAll(".mt-load-bar[data-text-id]").forEach(offerButton);
+    document.querySelectorAll(".mt-load-bar[data-text-id]").forEach(function (bar) {
+      if (bar.getAttribute("data-mt-loaded") === "1") return;
+      if (likelyAutomated()) {
+        offerButton(bar);
+        return;
+      }
+      loadBar(bar);
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
