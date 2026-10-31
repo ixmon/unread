@@ -283,7 +283,7 @@ def page_shell(*, title, desc, canonical, body, ld, active="", og_type="article"
 </head>
 <body class="static-page">
 <header class="static-header">
-<a class="brand" href="{e(_asset('', ap) or _asset('index.html', ap))}" title="Unread Atlas home"><img class="brand-mark" src="{e(_asset('assets/logo/logo.svg', ap))}" width="58" height="28" alt="" />{e(SITE["name"])}</a>
+<a class="brand" href="{e(_asset('', ap) or _asset('index.html', ap))}" title="Unread Atlas home"><img class="brand-mark" src="{e(_asset('assets/logo/logo.svg', ap))}" width="58" height="28" alt="" /><h1><!--site:name-->{e(SITE["name"])}<!--/site:name--> <span class="sub"><!--site:tagline-->{e(SITE.get("tagline", ""))}<!--/site:tagline--></span></h1></a>
 <nav aria-label="Main">
 {nav}
 </nav>

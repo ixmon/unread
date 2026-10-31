@@ -323,7 +323,7 @@
 
   function fromFilters() {
     if (applying) return;
-    set(readFromDom(), { debounce: 120, hist: "replace" });
+    set(readFromDom(), { debounce: 200, hist: "replace" });
   }
 
   function onViewChange(view) {
