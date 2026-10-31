@@ -269,6 +269,9 @@ async function load(){
 const q = document.getElementById('q');
 q.addEventListener('keydown', e=>{ if(e.key==='Enter') setTerm(q.value.trim()||null); });
 let mode = 'auto', lastScope = 'en', res = null, reqN = 0;
+let hubDim = null; // Uint8Array mask from parent hub filters (genre/site/period/state)
+let hubApplying = false; // suppress postMessage echo while applying parent state
+let hubLastQ = null;
 function setMode(m){ mode = 'auto'; /* UI removed; always auto-detect via detect() */ }
 const CUNEI = /[\u{12000}-\u{1254F}]/u;
 const ATF_HINT = /[šŠṣṭḫŋĝ₀-₉{}]|sz|\w-\w|[a-z]\d\b|^\d\(/i;
@@ -297,6 +300,13 @@ async function setTerm(k){
   } else showRelated();
   const u = new URL(location); if (k) { u.searchParams.set('q', k); u.searchParams.set('in', scope); } else { u.searchParams.delete('q'); u.searchParams.delete('in'); } history.replaceState(null,'',u);
   updFlags(); draw();
+  hubLastQ = k || '';
+  if (!hubApplying && document.documentElement.classList.contains('ua-embed') && window.parent && window.parent !== window) {
+    try {
+      // Emit q + detected scope (en/atf) so List can mirror; parent equal() short-circuits loops.
+      parent.postMessage({ type: 'ua-hub-state', state: { q: k || '', in: (k ? (scope || lastScope || 'en') : 'all') } }, '*');
+    } catch (_) {}
+  }
 }
 function showStatus(h){ const el=document.getElementById('info'); if (el) el.innerHTML = h; }
 // preset words before a search; afterwards the words that co-occur most with it (NPMI) — "Appears with:"
@@ -311,7 +321,11 @@ function showRelated(){
   const all=document.createElement('button'); all.textContent='all'; all.title='Show every tablet, no search'; all.onclick=()=>{q.value='';setTerm(null)}; pr.appendChild(all);
 }
 function updFlags(){
-  for(let i=0;i<N;i++) flags[i*4+2] = (match && match[i] ? 1 : 0) + (sel[i] ? 2 : 0);
+  for(let i=0;i<N;i++){
+    const okSearch = !match || match[i];
+    const okHub = !hubDim || hubDim[i];
+    flags[i*4+2] = (okSearch && okHub ? 1 : 0) + (sel[i] ? 2 : 0);
+  }
   gl.bindBuffer(gl.ARRAY_BUFFER, flagsBuf); gl.bufferData(gl.ARRAY_BUFFER, flags, gl.DYNAMIC_DRAW);
 }
 
@@ -336,7 +350,7 @@ function draw(){
   gl.uniform4f(U('wy0'),B.wy[0],B.wy[1],B.wy[2],B.wy[3]); gl.uniform1f(U('wy1'),B.wy[4]);
   // only fully-geographic axes hide unlocated: geo weight = share of both axes that are lon/lat
   gl.uniform1f(U('geoW'), Math.min(1, geoW)); gl.uniform1f(U('dateW'), dateW);
-  gl.uniform1f(U('hasMatch'), match?1:0);
+  gl.uniform1f(U('hasMatch'), (match || hubDim) ? 1 : 0);
   gl.uniform4f(U('pad'), PAD.l/W, PAD.r/W, PAD.t/H, PAD.b/H);
   gl.uniform1f(U('ps'), 2.0*dpr*Math.min(3, 1+Math.log2(V.z)*0.35)); gl.uniform3f(U('view'), V.cx, V.cy, V.z);
   // A negative scissor (viewport smaller than the axis padding) is INVALID_VALUE
@@ -715,7 +729,7 @@ addEventListener('keydown', e=>{ if (e.target.closest && e.target.closest('input
       break;
     default: h=false; }
   if (h) e.preventDefault(); });
-window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && f({id:IDS[i],lon:T.lon[i],lat:T.lat[i],year:T.yr[i],genre:T.g[i],state:T.s[i]})) sel[i]=1; updFlags(); draw(); };
+window.selectWhere = f => { for(let i=0;i<N;i++) if((!match||match[i]) && (!hubDim||hubDim[i]) && f({id:IDS[i],lon:T.lon[i],lat:T.lat[i],year:T.yr[i],genre:T.g[i],state:T.s[i]})) sel[i]=1; updFlags(); draw(); };
 document.getElementById('clearSel').onclick=()=>{ sel.fill(0); updFlags(); draw(); boxlist.style.display='none'; };
 load();
 </script>
@@ -724,14 +738,164 @@ load();
 (function(){
   if (!document.documentElement.classList.contains("ua-embed")) return;
   var btn = document.getElementById("hub-filters");
-  if (!btn) return;
-  btn.hidden = false;
-  btn.addEventListener("click", function(){
-    try { parent.postMessage({ type: "ua-sidebar-toggle" }, "*"); } catch (_) {}
-  });
+  if (btn) {
+    btn.hidden = false;
+    btn.addEventListener("click", function(){
+      try { parent.postMessage({ type: "ua-sidebar-toggle" }, "*"); } catch (_) {}
+    });
+  }
+  // Period name → year band (same conventional middle chronology as searchmap.js).
+  var PERIOD_RANGES = [
+    [/uruk\s*(iv|v)\b|proto-cuneiform/i, [-3400, -3100]],
+    [/uruk\s*iii|jemdet|proto-elamite/i, [-3100, -2900]],
+    [/\bED\s*I-II|early dynastic\s*i/i, [-2900, -2600]],
+    [/\bED\s*IIIa|early dynastic\s*iiia/i, [-2600, -2500]],
+    [/\bED\s*IIIb|early dynastic\s*iiib|^ebla$|fara/i, [-2500, -2334]],
+    [/old akkadian|sargonic/i, [-2334, -2154]],
+    [/lagash\s*ii|gutian/i, [-2154, -2112]],
+    [/ur\s*iii/i, [-2112, -2004]],
+    [/early old babylonian/i, [-2004, -1900]],
+    [/old babylonian/i, [-2004, -1595]],
+    [/old assyrian/i, [-1950, -1720]],
+    [/old hittite/i, [-1650, -1500]],
+    [/middle hittite/i, [-1500, -1350]],
+    [/new hittite|neo-hittite|hittite/i, [-1350, -1180]],
+    [/middle babylonian|kassite/i, [-1595, -1000]],
+    [/middle assyrian/i, [-1400, -1000]],
+    [/middle elamite/i, [-1500, -1100]],
+    [/neo-assyrian/i, [-911, -612]],
+    [/neo-babylonian/i, [-626, -539]],
+    [/neo-elamite/i, [-1000, -539]],
+    [/achaemenid|persian/i, [-539, -331]],
+    [/hellenistic|seleucid/i, [-331, -63]],
+    [/late babylonian/i, [-539, -63]],
+    [/parthian|arsacid/i, [-141, -50]],
+    [/first millennium/i, [-1000, -50]],
+  ];
+  function periodRange(p) {
+    if (!p) return null;
+    for (var i = 0; i < PERIOD_RANGES.length; i++) {
+      if (PERIOD_RANGES[i][0].test(p)) return PERIOD_RANGES[i][1];
+    }
+    return null;
+  }
+  function genreIndex(name) {
+    if (!name || !window.D || !D.genres) return -1;
+    var n = String(name).toLowerCase();
+    var exact = D.genres.findIndex(function(g){ return g.toLowerCase() === n; });
+    if (exact >= 0) return exact;
+    // Catalog names sometimes differ (e.g. "royal inscription" → "Royal / display")
+    var aliases = {
+      "royal": "Royal / display", "royal inscription": "Royal / display", "royal / monumental": "Royal / display",
+      "admin": "Administrative", "administrative": "Administrative",
+      "literary": "Literary", "letter": "Letter", "legal": "Legal",
+      "lexical": "Lexical", "religious": "Religious", "scholarly": "Scholarly",
+      "scientific": "Scholarly", "school": "Lexical"
+    };
+    if (aliases[n]) {
+      var a = aliases[n].toLowerCase();
+      exact = D.genres.findIndex(function(g){ return g.toLowerCase() === a; });
+      if (exact >= 0) return exact;
+    }
+    return D.genres.findIndex(function(g){
+      var gl = g.toLowerCase();
+      return gl.indexOf(n) >= 0 || n.indexOf(gl) >= 0;
+    });
+  }
+  function siteIndex(name) {
+    if (!name || !window.D || !D.sites) return -1;
+    var n = String(name).toLowerCase();
+    var exact = D.sites.findIndex(function(s){ return s.toLowerCase() === n; });
+    if (exact >= 0) return exact;
+    // "Uruk" matches "Uruk (mod. Warka)"
+    return D.sites.findIndex(function(s){
+      var sl = s.toLowerCase();
+      return sl.indexOf(n) === 0 || sl.indexOf(n + " ") === 0 || sl.indexOf(n + " (") === 0 || sl.indexOf("(" + n) >= 0;
+    });
+  }
+  function rebuildHubDim(st) {
+    if (!window.N || !window.T || !window.D) { hubDim = null; return; }
+    var gi = genreIndex(st.genre);
+    var si = siteIndex(st.site);
+    var pr = periodRange(st.period);
+    // Coarse translation-state approx from sidebar flags (browse states: 0 Human, 1 Machine, 2 ATF, 3 Catalogue)
+    var stateAllow = null;
+    if (st.openGap || st.notOnline) {
+      // Unread / Not online ≈ ATF-only + Catalogue-only (no English)
+      stateAllow = {2:1, 3:1};
+    } else if (st.noEnglish) {
+      stateAllow = {1:1, 2:1, 3:1}; // anything without human English
+    } else if (st.hideKnown === false) {
+      // showing open English is allowed — no state mask
+      stateAllow = null;
+    }
+    // hideKnown=true is catalog-pin behavior; do not dim Explore by default
+    var need = (gi >= 0) || (si >= 0) || !!pr || !!stateAllow;
+    if (!need) { hubDim = null; return; }
+    hubDim = new Uint8Array(N);
+    for (var i = 0; i < N; i++) {
+      var ok = 1;
+      if (gi >= 0 && T.g[i] !== gi) ok = 0;
+      if (ok && si >= 0 && T.site[i] !== si) ok = 0;
+      if (ok && pr) {
+        var y = T.yr[i];
+        if (!(y === y) || y < pr[0] || y > pr[1]) ok = 0;
+      }
+      if (ok && stateAllow && !stateAllow[T.s[i]]) ok = 0;
+      hubDim[i] = ok;
+    }
+  }
+  async function applyHubState(st) {
+    if (!st) return;
+    hubApplying = true;
+    try {
+      rebuildHubDim(st);
+      var qEl = document.getElementById("q");
+      var nextQ = (st.q == null ? "" : String(st.q));
+      if (qEl && qEl.value !== nextQ) qEl.value = nextQ;
+      // Only re-run corpus search when q changed (avoid loops / excess API).
+      if (typeof setTerm === "function" && nextQ !== (hubLastQ == null ? "" : hubLastQ)) {
+        await setTerm(nextQ || null);
+      } else if (typeof updFlags === "function") {
+        updFlags();
+        if (typeof draw === "function") draw();
+      }
+    } finally {
+      hubApplying = false;
+    }
+  }
   window.addEventListener("message", function(e){
-    if (e && e.data && e.data.type === "ua-sidebar-state") btn.classList.toggle("on", !!e.data.open);
+    var d = e && e.data;
+    if (!d) return;
+    if (d.type === "ua-sidebar-state" && btn) btn.classList.toggle("on", !!d.open);
+    if (d.type === "ua-hub-state" && d.state) {
+      // Wait until corpus ready
+      if (!window.__ready) {
+        var t0 = Date.now();
+        var wait = setInterval(function(){
+          if (window.__ready || Date.now() - t0 > 60000) {
+            clearInterval(wait);
+            if (window.__ready) applyHubState(d.state);
+          }
+        }, 100);
+        return;
+      }
+      applyHubState(d.state);
+    }
   });
+  // Typing in Explore search box: live-sync q to parent (search on Enter already via setTerm).
+  var qEl = document.getElementById("q");
+  if (qEl) {
+    var tmr = null;
+    qEl.addEventListener("input", function(){
+      if (hubApplying) return;
+      clearTimeout(tmr);
+      var v = qEl.value;
+      tmr = setTimeout(function(){
+        try { parent.postMessage({ type: "ua-hub-state", state: { q: v.trim() } }, "*"); } catch (_) {}
+      }, 200);
+    });
+  }
 })();
 </script>
 </body>
