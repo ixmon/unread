@@ -9,8 +9,11 @@
 (() => {
   "use strict";
 
-  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda); elsewhere the API CloudFront URL.
-  const DEFAULT_API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? location.origin + "/api" : "https://d3qsgtzicfbir4.cloudfront.net";
+  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda).
+  // Local preview (localhost/127.0.0.1) also uses /api so the preview proxy is hit — CDN works too but cold-starts look like "broken" search.
+  const DEFAULT_API = (/(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) || /^(localhost|127\.0\.0\.1)$/.test(location.hostname))
+    ? location.origin + "/api"
+    : "https://d3qsgtzicfbir4.cloudfront.net";
   const API = (new URLSearchParams(location.search).get("searchapi") || DEFAULT_API).replace(/\/+$/, "");
   const FILTERS = ["period", "genre", "site", "src"];
   const SCOPES = { all: "All", atf: "ATF", en: "English", meta: "Catalogue" };
