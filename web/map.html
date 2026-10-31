@@ -37,6 +37,7 @@
     <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="css/ui-fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/search.css" />
     <script>
       // Old font-credits anchor now lives on the credits page.
       if (location.hash === "#font-credits") location.replace("credits.html#fonts");
@@ -73,13 +74,10 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
         <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
       </button>
       <nav class="header-nav" id="header-nav" aria-label="Main">
-        <button type="button" class="nav-btn active" data-view="explore">Explore</button>
-        <a class="nav-link" href="search.html">Search</a>
-        <a class="nav-link" href="browse.html">Browse</a>
+        <button type="button" class="nav-btn active" data-view="map" data-search-hub="1">Search</button>
         <a class="nav-link" href="signs.html">Signs</a>
         <a class="nav-link" href="t/index.html">Research</a>
         <a class="nav-link" href="translate.html">Translator</a>
-        <button type="button" class="nav-btn" data-view="reader">Reader</button>
         <button type="button" class="nav-btn" data-view="stats">Stats</button>
         <a class="nav-link" href="credits.html">Credits</a>
         <button type="button" class="nav-btn" data-view="about">About</button>
@@ -87,16 +85,20 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <div class="header-spacer"></div>
     </header>
 
-    <main class="app-main">
-      <!-- EXPLORE -->
-      <section id="view-explore" class="view active" aria-label="Explore catalog">
-        <aside class="sidebar" id="sidebar">
-          <div class="sidebar-section">
-            <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
-              <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
-            </button>
-          </div>
+    
+    <div class="search-view-bar" id="search-view-bar">
+      <div class="search-view-tabs" role="tablist" aria-label="Search view">
+        <button type="button" role="tab" class="sv-tab" data-sview="map" aria-selected="true">Map</button>
+        <span class="sv-sep" aria-hidden="true">|</span>
+        <button type="button" role="tab" class="sv-tab" data-sview="list" aria-selected="false">List</button>
+        <span class="sv-sep" aria-hidden="true">|</span>
+        <button type="button" role="tab" class="sv-tab" data-sview="explore" aria-selected="false">Explore</button>
+      </div>
+    </div>
 
+    <main class="app-main">
+      <div id="search-hub" class="search-hub active">
+        <aside class="sidebar" id="sidebar">
           <details class="sidebar-acc" id="acc-layers">
             <summary>Map layers</summary>
             <div class="sidebar-acc-body">
@@ -208,7 +210,10 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             </div>
           </details>
         </aside>
+        <div class="search-hub-stage">
 
+      <!-- MAP (geo) -->
+      <section id="view-map" class="view active hub-view" aria-label="Map search">
         <div class="explore-main">
           <div class="explore-panels">
             <div class="map-panel">
@@ -216,7 +221,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <div class="map-empty" id="map-empty">No geolocated works in current filter</div>
               <div class="smap" aria-label="Search results on the map">
                 <form class="smap-form" id="smap-form" role="search" autocomplete="off">
-                  <button type="button" class="btn smap-sidebar-btn" id="sidebar-open" aria-controls="sidebar" aria-expanded="false"
+                  <button type="button" class="btn smap-sidebar-btn hub-filters" id="sidebar-open" data-sidebar-toggle aria-controls="sidebar" aria-expanded="false"
                     title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
                   <label for="smap-q" class="visually-hidden">Search the corpus or open a tablet by ID</label>
                   <input type="search" id="smap-q" class="smap-input" placeholder="P262784, Gilgamesh, barley, lamaštu…" />
@@ -265,6 +270,44 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           </div>
         </div>
       </section>
+
+
+      <!-- LIST (corpus search) — lazy-mounted -->
+      <section id="view-list" class="view hub-view" aria-label="List search" data-lazy="list">
+        <div class="list-stage" id="list-stage">
+          <div class="list-mount-hint" id="list-mount-hint">Loading list search…</div>
+          <div id="list-root" hidden>
+            <form id="ua-list-form" class="search-form" role="search" autocomplete="off">
+              <div class="search-row">
+                <button type="button" class="btn smap-sidebar-btn hub-filters" id="sidebar-open-list" data-sidebar-toggle aria-controls="sidebar" aria-expanded="false" title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
+                <label for="ua-list-q" class="visually-hidden">Search</label>
+                <input type="search" id="ua-list-q" name="q" class="search-input" placeholder="Gilgamesh · barley · P262784" />
+                <button type="submit" class="btn primary">Search</button>
+              </div>
+              <div class="scope-row" role="radiogroup" aria-label="Search in">
+                <span class="scope-label">Search in</span>
+                <label class="scope-opt"><input type="radio" name="ua-in" value="all" checked /> <span>All</span></label>
+                <label class="scope-opt"><input type="radio" name="ua-in" value="atf" /> <span>ATF</span></label>
+                <label class="scope-opt"><input type="radio" name="ua-in" value="en" /> <span>English</span></label>
+              </div>
+            </form>
+            <div id="ua-list-status" class="search-status" role="status" aria-live="polite"></div>
+            <section id="ua-list-results" class="search-results" aria-live="polite"></section>
+            <nav id="ua-list-pager" class="pager" aria-label="Result pages"></nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPLORE (Browse wheel) — lazy iframe -->
+      <section id="view-explore" class="view hub-view" aria-label="Explore embedding" data-lazy="explore">
+        <div class="explore-stage" id="explore-stage">
+          <div class="list-mount-hint" id="explore-mount-hint">Loading Explore…</div>
+          <iframe id="explore-frame" title="Explore" hidden></iframe>
+        </div>
+      </section>
+
+        </div><!-- /.search-hub-stage -->
+      </div><!-- /#search-hub -->
 
       <!-- READER -->
       <section id="view-reader" class="view" aria-label="Text reader">

@@ -2,6 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  p.set('view','list');
+  location.replace('map.html?'+p.toString());
+})();
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -22,13 +30,12 @@
   <body class="static-page">
     <header class="static-header">
       <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
-      <nav aria-label="Main">
-<a class="nav-link" href="map.html">Explore</a>
-<a class="nav-link active" href="search.html" aria-current="page">Search</a>
-<a class="nav-link" href="browse.html">Browse</a>
+      <nav aria-label="Main" data-ua-nav data-ua-nav-active="search" data-ua-nav-depth="">
+<a class="nav-link active" href="map.html" aria-current="page">Search</a>
 <a class="nav-link" href="signs.html">Signs</a>
 <a class="nav-link" href="t/index.html">Research</a>
 <a class="nav-link" href="translate.html">Translator</a>
+<a class="nav-link" href="map.html?view=stats">Stats</a>
 <a class="nav-link" href="credits.html">Credits</a>
 <a class="nav-link" href="map.html?view=about">About</a>
 </nav>
@@ -71,5 +78,6 @@
     </footer>
     <script src="js/browser-token.js"></script>
     <script src="js/search.js"></script>
+<script src="js/site-nav.js" defer></script>
 </body>
 </html>

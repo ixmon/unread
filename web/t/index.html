@@ -33,13 +33,12 @@
 <body class="static-page">
 <header class="static-header">
 <a class="brand" href="../index.html" title="Unread Atlas home"><img class="brand-mark" src="../assets/logo/logo.svg" width="58" height="28" alt="" />Unread Atlas</a>
-<nav aria-label="Main">
-<a class="nav-link" href="../map.html">Explore</a>
-<a class="nav-link" href="../search.html">Search</a>
-<a class="nav-link" href="../browse.html">Browse</a>
+<nav aria-label="Main" data-ua-nav data-ua-nav-active="research" data-ua-nav-depth="../">
+<a class="nav-link" href="../map.html">Search</a>
 <a class="nav-link" href="../signs.html">Signs</a>
 <a class="nav-link active" href="../t/index.html" aria-current="page">Research</a>
 <a class="nav-link" href="../translate.html">Translator</a>
+<a class="nav-link" href="../map.html?view=stats">Stats</a>
 <a class="nav-link" href="../credits.html">Credits</a>
 <a class="nav-link" href="../map.html?view=about">About</a>
 </nav>
@@ -73,5 +72,6 @@ document.querySelectorAll(".static-info").forEach((btn) => {
 });
 </script>
 
+<script src="../js/site-nav.js" defer></script>
 </body>
 </html>

@@ -57,16 +57,13 @@ OG_IMAGE = "https://unreadatlas.com/og.jpg"
 MAX_LINES = 600
 STATIC_META = '<meta name="unread-static" content="1">'
 
-NAV = [
-    ("map.html", "Explore"),
-    ("search.html", "Search"),
-    ("browse.html", "Browse"),
-    ("signs.html", "Signs"),
-    ("t/index.html", "Research"),
-    ("translate.html", "Translator"),
-    ("credits.html", "Credits"),
-    ("map.html?view=about", "About"),
-]
+# NAV lives in site_nav.py (canonical; no Reader; includes Stats)
+from site_nav import NAV as _SITE_NAV
+
+def _nav_pairs():
+    return [(href, label) for href, label, _keys in _SITE_NAV]
+
+NAV = _nav_pairs()
 
 PERIOD_RANGES = [(re.compile(p, re.I), a, b) for p, a, b in [
     (r"uruk v\b", -3500, -3350), (r"uruk iv", -3350, -3200), (r"uruk iii|proto-elamite|archaic|jemdet", -3200, -2900),
