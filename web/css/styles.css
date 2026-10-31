@@ -202,10 +202,81 @@ a.brand:hover .brand-mark { filter: brightness(1.12); }
   min-height: 0;
 }
 
-/* ─── Explore (catalog) ─── */
-#view-explore {
+/* ─── Search hub (Map / List / Explore) ─── */
+.search-hub {
+  display: none;
+  flex: 1;
+  min-height: 0;
   flex-direction: row;
+  width: 100%;
 }
+.search-hub.active { display: flex; }
+.search-hub-stage {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.search-hub-stage > .view { display: none; width: 100%; height: 100%; min-height: 0; }
+.search-hub-stage > .view.active { display: flex; flex: 1; }
+#view-map { flex-direction: column; }
+#view-list { flex-direction: column; overflow: auto; background: var(--bg); }
+#view-explore { flex-direction: column; }
+#view-list .list-stage, #view-explore .explore-stage { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0.75rem 1rem 1.25rem; max-width: 1040px; width: 100%; margin: 0 auto; box-sizing: border-box; }
+#view-explore .explore-stage { max-width: none; padding: 0; }
+#explore-frame { flex: 1; width: 100%; height: 100%; border: 0; background: #0b0d10; }
+.list-mount-hint { color: var(--text-faint); padding: 2rem 0; text-align: center; }
+
+.search-view-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 0.35rem 0.95rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  flex-shrink: 0;
+}
+.search-view-bar[hidden] { display: none !important; }
+.search-view-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.sv-tab {
+  border: 0;
+  background: transparent;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.35rem 0.45rem;
+  border-radius: 0;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.sv-tab:hover { color: var(--text); }
+.sv-tab[aria-selected="true"] {
+  color: var(--text);
+  background: transparent;
+  box-shadow: none;
+  font-weight: 600;
+  border-bottom-color: var(--accent, #c4784a);
+}
+.sv-sep {
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  padding: 0 0.1rem;
+  user-select: none;
+  pointer-events: none;
+}
+
 
 .sidebar {
   width: 300px;
@@ -1828,13 +1899,47 @@ body.mode-epic .catalog-card .title {
 .smap-active .site-marker:not(.active) .site-dot { opacity: calc(var(--o, 1) * 0.6); box-shadow: none; }
 
 /* ─── Collapsible left bar (map.html) ─── */
-/* Hidden by default (html.sidebar-collapsed); "☰ Curated & filters" on the map opens it, "◂ Hide panel" closes it */
+/* Hidden by default (html.sidebar-collapsed); Filters buttons (next to search) toggle open/closed */
 .filters-toggle { margin-top: 0.6rem; width: 100%; justify-content: flex-start; gap: 0.4rem; }
 .sidebar-hint { display: none; margin: 0.6rem 0 0; font-size: 0.78rem; line-height: 1.4; color: var(--text-faint); }
 .sidebar-collapsed .sidebar { display: none; }
-.smap-sidebar-btn { white-space: nowrap; background: rgba(15, 17, 20, 0.88); backdrop-filter: blur(6px); gap: 0.4rem; }
-.smap-sidebar-btn.on { border-color: rgba(196, 120, 74, 0.55); color: var(--accent, #c4784a); }
-@media (max-width: 640px) { .smap-sidebar-btn { font-size: 0; padding: 0.4rem 0.6rem; } .smap-sidebar-btn span { font-size: 1rem; } }
+/* Shared Filters control (Map / List / Explore embed) — Browse #hub-filters look */
+.hub-filters,
+button.hub-filters,
+.smap-sidebar-btn.hub-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  background: #232733;
+  color: #ddd;
+  border: 1px solid #363c4a;
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.hub-filters:hover,
+button.hub-filters:hover,
+.smap-sidebar-btn.hub-filters:hover {
+  border-color: #c79a3a;
+  color: #f0d9a0;
+  background: #232733;
+}
+.hub-filters.on,
+button.hub-filters.on,
+.smap-sidebar-btn.hub-filters.on {
+  background: #c79a3a;
+  color: #111;
+  border-color: #c79a3a;
+}
+@media (max-width: 640px) {
+  .hub-filters, .smap-sidebar-btn.hub-filters { font-size: 0; padding: 0.4rem 0.6rem; }
+  .hub-filters span, .smap-sidebar-btn.hub-filters span { font-size: 1rem; color: inherit; }
+}
 .map-credits { background: rgba(15, 17, 20, 0.6); padding: 0 6px; border-radius: 4px; font-size: 10.5px; line-height: 16px; }
 .map-credits a { color: var(--text-faint); text-decoration: none; }
 .map-credits a:hover { color: var(--text); }
@@ -2408,3 +2513,67 @@ body.show-preambles .mt-credit-short { display: inline; }
 .smap-toggle[hidden] { display: none !important; }
 /* Whole-corpus default chip is hidden; search-result chips still show */
 .smap-chip.all { display: none !important; }
+
+
+@media (max-width: 640px) {
+  .search-view-bar { padding: 0.3rem 0.65rem; gap: 0.25rem; justify-content: center; }
+  .sv-tab { padding: 0.4rem 0.35rem; font-size: 0.78rem; }
+  .search-view-tabs { flex: 0 0 auto; }
+  #sidebar-open-bar { margin-left: 0; }
+  .search-hub { flex-direction: column; }
+  .sidebar { width: 100%; max-height: 55vh; border-right: 0; border-bottom: 1px solid var(--border); }
+}
+
+.search-hub-stage #view-map .explore-main { flex: 1; min-height: 0; display: flex; flex-direction: column; width: 100%; }
+.search-hub-stage #view-map .explore-panels { flex: 1; min-height: 0; }
+
+
+/* Filters next to List search */
+#view-list .hub-filters { flex: 0 0 auto; }
+
+/* Map +/- zoom: translucent dark like Browse #zoomctl; light +/- glyphs */
+.leaflet-bar {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.leaflet-control-zoom a,
+.leaflet-bar a {
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  margin-bottom: 4px !important;
+  background: rgba(20, 22, 28, 0.9) !important;
+  color: #ddd !important;
+  border: 1px solid #363c4a !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  font: 600 18px "IBM Plex Sans", system-ui, sans-serif !important;
+  text-indent: 0 !important;
+  text-decoration: none !important;
+  /* kill Leaflet’s default dark-on-light glyph treatment */
+  filter: none !important;
+  -webkit-text-fill-color: #ddd !important;
+}
+.leaflet-control-zoom a:hover,
+.leaflet-bar a:hover {
+  border-color: #c79a3a !important;
+  color: #f0d9a0 !important;
+  -webkit-text-fill-color: #f0d9a0 !important;
+  background: rgba(20, 22, 28, 0.95) !important;
+}
+.leaflet-control-zoom a.leaflet-disabled,
+.leaflet-bar a.leaflet-disabled,
+.leaflet-control-zoom a.leaflet-disabled:hover,
+.leaflet-bar a.leaflet-disabled:hover {
+  color: #6a7080 !important;
+  -webkit-text-fill-color: #6a7080 !important;
+  border-color: #2a2e38 !important;
+  background: rgba(20, 22, 28, 0.55) !important;
+  cursor: default !important;
+  opacity: 1 !important;
+}
+.leaflet-control-zoom a.leaflet-control-zoom-in { border-bottom-left-radius: 8px !important; border-bottom-right-radius: 8px !important; }
+.leaflet-control-zoom a.leaflet-control-zoom-out { margin-bottom: 0 !important; }
+.leaflet-control-zoom-in span,
+.leaflet-control-zoom-out span { color: inherit !important; }

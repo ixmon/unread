@@ -496,6 +496,13 @@ function setTrParam(text) {
  * (setView/openReader), and popstate re-renders from the URL, so Back/Forward walk About ⇄ Reader ⇄ Explore.
  */
 const READER_PARAMS = ["id", "tr", "find", "mode"];
+const SEARCH_VIEWS = new Set(["map", "list", "explore"]);
+function normalizeSearchView(v) {
+  // Legacy: bare map / old "explore" catalog → map. New explore = Browse wheel.
+  if (!v || v === "catalog") return "map";
+  if (SEARCH_VIEWS.has(v)) return v;
+  return null;
+}
 function viewUrl(view, id) {
   const u = new URL(location.href);
   u.searchParams.delete("view");
@@ -505,6 +512,10 @@ function viewUrl(view, id) {
   } else {
     for (const k of READER_PARAMS) u.searchParams.delete(k);
     if (view === "about" || view === "reader" || view === "stats") u.searchParams.set("view", view);
+    else if (SEARCH_VIEWS.has(view)) {
+      // map is default: omit view= for cleaner URLs; list/explore always explicit
+      if (view !== "map") u.searchParams.set("view", view);
+    }
   }
   return u.toString().replace(/%2C/gi, ",");
 }
@@ -533,7 +544,8 @@ function routeFromUrl() {
     return;
   }
   const v = q.get("view");
-  setView(v === "about" || v === "reader" || v === "stats" ? v : "explore", "none");
+  if (v === "about" || v === "reader" || v === "stats") setView(v, "none");
+  else setView(normalizeSearchView(v) || "map", "none");
 }
 window.addEventListener("popstate", routeFromUrl);
 
@@ -2685,21 +2697,130 @@ function periodFacetKey(p) {
 
 // ─── View routing ───
 function setView(name, hist = "push") {
+  // Map legacy callers that still ask for "explore" meaning the geo catalog → "map"
+  if (name === "explore" && !SEARCH_VIEWS.has("explore")) { /* keep */ }
   if (hist !== "none") {
     const id = name === "reader" ? state.readerPending?.id || state.currentText?.id : null;
     syncUrl(name, id, hist);
   }
   state.view = name;
+  const isHub = SEARCH_VIEWS.has(name);
+  const hub = $("#search-hub");
+  const bar = $("#search-view-bar");
+  if (hub) hub.classList.toggle("active", isHub);
+  if (bar) bar.hidden = !isHub;
+
   $$(".view").forEach((v) => v.classList.remove("active"));
-  $$(`.nav-btn`).forEach((b) => b.classList.toggle("active", b.dataset.view === name));
-  $(`#view-${name}`)?.classList.add("active");
-  if (name === "explore") {
-    setTimeout(() => state.map?.invalidateSize(), 50);
+  // Top nav: Search hub button stays active for map/list/explore
+  $$(".nav-btn").forEach((b) => {
+    const dv = b.dataset.view;
+    const on = isHub ? b.hasAttribute("data-search-hub") : dv === name;
+    b.classList.toggle("active", !!on);
+  });
+  if (isHub) {
+    $(`#view-${name}`)?.classList.add("active");
+    $$(".sv-tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.sview === name ? "true" : "false"));
+    if (name === "map") setTimeout(() => state.map?.invalidateSize(), 50);
+    if (name === "list") ensureListMounted();
+    if (name === "explore") ensureExploreMounted();
+  } else {
+    $(`#view-${name}`)?.classList.add("active");
   }
-  if (name === "reader") {
-    renderReader();
-  }
+  if (name === "reader") renderReader();
   if (name === "stats") renderStats();
+}
+
+/** Lazy-mount list search (reuses search.js API helpers when present). */
+let _listMounted = false;
+async function ensureListMounted() {
+  const hint = $("#list-mount-hint");
+  const root = $("#list-root");
+  if (_listMounted) {
+    syncListQueryFromUrl();
+    return;
+  }
+  _listMounted = true;
+  // Do not load js/search.js here — it expects search.html's #search-form and would throw.
+  // List panel talks to /api/search directly (wireListPanel).
+  try {
+    wireListPanel();
+    if (root) root.hidden = false;
+    if (hint) hint.hidden = true;
+    syncListQueryFromUrl();
+  } catch (e) {
+    if (hint) hint.textContent = "List search failed to load.";
+    console.warn(e);
+  }
+}
+
+function syncListQueryFromUrl() {
+  const q = new URLSearchParams(location.search).get("q") || "";
+  const input = $("#ua-list-q");
+  if (input && q && input.value !== q) input.value = q;
+  if (q) $("#ua-list-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+}
+
+function wireListPanel() {
+  const form = $("#ua-list-form");
+  if (!form || form.dataset.wired) return;
+  form.dataset.wired = "1";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const q = ($("#ua-list-q")?.value || "").trim();
+    const scope = form.querySelector('input[name="ua-in"]:checked')?.value || "all";
+    const u = new URL(location.href);
+    if (q) u.searchParams.set("q", q); else u.searchParams.delete("q");
+    u.searchParams.set("view", "list");
+    history.replaceState({ view: "list" }, "", u.toString());
+    const status = $("#ua-list-status");
+    const results = $("#ua-list-results");
+    const pager = $("#ua-list-pager");
+    if (status) status.textContent = q ? `Searching for “${q}”…` : "Enter a query.";
+    if (!q) { if (results) results.innerHTML = ""; return; }
+    try {
+      const params = new URLSearchParams({ q, in: scope, limit: "20" });
+      // mirror sidebar filters when set
+      const g = $("#filter-genre")?.value; if (g) params.set("genre", g);
+      const per = $("#filter-period")?.value; if (per) params.set("period", per);
+      const site = $("#filter-site")?.value; if (site) params.set("site", site);
+      const r = await fetch("/api/search?" + params.toString(), { headers: { Accept: "application/json" } });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      const hits = data.hits || data.results || [];
+      if (status) status.textContent = `${(data.total ?? hits.length).toLocaleString()} result(s)`;
+      if (results) {
+        results.innerHTML = hits.map((h) => {
+          const id = h.id || h.tablet_id || "";
+          const title = h.title || h.designation || id;
+          const snip = h.snippet || h.preview || "";
+          const meta = [h.period, h.site || h.provenience].filter(Boolean).join(" · ");
+          return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
+        }).join("") || `<p class="search-empty">No matches.</p>`;
+      }
+      if (pager) pager.innerHTML = "";
+    } catch (err) {
+      if (status) status.textContent = "Search error: " + (err.message || err);
+    }
+  });
+}
+
+let _exploreMounted = false;
+function ensureExploreMounted() {
+  const frame = $("#explore-frame");
+  const hint = $("#explore-mount-hint");
+  if (!frame) return;
+  const q = new URLSearchParams(location.search);
+  const bq = new URLSearchParams();
+  bq.set("embed", "1");
+  if (q.get("q")) bq.set("q", q.get("q"));
+  const src = "browse.html?" + bq.toString();
+  if (!_exploreMounted || frame.dataset.src !== src) {
+    _exploreMounted = true;
+    frame.dataset.src = src;
+    frame.hidden = false;
+    if (hint) hint.hidden = true;
+    frame.src = src;
+  }
 }
 
 // ─── Utils ───
@@ -2721,10 +2842,16 @@ function bindEvents() {
   $("#btn-reader-pending-explore")?.addEventListener("click", () => {
     state._readerToken = (state._readerToken || 0) + 1;
     state.readerPending = null;
-    setView("explore");
+    setView("map");
   });
   $$(".nav-btn").forEach((btn) => {
-    btn.addEventListener("click", () => setView(btn.dataset.view));
+    btn.addEventListener("click", () => {
+      if (btn.hasAttribute("data-search-hub")) {
+        setView(SEARCH_VIEWS.has(state.view) ? state.view : "map");
+        return;
+      }
+      setView(btn.dataset.view);
+    });
   });
   // in-page links to another view (About → Stats) switch views without a reload
   document.addEventListener("click", (e) => {
@@ -2924,6 +3051,7 @@ async function main() {
   } else {
     const v = new URLSearchParams(location.search).get("view");
     if (v === "about" || v === "reader" || v === "stats") setView(v, "none");
+    else setView(normalizeSearchView(v) || "map", "none");
   }
 
   try {
@@ -2937,13 +3065,10 @@ async function main() {
     await loadCatalog();
     fillFontPicker();
     toast(`Loaded ${state.catalog.count} catalog works`);
-    // Deep link ?id=P285108
+    // Deep link ?id=P285108 → reader. Otherwise leave map with no tablet selected
+    // (preview pane stays on its empty state until the user picks a pin/card).
     if (deepId) {
       await openReader(deepId, "none");
-    } else {
-      const first =
-        state.filtered.find((i) => state._packagedIds.includes(i.id)) || state.filtered[0];
-      if (first) await selectWork(first.id);
     }
   } catch (e) {
     console.error(e);
@@ -2956,15 +3081,22 @@ async function main() {
 document.addEventListener("DOMContentLoaded", main);
 
 // ─── Collapsible left bar (state: html.sidebar-collapsed, set early in map.html's head) ───
-// Hidden by default; "☰ Curated & filters" (#sidebar-open, on the map) toggles it, "◂ Hide panel" (#filters-toggle) closes it.
+// Hidden by default; Filters buttons next to each view's search toggle open/closed.
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("filters-toggle");
-  const openBtn = document.getElementById("sidebar-open");
-  if (!btn && !openBtn) return;
+  const openBtns = [...document.querySelectorAll("[data-sidebar-toggle]")];
+  if (!openBtns.length) return;
   const root = document.documentElement;
   const sync = () => {
     const open = !root.classList.contains("sidebar-collapsed");
-    for (const b of [btn, openBtn]) if (b) { b.setAttribute("aria-expanded", String(open)); b.classList.toggle("on", open); }
+    for (const b of openBtns) {
+      b.setAttribute("aria-expanded", String(open));
+      b.classList.toggle("on", open);
+    }
+    // Tell Explore iframe (if listening) so its Filters btn can match
+    try {
+      const frame = document.getElementById("explore-frame");
+      frame?.contentWindow?.postMessage({ type: "ua-sidebar-state", open }, "*");
+    } catch (_) {}
   };
   const setOpen = (open, remember = true) => {
     root.classList.toggle("sidebar-collapsed", !open);
@@ -2972,10 +3104,17 @@ document.addEventListener("DOMContentLoaded", () => {
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
-    if (open) (document.getElementById("smap-q") || document.getElementById("search"))?.focus({ preventScroll: true });
+    if (open) (document.getElementById("smap-q") || document.getElementById("ua-list-q") || document.getElementById("search"))?.focus({ preventScroll: true });
   };
-  if (btn) btn.addEventListener("click", () => setOpen(false));
-  if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
+  for (const b of openBtns) b.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
+  window.addEventListener("message", (e) => {
+    if (e?.data?.type === "ua-sidebar-toggle") setOpen(root.classList.contains("sidebar-collapsed"));
+  });
+  // Map / List / Explore tabs
+  document.querySelectorAll(".sv-tab").forEach((tab) => {
+    tab.addEventListener("click", () => setView(tab.dataset.sview));
+  });
+
   // a mode chip/featured deep link opened later should reveal its featured row
   document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math,#filter-open-gap,#filter-no-english,#filter-not-online").forEach((el) =>
     el.addEventListener("change", () => el.checked && setOpen(true, false)));

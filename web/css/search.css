@@ -81,3 +81,20 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
   .text-toolbar .open-reader { justify-content: center; width: 100%; }
 }
 .search-status .map-btn { margin-left: auto; padding: 0.25rem 0.7rem; font-size: 0.8rem; text-decoration: none; white-space: nowrap; }
+
+/* unified Search list panel */
+.list-hit{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--border-soft)}
+.list-hit .id{font-family:var(--font-mono);font-size:13px;color:var(--accent-strong);text-decoration:none}
+.list-hit .title{font-size:14px}
+.list-hit .snip{grid-column:1/-1;font-size:13px;color:var(--text-dim);line-height:1.45}
+.list-hit .snip mark{background:var(--accent-soft);color:inherit;padding:0 .1em}
+.list-hit .meta{font-size:11px;color:var(--text-faint);text-align:right}
+.search-empty{color:var(--text-faint);padding:1rem 0}
+
+/* unified hub List: keep Filters + input on one row when possible */
+#view-list .search-row { flex-direction: row; flex-wrap: wrap; align-items: center; }
+#view-list .search-row .hub-filters { order: 0; }
+#view-list .search-row .search-input { flex: 1 1 160px; }
+@media (max-width: 640px) {
+  #view-list .search-row { flex-direction: row; }
+}
