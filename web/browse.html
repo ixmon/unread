@@ -48,6 +48,9 @@ html.ua-embed .hub-filters,#hub-filters.hub-filters{display:inline-flex;align-it
 html.ua-embed .hub-filters:hover,#hub-filters.hub-filters:hover{border-color:#c79a3a;color:#f0d9a0;background:#232733}
 html.ua-embed .hub-filters.on,#hub-filters.hub-filters.on{background:#c79a3a;color:#111;border-color:#c79a3a}
 html.ua-embed .hub-filters[hidden],#hub-filters.hub-filters[hidden]{display:none}
+#hub-unmapped{display:none;position:absolute;left:14px;right:14px;bottom:48px;z-index:6;background:rgba(28,22,12,.92);border:1px solid #6a5420;color:#f0d9a0;border-radius:8px;padding:8px 12px;font-size:12px;line-height:1.4;max-width:520px}
+html.ua-embed #hub-unmapped.show{display:block}
+#hub-unmapped b{color:#fff}
 
 #top{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;z-index:5;background:rgba(20,22,28,.88);padding:8px 10px;border-radius:10px;border:1px solid #2a2e38}
 #top .brand-link{display:inline-flex;align-items:center;gap:7px;font-family:'Source Serif 4',Georgia,serif;white-space:nowrap;color:#e3c27a;text-decoration:none}#top .brand-link img{height:22px;width:auto;display:block}#top .brand-link:hover{color:#fff}
@@ -153,6 +156,7 @@ a{color:#e0b860}
 <div id="boxlist" class="panel" role="dialog" aria-label="Tablets in box"></div>
 <div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
 <div id="info">Loading…</div>
+<div id="hub-unmapped" role="status" aria-live="polite"></div>
 <div id="how" class="panel" role="dialog" aria-label="How this visualization works"><button class="x" id="howx" title="Close">×</button><h2>How this visualization works</h2>
 <p>Every tablet is a dot placed by two of: find-spot longitude and latitude, approximate date (period midpoint), genre, and translation state. Slide between maps and the dots travel; anything you select stays selected.</p>
 <p><b>The moving dots on the home page are a sample.</b> Each dot is one tablet, but not every tablet: <span data-dots="n">116,813</span> are shown, a random <span data-dots="sample_random">60,000</span> drawn from all <span data-stat="tablets">462,298</span>, plus every tablet whose English (human or machine) contains barley, silver or sheep (<span data-dots="term_matches">65,250</span>; some are in both groups), so those example searches show complete results. Every word match has English, so tablets with English make up far more of those dots than of the corpus. The percentages in the home-page legend are shares of the dots shown; for the whole corpus see <a href="map.html?view=stats">Stats</a>. This page, by contrast, draws every tablet.</p></div>
@@ -233,10 +237,13 @@ async function load(){
   fetch('assets/browse_related.json').then(r=>r.json()).then(j=>{ REL=j; showRelated(); }).catch(()=>{});
   fetch('assets/sign_readings.json').then(r=>r.json()).then(j=>{ SIGNS=j; }).catch(()=>{});
   D = meta; N = meta.n; IDS = idtxt.split('\n'); IDX = new Map(IDS.map((id,i)=>[id,i]));
+  // Expose for embed hub-filter bridge (lets are not on window by default).
+  window.D = D; window.N = N; window.IDS = IDS; window.IDX = IDX;
   let o = 0; const col = (C, n) => { const a = new C(bin, o, N); o += N*C.BYTES_PER_ELEMENT; return a; };
   const lonU = col(Uint16Array), latU = col(Uint16Array), yrI = col(Int16Array), gU = col(Uint8Array), sU = col(Uint8Array);
   const siteU = new Uint16Array(bin.slice(o, o + N*2));
   T = {lon:new Float32Array(N), lat:new Float32Array(N), yr:new Float32Array(N), g:gU, s:sU, site:siteU};
+  window.T = T;
   for (let i=0;i<N;i++){ T.lon[i] = lonU[i]===0xFFFF ? NaN : -20 + lonU[i]/65534*100; T.lat[i] = latU[i]===0xFFFF ? NaN : latU[i]/65534*60; T.yr[i] = yrI[i]===-32768 ? NaN : yrI[i]; }
   vals = new Float32Array(N*5);
   const a0 = new Float32Array(N*4), a1 = new Float32Array(N); flags = new Float32Array(N*4);
@@ -779,9 +786,10 @@ load();
     }
     return null;
   }
-  function genreIndex(name) {
+  function genreIndexOne(name) {
     if (!name || !window.D || !D.genres) return -1;
-    var n = String(name).toLowerCase();
+    var n = String(name).trim().toLowerCase();
+    if (!n) return -1;
     var exact = D.genres.findIndex(function(g){ return g.toLowerCase() === n; });
     if (exact >= 0) return exact;
     // Catalog names sometimes differ (e.g. "royal inscription" → "Royal / display")
@@ -790,7 +798,8 @@ load();
       "admin": "Administrative", "administrative": "Administrative",
       "literary": "Literary", "letter": "Letter", "legal": "Legal",
       "lexical": "Lexical", "religious": "Religious", "scholarly": "Scholarly",
-      "scientific": "Scholarly", "school": "Lexical"
+      "scientific": "Scholarly", "school": "Lexical",
+      "mathematical": "Scholarly", "math": "Scholarly"
     };
     if (aliases[n]) {
       var a = aliases[n].toLowerCase();
@@ -801,6 +810,18 @@ load();
       var gl = g.toLowerCase();
       return gl.indexOf(n) >= 0 || n.indexOf(gl) >= 0;
     });
+  }
+  /** Catalog may use compound genres ("Lexical; Literary") — OR matching browse bands. */
+  function genreIndices(name) {
+    if (!name) return [];
+    var parts = String(name).split(/[;,|/]+/).map(function(s){ return s.trim(); }).filter(Boolean);
+    if (!parts.length) parts = [String(name)];
+    var out = [], seen = {};
+    parts.forEach(function(p){
+      var i = genreIndexOne(p);
+      if (i >= 0 && !seen[i]) { seen[i] = 1; out.push(i); }
+    });
+    return out;
   }
   function siteIndex(name) {
     if (!name || !window.D || !D.sites) return -1;
@@ -814,28 +835,49 @@ load();
     });
   }
   function rebuildHubDim(st) {
-    if (!window.N || !window.T || !window.D) { hubDim = null; return; }
-    var gi = genreIndex(st.genre);
+    if (!window.N || !window.T || !window.D) { hubDim = null; return { applied: [], skipped: [] }; }
+    var N = window.N, T = window.T, D = window.D;
+    var gis = genreIndices(st.genre);
     var si = siteIndex(st.site);
     var pr = periodRange(st.period);
-    // Coarse translation-state approx from sidebar flags (browse states: 0 Human, 1 Machine, 2 ATF, 3 Catalogue)
+    // Browse states: 0 Human English, 1 Machine only, 2 ATF only, 3 Catalogue only
+    // Applied with browse data only — never invent dims we do not have.
     var stateAllow = null;
-    if (st.openGap || st.notOnline) {
-      // Unread / Not online ≈ ATF-only + Catalogue-only (no English)
+    var applied = [], skipped = [];
+    if (gis.length) applied.push(gis.length > 1 ? "genre (compound → OR bands)" : "genre");
+    else if (st.genre) skipped.push("genre (no browse band for “" + st.genre + "”)");
+    if (si >= 0) applied.push("site");
+    else if (st.site) skipped.push("site (not in browse site list)");
+    if (pr) applied.push("period (year band)");
+    else if (st.period) skipped.push("period (no year band match)");
+    if (st.openGap) {
+      // Unread ≈ no English of any kind in browse binary
       stateAllow = {2:1, 3:1};
+      applied.push("Unread → ATF/Catalogue only");
     } else if (st.noEnglish) {
-      stateAllow = {1:1, 2:1, 3:1}; // anything without human English
-    } else if (st.hideKnown === false) {
-      // showing open English is allowed — no state mask
-      stateAllow = null;
+      stateAllow = {1:1, 2:1, 3:1};
+      applied.push("No English → non-human states");
     }
-    // hideKnown=true is catalog-pin behavior; do not dim Explore by default
-    var need = (gi >= 0) || (si >= 0) || !!pr || !!stateAllow;
-    if (!need) { hubDim = null; return; }
+    if (st.notOnline) skipped.push("Not online (no print-edition dim in browse)");
+    if (st.language) skipped.push("language (browse has no language column)");
+    if (st.minLines != null && Number(st.minLines) > 0 && Number(st.minLines) !== 40)
+      skipped.push("min ATF lines (no line counts in browse binary)");
+    if (st.packaged) skipped.push("packaged samples (catalog only)");
+    if (st.epic || st.herbal || st.omens || st.math)
+      skipped.push("curated themes (catalog flags; not in browse binary)");
+    if (st.hideKnown === false) skipped.push("show open English (catalog-pin toggle)");
+    // hideKnown=true default: catalog-pin behavior; not applied as Explore dim
+    var need = gis.length || (si >= 0) || !!pr || !!stateAllow;
+    if (!need) { hubDim = null; window.hubDim = null; window.__hubFilterReport = { applied: applied, skipped: skipped }; return { applied: applied, skipped: skipped }; }
+    var allowG = null;
+    if (gis.length) {
+      allowG = {};
+      gis.forEach(function(g){ allowG[g] = 1; });
+    }
     hubDim = new Uint8Array(N);
     for (var i = 0; i < N; i++) {
       var ok = 1;
-      if (gi >= 0 && T.g[i] !== gi) ok = 0;
+      if (allowG && !allowG[T.g[i]]) ok = 0;
       if (ok && si >= 0 && T.site[i] !== si) ok = 0;
       if (ok && pr) {
         var y = T.yr[i];
@@ -844,12 +886,39 @@ load();
       if (ok && stateAllow && !stateAllow[T.s[i]]) ok = 0;
       hubDim[i] = ok;
     }
+    window.hubDim = hubDim;
+    window.__hubFilterReport = { applied: applied, skipped: skipped, genreIdx: gis, siteIdx: si };
+    return { applied: applied, skipped: skipped };
+  }
+  function showUnmappedNotice(report, st) {
+    var el = document.getElementById("hub-unmapped");
+    if (!el) return;
+    var skipped = (report && report.skipped) || [];
+    // Also surface parent-declared unmapped list when present (dedupe by keyword)
+    if (st && Array.isArray(st._unmappedActive)) {
+      st._unmappedActive.forEach(function(x){
+        var key = String(x).toLowerCase().split("(")[0].trim();
+        var dup = skipped.some(function(s){ return String(s).toLowerCase().indexOf(key) === 0 || key && String(s).toLowerCase().indexOf(key) >= 0; });
+        if (!dup) skipped.push(x);
+      });
+    }
+    if (!skipped.length) {
+      el.classList.remove("show");
+      el.innerHTML = "";
+      return;
+    }
+    el.classList.add("show");
+    el.innerHTML = "<b>Explore can’t apply:</b> " + skipped.map(function(s){ return s; }).join(" · ")
+      + (report && report.applied && report.applied.length
+        ? "<br><span style=\"color:#9aa0ad\">Applied here: " + report.applied.join(", ") + "</span>"
+        : "");
   }
   async function applyHubState(st) {
     if (!st) return;
     hubApplying = true;
     try {
-      rebuildHubDim(st);
+      var report = rebuildHubDim(st);
+      showUnmappedNotice(report, st);
       var qEl = document.getElementById("q");
       var nextQ = (st.q == null ? "" : String(st.q));
       if (qEl && qEl.value !== nextQ) qEl.value = nextQ;
