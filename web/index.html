@@ -139,13 +139,13 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
 <section id="hero" aria-label="Unread Atlas">
   <canvas id="bg" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas><canvas id="ov" aria-hidden="true"></canvas>
   <div id="brand"><a href="./" title="Unread Atlas home"><img src="assets/logo/logo.svg" width="71" height="34" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />UNREAD ATLAS</a></div>
-  <nav id="topnav" aria-label="Main"><a href="map.html">Explore</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Research</a><a href="translate.html">Translator</a><a href="map.html?view=stats">Stats</a><a href="credits.html">Credits</a><a href="map.html?view=about">About</a><a href="#collab">Collaborate</a></nav>
+  <nav id="topnav" aria-label="Main"><a href="map.html">Search</a><a href="signs.html">Signs</a><a href="t/index.html">Research</a><a href="translate.html">Translator</a><a href="map.html?view=stats">Stats</a><a href="credits.html">Credits</a><a href="map.html?view=about">About</a><a href="#collab">Collaborate</a></nav>
   <div id="copy">
     <!-- ================= HEADLINE (edit here only) ================= Numbers: web/corpus_stats.json (scripts/build_corpus_stats.py stamps them here). -->
     <h1 id="headline"><em data-stat="pct_no_human_en">95</em>% of cuneiform tablets have never been translated into English by a scholar.</h1>
     <p class="tag" id="subline">Explore all <b data-stat="tablets">462,298</b> of them here.</p>
     <!-- ============================================ /HEADLINE ============================================ -->
-    <form id="sform" action="search.html" role="search"><input id="q" name="q" placeholder="barley" aria-label="Search the corpus" autocomplete="off" /><button type="submit">Search</button></form>
+    <form id="sform" action="map.html" role="search"><input id="q" name="q" placeholder="barley" aria-label="Search the corpus" autocomplete="off" /><button type="submit">Search</button></form>
     <div id="hints">try <a href="browse.html?q=barley">barley</a><a href="browse.html?q=silver">silver</a><a href="browse.html?q=sheep">sheep</a><a href="map.html">the map</a><a href="#" id="rand1">a random tablet</a></div>
   </div>
   <div id="legend"></div>
@@ -203,7 +203,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
     <div><a class="btn" href="https://x.com/roguesamurai" rel="me noopener" target="_blank">Message @roguesamurai on X</a><a class="btn" href="https://github.com/ixmon/unread" rel="noopener" target="_blank">Open an issue on GitHub</a></div>
   </div>
 </main>
-<footer>Unread Atlas · <a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="map.html?view=stats">Stats</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
+<footer>Unread Atlas · <a href="map.html">Search</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="map.html?view=stats">Stats</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
 How the moving dots were chosen: <a href="browse.html#how">how this visualization works</a>. All English on this site is labelled machine translation unless marked otherwise. Coastlines and rivers: Natural Earth (<a href="credits.html#basemap">credits</a>).</footer>
 <script>
 "use strict";
@@ -323,7 +323,7 @@ addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;if(e.key
 const PRESETS=['barley','silver','sheep'];
 // Always open the Search page with the typed query (presets stay as browse.html links in #hints).
 document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=document.getElementById('q').value.trim()||'barley';
-  location.href=`search.html?q=${encodeURIComponent(v)}`;};
+  location.href=`map.html?view=list&q=${encodeURIComponent(v)}`;};
 // Phones: hide the fixed search while scrolling down the page; restore when scrolling up / near top.
 (function(){
   let lastY=0;

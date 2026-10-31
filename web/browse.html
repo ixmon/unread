@@ -1,7 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  if(p.get('embed')==='1'){ document.documentElement.classList.add('ua-embed'); return; }
+  p.set('view','explore');
+  location.replace('map.html?'+p.toString());
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Map of maps: slide between place, time, genre and translation state · Unread Atlas</title>
 <meta name="description" data-stat-tpl="Slide all {tablets} cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
 <link rel="canonical" href="https://unreadatlas.com/browse.html" />
@@ -31,15 +40,17 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f1115;color:#e6e2d8;
 canvas#bm,canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
 #bm{pointer-events:none}
 #ov{pointer-events:none}
+
+html.ua-embed #top a:first-child{display:none}
+html.ua-embed body{background:#0b0d10}
+
 #top{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;z-index:5;background:rgba(20,22,28,.88);padding:8px 10px;border-radius:10px;border:1px solid #2a2e38}
 #top .brand-link{display:inline-flex;align-items:center;gap:7px;font-family:'Source Serif 4',Georgia,serif;white-space:nowrap;color:#e3c27a;text-decoration:none}#top .brand-link img{height:22px;width:auto;display:block}#top .brand-link:hover{color:#fff}
 #top input{background:#181b22;color:#eee;border:1px solid #333a46;border-radius:6px;padding:6px 9px;width:150px;font:inherit}
 #top button{background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px}
 #top button.on{background:#c79a3a;color:#111;border-color:#c79a3a}
 #top .lbl{font-size:12px;color:#8f96a3;white-space:nowrap}
-#mode{display:inline-flex;border:1px solid #363c4a;border-radius:6px;overflow:hidden}
-#mode button{border:0;border-radius:0;padding:5px 7px;font-size:12px}
-#mode button.on{background:#7ec3e6;color:#0d1520}
+/* #mode Auto/ATF/English removed — always auto-detect */
 #presets button.rel{background:#1c2430;border-color:#2f4256;color:#bfe0f2}
 #stage{touch-action:none}
 #info{position:absolute;right:14px;bottom:78px;z-index:5;background:rgba(20,22,28,.88);padding:10px 12px;border-radius:10px;border:1px solid #2a2e38;font-size:12.5px;max-width:380px;line-height:1.45}
@@ -84,7 +95,6 @@ a{color:#e0b860}
   #top .brand-link span, #top .brand-link{font-size:14px}
   #top input{width:100%;flex:1 1 140px}
   #top #presets, #top #plbl, #top #clearSel{display:none}
-  #top #mode{order:3}
   #zoomctl{top:auto;bottom:96px;left:8px}
   #nav{
     width:108px;height:108px;right:6px;top:62px;
@@ -129,7 +139,6 @@ a{color:#e0b860}
 <div id="top">
   <a href="./" title="Unread Atlas home" class="brand-link"><img src="assets/logo/logo.svg" width="46" height="22" alt="" />Unread Atlas</a>
   <input id="q" placeholder="English, ATF (kasz) or 𒁉…" value="barley" title="Type a word and press Enter. English, ATF transliteration (kasz, {u2}tar-musz, š or sz) or cuneiform signs." />
-  <span id="mode" title="Search English or ATF; Auto guesses from what you type"><button data-m="auto" class="on">Auto</button><button data-m="en">English</button><button data-m="atf">ATF</button></span>
   <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
   <button id="clearSel" title="Clear selection">clear selection</button>
 </div>
@@ -141,7 +150,7 @@ a{color:#e0b860}
 <div id="how" class="panel" role="dialog" aria-label="How this visualization works"><button class="x" id="howx" title="Close">×</button><h2>How this visualization works</h2>
 <p>Every tablet is a dot placed by two of: find-spot longitude and latitude, approximate date (period midpoint), genre, and translation state. Slide between maps and the dots travel; anything you select stays selected.</p>
 <p><b>The moving dots on the home page are a sample.</b> Each dot is one tablet, but not every tablet: <span data-dots="n">116,813</span> are shown, a random <span data-dots="sample_random">60,000</span> drawn from all <span data-stat="tablets">462,298</span>, plus every tablet whose English (human or machine) contains barley, silver or sheep (<span data-dots="term_matches">65,250</span>; some are in both groups), so those example searches show complete results. Every word match has English, so tablets with English make up far more of those dots than of the corpus. The percentages in the home-page legend are shares of the dots shown; for the whole corpus see <a href="map.html?view=stats">Stats</a>. This page, by contrast, draws every tablet.</p></div>
-<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="#how" id="howlink">how this visualization works</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
+<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Search</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="#how" id="howlink">how this visualization works</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
 <script src="js/browse-state.js"></script>
 <script>
 (()=>{const P=document.getElementById('how');let loaded=false;
@@ -254,8 +263,7 @@ async function load(){
 const q = document.getElementById('q');
 q.addEventListener('keydown', e=>{ if(e.key==='Enter') setTerm(q.value.trim()||null); });
 let mode = 'auto', lastScope = 'en', res = null, reqN = 0;
-function setMode(m){ mode = m; document.querySelectorAll('#mode button').forEach(b=>b.classList.toggle('on', b.dataset.m===m)); }
-document.querySelectorAll('#mode button').forEach(b=>b.onclick=()=>{ setMode(b.dataset.m); if (q.value.trim()) setTerm(q.value.trim()); });
+function setMode(m){ mode = 'auto'; /* UI removed; always auto-detect via detect() */ }
 const CUNEI = /[\u{12000}-\u{1254F}]/u;
 const ATF_HINT = /[šŠṣṭḫŋĝ₀-₉{}]|sz|\w-\w|[a-z]\d\b|^\d\(/i;
 const toAscii = s => s.toLowerCase().replace(/š/g,'sz').replace(/ṣ/g,'s,').replace(/ṭ/g,'t,').replace(/ḫ/g,'h').replace(/[ŋĝ]/g,'j').replace(/[₀-₉]/g,c=>String(c.charCodeAt(0)-0x2080));
