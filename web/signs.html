@@ -15,7 +15,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+    <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
 <link rel="stylesheet" href="css/styles.css" />
 <link rel="stylesheet" href="css/static.css" />
 <style>
@@ -85,17 +88,18 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}td,th{padding:5px 6px
 <header class="static-header">
   <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" />Unread Atlas</a>
   <nav aria-label="Main">
-    <a class="nav-link" href="map.html">Explore &amp; map</a>
-    <a class="nav-link" href="browse.html">Browse</a>
-    <a class="nav-link active" href="signs.html" aria-current="page">Signs</a>
-    <a class="nav-link" href="t/index.html">Curated texts</a>
-    <a class="nav-link" href="translate.html">Translator</a>
-    <a class="nav-link" href="search.html">Search</a>
-    <a class="nav-link" href="credits.html">Credits</a>
-  </nav>
+<a class="nav-link" href="map.html">Explore</a>
+<a class="nav-link" href="search.html">Search</a>
+<a class="nav-link" href="browse.html">Browse</a>
+<a class="nav-link active" href="signs.html" aria-current="page">Signs</a>
+<a class="nav-link" href="t/index.html">Research</a>
+<a class="nav-link" href="translate.html">Translator</a>
+<a class="nav-link" href="credits.html">Credits</a>
+<a class="nav-link" href="map.html?view=about">About</a>
+</nav>
 </header>
 <main id="app" class="signs-main"><p class="muted"><span class="spinner"></span> loading sign list…</p></main>
-<footer class="static-footer">Unread Atlas · <a href="./">Home</a> · <a href="map.html">Map</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="search.html">Search</a> · <a href="credits.html#signs">Credits</a></footer>
+<footer class="static-footer">Unread Atlas · <a href="map.html">Explore</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="search.html">Search</a> · <a href="credits.html#signs">Credits</a></footer>
 <script src="js/sign-draw.js"></script>
 <script>
 const PCOL=["#6b8fad","#2f4f86","#c4784a","#d6b25e","#6a9b7a","#9b6ab8","#b86a5a","#4fa3a5","#8a8f5a","#555"];

@@ -21,6 +21,10 @@
     <meta property="og:url" content="https://unreadatlas.com/credits.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="theme-color" content="#0f1114" />
+        <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/static.css" />
     <style>
@@ -38,14 +42,15 @@
     <header class="static-header">
       <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
       <nav aria-label="Main">
-        <a class="nav-link" href="map.html">Explore &amp; map</a>
-        <a class="nav-link" href="browse.html">Browse</a>
-        <a class="nav-link" href="signs.html">Signs</a>
-        <a class="nav-link" href="t/index.html">Curated texts</a>
-        <a class="nav-link" href="translate.html">Translator</a>
-        <a class="nav-link" href="search.html">Search</a>
-        <a class="nav-link active" href="credits.html" aria-current="page">Credits</a>
-      </nav>
+<a class="nav-link" href="map.html">Explore</a>
+<a class="nav-link" href="search.html">Search</a>
+<a class="nav-link" href="browse.html">Browse</a>
+<a class="nav-link" href="signs.html">Signs</a>
+<a class="nav-link" href="t/index.html">Research</a>
+<a class="nav-link" href="translate.html">Translator</a>
+<a class="nav-link active" href="credits.html" aria-current="page">Credits</a>
+<a class="nav-link" href="map.html?view=about">About</a>
+</nav>
     </header>
     <main class="static-main credits-main">
       <h1>Thank you</h1>
@@ -79,7 +84,7 @@
         <dt>Linguistically Annotated Achemenet Babylonian Texts (University of Helsinki), from <a href="http://www.achemenet.com/" rel="noopener">Achemenet</a></dt>
         <dd>Achaemenid-period Babylonian archives. <span class="lic">CC BY 4.0</span></dd>
         <dt><a href="https://etcsl.orinst.ox.ac.uk/" rel="noopener">ETCSL</a>, RINAP, SAA and the print series</dt>
-        <dd>We link to these and flag their tablets as already translated. Their publications are the scholarly record, and our machine drafts are not a substitute for them.</dd>
+        <dd>We link to these and flag their tablets as already translated. Their publications are the scholarly record; cite them for published readings.</dd>
       </dl>
 
       <h2 id="museums">Museums &amp; collections</h2>
@@ -133,7 +138,7 @@
         <dt><em>Noto Sans Cuneiform</em></dt>
         <dd>The Noto project, for other periods and missing signs. <a class="lic" href="fonts/OFL-NotoSansCuneiform.txt">SIL OFL 1.1</a></dd>
         <dt><em>IBM Plex Sans</em>, <em>IBM Plex Mono</em> and <em>Source Serif 4</em></dt>
-        <dd>The site's text faces, by IBM and Adobe, served by <a href="https://fonts.google.com/" rel="noopener">Google Fonts</a>. <span class="lic">SIL OFL 1.1</span></dd>
+        <dd>The site's text faces, by IBM and Adobe, self-hosted here. <a class="lic" href="fonts/ui/OFL-IBMPlex.txt">SIL OFL 1.1 (IBM Plex)</a> <a class="lic" href="fonts/ui/OFL-SourceSerif4.txt">SIL OFL 1.1 (Source Serif)</a></dd>
       </dl>
 
       <h2 id="signs">Sign dictionary</h2>
@@ -162,7 +167,7 @@
           (checkpoint <span class="lic">ckpt-22000-hybrid-ct2bf16</span>, also published for in-browser use as
           <a href="https://huggingface.co/montycrypto/atf-to-english-onnx" rel="noopener">montycrypto/atf-to-english-onnx</a>).
           Model <span class="lic">MIT</span>. A smaller <strong>Compact v4e</strong> (T5-small) build remains available
-          in the on-device translator for phones and low-memory devices. The drafts are unreviewed and are not scholarly translations.</dd>
+          in the on-device translator for phones and low-memory devices.</dd>
       </dl>
 
       <h2 id="software">Software</h2>
@@ -189,7 +194,7 @@
     </main>
     <footer class="static-footer">
       <div class="footer-links"><!--site:links--><!--/site:links--></div>
-      Unread Atlas · <a href="./">Home</a> · <a href="map.html">Map</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="search.html">Search</a> · <a href="credits.html">Credits</a>
+      Unread Atlas · <a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a>
     </footer>
 </body>
 </html>

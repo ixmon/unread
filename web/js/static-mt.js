@@ -1,10 +1,7 @@
 /**
- * Modest moat: static /t/ pages ship a short machine-English teaser in HTML.
- * This script loads the rest from the rate-limited corpus API (GET /api/text/<id>),
- * the same JSON the Reader uses. Regenerating translations (e.g. B2c) only needs
- * a new search export + SEO rebuild; no separate static JSON files.
- *
- * Override API base with ?textapi=https://….
+ * Fill deferred machine-English cells on /t/ pages from /api/text/<id>.
+ * Real browsers load the full translation automatically; a retry control remains
+ * on failure. No teaser/API copy in the UI.
  */
 (function () {
   "use strict";
@@ -123,58 +120,75 @@
     return '<a href="../map.html?id=' + encodeURIComponent(id) + '">Open in Reader</a>';
   }
 
+  function offerRetry(bar, id) {
+    setStatus(
+      bar,
+      '<button type="button" class="btn mt-retry">Show full translation</button> · '
+        + readerLink(id),
+      true
+    );
+    var btn = bar.querySelector(".mt-retry");
+    if (btn) btn.addEventListener("click", function () { loadBar(bar); });
+  }
+
   async function loadBar(bar) {
     var id = bar.getAttribute("data-text-id");
     if (!id) return;
-    setStatus(bar, "Loading the rest of the machine draft…");
+    bar.hidden = false;
+    setStatus(bar, "Loading full translation…");
     var ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var timer = setTimeout(function () {
-      setStatus(bar, "Still loading the machine draft…");
-    }, 2500);
     try {
+      var hdrs = { Accept: "application/json" };
+      if (window.UnreadToken && window.UnreadToken.headers) {
+        try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+      }
       var res = await fetch(
         apiBase() + "/text/" + encodeURIComponent(id).replace(/%3A/gi, ":"),
         {
-          headers: { Accept: "application/json" },
+          headers: hdrs,
           signal: ctl && ctl.signal,
         }
       );
-      clearTimeout(timer);
       if (!res.ok) throw new Error("HTTP " + res.status);
       var data = await res.json();
       var mt = pickMt(data);
-      if (!mt) throw new Error("no machine English in API response");
+      if (!mt) throw new Error("no machine English");
       var tables = Array.prototype.slice.call(document.querySelectorAll("table.lines-table[data-mt-lazy]")).filter(function (t) {
         return (t.getAttribute("data-text-id") || id) === id;
       });
-      var filled = 0;
-      tables.forEach(function (t) { filled += applyToTable(t, mt); });
-      var rest = Number(bar.getAttribute("data-rest") || "0");
-      setStatus(
-        bar,
-        filled
-          ? "Full machine draft loaded from the corpus API (" + filled + (rest ? " of " + rest + " remaining" : "") + " lines)."
-          : "Machine draft loaded; " + readerLink(id) + " if any lines are still missing."
-      );
+      tables.forEach(function (t) { applyToTable(t, mt); });
       bar.setAttribute("data-mt-loaded", "1");
+      bar.hidden = true;
     } catch (err) {
-      clearTimeout(timer);
-      setStatus(
-        bar,
-        "Could not load the rest of the machine draft. "
-          + '<button type="button" class="btn mt-retry">Retry</button> · '
-          + readerLink(id) + " · "
-          + '<a href="../translate.html?id=' + encodeURIComponent(id) + '">In-browser translator</a> · '
-          + '<a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">Download the model</a>.',
-        true
-      );
-      var btn = bar.querySelector(".mt-retry");
-      if (btn) btn.addEventListener("click", function () { loadBar(bar); });
+      offerRetry(bar, id);
     }
   }
 
+  function likelyAutomated() {
+    try {
+      return !!(navigator && navigator.webdriver);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function offerButton(bar) {
+    if (bar.getAttribute("data-mt-loaded") === "1") return;
+    var id = bar.getAttribute("data-text-id") || "";
+    setStatus(bar, '<button type="button" class="btn mt-retry">Show full translation</button>');
+    var btn = bar.querySelector(".mt-retry");
+    if (btn) btn.addEventListener("click", function () { loadBar(bar); });
+  }
+
   function boot() {
-    document.querySelectorAll(".mt-load-bar[data-text-id]").forEach(loadBar);
+    document.querySelectorAll(".mt-load-bar[data-text-id]").forEach(function (bar) {
+      if (bar.getAttribute("data-mt-loaded") === "1") return;
+      if (likelyAutomated()) {
+        offerButton(bar);
+        return;
+      }
+      loadBar(bar);
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

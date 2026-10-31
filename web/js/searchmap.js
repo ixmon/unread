@@ -227,6 +227,7 @@
     $("#smap-chip").title = "Every tablet in the Unread Atlas corpus with a mappable find-spot. Click a circle to list its tablets; search above to map a word.";
     sm.visible = true;
     $("#smap-toggle").checked = true;
+    const st = $("#sidebar-smap-toggle"); if (st) st.checked = true;
     draw();
   }
 
@@ -268,6 +269,7 @@
       `${fmt(d.unlocated)} have none or only an uncertain one. ${d.took_ms} ms.`;
     sm.visible = true;
     $("#smap-toggle").checked = true;
+    const st2 = $("#sidebar-smap-toggle"); if (st2) st2.checked = true;
     draw(true);
   }
 
@@ -410,7 +412,7 @@
     const facts = [r.period, r.genre, SRC_NAMES[r.src] || r.src].filter(Boolean).map(esc).join(" · ");
     const sn = (r.snippets || [])[0];
     const snip = sn && sn.kind !== "meta"
-      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine draft" : "ATF")}</span> ${esc(sn.text)}</div>`
+      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine translation" : "ATF")}</span> ${esc(sn.text)}</div>`
       : "";
     const readerId = inCatalog(r.id) ? r.id : r.canonical_id && inCatalog(r.canonical_id) ? r.canonical_id : null;
     const reader = readerId ? ` <a href="map.html?id=${encodeURIComponent(readerId)}" class="smap-reader" data-open="${esc(readerId)}">Map reader</a>` : "";
@@ -478,18 +480,37 @@
   // ─── wiring ───
   function init() {
     if (!state.map) return setTimeout(init, 50);
+    // CDLI P/Q/X ids, plus common museum sigla (K., BM., Sm., VAT, AO, MLC).
+    const ID_RE = /^(?:P\d+|Q\d+|X\d+|BM\.?\s*\d+|K\.?\s*\d+|MLC\.?\s*\d+|VAT\s*\d+|AO\s*\d+|Sm\.?\s*\d+)$/i;
     $("#smap-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const s = { ...(sm.query || queryFromUrl()), q: $("#smap-q").value.trim() };
+      const raw = $("#smap-q").value.trim();
+      const s = { ...(sm.query || queryFromUrl()), q: raw };
       if (!hasQuery(s)) return clear();
+      // Exact tablet IDs: jump to / open that tablet (reader). Free-form terms still map the corpus.
+      if (ID_RE.test(raw)) {
+        const opened = typeof window.UnreadOpenId === "function" && window.UnreadOpenId(raw);
+        if (opened) return;
+      }
       run(s);
     });
     $("#smap-clear").addEventListener("click", clear);
     $("#smap-toggle").addEventListener("change", (e) => {
       sm.visible = e.target.checked;
+      const side = $("#sidebar-smap-toggle");
+      if (side) side.checked = e.target.checked;
       if (!sm.visible) closePanel();
       draw();
     });
+    const sideToggle = $("#sidebar-smap-toggle");
+    if (sideToggle) {
+      sideToggle.addEventListener("change", (e) => {
+        sm.visible = e.target.checked;
+        $("#smap-toggle").checked = e.target.checked;
+        if (!sm.visible) closePanel();
+        draw();
+      });
+    }
     $(".smap").addEventListener("click", (e) => {
       const f = e.target.closest("[data-unfilter]");
       if (f && sm.query) {

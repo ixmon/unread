@@ -39,7 +39,7 @@ export const CACHED = {
   id: "cached",
   label: "Cached translation",
   shortLabel: "cached",
-  blurb: "Machine draft already shipped with this text (no download)",
+  blurb: "Machine translation already shipped with this text (no download)",
   radioHint: "Cached translation shipped with this text — no download",
 };
 /** @deprecated use CACHED */

@@ -226,8 +226,12 @@ async function loadText(id) {
 
 /** Fetch /api/text/<id> and adapt its best edition to the reader's packaged-text shape. */
 async function loadTextFromApi(id) {
+  let hdrs = { Accept: "application/json" };
+  if (window.UnreadToken && window.UnreadToken.headers) {
+    try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+  }
   const res = await fetch(`${TEXT_API}/text/${encodeURIComponent(id).replace(/%3A/gi, ":")}`, {
-    headers: { Accept: "application/json" },
+    headers: hdrs,
     signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) return null;
@@ -402,8 +406,8 @@ function apiTextToReader(d, requestedId) {
       conf: conf.some(Boolean) ? conf : null,
       n: english.filter(Boolean).length,
       note: m.repo
-        ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
-        : "Machine draft. Unreviewed machine output, not a scholarly translation.",
+        ? `Machine translation · ${modelShort(m.label) || m.label || "model"}${m.translated_on ? ` · ${m.translated_on}` : ""}`
+        : "Machine translation",
       meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
       model_label: m.label || "",
       translated_on: m.translated_on || "",
@@ -648,6 +652,19 @@ function defaultCompareCols(text) {
   if (machine && human && machine.key !== human.key) return [machine.key, human.key];
   return opts.slice(0, 2).map((o) => o.key);
 }
+/** Drop legacy disclaimer / teaser phrases from machine-translation notes. */
+function scrubMtNote(s) {
+  if (!s) return s;
+  let t = String(s);
+  t = t.replace(/\s*Unreviewed machine output,?\s*/gi, " ");
+  t = t.replace(/\s*not a scholarly translation[^.]*\.?/gi, "");
+  t = t.replace(/\s*verify against a published edition\.?/gi, "");
+  t = t.replace(/\s*The first \d+ machine lines are in the HTML for search engines;?\s*the rest load from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\s*Machine English on this page loads from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\bMachine draft\b/g, "Machine translation");
+  return t.replace(/\s{2,}/g, " ").replace(/\s·\s*$/,"").trim();
+}
+
 const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
 const trTabLabel = (o) => (o.kind === "machine" ? "Machine" : String(o.label || "Translation").split(" · ")[0]);
 
@@ -662,15 +679,15 @@ function trCreditHtml(o) {
       .filter(Boolean)
       .join(" · ");
   }
-  const short = `Machine draft · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""} · unreviewed, not a scholarly translation`;
-  const full = o.note || short;
+  const short = `Machine translation · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""}`;
+  const full = scrubMtNote(o.note || short);
   // Full provenance is shown via the header ⓘ popover (lg-credit); keep a short summary for the rare inline-preamble mode.
   return `<span class="mt-credit-full">${escapeHtml(full)}</span><span class="mt-credit-short" hidden>${escapeHtml(short)}</span>`;
 }
 
 /** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
 function trChipSub(o) {
-  if (o.kind === "machine") return "machine draft";
+  if (o.kind === "machine") return "machine translation";
   return o.license ? `human · ${o.license}` : "human";
 }
 
@@ -684,11 +701,13 @@ function renderLinesCol(text) {
 function renderLinesGrid(body, text, keys, wantAtf) {
   const opts = text.translations || [];
   const cols = keys.map((k) => opts.find((o) => o.key === k)).filter(Boolean);
-  const content = (text.lines || []).filter((l) => l.type === "line");
+  // Prefer attachMetaNotes so $ / # from packaged ATF ride on the adjacent row (API editions usually omit them).
+  const attached = attachMetaNotes(text.lines || []);
+  const content = attached.length ? attached : (text.lines || []).filter((l) => l.type === "line");
   const atfOn = wantAtf && content.length > 0;
   // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
   let rows;
-  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
+  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, column: l.column, atf: l.atf, key: rowKey(l.surface, l.n), _notes: l._notes || [] }));
   else {
     const first = cols[0] || opts[0];
     rows = (first.labels || first.english.map((_, i) => String(i + 1))).map((lab) => ({ n: lab, surface: "", atf: null, key: rowKeyFromLabel(lab) }));
@@ -700,7 +719,7 @@ function renderLinesGrid(body, text, keys, wantAtf) {
 
   const k = cols.length;
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
-  const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
+  const tmpl = [content.length ? "3.2rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
   const html = [];
 
@@ -735,13 +754,15 @@ function renderLinesGrid(body, text, keys, wantAtf) {
   rows.forEach((r, i) => {
     let tag = "";
     if (content.length && r.surface && r.surface !== lastSurf) {
-      tag = `<span class="lg-surf" title="${escapeAttr(surfaceLabel(r.surface))}">${escapeHtml(surfaceShort(r.surface))}</span>`;
+      const ps = parseSurface(r.surface, r.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
       if (lastSurf !== null) surfStart.add(i);
     }
     lastSurf = r.surface;
     rowG[i] = g;
     const sc = surfStart.has(i) ? " lg-surf-start" : "";
-    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${tag}${escapeHtml(r.n)}</div>`);
+    const mark = atfNotesMarker(r._notes);
+    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${mark}${tag}<span class="ln-n">${escapeHtml(r.n)}</span></div>`);
     if (atfOn) html.push(`<div class="lg-cell lg-atf${sc}" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
     g++;
   });
@@ -815,7 +836,7 @@ function renderReaderChips(text) {
     enChip.hidden = false;
     enChip.disabled = !has;
     enChip.dataset.slide = "col-english";
-    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine draft") + (status ? ` · ${status}` : "") : status || "none yet";
+    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine translation") + (status ? ` · ${status}` : "") : status || "none yet";
   }
   const atfChip = host.querySelector('[data-panel="atf"]');
   atfChip.disabled = !content.length;
@@ -918,7 +939,7 @@ function englishRemaining(text) {
 function populateFilterOptions() {
   const items = state.catalog.items;
   const genres = uniqueSorted(items.map((i) => i.genre).filter(Boolean));
-  const periods = uniqueSorted(items.map((i) => i.period).filter(Boolean));
+  const periods = uniqueSorted(items.map((i) => periodFacetKey(i.period)).filter(Boolean));
   const langs = uniqueSorted(items.map((i) => i.language).filter(Boolean));
   const sites = uniqueSorted(items.map((i) => i.site || i.provenience).filter(Boolean));
 
@@ -930,6 +951,7 @@ function populateFilterOptions() {
 
 function fillSelect(sel, values) {
   const el = $(sel);
+  if (!el) return;
   const cur = el.value;
   el.innerHTML = `<option value="">All</option>` + values.map((v) => `<option value="${escapeAttr(v)}">${escapeHtml(v)}</option>`).join("");
   if (values.includes(cur)) el.value = cur;
@@ -940,7 +962,7 @@ function uniqueSorted(arr) {
 }
 
 function applyFilters() {
-  const q = ($("#search").value || "").trim().toLowerCase();
+  const q = (($("#search")?.value) || "").trim().toLowerCase();
   const genre = $("#filter-genre").value;
   const period = $("#filter-period").value;
   const language = $("#filter-language").value;
@@ -964,6 +986,10 @@ function applyFilters() {
   document.body.classList.toggle("mode-herbal", !!herbalMode);
   document.body.classList.toggle("mode-omen", !!omenMode);
   document.body.classList.toggle("mode-math", !!mathMode);
+  if (epicHunt || herbalMode || omenMode || mathMode) {
+    const d = document.getElementById("acc-curated");
+    if (d && !d.open) d.open = true;
+  }
   const omenIntro = $("#mode-intro-omens");
   const mathIntro = $("#mode-intro-math");
   if (omenIntro) omenIntro.hidden = !omenMode;
@@ -985,7 +1011,7 @@ function applyFilters() {
     if (omenMode && state.omenKind && item.omen_kind !== state.omenKind) return false;
     if (mathMode && state.mathKind && item.math_kind !== state.mathKind) return false;
     if (genre && item.genre !== genre) return false;
-    if (period && item.period !== period) return false;
+    if (period && periodFacetKey(item.period) !== period) return false;
     if (language && item.language !== language) return false;
     if (site && item.site !== site && item.provenience !== site) return false;
     if (item.content_lines < lineFloor) return false;
@@ -1063,7 +1089,7 @@ function applyFilters() {
     );
   }
   const mode = modes.length ? ` · ${modes.join(" + ")}` : "";
-  $("#results-count").textContent = `${state.filtered.length} works${mode}`;
+  const rc = $("#results-count"); if (rc) rc.textContent = `${state.filtered.length} works${mode}`;
 }
 
 function statusChip(item) {
@@ -1086,10 +1112,10 @@ function machineChip(text) {
   if (!n) return "";
   const total = (text.lines || []).filter((l) => l.type === "line").length;
   if (text.machine_draft_lines != null) n = text.machine_draft_lines;
-  const label = total && n < total ? `Machine draft ${n}/${total}` : `Machine draft (${n})`;
+  const label = total && n < total ? `Machine translation ${n}/${total}` : `Machine translation (${n})`;
   const tm = text.translation_meta || {};
   const stamp = tm.model ? ` · ${tm.model}${tm.translated_on ? ` · ${tm.translated_on}` : ""}` : "";
-  return `<span class="chip status-machine" title="Machine English${escapeAttr(stamp)} — not a scholarly translation">${label}</span>`;
+  return `<span class="chip status-machine" title="Machine translation${escapeAttr(stamp)}">${label}</span>`;
 }
 
 function markerChips(item) {
@@ -1108,6 +1134,7 @@ function markerChips(item) {
 
 function renderCatalogList() {
   const list = $("#catalog-list");
+  if (!list) return; // sidebar list removed; pins + preview still use state.filtered
   const packaged = new Set(state._packagedIds || []);
   const epicMode = $("#filter-epic-hunt")?.checked;
   const max = 200;
@@ -1610,7 +1637,7 @@ function renderMetaCol(text) {
     text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
     text.math_hunt ? `<span class="chip status-math">${escapeHtml(MATH_KIND_LABELS[text.math_kind] || "Math")}</span>` : "",
     text.has_machine_draft || (Array.isArray(text.english) && text.english.length)
-      ? `<span class="chip status-machine">Machine draft</span>`
+      ? `<span class="chip status-machine">Machine translation</span>`
       : "",
   ]
     .filter(Boolean)
@@ -1805,12 +1832,19 @@ async function maybeFetchCdliMeta(text, force = false) {
 /** Full Machine/English provenance for the header ⓘ popover (not inlined in the column body). */
 function englishProvenanceText(text) {
   if (!text) return "";
+  // Machine column ⓘ: short stamp only (model · date), no disclaimer / status essay.
+  const machine = (text.translations || []).find((o) => o.key === "machine" || o.kind === "machine");
+  if (machine && text.english_kind !== "human") {
+    const label = machine.model_label || (text.translation_meta && text.translation_meta.model) || "B2c";
+    const on = machine.translated_on || (text.translation_meta && text.translation_meta.translated_on) || "";
+    return scrubMtNote(`Machine translation · ${label}${on ? ` · ${on}` : ""}`);
+  }
   const bits = [];
-  if (text.english_note) bits.push(text.english_note);
+  if (text.english_note) bits.push(scrubMtNote(text.english_note));
   if (text.english_kind === "human") {
     /* credit lives in english_note */
   } else if (text.translation_status === "print_edition") {
-    bits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
+    bits.push("Scholars translated this in print — this English is a machine translation for comparison.");
   } else if (text.translation_status === "no_open_english") {
     bits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
   } else if (text.open_english) {
@@ -1883,7 +1917,7 @@ function renderEnglishCol(text) {
     body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
-        <p>No machine draft is published for this text yet.</p>
+        <p>No machine translation is published for this text yet.</p>
         <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
           ${lineCount} ATF content lines ready. You can draft English yourself with the in-browser
           translator (B2c ~810 MB or Compact v4e ~94 MB; choose on first use, runs on your device).
@@ -1911,23 +1945,108 @@ function translatorUrl(text, from = 0) {
   return `${TRANSLATOR_PAGE}?${q}`;
 }
 
+/** Conventional Assyriological surface abbreviations for the reader gutter. */
 const SURF_NAMES = [
-  [/^(obverse|obv\.?|o)$/, "obv.", "Obverse"], [/^(reverse|rev\.?|r)$/, "rev.", "Reverse"],
-  [/^(left edge|le)$/, "l.e.", "Left edge"], [/^(right edge|re)$/, "r.e.", "Right edge"],
-  [/^(top edge|upper edge|te|ue)$/, "t.e.", "Top edge"], [/^(bottom edge|lower edge|be|lo\.? ?e\.?)$/, "b.e.", "Bottom edge"],
-  [/^(edge|e)$/, "edge", "Edge"],
+  [/^(obverse|obv\.?|o)$/, "o", "Obverse"],
+  [/^(reverse|rev\.?|r)$/, "r", "Reverse"],
+  [/^(left[ -]?edge|le\.e\.?|le)$/, "le.e", "Left edge"],
+  [/^(right[ -]?edge|re\.e\.?|re)$/, "re.e", "Right edge"],
+  [/^(top[ -]?edge|t\.e\.?|te)$/, "t.e", "Top edge"],
+  [/^(upper[ -]?edge|u\.e\.?|ue)$/, "u.e", "Upper edge"],
+  [/^(bottom[ -]?edge|b\.e\.?|be)$/, "b.e", "Bottom edge"],
+  [/^(lower[ -]?edge|lo\.e\.?|loe)$/, "lo.e", "Lower edge"],
+  [/^(edge|e)$/, "e", "Edge"],
+  [/^(seal)$/, "seal", "Seal"],
+  [/^(fragment|frag\.?)$/, "frag", "Fragment"],
 ];
-/** ATF surface ("o", "obverse col 1", "o i", "left edge") -> short tag ("obv. 1") and full label ("Obverse, column 1"). */
-function parseSurface(s) {
-  const raw = String(s || "").trim();
-  const m = raw.toLowerCase().match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
-  const side = (m && m[1]) || raw.toLowerCase(), col = m && m[2];
-  const hit = SURF_NAMES.find(([re]) => re.test(side));
-  const short = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
-  return { short: col ? `${short} ${col}` : short, label: hit ? hit[2] + (col ? `, column ${col}` : "") : raw };
+const TO_ROMAN = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"];
+function toRomanCol(col) {
+  const s = String(col || "").toLowerCase().replace(/\.$/, "").trim();
+  if (!s) return "";
+  if (/^[ivxlcdm]+$/.test(s)) return s;
+  const n = parseInt(s, 10);
+  if (n >= 1 && n < TO_ROMAN.length) return TO_ROMAN[n];
+  return s;
 }
-const surfaceShort = (s) => parseSurface(s).short;
-const surfaceLabel = (s) => parseSurface(s).label;
+/** ATF surface ("o", "obverse col 1", "o i", "left edge") + optional column -> short tag ("o ii") and full label. */
+function parseSurface(s, column) {
+  let raw = String(s || "").trim();
+  const colExtra = String(column || "").trim();
+  if (colExtra) raw = raw ? `${raw} ${colExtra}` : colExtra;
+  raw = raw.replace(/\s*[·|]\s*/g, " ").replace(/\s+/g, " ").trim();
+  const low = raw.toLowerCase();
+  // surface a/b … (keep letter)
+  const surfM = low.match(/^surface\s+([a-z0-9]+)\b(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  if (surfM) {
+    const col = toRomanCol(surfM[2] || "");
+    return {
+      short: col ? `surf. ${surfM[1]} ${col}` : `surf. ${surfM[1]}`,
+      label: col ? `Surface ${surfM[1]}, column ${col}` : `Surface ${surfM[1]}`,
+    };
+  }
+  const m = low.match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  let side = ((m && m[1]) || low).trim();
+  let col = toRomanCol((m && m[2]) || "");
+  // "column 2" alone (no face) — rare
+  if (/^col(?:umn)?\.?$/.test(side) && col) {
+    return { short: col, label: `Column ${col}` };
+  }
+  const hit = SURF_NAMES.find(([re]) => re.test(side));
+  const shortSide = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
+  const labelSide = hit ? hit[2] : raw;
+  return {
+    short: col ? `${shortSide} ${col}` : shortSide,
+    label: hit ? labelSide + (col ? `, column ${col}` : "") : raw,
+  };
+}
+const surfaceShort = (s, column) => parseSurface(s, column).short;
+const surfaceLabel = (s, column) => parseSurface(s, column).label;
+
+/** Embedded ATF English (#tr.en: …) — omit from the ATF column (not a margin note). */
+function isAtfTrLine(line) {
+  return /^#tr\b/i.test(String((line && (line.text || line.atf)) || "").trim());
+}
+/** $ rulings / # comments (not #tr) / << >> — useful, but must not take a grid row. */
+function isAtfMetaLine(line) {
+  if (!line || isAtfTrLine(line)) return false;
+  if (line.type === "note" || line.type === "raw") return true;
+  const t = String(line.text || line.atf || "").trim();
+  if (!t) return false;
+  if (t.startsWith("$") || t.startsWith(">>") || t.startsWith("<<")) return true;
+  if (t.startsWith("#")) return true;
+  return false;
+}
+function metaLineText(line) {
+  return String(line.text || line.atf || "").replace(/^\$\s*/, "$ ").trim();
+}
+/** Attach meta lines to the preceding content line (or the next when they lead). Drop #tr lines. */
+function attachMetaNotes(lines) {
+  const out = [];
+  let pending = [];
+  for (const line of lines || []) {
+    if (isAtfTrLine(line)) continue;
+    if (isAtfMetaLine(line)) {
+      const t = metaLineText(line);
+      if (!t) continue;
+      if (out.length) out[out.length - 1]._notes.push(t);
+      else pending.push(t);
+      continue;
+    }
+    if (line.type && line.type !== "line") continue;
+    const row = Object.assign({}, line, { type: "line", _notes: pending.slice() });
+    pending = [];
+    out.push(row);
+  }
+  if (pending.length && out.length) out[0]._notes = pending.concat(out[0]._notes);
+  return out;
+}
+function atfNotesMarker(notes) {
+  if (!notes || !notes.length) return "";
+  const tip = notes.join(" · ");
+  const onlyRuling = notes.length === 1 && /^\$\s*single ruling$/i.test(notes[0]);
+  const glyph = onlyRuling ? "—" : "ⓘ";
+  return `<button type="button" class="atf-note-mark" title="${escapeAttr(tip)}" aria-label="${escapeAttr("ATF note: " + tip)}">${glyph}</button>`;
+}
 
 function renderAtfCol(text) {
   const body = $("#atf-body");
@@ -1937,29 +2056,28 @@ function renderAtfCol(text) {
     return;
   }
 
+  // $ / # meta lines become margin markers on the adjacent content line — never their own rows
+  const content = attachMetaNotes(lines);
   let html = "";
   let lastSurface = "";
   let lastCol = "";
   let i = 0;
-  for (const line of lines) {
-    if (line.type === "line") {
-      const surf = [line.surface, line.column].filter(Boolean).join(" · ");
-      // surface/column change: a tag in the line-number cell (not a separate row, which offset the first line)
-      let tag = "", sc = "";
-      if (surf && (line.surface !== lastSurface || line.column !== lastCol)) {
-        tag = `<span class="lg-surf" title="${escapeAttr(surf)}">${escapeHtml(surfaceShort(line.surface) + (line.column ? " " + line.column : ""))}</span>`;
-        if (i > 0) sc = " lg-surf-start";
-        lastSurface = line.surface;
-        lastCol = line.column;
-      }
-      html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
-        <span class="ln">${tag}${escapeHtml(line.n)}</span>
+  for (const line of content) {
+    const surfKey = [line.surface, line.column].filter(Boolean).join(" · ");
+    let tag = "", sc = "";
+    if (surfKey && (line.surface !== lastSurface || line.column !== lastCol)) {
+      const ps = parseSurface(line.surface, line.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
+      if (i > 0) sc = " lg-surf-start";
+      lastSurface = line.surface;
+      lastCol = line.column;
+    }
+    const mark = atfNotesMarker(line._notes);
+    html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
+        <span class="ln">${mark}${tag}<span class="ln-n">${escapeHtml(line.n)}</span></span>
         <span class="atf">${escapeHtml(line.atf)}</span>
       </div>`;
-      i += 1;
-    } else if (line.type === "note") {
-      html += `<div class="line-row note">${escapeHtml(line.text)}</div>`;
-    }
+    i += 1;
   }
   body.innerHTML = `<div class="atf-lines">${html}</div>`;
   bindLineHover(body);
@@ -2041,6 +2159,16 @@ function bindLineHover(container) {
   container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i], .lg-cell[data-s]").forEach((el) => {
     el.addEventListener("mouseenter", () => (el.dataset.s != null ? highlightLine(+el.dataset.s, +el.dataset.e) : highlightLine(el.dataset.i)));
     el.addEventListener("mouseleave", () => highlightLine(null));
+  });
+  // ATF note markers: tap toggles the CSS tip (hover/focus already covered)
+  container.querySelectorAll(".atf-note-mark").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const open = btn.classList.contains("is-open");
+      container.querySelectorAll(".atf-note-mark.is-open").forEach((b) => b.classList.remove("is-open"));
+      if (!open) btn.classList.add("is-open");
+    });
   });
   bindColumnInfo(container);
 }
@@ -2522,7 +2650,37 @@ function formatYear(y) {
 
 function shortPeriod(p) {
   if (!p) return "";
-  return p.replace(/\s*\(ca\.[^)]+\)/, "").replace(/\s*\([^)]*BC[^)]*\)/, "").trim() || p;
+  const uncertain = /\?\s*$/.test(String(p).trim());
+  let s = String(p)
+    .replace(/\s*\(ca\.[^)]+\)/g, "")
+    .replace(/\s*\([^)]*BC[^)]*\)/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .trim();
+  if (!s) return p;
+  return uncertain ? s + "?" : s;
+}
+
+/** Dropdown/facet key: fold trailing ? and date-parens into the base period. */
+function periodFacetKey(p) {
+  if (!p) return "";
+  let s = String(p)
+    .replace(/\s*\((?:ca\.|c\.)?[^)]*\d[^)]*\)\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .replace(/\.$/, "")
+    .trim();
+  const aliases = {
+    "Early Dynastic I-II": "ED I-II",
+    "Early Dynastic IIIa": "ED IIIa",
+    "Early Dynastic IIIA": "ED IIIa",
+    "Early Dynastic IIIb": "ED IIIb",
+    "Early Dynastic IIIB": "ED IIIb",
+    "Lagaš II": "Lagash II",
+    "Neo Assyrian": "Neo-Assyrian",
+    "Neo Babylonian": "Neo-Babylonian",
+  };
+  return aliases[s] || s;
 }
 
 // ─── View routing ───
@@ -2577,23 +2735,40 @@ function bindEvents() {
     $("#view-" + a.dataset.gotoView)?.scrollTo?.(0, 0);
   });
 
-  $("#search").addEventListener("input", debounce(applyFilters, 150));
+  $("#search")?.addEventListener("input", debounce(applyFilters, 150));
+  // Shared ID open for map search box (sidebar search removed).
+  window.UnreadOpenId = function openById(id) {
+    const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
+    if (hit && typeof selectWork === "function") selectWork(hit.id); // pin + preview when they return to map
+    if (typeof openReader === "function") {
+      openReader(id); // jump to / open the tablet (same as featured buttons)
+      return true;
+    }
+    return !!hit;
+  };
   ["filter-genre", "filter-period", "filter-language", "filter-site"].forEach((id) => {
     $(`#${id}`).addEventListener("change", applyFilters);
   });
-  $("#filter-min-lines").addEventListener("input", () => {
-    $("#min-lines-val").textContent = $("#filter-min-lines").value;
+  $("#filter-min-lines")?.addEventListener("input", () => {
+    const v = $("#min-lines-val");
+    if (v) v.textContent = $("#filter-min-lines").value;
     applyFilters();
   });
   $("#filter-hide-known").addEventListener("change", applyFilters);
   $("#filter-open-gap")?.addEventListener("change", applyFilters);
-  $("#filter-packaged").addEventListener("change", applyFilters);
+  $("#filter-packaged")?.addEventListener("change", applyFilters);
   $("#filter-no-english")?.addEventListener("change", applyFilters);
   $("#filter-not-online")?.addEventListener("change", applyFilters);
-  $("#filter-epic-hunt")?.addEventListener("change", applyFilters);
-  $("#filter-herbal")?.addEventListener("change", applyFilters);
-  $("#filter-omens")?.addEventListener("change", applyFilters);
-  $("#filter-math")?.addEventListener("change", applyFilters);
+  const openCuratedAcc = () => {
+    const d = document.getElementById("acc-curated");
+    if (d) d.open = true;
+  };
+  ["filter-epic-hunt", "filter-herbal", "filter-omens", "filter-math"].forEach((id) => {
+    $(`#${id}`)?.addEventListener("change", (e) => {
+      if (e.target.checked) openCuratedAcc();
+      applyFilters();
+    });
+  });
 
   $("#omen-kind-chips")?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-kind]");
@@ -2661,7 +2836,7 @@ function bindEvents() {
     openFeatured(btn.dataset.featured, "math");
   });
 
-  $("#catalog-list").addEventListener("click", (e) => {
+  $("#catalog-list")?.addEventListener("click", (e) => {
     const card = e.target.closest(".catalog-card");
     if (card) selectWork(card.dataset.id);
   });
@@ -2773,7 +2948,7 @@ async function main() {
   } catch (e) {
     console.error(e);
     toast(e.message || "Failed to load catalog");
-    $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
+    const clErr = $("#catalog-list"); if (clErr) clErr.innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`; else toast(e.message);
     if (deepId) openReader(deepId, "none"); // the text API doesn't need the catalog
   }
 }
@@ -2797,7 +2972,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
-    if (open) document.getElementById("search")?.focus({ preventScroll: true });
+    if (open) (document.getElementById("smap-q") || document.getElementById("search"))?.focus({ preventScroll: true });
   };
   if (btn) btn.addEventListener("click", () => setOpen(false));
   if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
@@ -2936,7 +3111,7 @@ function renderStats() {
     bak.live = true;
     const note =
       meta.label
-        ? `Machine draft · in-browser ${meta.label}. Unreviewed machine output, not a scholarly translation.`
+        ? `Machine translation · in-browser ${meta.label}`
         : text.english_note;
     const machine = (text.translations || []).find((o) => o.kind === "machine");
     if (machine) {

@@ -15,11 +15,11 @@
 
 Tablet data comes from the public search export (aws-cunei-search/out/unread-atlas-search.sqlite): the same
 filtered data the live API serves, so licence rules (eBL ATF and eBL human English withheld, ATF only where
-atf_public=1) are already applied there.
+atf_public=1) are already applied there. Rendering is shared with the tpages Lambda via scripts/tablet_page.py.
 
 Human English is shown only for sources whose web/assets/translation-policy.json entry has show_human=true
 (the same table the reader's translation tabs use). Machine English teaser in HTML: min(--mt-html-lines, floor(n_mt/2)), at least 1 when
-n_mt >= 2, and 0 when n_mt <= 1 (see mt_teaser_lines). The rest load client-side from the
+n_mt >= 2, and 0 when n_mt <= 1 (see tablet_page.mt_teaser_lines). The rest load client-side from the
 rate-limited /api/text/<id> endpoint (docs/moat.md, web/js/static-mt.js). ATF stays in HTML
 when atf_public=1.
 
@@ -39,69 +39,13 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from fix_catalog_sites import usable_site  # noqa: E402
+from tablet_page import (  # noqa: E402
+    SITE, OG_IMAGE, MAX_LINES, NAV, e, slug, human_ok, period_range, fmt_year, human_years, clean_author, jsonld, site_short, clip,
+    crumbs_ld, page_shell, render_tablet_html, usable_site, surface_short_label,
+    mt_teaser_lines, mt_td, LANG_CODE, CONF_TITLES, TR_POLICY,
+)
 
-DEFAULT_DB = ROOT.parent / "aws-cunei-search" / "out" / "unread-atlas-search.sqlite"
-SITE = json.loads((WEB / "site.json").read_text())
-CONF_TITLES = {1: "lower confidence: line is broken", 2: "low confidence: few signs survive", 3: "very low confidence: a guess"}
-TR_POLICY = json.loads((WEB / "assets" / "translation-policy.json").read_text()).get("sources", {})
-
-
-def human_ok(src: str) -> bool:
-    """May this source's human English appear on a public page? Unknown sources: no."""
-    return (TR_POLICY.get(src) or TR_POLICY.get("unknown") or {}).get("show_human") is True
-OG_IMAGE = "https://unreadatlas.com/og.jpg"
-MAX_LINES = 600          # per page; longer tablets link to the reader for the rest
-SITEMAP_MAX = 45000      # URLs per tablet sitemap (protocol limit 50,000)
-e = html.escape
-
-# approximate date ranges (BCE negative) for schema.org temporalCoverage; first match wins
-PERIOD_RANGES = [(re.compile(p, re.I), a, b) for p, a, b in [
-    (r"uruk v\b", -3500, -3350), (r"uruk iv", -3350, -3200), (r"uruk iii|proto-elamite|archaic|jemdet", -3200, -2900),
-    (r"ed i-ii|early dynastic i-ii", -2900, -2600), (r"ed iiia|fara", -2600, -2500), (r"ed iiib|presargonic|ebla", -2500, -2340),
-    (r"early dynastic", -2900, -2340), (r"old akkadian|sargonic", -2340, -2200), (r"lagas|lagaš ii", -2200, -2100),
-    (r"ur iii", -2100, -2000), (r"early old babylonian", -2000, -1900), (r"old assyrian", -1950, -1850),
-    (r"old babylonian", -1900, -1600), (r"old elamite", -2100, -1500), (r"middle hittite|hittite", -1500, -1180),
-    (r"middle babylonian|kassite|sealand", -1400, -1100), (r"middle assyrian", -1400, -1000), (r"middle elamite", -1500, -1100),
-    (r"early neo-babylonian", -1000, -730), (r"neo-?assyrian|9th|8th", -911, -612), (r"neo-?elamite", -1000, -539),
-    (r"neo-?babylonian", -626, -539), (r"achaemenid|persian", -539, -330), (r"hellenistic|seleucid", -330, -141),
-    (r"parthian|arsacid", -141, 224), (r"late babylonian", -626, -100)]]
-
-
-def period_range(p):
-    for rx, a, b in PERIOD_RANGES:
-        if p and rx.search(p):
-            return a, b
-    return None
-
-
-def fmt_year(y):  # ISO 8601 extended years for schema.org: -2100 BCE -> "-2099"? keep astronomical-ish simple form
-    return f"-{abs(y):04d}" if y < 0 else f"{y:04d}"
-
-
-def human_years(r):
-    a, b = r
-    f = lambda y: f"{-y} BCE" if y < 0 else f"{y} CE"  # noqa: E731
-    return f"c. {f(a)}–{f(b)}"
-
-
-LANG_CODE = {"sumerian": "sux", "akkadian": "akk", "hittite": "hit", "elamite": "elx", "hurrian": "xhu", "urartian": "xur",
-             "ugaritic": "uga", "aramaic": "arc", "greek": "grc", "eblaite": "xeb", "luwian": "xlu"}
-
-
-def clean_author(a):
-    a = re.sub(r"\s*\((CDLI )?translation_source\)|\s*\(see CDLI record\)", "", a or "").strip()
-    return None if not a or re.search(r"^(uncertain|unknown|cdli contributor|no translator|translator not named)", a, re.I) else a
-
-
-def slug(text_id: str) -> str:
-    # mirrored in web/map.html (JS: id.replace(/[^A-Za-z0-9._-]/gu, "_")); keep the two in sync
-    return re.sub(r"[^A-Za-z0-9._-]", "_", text_id)
-
-
-TABLET_SHARDS = 256
-
-
+# re-export tablet_shard locally (kept for sign/index builders below)
 def tablet_shard(sl: str) -> str:
     """FNV-1a 32-bit over the (ASCII) slug, low byte as 2 hex digits; mirrored in web/map.html."""
     h = 0x811C9DC5
@@ -110,113 +54,20 @@ def tablet_shard(sl: str) -> str:
         h = (h * 0x01000193) & 0xFFFFFFFF
     return f"{h & 0xFF:02x}"
 
-
-def jsonld(obj) -> str:
-    return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
-
-
-def site_short(p):
-    return re.sub(r"\s*\(mod\..*?\)", "", p or "").strip(" ?")
-
-
-def clip(t, n):
-    t = re.sub(r"\s+", " ", t or "").strip()
-    return t if len(t) <= n else t[: n - 1].rsplit(" ", 1)[0] + "…"
-
-
-NAV = [("map.html", "Explore &amp; map"), ("browse.html", "Browse"), ("signs.html", "Signs"), ("t/index.html", "Curated texts"),
-       ("translate.html", "Translator"), ("search.html", "Search"), ("credits.html", "Credits")]
-
-
-def page(*, title, desc, canonical, body, ld, active="", og_type="article", head_extra="", noindex=False, scripts=""):
-    nav = "\n".join(f'<a class="nav-link{" active" if h == active else ""}" href="../{h}">{l}</a>' for h, l in NAV)
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(title)} · {e(SITE["name"])}</title>
-<meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{e(canonical)}">{chr(10) + '<meta name="robots" content="noindex,follow">' if noindex else ""}
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="manifest" href="../site.webmanifest">
-<meta property="og:type" content="{og_type}">
-<meta property="og:site_name" content="{e(SITE["name"])}">
-<meta property="og:title" content="{e(title)}">
-<meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{e(canonical)}">
-<meta property="og:image" content="{OG_IMAGE}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{e(title)}">
-<meta name="twitter:description" content="{e(desc)}">
-<meta name="twitter:image" content="{OG_IMAGE}">
-<meta name="theme-color" content="#0f1114">
-<link rel="stylesheet" href="../css/styles.css">
-<link rel="stylesheet" href="../css/static.css">
-<style>.crumbs{{font-size:.85rem;color:var(--text-dim)}}.crumbs a{{color:var(--text-dim)}}.lines-table td.atf{{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.85rem}}
-.src-note{{font-size:.85rem;color:var(--text-dim)}}.cta a{{margin-right:1rem}}.gl-table td{{padding:.2rem .8rem .2rem 0}}.vals span{{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.85rem;border:1px solid var(--border);border-radius:5px;padding:0 .4rem;margin:.1rem}}
-.lines-table td.conf-1{{opacity:.82}}.lines-table td.conf-2{{opacity:.66;font-style:italic}}.lines-table td.conf-3{{opacity:.52;font-style:italic}}.conf-note{{display:block;font-size:.72rem;font-style:normal;color:var(--text-faint)}}</style>{head_extra}
-{jsonld(ld)}
-</head>
-<body class="static-page">
-<header class="static-header">
-<a class="brand" href="../" title="Unread Atlas home"><img class="brand-mark" src="../assets/logo/logo.svg" width="58" height="28" alt="" />{e(SITE["name"])}</a>
-<nav aria-label="Main">
-{nav}
-</nav>
-</header>
-<main class="static-main">
-{body}
-</main>
-<footer class="static-footer">{e(SITE["name"])} · <a href="../">Home</a> · <a href="../browse.html">Browse</a> · <a href="../signs.html">Signs</a> · <a href="../t/index.html">Curated texts</a> · <a href="../credits.html">Credits &amp; thanks</a></footer>
-{scripts}
-</body>
-</html>
-"""
-
-
-def crumbs_ld(items):
-    return {"@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(items)]}
-
-
-# ------------------------------------------------------------------ tablets
-
-def mt_teaser_lines(n_mt: int, cap: int = 5) -> int:
-    """Machine-English lines to embed in static HTML (modest moat).
-
-    min(cap, floor(n_mt / 2)), at least 1 when n_mt >= 2; 0 when n_mt <= 1
-    (a one-line draft stays API-only). cap <= 0 restores the old all-in-HTML behaviour.
-    """
-    n = max(0, int(n_mt or 0))
-    if n <= 1:
-        return 0
-    c = int(cap)
-    if c <= 0:
-        return n
-    return max(1, min(c, n // 2))
-
-def mt_td(m, cf, pending=False):
-    """Machine-English cell; lines the model flags are dimmed and labelled (same levels as the reader).
-    pending=True: empty cell filled later by web/js/static-mt.js from /api/text/<id>."""
-    if pending:
-        return '<td class="mt mt-pending" aria-hidden="true"></td>'
-    if cf in CONF_TITLES and m:
-        return f'<td class="mt conf-{cf}" title="{e(CONF_TITLES[cf].capitalize())}">{e(m)}<span class="conf-note">({e(CONF_TITLES[cf])})</span></td>'
-    return f'<td class="mt">{e(m or "")}</td>'
+DEFAULT_DB = ROOT.parent / "aws-cunei-search" / "out" / "unread-atlas-search.sqlite"
+SITEMAP_MAX = 45000          # URLs per tablet sitemap (protocol limit 50,000)
+TABLET_SHARDS = 256
 
 
 def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
                   machine_only: bool = True, machine_min: int = 1, ids: list[str] | None = None,
                   index_min: int = 10, export_date: str | None = None, mt_html_lines: int = 5):
+    """Write /t/<slug>.html via the shared tablet_page renderer (same HTML as the tpages Lambda)."""
     c = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
     c.row_factory = sqlite3.Row
     built_full = json.loads(c.execute("SELECT value FROM meta WHERE key='built_at'").fetchone()[0])
-    if export_date:  # the export's meta.built_at is inherited from its base build; the deploy date is more honest
+    if export_date:
         built_full = f"{export_date}T00:00:00Z"
-    built = built_full[:10]
     stamp = dt.datetime.fromisoformat(built_full.replace("Z", "+00:00")).timestamp()
     conf_col = "tr.conf_level" if any(r[1] == "conf_level" for r in c.execute("PRAGMA table_info(tr)")) else "NULL"
     sources = {r["id"]: dict(r) for r in c.execute("SELECT * FROM source")}
@@ -234,266 +85,41 @@ def build_tablets(out: Path, db_path: Path, base: str, limit: int | None,
     tdir.mkdir(parents=True, exist_ok=True)
     curated = {p.stem for p in tdir.glob("*.html")}
     urls, skipped, n_noindex, n_index = [], 0, 0, 0
-    indexable = set(curated)  # hand-written pages are always indexable
+    indexable = set(curated)
+    beacon = None  # build_site.py stamps the Cloudflare beacon after SEO pages are written
     for key in keys:
         sl = slug(key)
         url = f"{base}t/{sl}.html"
-        if sl in curated:           # hand-curated page wins, unchanged
+        if sl in curated:
             skipped += 1
             urls.append(url)
             continue
-        # canonical ids can contain ':' themselves (TLHdig: "tlh:1029_u"), so try the canonical id first
-        rows = [r for r in c.execute("SELECT * FROM text WHERE canonical_id=? COLLATE NOCASE", (key,)) if r["canonical_id"] == key]
-        by_canonical = bool(rows)
-        if not rows and ":" in key:
-            src, i = key.split(":", 1)
-            rows = c.execute("SELECT * FROM text WHERE src=? AND id=?", (src, i)).fetchall()
-        order = {"cdli": 0, "oracc": 1, "tlhdig": 2, "achemenet": 3, "ebl": 4}
-        rows = sorted(rows, key=lambda r: order.get(r["src"], 9))
-        if not rows:
+        result = render_tablet_html(
+            c, key, base=base, mt_html_lines=mt_html_lines, index_min=index_min,
+            export_date=export_date, asset_prefix="../", include_static_meta=True,
+            beacon_token=beacon, sources=sources, conf_col=conf_col, built_full=built_full,
+        )
+        if not result:
             continue
-        first = lambda k: next((r[k] for r in rows if r[k]), None)  # noqa: E731
-        designation = first("designation") or key
-        period, genre, lang = first("period"), first("genre"), first("language")
-        museum, coll = first("museum_no"), first("collection")
-        geo = next((r for r in rows if r["lat"] is not None and usable_site(r["provenience"] or "", r["lat"], r["lon"])), None)
-        prov = (geo["provenience"] if geo else None) or first("provenience")
-        # human English: every edition that has it, grouped by translator
-        hum_rows = [r for r in rows if r["n_human_en"] and human_ok(r["src"])]
-        hum = []
-        for r in hum_rows:
-            for x in c.execute("""SELECT tr.line_ref, tr.content, ts.author, ts.license, ts.edition FROM tr JOIN tr_source ts ON ts.tsid=tr.tsid
-                                  WHERE tr.rid=? AND tr.human=1 ORDER BY tr.trid LIMIT ?""", (r["rid"], MAX_LINES)):
-                hum.append((r["src"], x))
-        if not hum and not machine_only:
-            continue
-        # transliteration + machine English: first edition whose ATF is public
-        atf_row = next((r for r in rows if r["atf_public"] and r["n_lines"]), None)
-        lines, mt_meta = [], None
-        if atf_row:
-            mt = {}
-            for x in c.execute(f"""SELECT tr.lid, tr.content, {conf_col} AS conf, ts.author, ts.version, ts.model_label, tr.created FROM tr
-                                  JOIN tr_source ts ON ts.tsid=tr.tsid WHERE tr.rid=? AND tr.human=0""", (atf_row["rid"],)):
-                if x["lid"] is not None:
-                    mt[x["lid"]] = (x["content"], x["conf"] or 0)
-                mt_meta = mt_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
-            for l in c.execute("SELECT lid, line_no, surface, atf FROM line WHERE rid=? ORDER BY seq LIMIT ?", (atf_row["rid"], MAX_LINES)):
-                m_, cf = mt.get(l["lid"], (None, 0))
-                lines.append((l["surface"], l["line_no"], l["atf"], m_, cf))
-        mt_free, mt_free_meta = [], None
-        mt_row = next((r for r in rows if r["n_mt"]), None)
-        if mt_row is not None and (mt_row is not atf_row or not any(ln[3] for ln in lines)):
-            for x in c.execute(f"""SELECT tr.line_ref, tr.content, {conf_col} AS conf, ts.author, ts.version, ts.model_label, tr.created FROM tr
-                                  JOIN tr_source ts ON ts.tsid=tr.tsid WHERE tr.rid=? AND tr.human=0 ORDER BY tr.trid LIMIT ?""",
-                               (mt_row["rid"], MAX_LINES)):
-                mt_free.append((x["line_ref"], x["content"], x["conf"] or 0))
-                mt_free_meta = mt_free_meta or {"repo": x["author"], "label": x["model_label"], "on": (x["created"] or "")[:10], "rev": (x["version"] or "")[:8]}
-        n_mt_shown = sum(1 for ln in lines if ln[3]) + sum(1 for f in mt_free if f[1])
-        if not hum and not n_mt_shown:
-            continue
-        noindex = max(len(hum), n_mt_shown) < index_min
-        rng = period_range(period)
-        site = site_short(prov) if prov and (geo or not re.search(r"uncertain|unknown", prov, re.I)) else None
-        reader_id = key if by_canonical else key.split(":", 1)[1]
-        en_bits, n_ch = [], 0
-        en_src = [x["content"] for _, x in hum] or [ln[3] for ln in lines if ln[3]] or [f[1] for f in mt_free]
-        for content in en_src:
-            t_ = re.sub(r"\s+", " ", content or "").strip()
-            if len(t_) > 1 and not re.fullmatch(r"[\W\d.…x]+", t_):
-                en_bits.append(t_); n_ch += len(t_) + 1
-            if n_ch > 110:
-                break
-        first_en = clip(" ".join(en_bits), 120)
-        title = designation if designation == key else f"{designation} ({key})"
-        sub = ", ".join(x for x in [genre, period, site] if x)
-        if sub:
-            title = f"{title}: {sub}"
-        desc = clip(f"{genre or 'Cuneiform'} tablet{(' from ' + site) if site else ''}{(', ' + period) if period else ''}"
-                    f"{(' (' + human_years(rng) + ')') if rng else ''}, with {'English translation' if hum else 'machine English draft'}: “{first_en}”", 157)
-        if desc.count("“") > desc.count("”"):
-            desc += "”"
-        # ---- body
-        srcs = []
-        for r in rows:
-            s = sources.get(r["src"], {})
-            # Prefer CDLI artifact URLs (numeric id); ORACC project pages when project is known.
-            if r["src"] == "cdli":
-                link = f"https://cdli.earth/artifacts/{quote(str(r['id']).lstrip('P').lstrip('0'))}"
-            elif r["src"] == "oracc" and r["project"]:
-                link = f"https://oracc.museum.upenn.edu/{quote(r['project'] or '')}/{quote(r['id'])}"
-            elif r["src"] == "ebl":
-                link = f"https://www.ebl.lmu.de/library/{quote(r['id'])}"
-            else:
-                link = s.get("url")
-            srcs.append((s.get("name", r["src"]), link, s.get("license", ""), s.get("citation", "")))
-        source_bits = []
-        seen_links = set()
-        for name, link, _lic, _cit in srcs:
-            if not link or link in seen_links:
-                continue
-            seen_links.add(link)
-            source_bits.append(
-                f'<a class="meta-ext" href="{e(link)}" rel="noopener">{e(name)}</a>'
-                f' <span class="ext-label">(external)</span>'
-            )
-        source_html = " · ".join(source_bits) if source_bits else None
-        meta = [("Designation", designation, False), ("ID", key, False), ("Museum no.", museum, False),
-                ("Collection", coll, False), ("Language", lang, False),
-                ("Period", f"{period}{(' · ' + human_years(rng)) if rng else ''}" if period else None, False),
-                ("Genre", genre, False), ("Find spot", prov, False),
-                ("Coordinates", f"{geo['lat']:.4f}, {geo['lon']:.4f}" if geo else None, False),
-                ("Source", source_html, True)]
-        meta_rows = []
-        for k, v, raw in meta:
-            if not v:
-                continue
-            cell = v if raw else e(str(v))
-            cls = ' class="meta-source"' if k == "Source" else ""
-            meta_rows.append(f"<tr{cls}><th>{e(k)}</th><td>{cell}</td></tr>")
-        meta_html = "".join(meta_rows)
-        by_tr = {}
-        for src, x in hum:
-            by_tr.setdefault((x["author"] or "translator not named", x["license"] or sources.get(src, {}).get("license", ""), src), []).append(x)
-        hum_html = []
-        for (author, lic, src), xs in by_tr.items():
-            more = len(xs) - 0
-            hum_html.append(f'<h2>English translation</h2><p class="src-note">{("By " + e(clean_author(author)) + " · ") if clean_author(author) else ""}Via {e(sources.get(src, {}).get("name", src))} · {e(lic)}</p>'
-                            '<table class="lines-table"><thead><tr><th>Line</th><th>English</th></tr></thead><tbody>'
-                            + "".join(f'<tr><td class="ln">{e(x["line_ref"] or "")}</td><td>{e(x["content"] or "")}</td></tr>' for x in xs)
-                            + "</tbody></table>")
-        atf_html = ""
-        mt_lazy = False
-        mt_teaser_cap = mt_teaser_lines(n_mt_shown, mt_html_lines)
-        mt_seen = 0  # shared across ATF-aligned + free-MT tables so the HTML teaser is global
-        if lines:
-            rows_h, cur = [], None
-            for surf, n, atf, m, cf in lines:
-                if surf and surf != cur:
-                    rows_h.append(f'<tr class="surface-row"><td colspan="3">{e(surf)}</td></tr>')
-                    cur = surf
-                pending = False
-                if m:
-                    mt_seen += 1
-                    pending = mt_seen > mt_teaser_cap  # cap 0 (n_mt<=1) defers every MT line to /api
-                cell = mt_td(None, 0, pending=True) if pending else mt_td(m, cf)
-                if pending:
-                    mt_lazy = True
-                rows_h.append(
-                    f'<tr data-line-n="{e(n or "")}"><td class="ln">{e(n or "")}</td>'
-                    f'<td class="atf">{e(atf or "")}</td>{cell}</tr>'
-                )
-            s = sources.get(atf_row["src"], {})
-            teaser_note = (
-                ' Machine English on this page loads from the corpus API in your browser.'
-                if mt_teaser_cap == 0 else
-                f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                'the rest load from the corpus API in your browser.'
-            ) if mt_lazy else ""
-            mt_note = (f'<p class="machine-draft"><strong>Machine draft.</strong> The right-hand column is machine English from '
-                       f'<code>{e(mt_meta["repo"] or "")}</code> ({e(mt_meta["label"] or mt_meta["rev"])}, {e(mt_meta["on"])}), '
-                       'generated line by line from the transliteration. It is unreviewed and is not a scholarly translation.'
-                       f'{teaser_note}</p>') if mt_meta else ""
-            tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
-                         f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
-            atf_html = (f'<h2>Transliteration (ATF)</h2><p class="src-note">From {e(s.get("name", atf_row["src"]))} · {e(s.get("license", ""))}</p>{mt_note}'
-                        f'<table{tbl_attrs}><thead><tr><th>Line</th><th>ATF</th><th>Machine English (draft)</th></tr></thead><tbody>'
-                        + "\n".join(rows_h) + "</tbody></table>"
-                        + (f'<p class="src-note">Showing the first {MAX_LINES} lines; <a href="../map.html?id={quote(reader_id)}">open the reader</a> for the rest.</p>'
-                           if atf_row["n_lines"] and atf_row["n_lines"] > MAX_LINES else ""))
-        if mt_free:
-            mm = mt_free_meta
-            free_rows = []
-            for ln, m, cf in mt_free:
-                pending = False
-                if m:
-                    mt_seen += 1
-                    pending = mt_seen > mt_teaser_cap  # cap 0 (n_mt<=1) defers every MT line to /api
-                if pending:
-                    mt_lazy = True
-                cell = mt_td(None, 0, pending=True) if pending else mt_td(m, cf)
-                free_rows.append(f'<tr data-line-n="{e(ln or "")}"><td class="ln">{e(ln or "")}</td>{cell}</tr>')
-            tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" '
-                         f'data-mt-teaser="{mt_teaser_cap}"') if mt_lazy else ' class="lines-table"'
-            teaser_note = (
-                ' Machine English on this page loads from the corpus API in your browser.'
-                if mt_teaser_cap == 0 else
-                f' This page includes the first {mt_teaser_cap} machine lines in HTML for search engines; '
-                'the rest load from the corpus API in your browser.'
-            ) if mt_lazy else ""
-            atf_html += (f'<h2>Machine English (draft)</h2><p class="machine-draft"><strong>Machine draft.</strong> Machine English from '
-                         f'<code>{e(mm["repo"] or "")}</code> ({e(mm["label"] or mm["rev"])}, {e(mm["on"])}), generated line by line from the '
-                         'source transliteration (not reproduced here). It is unreviewed and is not a scholarly translation.'
-                         f'{teaser_note}</p>'
-                         f'<table{tbl_attrs}><thead><tr><th>Line</th><th>Machine English (draft)</th></tr></thead><tbody>'
-                         + "".join(free_rows) + "</tbody></table>")
-        rest_mt = max(0, n_mt_shown - mt_teaser_cap)
-        if mt_lazy and rest_mt:
-            atf_html += (
-                f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
-                f'<span class="mt-load-status">Loading the rest of the machine draft '
-                f'({rest_mt} more line{"s" if rest_mt != 1 else ""})…</span></p>'
-                f'<noscript><p class="src-note">JavaScript is required to load the rest of the machine draft '
-                f'({rest_mt} more lines). <a href="../map.html?id={quote(reader_id)}">Open in Reader</a>, '
-                f'use the <a href="../translate.html?id={quote(reader_id)}">in-browser translator</a>, '
-                f'or <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">download the model</a>.</p></noscript>'
-            )
-        def _li(n, l, lic, cit):
-            nm = f'<a href="{e(l)}" rel="noopener">{e(n)}</a>' if l else e(n)
-            return f"<li>{nm} · {e(lic)}" + (" · " + e(cit) if cit else "") + "</li>"
-        src_html = "<ul>" + "".join(_li(*x) for x in srcs) + "</ul>"
-        browse_q = f"../browse.html?id={quote(reader_id)}"
-        body = f"""<article>
-<p class="crumbs"><a href="../">Home</a> › <a href="../browse.html">Tablets</a> › {e(key)}</p>
-<h1>{e(designation)}{(' <small class="faint">(' + e(key) + ')</small>') if designation != key else ''}</h1>
-<p class="lede">{e(sub)}{(' · ' + e(human_years(rng))) if rng else ''}</p>
-<p class="page-actions"><a class="btn primary" href="../map.html?id={quote(reader_id)}">Open in Reader</a><a class="btn" href="{browse_q}">Open in Map</a><a class="btn" href="../translate.html?id={quote(reader_id)}">In-Browser Translator</a></p>
-<table class="meta-table">{meta_html}</table>
-{"".join(hum_html)}
-{atf_html}
-<h2>Sources &amp; licences</h2>{src_html}
-<p class="src-note">Cite the original edition and translator. Page generated by Unread Atlas from the public corpus export of {e(built)}.</p>
-</article>"""
-        cw = {"@type": "ArchiveComponent", "@id": url + "#tablet", "name": designation, "url": url, "identifier": key,
-              "description": desc, "genre": genre, "inLanguage": LANG_CODE.get((lang or "").lower(), lang), "dateModified": built,
-              "isBasedOn": [l for _, l, _, _ in srcs if l] or None,
-              "license": next((lic for _, _, lic, _ in srcs if lic), None),
-              "creditText": "; ".join(re.sub(r"\s*\(see [^)]*\)", "", cit) for _, _, _, cit in dict.fromkeys(srcs) if cit) or None,
-              "isPartOf": {"@type": "WebSite", "name": SITE["name"], "url": base}}
-        if museum or coll:
-            cw["holdingArchive"] = {"@type": "ArchiveOrganization", "name": coll or museum}
-            if museum:
-                cw["alternateName"] = museum
-        if rng:
-            cw["temporalCoverage"] = f"{fmt_year(rng[0])}/{fmt_year(rng[1])}"
-        if prov and (geo or not re.search(r"uncertain|unknown", prov, re.I)):
-            place = {"@type": "Place", "name": prov}
-            if geo:
-                place["geo"] = {"@type": "GeoCoordinates", "latitude": round(geo["lat"], 4), "longitude": round(geo["lon"], 4)}
-            cw["locationCreated"] = place
-        if by_tr:
-            cw["workTranslation"] = {"@type": "CreativeWork", "inLanguage": "en", "name": f"English translation of {designation}",
-                                     "author": [{"@type": "Person", "name": a} for a in dict.fromkeys(clean_author(a) for (a, _, _) in by_tr) if a] or None}
-        cw = {k: v for k, v in cw.items() if v not in (None, [], "")}
-        ld = {"@context": "https://schema.org", "@graph": [cw, crumbs_ld([("Home", base), ("Tablets", base + "browse.html"), (key, url)])]}
-        mt_scripts = '<script defer src="../js/static-mt.js"></script>' if mt_lazy else ""
-        fp = tdir / f"{sl}.html"
-        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, noindex=noindex, scripts=mt_scripts), encoding="utf-8")
-        os.utime(fp, (stamp, stamp))  # deterministic mtime: `aws s3 sync` re-uploads only pages whose size changed or a newer export
-        if noindex:
-            n_noindex += 1
-        else:
+        fp = tdir / f"{result['slug']}.html"
+        fp.write_text(result["html"], encoding="utf-8")
+        os.utime(fp, (stamp, stamp))
+        if result["indexable"]:
+            indexable.add(result["slug"])
             n_index += 1
-            indexable.add(sl)
-            urls.append(url)  # sitemaps carry indexable pages only
-    # canonical lookup for the reader: indexable slugs in 256 small shards (one ~5 KB fetch per tablet view)
+            urls.append(result["url"])  # sitemaps carry indexable pages only
+        else:
+            n_noindex += 1
+    # canonical lookup for the reader: indexable slugs in 256 small shards
     idir = out / "assets" / "tablet-index"
     idir.mkdir(parents=True, exist_ok=True)
     shards = {f"{i:02x}": [] for i in range(TABLET_SHARDS)}
     for sl in indexable:
         shards[tablet_shard(sl)].append(sl)
     for name, sls in shards.items():
-        (idir / f"{name}.txt").write_text("\n".join(sorted(sls)) + ("\n" if sls else ""))
+        (idir / f"{name}.txt").write_text('\n'.join(sorted(sls)) + ('\n' if sls else ""))
     (out / "assets" / "tablet-pages.json").unlink(missing_ok=True)
+    built = built_full[:10]
     build_tablets.counts = {"generated": n_index + n_noindex, "indexable": n_index, "noindex": n_noindex,
                             "curated_kept": skipped, "mt_html_lines_cap": mt_html_lines}
     return urls, built, skipped
@@ -592,7 +218,7 @@ fetch(A+"/search/ids?q="+encodeURIComponent(r)+"&in=atf").then(function(x){{retu
                 "inDefinedTermSet": {"@type": "DefinedTermSet", "@id": base + "signs.html#set", "name": "Unread Atlas cuneiform sign list", "url": base + "signs.html"}}
         ld = {"@context": "https://schema.org", "@graph": [term, crumbs_ld([("Home", base), ("Signs", base + "signs.html"), (name, url)])]}
         fp = sdir / f"{sl}.html"
-        fp.write_text(page(title=title, desc=desc, canonical=url, body=body, ld=ld, active="signs.html", head_extra=head_extra), encoding="utf-8")
+        fp.write_text(page_shell(title=title, desc=desc, canonical=url, body=body, ld=ld, active="signs.html", head_extra=head_extra), encoding="utf-8")
         os.utime(fp, (stamp, stamp))
         urls.append(url)
     (out / "assets" / "signs" / "sign-pages.json").write_text(json.dumps(pagemap, ensure_ascii=False, separators=(",", ":")))

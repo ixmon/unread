@@ -1,3 +1,6 @@
+/* Self-hosted UI faces */
+@import url("ui-fonts.css");
+
 /* New Cuneiform Translations — reader UI
    Period fonts: S. Vanséveren & C. Ziegeler via eBL; see web/fonts/fonts.json + README credits */
 
@@ -261,6 +264,66 @@ a.brand:hover .brand-mark { filter: brightness(1.12); }
 .filter-row select,
 .filter-row input[type="range"] {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: block;
+}
+
+.filter-row input[type="range"] {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  background: transparent;
+}
+
+.filter-row input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #3a3f4b;
+}
+
+.filter-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #4a90d9;
+  border: 0;
+  cursor: pointer;
+}
+
+.filter-row input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #3a3f4b;
+}
+
+.filter-row input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4a90d9;
+  border: 0;
+  cursor: pointer;
+}
+
+.filter-row {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.sidebar-acc-body,
+.sidebar .filters {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .filter-row select {
@@ -1065,7 +1128,7 @@ body.mode-epic .catalog-card .title {
 
 .english-prose .line-en {
   display: grid;
-  grid-template-columns: 2.75rem 1fr;
+  grid-template-columns: 3.2rem 1fr;
   gap: 0.5rem;
   margin: 0 0 0.45rem;
   padding: 0.2rem 0.35rem;
@@ -1142,17 +1205,69 @@ body.mode-epic .catalog-card .title {
 
 .line-row {
   display: grid;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 3.2rem 1fr;
   gap: 0.5rem;
   padding: 0.2rem 0.3rem;
   border-radius: 4px;
   margin-bottom: 1px;
+  position: relative;
 }
 
 .line-row .ln {
   color: var(--text-faint);
   text-align: right;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  min-width: 0;
+  max-width: 3.2rem;
+  position: relative;
+}
+.line-row .ln .ln-n { line-height: 1.55; }
+/* $ / # ATF notes: zero-height margin marker (no extra row) */
+.atf-note-mark {
+  position: absolute;
+  left: -0.15rem;
+  top: 0.15rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-faint);
+  font: 0.62rem/1 var(--font-ui);
+  cursor: help;
+  opacity: 0.85;
+  z-index: 1;
+}
+.atf-note-mark:hover, .atf-note-mark:focus-visible {
+  color: var(--accent-strong);
+  opacity: 1;
+  outline: none;
+}
+/* Native title covers hover; :focus-visible + tap: show a CSS tip for keyboard/mobile */
+.atf-note-mark:focus-visible::after,
+.atf-note-mark.is-open::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  top: 1.15rem;
+  z-index: 20;
+  min-width: 10rem;
+  max-width: 18rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  background: var(--bg-elev, #2a2420);
+  color: var(--text, #eee);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  font: 0.72rem/1.35 var(--font-ui);
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
 }
 
 .line-row .atf {
@@ -1976,8 +2091,18 @@ body:not(.show-preambles) .lg-credit { display: none; }
 .lg-en.lg-span.hl { background: var(--accent-soft); border-left-color: var(--accent-strong); }
 
 /* surface marker (obverse/reverse…) lives inside the first line's number cell, not as its own row */
-.lg-surf { display: block; font-family: var(--font-ui); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); line-height: 1.1; white-space: nowrap; }
-.line-row .ln .lg-surf { margin-bottom: 1px; }
+.lg-surf {
+  display: block; font-family: var(--font-ui); font-size: 0.58rem; letter-spacing: 0.02em;
+  color: var(--accent); line-height: 1.1; white-space: nowrap;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; cursor: help;
+}
+.line-row .ln .lg-surf { margin-bottom: 1px; max-width: 3rem; }
+.lg-cell.lg-ln {
+  position: relative;
+  max-width: 3.2rem;
+  overflow: hidden;
+}
+.lg-cell.lg-ln .ln-n { display: block; }
 .lg-cell.lg-surf-start, .line-row.lg-surf-start { border-top: 1px dashed var(--border); }
 
 /* ─── Stats view (?view=stats) ─── */
@@ -2242,3 +2367,44 @@ body.show-preambles .mt-credit-short { display: inline; }
 .aw-pop .aw-ref{font-size:9px;vertical-align:super;margin-left:1px;text-decoration:none}
 .aw-pop .aw-about li{margin:2px 0}
 .aw-popup-known .leaflet-popup-content{overflow-y:auto;overscroll-behavior:contain}
+
+
+/* Sidebar accordions (map Explore panel) */
+.sidebar-acc {
+  border-top: 1px solid #2a2e38;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-acc > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold, #e3c27a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+.sidebar-acc > summary::-webkit-details-marker { display: none; }
+.sidebar-acc > summary::after {
+  content: "▾";
+  font-size: 11px;
+  color: var(--text-dim, #9aa3b2);
+  transition: transform 0.15s;
+}
+.sidebar-acc:not([open]) > summary::after { transform: rotate(-90deg); }
+.sidebar-acc-body {
+  padding: 0 14px 12px;
+}
+.sidebar-acc .filters { padding: 0 14px 12px; border: 0; }
+.sidebar-section { padding-bottom: 8px; }
+.sidebar-section .search-box { margin-bottom: 8px; }
+.smap-toggle-hidden,
+.smap-toggle[hidden] { display: none !important; }
+/* Whole-corpus default chip is hidden; search-result chips still show */
+.smap-chip.all { display: none !important; }

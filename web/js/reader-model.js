@@ -66,7 +66,7 @@ function ensureChrome(head, { aligned }) {
         <span class="mt-progress-text" data-mt-progress-text
               role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></span>
       </div>
-      <button type="button" class="mt-info" data-mt-info aria-label="Machine draft provenance" title="Machine draft provenance" aria-expanded="false" aria-haspopup="dialog">ⓘ</button>
+      <button type="button" class="mt-info" data-mt-info aria-label="Machine translation provenance" title="Machine translation provenance" aria-expanded="false" aria-haspopup="dialog">ⓘ</button>
       <button type="button" class="mt-cog" data-mt-cog aria-label="Choose machine translation source" title="Machine translation source">
         <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
           <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.57.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.68.22l2.39-.96c.5.4 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.57-.23 1.12-.54 1.63-.94l2.39.96c.25.12.54.02.68-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z"/>
@@ -97,9 +97,9 @@ function provenanceText() {
     if (t) return t;
   }
   const text = api()?.getText?.();
-  if (!text) return "Machine draft. Unreviewed machine output, not a scholarly translation.";
+  if (!text) return "Machine translation";
   const bits = [text.english_note, text.translation_label, text.translation_detail].filter(Boolean);
-  return bits.join(" · ") || "Machine draft. Unreviewed machine output, not a scholarly translation.";
+  return bits.join(" · ") || "Machine translation";
 }
 
 function closeMtInfo() {
@@ -116,7 +116,7 @@ function openMtInfo(btn) {
   pop.id = "mt-info-pop";
   pop.className = "mt-info-pop";
   pop.setAttribute("role", "dialog");
-  pop.setAttribute("aria-label", "Machine draft provenance");
+  pop.setAttribute("aria-label", "Machine translation provenance");
   pop._btn = btn;
   const body = provenanceText();
   pop.innerHTML = `<p class="mt-info-pop-body"></p>`;
@@ -225,31 +225,10 @@ function injectChrome(sourceId) {
   window.__readerSource = sourceId;
 }
 
-function tagMachineLines(sourceId) {
-  const tag = sourceTag(sourceId);
-  if (!tag) return;
-  // Packaged english column
-  document.querySelectorAll("#english-body .line-en .en-text").forEach((el) => {
-    if (el.querySelector(".mt-line-tag")) {
-      el.querySelector(".mt-line-tag").textContent = tag;
-      return;
-    }
-    const span = document.createElement("span");
-    span.className = "mt-line-tag";
-    span.textContent = tag;
-    el.prepend(span);
-  });
-  // Aligned grid machine cells
-  document.querySelectorAll(".lg-en.lg-machine .en-text").forEach((el) => {
-    if (el.querySelector(".mt-line-tag")) {
-      el.querySelector(".mt-line-tag").textContent = tag;
-      return;
-    }
-    const span = document.createElement("span");
-    span.className = "mt-line-tag";
-    span.textContent = tag;
-    el.prepend(span);
-  });
+function tagMachineLines(_sourceId) {
+  // Per-line source tags removed: the column header keeps a single (cached)/B2c/v4e
+  // label via setSourceLabel, and line numbers already live in the ATF/line column.
+  document.querySelectorAll(".mt-line-tag").forEach((el) => el.remove());
 }
 
 function allTools() {
