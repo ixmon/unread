@@ -63,7 +63,17 @@ html,body{height:auto;overflow-x:hidden;background:var(--ink)}
 #sform button{background:linear-gradient(135deg,var(--sky),var(--sky2));color:#0b1a2b;border:0;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
 #sform button:hover{filter:brightness(1.08)}
 #hints{margin-top:12px;font-size:12.5px;color:var(--text-faint);text-shadow:0 1px 8px #000}#hints a{color:#b9c8d8;margin:0 6px}
-body.user #copy{opacity:0;pointer-events:none}
+/* Keep the search usable: only fade headline/hints when the visitor takes over the hero.
+   Hiding all of #copy made the search vanish on phones after a scroll/tap and never return. */
+body.user #copy h1, body.user #copy p.tag, body.user #hints{opacity:0;max-height:0;margin:0;overflow:hidden;pointer-events:none;transition:opacity .5s,max-height .5s}
+body.user #copy{top:76px;transform:translate(-50%,0)}
+body.user #sform{pointer-events:auto;opacity:1}
+@media (max-width:640px){
+  #sform{position:fixed;left:12px;right:12px;top:58px;z-index:9;max-width:none;margin:0;transition:opacity .25s,transform .25s}
+  body.scrolled-down #sform{opacity:0;transform:translateY(-12px);pointer-events:none}
+  body.scrolled-top #sform, body:not(.scrolled-down) #sform{opacity:1;transform:none;pointer-events:auto}
+  body.user #copy{top:118px}
+}
 #legend{position:absolute;left:28px;bottom:28px;z-index:6;background:rgba(14,16,21,.78);border:1px solid #2a2e38;border-radius:10px;padding:10px 13px;font-size:12px;line-height:1.7;backdrop-filter:blur(4px);max-width:290px}
 #legend:empty{display:none}
 #legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
@@ -311,8 +321,22 @@ heroEl.addEventListener('pointerup',()=>dragX=null);
 addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){takeControl();animateTo(Math.round(navT)+(e.key==='ArrowRight'?1:-1))}});
 // Search: the three sampled preset words open the browse view; anything else goes to the corpus search page (search API).
 const PRESETS=['barley','silver','sheep'];
-document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=document.getElementById('q').value.trim()||'barley',k=v.toLowerCase();
-  location.href=PRESETS.includes(k)?`browse.html?q=${encodeURIComponent(k)}`:`search.html?q=${encodeURIComponent(v)}`};
+// Always open the Search page with the typed query (presets stay as browse.html links in #hints).
+document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=document.getElementById('q').value.trim()||'barley';
+  location.href=`search.html?q=${encodeURIComponent(v)}`;};
+// Phones: hide the fixed search while scrolling down the page; restore when scrolling up / near top.
+(function(){
+  let lastY=0;
+  function sync(){
+    const y=window.scrollY||0;
+    const down=y>lastY && y>80;
+    const top=y<48;
+    document.body.classList.toggle('scrolled-down', down && !top);
+    document.body.classList.toggle('scrolled-top', top);
+    lastY=y;
+  }
+  addEventListener('scroll', sync, {passive:true}); sync();
+})();
 window.setTour=(i,j,f)=>{P.set('t','x');touring=true;pair=[i,j,f]};
 // ---- view cards: only pages that exist on the live site link anywhere; the rest are marked coming soon
 const CARDS=[["Map","Every find-spot on a relief map, with filters, a timeline and the reader.","map.html","assets/previews/map.jpg"],
