@@ -21,3 +21,14 @@ Branch: `unified-search-20261031` (from browse-mobile). Preview :8861. **No depl
 4. **Sidebar sections** (map layers / curated) still show on List/Explore — useful filters stay; layer toggles are map-specific (could hide per-tab later).
 5. **Reader / Stats / About** unchanged; Search hub hides when those are active.
 6. Many `/t/*.html` navs updated; generated tablet pages not in this tree may still show old trio until rebuild.
+
+## No default tablet selection (map preview)
+
+**Cause:** `web/js/app.js` `main()` after `loadCatalog` always did
+`first = filtered.find(packaged) || filtered[0]; await selectWork(first.id)`
+when URL had no `?id=`. That is why P131747 / TCL 05, 5676 appeared on load.
+Same pattern is still on live `unreadatlas.com/js/app.js`.
+
+**Fix (preview only):** removed the else-branch auto-`selectWork`. Deep link
+`?id=` still opens the reader. Preview pane keeps its `.preview-empty` copy
+until the user clicks a pin or list card.

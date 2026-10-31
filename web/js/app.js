@@ -3065,13 +3065,10 @@ async function main() {
     await loadCatalog();
     fillFontPicker();
     toast(`Loaded ${state.catalog.count} catalog works`);
-    // Deep link ?id=P285108
+    // Deep link ?id=P285108 → reader. Otherwise leave map with no tablet selected
+    // (preview pane stays on its empty state until the user picks a pin/card).
     if (deepId) {
       await openReader(deepId, "none");
-    } else {
-      const first =
-        state.filtered.find((i) => state._packagedIds.includes(i.id)) || state.filtered[0];
-      if (first) await selectWork(first.id);
     }
   } catch (e) {
     console.error(e);
