@@ -267,12 +267,55 @@ a.brand:hover .brand-mark { filter: brightness(1.12); }
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  display: block;
+}
+
+.filter-row input[type="range"] {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  background: transparent;
+}
+
+.filter-row input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #3a3f4b;
+}
+
+.filter-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #4a90d9;
+  border: 0;
+  cursor: pointer;
+}
+
+.filter-row input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #3a3f4b;
+}
+
+.filter-row input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4a90d9;
+  border: 0;
+  cursor: pointer;
 }
 
 .filter-row {
   min-width: 0;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .sidebar-acc-body,
