@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Search (unified mock) · Unread Atlas</title>
+  <meta name="theme-color" content="#0f1114" />
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="css/ui-fonts.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/static.css" />
+  <style>
+    /* Preview-only mock: unify Map / List / Explore under one Search chrome. Old pages untouched. */
+    body.unified { display:flex; flex-direction:column; min-height:100vh; overflow:hidden; }
+    body.unified .static-header { flex:0 0 auto; }
+    .mock-banner {
+      flex:0 0 auto; background:#3a2a12; color:#f0d9a8; font-size:12px; padding:6px 14px;
+      border-bottom:1px solid #5a4020; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .mock-banner b { color:#fff; }
+    .mock-banner a { color:#9ec9ff; }
+    .chrome {
+      flex:0 0 auto; padding:10px 14px 0; background:var(--bg-elev); border-bottom:1px solid var(--border);
+    }
+    .chrome-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .chrome form { display:flex; flex:1 1 280px; gap:6px; min-width:0; }
+    .chrome form input {
+      flex:1; min-width:0; font:inherit; font-size:15px; padding:10px 14px;
+      background:var(--bg-panel); color:var(--text); border:1px solid var(--border); border-radius:999px;
+    }
+    .chrome form input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+    .chrome form button {
+      border:0; border-radius:999px; padding:10px 18px; font-weight:600; cursor:pointer;
+      background:linear-gradient(135deg,#6b8fad,#8eb4d0); color:#0b1a2b;
+    }
+    .view-tabs { display:flex; gap:4px; background:var(--bg-panel); padding:4px; border-radius:999px; border:1px solid var(--border); }
+    .view-tabs button {
+      border:0; background:transparent; color:var(--text-dim); font:inherit; font-size:13px; font-weight:600;
+      padding:8px 14px; border-radius:999px; cursor:pointer;
+    }
+    .view-tabs button[aria-selected="true"] { background:var(--accent-soft); color:var(--text); border:1px solid rgba(196,120,74,.45); }
+    .filters { display:flex; flex-wrap:wrap; gap:8px; padding:10px 0 12px; align-items:center; }
+    .filters label { display:flex; flex-direction:column; gap:2px; font-size:11px; color:var(--text-dim); }
+    .filters select {
+      font:inherit; font-size:13px; color:var(--text); background:var(--bg-panel);
+      border:1px solid var(--border); border-radius:6px; padding:6px 8px; min-width:120px;
+    }
+    .chip {
+      font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--border);
+      color:var(--text-dim); background:transparent; cursor:pointer;
+    }
+    .chip.on { color:var(--text); background:var(--accent-soft); border-color:rgba(196,120,74,.45); }
+    .meta-line { font-size:12px; color:var(--text-faint); padding:0 14px 8px; background:var(--bg-elev); }
+    .meta-line code { color:var(--text-dim); }
+    .stage { flex:1 1 auto; min-height:0; position:relative; background:var(--bg); }
+    .panel { display:none; position:absolute; inset:0; overflow:auto; }
+    .panel.active { display:block; }
+    /* —— Map view (geo mock) —— */
+    #panel-map { background:
+      radial-gradient(ellipse at 55% 48%, #1a2430 0%, #0f1114 70%),
+      linear-gradient(180deg,#121820,#0f1114); }
+    .map-canvas { position:absolute; inset:0; }
+    .map-pin {
+      position:absolute; width:10px; height:10px; border-radius:50%;
+      background:#c4784a; box-shadow:0 0 0 3px rgba(196,120,74,.25); transform:translate(-50%,-50%);
+    }
+    .map-pin.lg { width:16px; height:16px; background:#6b8fad; }
+    .map-pin.md { width:12px; height:12px; background:#6a9b7a; }
+    .map-sidebar {
+      position:absolute; top:12px; left:12px; bottom:12px; width:min(320px,86vw);
+      background:rgba(28,32,39,.94); border:1px solid var(--border); border-radius:12px;
+      padding:12px; overflow:auto; backdrop-filter:blur(8px);
+    }
+    .map-sidebar h2 { margin:0 0 6px; font-size:15px; }
+    .map-sidebar .hit {
+      display:flex; justify-content:space-between; gap:8px; padding:8px 0;
+      border-bottom:1px solid var(--border-soft); font-size:13px; cursor:pointer;
+    }
+    .map-sidebar .hit:hover { color:var(--accent-strong); }
+    .map-sidebar .hit span { color:var(--text-dim); font-size:11px; white-space:nowrap; }
+    /* —— List view —— */
+    #panel-list { padding:12px 14px 40px; max-width:1040px; margin:0 auto; }
+    .list-hit {
+      display:grid; grid-template-columns:1fr auto; gap:4px 12px; padding:12px 0;
+      border-bottom:1px solid var(--border-soft);
+    }
+    .list-hit .id { font-family:var(--font-mono); font-size:13px; color:var(--accent-strong); }
+    .list-hit .title { font-size:14px; }
+    .list-hit .snip { grid-column:1/-1; font-size:13px; color:var(--text-dim); line-height:1.45; }
+    .list-hit .meta { font-size:11px; color:var(--text-faint); text-align:right; }
+    /* —— Explore view (wheel mock) —— */
+    #panel-explore { overflow:hidden; background:#0b0d10; }
+    .explore-plot {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 50% 52%, #1a1520 0%, #0b0d10 62%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(80,90,110,.08) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(80,90,110,.08) 40px);
+    }
+    .dot {
+      position:absolute; width:3px; height:3px; border-radius:50%; background:#c4784a; opacity:.85;
+      transform:translate(-50%,-50%);
+    }
+    .dot.b { background:#6b8fad; } .dot.g { background:#6a9b7a; } .dot.w { background:#c4a04a; }
+    .wheel {
+      position:absolute; top:12px; right:12px; width:148px; height:148px; border-radius:50%;
+      border:1px solid var(--border); background:conic-gradient(from 20deg,#2a3340,#1c2027 40%,#3a2a22,#1c2027 75%,#2a3340);
+      box-shadow:0 8px 28px rgba(0,0,0,.45); display:grid; place-items:center;
+    }
+    .wheel::after {
+      content:""; width:54px; height:54px; border-radius:50%; background:var(--bg);
+      border:1px solid var(--border);
+    }
+    .explore-info {
+      position:absolute; left:12px; right:12px; bottom:12px; max-width:420px;
+      background:rgba(28,32,39,.94); border:1px solid var(--border); border-radius:12px;
+      padding:10px 12px; font-size:13px;
+    }
+    .explore-info .bar { display:flex; justify-content:space-between; color:var(--text-dim); font-size:12px; cursor:pointer; }
+    @media (max-width:640px) {
+      .chrome { padding:8px 10px 0; }
+      .chrome-row { flex-direction:column; align-items:stretch; gap:8px; }
+      .chrome form { flex:1 1 auto; width:100%; }
+      .chrome form input { font-size:16px; padding:10px 12px; }
+      .chrome form button { flex:0 0 auto; white-space:nowrap; padding:10px 14px; }
+      .view-tabs { width:100%; justify-content:space-between; }
+      .view-tabs button { flex:1; text-align:center; padding:8px 6px; font-size:12px; }
+      .map-sidebar { top:auto; bottom:0; left:0; right:0; width:auto; max-height:38%; border-radius:12px 12px 0 0; }
+      .wheel { width:108px; height:108px; top:8px; right:8px; }
+      .filters { gap:6px; }
+      .filters label { flex:1 1 30%; min-width:96px; }
+      .filters select { min-width:0; width:100%; }
+      .meta-line { font-size:11px; padding:0 10px 6px; word-break:break-all; }
+      .static-header nav { display:flex; flex-wrap:wrap; gap:2px 8px; font-size:12px; }
+    }
+  </style>
+</head>
+<body class="static-page unified">
+  <div class="mock-banner" role="note">
+    <b>Preview mockup</b> — unified Search with Map / List / Explore tabs (shared URL state).
+    Old <a href="map.html">map.html</a>, <a href="search.html">search.html</a>, <a href="browse.html">browse.html</a> stay as they are.
+  </div>
+  <header class="static-header">
+    <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" />Unread Atlas</a>
+    <nav aria-label="Main">
+      <a class="nav-link" href="map.html">Explore</a>
+      <a class="nav-link active" href="search-unified-mock.html" aria-current="page">Search</a>
+      <a class="nav-link" href="browse.html">Browse</a>
+      <a class="nav-link" href="signs.html">Signs</a>
+      <a class="nav-link" href="t/index.html">Research</a>
+      <a class="nav-link" href="translate.html">Translator</a>
+      <a class="nav-link" href="credits.html">Credits</a>
+      <a class="nav-link" href="map.html?view=about">About</a>
+    </nav>
+  </header>
+
+  <div class="chrome">
+    <div class="chrome-row">
+      <form class="chrome form" id="sform" role="search">
+        <input id="q" name="q" type="search" placeholder="barley, Gilgamesh, P265419…" aria-label="Search" />
+        <button type="submit">Search</button>
+      </form>
+      <div class="view-tabs" role="tablist" aria-label="Result view">
+        <button type="button" role="tab" id="tab-map" data-view="map" aria-selected="false">Map</button>
+        <button type="button" role="tab" id="tab-list" data-view="list" aria-selected="true">List</button>
+        <button type="button" role="tab" id="tab-explore" data-view="explore" aria-selected="false">Explore</button>
+      </div>
+    </div>
+    <div class="filters" id="filters">
+      <label>Period<select id="f-period" name="period"><option value="">Any</option><option>Neo-Assyrian</option><option>Old Babylonian</option><option>Ur III</option><option>Neo-Babylonian</option></select></label>
+      <label>Genre<select id="f-genre" name="genre"><option value="">Any</option><option>Literary</option><option>Administrative</option><option>Letters</option><option>Omens</option></select></label>
+      <label>Provenance<select id="f-prov" name="prov"><option value="">Any</option><option>Nineveh</option><option>Nippur</option><option>Ur</option><option>Kanesh</option></select></label>
+      <button type="button" class="chip" data-chip="human" id="chip-human">Human EN</button>
+      <button type="button" class="chip" data-chip="unread" id="chip-unread">Unread only</button>
+    </div>
+  </div>
+  <div class="meta-line">Showing mock results for <b id="meta-q">barley</b> · <span id="meta-count">1,284</span> tablets · URL <code id="meta-url"></code></div>
+
+  <div class="stage">
+    <section class="panel" id="panel-map" role="tabpanel" aria-labelledby="tab-map">
+      <div class="map-canvas" id="map-pins" aria-hidden="true"></div>
+      <aside class="map-sidebar">
+        <h2>On the map</h2>
+        <p style="margin:0 0 8px;font-size:12px;color:var(--text-dim)">Pins sized by match count at each find-spot. Same query as List / Explore.</p>
+        <div class="hit"><span class="id">P265419</span><span>Nineveh · 42</span></div>
+        <div class="hit"><span class="id">P336206</span><span>Nippur · 18</span></div>
+        <div class="hit"><span class="id">P250385</span><span>Ur · 11</span></div>
+        <div class="hit"><span class="id">P361058</span><span>Kanesh · 9</span></div>
+        <div class="hit"><span class="id">P222481</span><span>Unknown · 7</span></div>
+      </aside>
+    </section>
+
+    <section class="panel active" id="panel-list" role="tabpanel" aria-labelledby="tab-list">
+      <article class="list-hit"><div><span class="id">P265419</span> <span class="title">Barley rations for the temple of Ištar</span></div><div class="meta">Neo-Assyrian · Nineveh</div><div class="snip">…issued <mark>barley</mark> to the personnel of the temple…</div></article>
+      <article class="list-hit"><div><span class="id">P336206</span> <span class="title">Receipt of barley and dates</span></div><div class="meta">Ur III · Nippur</div><div class="snip">…1 gur of <mark>barley</mark>, 2 ban of dates…</div></article>
+      <article class="list-hit"><div><span class="id">P250385</span> <span class="title">Letter concerning the <mark>barley</mark> harvest</span></div><div class="meta">Old Babylonian · Ur</div><div class="snip">…as soon as the <mark>barley</mark> is gathered, send word…</div></article>
+      <article class="list-hit"><div><span class="id">P361058</span> <span class="title">Caravan account: tin and <mark>barley</mark></span></div><div class="meta">Old Assyrian · Kanesh</div><div class="snip">…we bought <mark>barley</mark> in the city for the journey…</div></article>
+      <article class="list-hit"><div><span class="id">P222481</span> <span class="title">Offering list</span></div><div class="meta">Neo-Babylonian · —</div><div class="snip">…sheep, oil, and <mark>barley</mark> for the daily offerings…</div></article>
+      <article class="list-hit"><div><span class="id">P273881</span> <span class="title">Loan of <mark>barley</mark> with interest</span></div><div class="meta">Old Babylonian · Sippar</div><div class="snip">…he received 10 gur of <mark>barley</mark>; he will repay…</div></article>
+    </section>
+
+    <section class="panel" id="panel-explore" role="tabpanel" aria-labelledby="tab-explore">
+      <div class="explore-plot" id="explore-dots"></div>
+      <div class="wheel" title="Map ring (mock)" aria-hidden="true"></div>
+      <div class="explore-info">
+        <div class="bar"><span id="explore-meta">1,284 matches · Geography</span><span>▾</span></div>
+        <div style="margin-top:6px;color:var(--text-dim);font-size:12px">Same filtered set as Map / List, plotted on the Browse embedding. Tap a cluster → nearby sheet (phone UX from browse-mobile).</div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+  (function () {
+    const HITS = [
+      {id:'P265419', x:0.58, y:0.42, n:42},
+      {id:'P336206', x:0.48, y:0.55, n:18},
+      {id:'P250385', x:0.52, y:0.62, n:11},
+      {id:'P361058', x:0.36, y:0.28, n:9},
+      {id:'P222481', x:0.70, y:0.50, n:7},
+      {id:'P273881', x:0.45, y:0.48, n:6},
+    ];
+    function stateFromURL() {
+      const p = new URLSearchParams(location.search);
+      return {
+        q: p.get('q') || 'barley',
+        view: ['map','list','explore'].includes(p.get('view')) ? p.get('view') : 'list',
+        period: p.get('period') || '',
+        genre: p.get('genre') || '',
+        prov: p.get('prov') || '',
+        human: p.get('human') === '1',
+        unread: p.get('unread') === '1',
+      };
+    }
+    function writeURL(s, push) {
+      const p = new URLSearchParams();
+      if (s.q) p.set('q', s.q);
+      if (s.view && s.view !== 'list') p.set('view', s.view);
+      if (s.period) p.set('period', s.period);
+      if (s.genre) p.set('genre', s.genre);
+      if (s.prov) p.set('prov', s.prov);
+      if (s.human) p.set('human', '1');
+      if (s.unread) p.set('unread', '1');
+      const qs = p.toString();
+      const url = location.pathname + (qs ? '?' + qs : '');
+      history[push ? 'pushState' : 'replaceState'](s, '', url);
+      document.getElementById('meta-url').textContent = url.split('/').pop();
+    }
+    function apply(s, push) {
+      document.getElementById('q').value = s.q;
+      document.getElementById('meta-q').textContent = s.q || '(all)';
+      document.getElementById('f-period').value = s.period;
+      document.getElementById('f-genre').value = s.genre;
+      document.getElementById('f-prov').value = s.prov;
+      document.getElementById('chip-human').classList.toggle('on', s.human);
+      document.getElementById('chip-unread').classList.toggle('on', s.unread);
+      document.getElementById('explore-meta').textContent =
+        (s.q ? '1,284 matches' : '462,298 tablets') + ' · Geography';
+      for (const v of ['map','list','explore']) {
+        const on = s.view === v;
+        document.getElementById('tab-' + v).setAttribute('aria-selected', on ? 'true' : 'false');
+        document.getElementById('panel-' + v).classList.toggle('active', on);
+      }
+      writeURL(s, push);
+    }
+    let S = stateFromURL();
+
+    // Decorative pins / dots
+    const pins = document.getElementById('map-pins');
+    HITS.forEach(h => {
+      const el = document.createElement('div');
+      el.className = 'map-pin' + (h.n > 20 ? ' lg' : h.n > 10 ? ' md' : '');
+      el.style.left = (h.x * 100) + '%';
+      el.style.top = (h.y * 100) + '%';
+      el.title = h.id;
+      pins.appendChild(el);
+    });
+    // coastline hint
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'map-pin';
+      el.style.width = '4px'; el.style.height = '4px';
+      el.style.background = 'rgba(107,143,173,.35)';
+      el.style.boxShadow = 'none';
+      el.style.left = (30 + Math.random() * 45) + '%';
+      el.style.top = (30 + Math.random() * 40) + '%';
+      pins.appendChild(el);
+    }
+    const dots = document.getElementById('explore-dots');
+    const kinds = ['', 'b', 'g', 'w'];
+    for (let i = 0; i < 220; i++) {
+      const el = document.createElement('div');
+      el.className = 'dot ' + kinds[i % 4];
+      // cluster around barley-ish region
+      const ang = Math.random() * Math.PI * 2;
+      const r = Math.pow(Math.random(), 0.55) * 28;
+      el.style.left = (52 + Math.cos(ang) * r + (Math.random() - 0.5) * 8) + '%';
+      el.style.top = (50 + Math.sin(ang) * r * 0.75 + (Math.random() - 0.5) * 8) + '%';
+      dots.appendChild(el);
+    }
+
+    document.querySelectorAll('.view-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        S = { ...S, view: btn.dataset.view };
+        apply(S, true);
+      });
+    });
+    document.getElementById('sform').addEventListener('submit', e => {
+      e.preventDefault();
+      S = { ...S, q: document.getElementById('q').value.trim() || 'barley' };
+      apply(S, true);
+    });
+    ['f-period','f-genre','f-prov'].forEach(id => {
+      document.getElementById(id).addEventListener('change', e => {
+        const key = id.replace('f-', '');
+        S = { ...S, [key === 'prov' ? 'prov' : key]: e.target.value };
+        apply(S, true);
+      });
+    });
+    document.getElementById('chip-human').addEventListener('click', () => {
+      S = { ...S, human: !S.human }; apply(S, true);
+    });
+    document.getElementById('chip-unread').addEventListener('click', () => {
+      S = { ...S, unread: !S.unread }; apply(S, true);
+    });
+    addEventListener('popstate', () => { S = stateFromURL(); apply(S, false); });
+    apply(S, false);
+  })();
+  </script>
+</body>
+</html>

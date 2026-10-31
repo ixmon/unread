@@ -1,0 +1,23 @@
+{
+  "human_en": 440344,
+  "hyphen_digit_rows": 24,
+  "hyphen_digit_texts": [
+    "P229919",
+    "P230143",
+    "P338646",
+    "P348691",
+    "P363274",
+    "P363442",
+    "Q005730",
+    "Q005988",
+    "Q006259",
+    "Q006268",
+    "Q006273"
+  ],
+  "actions_relabel_safe": 0,
+  "actions_review": 24,
+  "reasons": {
+    "multi_line_merge": 19,
+    "index_oob": 5
+  }
+}
