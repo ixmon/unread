@@ -959,6 +959,8 @@ function populateFilterOptions() {
   fillSelect("#filter-period", periods.slice(0, 40));
   fillSelect("#filter-language", langs);
   fillSelect("#filter-site", sites.slice(0, 60));
+  // Hub may have booted from URL before <option>s existed — re-apply now.
+  try { window.UnreadHub?.writeToDom?.(window.UnreadHub.get()); } catch (_) {}
 }
 
 function fillSelect(sel, values) {
@@ -2723,6 +2725,7 @@ function setView(name, hist = "push") {
     if (name === "map") setTimeout(() => state.map?.invalidateSize(), 50);
     if (name === "list") ensureListMounted();
     if (name === "explore") ensureExploreMounted();
+    try { window.UnreadHub?.onViewChange?.(name); } catch (_) {}
   } else {
     $(`#view-${name}`)?.classList.add("active");
   }
@@ -2754,53 +2757,77 @@ async function ensureListMounted() {
 }
 
 function syncListQueryFromUrl() {
-  const q = new URLSearchParams(location.search).get("q") || "";
+  const hub = window.UnreadHub?.get?.();
+  const q = hub?.q ?? (new URLSearchParams(location.search).get("q") || "");
   const input = $("#ua-list-q");
-  if (input && q && input.value !== q) input.value = q;
-  if (q) $("#ua-list-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+  if (input && input.value !== q) input.value = q;
+  if (hub) UnreadHubListSearch(hub);
+  else if (q) $("#ua-list-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
 }
+
+async function UnreadHubListSearch(s) {
+  const status = $("#ua-list-status");
+  const results = $("#ua-list-results");
+  const pager = $("#ua-list-pager");
+  const q = (s?.q || "").trim();
+  const scope = s?.in || "all";
+  if (status) status.textContent = q ? `Searching for “${q}”…` : "Enter a query.";
+  if (!q) {
+    if (results) results.innerHTML = "";
+    if (status) status.textContent = "Enter a query.";
+    return;
+  }
+  try {
+    const params = new URLSearchParams({ q, in: scope, limit: "20" });
+    if (s.genre) params.set("genre", s.genre);
+    if (s.period) params.set("period", s.period);
+    if (s.site) params.set("site", s.site);
+    if (s.language) params.set("lang", s.language);
+    const r = await fetch("/api/search?" + params.toString(), { headers: { Accept: "application/json" } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const data = await r.json();
+    const hits = data.hits || data.results || [];
+    if (status) status.textContent = `${(data.total ?? hits.length).toLocaleString()} result(s)`;
+    if (results) {
+      results.innerHTML = hits.map((h) => {
+        const id = h.id || h.tablet_id || "";
+        const title = h.title || h.designation || id;
+        const snip = h.snippet || h.preview || "";
+        const meta = [h.period, h.site || h.provenience].filter(Boolean).join(" · ");
+        return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
+      }).join("") || `<p class="search-empty">No matches.</p>`;
+    }
+    if (pager) pager.innerHTML = "";
+  } catch (err) {
+    if (status) status.textContent = "Search error: " + (err.message || err);
+  }
+}
+window.UnreadHubListSearch = UnreadHubListSearch;
 
 function wireListPanel() {
   const form = $("#ua-list-form");
   if (!form || form.dataset.wired) return;
   form.dataset.wired = "1";
-  form.addEventListener("submit", async (e) => {
+  const input = $("#ua-list-q");
+  input?.addEventListener("input", () => {
+    if (window.UnreadHub?.fromQueryTyping) window.UnreadHub.fromQueryTyping(input.value);
+  });
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     const q = ($("#ua-list-q")?.value || "").trim();
     const scope = form.querySelector('input[name="ua-in"]:checked')?.value || "all";
-    const u = new URL(location.href);
-    if (q) u.searchParams.set("q", q); else u.searchParams.delete("q");
-    u.searchParams.set("view", "list");
-    history.replaceState({ view: "list" }, "", u.toString());
-    const status = $("#ua-list-status");
-    const results = $("#ua-list-results");
-    const pager = $("#ua-list-pager");
-    if (status) status.textContent = q ? `Searching for “${q}”…` : "Enter a query.";
-    if (!q) { if (results) results.innerHTML = ""; return; }
-    try {
-      const params = new URLSearchParams({ q, in: scope, limit: "20" });
-      // mirror sidebar filters when set
-      const g = $("#filter-genre")?.value; if (g) params.set("genre", g);
-      const per = $("#filter-period")?.value; if (per) params.set("period", per);
-      const site = $("#filter-site")?.value; if (site) params.set("site", site);
-      const r = await fetch("/api/search?" + params.toString(), { headers: { Accept: "application/json" } });
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      const data = await r.json();
-      const hits = data.hits || data.results || [];
-      if (status) status.textContent = `${(data.total ?? hits.length).toLocaleString()} result(s)`;
-      if (results) {
-        results.innerHTML = hits.map((h) => {
-          const id = h.id || h.tablet_id || "";
-          const title = h.title || h.designation || id;
-          const snip = h.snippet || h.preview || "";
-          const meta = [h.period, h.site || h.provenience].filter(Boolean).join(" · ");
-          return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
-        }).join("") || `<p class="search-empty">No matches.</p>`;
-      }
-      if (pager) pager.innerHTML = "";
-    } catch (err) {
-      if (status) status.textContent = "Search error: " + (err.message || err);
+    if (window.UnreadHub?.fromListSearch) {
+      window.UnreadHub.fromListSearch(q, scope);
+      return;
     }
+    UnreadHubListSearch({
+      q,
+      in: scope,
+      genre: $("#filter-genre")?.value,
+      period: $("#filter-period")?.value,
+      site: $("#filter-site")?.value,
+      language: $("#filter-language")?.value,
+    });
   });
 }
 
@@ -2809,17 +2836,26 @@ function ensureExploreMounted() {
   const frame = $("#explore-frame");
   const hint = $("#explore-mount-hint");
   if (!frame) return;
-  const q = new URLSearchParams(location.search);
-  const bq = new URLSearchParams();
-  bq.set("embed", "1");
-  if (q.get("q")) bq.set("q", q.get("q"));
-  const src = "browse.html?" + bq.toString();
-  if (!_exploreMounted || frame.dataset.src !== src) {
+  // Mount once; later q/filter sync is UnreadHub postMessage (no remount / duplicate searches).
+  if (!_exploreMounted) {
     _exploreMounted = true;
+    const bq = new URLSearchParams({ embed: "1" });
+    const hub = window.UnreadHub?.get?.();
+    if (hub) bq.set("q", hub.q || "");
+    else {
+      const q = new URLSearchParams(location.search).get("q");
+      if (q) bq.set("q", q);
+    }
+    const src = "browse.html?" + bq.toString();
     frame.dataset.src = src;
     frame.hidden = false;
     if (hint) hint.hidden = true;
+    frame.addEventListener("load", () => {
+      try { window.UnreadHub?.postToExplore?.(window.UnreadHub.get()); } catch (_) {}
+    });
     frame.src = src;
+  } else {
+    try { window.UnreadHub?.postToExplore?.(window.UnreadHub.get()); } catch (_) {}
   }
 }
 
@@ -2837,6 +2873,8 @@ function escapeAttr(s) {
 }
 
 // ─── Events ───
+window.applyFilters = applyFilters;
+window.state = state;
 function bindEvents() {
   $("#btn-reader-retry")?.addEventListener("click", () => state.readerPending && openReader(state.readerPending.id));
   $("#btn-reader-pending-explore")?.addEventListener("click", () => {
@@ -2862,7 +2900,10 @@ function bindEvents() {
     $("#view-" + a.dataset.gotoView)?.scrollTo?.(0, 0);
   });
 
-  $("#search")?.addEventListener("input", debounce(applyFilters, 150));
+  $("#search")?.addEventListener("input", debounce(() => {
+    if (window.UnreadHub?.fromFilters) window.UnreadHub.fromFilters();
+    else applyFilters();
+  }, 150));
   // Shared ID open for map search box (sidebar search removed).
   window.UnreadOpenId = function openById(id) {
     const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
@@ -2873,19 +2914,23 @@ function bindEvents() {
     }
     return !!hit;
   };
+  const hubFilter = () => {
+    if (window.UnreadHub?.fromFilters) window.UnreadHub.fromFilters();
+    else applyFilters();
+  };
   ["filter-genre", "filter-period", "filter-language", "filter-site"].forEach((id) => {
-    $(`#${id}`).addEventListener("change", applyFilters);
+    $(`#${id}`).addEventListener("change", hubFilter);
   });
   $("#filter-min-lines")?.addEventListener("input", () => {
     const v = $("#min-lines-val");
     if (v) v.textContent = $("#filter-min-lines").value;
-    applyFilters();
+    hubFilter();
   });
-  $("#filter-hide-known").addEventListener("change", applyFilters);
-  $("#filter-open-gap")?.addEventListener("change", applyFilters);
-  $("#filter-packaged")?.addEventListener("change", applyFilters);
-  $("#filter-no-english")?.addEventListener("change", applyFilters);
-  $("#filter-not-online")?.addEventListener("change", applyFilters);
+  $("#filter-hide-known").addEventListener("change", hubFilter);
+  $("#filter-open-gap")?.addEventListener("change", hubFilter);
+  $("#filter-packaged")?.addEventListener("change", hubFilter);
+  $("#filter-no-english")?.addEventListener("change", hubFilter);
+  $("#filter-not-online")?.addEventListener("change", hubFilter);
   const openCuratedAcc = () => {
     const d = document.getElementById("acc-curated");
     if (d) d.open = true;
@@ -2893,7 +2938,7 @@ function bindEvents() {
   ["filter-epic-hunt", "filter-herbal", "filter-omens", "filter-math"].forEach((id) => {
     $(`#${id}`)?.addEventListener("change", (e) => {
       if (e.target.checked) openCuratedAcc();
-      applyFilters();
+      hubFilter();
     });
   });
 
@@ -2901,13 +2946,13 @@ function bindEvents() {
     const btn = e.target.closest("[data-kind]");
     if (!btn) return;
     state.omenKind = btn.dataset.kind || null;
-    applyFilters();
+    hubFilter();
   });
   $("#math-kind-chips")?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-kind]");
     if (!btn) return;
     state.mathKind = btn.dataset.kind || null;
-    applyFilters();
+    hubFilter();
   });
 
   const MODE_FILTERS = {
