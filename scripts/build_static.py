@@ -22,6 +22,7 @@ Usage: python3 scripts/build_static.py [--db PATH] [--base-url URL]
 from __future__ import annotations
 
 import argparse
+import os
 import datetime as dt
 import html
 import json
@@ -35,6 +36,24 @@ WEB = ROOT / "web"
 CURATED = WEB / "data-curated" / "curated.json"
 SITE_JSON = WEB / "site.json"  # site name + header/footer links (single source)
 SITE = json.loads(SITE_JSON.read_text())
+
+# Machine-English lines kept in static HTML; the rest load via /api/text (docs/moat.md).
+MT_HTML_LINES = int(__import__("os").environ.get("SEO_MT_HTML_LINES", "5"))
+
+def mt_teaser_lines(n_mt: int, cap: int = 5) -> int:
+    """Machine-English lines to embed in static HTML (modest moat).
+
+    min(cap, floor(n_mt / 2)), at least 1 when n_mt >= 2; 0 when n_mt <= 1
+    (a one-line draft stays API-only). cap <= 0 restores the old all-in-HTML behaviour.
+    """
+    n = max(0, int(n_mt or 0))
+    if n <= 1:
+        return 0
+    c = int(cap)
+    if c <= 0:
+        return n
+    return max(1, min(c, n // 2))
+
 
 ICONS = {
     "x": '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg>',
@@ -58,7 +77,8 @@ def apply_site_config(path: Path) -> None:
     <title data-site-title="Prefix">…</title>   -> "Prefix · <name>" (or just <name> if prefix is empty)
     <!--site:name-->…<!--/site:name-->           -> site name
     <!--site:tagline-->…<!--/site:tagline-->     -> tagline
-    <!--site:links-->…<!--/site:links-->         -> X / GitHub links
+    <!--site:links-->…<!--/site:links-->         -> emptied (X / GitHub moved out of the header)
+    <!--site:contact-->…<!--/site:contact-->     -> X / GitHub links (About page "Contact")
     """
     t = path.read_text()
     name = html.escape(SITE["name"])
@@ -69,7 +89,9 @@ def apply_site_config(path: Path) -> None:
     t = re.sub(r"<!--site:name-->.*?<!--/site:name-->", f"<!--site:name-->{name}<!--/site:name-->", t, flags=re.S)
     t = re.sub(r"<!--site:tagline-->.*?<!--/site:tagline-->",
                f"<!--site:tagline-->{html.escape(SITE.get('tagline', ''))}<!--/site:tagline-->", t, flags=re.S)
-    t = re.sub(r"<!--site:links-->.*?<!--/site:links-->", f"<!--site:links-->{site_links_html()}<!--/site:links-->", t, flags=re.S)
+    # X / GitHub live in the About page's Contact section, not the top header
+    t = re.sub(r"\s*<div class=\"site-links\"><!--site:links-->.*?<!--/site:links--></div>", "", t, flags=re.S)
+    t = re.sub(r"<!--site:contact-->.*?<!--/site:contact-->", f"<!--site:contact-->{site_links_html()}<!--/site:contact-->", t, flags=re.S)
     path.write_text(t)
     print("site config applied to", path)
 OUT = WEB / "t"
@@ -160,6 +182,62 @@ def load_catalog() -> dict:
     return {i["id"]: i for i in items}
 
 
+
+def surface_short_label(surf: str) -> tuple[str, str]:
+    """Return (short, full) Assyriological surface label for static page gutters.
+    obverse/reverse -> o/r; edges -> le.e/re.e/t.e/b.e/u.e/lo.e; columns as roman numerals.
+    """
+    import re
+    raw = " ".join(str(surf or "").replace("·", " ").replace("|", " ").split())
+    if not raw:
+        return "", ""
+    low = raw.lower()
+    to_roman = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x",
+                "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"]
+
+    def roman(col: str) -> str:
+        s = (col or "").lower().rstrip(".")
+        if not s:
+            return ""
+        if re.fullmatch(r"[ivxlcdm]+", s):
+            return s
+        try:
+            n = int(s)
+        except ValueError:
+            return s
+        return to_roman[n] if 1 <= n < len(to_roman) else s
+
+    names = [
+        (r"^(obverse|obv\.?|o)$", "o", "Obverse"),
+        (r"^(reverse|rev\.?|r)$", "r", "Reverse"),
+        (r"^(left[ -]?edge|le\.e\.?|le)$", "le.e", "Left edge"),
+        (r"^(right[ -]?edge|re\.e\.?|re)$", "re.e", "Right edge"),
+        (r"^(top[ -]?edge|t\.e\.?|te)$", "t.e", "Top edge"),
+        (r"^(upper[ -]?edge|u\.e\.?|ue)$", "u.e", "Upper edge"),
+        (r"^(bottom[ -]?edge|b\.e\.?|be)$", "b.e", "Bottom edge"),
+        (r"^(lower[ -]?edge|lo\.e\.?|loe)$", "lo.e", "Lower edge"),
+        (r"^(edge|e)$", "e", "Edge"),
+        (r"^(seal)$", "seal", "Seal"),
+        (r"^(fragment|frag\.?)$", "frag", "Fragment"),
+    ]
+    m = re.match(r"^surface\s+([a-z0-9]+)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$", low)
+    if m:
+        col = roman(m.group(2) or "")
+        short = f"surf. {m.group(1)}" + (f" {col}" if col else "")
+        lab = f"Surface {m.group(1)}" + (f", column {col}" if col else "")
+        return short, lab
+    m = re.match(r"^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$", low)
+    side = (m.group(1) if m else low).strip()
+    col = roman(m.group(2) if m else "")
+    for pat, short_s, lab_s in names:
+        if re.match(pat, side):
+            short = f"{short_s} {col}".strip() if col else short_s
+            lab = lab_s + (f", column {col}" if col else "")
+            return short, lab
+    short_s = side if len(side) <= 6 else side[:5] + "."
+    short = f"{short_s} {col}".strip() if col else short_s
+    return short, raw
+
 def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
     """Return [{kind:'line'|'surface', n, atf, english}]"""
     tid, src = item["id"], item["source_id"]
@@ -176,10 +254,13 @@ def load_lines(db: sqlite3.Connection, item: dict) -> list[dict]:
                 cur = surf
             rows.append({"kind": "line", "n": ln.get("n", ""), "atf": ln.get("atf", ""), "english": ln.get("english") or ""})
         return rows
+    # UNREAD_MT_DB (preview): translations live in attached schema mtalt
+    dbs = {r[1] for r in db.execute("PRAGMA database_list")}
+    tr_table = "mtalt.translations" if "mtalt" in dbs else "translations"
     tr = {
         r[0]: r[1]
         for r in db.execute(
-            "SELECT line_ref, content FROM translations WHERE text_id=? AND source_id=? AND lang='en' "
+            f"SELECT line_ref, content FROM {tr_table} WHERE text_id=? AND source_id=? AND lang='en' "
             "AND author_type='model' AND version=?",
             (tid, src, item["model_version"]),
         )
@@ -247,7 +328,7 @@ def og_tags(title: str, desc: str, url: str, typ: str = "article") -> str:
     )
 
 
-def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", typ: str = "article", head_extra: str = "", foot_extra: str = "") -> str:
+def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", typ: str = "article", head_extra: str = "", foot_extra: str = "", scripts: str = "") -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -261,6 +342,9 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 <link rel="apple-touch-icon" href="{depth}apple-touch-icon.png">
 <link rel="manifest" href="{depth}site.webmanifest">
 {og_tags(title, desc, canonical, typ)}
+<link rel="preload" href="{depth}fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{depth}fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{depth}css/ui-fonts.css">
 <link rel="stylesheet" href="{depth}css/styles.css">
 <link rel="stylesheet" href="{depth}css/static.css">{head_extra}
 </head>
@@ -268,17 +352,45 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 <header class="static-header">
 <a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo.svg" width="58" height="28" alt="" />{e(SITE["name"])}</a>
 <nav aria-label="Main">
-<a class="nav-link" href="{depth}map.html">Explore &amp; map</a>
-<a class="nav-link" href="{depth}t/index.html">Curated texts</a>
-<a class="nav-link" href="{depth}translate.html">Translator</a>
+<a class="nav-link" href="{depth}map.html">Explore</a>
 <a class="nav-link" href="{depth}search.html">Search</a>
+<a class="nav-link" href="{depth}browse.html">Browse</a>
+<a class="nav-link" href="{depth}signs.html">Signs</a>
+<a class="nav-link" href="{depth}t/index.html">Research</a>
+<a class="nav-link" href="{depth}translate.html">Translator</a>
+<a class="nav-link" href="{depth}credits.html">Credits</a>
+<a class="nav-link" href="{depth}map.html?view=about">About</a>
 </nav>
 </header>
 <main class="static-main">
 {body}
 </main>
-<footer class="static-footer"><div class="footer-links">{site_links_html()}</div>{foot_extra}<a href="{depth}credits.html">Credits &amp; thanks</a> · English on these pages is machine-generated (draft) and is not a scholarly edition.
+<footer class="static-footer"><div class="footer-links">{site_links_html()}</div>{foot_extra}<a href="{depth}credits.html">Credits &amp; thanks</a>.
 Generated by scripts/build_static.py on {dt.date.today().isoformat()}.</footer>
+<script>
+document.querySelectorAll(".static-info").forEach((btn) => {{
+  const pop = document.getElementById(btn.getAttribute("aria-controls"));
+  if (!pop) return;
+  let ignoreClick = false;
+  const close = () => {{ pop.hidden = true; btn.setAttribute("aria-expanded", "false"); }};
+  const open = () => {{ pop.hidden = false; btn.setAttribute("aria-expanded", "true"); }};
+  btn.addEventListener("click", (e) => {{
+    e.stopPropagation();
+    if (ignoreClick) return;
+    pop.hidden ? open() : close();
+  }});
+  btn.addEventListener("mouseenter", () => {{ if (window.matchMedia("(hover: hover)").matches) open(); }});
+  btn.addEventListener("focus", () => {{
+    open();
+    ignoreClick = true;
+    setTimeout(() => {{ ignoreClick = false; }}, 400);
+  }});
+  btn.addEventListener("blur", () => setTimeout(() => {{ if (!pop.contains(document.activeElement)) close(); }}, 0));
+  document.addEventListener("click", (e) => {{ if (!btn.contains(e.target) && !pop.contains(e.target)) close(); }});
+  document.addEventListener("keydown", (e) => {{ if (e.key === "Escape") close(); }});
+}});
+</script>
+{scripts}
 </body>
 </html>
 """
@@ -313,36 +425,66 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     n_en = sum(1 for r in rows if r["kind"] == "line" and r["english"])
     hooks = match_hooks(item, rows)
 
-    meta = [
-        ("Designation", designation), ("Museum no.", museum), ("Collection", coll), ("Language", language),
-        ("Period", period), ("Genre", genre), ("Provenience", prov),
-        ("Findspot", f"{round(lat, 4)}, {round(lon, 4)}" if known else "find-spot unknown"),
-        ("CDLI no.", canon if canon and canon.startswith("P") else None),
-        ("Source", f"{s.get('name', src)} — {s.get('license', '')}"),
-        ("Lines", f"{n_lines} ({n_en} with machine English)"),
-        ("Font", f"{finfo['family']} ({finfo['label']}), by {finfo['author']}" if can_atf else None),
+    # Deep links: map.html?id= opens the reader; browse.html?id= opens the map-of-maps card for that tablet.
+    # translate.html?id= prefills ATF when the text is available to the translator.
+    reader_id = (cat_item or {}).get("id") or map_id
+    actions = [
+        f'<a class="btn primary" href="../map.html?id={quote(reader_id)}">Open in Reader</a>',
+        f'<a class="btn" href="../browse.html?id={quote(reader_id)}">Open in Map</a>',
+        f'<a class="btn" href="../translate.html?id={quote(reader_id)}">In-Browser Translator</a>',
     ]
-    meta_html = "".join(f"<tr><th>{e(k)}</th><td>{e(str(v))}</td></tr>" for k, v in meta if v)
-    links = []
-    sl = source_link(src, tid)
-    if sl:
-        links.append(f'<a href="{e(sl)}" rel="noopener">View at {e(s.get("name", src))}</a>')
-    if canon and canon.startswith("P") and src != "cdli":
-        links.append(f'<a href="https://cdli.earth/artifacts/{e(canon.lstrip("P").lstrip("0"))}" rel="noopener">CDLI {e(canon)}</a>')
-    if cat_item:
-        links.append(f'<a href="../map.html?id={quote(cat_item["id"])}">Open in the reader &amp; map</a>')
-    links.append('<a href="../translate.html">Try the in-browser translator</a>')
+    actions_html = f'<p class="page-actions">{"".join(actions)}</p>'
 
-    draft = (
-        f'<p class="machine-draft"><strong>Machine draft.</strong> English generated by model '
-        f'<code>{e(item["model"])}</code>{(" (" + e(item["model_repo"]) + ")") if item.get("model_repo") else ""} '
-        f'(version {e(item["model_version"])}) on {e(item["translated_on"])}, '
-        f'line by line from the ATF. Not a scholarly translation.</p>'
-    )
+    # Online source → quiet metadata row (omit when we have no URL). Licence stays its own row.
+    sl = source_link(src, tid)
+    source_bits = []
+    if sl:
+        source_bits.append(
+            f'<a class="meta-ext" href="{e(sl)}" rel="noopener">{e(s.get("name", src))}</a>'
+            f' <span class="ext-label">(external)</span>'
+        )
+    if canon and canon.startswith("P") and src != "cdli":
+        cdli_url = f"https://cdli.earth/artifacts/{e(canon.lstrip('P').lstrip('0'))}"
+        source_bits.append(
+            f'<a class="meta-ext" href="{cdli_url}" rel="noopener">CDLI {e(canon)}</a>'
+            f' <span class="ext-label">(external)</span>'
+        )
+    source_html = " · ".join(source_bits) if source_bits else None
+
+    meta = [
+        ("Designation", designation, False),
+        ("Museum no.", museum, False),
+        ("Collection", coll, False),
+        ("Language", language, False),
+        ("Period", period, False),
+        ("Genre", genre, False),
+        ("Provenience", prov, False),
+        ("Findspot", f"{round(lat, 4)}, {round(lon, 4)}" if known else "find-spot unknown", False),
+        ("CDLI no.", canon if canon and canon.startswith("P") else None, False),
+        ("Source", source_html, True),
+        ("Licence", s.get("license") or None, False),
+        ("Lines", f"{n_lines} ({n_en} with machine English)", False),
+        ("Font", f"{finfo['family']} ({finfo['label']}), by {finfo['author']}" if can_atf else None, False),
+    ]
+    meta_rows = []
+    for k, v, raw in meta:
+        if not v:
+            continue
+        cell = v if raw else e(str(v))
+        cls = ' class="meta-source"' if k == "Source" else ""
+        meta_rows.append(f"<tr{cls}><th>{e(k)}</th><td>{cell}</td></tr>")
+    meta_html = "".join(meta_rows)
+
     trs = []
+    mt_lazy = False
+    mt_seen = 0
+    n_en_total = sum(1 for r in rows if r["kind"] == "line" and r["english"])
+    mt_teaser_cap = mt_teaser_lines(n_en_total, MT_HTML_LINES)
+    colspan = 4 if can_atf else 2
     for r in rows:
         if r["kind"] == "surface":
-            trs.append(f'<tr class="surface-row"><td colspan="{4 if can_atf else 2}">{e(r["label"])}</td></tr>')
+            short, full = surface_short_label(r["label"])
+            trs.append(f'<tr class="surface-row"><td colspan="{colspan}" title="{e(full)}">{e(short)}</td></tr>')
             continue
         atf_cell = ""
         if can_atf:
@@ -350,13 +492,44 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
             dim = ' style="opacity:0.55"' if cov < 0.4 else ""
             atf_cell = (f'<td class="atf">{e(r["atf"])}</td>'
                         f'<td class="cunei" lang="und-Xsux"{dim} title="{round(cov * 100)}% of signs mapped">{e(cu or "·")}</td>')
-        trs.append(f'<tr><td class="ln">{e(r["n"])}</td>{atf_cell}<td>{e(r["english"])}</td></tr>')
+        pending = False
+        if r["english"]:
+            mt_seen += 1
+            pending = mt_seen > mt_teaser_cap  # cap 0 (n_mt<=1) defers every MT line to /api
+        if pending:
+            mt_lazy = True
+            en_cell = '<td class="mt mt-pending" aria-hidden="true"></td>'
+        else:
+            en_cell = f'<td class="mt">{e(r["english"])}</td>'
+        trs.append(f'<tr data-line-n="{e(r["n"])}"><td class="ln">{e(r["n"])}</td>{atf_cell}{en_cell}</tr>')
     atf_head = '<th>ATF</th><th>Cuneiform</th>' if can_atf else ""
+    rest_mt = max(0, n_en_total - mt_teaser_cap)
+    tbl_attrs = (f' class="lines-table" data-mt-lazy="1" data-text-id="{e(reader_id)}" data-mt-teaser="{mt_teaser_cap}"'
+                 if mt_lazy else ' class="lines-table"')
+    load_bar = ""
+    if mt_lazy and rest_mt:
+        load_bar = (
+            f'<p class="mt-load-bar" data-text-id="{e(reader_id)}" data-rest="{rest_mt}">'
+            f'<span class="mt-load-status"><button type="button" class="btn mt-retry">Show full translation</button></span></p>'
+            f'<noscript><p class="src-note"><a href="../map.html?id={quote(reader_id)}">Open in Reader</a></p></noscript>'
+        )
+    draft_full = (
+        f'Machine translation · <code>{e(item["model"])}</code>'
+        f' · {e(item["translated_on"])}'
+    )
+    draft = (
+        f'<p class="machine-draft-bar">'
+        f'<strong>Machine translation</strong>'
+        f'<button type="button" class="static-info" aria-expanded="false" aria-controls="draft-note" '
+        f'title="Machine translation provenance">ⓘ</button>'
+        f'</p>'
+        f'<div id="draft-note" class="machine-draft-pop" hidden>{draft_full}</div>'
+    )
     withheld = (
         ""
         if can_atf
         else f'<p class="withheld">The transliteration is not reproduced here because the source ({e(s.get("name", src))}) '
-        f'is not marked as republishable; read it at the source link above.</p>'
+        f'is not marked as republishable; read it at the Source link in the metadata.</p>'
     )
     badge = "" if can_atf else '<span class="badge badge-mt-only">machine English only</span> '
     in_cats = [c for c in cats if c["slug"] in item.get("categories", [])]
@@ -367,18 +540,19 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
     body = f"""<article>
 {crumbs}
 <h1>{e(item["title"])}</h1>
-<p class="tags"><span class="badge badge-draft">machine draft</span> {badge}</p>
+<p class="tags"><span class="badge badge-draft">machine translation</span> {badge}</p>
 <p class="lede">{e(item.get("blurb", ""))}</p>
-<p>{" · ".join(links)}</p>
+{actions_html}
 <table class="meta-table">{meta_html}</table>
 {draft}
 {withheld}
-<table class="lines-table">
-<thead><tr><th>Line</th>{atf_head}<th>English (machine draft)</th></tr></thead>
+<table{tbl_attrs}>
+<thead><tr><th>Line</th>{atf_head}<th>English (machine translation)</th></tr></thead>
 <tbody>
 {chr(10).join(trs)}
 </tbody>
 </table>
+{load_bar}
 </article>"""
     url = f"{base_url}t/{slug(tid)}.html"
     card = {
@@ -393,7 +567,9 @@ def build_text(db, item, sources, base_url, catalog, cats) -> tuple[str, str, di
         foot_extra = (f'<div class="font-credit">Cuneiform: <em>{e(finfo["family"])}</em> by {e(finfo["author"])} '
                       f'({e(finfo["license"])}); converted offline from the ATF with the eBL reading map. '
                       f'<a href="../credits.html#fonts">Font credits</a>.</div>')
-    return page(item["title"], item.get("blurb", ""), body, url, head_extra=head_extra, foot_extra=foot_extra), url, card
+    mt_scripts = ('<script defer src="../js/browser-token.js"></script>'
+                      '<script defer src="../js/static-mt.js"></script>') if mt_lazy else ""
+    return page(item["title"], item.get("blurb", ""), body, url, head_extra=head_extra, foot_extra=foot_extra, scripts=mt_scripts), url, card
 
 
 def first_sentence(t: str) -> str:
@@ -407,7 +583,7 @@ def text_card(c: dict, href_prefix: str) -> str:
         f'<blockquote class="hook">\u201c{e(h["text"])}\u201d<span class="hook-ref">line {e(h["n"])}</span></blockquote>'
         for h in c["hooks"][:1]
     )
-    badges = '<span class="badge badge-draft">machine draft</span>'
+    badges = '<span class="badge badge-draft">machine translation</span>'
     if not c["can_atf"]:
         badges += ' <span class="badge badge-mt-only" title="The source does not allow republishing the transliteration">machine English only</span>'
     facts = " · ".join(e(x) for x in (c["designation"], c["site"], c["period"] or "period not recorded") if x)
@@ -442,6 +618,10 @@ def main():
     cur = json.loads(CURATED.read_text())
     base = (a.base_url or cur.get("site_base_url", "")).rstrip("/") + "/"
     db = sqlite3.connect(f"file:{a.db}?mode=ro", uri=True)
+    mt_db = os.environ.get("UNREAD_MT_DB")
+    if mt_db:
+        db.execute("ATTACH DATABASE ? AS mtalt", (mt_db,))
+        print(f"build_static: attached UNREAD_MT_DB as mtalt -> {mt_db}")
     db.row_factory = None
     sources = {
         r[0]: {"name": r[1], "license": r[2], "can_republish_atf": r[3]}
@@ -484,10 +664,10 @@ def main():
             if soon else ""
         )
         body = (
-            f'<p class="crumbs"><a href="../index.html">Curated texts</a> / {e(c["title"])}</p>'
+            f'<p class="crumbs"><a href="../index.html">Research</a> / {e(c["title"])}</p>'
             f'<h1>{e(c["title"])}</h1><p class="lede">{e(c["blurb"])}</p>'
-            '<p class="machine-draft"><strong>Machine drafts.</strong> Every English quotation here is unedited output of an '
-            "ATF-to-English model, not a scholarly translation. Each card names its source; cards marked "
+            '<p class="machine-draft"><strong>Machine translation.</strong> Every English quotation here is output of an '
+            "ATF-to-English model. Each card names its source; cards marked "
             "<em>machine English only</em> come from sources (eBL) whose transliterations we do not republish.</p>"
             f'{c.get("explainer_html", "")}'
             f'<h2>{len(mine)} tablet{"s" if len(mine) != 1 else ""}</h2>'
@@ -510,9 +690,9 @@ def main():
         f'<h2>Other curated texts</h2><ul class="tcard-grid">{"".join(text_card(cd, "") for cd in other)}</ul>' if other else ""
     )
     idx = page(
-        "Curated texts",
+        "Research",
         "Hand-picked cuneiform texts with machine-draft English, grouped into remedies, omens, epics, math, love and music.",
-        "<h1>Curated texts</h1><p class=\"lede\">Hand-picked tablets with machine-draft English, grouped by theme. "
+        "<h1>Research</h1><p class=\"lede\">Curated texts and topic pages (Sumeripedia) for the unread ancient world. Hand-picked tablets with machine translation, grouped by theme. "
         "Each text page is plain HTML: transliteration (where licensing allows), line-by-line machine English, and metadata.</p>"
         f'<ul class="cat-grid">{"".join(tiles)}</ul>{other_html}',
         f"{base}t/index.html",
@@ -526,7 +706,24 @@ def main():
     (WEB / "sitemap.xml").write_text("\n".join(sm) + "\n")
     # Note: crawlers only read robots.txt at the host root (unreadatlas.com/robots.txt; the GitHub Pages mirror is ixmon.github.io/unread/, whose
     # robots lives in the user-site repo); this copy is served at the root of unreadatlas.com and documents intent and points to the sitemap for anyone who looks.
-    (WEB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
+    # Keep any extra bot rules already in robots.txt (e.g. AhrefsBot/SemrushBot Crawl-delay).
+    robots_path = WEB / "robots.txt"
+    existing = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
+    # Always refresh the sitemap line; preserve User-agent blocks beyond the default Allow.
+    head = f"User-agent: *\nAllow: /\n\n"
+    extras = []
+    for block in existing.split("\n\n"):
+        b = block.strip()
+        if not b:
+            continue
+        if b.lower().startswith("user-agent: *") or b.lower().startswith("sitemap:"):
+            continue
+        extras.append(b)
+    body = head
+    if extras:
+        body += "\n\n".join(extras) + "\n\n"
+    body += f"Sitemap: {base}sitemap.xml\n"
+    robots_path.write_text(body)
     # search.html links results to the map reader (catalog / packaged ids) and to t/ pages
     pages = {}
     for cd in cards:

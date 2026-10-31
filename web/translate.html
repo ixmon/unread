@@ -8,12 +8,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <title data-site-title="ATF → English translator (in-browser)">ATF → English translator (in-browser) · Unread Atlas</title>
-    <meta name="description" content="Translate Akkadian ATF transliteration to English in your browser with a small T5 model (machine draft)." />
+    <meta name="description" content="Translate Akkadian ATF transliteration to English in your browser (B2c or Compact v4e; machine translation)." />
     <link rel="canonical" href="https://unreadatlas.com/translate.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
     <meta property="og:title" content="ATF → English translator (in-browser) · Unread Atlas" />
-    <meta property="og:description" content="Translate Akkadian ATF transliteration to English in your browser with a small T5 model (machine draft)." />
+    <meta property="og:description" content="Translate Akkadian ATF transliteration to English in your browser (B2c or Compact v4e; machine translation)." />
     <meta property="og:url" content="https://unreadatlas.com/translate.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -24,6 +24,10 @@
     <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="theme-color" content="#0f1114" />
+        <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/static.css" />
   </head>
@@ -31,22 +35,25 @@
     <header class="static-header">
       <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
       <nav aria-label="Main">
-        <a class="nav-link" href="map.html">Explore &amp; map</a>
-        <a class="nav-link" href="browse.html">Browse</a>
-        <a class="nav-link" href="signs.html">Signs</a>
-        <a class="nav-link" href="t/index.html">Curated texts</a>
-        <a class="nav-link active" href="translate.html" aria-current="page">Translator</a>
-        <a class="nav-link" href="search.html">Search</a>
-      </nav>
+<a class="nav-link" href="map.html">Explore</a>
+<a class="nav-link" href="search.html">Search</a>
+<a class="nav-link" href="browse.html">Browse</a>
+<a class="nav-link" href="signs.html">Signs</a>
+<a class="nav-link" href="t/index.html">Research</a>
+<a class="nav-link active" href="translate.html" aria-current="page">Translator</a>
+<a class="nav-link" href="credits.html">Credits</a>
+<a class="nav-link" href="map.html?view=about">About</a>
+</nav>
     </header>
     <main class="static-main">
       <h1>ATF → English, in your browser</h1>
       <p class="lede">
         Paste Akkadian ATF transliteration, one line per line. Each line is translated separately
         by a small T5 model running entirely on this device (no server). Output is a
-        <strong>machine draft</strong>, not a scholarly translation.
+        <strong>machine translation</strong>.
       </p>
       <p class="model-line">Model: <code id="model-id">…</code> · <span id="model-src"></span></p>
+      <div id="model-toolbar" class="model-toolbar"></div>
 
       <p class="prefill-src" id="prefill-src" hidden></p>
       <label for="atf-input" class="field-label">ATF lines</label>
@@ -56,7 +63,7 @@ um-ma {d}utu-ki-ib-si ARAD-ka-ma</textarea>
       <div class="controls">
         <button type="button" class="btn primary" id="btn-run">Translate</button>
         <button type="button" class="btn" id="btn-stop" disabled>Stop</button>
-        <span id="status" class="status" role="status">Model not loaded yet (≈95 MB download on first use, then cached).</span>
+        <span id="status" class="status" role="status">Model not loaded yet (choose B2c ~810 MB or Compact v4e ~94 MB).</span>
       </div>
       <div class="progress" id="progress" hidden>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -68,12 +75,13 @@ um-ma {d}utu-ki-ib-si ARAD-ka-ma</textarea>
     </main>
     <footer class="static-footer">
       <div class="footer-links"><!--site:links--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:links--></div>
-      Model: atf-en-best-v4e, 2026-10-11 (T5-small fine-tune; PyTorch weights at
-      <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a>),
-      run as int8 ONNX via Transformers.js, downloaded once from the Hugging Face Hub and cached by your browser.
-      Prompt prefix <code>translate Akkadian to English: </code>, greedy decoding with repetition penalty 1.2, max 100 new tokens
-      (Transformers.js 3.x decodes greedily; the pre-generated drafts elsewhere on the site used 4-beam search in Python,
-      so wording can differ).
+      Default model: B2c (T5-large, 2026-10-27, ~810 MB int8 ONNX) with Compact v4e (~94 MB T5-small) as a
+      phone / low-memory option. PyTorch weights at
+      <a href="https://huggingface.co/montycrypto/atf-to-english" rel="noopener">montycrypto/atf-to-english</a>;
+      browser builds at
+      <a href="https://huggingface.co/montycrypto/atf-to-english-onnx" rel="noopener">montycrypto/atf-to-english-onnx</a>.
+      Prompt prefix <code>translate Akkadian to English: </code>, greedy decoding with repetition penalty 1.2
+      (B2c max 256 new tokens; v4e max 100). Transformers.js 3.x has no beam search.
       <p><a href="credits.html">Credits &amp; thanks</a></p>
     </footer>
     <script type="module" src="js/translator.js"></script>

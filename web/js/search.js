@@ -90,7 +90,11 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     let res;
     try {
-      res = await fetch(API + path, { signal: ctl.signal, headers: { Accept: "application/json" } });
+      var hdrs = { Accept: "application/json" };
+      if (path.indexOf("/text/") === 0 && window.UnreadToken && window.UnreadToken.headers) {
+        try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+      }
+      res = await fetch(API + path, { signal: ctl.signal, headers: hdrs });
     } catch (e) {
       // CORS-less responses (CloudFront WAF 403, throttled 429) also land here: the browser hides them.
       throw new ApiError(e.name === "AbortError" ? "timeout" : "network", e.message);
@@ -199,12 +203,25 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
   }
 
   // ─── links to the rest of the site ───
+  // Reader deep link: map.html?id=<same id the text API uses>. `find` carries the search
+  // so the reader can highlight matches. (`q` on map.html is the map search layer.)
+  function readerHref(id, q) {
+    const p = new URLSearchParams();
+    p.set("id", id);
+    if (q && String(q).trim()) p.set("find", String(q).trim());
+    return "map.html?" + p.toString();
+  }
+
+  function readerLink(id, q, name) {
+    if (!id) return "";
+    const who = name ? `Open ${name} in the reader` : "Open in the reader";
+    return `<a class="btn primary open-reader" href="${esc(readerHref(id, q))}" aria-label="${esc(who)}">Open in reader</a>`;
+  }
+
   function siteLinks(id, canon) {
     const out = [];
     const page = links.pages[id] || (canon && links.pages[canon]);
     if (page) out.push(`<a href="${esc(page)}">Curated page</a>`);
-    const rid = links.reader.has(id) ? id : canon && links.reader.has(canon) ? canon : null;
-    if (rid) out.push(`<a href="map.html?id=${encodeURIComponent(rid)}">Open in map &amp; reader</a>`);
     return out;
   }
 
@@ -293,7 +310,7 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
   function snippetHtml(sn, terms) {
     const kinds = {
       human_en: `Human EN${sn.author ? " · " + sn.author.replace(/\s*\(.*\)$/, "") : ""}`,
-      machine_en: "Machine draft",
+      machine_en: "Machine translation",
       atf: "ATF",
       meta: "Catalogue",
     };
@@ -310,12 +327,14 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
       .join('<span class="sep">·</span>');
     const badges = [`<span class="badge">${esc(SRC_NAMES[r.src] || r.src)}</span>`];
     if (r.n_human_en_lines) badges.push(`<span class="badge badge-human">human EN · ${fmt(r.n_human_en_lines)} lines</span>`);
-    if (r.n_mt_lines) badges.push(`<span class="badge badge-draft">machine draft · ${fmt(r.n_mt_lines)} lines</span>`);
+    if (r.n_mt_lines) badges.push(`<span class="badge badge-draft">machine translation · ${fmt(r.n_mt_lines)} lines</span>`);
     if (!r.atf_public) badges.push(`<span class="badge badge-withheld">no ATF shown</span>`);
     const extra = siteLinks(r.id, r.canonical_id);
+    const reader = readerLink(textParam(r), s.q, r.designation || r.id);
     return `<div class="result">
       <div class="result-head"><a class="result-id" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.id)}</a>
-        ${r.designation && r.designation !== r.id ? `<a class="result-title" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.designation)}</a>` : ""} ${badges.join(" ")}</div>
+        ${r.designation && r.designation !== r.id ? `<a class="result-title" href="${esc(href)}" data-text="${esc(textParam(r))}">${esc(r.designation)}</a>` : ""} ${badges.join(" ")}
+        ${reader}</div>
       <div class="result-facts">${facts}</div>
       ${r.snippets && r.snippets.length ? `<ul class="snips">${r.snippets.map((x) => snippetHtml(x, terms)).join("")}</ul>` : ""}
       ${extra.length ? `<div class="result-links">${extra.join("")}</div>` : ""}
@@ -397,15 +416,13 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
       rows.push(`<tr><td class="ln">${esc(l.n)}</td><td class="atf">${esc(l.atf)}</td>` +
         `<td class="mt${l.mt ? "" : " none"}${l.mt && CONF_T[l.conf] ? ` conf-${l.conf}" title="${CONF_T[l.conf]}` : ""}">${l.mt ? esc(l.mt) : ed.model ? "—" : ""}</td></tr>`);
     }
-    return `<table class="lines-table"><thead><tr><th>Line</th><th>ATF (transliteration)</th><th>English (machine draft)</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
+    return `<table class="lines-table"><thead><tr><th>Line</th><th>ATF (transliteration)</th><th>English (machine translation)</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
   }
 
   function modelLabel(m) {
     if (!m) return "";
     const rev = (m.revision || "").slice(0, 7);
-    return `<p class="machine-draft"><strong>Machine draft, ${esc(m.label || "atf-en-best-v2")}</strong> · ` +
-      `<a href="https://huggingface.co/${esc(m.repo)}" target="_blank" rel="noopener">${esc(m.repo)}</a>${rev ? "@" + esc(rev) : ""}, translated ${esc(m.translated_on || "?")}. ` +
-      `Unreviewed machine output, not a scholarly translation.</p>`;
+    return `<p class="machine-draft"><strong>Machine translation · ${esc(m.label || "B2c")}${m.translated_on ? " · " + esc(m.translated_on) : ""}</strong></p>`;
   }
 
   function humanBlock(ed) {
@@ -444,13 +461,31 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
       const ebl = ed.src === "ebl" || (ed.source && ed.source.atf_public === false);
       body += `<p class="withheld">${ebl ? "<strong>Transliteration not republishable.</strong> " : ""}${esc(ed.atf_withheld)}</p>`;
     }
+    // the API returns ATF-less mt_lines (eBL) in DB row order; show them in line order when every label ends in a number
+    const sortedMtLines = (ml) => {
+      const SIDES = { obverse: 0, obv: 0, o: 0, edge: 1, bottom: 2, reverse: 3, rev: 3, r: 3, top: 4, left: 5, right: 6 };
+      const k = (l) => {
+        const t = String(l.line || "").toLowerCase().replace(/[′’ʼ]/g, "'").trim().split(/\s+/);
+        const m = /^(\d+)'?[a-z]?$/.exec(t.pop() || "");
+        if (!m) return null;
+        let side = 0, col = 0;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] in SIDES) side = SIDES[t[i]];
+          else if (/^(col|column)$/.test(t[i]) && t[i + 1]) col = parseInt(t[++i], 10) || 0;
+        }
+        return [side, col, parseInt(m[1], 10)];
+      };
+      const ks = ml.map(k);
+      if (ks.some((x) => !x)) return ml;
+      return ml.map((l, i) => [l, i, ks[i]]).sort((a, b) => a[2][0] - b[2][0] || a[2][1] - b[2][1] || a[2][2] - b[2][2] || a[1] - b[1]).map((x) => x[0]);
+    };
     const hasMt = (ed.lines || []).some((l) => l.mt) || (ed.mt_lines || []).length;
     if (hasMt) body += modelLabel(ed.model);
     if (ed.lines && ed.lines.length) body += linesTable(ed);
     if (ed.mt_lines && ed.mt_lines.length) {
-      body += `<section class="mt-block"><h3>English (machine draft${ed.lines && ed.lines.length ? ", lines not aligned to the ATF above" : ""})</h3>` +
-        `<table class="lines-table"><thead><tr><th>Line</th><th>English (machine draft)</th></tr></thead><tbody>` +
-        ed.mt_lines.map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt${CONF_T[l.conf] ? ` conf-${l.conf}" title="${CONF_T[l.conf]}` : ""}">${esc(l.mt)}</td></tr>`).join("") +
+      body += `<section class="mt-block"><h3>English (machine translation${ed.lines && ed.lines.length ? ", lines not aligned to the ATF above" : ""})</h3>` +
+        `<table class="lines-table"><thead><tr><th>Line</th><th>English (machine translation)</th></tr></thead><tbody>` +
+        sortedMtLines(ed.mt_lines).map((l) => `<tr><td class="ln">${esc(l.line || "")}</td><td class="mt${CONF_T[l.conf] ? ` conf-${l.conf}" title="${CONF_T[l.conf]}` : ""}">${esc(l.mt)}</td></tr>`).join("") +
         `</tbody></table></section>`;
     }
     body += humanBlock(ed);
@@ -464,12 +499,19 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     </section>`;
   }
 
-  async function showText(s, my) {
-    textEl.hidden = false;
+  function textToolbar(s, name) {
     const back = urlFor({ ...s, text: "" });
     const hasSearch = s.q || s.period || s.genre || s.site || s.src || s.at;
-    const backLink = `<p class="back"><a href="${esc(back)}" data-back>← ${hasSearch ? "Back to results" : "Search"}</a></p>`;
-    textEl.innerHTML = backLink;
+    return `<div class="text-toolbar">
+      <p class="back"><a href="${esc(back)}" data-back>← ${hasSearch ? "Back to results" : "Search"}</a></p>
+      ${readerLink(s.text, s.q, name || s.text)}
+    </div>`;
+  }
+
+  async function showText(s, my) {
+    textEl.hidden = false;
+    const toolbar = textToolbar(s);
+    textEl.innerHTML = toolbar;
     setStatus(spin("Loading text…"));
     let d;
     try {
@@ -484,11 +526,12 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     // Editions sharing a canonical id: the requested one first, then the rest, each with its own licence rules.
     const main = eds[0] || {};
     document.title = `${main.designation || d.id} · Search · Unread Atlas`;
+    const toolbarNamed = textToolbar(s, main.designation || main.id || s.text);
     const others = eds.length > 1
       ? `<p class="other-eds">Also in: ${eds.slice(1).map((e, i) => `<a href="#ed-${i + 1}">${esc(SRC_NAMES[e.src] || e.src)} ${esc(e.id)}</a>`).join(", ")}</p>`
       : "";
-    textEl.innerHTML = backLink + others + eds.map(editionHtml).join("") +
-      `<p class="sub">${esc(d.notice || "")}</p>`;
+    textEl.innerHTML = toolbarNamed + others + eds.map(editionHtml).join("") +
+      `<p class="sub">${esc((d.notice || "").replace(/unreviewed[^.]*(?:\.|$)/gi, "").replace(/not a scholarly translation[^.]*\.?/gi, "").replace(/\s{2,}/g, " ").trim())}</p>`;
     window.scrollTo(0, 0);
   }
 

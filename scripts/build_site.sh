@@ -6,4 +6,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 python3 scripts/stamp_mt.py --check
+# corpus numbers: refresh web/corpus_stats.json + stamped HTML from the local corpus DB when present
+# (CI has no DB and uses the committed file). Rebuild after any corpus/translation update.
+DB="${UNREAD_DB:-$HOME/cursor/unread-db/corpus.sqlite}"
+if [ -f "$DB" ]; then python3 scripts/build_corpus_stats.py --db "$DB"; else echo "build_site: no corpus DB at $DB; using committed web/corpus_stats.json"; fi
 exec python3 scripts/build_site.py "$@"

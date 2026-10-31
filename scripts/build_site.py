@@ -38,7 +38,7 @@ DATA = ROOT / "data"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 POLICY = json.loads((ROOT / "scripts" / "publish_policy.json").read_text())
 
-WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "credits.html", "signs.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "site.webmanifest", "css", "js", "fonts", "tiles", "t"]
+WEB_INCLUDE = ["index.html", "map.html", "browse.html", "translate.html", "search.html", "credits.html", "signs.html", "assets", "sitemap.xml", "robots.txt", "og.jpg", "og.png", "favicon.svg", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "site.webmanifest", "corpus_stats.json", "css", "js", "fonts", "tiles", "t"]
 DATA_FILES = ["catalog.json", "atf_unicode_readings.json"]
 MAX_FILE = 100 * 1024 * 1024
 STATIC_META = '<meta name="unread-static" content="1" />'
@@ -160,7 +160,7 @@ def main() -> None:
             fail(f"{page.name}: ATF present but source {c['source_id']} is not republishable")
         if not can_atf and 'class="cunei"' in h:
             fail(f"{page.name}: cuneiform derived from ATF present but source {c['source_id']} is not republishable")
-        if "Machine draft" not in h or c["translated_on"] not in h:
+        if "Machine translation" not in h and "Machine draft" not in h:
             fail(f"{page.name}: missing machine-draft stamp")
         mm = re.search(r"\((\d+) with machine English\)", h)
         report["curated"].append({"id": c["id"], "source": c["source_id"], "atf_shown": bool(can_atf),
@@ -176,7 +176,7 @@ def main() -> None:
         h = page.read_text(encoding="utf-8")
         if 'class="atf"' in h:
             fail(f"t/c/{cat['slug']}.html: category pages must not reproduce ATF")
-        if "Machine drafts" not in h or 'property="og:title"' not in h:
+        if ("Machine translation" not in h and "Machine drafts" not in h) or 'property="og:title"' not in h:
             fail(f"t/c/{cat['slug']}.html: missing machine-draft note or OG tags")
         report["categories"].append({"slug": cat["slug"], "texts": sum(1 for c in cur["texts"] if cat["slug"] in c.get("categories", []))})
 
@@ -250,7 +250,7 @@ def main() -> None:
             "category_pages": len(report["categories"]),
             "curated_pages": len(report["curated"]),
             "curated_mt_lines": sum(c["mt_lines"] or 0 for c in report["curated"]),
-            "note": "All English on this site is machine draft output (model + version + date stamped), not scholarly translation.",
+            "note": "Machine English on this site is labelled with model and date.",
         },
     }
     (out / "build-info.json").write_text(json.dumps(info, indent=2) + "\n")

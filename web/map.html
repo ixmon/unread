@@ -7,12 +7,12 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <title data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
-    <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine drafts." />
+    <title data-stat-tpl="Map of {tablets} cuneiform tablets" data-site-title="Map of 462,298 cuneiform tablets">Map of 462,298 cuneiform tablets · Unread Atlas</title>
+    <meta name="description" content="Map, timeline and reader for cuneiform texts that have no open English translation: ATF transliteration, Unicode cuneiform, and clearly labelled machine translations." />
     <link rel="canonical" href="https://unreadatlas.com/map.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Unread Atlas" />
-    <meta property="og:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta property="og:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta property="og:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta property="og:url" content="https://unreadatlas.com/map.html" />
     <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
@@ -21,23 +21,21 @@
     <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@roguesamurai" />
-    <meta name="twitter:title" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
+    <meta name="twitter:title" data-stat-tpl="Map of {tablets} cuneiform tablets · Unread Atlas" content="Map of 462,298 cuneiform tablets · Unread Atlas" />
     <meta name="twitter:description" content="Hunt for unread artifacts: a map of cuneiform tablets with machine-draft English, many never translated before." />
     <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
     <meta name="twitter:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
     <meta name="theme-color" content="#0f1114" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
-      rel="stylesheet"
-    />
-    <link
+<link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
+        <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <script>
       // Old font-credits anchor now lives on the credits page.
@@ -71,20 +69,22 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
           <span class="sub"><!--site:tagline-->first readings · open corpus<!--/site:tagline--></span>
         </h1>
       </a>
-      <nav class="header-nav" aria-label="Main">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-controls="header-nav" aria-expanded="false" aria-label="Menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="header-nav" id="header-nav" aria-label="Main">
         <button type="button" class="nav-btn active" data-view="explore">Explore</button>
-        <button type="button" class="nav-btn" data-view="reader">Reader</button>
-        <button type="button" class="nav-btn" data-view="about">About</button>
-        <a class="nav-link" href="./">Home</a>
+        <a class="nav-link" href="search.html">Search</a>
         <a class="nav-link" href="browse.html">Browse</a>
         <a class="nav-link" href="signs.html">Signs</a>
-        <a class="nav-link" href="t/index.html">Curated</a>
+        <a class="nav-link" href="t/index.html">Research</a>
         <a class="nav-link" href="translate.html">Translator</a>
-        <a class="nav-link" href="search.html">Search</a>
+        <button type="button" class="nav-btn" data-view="reader">Reader</button>
+        <button type="button" class="nav-btn" data-view="stats">Stats</button>
+        <a class="nav-link" href="credits.html">Credits</a>
+        <button type="button" class="nav-btn" data-view="about">About</button>
       </nav>
       <div class="header-spacer"></div>
-      <div class="header-meta" id="header-count">Loading…</div>
-      <div class="site-links"><!--site:links--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:links--></div>
     </header>
 
     <main class="app-main">
@@ -92,163 +92,121 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <section id="view-explore" class="view active" aria-label="Explore catalog">
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-section">
-            <h2>Curated tablets</h2>
-            <input
-              type="search"
-              id="search"
-              class="search-box"
-              placeholder="P-number, title, site, genre…"
-              autocomplete="off"
-            />
             <button type="button" class="btn filters-toggle" id="filters-toggle" aria-controls="sidebar" aria-expanded="false" title="Hide this panel (the map search stays)">
               <span class="ft-icon" aria-hidden="true">◂</span> Hide panel
             </button>
-            <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated tablets with machine-draft English.</p>
           </div>
-          <div class="filters" id="sidebar-filters">
-            <div class="filter-row">
-              <label for="filter-genre">Genre</label>
-              <select id="filter-genre"></select>
+
+          <details class="sidebar-acc" id="acc-layers">
+            <summary>Map layers</summary>
+            <div class="sidebar-acc-body">
+              <p class="sidebar-hint">Numbered circles: every located tablet in the corpus. Small pins: curated theme tablets with a known find-spot.</p>
+              <label class="checkbox-row">
+                <input type="checkbox" id="sidebar-smap-toggle" checked />
+                Corpus find-spots on the map
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="filter-packaged" />
+                Only packaged samples (full ATF)
+              </label>
             </div>
-            <div class="filter-row">
-              <label for="filter-period">Period</label>
-              <select id="filter-period"></select>
+          </details>
+
+          <details class="sidebar-acc" id="acc-filters" open>
+            <summary>Genre, period, language, site</summary>
+            <div class="sidebar-acc-body filters" id="sidebar-filters">
+              <div class="filter-row">
+                <label for="filter-genre">Genre</label>
+                <select id="filter-genre"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-period">Period</label>
+                <select id="filter-period"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-language">Language</label>
+                <select id="filter-language"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-site">Site</label>
+                <select id="filter-site"></select>
+              </div>
+              <div class="filter-row">
+                <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
+                <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
+              </div>
+              <p class="sidebar-hint">Date / era: use the Time browser under the map (fades pins by approximate year).</p>
             </div>
-            <div class="filter-row">
-              <label for="filter-language">Language</label>
-              <select id="filter-language"></select>
+          </details>
+
+          <details class="sidebar-acc" id="acc-unread" open>
+            <summary>Unread / No English / Not online</summary>
+            <div class="sidebar-acc-body">
+              <label class="checkbox-row">
+                <input type="checkbox" id="filter-hide-known" checked />
+                Hide open English (RINAP / ETCSL / CDLI…)
+              </label>
+              <label class="checkbox-row unread-toggle">
+                <input type="checkbox" id="filter-open-gap" />
+                <strong>Unread</strong> — no open English found
+                <span class="filter-count" data-count="unread"></span>
+              </label>
+              <label class="checkbox-row no-english-toggle">
+                <input type="checkbox" id="filter-no-english" />
+                <strong>No English</strong> — none known online
+                <span class="filter-count" data-count="no-english"></span>
+              </label>
+              <label class="checkbox-row not-online-toggle">
+                <input type="checkbox" id="filter-not-online" />
+                <strong>Not online</strong> — print edition only
+                <span class="filter-count" data-count="not-online"></span>
+              </label>
             </div>
-            <div class="filter-row">
-              <label for="filter-site">Site</label>
-              <select id="filter-site"></select>
+          </details>
+
+          <details class="sidebar-acc" id="acc-curated">
+            <summary>Curated search</summary>
+            <div class="sidebar-acc-body">
+              <label class="checkbox-row epic-hunt-toggle">
+                <input type="checkbox" id="filter-epic-hunt" />
+                <strong>Epic hunt</strong> — large literary / phrase-scored
+              </label>
+              <label class="checkbox-row herbal-toggle">
+                <input type="checkbox" id="filter-herbal" />
+                <strong>Remedies</strong> — plants, recipes, home cures
+              </label>
+              <label class="checkbox-row omen-toggle">
+                <input type="checkbox" id="filter-omens" />
+                <strong>Omens</strong> — body, birth, liver, stars
+              </label>
+              <label class="checkbox-row math-toggle">
+                <input type="checkbox" id="filter-math" />
+                <strong>Math</strong> — tables, metrology, reciprocals
+              </label>
+              <div class="mode-intro" id="mode-intro-omens" hidden>
+                <div class="mode-intro-title">Divination corpus</div>
+                <p>
+                  If–then science of the body, birth, liver, and sky. Protases (signs) lead to
+                  apodoses (fates). Narrow by kind below.
+                </p>
+                <div class="kind-chips" id="omen-kind-chips" role="group" aria-label="Omen kinds"></div>
+              </div>
+              <div class="mode-intro" id="mode-intro-math" hidden>
+                <div class="mode-intro-title">School mathematics</div>
+                <p>
+                  Sexagesimal tables from Nippur and beyond — reciprocals (igi), multiplication
+                  (a-rá), and metrological area/capacity lists. Short tablets are welcome here.
+                </p>
+                <div class="kind-chips" id="math-kind-chips" role="group" aria-label="Math kinds"></div>
+              </div>
+              <div class="legend-mini">
+                <span class="chip status-epic">Epic hunt</span>
+                <span class="chip status-herbal">Remedy</span>
+                <span class="chip status-omen">Omen</span>
+                <span class="chip status-math">Math</span>
+              </div>
             </div>
-            <div class="filter-row">
-              <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
-              <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
-            </div>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-hide-known" checked />
-              Hide open English (RINAP / ETCSL / CDLI…)
-            </label>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-open-gap" />
-              Only strong open gap (no print series either)
-            </label>
-            <label class="checkbox-row">
-              <input type="checkbox" id="filter-packaged" />
-              Only packaged samples (full ATF)
-            </label>
-            <label class="checkbox-row epic-hunt-toggle">
-              <input type="checkbox" id="filter-epic-hunt" />
-              <strong>Epic hunt</strong> — large literary / phrase-scored
-            </label>
-            <label class="checkbox-row herbal-toggle">
-              <input type="checkbox" id="filter-herbal" />
-              <strong>Remedies</strong> — plants, recipes, home cures
-            </label>
-            <label class="checkbox-row omen-toggle">
-              <input type="checkbox" id="filter-omens" />
-              <strong>Omens</strong> — body, birth, liver, stars
-            </label>
-            <label class="checkbox-row math-toggle">
-              <input type="checkbox" id="filter-math" />
-              <strong>Math</strong> — tables, metrology, reciprocals
-            </label>
-            <div class="mode-intro" id="mode-intro-omens" hidden>
-              <div class="mode-intro-title">Divination corpus</div>
-              <p>
-                If–then science of the body, birth, liver, and sky. Protases (signs) lead to
-                apodoses (fates). Pick a kind chip or a featured tablet.
-              </p>
-              <div class="kind-chips" id="omen-kind-chips" role="group" aria-label="Omen kinds"></div>
-            </div>
-            <div class="mode-intro" id="mode-intro-math" hidden>
-              <div class="mode-intro-title">School mathematics</div>
-              <p>
-                Sexagesimal tables from Nippur and beyond — reciprocals (igi), multiplication
-                (a-rá), and metrological area/capacity lists. Short tablets are welcome here.
-              </p>
-              <div class="kind-chips" id="math-kind-chips" role="group" aria-label="Math kinds"></div>
-            </div>
-            <div class="featured-row" id="featured-row" hidden>
-              <div class="featured-label">Featured · epic</div>
-              <button type="button" class="btn featured-btn" data-featured="P262784" title="Old Babylonian Gilgamesh II (Nippur)">
-                Gilgamesh II · P262784
-              </button>
-              <button type="button" class="btn featured-btn" data-featured="P273203" title="NA Gilgamesh II fragment">
-                Gilg. II fr. · P273203
-              </button>
-            </div>
-            <div class="featured-row" id="featured-herbal-row" hidden>
-              <div class="featured-label">Featured · remedies</div>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P404959" title="Head fever / headache poultices">
-                Head fever · P404959
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P498964" title="Belly burn, vomit, jaundice, lungs">
-                Belly / lungs · P498964
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P338416" title="Tooth and jaw remedies">
-                Teeth · P338416
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348465" title="Nose and breath remedies">
-                Nose · P348465
-              </button>
-              <button type="button" class="btn featured-btn herbal-btn" data-featured="P348655" title="Eye salves">
-                Eyes · P348655
-              </button>
-            </div>
-            <div class="featured-row" id="featured-omen-row" hidden>
-              <div class="featured-label">Featured · omens</div>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P480113" title="Physiognomy — moles on face & body (TBP 63)">
-                Moles · P480113
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P365915" title="Skin-spot omens šumma tirku">
-                Skin spots · P365915
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P452591" title="Birth omens (Šumma izbu-type)">
-                Birth · P452591
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P479385" title="Mul.Apin star list">
-                Mul.Apin · P479385
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P453398" title="Extispicy — liver / sacrificial omens">
-                Liver · P453398
-              </button>
-              <button type="button" class="btn featured-btn omen-btn" data-featured="P236901" title="Physiognomy TBP 44">
-                TBP 44 · P236901
-              </button>
-            </div>
-            <div class="featured-row" id="featured-math-row" hidden>
-              <div class="featured-label">Featured · math</div>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P257557" title="Reciprocal (igi) table">
-                Reciprocals · P257557
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P464229" title="Early metrological area table">
-                Metrology · P464229
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P368713" title="Multiplication + metrological tables">
-                Mult. tables · P368713
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P229294" title="Metrology + lexical Nippur">
-                Nippur · P229294
-              </button>
-              <button type="button" class="btn featured-btn math-btn" data-featured="P493017" title="Multiplication table ×7:30">
-                ×7:30 · P493017
-              </button>
-            </div>
-            <div class="legend-mini">
-              <span class="chip status-fresh">No open English</span>
-              <span class="chip status-print">Print edition</span>
-              <span class="chip status-open">Open English</span>
-              <span class="chip status-machine">Machine draft</span>
-              <span class="chip status-epic">Epic hunt</span>
-              <span class="chip status-herbal">Remedy</span>
-              <span class="chip status-omen">Omen</span>
-              <span class="chip status-math">Math</span>
-            </div>
-          </div>
-          <div class="results-count" id="results-count">—</div>
-          <div class="catalog-list" id="catalog-list" role="listbox" aria-label="Works"></div>
+          </details>
         </aside>
 
         <div class="explore-main">
@@ -259,13 +217,13 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <div class="smap" aria-label="Search results on the map">
                 <form class="smap-form" id="smap-form" role="search" autocomplete="off">
                   <button type="button" class="btn smap-sidebar-btn" id="sidebar-open" aria-controls="sidebar" aria-expanded="false"
-                    title="Curated tablets, filters, Epic hunt, Remedies, Omens, Math and featured tablets"><span aria-hidden="true">☰</span> Curated &amp; filters</button>
-                  <label for="smap-q" class="visually-hidden">Search the whole corpus on the map</label>
-                  <input type="search" id="smap-q" class="smap-input" placeholder="Map a corpus search: Gilgamesh, barley, lamaštu…" />
+                    title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
+                  <label for="smap-q" class="visually-hidden">Search the corpus or open a tablet by ID</label>
+                  <input type="search" id="smap-q" class="smap-input" placeholder="P262784, Gilgamesh, barley, lamaštu…" />
                   <button type="submit" class="btn primary smap-go">Map</button>
                 </form>
                 <div class="smap-chip" id="smap-chip" hidden>
-                  <label class="smap-toggle" title="Show or hide the search-results layer"><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
+                  <label class="smap-toggle smap-toggle-hidden" title="Show or hide the search-results layer" hidden><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
                   <span id="smap-summary" aria-live="polite"></span>
                   <span id="smap-filters" class="smap-filters"></span>
                   <a id="smap-open" class="smap-link" href="search.html" target="_blank" rel="noopener">List</a>
@@ -303,7 +261,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             </div>
           </div>
           <div class="preview-panel" id="preview-panel">
-            <div class="preview-empty">Select a work from the list to preview metadata and open the reader.</div>
+            <div class="preview-empty">Select a pin on the map, or search a tablet ID, to preview metadata and open the reader.</div>
           </div>
         </div>
       </section>
@@ -334,19 +292,19 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
             <div class="reader-title-block">
               <h2 id="reader-title">—</h2>
               <div class="meta-line" id="reader-meta"></div>
-              <div class="status-row" id="reader-status-badges"></div>
             </div>
-            <div class="toolbar-group">
-              <label for="font-select">Cuneiform face</label>
-              <select id="font-select" title="Cuneiform face: automatic by period (eBL converter fonts) or your choice for this session">
-                <option value="">Auto (by period)</option>
-              </select>
-            </div>
-            <div class="view-toggles" role="group" aria-label="Visible panels">
-              <button type="button" class="on" data-panel="english">English</button>
-              <button type="button" class="on" data-panel="atf">ATF</button>
-              <button type="button" class="on" data-panel="cuneiform">Cuneiform</button>
-              <button type="button" data-panel="meta" title="Catalogue and publication metadata">Meta</button>
+            <div class="reader-chips" id="reader-chips" role="group" aria-label="Panels: what this tablet has, tap to show or hide">
+              <button type="button" class="pchip on" data-panel="english" aria-pressed="true"><span class="pchip-name">English</span><span class="pchip-sub" data-sub="english"></span></button>
+              <button type="button" class="pchip on" data-panel="atf" aria-pressed="true"><span class="pchip-name">ATF</span><span class="pchip-sub" data-sub="atf"></span></button>
+              <span class="pchip-pair">
+                <button type="button" class="pchip on" data-panel="cuneiform" aria-pressed="true"><span class="pchip-name">Cuneiform</span><span class="pchip-sub" data-sub="cuneiform"></span></button>
+                <label class="pchip-face" title="Cuneiform face: automatic by period (eBL converter fonts) or your choice for this session"><span class="sr-only">Cuneiform face</span><select id="font-select" aria-label="Cuneiform face">
+                  <option value="">Auto (by period)</option>
+                </select></label>
+              </span>
+              <button type="button" class="pchip" data-panel="meta" aria-pressed="false" title="Catalogue and publication metadata"><span class="pchip-name">Meta</span><span class="pchip-sub" data-sub="meta">catalogue</span></button>
+              <button type="button" class="pchip preamble-toggle" aria-pressed="false" title="Show each column's source, licence and notes at its top (otherwise behind the ⓘ in each column header)"><span class="pchip-name">ⓘ Notes</span><span class="pchip-sub">source · licence</span></button>
+              <span class="pchip-tags" id="reader-status-badges"></span>
             </div>
           </div>
 
@@ -355,7 +313,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               <div class="col-body" id="lines-body"></div>
             </div>
             <div class="reader-col" id="col-english">
-              <div class="col-head"><span>English</span><span>model / draft</span></div>
+              <div class="col-head"><span>English</span><span class="col-head-sub">machine / draft</span></div>
               <div class="col-body" id="english-body"></div>
             </div>
             <div class="reader-col" id="col-atf">
@@ -377,49 +335,48 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       <!-- ABOUT -->
       <section id="view-about" class="view" aria-label="About">
         <div class="about-card">
-          <h2>About this reader</h2>
+          <h2>About Unread Atlas</h2>
+          <h3>Why this exists</h3>
           <p>
-            A browser for <strong>new English readings</strong> of cuneiform works that have ATF
-            transliterations but little or no open English on CDLI — literary, royal, scientific,
-            omen, and letter corpora first.
+            These are humanity's oldest known writings: receipts, prayers, letters, lullabies and science.
+            For generations, reading them took a PhD, a trip to a faraway land and luck at the museum, and
+            most of us only saw them through someone else's filter. Unread Atlas gathers what is openly
+            published and lays it out so everyone can read it unfiltered.
           </p>
+          <h3>What's here</h3>
+          <p>
+            <strong data-stat="tablets">462,298</strong> cuneiform tablets catalogued from five open projects (CDLI, ORACC, eBL, TLHdig and Achemenet),
+            each counted once. <strong data-stat="with_text">223,678</strong> have a transliteration online,
+            <strong data-stat="human_en">21,451</strong> have English by human scholars and <strong data-stat="machine_en">165,344</strong> more have a machine translation.
+            <strong data-stat="mapped">316,227</strong> are on the map. Every figure, by source, period and language, is on the
+            <a href="?view=stats" data-goto-view="stats">Stats page</a>.
+          </p>
+          <h3>The machine English</h3>
+          <p>
+            Where no human translation is online, the English column shows a cached translation from <strong>B2c</strong>
+            (T5-large),
+            <a href="https://huggingface.co/montycrypto/atf-to-english" target="_blank" rel="noopener">montycrypto/atf-to-english</a>,
+            which reads ATF one line at a time. It is labelled “Machine translation” everywhere it appears, and the
+            reader can show it side by side with human English wherever both exist.
+          </p>
+          <h3>Ways in</h3>
           <ul>
-            <li><strong>Explore</strong> — filter ranked candidates from the local CDLI dump</li>
-            <li><strong>Epic hunt</strong> — large literary / phrase-scored shortlist (Gilgamesh II, hymns, …)</li>
-            <li><strong>Remedies</strong> — plant recipes and therapeutic tablets (head, teeth, eyes, belly…)</li>
-            <li><strong>Omens</strong> — physiognomy, birth, skin spots, liver extispicy, Mul.Apin / astral</li>
-            <li><strong>Math</strong> — reciprocal (igi), metrology, multiplication (a-rá) school tables</li>
-            <li><strong>Map &amp; time</strong> — findspots and a period scrubber</li>
-            <li><strong>Reader</strong> — English · ATF · period-style cuneiform side by side</li>
+            <li><strong>Map &amp; time</strong>: find-spots and a period scrubber</li>
+            <li><strong>Reader</strong>: English, ATF and period-style cuneiform side by side</li>
+            <li><strong>Search</strong>, <strong>Browse</strong> and <strong>Signs</strong> across the whole corpus</li>
+            <li><strong>Featured</strong>: hand-picked sets of epic, remedy, omen and math tablets</li>
           </ul>
           <p>
-            Direct links:
-            <a href="?id=P262784&amp;mode=epic">Gilgamesh II</a>
-            ·
-            <a href="?id=P404959&amp;mode=remedies">Head fever remedies</a>
-            ·
-            <a href="?id=P480113&amp;mode=omens">Mole physiognomy</a>
-            ·
-            <a href="?id=P453398&amp;mode=omens">Liver extispicy</a>
-            ·
-            <a href="?id=P257557&amp;mode=math">Reciprocal table</a>
-            ·
-            <a href="?id=P464229&amp;mode=math">Metrology</a>
+            Start with
+            <a href="?id=P262784&amp;mode=epic">Gilgamesh II</a> ·
+            <a href="?id=P404959&amp;mode=remedies">head fever remedies</a> ·
+            <a href="?id=P480113&amp;mode=omens">mole physiognomy</a> ·
+            <a href="?id=P257557&amp;mode=math">a reciprocal table</a>
           </p>
           <p>
             Cuneiform is drawn in a period-matched face, following the
-            <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener"
-              >eBL converter</a
-            >
-            (Neo-Assyrian, Neo-Babylonian, Old Babylonian cursive / literary / monumental, Hittite; Noto otherwise);
-            the reader's “Cuneiform face” menu overrides it for your session (<a href="credits.html#fonts">font credits</a>).
-            Offline ATF→Unicode uses a vendored eBL reading map; optional live conversion hits the
-            eBL signs API.
-          </p>
-          <p>
-            Translation model integration (local T5 from
-            <code>atf-translate-test</code>, or in-browser Hugging Face later) is the next layer —
-            the English column is ready for line-aligned output.
+            <a href="https://www.ebl.lmu.de/tools/cuneiform-converter" target="_blank" rel="noopener">eBL converter</a>;
+            the reader's “Cuneiform face” menu lets you pick another (<a href="credits.html#fonts">font credits</a>).
           </p>
           <div class="credits">
             <p>
@@ -432,6 +389,16 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
               ETCSL, ORACC, etc. The catalog flags likely known projects.
             </p>
           </div>
+          <h3 id="contact">Contact</h3>
+          <p class="contact-links"><!--site:contact--><a class="social-link" href="https://x.com/roguesamurai" target="_blank" rel="me noopener" title="Hayden on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.3l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"/></svg><span>@roguesamurai</span></a><a class="social-link" href="https://github.com/ixmon/unread" target="_blank" rel="me noopener" title="Source on GitHub"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.66 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><!--/site:contact--></p>
+        </div>
+      </section>
+      <!-- STATS: filled from corpus_stats.json by renderStats() in app.js -->
+      <section id="view-stats" class="view" aria-label="Corpus statistics">
+        <div class="about-card stats-card" id="stats-card">
+          <h2>Corpus statistics</h2>
+          <p class="stats-lede">What Unread Atlas holds, and exactly what each number counts.</p>
+          <div id="stats-body"><p class="stats-loading">Loading figures…</p></div>
         </div>
       </section>
     </main>
@@ -443,9 +410,12 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <script src="js/browser-token.js"></script>
     <script src="js/atf2unicode.js"></script>
     <script src="js/fontmap.js"></script>
     <script src="js/app.js"></script>
+    <script type="module" src="js/reader-model.js"></script>
     <script src="js/searchmap.js"></script>
+    <script src="js/awaiting.js"></script>
 </body>
 </html>

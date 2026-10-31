@@ -16,12 +16,12 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <title>Unread Atlas: a space-and-time browser for the unread ancient world</title>
-<meta name="description" content="Explore 462,298 cuneiform tablets by place, date, genre and how much of each has ever been read. Search the corpus, open the map, and read machine-draft English for tablets that have never been translated." />
+<meta name="description" data-stat-tpl="Explore {tablets} cuneiform tablets by place, date, genre and how much of each has ever been read. Search the corpus, open the map, and read machine translation for tablets that have never been translated." content="Explore 462,298 cuneiform tablets by place, date, genre and how much of each has ever been read. Search the corpus, open the map, and read machine translation for tablets that have never been translated." />
 <link rel="canonical" href="https://unreadatlas.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unread Atlas" />
-<meta property="og:title" content="Unread Atlas: 462,298 tablets survive" />
-<meta property="og:description" content="462,298 cuneiform tablets survive. More than half have no text online, and only 5% have been translated into English. Explore them by place, time, genre and translation state." />
+<meta property="og:title" data-stat-tpl="Unread Atlas: {tablets} tablets survive" content="Unread Atlas: 462,298 tablets survive" />
+<meta property="og:description" data-stat-tpl="{tablets} cuneiform tablets survive. More than half have no text online, and only {pct_human_en}% have a human English translation. Explore them by place, time, genre and translation state." content="462,298 cuneiform tablets survive. More than half have no text online, and only 5% have a human English translation. Explore them by place, time, genre and translation state." />
 <meta property="og:url" content="https://unreadatlas.com/" />
 <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -29,14 +29,15 @@
 <meta property="og:image:alt" content="Unread Atlas: Hunt for unread artifacts" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@roguesamurai" />
-<meta name="twitter:title" content="Unread Atlas: 462,298 tablets survive" />
-<meta name="twitter:description" content="462,298 cuneiform tablets survive. Explore them by place, time, genre and translation state." />
+<meta name="twitter:title" data-stat-tpl="Unread Atlas: {tablets} tablets survive" content="Unread Atlas: 462,298 tablets survive" />
+<meta name="twitter:description" data-stat-tpl="{tablets} cuneiform tablets survive. Explore them by place, time, genre and translation state." content="462,298 cuneiform tablets survive. Explore them by place, time, genre and translation state." />
 <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
 <meta name="theme-color" content="#0b0d12" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
 <link rel="preload" as="image" href="assets/hero-poster.jpg" />
+    <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
 <link rel="stylesheet" href="assets/browse-common.css" />
 <style>
 :root{--clay:#c4784a;--clay2:#e09560;--lapis:#2f5fa8;--lapis2:#5b8ad6;--gold:#e3c27a;--ink:#0b0d12;--sky:#9fd0ff;--sky2:#6fb4f2}
@@ -105,6 +106,19 @@ a.card:hover{transform:translateY(-3px);border-color:var(--sky2);text-decoration
 .collab{margin-top:46px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;border:1px solid #2b3a4c;background:linear-gradient(120deg,rgba(196,120,74,.10),rgba(47,95,168,.14));border-radius:14px;padding:26px 28px}
 @media(max-width:820px){.collab{grid-template-columns:1fr}}
 .collab h3{margin:0 0 6px;font-family:var(--font-serif);font-weight:500;font-size:24px}
+.here{margin-top:8px}
+.here .big{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:0 0 14px}
+.here .fig{background:#14171d;border:1px solid #262a33;border-radius:12px;padding:14px 16px}
+.here .fig b{display:block;font-family:var(--font-serif);font-weight:500;font-size:30px;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.15}
+.here .fig>span{display:block;color:var(--text-dim);font-size:13.5px;margin-top:4px;line-height:1.4}
+.here .fig small{color:var(--text-faint);font-size:12px}
+.here .bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:6px 0 8px;background:#1b1f27}
+.here .bar i{display:block;height:100%}
+.here .keys{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--text-dim);margin:0 0 6px}
+.here .keys em{font-style:normal;display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.here .src{color:var(--text-dim);font-size:14px;max-width:820px}
+.here .cta{margin-top:10px}
+@media(max-width:520px){.here .fig b{font-size:25px}}
 footer{color:var(--text-faint);font-size:12px;text-align:center;padding:24px 28px 40px;max-width:900px;margin:0 auto}
 footer a{color:var(--text-dim)}
 noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;color:var(--text-dim)}
@@ -115,12 +129,11 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
 <section id="hero" aria-label="Unread Atlas">
   <canvas id="bg" aria-hidden="true"></canvas><canvas id="gl" aria-hidden="true"></canvas><canvas id="ov" aria-hidden="true"></canvas>
   <div id="brand"><a href="./" title="Unread Atlas home"><img src="assets/logo/logo.svg" width="71" height="34" alt="" title="𒉡𒋃 nu-šid, Sumerian for “not read”" />UNREAD ATLAS</a></div>
-  <nav id="topnav" aria-label="Main"><a href="map.html">Map</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Curated</a><a href="translate.html">Translator</a><a href="#collab">Collaborate</a></nav>
+  <nav id="topnav" aria-label="Main"><a href="map.html">Explore</a><a href="search.html">Search</a><a href="browse.html">Browse</a><a href="signs.html">Signs</a><a href="t/index.html">Research</a><a href="translate.html">Translator</a><a href="map.html?view=stats">Stats</a><a href="credits.html">Credits</a><a href="map.html?view=about">About</a><a href="#collab">Collaborate</a></nav>
   <div id="copy">
-    <!-- ================= HEADLINE (edit here only) =================
-         Basis: 223,704 tablets have ATF online (48.4%); 238,594 catalogue-only (51.6%); 21,451 human English (4.6%). -->
-    <h1 id="headline"><em>462,298</em> tablets survive.</h1>
-    <p class="tag" id="subline">More than half have no text online, and only <b>5%</b> have been translated into English.</p>
+    <!-- ================= HEADLINE (edit here only) ================= Numbers: web/corpus_stats.json (scripts/build_corpus_stats.py stamps them here). -->
+    <h1 id="headline"><em data-stat="pct_no_human_en">95</em>% of cuneiform tablets have never been translated into English by a scholar.</h1>
+    <p class="tag" id="subline">Explore all <b data-stat="tablets">462,298</b> of them here.</p>
     <!-- ============================================ /HEADLINE ============================================ -->
     <form id="sform" action="search.html" role="search"><input id="q" name="q" placeholder="barley" aria-label="Search the corpus" autocomplete="off" /><button type="submit">Search</button></form>
     <div id="hints">try <a href="browse.html?q=barley">barley</a><a href="browse.html?q=silver">silver</a><a href="browse.html?q=sheep">sheep</a><a href="map.html">the map</a><a href="#" id="rand1">a random tablet</a></div>
@@ -132,6 +145,27 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
   <noscript><p>The animated map needs JavaScript. <a href="map.html">Open the map</a> · <a href="search.html">Search</a></p></noscript>
 </section>
 <main>
+  <section class="here" id="here" aria-labelledby="here-h">
+  <h2 id="here-h">What's here</h2>
+  <p class="lede">One searchable catalogue of <b data-stat="tablets">462,298</b> cuneiform tablets, merged from five open projects (CDLI, ORACC, eBL, TLHdig and Achemenet) with each tablet counted once. Every one has a page you can open, place on the map and search.</p>
+  <div class="big">
+    <div class="fig"><b data-stat="tablets">462,298</b><span>tablets catalogued</span></div>
+    <div class="fig"><b data-stat="with_text">223,678</b><span>with a transliteration you can read here <small>(<span data-stat="pct1.with_text">48.4</span>%)</small></span></div>
+    <div class="fig"><b data-stat="any_en">186,795</b><span>with English: <span data-stat="human_en">21,451</span> by scholars, <span data-stat="machine_en">165,344</span> as labelled machine translation</span></div>
+    <div class="fig"><b data-stat="mapped">316,227</b><span>with a named find-spot on the map (<span data-stat="map_points">465</span> places)</span></div>
+  </div>
+  <div class="bar" role="img" aria-label="Share of catalogued tablets by what is online" id="here-bar">
+    <i style="background:#e3c27a;width:4.6%" data-w="human_en"></i><i style="background:#5b8ad6;width:35.8%" data-w="machine_en"></i><i style="background:#c4784a;width:8%" data-w="text_no_en"></i><i style="background:#3a404c;width:51.6%" data-w="catalogue_only"></i>
+  </div>
+  <div class="keys">
+    <span><em style="background:#e3c27a"></em>human English <span data-stat="pct1.human_en">4.6</span>%</span>
+    <span><em style="background:#5b8ad6"></em>machine translation only <span data-stat="pct1.machine_en">35.8</span>%</span>
+    <span><em style="background:#c4784a"></em>transliteration, no English yet <span data-stat="pct1.text_no_en">8.0</span>%</span>
+    <span><em style="background:#3a404c"></em>catalogue entry only <span data-stat="pct1.catalogue_only">51.6</span>%</span>
+  </div>
+  <p class="src">Shares of all <span data-stat="tablets">462,298</span> catalogued tablets. Texts span <span data-stat="periods.labels">64</span> period labels and <span data-stat="languages.labels">119</span> language labels, from proto-cuneiform to the Achaemenid empire. Figures from the corpus built <span data-stat="corpus_built_at">2026-10-05</span>.</p>
+  <div class="cta"><a class="btn solid" href="map.html">Explore the map →</a><a class="btn" href="search.html">Search every tablet</a><a class="btn" href="map.html?id=P262784&amp;tr=machine,oracc">Open the reader</a><a class="btn" href="map.html?view=stats">All the numbers →</a></div>
+  </section>
   <h2 id="why">Why this exists</h2>
   <p class="lede">These are humanity's oldest known thoughts: receipts, prayers, letters, lullabies, and science. For generations, reading them took a PhD, a trip to a faraway land, and luck at the museum. The few glimpses most of us got came through some gatekeeper's filter. Unread Atlas faithfully organizes and presents this lost ancient writing, so we can all see what we can learn.</p>
   <h2 id="views">Many ways to look at the same clay</h2>
@@ -148,7 +182,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
     </div>
     <div class="panel" id="rtp">
       <div class="kicker">Random tablet</div>
-      <div id="rt"><p class="muted">Drop into a real tablet, with its transliteration, a machine draft and where it was found.</p></div>
+      <div id="rt"><p class="muted">Drop into a real tablet, with its transliteration, a machine translation and where it was found.</p></div>
       <button class="btn solid" id="rand2" type="button">Show me a tablet</button>
     </div>
   </div>
@@ -159,8 +193,8 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
     <div><a class="btn" href="https://x.com/roguesamurai" rel="me noopener" target="_blank">Message @roguesamurai on X</a><a class="btn" href="https://github.com/ixmon/unread" rel="noopener" target="_blank">Open an issue on GitHub</a></div>
   </div>
 </main>
-<footer>Unread Atlas · <a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Curated texts</a> · <a href="translate.html">Translator</a> · <a href="credits.html">Credits &amp; thanks</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
-Hero dots: a random 60,000 of 462,298 tablets plus every match for barley, silver and sheep, so shares over-weight those words. Dates are approximate period midpoints. All English on this site is labelled machine draft unless marked otherwise. Coastlines and rivers: Natural Earth (<a href="credits.html#basemap">credits</a>).</footer>
+<footer>Unread Atlas · <a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="map.html?view=stats">Stats</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="https://github.com/ixmon/unread">GitHub</a><br>
+How the moving dots were chosen: <a href="browse.html#how">how this visualization works</a>. All English on this site is labelled machine translation unless marked otherwise. Coastlines and rivers: Natural Earth (<a href="credits.html#basemap">credits</a>).</footer>
 <script>
 "use strict";
 const STATES_COL=[[0.89,0.76,0.48],[0.36,0.54,0.84],[0.77,0.47,0.29],[0.42,0.40,0.38]]; // human gold, machine lapis, ATF clay, catalogue stone
@@ -263,7 +297,8 @@ function overlay(B,W,H,dpr,PD){
 }
 function legend(){const tot=cnt.reduce((a,b)=>a+b,0);
   document.getElementById('legend').innerHTML=D.states.map((n,k)=>`<div><span class="sw" style="background:rgb(${STATES_COL[k].map(c=>c*255|0)})"></span>${n}<span class="n">${(cnt[k]/tot*100).toFixed(1)}%</span></div>`).join('')+
-  `<div class="muted" style="font-size:10.5px;margin-top:4px">${N.toLocaleString()} dots sampled from ${D.corpus_tablets.toLocaleString()} tablets · shares are of this sample, which over-weights barley/silver/sheep matches</div>`}
+  `<div class="muted" style="font-size:10.5px;margin-top:4px">% of dots shown · <a href="browse.html#how">how this works</a></div>`;
+  document.querySelectorAll('[data-dots]').forEach(e=>{const v=D[e.dataset.dots];if(typeof v==='number')e.textContent=v.toLocaleString()})}
 function buildNavbar(){const nb=document.getElementById('navbar');MAPS.forEach((m,k)=>{const b=document.createElement('button');b.type='button';b.textContent=m.name;b.onclick=e=>{e.stopPropagation();animateTo(k)};nb.appendChild(b)});
   const a=document.createElement('a');a.id='openb';a.href='browse.html';a.textContent='Open full browser →';nb.appendChild(a)}
 function takeControl(){if(user)return;user=true;fade=1;if(touring&&!P.has('t')){const B=blend();navT=B.e<.5?B.i:B.j;}touring=false;document.body.classList.add('user')}
@@ -283,7 +318,7 @@ window.setTour=(i,j,f)=>{P.set('t','x');touring=true;pair=[i,j,f]};
 const CARDS=[["Map","Every find-spot on a relief map, with filters, a timeline and the reader.","map.html","assets/previews/map.jpg"],
 ["Search","Search the whole corpus: English, ATF transliteration or catalogue, then show the hits on the map.","search.html?q=barley","assets/previews/search.jpg"],
 ["Map of maps","Slide between geography, time, genre and translation state. The dots travel with you.","browse.html?q=barley","assets/previews/browse.jpg"],
-["Curated texts","Hand-picked tablets with transliteration and line-by-line machine drafts.","t/index.html","assets/previews/curated.jpg"],
+["Research","Hand-picked tablets with transliteration and line-by-line machine translations.","t/index.html","assets/previews/curated.jpg"],
 ["Timeline","The time slider as a second map: brush a few centuries and the dots follow.",null,"assets/previews/timeline.jpg"],
 ["Gap view","Each site as a ring: how much is read in English, machine-drafted, ATF only or catalogue only.",null,"assets/previews/gap.jpg"],
 ["Word trail","Follow one word across places and centuries, with how translators render it.",null,"assets/previews/trail.jpg"],
@@ -306,5 +341,7 @@ const start=()=>load().catch(e=>console.warn('hero',e));
 if(document.readyState==='complete')(window.requestIdleCallback||setTimeout)(start,{timeout:1200});
 else addEventListener('load',()=>(window.requestIdleCallback||setTimeout)(start,{timeout:1200}));
 </script>
+<script>/* corpus numbers: web/corpus_stats.json (also stamped into this file at build) */
+fetch("corpus_stats.json").then(r=>r.ok?r.json():null).catch(()=>null).then(cs=>{if(!cs)return;document.querySelectorAll("[data-stat]").forEach(n=>{const v=n.dataset.stat.split(".").reduce((o,p)=>o==null?o:o[p],cs);if(typeof v==="number")n.textContent=n.dataset.stat.startsWith("pct1.")?v.toFixed(1):v.toLocaleString("en-US")});document.querySelectorAll("#here-bar [data-w]").forEach(i=>{const v=cs.pct1&&cs.pct1[i.dataset.w];if(typeof v==="number")i.style.width=v+"%"})});</script>
 </body>
 </html>

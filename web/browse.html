@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Map of maps: slide between place, time, genre and translation state · Unread Atlas</title>
-<meta name="description" content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
+<meta name="description" data-stat-tpl="Slide all {tablets} cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
 <link rel="canonical" href="https://unreadatlas.com/browse.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unread Atlas" />
 <meta property="og:title" content="Map of maps · Unread Atlas" />
-<meta property="og:description" content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
+<meta property="og:description" data-stat-tpl="Slide all {tablets} cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
 <meta name="twitter:title" content="Map of maps · Unread Atlas" />
-<meta name="twitter:description" content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
+<meta name="twitter:description" data-stat-tpl="Slide all {tablets} cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." content="Slide all 462,298 cuneiform tablets between geography, time, genre and translation state. Select a group and it stays selected as the view changes." />
 <meta name="twitter:image" content="https://unreadatlas.com/og.jpg" />
 <meta property="og:url" content="https://unreadatlas.com/browse.html" />
 <meta property="og:image" content="https://unreadatlas.com/og.jpg" />
@@ -20,7 +20,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preload" href="fonts/ui/ibm-plex-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ui/ibm-plex-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="css/ui-fonts.css" />
 <link rel="stylesheet" href="assets/browse-common.css" />
 <style>
 html,body{margin:0;height:100%;overflow:hidden;background:#0f1115;color:#e6e2d8;font-family:"IBM Plex Sans",system-ui,sans-serif}
@@ -45,7 +48,7 @@ canvas#bm,canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
 #nav .node{position:absolute;width:70px;height:54px;margin:-27px 0 0 -35px;border:1px solid #3a4050;border-radius:8px;background:#151821;font-size:10.5px;text-align:center;color:#bbb;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:3px;box-sizing:border-box;cursor:pointer;overflow:hidden}
 #nav .node canvas{width:60px;height:34px;display:block;margin-bottom:2px}
 #nav .node.act{border-color:#c79a3a;color:#f0d9a0}
-#handle{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#c79a3a;box-shadow:0 0 0 4px rgba(199,154,58,.3);pointer-events:none}
+#handle{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#c79a3a;box-shadow:0 0 0 4px rgba(199,154,58,.3);pointer-events:none;left:150px;top:38px}
 #navlabel{position:absolute;left:0;right:0;top:132px;text-align:center;font-size:12px;color:#ddd;pointer-events:none}
 #navlabel small{display:block;color:#888;font-size:10.5px}
 #brush{position:absolute;border:1px dashed #c79a3a;background:rgba(199,154,58,.08);display:none;z-index:4;pointer-events:none}
@@ -72,6 +75,8 @@ a{color:#e0b860}
 #boxlist .row:hover{background:#232733}
 #boxlist .row span:last-child{color:#8f96a3;text-align:right}
 #stage.pan{cursor:grabbing}
+#how{position:absolute;left:14px;bottom:36px;z-index:8;max-width:min(560px,calc(100vw - 28px));max-height:70vh;overflow:auto;display:none;font-size:13px;line-height:1.55;padding:12px 16px}
+#how.open{display:block}#how h2{font-size:15px;margin:0 0 6px}#how p{margin:0 0 8px;color:#c9ccd3}#how .x{float:right;background:none;border:0;color:#aaa;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -89,7 +94,20 @@ a{color:#e0b860}
 <div id="boxlist" class="panel" role="dialog" aria-label="Tablets in box"></div>
 <div id="nav"><div id="navlabel"></div><div id="handle"></div></div>
 <div id="info">Loading…</div>
-<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Map</a> · <a href="search.html">Search</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Curated</a> · <a href="credits.html">Credits</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
+<div id="how" class="panel" role="dialog" aria-label="How this visualization works"><button class="x" id="howx" title="Close">×</button><h2>How this visualization works</h2>
+<p>Every tablet is a dot placed by two of: find-spot longitude and latitude, approximate date (period midpoint), genre, and translation state. Slide between maps and the dots travel; anything you select stays selected.</p>
+<p><b>The moving dots on the home page are a sample.</b> Each dot is one tablet, but not every tablet: <span data-dots="n">116,813</span> are shown, a random <span data-dots="sample_random">60,000</span> drawn from all <span data-stat="tablets">462,298</span>, plus every tablet whose English (human or machine) contains barley, silver or sheep (<span data-dots="term_matches">65,250</span>; some are in both groups), so those example searches show complete results. Every word match has English, so tablets with English make up far more of those dots than of the corpus. The percentages in the home-page legend are shares of the dots shown; for the whole corpus see <a href="map.html?view=stats">Stats</a>. This page, by contrast, draws every tablet.</p></div>
+<div id="foot" style="position:absolute;left:14px;bottom:12px;z-index:5;font-size:11.5px;color:#888"><a href="map.html">Explore</a> · <a href="search.html">Search</a> · <a href="browse.html">Browse</a> · <a href="signs.html">Signs</a> · <a href="t/index.html">Research</a> · <a href="translate.html">Translator</a> · <a href="credits.html">Credits</a> · <a href="map.html?view=about">About</a> · <a href="#how" id="howlink">how this visualization works</a> · every tablet is a dot · approximate dates · English = human + machine translations · scroll or pinch zooms · drag or arrow keys pan · shift+scroll or the ring changes the map · shift-drag lists tablets · Esc steps back</div>
+<script src="js/browse-state.js"></script>
+<script>
+(()=>{const P=document.getElementById('how');let loaded=false;
+function fill(){if(loaded)return;loaded=true;
+ fetch('assets/landing_dots.json').then(r=>r.json()).then(D=>{if(!D.n&&D.N)D.n=D.N;P.querySelectorAll('[data-dots]').forEach(e=>{const v=D[e.dataset.dots];if(typeof v==='number')e.textContent=v.toLocaleString()})}).catch(()=>{});
+ fetch('corpus_stats.json').then(r=>r.json()).then(S=>P.querySelectorAll('[data-stat]').forEach(e=>{const v=S[e.dataset.stat];if(typeof v==='number')e.textContent=v.toLocaleString()})).catch(()=>{});}
+function sync(){const o=location.hash==='#how';P.classList.toggle('open',o);if(o)fill()}
+document.getElementById('howx').onclick=()=>{history.pushState(null,'',location.pathname+location.search);sync()};
+addEventListener('hashchange',sync);addEventListener('popstate',sync);sync();})();
+</script>
 <script>
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 // ---- data dims: 0 lon, 1 lat, 2 year, 3 genre, 4 translation state
@@ -180,7 +198,8 @@ async function load(){
     const L=gl.getAttribLocation(prog,loc); gl.enableVertexAttribArray(L); gl.vertexAttribPointer(L,size,gl.FLOAT,false,0,0); return buf; };
   b(a0,'a0',4); b(a1,'a1',1); flagsBuf = b(flags,'a2',4);
   buildNav();
-  navT = parseFloat(params.get('t') || '0'); readViewParams(params);
+  navT = BrowseState.sanitizeNavT(params.get('t'), MAPS.length); readViewParams(params); placeHandle();
+  writeURL(false); // drop a non-finite t/z/x/y so the fallback is what gets reloaded
   if (params.get('in')==='en'||params.get('in')==='atf') setMode(params.get('in'));
   const q0 = params.has('q') ? (params.get('q')||'') : 'barley'; q.value = q0;
   addEventListener('resize', draw);
@@ -238,16 +257,16 @@ function updFlags(){
   gl.bindBuffer(gl.ARRAY_BUFFER, flagsBuf); gl.bufferData(gl.ARRAY_BUFFER, flags, gl.DYNAMIC_DRAW);
 }
 
-// ---- blend state from navT
+// ---- blend state from navT. Non-finite navT must not throw: MAPS[NaN] is
+// undefined, and the throw used to land after gl.clear, leaving a blank canvas.
 function blend(){
-  const n = MAPS.length, t = ((navT % n)+n)%n, i = Math.floor(t), f = t - i, j = (i+1)%n;
-  const e = f*f*(3-2*f); // smoothstep
-  const wx = [0,0,0,0,0], wy=[0,0,0,0,0];
-  wx[MAPS[i].x]+=1-e; wy[MAPS[i].y]+=1-e; wx[MAPS[j].x]+=e; wy[MAPS[j].y]+=e;
-  return {i,j,e,wx,wy};
+  return BrowseState.blendFromNav(navT, MAPS);
 }
 const PAD = {l:118,r:30,t:30,b:72};
 function draw(){
+  navT = BrowseState.sanitizeNavT(navT, MAPS.length);
+  // Place the dot even before the corpus arrives, and even if a later step throws.
+  placeHandle();
   if(!D) return;
   const dpr = devicePixelRatio||1, W = innerWidth, H = innerHeight;
   for (const c of [gl.canvas, ov]) { c.width = W*dpr; c.height = H*dpr; }
@@ -262,7 +281,11 @@ function draw(){
   gl.uniform1f(U('hasMatch'), match?1:0);
   gl.uniform4f(U('pad'), PAD.l/W, PAD.r/W, PAD.t/H, PAD.b/H);
   gl.uniform1f(U('ps'), 2.0*dpr*Math.min(3, 1+Math.log2(V.z)*0.35)); gl.uniform3f(U('view'), V.cx, V.cy, V.z);
-  gl.enable(gl.SCISSOR_TEST); gl.scissor(PAD.l*dpr, PAD.b*dpr, (W-PAD.l-PAD.r)*dpr, (H-PAD.t-PAD.b)*dpr);
+  // A negative scissor (viewport smaller than the axis padding) is INVALID_VALUE
+  // and draws nothing. Skip it instead of blanking the frame.
+  const plotPxW = W-PAD.l-PAD.r, plotPxH = H-PAD.t-PAD.b;
+  gl.disable(gl.SCISSOR_TEST);
+  if (plotPxW>0 && plotPxH>0) { gl.enable(gl.SCISSOR_TEST); gl.scissor(PAD.l*dpr, PAD.b*dpr, plotPxW*dpr, plotPxH*dpr); }
   gl.drawArrays(gl.POINTS, 0, N); gl.disable(gl.SCISSOR_TEST);
   document.getElementById('zlvl').textContent = (V.z<10? V.z.toFixed(1) : Math.round(V.z))+'×';
   basemap(B, W, H, dpr);
@@ -324,7 +347,7 @@ function info(B, geoW, dateW){
   const where = r => r.scope==='atf' ? 'ATF transliteration contains' : 'English mentions';
   let head;
   if (res && res.error) head = `Search for “${esc(res.q)}” failed (${esc(res.error)}). <a href="search.html?q=${encodeURIComponent(res.q)}">Try the search page →</a>`;
-  else if (res) head = `<b>${res.total.toLocaleString()}</b> tablets whose ${where(res)} “${esc(res.scope==='atf'?toPretty(res.q):res.q)}”${res.glyph?` (from ${esc(res.glyph)}; other readings: ${esc([...res.glyph].filter(c=>CUNEI.test(c)).map(c=>(SIGNS[c]||[]).slice(1).join(', ')).join(' / ')||'none')})`:''}`+
+  else if (res && Number.isFinite(res.total)) head = `<b>${res.total.toLocaleString()}</b> tablets whose ${where(res)} “${esc(res.scope==='atf'?toPretty(res.q):res.q)}”${res.glyph?` (from ${esc(res.glyph)}; other readings: ${esc([...res.glyph].filter(c=>CUNEI.test(c)).map(c=>(SIGNS[c]||[]).slice(1).join(', ')).join(' / ')||'none')})`:''}`+
       (res.shown!==res.total || res.truncated ? ` (<b>${res.shown.toLocaleString()}</b> shown${res.truncated?'; list capped at 50,000':''})` : '')+
       (res.total ? ` · <a href="search.html?q=${encodeURIComponent(res.q)}&in=${res.scope}">read them →</a>` : '');
   else head = term ? 'Searching…' : 'All tablets';
@@ -337,8 +360,16 @@ function info(B, geoW, dateW){
 
 // ---- navigator ring
 const nav = document.getElementById('nav'), handle = document.getElementById('handle');
-const R = 112, CX = 150, CY = 150;
-function nodePos(k){ const a = -Math.PI/2 + k/MAPS.length*2*Math.PI; return [CX+R*Math.cos(a), CY+R*Math.sin(a)]; }
+const R = 112, CX = 150, CY = 150; // design size of the 300px ring; the dot sits on this arc, inside the stroke
+function nodePos(k){ const p = BrowseState.handleCenter(k, MAPS.length, CX, CY, R, Math.min(CX,CY)); return [p.x, p.y]; }
+function placeHandle(){
+  const p = BrowseState.handleCenter(navT, MAPS.length, CX, CY, R, Math.min(CX,CY));
+  handle.style.left = p.x+'px'; handle.style.top = p.y+'px';
+}
+// Before the corpus fetch yields: otherwise the first paint keeps the dot at the
+// static top-left (outside the ring) for as long as browse_all.dat takes to arrive.
+navT = BrowseState.sanitizeNavT(params.get('t'), MAPS.length);
+placeHandle();
 function buildNav(){
   MAPS.forEach((m,k)=>{
     const d = document.createElement('div'); d.className='node'; const [x,y]=nodePos(k); d.style.left=x+'px'; d.style.top=y+'px';
@@ -354,20 +385,23 @@ function thumb(c, m){ // tiny CPU scatter of a subsample
     x.fillRect(4+vals[i*5+m.x]*112, 64-vals[i*5+m.y]*60, 1.2,1.2); }
 }
 function updNavUI(B){
-  // handle sits on the arc between the two nodes
-  const n=MAPS.length, a = -Math.PI/2 + (((navT%n)+n)%n)/n*2*Math.PI;
-  handle.style.left = (CX+R*Math.cos(a))+'px'; handle.style.top=(CY+R*Math.sin(a))+'px';
-  MAPS.forEach((m,k)=>m.el.classList.toggle('act', (k===B.i && B.e<0.5) || (k===B.j && B.e>=0.5)));
+  placeHandle();
+  MAPS.forEach((m,k)=>m.el && m.el.classList.toggle('act', (k===B.i && B.e<0.5) || (k===B.j && B.e>=0.5)));
   document.getElementById('navlabel').innerHTML = 'map of maps<small>drag the ring or shift+scroll</small>';
 }
 let dragging=false;
-function navFromEvent(e){ const r=nav.getBoundingClientRect(); const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
-  let a = Math.atan2(dy,dx)+Math.PI/2; if(a<0)a+=2*Math.PI; return a/(2*Math.PI)*MAPS.length; }
+function navFromEvent(e){
+  const r=nav.getBoundingClientRect();
+  // Not laid out yet (0×0): keep the current stop instead of feeding atan2 a bogus origin.
+  if (!(r.width>=2) || !(r.height>=2)) return navT;
+  const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
+  if (!Number.isFinite(dx) || !Number.isFinite(dy)) return navT;
+  let a = Math.atan2(dy,dx)+Math.PI/2; if(a<0)a+=2*Math.PI; return BrowseState.sanitizeNavT(a/(2*Math.PI)*MAPS.length, MAPS.length); }
 nav.addEventListener('pointerdown', e=>{ if(e.target.closest('.node')) return; dragging=true; nav.setPointerCapture(e.pointerId); navT=navFromEvent(e); draw(); });
 nav.addEventListener('pointermove', e=>{ if(!dragging) return; navT=navFromEvent(e); draw(); });
 nav.addEventListener('pointerup', ()=>{ dragging=false; });
 let animId = 0;
-function animateTo(k, durMs){ const n=MAPS.length; let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=durMs||900+Math.abs(d)*250, my=++animId;
+function animateTo(k, durMs){ const n=MAPS.length; navT=BrowseState.sanitizeNavT(navT,n); k=BrowseState.sanitizeNavT(k,n); let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=durMs||900+Math.abs(d)*250, my=++animId;
   (function step(now){ if (my!==animId) return; const f=Math.min(1,(now-t0)/dur), e=durMs? 1-(1-f)**3 : f; navT=from+d*e; draw(); if(f<1) requestAnimationFrame(step); else { navT=((k%n)+n)%n; draw(); writeURL(false); } })(t0); }
 // ---- scroll / trackpad / touch swipe turns the wheel: momentum, then snaps to the nearest map when idle
 let vel = 0, spinning = false, lastInput = 0;
@@ -375,17 +409,21 @@ function spin(){ spinning = true; animId++;
   (function step(){ navT += vel; vel *= 0.88; draw();
     if (Math.abs(vel) > 0.0015 || performance.now()-lastInput < 120) requestAnimationFrame(step);
     else { spinning = false; vel = 0; animateTo(Math.round(navT), 420); } })(); }
-function nudge(d){ vel += d; vel = Math.max(-0.12, Math.min(0.12, vel)); lastInput = performance.now(); if (!spinning) spin(); }
+function nudge(d){ if (!Number.isFinite(d)) return; vel += d; vel = Math.max(-0.12, Math.min(0.12, vel)); lastInput = performance.now(); if (!spinning) spin(); }
 // ---- view: zoom/pan in plot space (0..1 on both axes). V.z=1 shows everything.
 const V = {cx:0.5, cy:0.5, z:1};
-const ZMAX = 400;
+const ZMAX = BrowseState.ZMAX;
 function plotW(){ return innerWidth-PAD.l-PAD.r; } function plotH(){ return innerHeight-PAD.t-PAD.b; }
-function clampView(){ V.z = Math.min(ZMAX, Math.max(1, V.z)); const h = 0.5/V.z;
-  V.cx = Math.min(1-h, Math.max(h, V.cx)); V.cy = Math.min(1-h, Math.max(h, V.cy)); }
+function clampView(){ const c = BrowseState.clampCamera(V.z, V.cx, V.cy, ZMAX); V.z=c.z; V.cx=c.cx; V.cy=c.cy; }
 function toPlot(sx,sy){ return [((sx-PAD.l)/plotW()-0.5)/V.z+V.cx, ((innerHeight-sy-PAD.b)/plotH()-0.5)/V.z+V.cy]; }
-function zoomAt(sx,sy,f){ const [px,py]=toPlot(sx,sy), z0=V.z; V.z=Math.min(ZMAX,Math.max(1,z0*f));
+function zoomAt(sx,sy,f){
+  // A 0 plot size (viewport not laid out, or exactly the padding) makes toPlot
+  // divide by zero and writes NaN into the camera, after which every dot is offscreen.
+  const w=plotW(), h=plotH();
+  if (!(w>1) || !(h>1) || !Number.isFinite(f) || !(f>0) || !Number.isFinite(sx) || !Number.isFinite(sy)) return;
+  const [px,py]=toPlot(sx,sy), z0=V.z; V.z=Math.min(ZMAX,Math.max(1,z0*f));
   V.cx = px-(px-V.cx)*z0/V.z; V.cy = py-(py-V.cy)*z0/V.z; clampView(); }
-function panBy(dx,dy){ V.cx -= dx/plotW()/V.z; V.cy += dy/plotH()/V.z; clampView(); }
+function panBy(dx,dy){ const w=plotW(), h=plotH(); if (!(w>1)||!(h>1)||!Number.isFinite(dx)||!Number.isFinite(dy)) return; V.cx -= dx/w/V.z; V.cy += dy/h/V.z; clampView(); }
 let viewAnim = 0;
 function animView(t, dur=380, push){ const s={...V}, my=++viewAnim, t0=performance.now(), lz0=Math.log(s.z), lz1=Math.log(t.z);
   (function step(now){ if(my!==viewAnim) return; const f=Math.min(1,(now-t0)/dur), e=1-(1-f)**3;
@@ -396,19 +434,19 @@ function zoomStep(f){ const [x,y]=centerXY(); animView(zoomTarget(x,y,f), 380, t
 function resetView(){ animView({cx:.5,cy:.5,z:1}, 380, true); }
 
 // ---- URL state: t (map ring), z/x/y (view), id (open card). Discrete steps push history; continuous moves replace.
-function readViewParams(p){ const z=parseFloat(p.get('z')), x=parseFloat(p.get('x')), y=parseFloat(p.get('y'));
-  if (z>1) { V.z=z; V.cx=x===x?x:.5; V.cy=y===y?y:.5; } else { V.z=1; V.cx=.5; V.cy=.5; } clampView(); }
+function readViewParams(p){ const c = BrowseState.sanitizeView(p.get('z'), p.get('x'), p.get('y'), ZMAX); V.z=c.z; V.cx=c.cx; V.cy=c.cy; }
 let urlTimer = 0;
 function writeURL(push){ clearTimeout(urlTimer);
   const u = new URL(location); const sp=u.searchParams;
-  const t = ((navT%MAPS.length)+MAPS.length)%MAPS.length; if (Math.abs(t)>1e-3) sp.set('t', +t.toFixed(3)); else sp.delete('t');
+  navT = BrowseState.sanitizeNavT(navT, MAPS.length); clampView();
+  const t = navT; if (t>1e-3) sp.set('t', +t.toFixed(3)); else sp.delete('t');
   if (V.z>1.001) { sp.set('z', +V.z.toFixed(2)); sp.set('x', +V.cx.toFixed(4)); sp.set('y', +V.cy.toFixed(4)); } else { sp.delete('z'); sp.delete('x'); sp.delete('y'); }
   if (cardI>=0) sp.set('id', IDS[cardI]); else sp.delete('id');
   if (u.href === location.href) return;
   push ? history.pushState(null,'',u) : history.replaceState(null,'',u); }
 const writeURLSoon = () => { clearTimeout(urlTimer); urlTimer = setTimeout(()=>writeURL(false), 300); };
 addEventListener('popstate', ()=>{ const p=new URLSearchParams(location.search); const s={...V}; readViewParams(p); const t={...V}; Object.assign(V,s);
-  const nt=parseFloat(p.get('t')||'0'); if (Math.abs(nt-navT)>1e-3) { animId++; navT=nt; }
+  const nt=BrowseState.sanitizeNavT(p.get('t'), MAPS.length); if (Math.abs(nt-navT)>1e-3) { animId++; navT=nt; }
   animView(t); const id=p.get('id'); if (id && IDX.has(id)) openCard(IDX.get(id), false); else closeCard(false); });
 
 // ---- wheel: plain = zoom at cursor; shift (or over the ring) = turn the map-of-maps wheel
@@ -416,7 +454,7 @@ addEventListener('wheel', e=>{ if (e.target.closest && e.target.closest('#top,#i
   const raw = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX, px = raw * (e.deltaMode===1 ? 16 : e.deltaMode===2 ? 400 : 1);
   if (e.shiftKey || (e.target.closest && e.target.closest('#nav'))) { nudge(px * 0.00035); return; }
   viewAnim++; zoomAt(e.clientX, e.clientY, Math.exp(-px*(e.ctrlKey?0.01:0.0022))); draw(); writeURLSoon(); }, {passive:false});
-window.setNav = t => { navT=t; draw(); };
+window.setNav = t => { navT=BrowseState.sanitizeNavT(t, MAPS.length); draw(); };
 window.__view = V;
 
 // ---- picking & brushing (CPU, same blend + view as shader)
@@ -468,7 +506,7 @@ function openCard(i, push=true){ if (i<0 || i===undefined) return closeCard(push
     const hum = Array.isArray(e.human_en) ? e.human_en.filter(l=>l && l.en) : [];
     const lines = Array.isArray(e.lines) ? e.lines : [];
     if (hum.length) body = `<div class="muted">Human English${hum[0].author?` · ${esc(hum[0].author)}`:''}${e.src?` · via ${esc(e.src.toUpperCase())}`:''}</div><ol>`+hum.slice(0,6).map(l=>`<li><span class="ln">${esc(l.line||'')}</span>${esc(l.en)}</li>`).join('')+'</ol>'+(hum.length>6?`<div class="muted">…${hum.length-6} more lines</div>`:'');
-    else if (lines.some(l=>l.mt)) body = `<div class="muted">Machine translation, unreviewed${e.model?` (${esc(typeof e.model==='string'?e.model:(e.model.label||e.model.repo||''))})`.replace(' ()',''):''}</div><ol>`+lines.filter(l=>l.mt).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span>${esc(l.mt)}<div class="atf">${esc(l.atf||'')}</div></li>`).join('')+'</ol>';
+    else if (lines.some(l=>l.mt)) body = `<div class="muted">Machine translation${e.model?` (${esc(typeof e.model==='string'?e.model:(e.model.label||e.model.repo||''))})`.replace(' ()',''):''}</div><ol>`+lines.filter(l=>l.mt).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span>${esc(l.mt)}<div class="atf">${esc(l.atf||'')}</div></li>`).join('')+'</ol>';
     else if (lines.some(l=>l.atf)) body = `<div class="muted">Transliteration (ATF), no English yet</div><ol>`+lines.filter(l=>l.atf).slice(0,6).map(l=>`<li><span class="ln">${esc(l.n||'')}</span><span class="atf">${esc(l.atf)}</span></li>`).join('')+'</ol>';
     else body = '<div class="muted">Catalogue entry only: no transliteration online.</div>';
     card.innerHTML = `<button class="x" title="Close (Esc)" onclick="closeCard()">×</button><h3>${esc(e0.designation||e.designation||id)}</h3>`+

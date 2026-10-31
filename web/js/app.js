@@ -81,7 +81,23 @@ async function loadCatalog() {
   const herbN = state.catalog.herbal_remedies?.count || state.catalog.items.filter((i) => i.herbal_remedy).length;
   const omenN = state.catalog.omens?.count || state.catalog.items.filter((i) => i.omen_hunt).length;
   const mathN = state.catalog.math?.count || state.catalog.items.filter((i) => i.math_hunt).length;
-  $("#header-count").textContent = `${state.catalog.count} works · ${epicN} epic · ${herbN} remedies · ${omenN} omens · ${mathN} math`;
+  // Featured-set sizes for the Stats page (corpus figures there come from corpus_stats.json)
+  state.featuredCounts = { epic: epicN, remedies: herbN, omens: omenN, math: mathN };
+  const items = state.catalog.items || [];
+  state.translationListCounts = {
+    unread: items.filter((i) => i.translation_status === "no_open_english").length,
+    noEnglish: items.filter((i) => !i.open_english).length,
+    notOnline: items.filter((i) => i.translation_status === "print_edition").length,
+  };
+  const fillCount = (key, n) => {
+    document.querySelectorAll(`[data-count="${key}"]`).forEach((el) => {
+      el.textContent = n ? `(${n.toLocaleString()})` : "";
+    });
+  };
+  fillCount("unread", state.translationListCounts.unread);
+  fillCount("no-english", state.translationListCounts.noEnglish);
+  fillCount("not-online", state.translationListCounts.notOnline);
+  if (state.view === "stats") renderStats();
   // Featured rows
   const featRow = $("#featured-row");
   if (featRow && (state.catalog.epic_hunt?.featured || []).length) {
@@ -108,6 +124,18 @@ async function loadCatalog() {
   if (mode === "epic") {
     const eh = $("#filter-epic-hunt");
     if (eh) eh.checked = true;
+  }
+  if (mode === "unread") {
+    const ug = $("#filter-open-gap");
+    if (ug) ug.checked = true;
+  }
+  if (mode === "no-english" || mode === "no_english") {
+    const ne = $("#filter-no-english");
+    if (ne) ne.checked = true;
+  }
+  if (mode === "not-online" || mode === "not_online" || mode === "print") {
+    const no = $("#filter-not-online");
+    if (no) no.checked = true;
   }
   if (mode === "remedies" || mode === "herbal") {
     const hr = $("#filter-herbal");
@@ -198,8 +226,12 @@ async function loadText(id) {
 
 /** Fetch /api/text/<id> and adapt its best edition to the reader's packaged-text shape. */
 async function loadTextFromApi(id) {
+  let hdrs = { Accept: "application/json" };
+  if (window.UnreadToken && window.UnreadToken.headers) {
+    try { hdrs = await window.UnreadToken.headers(); } catch (e) {}
+  }
   const res = await fetch(`${TEXT_API}/text/${encodeURIComponent(id).replace(/%3A/gi, ":")}`, {
-    headers: { Accept: "application/json" },
+    headers: hdrs,
     signal: AbortSignal.timeout(30000),
   });
   if (!res.ok) return null;
@@ -232,6 +264,36 @@ function cleanTranslator(a) {
   return !a || /^(uncertain|unknown|check|cdli contributor|no translat|translator not named|oracc project\b)/i.test(a) ? null : a;
 }
 const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
+
+/**
+ * The text API returns ATF-less mt_lines (eBL) in database row order, not line order (Asb.h came back 6,3,2,4,7,1,5).
+ * Sort them by a natural line key: surface order (obv, rev, edges…), column, then the numeric line number (3' / 10a ok).
+ * Stable, so lines with unparseable labels keep their relative order.
+ */
+const SURF_ORDER = ["", "o", "e", "be", "r", "te", "le", "re"];
+function mtLineSortKey(label) {
+  const parts = String(label || "").trim().split(/\s+/);
+  const last = parts.pop() || "";
+  const m = /^(\d+)(\D*)$/.exec(last.replace(/[′’ʼ]/g, "'"));
+  if (!m) return null;
+  const surf = normSurf(parts.join(" "));
+  const [side, col] = surf.split(":");
+  let si = SURF_ORDER.indexOf(side || "");
+  if (si < 0) si = SURF_ORDER.length;
+  return [si, parseInt(col || "0", 10) || 0, parseInt(m[1], 10), m[2]];
+}
+function sortMtLines(ml) {
+  const keyed = ml.map((l, i) => ({ l, i, k: mtLineSortKey(l.line) }));
+  if (keyed.some((x) => !x.k)) return ml; // can't parse every label: leave the API order alone
+  keyed.sort((a, b) => {
+    for (let j = 0; j < 4; j++) {
+      const x = a.k[j], y = b.k[j];
+      if (x !== y) return x < y ? -1 : 1;
+    }
+    return a.i - b.i;
+  });
+  return keyed.map((x) => x.l);
+}
 
 function apiTextToReader(d, requestedId) {
   const eds = (d && d.editions) || [];
@@ -327,7 +389,7 @@ function apiTextToReader(d, requestedId) {
       conf = lines.map((l) => l.conf);
     } else {
       const ml = Array.isArray(mtEd.mt_lines) && mtEd.mt_lines.length
-        ? mtEd.mt_lines
+        ? sortMtLines(mtEd.mt_lines)
         : (mtEd.lines || []).filter((l) => l.mt).map((l) => ({ line: [l.surface, l.n].filter(Boolean).join(" "), mt: l.mt, conf: l.conf }));
       english = ml.map((l) => l.mt || "");
       labels = ml.map((l) => l.line || "");
@@ -344,8 +406,8 @@ function apiTextToReader(d, requestedId) {
       conf: conf.some(Boolean) ? conf : null,
       n: english.filter(Boolean).length,
       note: m.repo
-        ? `Machine draft · model ${m.label || "atf-en"} (${m.repo}${rev ? " @ " + rev : ""}) · translated ${m.translated_on || "?"}. Unreviewed machine output, not a scholarly translation.`
-        : "Machine draft. Unreviewed machine output, not a scholarly translation.",
+        ? `Machine translation · ${modelShort(m.label) || m.label || "model"}${m.translated_on ? ` · ${m.translated_on}` : ""}`
+        : "Machine translation",
       meta: { kind: "machine_draft", model: m.label, model_repo: m.repo, translated_on: m.translated_on },
       model_label: m.label || "",
       translated_on: m.translated_on || "",
@@ -428,14 +490,52 @@ function setTrParam(text) {
     /* ignore */
   }
 }
-window.addEventListener("popstate", () => {
-  const text = state.currentText;
-  if (!text || !text.translations) return;
+/**
+ * Routing: the URL is the source of truth for the view. ?id=<tablet>[&tr=…][&find=…] = reader on that tablet;
+ * ?view=about | ?view=reader (no tablet) = those views; neither = Explore. Every user view switch pushes an entry
+ * (setView/openReader), and popstate re-renders from the URL, so Back/Forward walk About ⇄ Reader ⇄ Explore.
+ */
+const READER_PARAMS = ["id", "tr", "find", "mode"];
+function viewUrl(view, id) {
+  const u = new URL(location.href);
+  u.searchParams.delete("view");
+  if (view === "reader" && id) {
+    if (u.searchParams.get("id") !== id) for (const k of READER_PARAMS) u.searchParams.delete(k);
+    u.searchParams.set("id", id);
+  } else {
+    for (const k of READER_PARAMS) u.searchParams.delete(k);
+    if (view === "about" || view === "reader" || view === "stats") u.searchParams.set("view", view);
+  }
+  return u.toString().replace(/%2C/gi, ",");
+}
+function syncUrl(view, id, mode) {
+  if (mode === "none") return;
+  const next = viewUrl(view, id);
+  if (next === location.href) return;
+  try {
+    if (mode === "replace") history.replaceState({ view, id: id || null }, "", next);
+    else history.pushState({ view, id: id || null }, "", next);
+  } catch (_) {
+    /* ignore */
+  }
+}
+function routeFromUrl() {
   const q = new URLSearchParams(location.search);
-  if (q.get("id") && q.get("id") !== text.id) return; // a different tablet: not ours to restore
-  applyTranslation(text, q.get("tr"));
-  renderReader();
-});
+  const id = q.get("id");
+  if (id) {
+    const text = state.currentText;
+    if (text && text.id === id && !state.readerPending) {
+      if (text.translations) applyTranslation(text, q.get("tr"));
+      setView("reader", "none");
+    } else {
+      openReader(id, "none");
+    }
+    return;
+  }
+  const v = q.get("view");
+  setView(v === "about" || v === "reader" || v === "stats" ? v : "explore", "none");
+}
+window.addEventListener("popstate", routeFromUrl);
 
 // ─── Aligned lines view: ATF | English (one or more versions side by side), one grid row per ATF line ───
 const NARROW_Q = window.matchMedia("(max-width: 760px)");
@@ -528,9 +628,45 @@ function mapTranslationToRows(o, keyIndex) {
 }
 
 const isAlignedText = (text) => !!(text && text.status === "api" && (text.translations || []).length);
-/** Columns actually drawn: on narrow screens only the first (the selector still switches it). */
-const visibleTrCols = (text) => (NARROW_Q.matches ? (text.tr_cols || []).slice(0, 1) : text.tr_cols || []);
+/** Index into tr_cols of the translation a narrow screen is showing while comparing. */
+function trFocus(text) {
+  const n = (text.tr_cols || []).length;
+  const i = text.tr_focus | 0;
+  return i >= 0 && i < n ? i : 0;
+}
+/**
+ * Columns drawn in the grid. Desktop shows every compared column. A narrow screen keeps one
+ * translation beside the ATF and moves between the others with tabs or a swipe, so compare is
+ * never dropped just because the viewport is small.
+ */
+const visibleTrCols = (text) => {
+  const cols = text.tr_cols || [];
+  if (!NARROW_Q.matches) return cols;
+  return cols.slice(0, 1); // the rest become their own slides (renderTrSlides)
+};
+/** Side-by-side pair opened by "Compare translations": machine draft, then the first human edition the policy allows. */
+function defaultCompareCols(text) {
+  const opts = text.translations || [];
+  const machine = opts.find((o) => o.kind === "machine");
+  const human = opts.find((o) => o.kind === "human");
+  if (machine && human && machine.key !== human.key) return [machine.key, human.key];
+  return opts.slice(0, 2).map((o) => o.key);
+}
+/** Drop legacy disclaimer / teaser phrases from machine-translation notes. */
+function scrubMtNote(s) {
+  if (!s) return s;
+  let t = String(s);
+  t = t.replace(/\s*Unreviewed machine output,?\s*/gi, " ");
+  t = t.replace(/\s*not a scholarly translation[^.]*\.?/gi, "");
+  t = t.replace(/\s*verify against a published edition\.?/gi, "");
+  t = t.replace(/\s*The first \d+ machine lines are in the HTML for search engines;?\s*the rest load from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\s*Machine English on this page loads from the corpus API in your browser\.?/gi, "");
+  t = t.replace(/\bMachine draft\b/g, "Machine translation");
+  return t.replace(/\s{2,}/g, " ").replace(/\s·\s*$/,"").trim();
+}
+
 const trOptLabel = (o) => (o.kind === "human" && o.translators && o.translators.length ? `${o.label} — ${o.translators[0]}` : o.label);
+const trTabLabel = (o) => (o.kind === "machine" ? "Machine" : String(o.label || "Translation").split(" · ")[0]);
 
 function trCreditHtml(o) {
   const link = (label, href) => (href ? `<a href="${escapeAttr(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>` : escapeHtml(label));
@@ -543,20 +679,35 @@ function trCreditHtml(o) {
       .filter(Boolean)
       .join(" · ");
   }
-  return `<span title="${escapeAttr(o.note || "")}">Machine draft · ${escapeHtml(o.model_label || "model")}${o.translated_on ? ` · ${escapeHtml(o.translated_on)}` : ""} · unreviewed, not a scholarly translation</span>`;
+  const short = `Machine translation · ${o.model_label || "model"}${o.translated_on ? ` · ${o.translated_on}` : ""}`;
+  const full = scrubMtNote(o.note || short);
+  // Full provenance is shown via the header ⓘ popover (lg-credit); keep a short summary for the rare inline-preamble mode.
+  return `<span class="mt-credit-full">${escapeHtml(full)}</span><span class="mt-credit-short" hidden>${escapeHtml(short)}</span>`;
+}
+
+/** Short source / licence line for a translation chip, e.g. "ORACC · CC BY-SA 3.0" or "machine draft". */
+function trChipSub(o) {
+  if (o.kind === "machine") return "machine translation";
+  return o.license ? `human · ${o.license}` : "human";
 }
 
 function renderLinesCol(text) {
-  const body = $("#lines-body");
-  const panels = state.readerPanels;
+  // Wide screens: ATF plus every chosen translation side by side in one aligned grid. Narrow screens:
+  // ATF plus the first translation here; each further translation gets its own slide (renderTrSlides).
+  const keys = state.readerPanels.english ? visibleTrCols(text) : [];
+  renderLinesGrid($("#lines-body"), text, keys, state.readerPanels.atf);
+}
+
+function renderLinesGrid(body, text, keys, wantAtf) {
   const opts = text.translations || [];
-  const narrow = NARROW_Q.matches;
-  const cols = panels.english ? visibleTrCols(text).map((k) => opts.find((o) => o.key === k)).filter(Boolean) : [];
-  const content = (text.lines || []).filter((l) => l.type === "line");
-  const atfOn = panels.atf && content.length > 0;
+  const cols = keys.map((k) => opts.find((o) => o.key === k)).filter(Boolean);
+  // Prefer attachMetaNotes so $ / # from packaged ATF ride on the adjacent row (API editions usually omit them).
+  const attached = attachMetaNotes(text.lines || []);
+  const content = attached.length ? attached : (text.lines || []).filter((l) => l.type === "line");
+  const atfOn = wantAtf && content.length > 0;
   // rows: the ATF lines; with no public ATF (eBL), the first column's own line labels
   let rows;
-  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, atf: l.atf, key: rowKey(l.surface, l.n) }));
+  if (content.length) rows = content.map((l) => ({ n: l.n, surface: l.surface, column: l.column, atf: l.atf, key: rowKey(l.surface, l.n), _notes: l._notes || [] }));
   else {
     const first = cols[0] || opts[0];
     rows = (first.labels || first.english.map((_, i) => String(i + 1))).map((lab) => ({ n: lab, surface: "", atf: null, key: rowKeyFromLabel(lab) }));
@@ -568,58 +719,51 @@ function renderLinesCol(text) {
 
   const k = cols.length;
   const atfW = k <= 1 ? 1 : k === 2 ? 0.8 : 0.62;
-  const tmpl = [content.length ? "2.6rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
+  const tmpl = [content.length ? "3.2rem" : "6.5rem", atfOn ? `minmax(0,${atfW}fr)` : null, ...cols.map(() => "minmax(0,1fr)")].filter(Boolean).join(" ");
   const atfCol = 2, enCol0 = atfOn ? 3 : 2;
-  const remaining = opts.filter((o) => !(text.tr_cols || []).includes(o.key));
   const html = [];
 
-  // row 1: the gray header bar (sticky) with the selectors; row 2: per-column credit / licence
+  // row 1: the gray header bar (sticky) naming each column; row 2: per-column credit / licence
   html.push(`<div class="lg-head" style="grid-row:1;grid-column:1"></div>`);
-  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span></div>`);
-  if (atfOn) html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
+  if (atfOn) html.push(`<div class="lg-head" style="grid-row:1;grid-column:${atfCol}"><span>ATF</span><span class="lg-head-sub">transliteration</span><button type="button" class="lg-info" data-info="atf" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
+  if (atfOn) html.push(`<div class="lg-credit" data-for="atf" style="grid-row:2;grid-column:1 / ${atfCol + 1}">${escapeHtml(`From ${text.atf_source || "source"}`)}${(text._notes_common || []).length ? " · " + escapeHtml(text._notes_common.join(" · ")) : ""}</div>`);
   else html.push(`<div class="lg-credit" style="grid-row:2;grid-column:1"></div>`);
   const maps = cols.map((o) => mapTranslationToRows(o, keyIndex));
-  cols.forEach((o, ci) => {
-    const c = enCol0 + ci;
-    const others = new Set(cols.map((x) => x.key).filter((x) => x !== o.key)); // narrow: hidden columns stay pickable
-    const choices = opts.filter((x) => !others.has(x.key));
-    const pick =
-      choices.length > 1
-        ? `<select class="tr-pick" data-col="${ci}" aria-label="Translation shown in this column" title="Choose the translation for this column">${choices
-            .map((x) => `<option value="${escapeAttr(x.key)}"${x.key === o.key ? " selected" : ""}>${escapeHtml((x.kind === "machine" ? "⚙ " : "") + trOptLabel(x))}</option>`)
-            .join("")}</select>`
-        : `<span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span>`;
-    const x = k > 1 ? `<button type="button" class="tr-x" data-col="${ci}" title="Remove this column" aria-label="Remove column">×</button>` : "";
-    const add =
-      ci === k - 1 && remaining.length && !narrow
-        ? `<select class="tr-add" aria-label="Add a translation column to compare" title="Add a column to compare translations side by side"><option value="">+ compare</option>${remaining
-            .map((r) => `<option value="${escapeAttr(r.key)}">${escapeHtml(trOptLabel(r))}</option>`)
-            .join("")}</select>`
-        : "";
-    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}">${pick}${x}${add}</div>`);
-    const mp = maps[ci];
+  cols.forEach((o, vi) => {
+    const c = enCol0 + vi;
+    html.push(`<div class="lg-head lg-head-en" data-key="${escapeAttr(o.key)}" style="grid-row:1;grid-column:${c}"><span class="tr-only">${escapeHtml((o.kind === "machine" ? "⚙ " : "") + trOptLabel(o))}</span><button type="button" class="lg-info" data-info="${escapeAttr(o.key)}" aria-label="About this column" title="Source, licence and notes">ⓘ</button></div>`);
+    const mp = maps[vi];
     const how =
       o.labels && mp.rate < 0.5
         ? " · not line-aligned in the source, shown as one block"
         : mp.blocks.some((b) => b.e > b.s)
           ? " · paragraph translation: each passage spans the lines it covers"
           : "";
-    const withheld = ci === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
-    html.push(`<div class="lg-credit lg-credit-en" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
+    const withheld = vi === 0 && !content.length && text.atf ? `<br>Transliteration not shown: ${escapeHtml(text.atf)}` : "";
+    html.push(`<div class="lg-credit lg-credit-en" data-for="${escapeAttr(o.key)}" style="grid-row:2;grid-column:${c}">${trCreditHtml(o)}${how}${withheld}</div>`);
   });
 
   // content rows (surface headings get their own row across the line-number + ATF columns)
+  // Surface changes (obverse → reverse …) are NOT their own grid rows: an extra row exists only in the
+  // line-number + ATF columns, so it pushed every translation column down (the stray "O" + dashed rule at the top).
+  // Instead the first line of each surface carries a small tag in its line-number cell, and later surfaces
+  // get a dashed rule on top of that row in every column, so all columns stay level.
   const rowG = [];
+  const surfStart = new Set();
   let g = 3, lastSurf = null;
   rows.forEach((r, i) => {
+    let tag = "";
     if (content.length && r.surface && r.surface !== lastSurf) {
-      html.push(`<div class="lg-break" style="grid-row:${g};grid-column:1 / ${atfOn ? atfCol + 1 : 2}">${escapeHtml(r.surface)}</div>`);
-      g++;
+      const ps = parseSurface(r.surface, r.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
+      if (lastSurf !== null) surfStart.add(i);
     }
     lastSurf = r.surface;
     rowG[i] = g;
-    html.push(`<div class="lg-cell lg-ln" data-i="${i}" style="grid-row:${g};grid-column:1">${escapeHtml(r.n)}</div>`);
-    if (atfOn) html.push(`<div class="lg-cell lg-atf" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
+    const sc = surfStart.has(i) ? " lg-surf-start" : "";
+    const mark = atfNotesMarker(r._notes);
+    html.push(`<div class="lg-cell lg-ln${sc}" data-i="${i}" style="grid-row:${g};grid-column:1">${mark}${tag}<span class="ln-n">${escapeHtml(r.n)}</span></div>`);
+    if (atfOn) html.push(`<div class="lg-cell lg-atf${sc}" data-i="${i}" style="grid-row:${g};grid-column:${atfCol}">${escapeHtml(r.atf)}</div>`);
     g++;
   });
   const itemHtml = (it, showLabel) =>
@@ -639,7 +783,7 @@ function renderLinesCol(text) {
       const span = b.e > b.s;
       const range = span ? `<span class="lg-range">${escapeHtml(`${rows[b.s].n}–${rows[b.e].n}`)}</span>` : "";
       html.push(
-        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${lv ? ` conf-${lv}` : ""}"${span ? "" : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
+        `<div class="lg-cell lg-en lg-${o.kind}${span ? " lg-span" : ""}${surfStart.has(b.s) ? " lg-surf-start" : ""}${lv ? ` conf-${lv}` : ""}"${span ? ` data-s="${b.s}" data-e="${b.e}"` : ` data-i="${b.s}"`}${lv ? ` title="${escapeAttr(CONF_TITLES[lv])}"` : ""} style="grid-row:${rowG[b.s]} / ${rowG[b.e] + 1};grid-column:${c}">${range}${b.items
           .map((it) => itemHtml(it, !!it.orphan))
           .join(" ")}</div>`
       );
@@ -647,31 +791,140 @@ function renderLinesCol(text) {
   });
   if (!cols.length && !atfOn) html.push(`<p style="grid-row:3;grid-column:1 / -1;color:var(--text-faint);padding:1rem">Nothing to show.</p>`);
   body.innerHTML = `<div class="lines-grid${k > 1 ? " lg-compare" : ""}" style="grid-template-columns:${tmpl}">${html.join("")}</div>`;
-
-  const setCols = (next) => {
-    applyTranslation(text, next);
-    setTrParam(text);
-    renderReader();
-  };
-  body.querySelectorAll(".tr-pick").forEach((sel) =>
-    sel.addEventListener("change", () => {
-      const next = [...text.tr_cols];
-      const ci = +sel.dataset.col, j = next.indexOf(sel.value);
-      if (j >= 0) next[j] = next[ci]; // picking a column hidden on narrow screens swaps it in, keeping the comparison
-      next[ci] = sel.value;
-      setCols(next);
-    })
-  );
-  body.querySelectorAll(".tr-x").forEach((b) =>
-    b.addEventListener("click", () => setCols(text.tr_cols.filter((_, i) => i !== +b.dataset.col)))
-  );
-  body.querySelector(".tr-add")?.addEventListener("change", (e) => {
-    if (e.target.value) setCols([...text.tr_cols, e.target.value]);
-  });
   bindLineHover(body);
 }
+
+/** Narrow screens: one extra slide per additional translation chip that is on (line numbers + that translation). */
+function renderTrSlides(text) {
+  $$("#reader-body .tr-slide").forEach((el) => el.remove());
+  if (!NARROW_Q.matches || !isAlignedText(text) || !state.readerPanels.english) return;
+  let after = $("#col-lines");
+  (text.tr_cols || []).slice(1).forEach((key, j) => {
+    const col = document.createElement("div");
+    col.className = "reader-col tr-slide";
+    col.id = `col-tr-${j + 1}`;
+    col.style.display = "flex";
+    col.innerHTML = `<div class="col-body lines-body-extra"></div>`;
+    after.insertAdjacentElement("afterend", col);
+    after = col;
+    renderLinesGrid(col.firstElementChild, text, [key], false);
+  });
+}
+
+/** Chip row: one chip per available translation (aligned tablets) or one English chip, then ATF, Cuneiform, Meta. */
+function renderReaderChips(text) {
+  const host = $("#reader-chips");
+  if (!host) return;
+  const panels = state.readerPanels;
+  const content = (text.lines || []).filter((l) => l.type === "line");
+  const aligned = isAlignedText(text);
+  host.querySelectorAll(".pchip-tr").forEach((el) => el.remove());
+  const enChip = host.querySelector('[data-panel="english"]');
+  const status = text.translation_short || "";
+  if (aligned) {
+    enChip.hidden = true;
+    const on = panels.english ? text.tr_cols || [] : [];
+    const frag = (text.translations || [])
+      .map((o) => {
+        const i = on.indexOf(o.key);
+        return `<button type="button" class="pchip pchip-tr${i >= 0 ? " on" : ""} pchip-${o.kind}" data-tr="${escapeAttr(o.key)}" data-slide="${i <= 0 ? "col-lines" : `col-tr-${i}`}" aria-pressed="${i >= 0}" title="${escapeAttr(trOptLabel(o))}"><span class="pchip-name">${escapeHtml(o.kind === "machine" ? "⚙ Machine" : trTabLabel(o))}</span><span class="pchip-sub">${escapeHtml(trChipSub(o))}</span></button>`;
+      })
+      .join("");
+    enChip.insertAdjacentHTML("beforebegin", frag);
+  } else {
+    const has = !!(Array.isArray(text.english) ? text.english.length : text.english);
+    enChip.hidden = false;
+    enChip.disabled = !has;
+    enChip.dataset.slide = "col-english";
+    enChip.querySelector(".pchip-sub").textContent = has ? (text.english_kind === "human" ? "human" : "machine translation") + (status ? ` · ${status}` : "") : status || "none yet";
+  }
+  const atfChip = host.querySelector('[data-panel="atf"]');
+  atfChip.disabled = !content.length;
+  atfChip.dataset.slide = aligned ? "col-lines" : "col-atf";
+  atfChip.querySelector(".pchip-sub").textContent = content.length ? "transliteration" : text.atf ? "withheld" : "none";
+  const cuChip = host.querySelector('[data-panel="cuneiform"]');
+  cuChip.disabled = !content.length;
+  cuChip.dataset.slide = "col-cuneiform";
+  cuChip.querySelector(".pchip-sub").textContent = content.length ? "Unicode" : "none";
+  host.querySelector('[data-panel="meta"]').dataset.slide = "col-meta";
+  host.querySelectorAll("[data-panel]").forEach((b) => {
+    const v = !!panels[b.dataset.panel] && !b.disabled;
+    b.classList.toggle("on", v);
+    b.setAttribute("aria-pressed", String(v));
+  });
+  host.querySelectorAll(".pchip-tr").forEach((b) => b.addEventListener("click", () => onChip(b)));
+  syncSlideChip();
+}
+
+/** Turn a chip's panel / translation on or off. Narrow: a tap on an off chip turns it on and slides to it,
+ *  a tap on an on chip slides to it, and a tap on the chip already in view turns it off. */
+function onChip(btn) {
+  const text = state.currentText;
+  if (!text || btn.disabled) return;
+  const panels = state.readerPanels;
+  const on = btn.classList.contains("on");
+  if (NARROW_Q.matches && on && !btn.classList.contains("current")) {
+    scrollToSlide(btn.dataset.slide);
+    return;
+  }
+  const wouldBeEmpty = (nextPanels) => !Object.values(nextPanels).some(Boolean);
+  if (btn.dataset.tr) {
+    const key = btn.dataset.tr;
+    let cols = panels.english ? [...(text.tr_cols || [])] : [];
+    cols = on ? cols.filter((k) => k !== key) : [...cols, key];
+    if (!cols.length) {
+      if (wouldBeEmpty({ ...panels, english: false })) return;
+      panels.english = false;
+    } else {
+      panels.english = true;
+      applyTranslation(text, cols);
+      setTrParam(text);
+    }
+  } else {
+    const key = btn.dataset.panel;
+    if (wouldBeEmpty({ ...panels, [key]: !on })) return;
+    panels[key] = !on;
+  }
+  renderReader();
+  if (!on) {
+    const slide = btn.dataset.tr ? $(`#reader-chips [data-tr="${CSS.escape(btn.dataset.tr)}"]`)?.dataset.slide : btn.dataset.slide;
+    scrollToSlide(slide);
+  }
+}
+
+function scrollToSlide(id) {
+  if (!NARROW_Q.matches || !id) return;
+  const body = $("#reader-body");
+  const el = document.getElementById(id);
+  if (!el || el.style.display === "none") return;
+  body.scrollTo({ left: el.offsetLeft - body.offsetLeft, behavior: "smooth" });
+}
+
+/** Mark the chip(s) whose slide is in view (narrow); chips are the slider's tab indicator. */
+function syncSlideChip() {
+  const host = $("#reader-chips");
+  const body = $("#reader-body");
+  if (!host || !body) return;
+  let cur = null;
+  if (NARROW_Q.matches) {
+    const mid = body.scrollLeft + body.clientWidth / 2;
+    for (const el of body.children) {
+      if (el.style.display === "none" || !el.offsetWidth) continue;
+      const x = el.offsetLeft - body.offsetLeft;
+      if (mid >= x && mid < x + el.offsetWidth) cur = el.id;
+    }
+  }
+  host.querySelectorAll(".pchip").forEach((b) => {
+    const c = !!cur && b.classList.contains("on") && b.dataset.slide === cur;
+    b.classList.toggle("current", c);
+    if (c) b.setAttribute("aria-current", "true");
+    else b.removeAttribute("aria-current");
+  });
+  const curChip = host.querySelector(".pchip.current");
+  if (curChip && host.scrollWidth > host.clientWidth) curChip.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
 NARROW_Q.addEventListener?.("change", () => {
-  if (state.currentText && isAlignedText(state.currentText)) renderReader();
+  if (state.currentText) renderReader();
 });
 
 /** Content lines still without English (0 when the English is complete or not line-aligned). */
@@ -686,7 +939,7 @@ function englishRemaining(text) {
 function populateFilterOptions() {
   const items = state.catalog.items;
   const genres = uniqueSorted(items.map((i) => i.genre).filter(Boolean));
-  const periods = uniqueSorted(items.map((i) => i.period).filter(Boolean));
+  const periods = uniqueSorted(items.map((i) => periodFacetKey(i.period)).filter(Boolean));
   const langs = uniqueSorted(items.map((i) => i.language).filter(Boolean));
   const sites = uniqueSorted(items.map((i) => i.site || i.provenience).filter(Boolean));
 
@@ -698,6 +951,7 @@ function populateFilterOptions() {
 
 function fillSelect(sel, values) {
   const el = $(sel);
+  if (!el) return;
   const cur = el.value;
   el.innerHTML = `<option value="">All</option>` + values.map((v) => `<option value="${escapeAttr(v)}">${escapeHtml(v)}</option>`).join("");
   if (values.includes(cur)) el.value = cur;
@@ -708,14 +962,16 @@ function uniqueSorted(arr) {
 }
 
 function applyFilters() {
-  const q = ($("#search").value || "").trim().toLowerCase();
+  const q = (($("#search")?.value) || "").trim().toLowerCase();
   const genre = $("#filter-genre").value;
   const period = $("#filter-period").value;
   const language = $("#filter-language").value;
   const site = $("#filter-site").value;
   const minLines = Number($("#filter-min-lines").value) || 0;
   const hideOpenEnglish = $("#filter-hide-known").checked;
-  const onlyOpenGap = $("#filter-open-gap")?.checked;
+  const onlyOpenGap = $("#filter-open-gap")?.checked; // Unread list
+  const onlyNoEnglish = $("#filter-no-english")?.checked;
+  const onlyNotOnline = $("#filter-not-online")?.checked;
   const onlyPackaged = $("#filter-packaged").checked;
   const epicHunt = $("#filter-epic-hunt")?.checked;
   const herbalMode = $("#filter-herbal")?.checked;
@@ -730,6 +986,10 @@ function applyFilters() {
   document.body.classList.toggle("mode-herbal", !!herbalMode);
   document.body.classList.toggle("mode-omen", !!omenMode);
   document.body.classList.toggle("mode-math", !!mathMode);
+  if (epicHunt || herbalMode || omenMode || mathMode) {
+    const d = document.getElementById("acc-curated");
+    if (d && !d.open) d.open = true;
+  }
   const omenIntro = $("#mode-intro-omens");
   const mathIntro = $("#mode-intro-math");
   if (omenIntro) omenIntro.hidden = !omenMode;
@@ -751,14 +1011,19 @@ function applyFilters() {
     if (omenMode && state.omenKind && item.omen_kind !== state.omenKind) return false;
     if (mathMode && state.mathKind && item.math_kind !== state.mathKind) return false;
     if (genre && item.genre !== genre) return false;
-    if (period && item.period !== period) return false;
+    if (period && periodFacetKey(item.period) !== period) return false;
     if (language && item.language !== language) return false;
     if (site && item.site !== site && item.provenience !== site) return false;
     if (item.content_lines < lineFloor) return false;
     // Hide works that already have open digital English (RINAP/ETCSL/CDLI…)
     // In epic hunt, still hide open_project ETCSLish when this is checked
     if (hideOpenEnglish && item.open_english) return false;
+    // Unread: translation_status === no_open_english (no CDLI English, no open-project/series hit)
     if (onlyOpenGap && item.translation_status !== "no_open_english") return false;
+    // No English: open_english === false (Unread ∪ Not online ∪ other unknowns)
+    if (onlyNoEnglish && item.open_english) return false;
+    // Not online: print_edition (human English in print scholarship, not found as open digital)
+    if (onlyNotOnline && item.translation_status !== "print_edition") return false;
     if (onlyPackaged && !packaged.has(item.id)) return false;
     if (q) {
       const markers = item.epic_markers ? Object.keys(item.epic_markers).join(" ") : "";
@@ -824,7 +1089,7 @@ function applyFilters() {
     );
   }
   const mode = modes.length ? ` · ${modes.join(" + ")}` : "";
-  $("#results-count").textContent = `${state.filtered.length} works${mode}`;
+  const rc = $("#results-count"); if (rc) rc.textContent = `${state.filtered.length} works${mode}`;
 }
 
 function statusChip(item) {
@@ -847,10 +1112,10 @@ function machineChip(text) {
   if (!n) return "";
   const total = (text.lines || []).filter((l) => l.type === "line").length;
   if (text.machine_draft_lines != null) n = text.machine_draft_lines;
-  const label = total && n < total ? `Machine draft ${n}/${total}` : `Machine draft (${n})`;
+  const label = total && n < total ? `Machine translation ${n}/${total}` : `Machine translation (${n})`;
   const tm = text.translation_meta || {};
   const stamp = tm.model ? ` · ${tm.model}${tm.translated_on ? ` · ${tm.translated_on}` : ""}` : "";
-  return `<span class="chip status-machine" title="Machine English${escapeAttr(stamp)} — not a scholarly translation">${label}</span>`;
+  return `<span class="chip status-machine" title="Machine translation${escapeAttr(stamp)}">${label}</span>`;
 }
 
 function markerChips(item) {
@@ -869,6 +1134,7 @@ function markerChips(item) {
 
 function renderCatalogList() {
   const list = $("#catalog-list");
+  if (!list) return; // sidebar list removed; pins + preview still use state.filtered
   const packaged = new Set(state._packagedIds || []);
   const epicMode = $("#filter-epic-hunt")?.checked;
   const max = 200;
@@ -1021,12 +1287,184 @@ function renderPreview(item, loading, text) {
 }
 
 // ─── Reader ───
-async function openReader(id) {
+// Search opens the reader as map.html?id=<text>&find=<query>. `find` (not `q`: that drives the
+// map search layer) highlights the same words search.js marks and scrolls the first hit into view.
+let findLineIdx = new Set();
+
+const FIND_ATF = { š: "sz", ṣ: "s,", ṭ: "t,", ḫ: "h", ŋ: "j", ĝ: "j", "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9" };
+const findAtfAscii = (s) => s.replace(/[šṣṭḫŋĝ₀-₉]/gi, (c) => {
+  const m = FIND_ATF[c.toLowerCase()];
+  return c === c.toLowerCase() ? m : m.toUpperCase();
+});
+const findFold = (s) => s.normalize("NFD").replace(/\p{M}/gu, "");
+
+/** Same term rules as search.js `termsFor`: phrases, word*, š/sz, accents. */
+function findTerms(q) {
+  const out = new Map();
+  for (const m of String(q || "").matchAll(/"([^"]*)"|(\S+)/g)) {
+    const raw = m[1] ?? m[2];
+    if (m[1] == null && /^(AND|OR|NOT|NEAR)$/.test(raw)) continue;
+    const words = raw.match(/[\p{L}\p{N}_]+/gu) || [];
+    const prefix = words.length === 1 && raw.endsWith("*");
+    for (const w of words) {
+      for (const v of new Set([w, findAtfAscii(w), findFold(w), findFold(findAtfAscii(w))])) {
+        if (v) out.set(v.toLowerCase(), prefix || out.get(v.toLowerCase()));
+      }
+    }
+  }
+  return out;
+}
+
+function compileFind(q) {
+  const terms = findTerms(q);
+  if (!terms.size) return null;
+  const words = [...terms.keys()].sort((a, b) => b.length - a.length);
+  const alt = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  return { terms, re: new RegExp(`(?<![\\p{L}\\p{N}_])(${alt})([\\p{L}\\p{N}_]*)`, "giu") };
+}
+
+/** null, or a list of {text, mark} covering `text`. */
+function findSpans(text, find) {
+  if (!text || !find) return null;
+  find.re.lastIndex = 0;
+  const parts = [];
+  let last = 0;
+  let hit = false;
+  for (const m of String(text).matchAll(find.re)) {
+    if (m[2] && !find.terms.get(m[1].toLowerCase())) continue;
+    hit = true;
+    if (m.index > last) parts.push({ text: text.slice(last, m.index), mark: false });
+    parts.push({ text: m[0], mark: true });
+    last = m.index + m[0].length;
+  }
+  if (!hit) return null;
+  if (last < text.length) parts.push({ text: text.slice(last), mark: false });
+  return parts;
+}
+
+function lineHits(text, find) {
+  return !!findSpans(text, find);
+}
+
+/** If the open column doesn't contain the search term but another translation does, show that one. */
+function maybePreferFindColumn(text) {
+  const params = new URLSearchParams(location.search);
+  const q = (params.get("find") || "").trim();
+  if (!q || params.get("tr") || !text || !(text.translations || []).length) return;
+  const find = compileFind(q);
+  if (!find) return;
+  const cur = text.translations.find((o) => o.key === text.tr_active);
+  if (cur && (cur.english || []).some((t) => lineHits(t, find))) return;
+  if ((text.lines || []).some((l) => l.atf && lineHits(l.atf, find))) return;
+  const alt = text.translations.find((o) => o.key !== text.tr_active && (o.english || []).some((t) => lineHits(t, find)));
+  if (alt) applyTranslation(text, [alt.key]);
+}
+
+function highlightElement(el, find) {
+  const existing = el.querySelector("mark.find-hit");
+  if (existing) return existing;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
+      if (node.parentElement && node.parentElement.closest("mark")) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  let first = null;
+  for (const node of nodes) {
+    const spans = findSpans(node.nodeValue, find);
+    if (!spans) continue;
+    const frag = document.createDocumentFragment();
+    for (const s of spans) {
+      if (!s.mark) {
+        frag.appendChild(document.createTextNode(s.text));
+        continue;
+      }
+      const mark = document.createElement("mark");
+      mark.className = "find-hit";
+      mark.textContent = s.text;
+      frag.appendChild(mark);
+      if (!first) first = mark;
+    }
+    node.parentNode.replaceChild(frag, node);
+  }
+  return first;
+}
+
+function paintFindLines() {
+  document.querySelectorAll(".find-line").forEach((el) => el.classList.remove("find-line"));
+  for (const i of findLineIdx) {
+    let sel = `[data-i="${i}"]`;
+    try { sel = `[data-i="${CSS.escape(i)}"]`; } catch (_) { /* keep the raw selector */ }
+    document.querySelectorAll(sel).forEach((el) => el.classList.add("find-line"));
+  }
+}
+
+/** Scroll only this column's own scroller, so a sibling column (cuneiform) stays put on a phone. */
+function scrollColBody(el) {
+  const col = el.closest(".col-body");
+  if (!col || col.scrollHeight <= col.clientHeight + 4) return;
+  const er = el.getBoundingClientRect();
+  const sr = col.getBoundingClientRect();
+  col.scrollTop += er.top - sr.top - (col.clientHeight - er.height) / 2;
+}
+
+function scrollFindTarget(el) {
+  scrollColBody(el);
+  const col = el.closest(".col-body");
+  if (col && col.scrollHeight > col.clientHeight + 4) return;
+  const outer = el.closest(".reader-body");
+  if (!outer || outer.scrollHeight <= outer.clientHeight + 4) return;
+  const er = el.getBoundingClientRect();
+  const sr = outer.getBoundingClientRect();
+  outer.scrollTop += er.top - sr.top - (outer.clientHeight - er.height) / 2;
+}
+
+function applySearchFind() {
+  const q = (new URLSearchParams(location.search).get("find") || "").trim();
+  findLineIdx = new Set();
+  const note = document.getElementById("find-note");
+  if (!q) {
+    if (note) note.hidden = true;
+    paintFindLines();
+    return;
+  }
+  const find = compileFind(q);
+  let first = null;
+  if (find) {
+    const sel = "#lines-body .lg-atf, #lines-body .en-text, #atf-body .line-row .atf, #english-body .en-text";
+    for (const el of document.querySelectorAll(sel)) {
+      const col = el.closest(".reader-col");
+      if (col && col.style.display === "none") continue;
+      const mark = highlightElement(el, find);
+      if (!mark) continue;
+      const row = mark.closest("[data-i]") || el.closest("[data-i]");
+      if (row && row.dataset.i != null) findLineIdx.add(row.dataset.i);
+      if (!first) first = mark;
+    }
+  }
+  paintFindLines();
+  if (note) {
+    note.hidden = false;
+    const n = findLineIdx.size;
+    note.textContent = first
+      ? (n ? `${n} line${n === 1 ? "" : "s"} match “${q}”` : `Matches for “${q}” are highlighted`)
+      : `No lines shown here match “${q}”`;
+  }
+  if (first) scrollFindTarget(first);
+  const cHit = document.querySelector("#cuneiform-body .find-line");
+  if (cHit) scrollColBody(cHit);
+}
+
+async function openReader(id, hist = "push") {
+  syncUrl("reader", id, hist);
   // While the text loads (the /api Lambda can take seconds on a cold start) the reader shows
   // "Loading tablet <id>…" instead of its "No work open" empty state; on failure, a retry.
   const token = (state._readerToken = (state._readerToken || 0) + 1);
   state.readerPending = { id, failed: false };
-  setView("reader");
+  setView("reader", "none");
   const text = await loadText(id);
   if (token !== state._readerToken) return; // a newer openReader() superseded this one
   if (!text) {
@@ -1046,6 +1484,7 @@ async function openReader(id) {
   state.font = FontMap.override() || state.fontAuto;
   text.font = state.font;
   $("#font-select").value = FontMap.override();
+  maybePreferFindColumn(text);
   renderReader();
 }
 
@@ -1057,7 +1496,12 @@ function renderReader() {
   const p = state.readerPending;
 
   pending.style.display = p ? "flex" : "none";
+  const hideFindNote = () => {
+    const note = document.getElementById("find-note");
+    if (note) note.hidden = true;
+  };
   if (p) {
+    hideFindNote();
     empty.style.display = "none";
     shell.style.display = "none";
     pending.classList.toggle("failed", !!p.failed);
@@ -1071,6 +1515,7 @@ function renderReader() {
     return;
   }
   if (!text) {
+    hideFindNote();
     empty.style.display = "flex";
     shell.style.display = "none";
     return;
@@ -1095,11 +1540,21 @@ function renderReader() {
   ]
     .filter(Boolean)
     .join(" · ");
+  const findQ = (new URLSearchParams(location.search).get("find") || "").trim();
+  let findNote = document.getElementById("find-note");
+  if (findQ) {
+    if (!findNote) {
+      findNote = document.createElement("div");
+      findNote.id = "find-note";
+      findNote.className = "find-note";
+      $("#reader-meta").insertAdjacentElement("afterend", findNote);
+    }
+    findNote.hidden = false;
+    findNote.textContent = `Matches for “${findQ}”`;
+  } else if (findNote) findNote.hidden = true;
   const badgeHost = $("#reader-status-badges");
   if (badgeHost) {
     badgeHost.innerHTML = [
-      statusChip(text),
-      machineChip(text),
       text.epic_hunt ? `<span class="chip status-epic">Epic</span>` : "",
       text.herbal_remedy ? `<span class="chip status-herbal">Remedy</span>` : "",
       text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
@@ -1136,13 +1591,21 @@ function renderReader() {
   $("#col-meta").style.display = panels.meta ? "flex" : "none";
 
   renderEnglishCol(text); // aligned API tablets: renders the lines column instead
+  renderTrSlides(text);
+  renderReaderChips(text);
   if (!aligned) renderAtfCol(text);
   renderCuneiformCol(text);
   if (panels.meta) {
     renderMetaCol(text);
     maybeFetchCdliMeta(text);
   }
+  applySearchFind();
+  // Let the reader-model module (cog / live MT) sync after each paint.
+  try {
+    document.dispatchEvent(new CustomEvent("unread:reader-rendered", { detail: { id: text && text.id } }));
+  } catch (_) { /* ignore */ }
 }
+
 
 function metaRow(label, value, { html = false } = {}) {
   if (value == null || value === "" || value === false) return "";
@@ -1174,7 +1637,7 @@ function renderMetaCol(text) {
     text.omen_hunt ? `<span class="chip status-omen">${escapeHtml(OMEN_KIND_LABELS[text.omen_kind] || "Omen")}</span>` : "",
     text.math_hunt ? `<span class="chip status-math">${escapeHtml(MATH_KIND_LABELS[text.math_kind] || "Math")}</span>` : "",
     text.has_machine_draft || (Array.isArray(text.english) && text.english.length)
-      ? `<span class="chip status-machine">Machine draft</span>`
+      ? `<span class="chip status-machine">Machine translation</span>`
       : "",
   ]
     .filter(Boolean)
@@ -1365,29 +1828,59 @@ async function maybeFetchCdliMeta(text, force = false) {
   }
 }
 
+
+/** Full Machine/English provenance for the header ⓘ popover (not inlined in the column body). */
+function englishProvenanceText(text) {
+  if (!text) return "";
+  // Machine column ⓘ: short stamp only (model · date), no disclaimer / status essay.
+  const machine = (text.translations || []).find((o) => o.key === "machine" || o.kind === "machine");
+  if (machine && text.english_kind !== "human") {
+    const label = machine.model_label || (text.translation_meta && text.translation_meta.model) || "B2c";
+    const on = machine.translated_on || (text.translation_meta && text.translation_meta.translated_on) || "";
+    return scrubMtNote(`Machine translation · ${label}${on ? ` · ${on}` : ""}`);
+  }
+  const bits = [];
+  if (text.english_note) bits.push(scrubMtNote(text.english_note));
+  if (text.english_kind === "human") {
+    /* credit lives in english_note */
+  } else if (text.translation_status === "print_edition") {
+    bits.push("Scholars translated this in print — this English is a machine translation for comparison.");
+  } else if (text.translation_status === "no_open_english") {
+    bits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
+  } else if (text.open_english) {
+    bits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
+  } else if (text.translation_label) {
+    bits.push(text.translation_label);
+  }
+  // Dedup while preserving order
+  const seen = new Set();
+  const out = [];
+  for (const b of bits) {
+    const t = String(b || "").trim();
+    if (!t || seen.has(t)) continue;
+    seen.add(t);
+    out.push(t);
+  }
+  return out.join(" · ");
+}
+
 function renderEnglishCol(text) {
   const body = $("#english-body");
   const contentLines = (text.lines || []).filter((l) => l.type === "line");
   if (isAlignedText(text) && (state.readerPanels.english || state.readerPanels.atf)) {
+    text._englishProvenance = englishProvenanceText(text);
+    // Enrich machine lg-credit with catalog status bits when the option note is short.
+    const mach = (text.translations || []).find((o) => o.kind === "machine");
+    if (mach && text._englishProvenance && (!mach.note || mach.note.length < text._englishProvenance.length)) {
+      mach.note = text._englishProvenance;
+    }
     renderLinesCol(text);
     return;
   }
 
   if (text.english && Array.isArray(text.english) && text.english.length) {
-    const statusBits = [];
-    if (text.translation_label) statusBits.push(text.translation_label);
-    if (text.english_kind === "human") {
-      /* human translation: credit is in english_note */
-    } else if (text.translation_status === "print_edition") {
-      statusBits.push("Scholars translated this in print — this English is a machine draft, not the first human reading.");
-    } else if (text.translation_status === "no_open_english") {
-      statusBits.push("No open English found in our heuristics — possible first open digital reading (verify literature).");
-    } else if (text.open_english) {
-      statusBits.push("Open English may already exist elsewhere — use for comparison, not discovery claims.");
-    }
-    const note = [text.english_note, ...statusBits].filter(Boolean).length
-      ? `<p class="english-draft-note">${escapeHtml([text.english_note, ...statusBits].filter(Boolean).join(" · "))}</p>`
-      : "";
+    // Provenance lives on the column-header ⓘ (next to the cog), not in the body — keeps lines level.
+    text._englishProvenance = englishProvenanceText(text);
     const labels = text.english_labels; // own labels => not index-aligned to the ATF rows
     const rows = text.english
       .map((line, i) => {
@@ -1402,11 +1895,11 @@ function renderEnglishCol(text) {
     const remaining = englishRemaining(text);
     const more =
       remaining > 0
-        ? `<p class="english-draft-note">${remaining} further ATF lines not yet translated.
+        ? `<p class="english-more-note">${remaining} further ATF lines not yet translated.
              <a class="btn" style="margin-left:0.5rem" href="${escapeAttr(translatorUrl(text, text.english.length))}">Translate the rest in your browser</a>
            </p>`
         : "";
-    body.innerHTML = `${note}<div class="english-prose">${rows}</div>${more}`;
+    body.innerHTML = `<div class="english-prose">${rows}</div>${more}`;
 
   } else if (typeof text.english === "string" && text.english.trim()) {
     body.innerHTML = `<div class="english-prose"><p class="en-text">${escapeHtml(text.english)}</p></div>`;
@@ -1424,10 +1917,10 @@ function renderEnglishCol(text) {
     body.innerHTML = `
       <div class="english-placeholder">
         <div class="badge">Awaiting first English</div>
-        <p>No machine draft is published for this text yet.</p>
+        <p>No machine translation is published for this text yet.</p>
         <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-faint)">
           ${lineCount} ATF content lines ready. You can draft English yourself with the in-browser
-          translator (model atf-en-best-v2, ≈95 MB download on first use, runs on your device).
+          translator (B2c ~810 MB or Compact v4e ~94 MB; choose on first use, runs on your device).
         </p>
         <p style="margin-top:1rem">
           ${lineCount ? `<a class="btn primary" href="${escapeAttr(translatorUrl(text, 0))}">Open in the in-browser translator</a>` : ""}
@@ -1442,7 +1935,117 @@ function renderEnglishCol(text) {
 function translatorUrl(text, from = 0) {
   const q = new URLSearchParams({ id: text.id });
   if (from > 0) q.set("from", String(from));
+  // Carry the visitor's saved in-browser model choice (set from the reader cog or translate modal).
+  try {
+    const pref = localStorage.getItem("unread.translator.model");
+    if (pref === "v4e") q.set("revision", "v4e-2026-10-11");
+    else if (pref === "b2c") q.set("revision", "cb93faed82ce9440a03755ae0a8b12eba0db3bbb");
+    // pref === "cached" → no revision; translate.html will prompt for an in-browser model
+  } catch (_) { /* private mode */ }
   return `${TRANSLATOR_PAGE}?${q}`;
+}
+
+/** Conventional Assyriological surface abbreviations for the reader gutter. */
+const SURF_NAMES = [
+  [/^(obverse|obv\.?|o)$/, "o", "Obverse"],
+  [/^(reverse|rev\.?|r)$/, "r", "Reverse"],
+  [/^(left[ -]?edge|le\.e\.?|le)$/, "le.e", "Left edge"],
+  [/^(right[ -]?edge|re\.e\.?|re)$/, "re.e", "Right edge"],
+  [/^(top[ -]?edge|t\.e\.?|te)$/, "t.e", "Top edge"],
+  [/^(upper[ -]?edge|u\.e\.?|ue)$/, "u.e", "Upper edge"],
+  [/^(bottom[ -]?edge|b\.e\.?|be)$/, "b.e", "Bottom edge"],
+  [/^(lower[ -]?edge|lo\.e\.?|loe)$/, "lo.e", "Lower edge"],
+  [/^(edge|e)$/, "e", "Edge"],
+  [/^(seal)$/, "seal", "Seal"],
+  [/^(fragment|frag\.?)$/, "frag", "Fragment"],
+];
+const TO_ROMAN = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"];
+function toRomanCol(col) {
+  const s = String(col || "").toLowerCase().replace(/\.$/, "").trim();
+  if (!s) return "";
+  if (/^[ivxlcdm]+$/.test(s)) return s;
+  const n = parseInt(s, 10);
+  if (n >= 1 && n < TO_ROMAN.length) return TO_ROMAN[n];
+  return s;
+}
+/** ATF surface ("o", "obverse col 1", "o i", "left edge") + optional column -> short tag ("o ii") and full label. */
+function parseSurface(s, column) {
+  let raw = String(s || "").trim();
+  const colExtra = String(column || "").trim();
+  if (colExtra) raw = raw ? `${raw} ${colExtra}` : colExtra;
+  raw = raw.replace(/\s*[·|]\s*/g, " ").replace(/\s+/g, " ").trim();
+  const low = raw.toLowerCase();
+  // surface a/b … (keep letter)
+  const surfM = low.match(/^surface\s+([a-z0-9]+)\b(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  if (surfM) {
+    const col = toRomanCol(surfM[2] || "");
+    return {
+      short: col ? `surf. ${surfM[1]} ${col}` : `surf. ${surfM[1]}`,
+      label: col ? `Surface ${surfM[1]}, column ${col}` : `Surface ${surfM[1]}`,
+    };
+  }
+  const m = low.match(/^(.*?)(?:\s+(?:col(?:umn)?\.?\s*)?([ivx]+|\d+))?$/);
+  let side = ((m && m[1]) || low).trim();
+  let col = toRomanCol((m && m[2]) || "");
+  // "column 2" alone (no face) — rare
+  if (/^col(?:umn)?\.?$/.test(side) && col) {
+    return { short: col, label: `Column ${col}` };
+  }
+  const hit = SURF_NAMES.find(([re]) => re.test(side));
+  const shortSide = hit ? hit[1] : side.length > 6 ? side.slice(0, 5) + "." : side;
+  const labelSide = hit ? hit[2] : raw;
+  return {
+    short: col ? `${shortSide} ${col}` : shortSide,
+    label: hit ? labelSide + (col ? `, column ${col}` : "") : raw,
+  };
+}
+const surfaceShort = (s, column) => parseSurface(s, column).short;
+const surfaceLabel = (s, column) => parseSurface(s, column).label;
+
+/** Embedded ATF English (#tr.en: …) — omit from the ATF column (not a margin note). */
+function isAtfTrLine(line) {
+  return /^#tr\b/i.test(String((line && (line.text || line.atf)) || "").trim());
+}
+/** $ rulings / # comments (not #tr) / << >> — useful, but must not take a grid row. */
+function isAtfMetaLine(line) {
+  if (!line || isAtfTrLine(line)) return false;
+  if (line.type === "note" || line.type === "raw") return true;
+  const t = String(line.text || line.atf || "").trim();
+  if (!t) return false;
+  if (t.startsWith("$") || t.startsWith(">>") || t.startsWith("<<")) return true;
+  if (t.startsWith("#")) return true;
+  return false;
+}
+function metaLineText(line) {
+  return String(line.text || line.atf || "").replace(/^\$\s*/, "$ ").trim();
+}
+/** Attach meta lines to the preceding content line (or the next when they lead). Drop #tr lines. */
+function attachMetaNotes(lines) {
+  const out = [];
+  let pending = [];
+  for (const line of lines || []) {
+    if (isAtfTrLine(line)) continue;
+    if (isAtfMetaLine(line)) {
+      const t = metaLineText(line);
+      if (!t) continue;
+      if (out.length) out[out.length - 1]._notes.push(t);
+      else pending.push(t);
+      continue;
+    }
+    if (line.type && line.type !== "line") continue;
+    const row = Object.assign({}, line, { type: "line", _notes: pending.slice() });
+    pending = [];
+    out.push(row);
+  }
+  if (pending.length && out.length) out[0]._notes = pending.concat(out[0]._notes);
+  return out;
+}
+function atfNotesMarker(notes) {
+  if (!notes || !notes.length) return "";
+  const tip = notes.join(" · ");
+  const onlyRuling = notes.length === 1 && /^\$\s*single ruling$/i.test(notes[0]);
+  const glyph = onlyRuling ? "—" : "ⓘ";
+  return `<button type="button" class="atf-note-mark" title="${escapeAttr(tip)}" aria-label="${escapeAttr("ATF note: " + tip)}">${glyph}</button>`;
 }
 
 function renderAtfCol(text) {
@@ -1453,28 +2056,28 @@ function renderAtfCol(text) {
     return;
   }
 
+  // $ / # meta lines become margin markers on the adjacent content line — never their own rows
+  const content = attachMetaNotes(lines);
   let html = "";
   let lastSurface = "";
   let lastCol = "";
   let i = 0;
-  for (const line of lines) {
-    if (line.type === "line") {
-      const surf = [line.surface, line.column].filter(Boolean).join(" · ");
-      if (surf && surf !== `${lastSurface} · ${lastCol}`.replace(/^ · | · $/g, "")) {
-        if (line.surface !== lastSurface || line.column !== lastCol) {
-          html += `<div class="surface-break">${escapeHtml(surf)}</div>`;
-          lastSurface = line.surface;
-          lastCol = line.column;
-        }
-      }
-      html += `<div class="line-row" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
-        <span class="ln">${escapeHtml(line.n)}</span>
+  for (const line of content) {
+    const surfKey = [line.surface, line.column].filter(Boolean).join(" · ");
+    let tag = "", sc = "";
+    if (surfKey && (line.surface !== lastSurface || line.column !== lastCol)) {
+      const ps = parseSurface(line.surface, line.column);
+      tag = `<span class="lg-surf" title="${escapeAttr(ps.label)}" tabindex="0">${escapeHtml(ps.short)}</span>`;
+      if (i > 0) sc = " lg-surf-start";
+      lastSurface = line.surface;
+      lastCol = line.column;
+    }
+    const mark = atfNotesMarker(line._notes);
+    html += `<div class="line-row${sc}" data-i="${i}" data-atf="${escapeAttr(line.atf)}">
+        <span class="ln">${mark}${tag}<span class="ln-n">${escapeHtml(line.n)}</span></span>
         <span class="atf">${escapeHtml(line.atf)}</span>
       </div>`;
-      i += 1;
-    } else if (line.type === "note") {
-      html += `<div class="line-row note">${escapeHtml(line.text)}</div>`;
-    }
+    i += 1;
   }
   body.innerHTML = `<div class="atf-lines">${html}</div>`;
   bindLineHover(body);
@@ -1547,20 +2150,96 @@ async function renderCuneiformCol(text) {
   root.innerHTML = html;
   root.className = "cuneiform-lines";
   bindLineHover(body);
+  paintFindLines();
+  const cHit = document.querySelector("#cuneiform-body .find-line");
+  if (cHit) scrollColBody(cHit);
 }
 
 function bindLineHover(container) {
-  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i]").forEach((el) => {
-    el.addEventListener("mouseenter", () => highlightLine(el.dataset.i));
+  container.querySelectorAll(".line-row[data-i], .line-en[data-i], .lg-cell[data-i], .lg-cell[data-s]").forEach((el) => {
+    el.addEventListener("mouseenter", () => (el.dataset.s != null ? highlightLine(+el.dataset.s, +el.dataset.e) : highlightLine(el.dataset.i)));
     el.addEventListener("mouseleave", () => highlightLine(null));
+  });
+  // ATF note markers: tap toggles the CSS tip (hover/focus already covered)
+  container.querySelectorAll(".atf-note-mark").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const open = btn.classList.contains("is-open");
+      container.querySelectorAll(".atf-note-mark.is-open").forEach((b) => b.classList.remove("is-open"));
+      if (!open) btn.classList.add("is-open");
+    });
+  });
+  bindColumnInfo(container);
+}
+
+/**
+ * Highlight row i (or rows i..e) in every column. Passage cells (ORACC paragraphs spanning rows s..e) light up
+ * whenever any row they cover is hovered, and hovering a passage lights every row it covers.
+ */
+function highlightLine(i, e) {
+  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
+  if (i == null) return;
+  const s = +i, end = e == null ? s : +e;
+  for (let k = s; k <= end; k++) $$(`[data-i="${k}"]`).forEach((el) => el.classList.add("hl"));
+  $$(".lg-cell[data-s]").forEach((el) => {
+    if (+el.dataset.s <= end && +el.dataset.e >= s) el.classList.add("hl");
   });
 }
 
-function highlightLine(i) {
-  $$(".line-row.hl, .line-en.hl, .lg-cell.hl").forEach((el) => el.classList.remove("hl"));
-  if (i == null) return;
-  $$(`[data-i="${i}"]`).forEach((el) => el.classList.add("hl"));
+// ─── Column preambles: ⓘ popover per column + one global "show inline" toggle (localStorage, default hidden) ───
+const PREAMBLE_KEY = "unread.showPreambles";
+function applyPreambles() {
+  const on = localStorage.getItem(PREAMBLE_KEY) === "1";
+  document.body.classList.toggle("show-preambles", on);
+  $$(".preamble-toggle").forEach((b) => {
+    b.setAttribute("aria-pressed", String(on));
+    b.classList.toggle("on", on);
+  });
 }
+function setPreambles(on) {
+  localStorage.setItem(PREAMBLE_KEY, on ? "1" : "0");
+  applyPreambles();
+}
+function closeColumnInfo() {
+  const pop = $("#lg-pop");
+  if (pop) pop.remove();
+}
+function bindColumnInfo(container) {
+  container.querySelectorAll(".lg-info").forEach((btn) => {
+    btn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const open = $("#lg-pop");
+      if (open && open._btn === btn) return closeColumnInfo();
+      closeColumnInfo();
+      const src = [...container.querySelectorAll(".lg-credit[data-for]")].find((c) => c.dataset.for === btn.dataset.info);
+      if (!src) return;
+      const pop = document.createElement("div");
+      pop.id = "lg-pop";
+      pop.className = "lg-pop";
+      pop._btn = btn;
+      pop.setAttribute("role", "dialog");
+      pop.innerHTML = src.innerHTML + `<label class="lg-pop-opt"><input type="checkbox" class="lg-pop-inline"${localStorage.getItem(PREAMBLE_KEY) === "1" ? " checked" : ""}> Show these notes at the top of every column</label>`;
+      document.body.appendChild(pop);
+      const r = btn.getBoundingClientRect();
+      const w = Math.min(340, window.innerWidth - 16);
+      pop.style.width = w + "px";
+      pop.style.left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)) + "px";
+      pop.style.top = r.bottom + 6 + "px";
+      pop.addEventListener("click", (e) => e.stopPropagation());
+      pop.querySelector(".lg-pop-inline").addEventListener("change", (e) => setPreambles(e.target.checked));
+    });
+  });
+}
+document.addEventListener("click", closeColumnInfo);
+document.addEventListener("keydown", (e) => e.key === "Escape" && closeColumnInfo());
+window.addEventListener("scroll", (e) => { if (!(e.target.closest && e.target.closest("#lg-pop"))) closeColumnInfo(); }, true);
+function initPreambles() {
+  applyPreambles();
+  $$(".preamble-toggle").forEach((b) => b.addEventListener("click", () => setPreambles(localStorage.getItem(PREAMBLE_KEY) !== "1")));
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPreambles);
+else initPreambles();
 
 // ─── Map ───
 function initMap() {
@@ -1971,11 +2650,45 @@ function formatYear(y) {
 
 function shortPeriod(p) {
   if (!p) return "";
-  return p.replace(/\s*\(ca\.[^)]+\)/, "").replace(/\s*\([^)]*BC[^)]*\)/, "").trim() || p;
+  const uncertain = /\?\s*$/.test(String(p).trim());
+  let s = String(p)
+    .replace(/\s*\(ca\.[^)]+\)/g, "")
+    .replace(/\s*\([^)]*BC[^)]*\)/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .trim();
+  if (!s) return p;
+  return uncertain ? s + "?" : s;
+}
+
+/** Dropdown/facet key: fold trailing ? and date-parens into the base period. */
+function periodFacetKey(p) {
+  if (!p) return "";
+  let s = String(p)
+    .replace(/\s*\((?:ca\.|c\.)?[^)]*\d[^)]*\)\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\?+\s*$/, "")
+    .replace(/\.$/, "")
+    .trim();
+  const aliases = {
+    "Early Dynastic I-II": "ED I-II",
+    "Early Dynastic IIIa": "ED IIIa",
+    "Early Dynastic IIIA": "ED IIIa",
+    "Early Dynastic IIIb": "ED IIIb",
+    "Early Dynastic IIIB": "ED IIIb",
+    "Lagaš II": "Lagash II",
+    "Neo Assyrian": "Neo-Assyrian",
+    "Neo Babylonian": "Neo-Babylonian",
+  };
+  return aliases[s] || s;
 }
 
 // ─── View routing ───
-function setView(name) {
+function setView(name, hist = "push") {
+  if (hist !== "none") {
+    const id = name === "reader" ? state.readerPending?.id || state.currentText?.id : null;
+    syncUrl(name, id, hist);
+  }
   state.view = name;
   $$(".view").forEach((v) => v.classList.remove("active"));
   $$(`.nav-btn`).forEach((b) => b.classList.toggle("active", b.dataset.view === name));
@@ -1986,6 +2699,7 @@ function setView(name) {
   if (name === "reader") {
     renderReader();
   }
+  if (name === "stats") renderStats();
 }
 
 // ─── Utils ───
@@ -2012,22 +2726,49 @@ function bindEvents() {
   $$(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => setView(btn.dataset.view));
   });
+  // in-page links to another view (About → Stats) switch views without a reload
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest?.("a[data-goto-view]");
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    setView(a.dataset.gotoView);
+    $("#view-" + a.dataset.gotoView)?.scrollTo?.(0, 0);
+  });
 
-  $("#search").addEventListener("input", debounce(applyFilters, 150));
+  $("#search")?.addEventListener("input", debounce(applyFilters, 150));
+  // Shared ID open for map search box (sidebar search removed).
+  window.UnreadOpenId = function openById(id) {
+    const hit = (state.catalog?.items || []).find((it) => it.id.toLowerCase() === id.toLowerCase());
+    if (hit && typeof selectWork === "function") selectWork(hit.id); // pin + preview when they return to map
+    if (typeof openReader === "function") {
+      openReader(id); // jump to / open the tablet (same as featured buttons)
+      return true;
+    }
+    return !!hit;
+  };
   ["filter-genre", "filter-period", "filter-language", "filter-site"].forEach((id) => {
     $(`#${id}`).addEventListener("change", applyFilters);
   });
-  $("#filter-min-lines").addEventListener("input", () => {
-    $("#min-lines-val").textContent = $("#filter-min-lines").value;
+  $("#filter-min-lines")?.addEventListener("input", () => {
+    const v = $("#min-lines-val");
+    if (v) v.textContent = $("#filter-min-lines").value;
     applyFilters();
   });
   $("#filter-hide-known").addEventListener("change", applyFilters);
   $("#filter-open-gap")?.addEventListener("change", applyFilters);
-  $("#filter-packaged").addEventListener("change", applyFilters);
-  $("#filter-epic-hunt")?.addEventListener("change", applyFilters);
-  $("#filter-herbal")?.addEventListener("change", applyFilters);
-  $("#filter-omens")?.addEventListener("change", applyFilters);
-  $("#filter-math")?.addEventListener("change", applyFilters);
+  $("#filter-packaged")?.addEventListener("change", applyFilters);
+  $("#filter-no-english")?.addEventListener("change", applyFilters);
+  $("#filter-not-online")?.addEventListener("change", applyFilters);
+  const openCuratedAcc = () => {
+    const d = document.getElementById("acc-curated");
+    if (d) d.open = true;
+  };
+  ["filter-epic-hunt", "filter-herbal", "filter-omens", "filter-math"].forEach((id) => {
+    $(`#${id}`)?.addEventListener("change", (e) => {
+      if (e.target.checked) openCuratedAcc();
+      applyFilters();
+    });
+  });
 
   $("#omen-kind-chips")?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-kind]");
@@ -2095,7 +2836,7 @@ function bindEvents() {
     openFeatured(btn.dataset.featured, "math");
   });
 
-  $("#catalog-list").addEventListener("click", (e) => {
+  $("#catalog-list")?.addEventListener("click", (e) => {
     const card = e.target.closest(".catalog-card");
     if (card) selectWork(card.dataset.id);
   });
@@ -2119,18 +2860,13 @@ function bindEvents() {
     }
   });
 
-  $$(".view-toggles button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.panel;
-      // keep at least one panel
-      const next = !state.readerPanels[key];
-      const count = Object.values({ ...state.readerPanels, [key]: next }).filter(Boolean).length;
-      if (count === 0) return;
-      state.readerPanels[key] = next;
-      btn.classList.toggle("on", next);
-      renderReader();
-    });
-  });
+  $$("#reader-chips [data-panel]").forEach((btn) => btn.addEventListener("click", () => onChip(btn)));
+  let slideRaf = 0;
+  $("#reader-body")?.addEventListener("scroll", () => {
+    cancelAnimationFrame(slideRaf);
+    slideRaf = requestAnimationFrame(syncSlideChip);
+  }, { passive: true });
+  initNavToggle();
 
   $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
 
@@ -2144,6 +2880,36 @@ function debounce(fn, ms) {
   };
 }
 
+/** Header nav: a Menu button below 760px (aria-expanded; closes on link click, Esc, or a tap outside). */
+function initNavToggle() {
+  const btn = $("#nav-toggle");
+  const nav = $("#header-nav");
+  if (!btn || !nav) return;
+  const set = (open) => {
+    btn.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("open", open);
+  };
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    set(open);
+    if (open) nav.querySelector(".nav-btn, .nav-link")?.focus();
+  });
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest(".nav-btn, .nav-link")) set(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+      set(false);
+      btn.focus();
+    }
+  });
+  document.addEventListener("pointerdown", (e) => {
+    if (btn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target) && !btn.contains(e.target)) set(false);
+  });
+  NARROW_Q.addEventListener?.("change", () => set(false));
+}
+
 // ─── Boot ───
 async function main() {
   bindEvents();
@@ -2154,7 +2920,10 @@ async function main() {
   const deepId = new URLSearchParams(location.search).get("id");
   if (deepId) {
     state.readerPending = { id: deepId, failed: false };
-    setView("reader");
+    setView("reader", "none");
+  } else {
+    const v = new URLSearchParams(location.search).get("view");
+    if (v === "about" || v === "reader" || v === "stats") setView(v, "none");
   }
 
   try {
@@ -2170,7 +2939,7 @@ async function main() {
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108
     if (deepId) {
-      await openReader(deepId);
+      await openReader(deepId, "none");
     } else {
       const first =
         state.filtered.find((i) => state._packagedIds.includes(i.id)) || state.filtered[0];
@@ -2179,8 +2948,8 @@ async function main() {
   } catch (e) {
     console.error(e);
     toast(e.message || "Failed to load catalog");
-    $("#catalog-list").innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`;
-    if (deepId) openReader(deepId); // the text API doesn't need the catalog
+    const clErr = $("#catalog-list"); if (clErr) clErr.innerHTML = `<p style="padding:1rem;color:var(--danger)">${escapeHtml(e.message)}</p>`; else toast(e.message);
+    if (deepId) openReader(deepId, "none"); // the text API doesn't need the catalog
   }
 }
 
@@ -2203,12 +2972,218 @@ document.addEventListener("DOMContentLoaded", () => {
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
-    if (open) document.getElementById("search")?.focus({ preventScroll: true });
+    if (open) (document.getElementById("smap-q") || document.getElementById("search"))?.focus({ preventScroll: true });
   };
   if (btn) btn.addEventListener("click", () => setOpen(false));
   if (openBtn) openBtn.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
   // a mode chip/featured deep link opened later should reveal its featured row
-  document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math").forEach((el) =>
+  document.querySelectorAll("#filter-epic-hunt,#filter-herbal,#filter-omens,#filter-math,#filter-open-gap,#filter-no-english,#filter-not-online").forEach((el) =>
     el.addEventListener("change", () => el.checked && setOpen(true, false)));
   sync();
 });
+
+// Single source of truth for corpus numbers: web/corpus_stats.json (scripts/build_corpus_stats.py).
+// Fills every [data-stat="key"] (dotted paths ok) so header, About and banners never hardcode figures.
+let _corpusStats;
+function loadCorpusStats() {
+  _corpusStats ||= fetch("corpus_stats.json").then((r) => (r.ok ? r.json() : null)).catch(() => null).then((cs) => {
+    if (cs) document.querySelectorAll("[data-stat]").forEach((n) => {
+      const key = n.dataset.stat;
+      let v = key.split(".").reduce((o, p) => (o == null ? o : o[p]), cs);
+      if (v == null) return;
+      n.textContent = typeof v === "number" ? (key.startsWith("pct1.") ? v.toFixed(1) : v.toLocaleString("en-US")) : key === "corpus_built_at" ? String(v).slice(0, 10) : String(v);
+    });
+    return cs;
+  });
+  return _corpusStats;
+}
+
+// ─── Stats view (?view=stats): every corpus figure from corpus_stats.json, labelled by what it counts ───
+function renderStats() {
+  const body = $("#stats-body");
+  if (!body) return;
+  loadCorpusStats().then((cs) => {
+    if (!cs) {
+      body.innerHTML = `<p class="stats-loading">The figures file (corpus_stats.json) could not be loaded.</p>`;
+      return;
+    }
+    const f = (n) => (typeof n === "number" ? n.toLocaleString("en-US") : "–");
+    const pc = (n) => (cs.tablets ? ((100 * n) / cs.tablets).toFixed(1) + "%" : "");
+    const day = (s) => String(s || "").slice(0, 10);
+    const row = (n, label, note, share = true) =>
+      `<tr><td class="num">${f(n)}</td><td>${label}${note ? `<div class="stats-note">${note}</div>` : ""}</td><td class="pct">${share ? pc(n) : ""}</td></tr>`;
+    const bar = (n, max) => `<span class="stats-bar"><i style="width:${max ? Math.max(0.5, (100 * n) / max).toFixed(1) : 0}%"></i></span>`;
+    const SRC = { cdli: "CDLI", oracc: "ORACC", ebl: "eBL", tlhdig: "TLHdig (Hittite)", achemenet: "Achemenet" };
+    const srcRows = Object.entries(cs.sources || {}).sort((a, b) => b[1].tablets - a[1].tablets);
+    const maxSrc = Math.max(...srcRows.map(([, v]) => v.tablets), 1);
+    const labelTable = (obj) => {
+      const top = obj?.top || [];
+      const max = Math.max(...top.map((t) => t.tablets), 1);
+      return `<table class="stats-table"><thead><tr><th>Label</th><th class="num">Tablets</th><th class="num">Records</th><th class="barcol" aria-hidden="true"></th></tr></thead><tbody>${top
+        .map((t) => `<tr><td>${escapeHtml(t.label)}</td><td class="num">${f(t.tablets)}</td><td class="num">${f(t.records)}</td><td class="barcol">${bar(t.tablets, max)}</td></tr>`)
+        .join("")}</tbody></table><p class="stats-note">${f(obj?.labels)} labels in all; ${f(obj?.unlabelled_records)} records carry none. Showing the ${top.length} largest.</p>`;
+    };
+    const fc = state.featuredCounts;
+    body.innerHTML = `
+      <h3>The catalogue</h3>
+      <p class="stats-note">A <b>tablet</b> is one physical object, counted once even when several projects list it. Percentages are of all ${f(cs.tablets)} catalogued tablets.</p>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.tablets, "<b>tablets catalogued</b>", "every tablet with a record in at least one source", false)}
+        ${row(cs.with_text, "with a transliteration (ATF text) online")}
+        ${row(cs.any_en, "with English of any kind (human or machine)")}
+      </tbody></table>
+      <h3>What can be read</h3>
+      <p class="stats-note">These four groups do not overlap.</p>
+      <div class="stats-stack" role="img" aria-label="Catalogued tablets by what is online">
+        <i class="s-h" style="width:${pc(cs.human_en)}"></i><i class="s-m" style="width:${pc(cs.machine_en)}"></i><i class="s-a" style="width:${pc(cs.text_no_en)}"></i><i class="s-c" style="width:${pc(cs.catalogue_only)}"></i>
+      </div>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.human_en, '<em class="sw s-h"></em>with English by human scholars', "published translations from the source projects")}
+        ${row(cs.machine_en, '<em class="sw s-m"></em>machine English draft only', "no human English online; draft from our ATF-to-English model, labelled as such")}
+        ${row(cs.text_no_en, '<em class="sw s-a"></em>transliteration but no English yet')}
+        ${row(cs.catalogue_only, '<em class="sw s-c"></em>catalogue entry only', "known from a catalogue record; no transliteration online")}
+      </tbody></table>
+      <h3>On the map</h3>
+      <table class="stats-table stats-main"><tbody>
+        ${row(cs.with_coords, "tablets with coordinates in a source", `${f(cs.place_names)} differently spelled place names`)}
+        ${row(cs.mapped, "<b>tablets on the map</b> (a named find-spot)", `${f(cs.unmapped_coords)} more are placed only as “uncertain”, “unknown” or a region, so the map leaves them out`)}
+        ${row(cs.map_points, "map points", "spellings of the same place share one point", false)}
+      </tbody></table>
+      <h3>By source project</h3>
+      <p class="stats-note"><b>Records</b> are a source's own listings; a project can list one tablet more than once. Many tablets appear in several projects, so the tablet column adds up to more than ${f(cs.tablets)}.</p>
+      <table class="stats-table"><thead><tr><th>Source</th><th class="num">Tablets</th><th class="num">Records</th><th class="barcol" aria-hidden="true"></th></tr></thead><tbody>${srcRows
+        .map(([k, v]) => `<tr><td>${SRC[k] || escapeHtml(k)}</td><td class="num">${f(v.tablets)}</td><td class="num">${f(v.records)}</td><td class="barcol">${bar(v.tablets, maxSrc)}</td></tr>`)
+        .join("")}</tbody></table>
+      <h3>Largest periods</h3>
+      <p class="stats-note">Tablets carrying the label in at least one source; one tablet can carry different labels in different sources.</p>
+      ${labelTable(cs.periods)}
+      <h3>Largest languages</h3>
+      ${labelTable(cs.languages)}
+      ${fc ? `<h3>Featured sets</h3>
+      <p class="stats-note">Tablets in the themed sets of the Explore panel (☰ Curated &amp; filters).</p>
+      <table class="stats-table"><tbody>
+        <tr><td class="num">${f(fc.epic)}</td><td><a href="?mode=epic">Epic hunt</a></td></tr>
+        <tr><td class="num">${f(fc.remedies)}</td><td><a href="?mode=remedies">Remedies</a></td></tr>
+        <tr><td class="num">${f(fc.omens)}</td><td><a href="?mode=omens">Omens</a></td></tr>
+        <tr><td class="num">${f(fc.math)}</td><td><a href="?mode=math">Math</a></td></tr>
+      </tbody></table>` : ""}
+      <p class="stats-foot">Corpus built ${day(cs.corpus_built_at)} · figures generated ${day(cs.generated_at)} from that build (<a href="corpus_stats.json">corpus_stats.json</a>, with the exact queries).</p>`;
+  });
+}
+
+// ─── Bridge for js/reader-model.js (ES module): cached vs in-browser Machine column ───
+(function () {
+  const cachedBackup = new WeakMap(); // text -> { english, note, translationsMachine }
+
+  function snapshotCached(text) {
+    if (!text || cachedBackup.has(text)) return;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    cachedBackup.set(text, {
+      english: Array.isArray(text.english) ? text.english.slice() : text.english,
+      english_note: text.english_note,
+      english_labels: text.english_labels,
+      english_conf: text.english_conf,
+      machineEnglish: machine && Array.isArray(machine.english) ? machine.english.slice() : null,
+      machineNote: machine ? machine.note : null,
+      machineLabel: machine ? machine.label : null,
+      machineModelLabel: machine ? machine.model_label : null,
+      live: false,
+    });
+  }
+
+  function hasCachedMachine(text) {
+    if (!text) return false;
+    if ((text.translations || []).some((o) => o.kind === "machine" && (o.english || []).some(Boolean))) return true;
+    if (Array.isArray(text.english) && text.english.some(Boolean) && text.english_kind !== "human") return true;
+    if (text.has_machine_draft) return true;
+    return false;
+  }
+
+  function getAtfLines(text) {
+    return (text.lines || []).filter((l) => l.type === "line" && l.atf).map((l) => l.atf);
+  }
+
+  function setLiveMachineLines(lines, meta = {}) {
+    const text = state.currentText;
+    if (!text) return;
+    snapshotCached(text);
+    const bak = cachedBackup.get(text);
+    bak.live = true;
+    const note =
+      meta.label
+        ? `Machine translation · in-browser ${meta.label}`
+        : text.english_note;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    if (machine) {
+      machine.english = lines.slice();
+      machine.n = lines.filter(Boolean).length;
+      machine.model_label = meta.label || machine.model_label;
+      machine.note = note;
+      machine._liveSource = meta.modelId || "b2c";
+      if (meta.rerender !== false) applyTranslation(text, "machine");
+    } else {
+      text.english = lines.slice();
+      text.english_note = note;
+      text.english_kind = undefined;
+      text.has_machine_draft = true;
+      text._liveSource = meta.modelId || "b2c";
+    }
+    if (meta.rerender === false) {
+      // Soft DOM update for progressive translate (avoid full reader remount).
+      const rows = document.querySelectorAll("#english-body .line-en .en-text, .lg-en.lg-machine .en-text");
+      rows.forEach((el, i) => {
+        if (i >= lines.length) return;
+        const tag = el.querySelector(".mt-line-tag");
+        const tagHtml = tag ? tag.outerHTML : "";
+        el.innerHTML = tagHtml + (lines[i] ? escapeHtml(lines[i]) : `<span style="color:var(--text-faint)">…</span>`);
+      });
+      return;
+    }
+    renderReader();
+  }
+
+  function restoreCachedMachine() {
+    const text = state.currentText;
+    if (!text) return;
+    snapshotCached(text);
+    const bak = cachedBackup.get(text);
+    if (!bak) return;
+    bak.live = false;
+    const machine = (text.translations || []).find((o) => o.kind === "machine");
+    if (machine && bak.machineEnglish) {
+      machine.english = bak.machineEnglish.slice();
+      machine.n = bak.machineEnglish.filter(Boolean).length;
+      machine.note = bak.machineNote;
+      machine.label = bak.machineLabel;
+      machine.model_label = bak.machineModelLabel;
+      delete machine._liveSource;
+      applyTranslation(text, text.tr_key || "machine");
+    } else if (bak.english != null) {
+      text.english = Array.isArray(bak.english) ? bak.english.slice() : bak.english;
+      text.english_note = bak.english_note;
+      text.english_labels = bak.english_labels;
+      text.english_conf = bak.english_conf;
+      delete text._liveSource;
+    }
+    renderReader();
+  }
+
+  window.UnreadReader = {
+    getText: () => state.currentText,
+    getEnglishProvenance: () => {
+      const t = state.currentText;
+      if (!t) return "";
+      return t._englishProvenance || englishProvenanceText(t);
+    },
+    hasCachedMachine,
+    getAtfLines,
+    setLiveMachineLines,
+    restoreCachedMachine,
+    isLiveMachine: () => {
+      const text = state.currentText;
+      if (!text) return false;
+      const bak = cachedBackup.get(text);
+      return !!(bak && bak.live);
+    },
+  };
+})();
