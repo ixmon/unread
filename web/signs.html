@@ -87,11 +87,12 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}td,th{padding:5px 6px
 <body class="static-page">
 <header class="static-header">
   <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" />Unread Atlas</a>
-  <nav aria-label="Main">
+  <nav aria-label="Main" data-ua-nav data-ua-nav-active="signs" data-ua-nav-depth="">
 <a class="nav-link" href="map.html">Search</a>
 <a class="nav-link active" href="signs.html" aria-current="page">Signs</a>
 <a class="nav-link" href="t/index.html">Research</a>
 <a class="nav-link" href="translate.html">Translator</a>
+<a class="nav-link" href="map.html?view=stats">Stats</a>
 <a class="nav-link" href="credits.html">Credits</a>
 <a class="nav-link" href="map.html?view=about">About</a>
 </nav>
@@ -260,5 +261,6 @@ async function liveCount(s){const el=document.getElementById("livecount");if(!el
   catch(e){el.textContent="search unavailable";}}
 boot();
 </script>
+<script src="js/site-nav.js" defer></script>
 </body>
 </html>

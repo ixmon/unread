@@ -2501,7 +2501,7 @@ body.show-preambles .mt-credit-short { display: inline; }
   flex: 0 0 auto;
 }
 
-/* Map +/- zoom: translucent dark like Browse #zoomctl */
+/* Map +/- zoom: translucent dark like Browse #zoomctl; light +/- glyphs */
 .leaflet-bar {
   border: none !important;
   box-shadow: none !important;
@@ -2520,14 +2520,30 @@ body.show-preambles .mt-credit-short { display: inline; }
   box-shadow: none !important;
   font: 600 18px "IBM Plex Sans", system-ui, sans-serif !important;
   text-indent: 0 !important;
+  text-decoration: none !important;
+  /* kill Leaflet’s default dark-on-light glyph treatment */
+  filter: none !important;
+  -webkit-text-fill-color: #ddd !important;
 }
 .leaflet-control-zoom a:hover,
 .leaflet-bar a:hover {
   border-color: #c79a3a !important;
   color: #f0d9a0 !important;
+  -webkit-text-fill-color: #f0d9a0 !important;
   background: rgba(20, 22, 28, 0.95) !important;
+}
+.leaflet-control-zoom a.leaflet-disabled,
+.leaflet-bar a.leaflet-disabled,
+.leaflet-control-zoom a.leaflet-disabled:hover,
+.leaflet-bar a.leaflet-disabled:hover {
+  color: #6a7080 !important;
+  -webkit-text-fill-color: #6a7080 !important;
+  border-color: #2a2e38 !important;
+  background: rgba(20, 22, 28, 0.55) !important;
+  cursor: default !important;
+  opacity: 1 !important;
 }
 .leaflet-control-zoom a.leaflet-control-zoom-in { border-bottom-left-radius: 8px !important; border-bottom-right-radius: 8px !important; }
 .leaflet-control-zoom a.leaflet-control-zoom-out { margin-bottom: 0 !important; }
 .leaflet-control-zoom-in span,
-.leaflet-control-zoom-out span { display: none; }
+.leaflet-control-zoom-out span { color: inherit !important; }

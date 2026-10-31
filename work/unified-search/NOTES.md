@@ -39,3 +39,16 @@ until the user clicks a pin or list card.
 - Filters sits next to search on Map (`#sidebar-open`), List (`#sidebar-open-list`), and Explore embed (`#hub-filters` in browse.html → postMessage).
 - Map | List | Explore are right-aligned pipe text tabs (underline on active).
 - Leaflet +/- styled translucent dark like Browse `#zoomctl`.
+
+## Nav: drop Reader; unify Stats; shared site-nav
+
+- Removed top-menu **Reader** (bare `?view=reader` → empty “No work open”). Reader still via Map/List/Explore and `?id=`.
+- **Stats** is fine without args (`?view=stats` loads corpus figures) — kept in nav.
+- Canonical nav: Search · Signs · Research · Translator · Stats · Credits · About
+  Source: `scripts/site_nav.py` + `web/js/site-nav.js` (`nav[data-ua-nav]`).
+- Pages that differed before this pass:
+  - **credits / signs / translate / search / t/index**: missing Stats (live credits still had Explore/Search/Browse).
+  - **map**: had Reader button (removed).
+  - **index**: already had Stats + Collaborate (kept).
+  - **browse**: no top nav (viz chrome); footer lacked Stats (added).
+- Leaflet +/- : dark translucent bg, light `#ddd` glyphs; hover `#f0d9a0`; disabled muted.

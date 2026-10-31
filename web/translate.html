@@ -34,11 +34,12 @@
   <body class="static-page">
     <header class="static-header">
       <a class="brand" href="./" title="Unread Atlas home"><img class="brand-mark" src="assets/logo/logo.svg" width="58" height="28" alt="" /><!--site:name-->Unread Atlas<!--/site:name--></a>
-      <nav aria-label="Main">
+      <nav aria-label="Main" data-ua-nav data-ua-nav-active="translate" data-ua-nav-depth="">
 <a class="nav-link" href="map.html">Search</a>
 <a class="nav-link" href="signs.html">Signs</a>
 <a class="nav-link" href="t/index.html">Research</a>
 <a class="nav-link active" href="translate.html" aria-current="page">Translator</a>
+<a class="nav-link" href="map.html?view=stats">Stats</a>
 <a class="nav-link" href="credits.html">Credits</a>
 <a class="nav-link" href="map.html?view=about">About</a>
 </nav>
@@ -83,5 +84,6 @@ um-ma {d}utu-ki-ib-si ARAD-ka-ma</textarea>
       <p><a href="credits.html">Credits &amp; thanks</a></p>
     </footer>
     <script type="module" src="js/translator.js"></script>
+<script src="js/site-nav.js" defer></script>
 </body>
 </html>
