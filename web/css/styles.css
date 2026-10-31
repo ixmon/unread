@@ -264,6 +264,23 @@ a.brand:hover .brand-mark { filter: brightness(1.12); }
 .filter-row select,
 .filter-row input[type="range"] {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.filter-row {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sidebar-acc-body,
+.sidebar .filters {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .filter-row select {
@@ -2341,7 +2358,7 @@ body.show-preambles .mt-credit-short { display: inline; }
 .sidebar-acc-body {
   padding: 0 14px 12px;
 }
-.sidebar-acc .filters { padding: 0; border: 0; }
+.sidebar-acc .filters { padding: 0 14px 12px; border: 0; }
 .sidebar-section { padding-bottom: 8px; }
 .sidebar-section .search-box { margin-bottom: 8px; }
 .smap-toggle-hidden,
