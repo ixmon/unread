@@ -32,3 +32,10 @@ Same pattern is still on live `unreadatlas.com/js/app.js`.
 **Fix (preview only):** removed the else-branch auto-`selectWork`. Deep link
 `?id=` still opens the reader. Preview pane keeps its `.preview-empty` copy
 until the user clicks a pin or list card.
+
+## Hub chrome v2 (Filters / tabs / zoom)
+
+- Removed upper Filters (`#sidebar-open-bar`) and sidebar × (`#filters-toggle`).
+- Filters sits next to search on Map (`#sidebar-open`), List (`#sidebar-open-list`), and Explore embed (`#hub-filters` in browse.html → postMessage).
+- Map | List | Explore are right-aligned pipe text tabs (underline on active).
+- Leaflet +/- styled translucent dark like Browse `#zoomctl`.

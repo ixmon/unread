@@ -3081,17 +3081,22 @@ async function main() {
 document.addEventListener("DOMContentLoaded", main);
 
 // ─── Collapsible left bar (state: html.sidebar-collapsed, set early in map.html's head) ───
-// Hidden by default; Filters toggles (#sidebar-open / #sidebar-open-bar) open it; × (#filters-toggle) closes it.
+// Hidden by default; Filters buttons next to each view's search toggle open/closed.
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("filters-toggle");
-  const openBtn = document.getElementById("sidebar-open");
-  const openBtnBar = document.getElementById("sidebar-open-bar");
-  const openBtns = [openBtn, openBtnBar].filter(Boolean);
-  if (!btn && !openBtns.length) return;
+  const openBtns = [...document.querySelectorAll("[data-sidebar-toggle]")];
+  if (!openBtns.length) return;
   const root = document.documentElement;
   const sync = () => {
     const open = !root.classList.contains("sidebar-collapsed");
-    for (const b of [btn, ...openBtns]) if (b) { b.setAttribute("aria-expanded", String(open)); b.classList.toggle("on", open); }
+    for (const b of openBtns) {
+      b.setAttribute("aria-expanded", String(open));
+      b.classList.toggle("on", open);
+    }
+    // Tell Explore iframe (if listening) so its Filters btn can match
+    try {
+      const frame = document.getElementById("explore-frame");
+      frame?.contentWindow?.postMessage({ type: "ua-sidebar-state", open }, "*");
+    } catch (_) {}
   };
   const setOpen = (open, remember = true) => {
     root.classList.toggle("sidebar-collapsed", !open);
@@ -3099,10 +3104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     sync();
     // Leaflet caches the container size; the map widens/narrows with the bar
     if (state.map) requestAnimationFrame(() => state.map.invalidateSize({ pan: false }));
-    if (open) (document.getElementById("smap-q") || document.getElementById("search"))?.focus({ preventScroll: true });
+    if (open) (document.getElementById("smap-q") || document.getElementById("ua-list-q") || document.getElementById("search"))?.focus({ preventScroll: true });
   };
-  if (btn) btn.addEventListener("click", () => setOpen(false));
   for (const b of openBtns) b.addEventListener("click", () => setOpen(root.classList.contains("sidebar-collapsed")));
+  window.addEventListener("message", (e) => {
+    if (e?.data?.type === "ua-sidebar-toggle") setOpen(root.classList.contains("sidebar-collapsed"));
+  });
   // Map / List / Explore tabs
   document.querySelectorAll(".sv-tab").forEach((tab) => {
     tab.addEventListener("click", () => setView(tab.dataset.sview));

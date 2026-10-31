@@ -90,3 +90,11 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
 .list-hit .snip mark{background:var(--accent-soft);color:inherit;padding:0 .1em}
 .list-hit .meta{font-size:11px;color:var(--text-faint);text-align:right}
 .search-empty{color:var(--text-faint);padding:1rem 0}
+
+/* unified hub List: keep Filters + input on one row when possible */
+#view-list .search-row { flex-direction: row; flex-wrap: wrap; align-items: center; }
+#view-list .search-row .hub-filters-btn { order: 0; }
+#view-list .search-row .search-input { flex: 1 1 160px; }
+@media (max-width: 640px) {
+  #view-list .search-row { flex-direction: row; }
+}
