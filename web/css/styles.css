@@ -1903,9 +1903,43 @@ body.mode-epic .catalog-card .title {
 .filters-toggle { margin-top: 0.6rem; width: 100%; justify-content: flex-start; gap: 0.4rem; }
 .sidebar-hint { display: none; margin: 0.6rem 0 0; font-size: 0.78rem; line-height: 1.4; color: var(--text-faint); }
 .sidebar-collapsed .sidebar { display: none; }
-.smap-sidebar-btn { white-space: nowrap; background: rgba(15, 17, 20, 0.88); backdrop-filter: blur(6px); gap: 0.4rem; }
-.smap-sidebar-btn.on { border-color: rgba(196, 120, 74, 0.55); color: var(--accent, #c4784a); }
-@media (max-width: 640px) { .smap-sidebar-btn { font-size: 0; padding: 0.4rem 0.6rem; } .smap-sidebar-btn span { font-size: 1rem; } }
+/* Shared Filters control (Map / List / Explore embed) — Browse #hub-filters look */
+.hub-filters,
+button.hub-filters,
+.smap-sidebar-btn.hub-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  background: #232733;
+  color: #ddd;
+  border: 1px solid #363c4a;
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.hub-filters:hover,
+button.hub-filters:hover,
+.smap-sidebar-btn.hub-filters:hover {
+  border-color: #c79a3a;
+  color: #f0d9a0;
+  background: #232733;
+}
+.hub-filters.on,
+button.hub-filters.on,
+.smap-sidebar-btn.hub-filters.on {
+  background: #c79a3a;
+  color: #111;
+  border-color: #c79a3a;
+}
+@media (max-width: 640px) {
+  .hub-filters, .smap-sidebar-btn.hub-filters { font-size: 0; padding: 0.4rem 0.6rem; }
+  .hub-filters span, .smap-sidebar-btn.hub-filters span { font-size: 1rem; color: inherit; }
+}
 .map-credits { background: rgba(15, 17, 20, 0.6); padding: 0 6px; border-radius: 4px; font-size: 10.5px; line-height: 16px; }
 .map-credits a { color: var(--text-faint); text-decoration: none; }
 .map-credits a:hover { color: var(--text); }
@@ -2494,12 +2528,8 @@ body.show-preambles .mt-credit-short { display: inline; }
 .search-hub-stage #view-map .explore-panels { flex: 1; min-height: 0; }
 
 
-/* Filters next to List search (same control as Map overlay) */
-#view-list .hub-filters-btn {
-  background: var(--bg-panel);
-  backdrop-filter: none;
-  flex: 0 0 auto;
-}
+/* Filters next to List search */
+#view-list .hub-filters { flex: 0 0 auto; }
 
 /* Map +/- zoom: translucent dark like Browse #zoomctl; light +/- glyphs */
 .leaflet-bar {

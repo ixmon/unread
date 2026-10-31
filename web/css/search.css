@@ -93,7 +93,7 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
 
 /* unified hub List: keep Filters + input on one row when possible */
 #view-list .search-row { flex-direction: row; flex-wrap: wrap; align-items: center; }
-#view-list .search-row .hub-filters-btn { order: 0; }
+#view-list .search-row .hub-filters { order: 0; }
 #view-list .search-row .search-input { flex: 1 1 160px; }
 @media (max-width: 640px) {
   #view-list .search-row { flex-direction: row; }

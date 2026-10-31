@@ -43,9 +43,11 @@ canvas#bm,canvas#gl,canvas#ov{position:absolute;inset:0;width:100%;height:100%}
 
 html.ua-embed #top a:first-child{display:none}
 html.ua-embed body{background:#0b0d10}
-html.ua-embed #hub-filters{display:inline-flex;align-items:center;gap:4px;background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px;white-space:nowrap}
-html.ua-embed #hub-filters.on{background:#c79a3a;color:#111;border-color:#c79a3a}
-html.ua-embed #hub-filters[hidden]{display:none}
+/* Same .hub-filters look as Map/List (styles.css); embed-only visibility */
+html.ua-embed .hub-filters,#hub-filters.hub-filters{display:inline-flex;align-items:center;gap:4px;background:#232733;color:#ddd;border:1px solid #363c4a;border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit;font-size:13px;white-space:nowrap}
+html.ua-embed .hub-filters:hover,#hub-filters.hub-filters:hover{border-color:#c79a3a;color:#f0d9a0;background:#232733}
+html.ua-embed .hub-filters.on,#hub-filters.hub-filters.on{background:#c79a3a;color:#111;border-color:#c79a3a}
+html.ua-embed .hub-filters[hidden],#hub-filters.hub-filters[hidden]{display:none}
 
 #top{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;z-index:5;background:rgba(20,22,28,.88);padding:8px 10px;border-radius:10px;border:1px solid #2a2e38}
 #top .brand-link{display:inline-flex;align-items:center;gap:7px;font-family:'Source Serif 4',Georgia,serif;white-space:nowrap;color:#e3c27a;text-decoration:none}#top .brand-link img{height:22px;width:auto;display:block}#top .brand-link:hover{color:#fff}
@@ -141,7 +143,7 @@ a{color:#e0b860}
 <div id="stage"><canvas id="bm" aria-hidden="true"></canvas><canvas id="gl"></canvas><canvas id="ov"></canvas><div id="brush"></div><div id="tip"></div></div>
 <div id="top">
   <a href="./" title="Unread Atlas home" class="brand-link"><img src="assets/logo/logo.svg" width="46" height="22" alt="" />Unread Atlas</a>
-  <button type="button" id="hub-filters" title="Filters" hidden><span aria-hidden="true">☰</span> Filters</button>
+  <button type="button" id="hub-filters" class="hub-filters" title="Filters" hidden><span aria-hidden="true">☰</span> Filters</button>
   <input id="q" placeholder="English, ATF (kasz) or 𒁉…" value="barley" title="Type a word and press Enter. English, ATF transliteration (kasz, {u2}tar-musz, š or sz) or cuneiform signs." />
   <span class="lbl" id="plbl">Try:</span><span id="presets"></span>
   <button id="clearSel" title="Clear selection">clear selection</button>
