@@ -9,8 +9,11 @@
 (() => {
   "use strict";
 
-  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda); elsewhere the API CloudFront URL.
-  const DEFAULT_API = /(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) ? location.origin + "/api" : "https://d3qsgtzicfbir4.cloudfront.net";
+  // Same-origin /api on unreadatlas.com (CloudFront routes /api/* to the search Lambda).
+  // Local preview (localhost/127.0.0.1) also uses /api so the preview proxy is hit — CDN works too but cold-starts look like "broken" search.
+  const DEFAULT_API = (/(^|\.)unreadatlas\.(com|org)$/.test(location.hostname) || /^(localhost|127\.0\.0\.1)$/.test(location.hostname))
+    ? location.origin + "/api"
+    : "https://d3qsgtzicfbir4.cloudfront.net";
   const API = (new URLSearchParams(location.search).get("searchapi") || DEFAULT_API).replace(/\/+$/, "");
   const FILTERS = ["period", "genre", "site", "src"];
   const SCOPES = { all: "All", atf: "ATF", en: "English", meta: "Catalogue" };
@@ -232,7 +235,7 @@
   }
 
   async function run(s, { pushUrl = true } = {}) {
-    if (!hasQuery(s)) return clear();
+    if (!hasQuery(s)) return clear({ pushUrl });
     const my = ++sm.seq;
     sm.all = false;
     $("#smap-open").hidden = $("#smap-clear").hidden = false;
@@ -273,7 +276,7 @@
     draw(true);
   }
 
-  function clear() {
+  function clear({ pushUrl = true } = {}) {
     sm.seq++;
     sm.query = null;
     sm.data = null;
@@ -282,7 +285,7 @@
     $("#smap-chip").hidden = true;
     closePanel();
     draw();
-    writeUrl(null);
+    if (pushUrl) writeUrl(null);
     showAll();
   }
 
@@ -482,9 +485,17 @@
     if (!state.map) return setTimeout(init, 50);
     // CDLI P/Q/X ids, plus common museum sigla (K., BM., Sm., VAT, AO, MLC).
     const ID_RE = /^(?:P\d+|Q\d+|X\d+|BM\.?\s*\d+|K\.?\s*\d+|MLC\.?\s*\d+|VAT\s*\d+|AO\s*\d+|Sm\.?\s*\d+)$/i;
+    $("#smap-q")?.addEventListener("input", () => {
+      if (window.UnreadHub?.fromQueryTyping) window.UnreadHub.fromQueryTyping($("#smap-q").value);
+    });
     $("#smap-form").addEventListener("submit", (e) => {
       e.preventDefault();
       const raw = $("#smap-q").value.trim();
+      // Shared hub owns cross-view sync + URL when present.
+      if (window.UnreadHub?.fromMapSearch) {
+        window.UnreadHub.fromMapSearch(raw);
+        return;
+      }
       const s = { ...(sm.query || queryFromUrl()), q: raw };
       if (!hasQuery(s)) return clear();
       // Exact tablet IDs: jump to / open that tablet (reader). Free-form terms still map the corpus.
@@ -494,7 +505,10 @@
       }
       run(s);
     });
-    $("#smap-clear").addEventListener("click", clear);
+    $("#smap-clear").addEventListener("click", () => {
+      if (window.UnreadHub?.set) window.UnreadHub.set({ q: "" }, { hist: "replace" });
+      else clear();
+    });
     $("#smap-toggle").addEventListener("change", (e) => {
       sm.visible = e.target.checked;
       const side = $("#sidebar-smap-toggle");
@@ -546,11 +560,19 @@
     }
     state.map.on("zoomend", () => sm.data && draw());
     document.addEventListener("unread:timeline", styleForTime);
-    const s = queryFromUrl();
-    if (hasQuery(s)) run(s, { pushUrl: false });
-    else showAll();
+    // When UnreadHub is present it owns URL + apply; only seed the basemap.
+    if (window.UnreadHub) {
+      const hs = window.UnreadHub.get() || {};
+      const payload = { q: hs.q || "", in: hs.in || "all", period: hs.period || "", genre: hs.genre || "", site: hs.site || "", src: "" };
+      if (hasQuery(payload)) { /* hub onViewChange / setView will apply */ }
+      else showAll();
+    } else {
+      const s = queryFromUrl();
+      if (hasQuery(s)) run(s, { pushUrl: false });
+      else showAll();
+    }
   }
 
-  window.UnreadSearchMap = { run: (s) => run({ q: "", in: "all", period: "", genre: "", site: "", src: "", ...s }), clear, state: sm };
+  window.UnreadSearchMap = { run: (s, opts) => run({ q: "", in: "all", period: "", genre: "", site: "", src: "", ...s }, opts), clear, showAll, state: sm };
   document.addEventListener("DOMContentLoaded", init);
 })();
