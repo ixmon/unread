@@ -403,6 +403,11 @@ a.brand:hover .brand-mark { filter: brightness(1.12); }
   border-radius: 6px;
   padding: 0.4rem 0.5rem;
 }
+.filter-row select:focus { outline: none; }
+.filter-row select:focus-visible {
+  border-color: rgba(199, 154, 58, 0.85);
+  box-shadow: 0 0 0 2px rgba(199, 154, 58, 0.35);
+}
 
 .checkbox-row {
   display: flex;
@@ -2473,6 +2478,45 @@ body.show-preambles .mt-credit-short { display: inline; }
 .aw-pop .aw-about li{margin:2px 0}
 .aw-popup-known .leaflet-popup-content{overflow-y:auto;overscroll-behavior:contain}
 
+
+/* Sidebar: kill browser default (often bright/white) focus rings on selects & summaries;
+   keep a gold/accent :focus-visible ring for keyboard a11y. */
+.sidebar,
+.sidebar select,
+.sidebar summary,
+.sidebar input,
+.sidebar button {
+  color-scheme: dark;
+}
+.sidebar select:focus,
+.sidebar select:focus-visible,
+.sidebar summary:focus,
+.sidebar summary:focus-visible,
+.sidebar input[type="checkbox"]:focus,
+.sidebar input[type="checkbox"]:focus-visible,
+.sidebar input[type="range"]:focus,
+.sidebar input[type="range"]:focus-visible,
+.sidebar .checkbox-row:focus-within {
+  outline: none;
+}
+.sidebar select:focus-visible {
+  border-color: rgba(199, 154, 58, 0.85);
+  box-shadow: 0 0 0 2px rgba(199, 154, 58, 0.35);
+}
+.sidebar summary:focus-visible {
+  box-shadow: inset 0 0 0 1px rgba(199, 154, 58, 0.55);
+  border-radius: 4px;
+}
+.sidebar input[type="checkbox"]:focus-visible {
+  box-shadow: 0 0 0 2px rgba(199, 154, 58, 0.45);
+  border-radius: 3px;
+}
+.sidebar input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(199, 154, 58, 0.4);
+}
+.sidebar input[type="range"]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(199, 154, 58, 0.4);
+}
 
 /* Sidebar accordions (map Explore panel) */
 .sidebar-acc {

@@ -352,7 +352,7 @@ def page(title: str, desc: str, body: str, canonical: str, depth: str = "../", t
 </head>
 <body class="static-page">
 <header class="static-header">
-<a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo.svg" width="58" height="28" alt="" />{e(SITE["name"])}</a>
+<a class="brand" href="{depth}index.html" title="Unread Atlas home"><img class="brand-mark" src="{depth}assets/logo/logo.svg" width="58" height="28" alt="" /><h1><!--site:name-->{e(SITE["name"])}<!--/site:name--> <span class="sub"><!--site:tagline-->{e(SITE.get("tagline", ""))}<!--/site:tagline--></span></h1></a>
 <nav aria-label="Main" data-ua-nav data-ua-nav-depth="{depth}">
 {nav_html(depth)}
 </nav>

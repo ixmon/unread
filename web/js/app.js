@@ -2812,6 +2812,14 @@ function wireListPanel() {
   input?.addEventListener("input", () => {
     if (window.UnreadHub?.fromQueryTyping) window.UnreadHub.fromQueryTyping(input.value);
   });
+  form.querySelectorAll('input[name="ua-in"]').forEach((r) => {
+    r.addEventListener("change", () => {
+      const q = (input?.value || "").trim();
+      const scope = form.querySelector('input[name="ua-in"]:checked')?.value || "all";
+      if (window.UnreadHub?.fromListSearch) window.UnreadHub.fromListSearch(q, scope);
+      else UnreadHubListSearch({ q, in: scope, genre: $("#filter-genre")?.value, period: $("#filter-period")?.value, site: $("#filter-site")?.value, language: $("#filter-language")?.value });
+    });
+  });
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const q = ($("#ua-list-q")?.value || "").trim();

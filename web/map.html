@@ -225,7 +225,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                     title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
                   <label for="smap-q" class="visually-hidden">Search the corpus or open a tablet by ID</label>
                   <input type="search" id="smap-q" class="smap-input" placeholder="P262784, Gilgamesh, barley, lamaštu…" />
-                  <button type="submit" class="btn primary smap-go">Map</button>
+                  <button type="submit" class="btn primary smap-go" hidden aria-hidden="true" tabindex="-1">Map</button>
                 </form>
                 <div class="smap-chip" id="smap-chip" hidden>
                   <label class="smap-toggle smap-toggle-hidden" title="Show or hide the search-results layer" hidden><input type="checkbox" id="smap-toggle" checked /><span class="smap-swatch" aria-hidden="true"></span></label>
@@ -282,7 +282,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                 <button type="button" class="btn smap-sidebar-btn hub-filters" id="sidebar-open-list" data-sidebar-toggle aria-controls="sidebar" aria-expanded="false" title="Filters, unread status, curated themes and featured tablets"><span aria-hidden="true">☰</span> Filters</button>
                 <label for="ua-list-q" class="visually-hidden">Search</label>
                 <input type="search" id="ua-list-q" name="q" class="search-input" placeholder="Gilgamesh · barley · P262784" />
-                <button type="submit" class="btn primary">Search</button>
+                <button type="submit" class="btn primary" hidden aria-hidden="true" tabindex="-1">Search</button>
               </div>
               <div class="scope-row" role="radiogroup" aria-label="Search in">
                 <span class="scope-label">Search in</span>
