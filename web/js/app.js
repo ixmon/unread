@@ -3131,7 +3131,7 @@ function listHighlight(text, terms) {
     const word = m[1].toLowerCase();
     const isPrefix = terms.get(word);
     if (m[2] && !isPrefix) continue;
-    out += escapeHtml(text.slice(last, m.index)) + "<mark>" + escapeHtml(m[0]) + "</mark>";
+    out += escapeHtml(text.slice(last, m.index)) + "<i>" + escapeHtml(m[0]) + "</i>";
     last = m.index + m[0].length;
   }
   return out + escapeHtml(text.slice(last));

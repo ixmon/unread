@@ -196,7 +196,7 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
       const word = m[1].toLowerCase();
       const isPrefix = terms.get(word);
       if (m[2] && !isPrefix) continue; // whole-word match only unless word*
-      out += esc(text.slice(last, m.index)) + "<mark>" + esc(m[0]) + "</mark>";
+      out += esc(text.slice(last, m.index)) + "<i>" + esc(m[0]) + "</i>";
       last = m.index + m[0].length;
     }
     return out + esc(text.slice(last));

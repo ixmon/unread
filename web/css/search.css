@@ -39,7 +39,7 @@
 .snip-text.human_en { font-family: var(--font-serif); }
 .snip-text.machine_en { color: var(--text); }
 .snip-line { color: var(--text-faint); font-family: var(--font-mono); font-size: 0.75rem; margin-right: 0.4rem; }
-mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 2px; padding: 0 1px; }
+.snip-text i, .list-hit .snip i { font-style: italic; font-weight: inherit; background: none; color: inherit; display: inline; padding: 0; border-radius: 0; }
 .result-links { margin-top: 0.35rem; font-size: 0.82rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
 .badge-human { border-color: rgba(106, 155, 122, 0.55); color: var(--green); }
 .badge-withheld { border-style: dashed; }
@@ -86,9 +86,8 @@ mark { background: rgba(224, 149, 96, 0.28); color: var(--text); border-radius: 
 .list-hit{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--border-soft)}
 .list-hit .id{font-family:var(--font-mono);font-size:13px;color:var(--accent-strong);text-decoration:none}
 .list-hit .title{font-size:14px}
-.list-hit .snip{grid-column:1/-1;font-size:13px;color:var(--text-dim);line-height:1.45}
+.list-hit .snip{display:block;grid-column:1/-1;font-size:13px;color:var(--text-dim);line-height:1.45}
 .list-hit .snip-kind{font-size:0.66rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-faint);margin-right:0.35em}
-.list-hit .snip mark{background:var(--accent-soft);color:inherit;padding:0 .1em}
 .list-hit .meta{font-size:11px;color:var(--text-faint);text-align:right}
 .search-empty{color:var(--text-faint);padding:1rem 0}
 
