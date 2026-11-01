@@ -2,6 +2,9 @@
 body.static-page { overflow: auto; height: auto; }
 .static-header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; padding: 0.9rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--bg-elev); }
 .static-header .brand { color: var(--text); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.55rem; }
+.static-header .brand h1 { margin: 0; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; font-family: inherit; color: inherit; }
+.static-header .brand .sub { color: var(--text-dim); font-size: 0.75rem; font-weight: 400; margin-left: 0.35rem; }
+@media (max-width: 900px) { .static-header .brand .sub { display: none; } }
 .static-header nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
 .nav-link { color: var(--text-dim); padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid transparent; text-decoration: none; transition: all 0.15s; }
 .nav-link:hover { color: var(--text); background: var(--bg-hover); }

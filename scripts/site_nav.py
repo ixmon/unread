@@ -40,3 +40,21 @@ def nav_html(depth: str = "", active: str = "") -> str:
         cur = ' aria-current="page"' if is_on else ""
         parts.append(f'<a class="{cls}" href="{full}"{cur}>{label}</a>')
     return "\n".join(parts)
+
+
+# Keep in sync with web/site.json and web/js/site-nav.js
+SITE_NAME = "Unread Atlas"
+SITE_TAGLINE = "first readings · open corpus"
+
+
+def brand_html(*, href: str = "./", logo_src: str = "assets/logo/logo.svg", name: str | None = None, tagline: str | None = None) -> str:
+    """Canonical header brand: logo + name + tagline (matches map.html)."""
+    n = name if name is not None else SITE_NAME
+    tl = tagline if tagline is not None else SITE_TAGLINE
+    return (
+        f'<a class="brand" href="{href}" title="Unread Atlas home">'
+        f'<img class="brand-mark" src="{logo_src}" width="58" height="28" alt="" />'
+        f"<h1><!--site:name-->{n}<!--/site:name--> "
+        f'<span class="sub"><!--site:tagline-->{tl}<!--/site:tagline--></span></h1></a>'
+    )
+

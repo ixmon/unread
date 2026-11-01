@@ -198,11 +198,25 @@
     dirty.map = dirty.list = dirty.explore = true;
   }
 
+  function activeUnmappedForExplore(s) {
+    const out = [];
+    if (s.language) out.push("language (no language column in browse data)");
+    if (s.minLines != null && Number(s.minLines) !== 40) out.push("min ATF lines (no line counts in browse binary)");
+    if (s.packaged) out.push("packaged samples (catalog only)");
+    if (s.epic || s.herbal || s.omens || s.math) out.push("curated themes epic/herbal/omens/math (catalog flags only)");
+    if (s.notOnline) out.push("Not online (no print-edition dim in browse)");
+    if (s.hideKnown === false) out.push("show open English (catalog-pin toggle)");
+    // Map layer toggles are UI-only — never in hub state
+    return out;
+  }
+
   function postToExplore(s) {
     const frame = document.getElementById("explore-frame");
     if (!frame?.contentWindow) return;
     try {
-      frame.contentWindow.postMessage({ type: "ua-hub-state", state: clone(s), seq }, "*");
+      const payload = clone(s);
+      payload._unmappedActive = activeUnmappedForExplore(s);
+      frame.contentWindow.postMessage({ type: "ua-hub-state", state: payload, seq }, "*");
     } catch (_) {}
   }
 
@@ -309,7 +323,7 @@
 
   function fromFilters() {
     if (applying) return;
-    set(readFromDom(), { debounce: 120, hist: "replace" });
+    set(readFromDom(), { debounce: 200, hist: "replace" });
   }
 
   function onViewChange(view) {
@@ -376,15 +390,25 @@
     readFromUrl,
     postToExplore,
     DEFAULTS,
-    /** Filters that do not map cleanly onto Explore (browse iframe). */
+    /** Filters Explore can apply from browse binary / dims. */
+    EXPLORE_MAPPED: [
+      "q (corpus search/ids)",
+      "genre (incl. compound Lexical; Literary → OR bands)",
+      "period (approx year band)",
+      "site (browse site index)",
+      "Unread / No English (coarse translation-state dims)",
+    ],
+    /** Filters with no Explore data — reported in-UI, not faked. */
     EXPLORE_UNMAPPED: [
-      "language (browse has no language dim)",
+      "language (browse has no language column)",
       "min ATF lines (no line counts in browse binary)",
       "packaged samples toggle (map/catalog only)",
-      "curated themes: epic / herbal / omens / math (catalog flags)",
-      "Hide open English / Unread / Not online (only coarse translation-state approx on Explore)",
+      "curated themes: epic / herbal / omens / math (catalog flags; not in browse binary)",
+      "Not online (no print-edition / online dim in browse)",
+      "Hide open English / show-known (catalog-pin behavior)",
       "Map layer toggles (corpus circles / curated pins)",
     ],
+    activeUnmappedForExplore,
     /** Filters UnreadSearchMap API accepts beyond q. */
     MAP_API_FILTERS: ["genre", "period", "site", "in", "src"],
   };
