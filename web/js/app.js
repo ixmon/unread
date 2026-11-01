@@ -268,6 +268,14 @@ function cleanTranslator(a) {
 }
 const modelShort = (label) => String(label || "").replace(/^atf-en-(t5base-)?/, "") || "model";
 
+/** CDLI artifact URL for a P-number only; null for eBL/ORACC/etc. (avoids /NaN). */
+function cdliArtifactUrl(id) {
+  const m = /^P(\d+)$/i.exec(String(id || "").trim());
+  if (!m) return null;
+  const n = parseInt(m[1], 10);
+  return Number.isFinite(n) ? `https://cdli.earth/artifacts/${n}` : null;
+}
+
 /**
  * The text API returns ATF-less mt_lines (eBL) in database row order, not line order (Asb.h came back 6,3,2,4,7,1,5).
  * Sort them by a natural line key: surface order (obv, rev, edges…), column, then the numeric line number (3' / 10a ok).
@@ -341,7 +349,13 @@ function apiTextToReader(d, requestedId) {
     status: "api",
     api_source: ed.src,
   };
-  if (ed.src === "cdli" && /^P\d+$/.test(ed.id || "")) text.cdli_url = `https://cdli.earth/artifacts/${parseInt(ed.id.slice(1), 10)}`;
+  // Prefer a real CDLI P-number (this edition, another edition, or canonical_id) — never parseInt a K./BM./Q id.
+  text.cdli_url =
+    cdliArtifactUrl(ed.src === "cdli" ? ed.id : null) ||
+    cdliArtifactUrl((eds.find((e) => e.src === "cdli") || {}).id) ||
+    cdliArtifactUrl(text.canonical_id) ||
+    cdliArtifactUrl(text.id) ||
+    null;
 
   const options = [];
   const used = new Set();
@@ -359,8 +373,8 @@ function apiTextToReader(d, requestedId) {
       if (used.has(key)) key = `${he.src}-${(edn || String(used.size)).replace(/[^A-Za-z0-9]+/g, "-")}`;
       used.add(key);
       const recordUrl =
-        he.src === "cdli" && /^P\d+$/.test(he.id || "")
-          ? `https://cdli.earth/artifacts/${parseInt(he.id.slice(1), 10)}`
+        he.src === "cdli"
+          ? cdliArtifactUrl(he.id)
           : he.src === "oracc" && (edn || he.project)
             ? `https://oracc.museum.upenn.edu/${edn || he.project}/${he.id}`
             : he.url || he.source?.url || null;
@@ -1291,7 +1305,7 @@ function renderPreview(item, loading, text) {
       </div>
       <div class="preview-actions">
         <button type="button" class="btn primary" id="btn-open-reader">Open reader</button>
-        <a class="btn" href="${item.cdli_url}" target="_blank" rel="noopener">CDLI ↗</a>
+        ${item.cdli_url ? `<a class="btn" href="${escapeAttr(item.cdli_url)}" target="_blank" rel="noopener">CDLI ↗</a>` : ""}
       </div>
     </div>
     <p class="status-detail">${escapeHtml([detail || label, epicNote, herbNote, omenNote, mathNote].filter(Boolean).join(" "))}</p>
@@ -1646,7 +1660,7 @@ function renderMetaCol(text) {
   if (!body) return;
 
   const yearLabel = text.year != null ? formatYear(text.year) : null;
-  const cdliUrl = text.cdli_url || (text.id ? `https://cdli.earth/artifacts/${parseInt(String(text.id).replace(/^P/i, ""), 10)}` : null);
+  const cdliUrl = text.cdli_url || cdliArtifactUrl(text.canonical_id) || cdliArtifactUrl(text.id);
   const pubNote =
     text.designation && /memoirs|BAM|STT|SpTU|Iraq|CT |YOS|KAR|RIMA|RINAP|BiMes|Manchester/i.test(text.designation)
       ? `“${text.designation}” is usually a modern publication label (journal/book + plates), not an ancient title.`
@@ -1779,15 +1793,15 @@ async function maybeFetchCdliMeta(text, force = false) {
   state.cdliLiveCache[text.id] = "loading";
   if (state.readerPanels.meta) renderMetaCol(text);
 
-  const num = parseInt(String(text.id).replace(/^P/i, ""), 10);
-  if (!Number.isFinite(num)) {
-    state.cdliLiveCache[text.id] = { error: "bad id" };
+  const cdliHref = text.cdli_url || cdliArtifactUrl(text.canonical_id) || cdliArtifactUrl(text.id);
+  if (!cdliHref) {
+    state.cdliLiveCache[text.id] = { error: "no CDLI P-number" };
     if (state.readerPanels.meta) renderMetaCol(text);
     return;
   }
 
   try {
-    const res = await fetch(`https://cdli.earth/artifacts/${num}`, {
+    const res = await fetch(cdliHref, {
       headers: { Accept: "application/json" },
       signal: AbortSignal.timeout(12000),
     });
