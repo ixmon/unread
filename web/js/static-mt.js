@@ -49,7 +49,18 @@
     }
   }
 
-  /** Prefer an edition with aligned lines[].mt; else mt_lines (eBL-style). */
+  /** Prefer an edition with aligned lines[].mt; else mt_lines (eBL / ATF-withheld).
+   *  /api/text mt_lines use {line, mt} (same as the Reader); accept legacy {line_ref|n, content} too. */
+  function mtFreeN(l) {
+    if (!l) return null;
+    var n = l.line != null ? l.line : (l.line_ref != null ? l.line_ref : l.n);
+    return n != null && n !== "" ? String(n) : null;
+  }
+  function mtFreeEn(l) {
+    if (!l) return null;
+    var en = l.mt != null ? l.mt : l.content;
+    return en != null && en !== "" ? en : null;
+  }
   function pickMt(data) {
     var eds = (data && data.editions) || [];
     var withLines = eds.find(function (ed) {
@@ -68,18 +79,19 @@
       };
     }
     var withFree = eds.find(function (ed) {
-      return Array.isArray(ed.mt_lines) && ed.mt_lines.length;
+      return Array.isArray(ed.mt_lines) && ed.mt_lines.some(function (l) { return mtFreeEn(l); });
     });
     if (withFree) {
       return {
         byN: withFree.mt_lines.reduce(function (acc, l) {
-          var n = l && (l.line_ref || l.n);
-          if (l && l.content && n != null && n !== "") acc[String(n)] = { en: l.content, conf: l.conf };
+          var n = mtFreeN(l);
+          var en = mtFreeEn(l);
+          if (n && en) acc[n] = { en: en, conf: l.conf };
           return acc;
         }, {}),
-        ordered: withFree.mt_lines.map(function (l) {
-          return { n: l.line_ref || l.n, en: l.content, conf: l.conf };
-        }),
+        ordered: withFree.mt_lines
+          .map(function (l) { return { n: mtFreeN(l), en: mtFreeEn(l), conf: l.conf }; })
+          .filter(function (x) { return x.en; }),
         model: withFree.model || data.model,
       };
     }
@@ -156,7 +168,10 @@
       var tables = Array.prototype.slice.call(document.querySelectorAll("table.lines-table[data-mt-lazy]")).filter(function (t) {
         return (t.getAttribute("data-text-id") || id) === id;
       });
-      tables.forEach(function (t) { applyToTable(t, mt); });
+      var filled = 0;
+      tables.forEach(function (t) { filled += applyToTable(t, mt); });
+      if (!filled && !(mt.ordered && mt.ordered.length)) throw new Error("no machine English");
+      if (!filled) throw new Error("line labels did not match");
       bar.setAttribute("data-mt-loaded", "1");
       bar.hidden = true;
     } catch (err) {
