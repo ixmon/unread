@@ -3134,7 +3134,7 @@ async function UnreadHubListSearch(s) {
   const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
   _listSearchAbort = ctl;
   try {
-    const params = new URLSearchParams({ q, in: scope, limit: String(limit), page: String(page) });
+    const params = new URLSearchParams({ q, in: scope, page_size: String(limit), limit: String(limit), page: String(page) });
     if (genre) params.set("genre", genre);
     // API period is a named facet; custom year bands use client-side overlap filter when present on hits
     if (period && period !== "__custom__") params.set("period", period);
@@ -3219,7 +3219,7 @@ function listPagerHtml(cur, pages, capped) {
   out += cur < pages
     ? `<a href="#" data-list-page="${cur + 1}" rel="next">Next →</a>`
     : `<span class="gap">Next →</span>`;
-  if (capped) out += `<span class="gap" title="API ranks at most 1,000 hits for text queries">capped</span>`;
+  if (capped) out += `<span class="gap" title="API hit scan cap; total may be a lower bound">capped</span>`;
   return out;
 }
 

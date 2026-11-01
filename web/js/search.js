@@ -374,6 +374,7 @@ const CONF_T = {1:"Lower confidence: line is broken",2:"Low confidence: few sign
     for (const k of ["period", "genre", "site", "src", "at"]) if (s[k]) p.set(k, s[k]);
     p.set("page", s.page);
     p.set("limit", LIMIT);
+    p.set("page_size", LIMIT);
     resultsEl.innerHTML = "";
     pagerEl.innerHTML = "";
     setStatus(spin("Searching…"));
