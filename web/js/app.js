@@ -3099,6 +3099,65 @@ function syncListQueryFromUrl() {
   else if (q) $("#ua-list-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
 }
 
+
+/** Query terms for List snippet highlighting (mirrors search.js). */
+function listTermsFor(q) {
+  const ATF_MAP = { š: "sz", ṣ: "s,", ṭ: "t,", ḫ: "h", ŋ: "j", ĝ: "j", "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9" };
+  const atfAscii = (s) => s.replace(/[šṣṭḫŋĝ₀-₉]/gi, (c) => {
+    const m = ATF_MAP[c.toLowerCase()];
+    return c === c.toLowerCase() ? m : m.toUpperCase();
+  });
+  const fold = (s) => s.normalize("NFD").replace(/\p{M}/gu, "");
+  const out = new Map();
+  for (const m of String(q || "").matchAll(/"([^"]*)"|(\S+)/g)) {
+    const raw = m[1] ?? m[2];
+    if (m[1] == null && /^(AND|OR|NOT|NEAR)$/.test(raw)) continue;
+    const words = raw.match(/[\p{L}\p{N}_]+/gu) || [];
+    const prefix = words.length === 1 && raw.endsWith("*");
+    for (const w of words) {
+      for (const v of new Set([w, atfAscii(w), fold(w), fold(atfAscii(w))])) if (v) out.set(v.toLowerCase(), prefix || out.get(v.toLowerCase()));
+    }
+  }
+  return out;
+}
+
+function listHighlight(text, terms) {
+  if (!terms || !terms.size) return escapeHtml(text);
+  const words = [...terms.keys()].sort((a, b) => b.length - a.length);
+  const alt = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  const re = new RegExp(`(?<![\\p{L}\\p{N}_])(${alt})([\\p{L}\\p{N}_]*)`, "giu");
+  let out = "", last = 0;
+  for (const m of text.matchAll(re)) {
+    const word = m[1].toLowerCase();
+    const isPrefix = terms.get(word);
+    if (m[2] && !isPrefix) continue;
+    out += escapeHtml(text.slice(last, m.index)) + "<mark>" + escapeHtml(m[0]) + "</mark>";
+    last = m.index + m[0].length;
+  }
+  return out + escapeHtml(text.slice(last));
+}
+
+/** Prefer EN/MT excerpts; withhold ATF when atf_public is false (eBL). Skip meta. Map-card style. */
+function listSnippetHtml(h, q) {
+  const terms = listTermsFor(q);
+  const allowAtf = h.atf_public !== false;
+  const snips = (h.snippets || []).filter((s) => {
+    if (!s || !s.text) return false;
+    if (s.kind === "meta") return false;
+    if (s.kind === "atf" && !allowAtf) return false;
+    return true;
+  });
+  if (!snips.length && (h.snippet || h.preview)) {
+    return `<div class="snip">${listHighlight(String(h.snippet || h.preview), terms)}</div>`;
+  }
+  if (!snips.length) return "";
+  const sn = snips[0];
+  const kindLabel = sn.kind === "human_en" ? "Human EN"
+    : sn.kind === "machine_en" ? "Machine translation"
+    : sn.kind === "atf" ? "ATF" : (sn.kind || "");
+  return `<div class="snip"><span class="snip-kind">${escapeHtml(kindLabel)}</span> ${listHighlight(sn.text, terms)}</div>`;
+}
+
 let _listSearchSeq = 0;
 let _listSearchAbort = null;
 async function UnreadHubListSearch(s) {
@@ -3188,9 +3247,9 @@ async function UnreadHubListSearch(s) {
       results.innerHTML = hits.map((h) => {
         const id = h.id || h.tablet_id || "";
         const title = h.title || h.designation || id;
-        const snip = h.snippet || h.preview || "";
         const meta = [h.period, h.site || h.provenience].filter(Boolean).join(" · ");
-        return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}" data-open="${escapeAttr(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
+        const snip = listSnippetHtml(h, q);
+        return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}" data-open="${escapeAttr(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div>${snip}</article>`;
       }).join("") || `<p class="search-empty">No matches.</p>`;
     }
     if (pager) pager.innerHTML = listPagerHtml(cur, pages, capped);
