@@ -46,8 +46,11 @@ const state = {
   cuneiformCache: new Map(), // atf line -> unicode
   map: null,
   markers: {},
-  timelineYear: -2000,
-  timeFade: false, // map fading by date; switches on at first slider interaction ("All periods" turns it off)
+  timelineYear: -2000, // midpoint of [timelineFrom, timelineTo] (compat for fade listeners)
+  timelineFrom: -3400,
+  timelineTo: -50,
+  timeFade: false, // map fading by date; on when range is narrower than All periods
+  _periodSyncLock: false, // suppress Period↔timeline feedback loops
   markerGroups: {}, // site key -> { lat, lon, site, items }
   markerSig: "",
   omenKind: null, // subtype chip filter when omens mode on
@@ -957,6 +960,7 @@ function populateFilterOptions() {
 
   fillSelect("#filter-genre", genres);
   fillSelect("#filter-period", periods.slice(0, 40));
+  ensurePeriodCustomOption();
   fillSelect("#filter-language", langs);
   fillSelect("#filter-site", sites.slice(0, 60));
   // Hub may have booted from URL before <option>s existed — re-apply now.
@@ -1025,7 +1029,13 @@ function applyFilters() {
     if (omenMode && state.omenKind && item.omen_kind !== state.omenKind) return false;
     if (mathMode && state.mathKind && item.math_kind !== state.mathKind) return false;
     if (genre && item.genre !== genre) return false;
-    if (period && periodFacetKey(item.period) !== period) return false;
+    if (period && period !== "__custom__" && periodFacetKey(item.period) !== period) return false;
+    // Custom time-bar range (or named period with known years): keep works overlapping the range
+    if (state.timeFade && period === "__custom__") {
+      const r = itemRange(item);
+      if (!r) return false;
+      if (r[1] < state.timelineFrom || r[0] > state.timelineTo) return false;
+    }
     if (language && item.language !== language) return false;
     if (site && item.site !== site && item.provenience !== site) return false;
     if (item.content_lines < lineFloor) return false;
@@ -2438,6 +2448,44 @@ const ERAS = [
   { id: "hel", short: "Hell", label: "Hellenistic (Seleucid)", start: -331, end: -63 },
 ];
 
+/** Catalog / API period name → approximate [from, to] (same bands as searchmap / Explore). */
+const PERIOD_RANGE_RULES = [
+  [/uruk\s*(iv|v)\b|proto-cuneiform/i, [-3400, -3100]],
+  [/uruk\s*iii|jemdet|proto-elamite/i, [-3100, -2900]],
+  [/\bED\s*I-II|early dynastic\s*i\b/i, [-2900, -2600]],
+  [/\bED\s*IIIa|early dynastic\s*iiia/i, [-2600, -2500]],
+  [/\bED\s*IIIb|early dynastic\s*iiib|^ebla$|fara/i, [-2500, -2334]],
+  [/old akkadian|sargonic/i, [-2334, -2154]],
+  [/lagash\s*ii|gutian/i, [-2154, -2112]],
+  [/ur\s*iii/i, [-2112, -2004]],
+  [/early old babylonian/i, [-2004, -1900]],
+  [/old babylonian/i, [-2004, -1595]],
+  [/old assyrian/i, [-1950, -1720]],
+  [/middle babylonian|kassite/i, [-1595, -1000]],
+  [/middle assyrian/i, [-1400, -1000]],
+  [/neo-assyrian/i, [-911, -612]],
+  [/neo-babylonian/i, [-626, -539]],
+  [/achaemenid|persian/i, [-539, -331]],
+  [/hellenistic|seleucid/i, [-331, -63]],
+  [/late babylonian/i, [-539, -63]],
+  [/parthian|arsacid/i, [-141, -50]],
+];
+
+// Preferred Period-menu label when an era chip is clicked (must match catalog facet keys when present).
+const ERA_PERIOD_LABEL = {
+  uruk: "Uruk III",
+  ed: "ED IIIa",
+  akk: "Old Akkadian",
+  lagash2: "Lagash II",
+  ur3: "Ur III",
+  ob: "Old Babylonian",
+  mb: "Middle Babylonian",
+  na: "Neo-Assyrian",
+  nb: "Neo-Babylonian",
+  ach: "Achaemenid",
+  hel: "Hellenistic",
+};
+
 // Map fading: full strength within TIME_FULL years of a work's date range, smooth fade to
 // TIME_MIN_OPACITY at TIME_FAINT years and beyond (never hidden). Undated works stay neutral/dim.
 const TIME_FULL = 150;
@@ -2453,6 +2501,56 @@ function eraDates(e) {
   return e.dates || `${Math.abs(e.start)}–${Math.abs(e.end)} BCE`;
 }
 
+function lookupPeriodRange(name) {
+  if (!name || name === "__custom__") return null;
+  const m = /(\d{3,4})\s*[-–]\s*(\d{1,4})\s*BC/.exec(name);
+  if (m) return [-Number(m[1]), -Number(m[2])];
+  for (const [re, rr] of PERIOD_RANGE_RULES) if (re.test(name)) return rr.slice();
+  return null;
+}
+
+function snapYear(y) {
+  y = Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(Number(y) / YEAR_STEP) * YEAR_STEP));
+  return y;
+}
+
+function isFullTimelineRange(from, to) {
+  return from <= YEAR_MIN && to >= YEAR_MAX;
+}
+
+function ensurePeriodCustomOption() {
+  const el = $("#filter-period");
+  if (!el) return;
+  if (![...el.options].some((o) => o.value === "__custom__")) {
+    const opt = document.createElement("option");
+    opt.value = "__custom__";
+    opt.textContent = "Custom";
+    el.appendChild(opt);
+  }
+}
+
+/** Match current range to a Period <option> value, an era label, or "__custom__". */
+function matchPeriodOptionForRange(from, to) {
+  ensurePeriodCustomOption();
+  const el = $("#filter-period");
+  if (!el || isFullTimelineRange(from, to)) return "";
+  const tol = 50;
+  for (const opt of el.options) {
+    const v = opt.value;
+    if (!v || v === "__custom__") continue;
+    const r = lookupPeriodRange(v);
+    if (r && Math.abs(r[0] - from) <= tol && Math.abs(r[1] - to) <= tol) return v;
+  }
+  for (const e of ERAS) {
+    const end = Math.min(e.end, YEAR_MAX);
+    if (Math.abs(e.start - from) <= tol && Math.abs(end - to) <= tol) {
+      const label = ERA_PERIOD_LABEL[e.id];
+      if (label && [...el.options].some((o) => o.value === label)) return label;
+    }
+  }
+  return "__custom__";
+}
+
 /** [from, to] years for a work: its period's conventional range when given, else year ± 50. */
 function itemRange(item) {
   if (item._range !== undefined) return item._range;
@@ -2460,14 +2558,23 @@ function itemRange(item) {
   const m = /(\d{3,4})\s*[-–]\s*(\d{1,4})\s*BC/.exec(item.period || "");
   if (m) r = [-Number(m[1]), -Number(m[2])];
   else if (item.year != null) r = [item.year - 50, item.year + 50];
+  else {
+    const pr = lookupPeriodRange(item.period || "");
+    if (pr) r = pr;
+  }
   item._range = r;
   return r;
 }
 
+/** Distance from item range to the active timeline window (0 if overlap). */
 function timeDistance(item, y) {
   const r = itemRange(item);
   if (!r) return Infinity;
-  return y < r[0] ? r[0] - y : y > r[1] ? y - r[1] : 0;
+  const from = state.timeFade ? state.timelineFrom : y;
+  const to = state.timeFade ? state.timelineTo : y;
+  if (r[1] < from) return from - r[1];
+  if (r[0] > to) return r[0] - to;
+  return 0;
 }
 
 /** 1 = in period, 0 = far; null = undated */
@@ -2487,7 +2594,6 @@ function styleMarkersForTime() {
     const el = marker.getElement();
     if (!el) continue;
     const group = state.markerGroups[key];
-    // nearest-dated work at this site decides the marker's strength
     let w = null;
     let best = null;
     if (fade && group) {
@@ -2519,16 +2625,19 @@ function styleMarkersForTime() {
   }
 }
 
-// Hook for other layers (e.g. a future coastline / sea-level layer):
-//   const off = onTimelineChange((year, { fading, era }) => { ... });
-// Also dispatched as a DOM event: document.addEventListener("unread:timeline", (e) => e.detail.year)
 const timelineListeners = new Set();
 function onTimelineChange(fn) {
   timelineListeners.add(fn);
   return () => timelineListeners.delete(fn);
 }
 function emitTimelineChange() {
-  const detail = { year: state.timelineYear, fading: state.timeFade, era: eraFor(state.timelineYear) };
+  const detail = {
+    year: state.timelineYear,
+    from: state.timelineFrom,
+    to: state.timelineTo,
+    fading: state.timeFade,
+    era: eraFor(state.timelineYear),
+  };
   for (const fn of timelineListeners) {
     try {
       fn(detail.year, detail);
@@ -2542,10 +2651,18 @@ window.UnreadTimeline = {
   onTimelineChange,
   ERAS,
   eraFor,
-  setYear: (y) => setTimelineYear(y),
+  lookupPeriodRange,
+  setYear: (y) => setTimelineRange(y, y, { activate: true }),
+  setRange: (from, to, opts) => setTimelineRange(from, to, opts),
   setFading: (on) => setTimeFade(on),
   get year() {
     return state.timelineYear;
+  },
+  get from() {
+    return state.timelineFrom;
+  },
+  get to() {
+    return state.timelineTo;
   },
   get fading() {
     return state.timeFade;
@@ -2564,89 +2681,306 @@ function scheduleTimelineFrame() {
   });
 }
 
-function setTimelineYear(y, { activate = true } = {}) {
-  y = Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(y / YEAR_STEP) * YEAR_STEP));
-  state.timelineYear = y;
-  if (activate) state.timeFade = true;
-  const input = $("#timeline-range");
-  if (input && Number(input.value) !== y) input.value = y;
+function pushTimelineToHub(periodValue) {
+  if (!window.UnreadHub?.set) return;
+  const full = !state.timeFade || isFullTimelineRange(state.timelineFrom, state.timelineTo);
+  const period = full ? "" : periodValue === "__custom__" ? "" : periodValue || "";
+  const partial = {
+    period,
+    yearFrom: full ? null : state.timelineFrom,
+    yearTo: full ? null : state.timelineTo,
+  };
+  // Named period wins for List/API; Custom clears period and keeps year band for Explore.
+  if (!full && periodValue === "__custom__") {
+    partial.period = "";
+  }
+  window.UnreadHub.set(partial, { hist: "replace", debounce: 120 });
+}
+
+function syncPeriodSelectFromTimeline() {
+  if (state._periodSyncLock) return;
+  ensurePeriodCustomOption();
+  const el = $("#filter-period");
+  if (!el) return;
+  const next = !state.timeFade || isFullTimelineRange(state.timelineFrom, state.timelineTo)
+    ? ""
+    : matchPeriodOptionForRange(state.timelineFrom, state.timelineTo);
+  state._periodSyncLock = true;
+  try {
+    if (el.value !== next) el.value = next;
+  } finally {
+    state._periodSyncLock = false;
+  }
+  pushTimelineToHub(next);
+}
+
+function setTimelineRange(from, to, { activate = true, syncPeriod = true, fromMenu = false, snap = true } = {}) {
+  from = Number(from); to = Number(to);
+  if (snap) {
+    from = snapYear(from);
+    to = snapYear(to);
+  } else {
+    from = Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(from)));
+    to = Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(to)));
+  }
+  if (to < from) [from, to] = [to, from];
+  // Minimum span one step
+  if (to === from) {
+    if (to < YEAR_MAX) to = (snap ? snapYear(to + YEAR_STEP) : Math.min(YEAR_MAX, to + YEAR_STEP));
+    else from = (snap ? snapYear(from - YEAR_STEP) : Math.max(YEAR_MIN, from - YEAR_STEP));
+  }
+  state.timelineFrom = from;
+  state.timelineTo = to;
+  state.timelineYear = snapYear((from + to) / 2);
+  if (activate) state.timeFade = !isFullTimelineRange(from, to);
+  else if (isFullTimelineRange(from, to)) state.timeFade = false;
   scheduleTimelineFrame();
-  // re-sort the catalog list once dragging settles (markers are restyled per frame, not rebuilt)
   clearTimeout(timelineSortTimer);
   timelineSortTimer = setTimeout(applyFilters, 180);
+  if (syncPeriod && !fromMenu) syncPeriodSelectFromTimeline();
+  else if (fromMenu) {
+    // Menu already set; still push years to hub
+    const el = $("#filter-period");
+    pushTimelineToHub(el?.value || "");
+  }
+}
+
+function setTimelineYear(y, { activate = true } = {}) {
+  // Compat: centre a ±150y window on y (or snap to containing era if close)
+  const era = eraFor(y);
+  if (era && activate) setTimelineRange(era.start, Math.min(era.end, YEAR_MAX), { activate, snap: false });
+  else setTimelineRange(y, y, { activate });
 }
 
 function setTimeFade(on) {
-  state.timeFade = !!on;
-  scheduleTimelineFrame();
+  if (!on) {
+    setTimelineRange(YEAR_MIN, YEAR_MAX, { activate: false, syncPeriod: true });
+    return;
+  }
+  state.timeFade = true;
+  if (isFullTimelineRange(state.timelineFrom, state.timelineTo)) {
+    // Default focus band around current midpoint
+    const mid = state.timelineYear || -2000;
+    setTimelineRange(mid - 200, mid + 200, { activate: true });
+  } else {
+    scheduleTimelineFrame();
+    syncPeriodSelectFromTimeline();
+  }
+}
+
+function applyPeriodMenuToTimeline() {
+  if (state._periodSyncLock) return;
+  ensurePeriodCustomOption();
+  const el = $("#filter-period");
+  const v = el?.value || "";
+  if (v === "__custom__") return; // keep current handles
+  state._periodSyncLock = true;
+  try {
+    if (!v) {
+      setTimelineRange(YEAR_MIN, YEAR_MAX, { activate: false, syncPeriod: false, fromMenu: true });
+      pushTimelineToHub("");
+      return;
+    }
+    const r = lookupPeriodRange(v);
+    if (r) setTimelineRange(r[0], r[1], { activate: true, syncPeriod: false, fromMenu: true, snap: false });
+    else {
+      // Unknown band: keep bar, still filter by exact period name via hub
+      state.timeFade = true;
+      pushTimelineToHub(v);
+      scheduleTimelineFrame();
+      clearTimeout(timelineSortTimer);
+      timelineSortTimer = setTimeout(applyFilters, 180);
+    }
+  } finally {
+    state._periodSyncLock = false;
+  }
 }
 
 const yearPct = (y) => ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
 
 function initTimeline() {
-  const input = $("#timeline-range");
-  input.min = YEAR_MIN;
-  input.max = YEAR_MAX;
-  input.step = YEAR_STEP;
-  input.value = state.timelineYear;
+  const track = $("#timeline-track");
+  const hStart = $("#timeline-handle-start");
+  const hEnd = $("#timeline-handle-end");
+  if (!track || !hStart || !hEnd) return;
 
-  // era segments on the track + clickable era buttons below it
   const band = $("#timeline-eraband");
   const eras = $("#timeline-eras");
   band.innerHTML = ERAS.map(
     (e, i) =>
       `<span class="era-seg era-${i % 2 ? "odd" : "even"}" data-era="${e.id}" style="left:${yearPct(e.start)}%;width:${yearPct(Math.min(e.end, YEAR_MAX)) - yearPct(e.start)}%"></span>`
   ).join("");
-  eras.innerHTML =
-    ERAS.map((e) => {
-      const w = yearPct(Math.min(e.end, YEAR_MAX)) - yearPct(e.start);
-      return `<button type="button" class="era-btn${w < 3.2 ? " narrow" : ""}" data-era="${e.id}" style="left:${yearPct(e.start)}%;width:${w}%"
+  eras.innerHTML = ERAS.map((e) => {
+    const w = yearPct(Math.min(e.end, YEAR_MAX)) - yearPct(e.start);
+    return `<button type="button" class="era-btn${w < 3.2 ? " narrow" : ""}" data-era="${e.id}" style="left:${yearPct(e.start)}%;width:${w}%"
         title="${escapeAttr(e.label + " · c. " + eraDates(e) + " (approx.)")}">${escapeHtml(e.short)}</button>`;
-    }).join("");
+  }).join("");
   eras.addEventListener("click", (ev) => {
     const b = ev.target.closest("button");
     if (!b) return;
     const e = ERAS.find((x) => x.id === b.dataset.era);
-    if (e) setTimelineYear((e.start + Math.min(e.end, YEAR_MAX)) / 2);
+    if (!e) return;
+    setTimelineRange(e.start, Math.min(e.end, YEAR_MAX), { activate: true, snap: false });
   });
 
-  input.addEventListener("input", () => setTimelineYear(Number(input.value)));
-  input.addEventListener("keydown", (ev) => {
-    // native arrows step 25 years (input.step); Shift+arrow = 100 years
-    if (ev.shiftKey && ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(ev.key)) {
-      ev.preventDefault();
-      const dir = ev.key === "ArrowLeft" || ev.key === "ArrowDown" ? -1 : 1;
-      setTimelineYear(state.timelineYear + dir * 100);
+  const yearFromClientX = (clientX) => {
+    const rect = track.getBoundingClientRect();
+    const t = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    return snapYear(YEAR_MIN + t * (YEAR_MAX - YEAR_MIN));
+  };
+
+  let dragging = null; // "start" | "end"
+  const onMove = (ev) => {
+    if (!dragging) return;
+    const y = yearFromClientX(ev.clientX);
+    if (dragging === "start") {
+      const end = state.timelineTo;
+      setTimelineRange(Math.min(y, end - YEAR_STEP), end, { activate: true, snap: false });
+    } else {
+      const start = state.timelineFrom;
+      setTimelineRange(start, Math.max(y, start + YEAR_STEP), { activate: true, snap: false });
     }
+  };
+  const onUp = () => {
+    if (!dragging) return;
+    dragging = null;
+    window.removeEventListener("pointermove", onMove);
+    window.removeEventListener("pointerup", onUp);
+  };
+  const startDrag = (which, ev) => {
+    ev.preventDefault();
+    dragging = which;
+    try {
+      ev.currentTarget.setPointerCapture?.(ev.pointerId);
+    } catch (_) {}
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  };
+  hStart.addEventListener("pointerdown", (ev) => startDrag("start", ev));
+  hEnd.addEventListener("pointerdown", (ev) => startDrag("end", ev));
+
+  // Click rail: move nearest handle
+  track.addEventListener("pointerdown", (ev) => {
+    if (ev.target.closest(".timeline-handle")) return;
+    const y = yearFromClientX(ev.clientX);
+    const mid = (state.timelineFrom + state.timelineTo) / 2;
+    if (y <= mid) setTimelineRange(y, state.timelineTo, { activate: true, snap: false });
+    else setTimelineRange(state.timelineFrom, y, { activate: true, snap: false });
   });
+
+  const keyNudge = (which, ev) => {
+    const step = ev.shiftKey ? 100 : YEAR_STEP;
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(ev.key)) return;
+    ev.preventDefault();
+    const dir = ev.key === "ArrowLeft" || ev.key === "ArrowDown" ? -1 : 1;
+    if (which === "start") setTimelineRange(state.timelineFrom + dir * step, state.timelineTo, { activate: true });
+    else setTimelineRange(state.timelineFrom, state.timelineTo + dir * step, { activate: true });
+  };
+  hStart.addEventListener("keydown", (ev) => keyNudge("start", ev));
+  hEnd.addEventListener("keydown", (ev) => keyNudge("end", ev));
+
   $("#timeline-all").addEventListener("click", () => setTimeFade(!state.timeFade));
-  updateTimelineUI();
+
+  // Period menu → timeline (hub also listens; this keeps the bar in sync even before hub boots)
+  $("#filter-period")?.addEventListener("change", () => {
+    if (state._periodSyncLock) return;
+    applyPeriodMenuToTimeline();
+  });
+
+  ensurePeriodCustomOption();
+  // Seed from hub period if present
+  const hub = window.UnreadHub?.get?.();
+  if (hub?.yearFrom != null && hub?.yearTo != null) {
+    setTimelineRange(hub.yearFrom, hub.yearTo, { activate: true, syncPeriod: false, snap: false });
+    const matched = matchPeriodOptionForRange(state.timelineFrom, state.timelineTo);
+    state._periodSyncLock = true;
+    try {
+      const el = $("#filter-period");
+      if (el) el.value = hub.period && hub.period !== "__custom__" ? hub.period : matched;
+    } finally {
+      state._periodSyncLock = false;
+    }
+  } else if (hub?.period) {
+    state._periodSyncLock = true;
+    try {
+      const el = $("#filter-period");
+      if (el && [...el.options].some((o) => o.value === hub.period)) el.value = hub.period;
+      applyPeriodMenuToTimeline();
+    } finally {
+      state._periodSyncLock = false;
+    }
+  } else {
+    updateTimelineUI();
+  }
 }
 
 function updateTimelineUI() {
-  const y = state.timelineYear;
-  $("#timeline-fill").style.width = `${yearPct(y)}%`;
-  $("#timeline-year").textContent = formatYear(y);
-  const era = eraFor(y);
+  const from = state.timelineFrom;
+  const to = state.timelineTo;
+  const fill = $("#timeline-fill");
+  const hStart = $("#timeline-handle-start");
+  const hEnd = $("#timeline-handle-end");
+  if (fill) {
+    fill.style.left = `${yearPct(from)}%`;
+    fill.style.width = `${Math.max(0, yearPct(to) - yearPct(from))}%`;
+  }
+  if (hStart) {
+    hStart.style.left = `${yearPct(from)}%`;
+    hStart.setAttribute("aria-valuenow", String(from));
+    hStart.setAttribute("aria-valuetext", formatYear(from));
+  }
+  if (hEnd) {
+    hEnd.style.left = `${yearPct(to)}%`;
+    hEnd.setAttribute("aria-valuenow", String(to));
+    hEnd.setAttribute("aria-valuetext", formatYear(to));
+  }
+  const yearEl = $("#timeline-year");
+  if (yearEl) {
+    yearEl.textContent = !state.timeFade || isFullTimelineRange(from, to)
+      ? "All periods"
+      : from === to
+        ? formatYear(from)
+        : `${formatYear(from)} – ${formatYear(to)}`;
+  }
+  const mid = state.timelineYear;
+  const era = eraFor(mid);
   const eraEl = $("#timeline-era");
-  eraEl.textContent = era ? `${era.label} · c. ${eraDates(era)}` : "";
-  eraEl.title = "Conventional dates, approximate (middle chronology)";
-  $$("#timeline-eraband .era-seg, #timeline-eras .era-btn").forEach((el) =>
-    el.classList.toggle("active", !!era && el.dataset.era === era.id)
-  );
+  if (eraEl) {
+    const matched = matchPeriodOptionForRange(from, to);
+    if (!state.timeFade || isFullTimelineRange(from, to)) {
+      eraEl.textContent = "";
+    } else if (matched && matched !== "__custom__") {
+      eraEl.textContent = matched;
+    } else if (matched === "__custom__") {
+      eraEl.textContent = "Custom range";
+    } else {
+      eraEl.textContent = era ? `${era.label} · c. ${eraDates(era)}` : "";
+    }
+    eraEl.title = "Conventional dates, approximate (middle chronology)";
+  }
+  $$("#timeline-eraband .era-seg, #timeline-eras .era-btn").forEach((el) => {
+    const e = ERAS.find((x) => x.id === el.dataset.era);
+    const active =
+      !!e &&
+      state.timeFade &&
+      Math.abs(e.start - from) <= 50 &&
+      Math.abs(Math.min(e.end, YEAR_MAX) - to) <= 50;
+    el.classList.toggle("active", active);
+  });
   const panel = $(".timeline-panel");
-  panel.classList.toggle("fading", state.timeFade);
+  panel?.classList.toggle("fading", state.timeFade);
   const all = $("#timeline-all");
-  all.setAttribute("aria-pressed", String(!state.timeFade));
-  all.title = state.timeFade
-    ? "Show all works at full strength"
-    : "All periods shown — drag the slider (or click an era) to fade works far from the chosen date";
-  $("#timeline-range").setAttribute("aria-valuetext", `${formatYear(y)}${era ? ", " + era.label : ""}`);
+  if (all) {
+    all.setAttribute("aria-pressed", String(!state.timeFade));
+    all.title = state.timeFade
+      ? "Show all periods"
+      : "All periods — drag the handles or click an era to narrow the range";
+  }
 }
 
 function updateTimelineDots() {
   const host = $("#timeline-dots");
-  // sample up to 80 filtered items with years
+  if (!host) return;
   const withYear = state.filtered.filter((i) => i.year != null).slice(0, 80);
   host.innerHTML = withYear
     .map((item) => {
@@ -2771,18 +3105,24 @@ async function UnreadHubListSearch(s) {
   const status = $("#ua-list-status");
   const results = $("#ua-list-results");
   const pager = $("#ua-list-pager");
+  const crumb = $("#ua-list-crumb");
   const q = (s?.q || "").trim();
   const scope = s?.in || "all";
   const genre = (s?.genre || "").trim();
   const period = (s?.period || "").trim();
   const site = (s?.site || "").trim();
   const language = (s?.language || "").trim();
-  const hasFilter = !!(genre || period || site || language);
+  const yearFrom = s?.yearFrom != null && Number.isFinite(Number(s.yearFrom)) ? Number(s.yearFrom) : null;
+  const yearTo = s?.yearTo != null && Number.isFinite(Number(s.yearTo)) ? Number(s.yearTo) : null;
+  const page = Math.max(1, parseInt(s?.page, 10) || 1);
+  const limit = 20;
+  const hasFilter = !!(genre || period || site || language || (yearFrom != null && yearTo != null));
   if (!q && !hasFilter) {
     if (_listSearchAbort) { try { _listSearchAbort.abort(); } catch (_) {} _listSearchAbort = null; }
     if (results) results.innerHTML = "";
     if (status) status.textContent = "Enter a query or choose a filter.";
     if (pager) pager.innerHTML = "";
+    if (crumb) crumb.innerHTML = "";
     return;
   }
   const label = q
@@ -2794,9 +3134,10 @@ async function UnreadHubListSearch(s) {
   const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
   _listSearchAbort = ctl;
   try {
-    const params = new URLSearchParams({ q, in: scope, limit: "20" });
+    const params = new URLSearchParams({ q, in: scope, limit: String(limit), page: String(page) });
     if (genre) params.set("genre", genre);
-    if (period) params.set("period", period);
+    // API period is a named facet; custom year bands use client-side overlap filter when present on hits
+    if (period && period !== "__custom__") params.set("period", period);
     if (site) params.set("site", site);
     if (language) params.set("lang", language);
     const r = await fetch("/api/search?" + params.toString(), {
@@ -2806,28 +3147,101 @@ async function UnreadHubListSearch(s) {
     if (!r.ok) throw new Error("HTTP " + r.status);
     const data = await r.json();
     if (seq !== _listSearchSeq) return; // stale
-    const hits = data.hits || data.results || [];
-    if (status) status.textContent = `${(data.total ?? hits.length).toLocaleString()} result(s)`;
+    let hits = data.hits || data.results || [];
+    // Optional client filter when Custom year range is active and API has no year params
+    if (yearFrom != null && yearTo != null && !(period && period !== "__custom__")) {
+      const y0 = Math.min(yearFrom, yearTo), y1 = Math.max(yearFrom, yearTo);
+      hits = hits.filter((h) => {
+        const name = h.period || "";
+        const rr = (typeof lookupPeriodRange === "function" ? lookupPeriodRange(name) : null);
+        if (!rr) return true; // keep undated / unknown rather than emptying the page
+        return !(rr[1] < y0 || rr[0] > y1);
+      });
+    }
+    const total = data.total ?? hits.length;
+    const capped = !!data.total_is_capped;
+    const pages = Math.max(1, data.pages || Math.ceil(total / limit) || 1);
+    const cur = Math.min(page, pages);
+    const from = total ? (cur - 1) * limit + 1 : 0;
+    const to = total ? Math.min(cur * limit, (cur - 1) * limit + hits.length) : 0;
+    const totalLabel = capped ? `${Number(total).toLocaleString()}+` : Number(total).toLocaleString();
+    if (status) {
+      status.textContent = total
+        ? `${totalLabel} result(s)${capped ? " (count capped by API)" : ""}`
+        : "No matches.";
+    }
+    if (crumb) {
+      const bits = ["Search"];
+      if (q) bits.push(q);
+      if (genre) bits.push(`Genre: ${genre}`);
+      if (period && period !== "__custom__") bits.push(`Period: ${period}`);
+      else if (yearFrom != null && yearTo != null) bits.push(`Years: ${formatYear(yearFrom)}–${formatYear(yearTo)}`);
+      if (site) bits.push(`Site: ${site}`);
+      if (language) bits.push(`Language: ${language}`);
+      const rangeTxt = total ? `results ${from.toLocaleString()}–${to.toLocaleString()} of ${totalLabel}` : "no results";
+      crumb.innerHTML = `<span class="crumb-path">${bits.map((b, i) =>
+        i === 0 ? `<span class="crumb-root">${escapeHtml(b)}</span>` : ` <span class="crumb-sep" aria-hidden="true">›</span> <span>${escapeHtml(b)}</span>`
+      ).join("")}</span>` +
+        ` <span class="crumb-sep" aria-hidden="true">—</span> <span class="crumb-range">${escapeHtml(rangeTxt)}</span>`;
+    }
     if (results) {
       results.innerHTML = hits.map((h) => {
         const id = h.id || h.tablet_id || "";
         const title = h.title || h.designation || id;
         const snip = h.snippet || h.preview || "";
         const meta = [h.period, h.site || h.provenience].filter(Boolean).join(" · ");
-        return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
+        return `<article class="list-hit"><div><a class="id" href="map.html?id=${encodeURIComponent(id)}" data-open="${escapeAttr(id)}">${escapeHtml(id)}</a> <span class="title">${escapeHtml(title)}</span></div><div class="meta">${escapeHtml(meta)}</div><div class="snip">${snip}</div></article>`;
       }).join("") || `<p class="search-empty">No matches.</p>`;
     }
-    if (pager) pager.innerHTML = "";
+    if (pager) pager.innerHTML = listPagerHtml(cur, pages, capped);
   } catch (err) {
     if (err?.name === "AbortError") return;
     if (seq !== _listSearchSeq) return;
     if (status) status.textContent = "Search error: " + (err.message || err);
   }
 }
+
+function listPagerHtml(cur, pages, capped) {
+  if (pages <= 1) return "";
+  const want = new Set([1, pages, cur - 2, cur - 1, cur, cur + 1, cur + 2].filter((p) => p >= 1 && p <= pages));
+  const sorted = [...want].sort((a, b) => a - b);
+  let out = cur > 1
+    ? `<a href="#" data-list-page="${cur - 1}" rel="prev">← Prev</a>`
+    : `<span class="gap">← Prev</span>`;
+  let prev = 0;
+  for (const p of sorted) {
+    if (prev && p > prev + 1) out += `<span class="gap">…</span>`;
+    out += p === cur
+      ? `<span class="cur" aria-current="page">${p}</span>`
+      : `<a href="#" data-list-page="${p}">${p}</a>`;
+    prev = p;
+  }
+  out += cur < pages
+    ? `<a href="#" data-list-page="${cur + 1}" rel="next">Next →</a>`
+    : `<span class="gap">Next →</span>`;
+  if (capped) out += `<span class="gap" title="API ranks at most 1,000 hits for text queries">capped</span>`;
+  return out;
+}
+
+function listGotoPage(page) {
+  page = Math.max(1, parseInt(page, 10) || 1);
+  if (window.UnreadHub?.set) window.UnreadHub.set({ page }, { hist: "push", keepPage: true });
+  else UnreadHubListSearch({ ...(window.UnreadHub?.get?.() || {}), page });
+}
+
 window.UnreadHubListSearch = UnreadHubListSearch;
 
 function wireListPanel() {
   const form = $("#ua-list-form");
+  $("#ua-list-pager")?.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-list-page]");
+    if (!a) return;
+    e.preventDefault();
+    listGotoPage(a.getAttribute("data-list-page"));
+    $("#list-root")?.scrollTo?.(0, 0);
+    window.scrollTo?.({ top: 0, behavior: "smooth" });
+  });
+
   if (!form || form.dataset.wired) return;
   form.dataset.wired = "1";
   const input = $("#ua-list-q");

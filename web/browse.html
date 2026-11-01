@@ -839,7 +839,13 @@ load();
     var N = window.N, T = window.T, D = window.D;
     var gis = genreIndices(st.genre);
     var si = siteIndex(st.site);
-    var pr = periodRange(st.period);
+    var pr = null;
+    if (st.yearFrom != null && st.yearTo != null && isFinite(Number(st.yearFrom)) && isFinite(Number(st.yearTo))) {
+      pr = [Number(st.yearFrom), Number(st.yearTo)];
+      if (pr[1] < pr[0]) pr = [pr[1], pr[0]];
+    } else {
+      pr = periodRange(st.period);
+    }
     // Browse states: 0 Human English, 1 Machine only, 2 ATF only, 3 Catalogue only
     // Applied with browse data only — never invent dims we do not have.
     var stateAllow = null;
@@ -848,7 +854,8 @@ load();
     else if (st.genre) skipped.push("genre (no browse band for “" + st.genre + "”)");
     if (si >= 0) applied.push("site");
     else if (st.site) skipped.push("site (not in browse site list)");
-    if (pr) applied.push("period (year band)");
+    if (pr && st.yearFrom != null) applied.push("custom year range");
+    else if (pr) applied.push("period (year band)");
     else if (st.period) skipped.push("period (no year band match)");
     if (st.openGap) {
       // Unread ≈ no English of any kind in browse binary

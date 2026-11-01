@@ -137,7 +137,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                 <label for="filter-min-lines">Min. ATF lines: <span id="min-lines-val">40</span></label>
                 <input type="range" id="filter-min-lines" min="0" max="400" step="10" value="40" />
               </div>
-              <p class="sidebar-hint">Date / era: use the Time browser under the map (fades pins by approximate year).</p>
+              <p class="sidebar-hint">Date / era: Period menu and the Time browser under the map stay in sync (drag both handles for a custom range).</p>
             </div>
           </details>
 
@@ -242,26 +242,20 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                 <span class="timeline-era" id="timeline-era" aria-live="polite"></span>
                 <span class="timeline-spacer"></span>
                 <button type="button" class="timeline-all" id="timeline-all" aria-pressed="true">All periods</button>
-                <span class="timeline-year" id="timeline-year">2000 BCE</span>
+                <span class="timeline-year" id="timeline-year">All periods</span>
               </div>
-              <div class="timeline-track">
+              <div class="timeline-track" id="timeline-track">
                 <div class="timeline-eraband" id="timeline-eraband" aria-hidden="true"></div>
                 <div class="timeline-rail"></div>
                 <div class="timeline-fill" id="timeline-fill"></div>
                 <div class="timeline-dots" id="timeline-dots"></div>
-                <input
-                  type="range"
-                  class="timeline-input"
-                  id="timeline-range"
-                  min="-3400"
-                  max="-50"
-                  step="25"
-                  value="-2000"
-                  aria-label="Approximate year BCE (arrow keys: 25 years, Shift+arrow: 100)"
-                />
+                <button type="button" class="timeline-handle start" id="timeline-handle-start" role="slider"
+                  aria-label="Range start" aria-valuemin="-3400" aria-valuemax="-50" aria-valuenow="-3400"></button>
+                <button type="button" class="timeline-handle end" id="timeline-handle-end" role="slider"
+                  aria-label="Range end" aria-valuemin="-3400" aria-valuemax="-50" aria-valuenow="-50"></button>
               </div>
               <div class="timeline-eras" id="timeline-eras" role="group" aria-label="Jump to era"></div>
-              <p class="timeline-note">Era bands use conventional, approximate dates (middle chronology).</p>
+              <p class="timeline-note">Drag either handle for a custom range, or jump to an era. Syncs with Period in the sidebar. Era bands use conventional, approximate dates (middle chronology).</p>
             </div>
           </div>
           <div class="preview-panel" id="preview-panel">
@@ -289,6 +283,7 @@ if(("\n"+t).indexOf("\n"+s+"\n")<0)return;var l=document.querySelector('link[rel
                 <label class="scope-opt"><input type="radio" name="ua-in" value="en" /> <span>English</span></label>
               </div>
             </form>
+            <nav id="ua-list-crumb" class="list-crumb" aria-label="Search summary"></nav>
             <div id="ua-list-status" class="search-status" role="status" aria-live="polite"></div>
             <section id="ua-list-results" class="search-results" aria-live="polite"></section>
             <nav id="ua-list-pager" class="pager" aria-label="Result pages"></nav>

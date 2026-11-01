@@ -1722,6 +1722,47 @@ body.mode-epic .catalog-card .title {
   background: rgba(196, 120, 74, 0.16);
   font-weight: 600;
 }
+
+/* Dual-handle time range */
+.timeline-fill {
+  left: 0;
+  right: auto;
+}
+.timeline-handle {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-strong, #c4784a);
+  background: var(--bg-elev, #1a1d24);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.25);
+  cursor: ew-resize;
+  z-index: 3;
+  padding: 0;
+}
+.timeline-handle:hover,
+.timeline-handle:focus-visible {
+  background: var(--accent-soft, rgba(196,120,74,0.35));
+  outline: none;
+}
+.timeline-handle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(196, 120, 74, 0.55);
+}
+.timeline-panel:not(.fading) .timeline-handle {
+  opacity: 0.55;
+}
+.list-crumb {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+.list-crumb .crumb-root { color: var(--text-faint); }
+.list-crumb .crumb-sep { color: var(--text-faint); margin: 0 0.15rem; }
+.list-crumb .crumb-range { color: var(--text); }
+
 .timeline-note {
   margin: 0.3rem 0 0;
   font-size: 0.62rem;
