@@ -39,7 +39,7 @@
 .snip-text.human_en { font-family: var(--font-serif); }
 .snip-text.machine_en { color: var(--text); }
 .snip-line { color: var(--text-faint); font-family: var(--font-mono); font-size: 0.75rem; margin-right: 0.4rem; }
-.snip-text i, .list-hit .snip i { font-style: italic; font-weight: inherit; background: none; color: inherit; display: inline; padding: 0; border-radius: 0; }
+.snip-text i, .list-hit .snip i, .smap-snip i { font-style: italic; font-weight: inherit; background: none; color: inherit; display: inline; padding: 0; border-radius: 0; }
 .result-links { margin-top: 0.35rem; font-size: 0.82rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
 .badge-human { border-color: rgba(106, 155, 122, 0.55); color: var(--green); }
 .badge-withheld { border-style: dashed; }

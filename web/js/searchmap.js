@@ -70,6 +70,21 @@
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  /** Inline italics for query terms in map-panel excerpts (mirrors search.js / List). */
+  const hilite = (text, q) => {
+    const raw = String(text ?? "");
+    const words = [...new Set((String(q || "").match(/[\p{L}\p{N}_]+/gu) || []).map((w) => w.toLowerCase()))].filter(Boolean)
+      .sort((a, b) => b.length - a.length);
+    if (!words.length) return esc(raw);
+    const alt = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+    const re = new RegExp(`(?<![\\p{L}\\p{N}_])(${alt})`, "giu");
+    let out = "", last = 0;
+    for (const m of raw.matchAll(re)) {
+      out += esc(raw.slice(last, m.index)) + "<i>" + esc(m[0]) + "</i>";
+      last = m.index + m[0].length;
+    }
+    return out + esc(raw.slice(last));
+  };
   const fmt = (n) => (typeof n === "number" ? n.toLocaleString("en-US") : "?");
   const short = (n) => (n >= 1e5 ? Math.round(n / 1e3) + "k" : n >= 1e4 ? (n / 1e3).toFixed(0) + "k" : n >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "k" : String(n));
   const spin = (msg) => `<span class="spinner" aria-hidden="true"></span><span>${esc(msg)}</span>`;
@@ -420,7 +435,7 @@
     const facts = [r.period, r.genre, SRC_NAMES[r.src] || r.src].filter(Boolean).map(esc).join(" · ");
     const sn = (r.snippets || [])[0];
     const snip = sn && sn.kind !== "meta"
-      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine translation" : "ATF")}</span> ${esc(sn.text)}</div>`
+      ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine translation" : "ATF")}</span> ${hilite(sn.text, sm.query && sm.query.q)}</div>`
       : "";
     return `<li class="smap-res"><div><a class="smap-id" href="map.html?id=${encodeURIComponent(openId)}" data-open="${esc(openId)}">${esc(r.id)}</a>` +
       `${r.designation && r.designation !== r.id ? ` <span class="smap-desig">${esc(r.designation)}</span>` : ""}</div>` +
