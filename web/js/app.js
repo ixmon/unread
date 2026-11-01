@@ -2765,27 +2765,47 @@ function syncListQueryFromUrl() {
   else if (q) $("#ua-list-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
 }
 
+let _listSearchSeq = 0;
+let _listSearchAbort = null;
 async function UnreadHubListSearch(s) {
   const status = $("#ua-list-status");
   const results = $("#ua-list-results");
   const pager = $("#ua-list-pager");
   const q = (s?.q || "").trim();
   const scope = s?.in || "all";
-  if (status) status.textContent = q ? `Searching for “${q}”…` : "Enter a query.";
-  if (!q) {
+  const genre = (s?.genre || "").trim();
+  const period = (s?.period || "").trim();
+  const site = (s?.site || "").trim();
+  const language = (s?.language || "").trim();
+  const hasFilter = !!(genre || period || site || language);
+  if (!q && !hasFilter) {
+    if (_listSearchAbort) { try { _listSearchAbort.abort(); } catch (_) {} _listSearchAbort = null; }
     if (results) results.innerHTML = "";
-    if (status) status.textContent = "Enter a query.";
+    if (status) status.textContent = "Enter a query or choose a filter.";
+    if (pager) pager.innerHTML = "";
     return;
   }
+  const label = q
+    ? `Searching for “${q}”…`
+    : `Searching${genre ? ` · ${genre}` : ""}${period ? ` · ${period}` : ""}${site ? ` · ${site}` : ""}…`;
+  if (status) status.textContent = label;
+  const seq = ++_listSearchSeq;
+  if (_listSearchAbort) { try { _listSearchAbort.abort(); } catch (_) {} }
+  const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+  _listSearchAbort = ctl;
   try {
     const params = new URLSearchParams({ q, in: scope, limit: "20" });
-    if (s.genre) params.set("genre", s.genre);
-    if (s.period) params.set("period", s.period);
-    if (s.site) params.set("site", s.site);
-    if (s.language) params.set("lang", s.language);
-    const r = await fetch("/api/search?" + params.toString(), { headers: { Accept: "application/json" } });
+    if (genre) params.set("genre", genre);
+    if (period) params.set("period", period);
+    if (site) params.set("site", site);
+    if (language) params.set("lang", language);
+    const r = await fetch("/api/search?" + params.toString(), {
+      headers: { Accept: "application/json" },
+      signal: ctl?.signal,
+    });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const data = await r.json();
+    if (seq !== _listSearchSeq) return; // stale
     const hits = data.hits || data.results || [];
     if (status) status.textContent = `${(data.total ?? hits.length).toLocaleString()} result(s)`;
     if (results) {
@@ -2799,6 +2819,8 @@ async function UnreadHubListSearch(s) {
     }
     if (pager) pager.innerHTML = "";
   } catch (err) {
+    if (err?.name === "AbortError") return;
+    if (seq !== _listSearchSeq) return;
     if (status) status.textContent = "Search error: " + (err.message || err);
   }
 }
@@ -2811,6 +2833,12 @@ function wireListPanel() {
   const input = $("#ua-list-q");
   input?.addEventListener("input", () => {
     if (window.UnreadHub?.fromQueryTyping) window.UnreadHub.fromQueryTyping(input.value);
+  });
+  // No submit button (aria-hidden-on-focus); Enter still searches.
+  input?.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    form.requestSubmit?.() || form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
   });
   form.querySelectorAll('input[name="ua-in"]').forEach((r) => {
     r.addEventListener("change", () => {

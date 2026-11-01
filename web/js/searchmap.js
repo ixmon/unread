@@ -488,6 +488,12 @@
     $("#smap-q")?.addEventListener("input", () => {
       if (window.UnreadHub?.fromQueryTyping) window.UnreadHub.fromQueryTyping($("#smap-q").value);
     });
+    // No submit button in the form (avoids aria-hidden-on-focused warning); Enter still runs search.
+    $("#smap-q")?.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      $("#smap-form")?.requestSubmit?.() || $("#smap-form")?.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    });
     $("#smap-form").addEventListener("submit", (e) => {
       e.preventDefault();
       const raw = $("#smap-q").value.trim();
