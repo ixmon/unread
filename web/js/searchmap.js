@@ -411,16 +411,19 @@
   })();
 
   function resultHtml(r) {
-    const tp = (r.url || "").replace(/^\/text\//, "") || `${r.src}:${r.id}`;
+    // Reader id: catalog id when known, else /text/ path (ebl:…, oracc:…, P/Q/X) — same forms List uses.
+    // Do NOT link via search.html?text=… (that redirects to map.html?view=list and never opens the reader).
+    const tp = (r.url || "").replace(/^\/text\//, "") || (r.src && r.id ? `${r.src}:${r.id}` : r.id);
+    const openId = (inCatalog(r.id) ? r.id
+      : (r.canonical_id && inCatalog(r.canonical_id) ? r.canonical_id : null)
+      ) || tp || r.id;
     const facts = [r.period, r.genre, SRC_NAMES[r.src] || r.src].filter(Boolean).map(esc).join(" · ");
     const sn = (r.snippets || [])[0];
     const snip = sn && sn.kind !== "meta"
       ? `<div class="smap-snip"><span class="smap-snip-kind">${esc(sn.kind === "human_en" ? "Human EN" : sn.kind === "machine_en" ? "Machine translation" : "ATF")}</span> ${esc(sn.text)}</div>`
       : "";
-    const readerId = inCatalog(r.id) ? r.id : r.canonical_id && inCatalog(r.canonical_id) ? r.canonical_id : null;
-    const reader = readerId ? ` <a href="map.html?id=${encodeURIComponent(readerId)}" class="smap-reader" data-open="${esc(readerId)}">Map reader</a>` : "";
-    return `<li class="smap-res"><div><a class="smap-id" href="${esc(searchPageUrl(sm.query, { text: tp }))}" target="_blank" rel="noopener">${esc(r.id)}</a>` +
-      `${r.designation && r.designation !== r.id ? ` <span class="smap-desig">${esc(r.designation)}</span>` : ""}${reader}</div>` +
+    return `<li class="smap-res"><div><a class="smap-id" href="map.html?id=${encodeURIComponent(openId)}" data-open="${esc(openId)}">${esc(r.id)}</a>` +
+      `${r.designation && r.designation !== r.id ? ` <span class="smap-desig">${esc(r.designation)}</span>` : ""}</div>` +
       `<div class="smap-facts">${facts}</div>${snip}</li>`;
   }
 
