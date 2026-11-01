@@ -15,6 +15,9 @@
     period: "",
     language: "",
     site: "",
+    yearFrom: null,
+    yearTo: null,
+    page: 1,
     minLines: 40,
     hideKnown: true,
     openGap: false,
@@ -56,7 +59,8 @@
     if (scope) next.in = scope.value || "all";
 
     next.genre = $("#filter-genre")?.value || "";
-    next.period = $("#filter-period")?.value || "";
+    const pv = $("#filter-period")?.value || "";
+    next.period = pv === "__custom__" ? "" : pv;
     next.language = $("#filter-language")?.value || "";
     next.site = $("#filter-site")?.value || "";
     next.minLines = Number($("#filter-min-lines")?.value) || 0;
@@ -84,7 +88,18 @@
         if (el && el.value !== v) el.value = v;
       };
       setSel("filter-genre", s.genre);
-      setSel("filter-period", s.period);
+      {
+        const el = document.getElementById("filter-period");
+        if (el && ![...el.options].some((o) => o.value === "__custom__")) {
+          const opt = document.createElement("option");
+          opt.value = "__custom__";
+          opt.textContent = "Custom";
+          el.appendChild(opt);
+        }
+        if (s.period) setSel("filter-period", s.period);
+        else if (s.yearFrom != null && s.yearTo != null) setSel("filter-period", "__custom__");
+        else setSel("filter-period", "");
+      }
       setSel("filter-language", s.language);
       setSel("filter-site", s.site);
       const ml = $("#filter-min-lines");
@@ -122,6 +137,9 @@
     if (p.get("genre")) next.genre = p.get("genre");
     if (p.get("period")) next.period = p.get("period");
     if (p.get("site")) next.site = p.get("site");
+    if (p.has("yf")) next.yearFrom = Number(p.get("yf"));
+    if (p.has("yt")) next.yearTo = Number(p.get("yt"));
+    if (p.has("page")) next.page = Math.max(1, parseInt(p.get("page"), 10) || 1);
     if (p.get("lang")) next.language = p.get("lang");
     if (p.get("language")) next.language = p.get("language");
     if (p.has("min")) next.minLines = Number(p.get("min")) || 0;
@@ -157,6 +175,13 @@
     if (s.genre) p.set("genre", s.genre); else p.delete("genre");
     if (s.period) p.set("period", s.period); else p.delete("period");
     if (s.site) p.set("site", s.site); else p.delete("site");
+    if (s.yearFrom != null && s.yearTo != null && Number.isFinite(s.yearFrom) && Number.isFinite(s.yearTo)) {
+      p.set("yf", String(s.yearFrom));
+      p.set("yt", String(s.yearTo));
+    } else {
+      p.delete("yf"); p.delete("yt");
+    }
+    if (s.page && Number(s.page) > 1) p.set("page", String(s.page)); else p.delete("page");
     if (s.language) p.set("lang", s.language); else { p.delete("lang"); p.delete("language"); }
     if (s.minLines !== 40) p.set("min", String(s.minLines)); else p.delete("min");
     const flags = [];
@@ -281,11 +306,36 @@
     const next = { ...state, ...partial };
     // normalize
     next.q = (next.q || "").trim();
+    next.page = Math.max(1, parseInt(next.page, 10) || 1);
+    if (next.yearFrom != null) next.yearFrom = Number(next.yearFrom);
+    if (next.yearTo != null) next.yearTo = Number(next.yearTo);
+    // Changing search/filters resets to page 1 unless this update is page-only or keepPage
+    if (!opts.keepPage) {
+      const keys = Object.keys(partial || {});
+      const pageOnly = keys.length === 1 && keys[0] === "page";
+      const filterKeys = ["q", "in", "genre", "period", "site", "language", "yearFrom", "yearTo",
+        "hideKnown", "openGap", "noEnglish", "notOnline", "packaged", "epic", "herbal", "omens", "math", "minLines"];
+      const filterChanged = filterKeys.some((k) => k in (partial || {}) && partial[k] !== state[k]);
+      if (!pageOnly && filterChanged) next.page = 1;
+    }
     if (equal(next, state) && !opts.force) return;
     state = next;
     seq += 1;
     markAllDirty();
     writeToDom(state);
+    // Sync time bar from hub years / named period (map owns handles; avoid feedback via lock)
+    try {
+      if (typeof window.UnreadTimeline?.setRange === "function" && !window.state?._periodSyncLock) {
+        if (state.yearFrom != null && state.yearTo != null) {
+          const curF = window.UnreadTimeline.from, curT = window.UnreadTimeline.to;
+          if (curF !== state.yearFrom || curT !== state.yearTo) {
+            window.UnreadTimeline.setRange(state.yearFrom, state.yearTo, { activate: true, syncPeriod: false });
+          }
+        } else if (!state.period && state.yearFrom == null && window.UnreadTimeline.fading) {
+          /* leave bar unless period cleared via All */
+        }
+      }
+    } catch (_) {}
     if (opts.url !== false) {
       clearTimeout(urlTimer);
       urlTimer = setTimeout(() => writeUrl(state, opts.hist || "replace"), opts.debounceUrl ?? 0);
@@ -323,7 +373,7 @@
 
   function fromFilters() {
     if (applying) return;
-    set(readFromDom(), { debounce: 200, hist: "replace" });
+    set({ ...readFromDom(), page: 1 }, { debounce: 200, hist: "replace" });
   }
 
   function onViewChange(view) {
@@ -359,7 +409,7 @@
     if (applying) return;
     const partial = {};
     const st = d.state;
-    const keys = ["q", "in", "genre", "period", "language", "site", "minLines",
+    const keys = ["q", "in", "genre", "period", "language", "site", "yearFrom", "yearTo", "page", "minLines",
       "hideKnown", "openGap", "noEnglish", "notOnline", "packaged",
       "epic", "herbal", "omens", "math"];
     for (const k of keys) if (k in st) partial[k] = st[k];
@@ -395,6 +445,7 @@
       "q (corpus search/ids)",
       "genre (incl. compound Lexical; Literary → OR bands)",
       "period (approx year band)",
+      "yearFrom/yearTo (custom time-bar range)",
       "site (browse site index)",
       "Unread / No English (coarse translation-state dims)",
     ],
