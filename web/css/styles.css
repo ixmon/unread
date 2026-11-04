@@ -84,7 +84,8 @@ input {
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 100;
+  /* Above Leaflet panes (.smap is 800; default marker/popup panes sit under 700). */
+  z-index: 1200;
 }
 
 .brand {
@@ -2169,6 +2170,7 @@ mark.find-hit {
     display: none; position: absolute; top: var(--header-h); left: 0; right: 0; margin: 0;
     flex-direction: column; gap: 0.15rem; padding: 0.5rem 0.75rem 0.75rem;
     background: rgba(15, 17, 20, 0.98); border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+    z-index: 1201; /* sit above the map / Leaflet panes when the Menu opens on phones */
   }
   .header-nav.open { display: flex; }
   .header-nav .nav-btn, .header-nav .nav-link { text-align: left; min-height: 44px; display: flex; align-items: center; border-radius: 8px; font-size: 0.95rem; }
@@ -2202,11 +2204,21 @@ mark.find-hit {
 .pchip-tags { display: inline-flex; gap: 0.3rem; flex-wrap: wrap; }
 .pchip-tags:empty { display: none; }
 
-@media (max-width: 760px) {
-  .reader-toolbar { padding: 0.5rem 0.75rem; gap: 0.45rem 0.6rem; }
-  .reader-title-block { flex-basis: calc(100% - 7rem); }
+@media (max-width: 768px) {
+  .reader-toolbar {
+    padding: 0.5rem 0.75rem; gap: 0.45rem 0.6rem;
+    flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; touch-action: pan-x;
+    scrollbar-width: none; -ms-overflow-style: none;
+    /* right-edge fade hints that more chips sit off-screen */
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 28px), transparent 100%);
+  }
+  .reader-toolbar::-webkit-scrollbar { display: none; }
+  .reader-title-block { flex: 0 0 auto; max-width: 42vw; }
   .reader-chips {
-    flex-wrap: nowrap; overflow-x: auto; width: 100%; padding-bottom: 2px;
+    display: flex; flex-wrap: nowrap; flex: 0 0 auto;
+    overflow-x: visible; width: max-content; padding-bottom: 2px;
     scrollbar-width: none; -webkit-overflow-scrolling: touch;
   }
   .reader-chips::-webkit-scrollbar { display: none; }

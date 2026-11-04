@@ -108,8 +108,10 @@ a{color:#e0b860}
     width:108px;height:108px;right:6px;top:62px;
     box-shadow:0 4px 18px rgba(0,0,0,.45);
   }
-  #nav .node{width:38px;height:30px;margin:-15px 0 0 -19px;font-size:7.5px;padding-bottom:1px;border-radius:6px}
-  #nav .node canvas{width:32px;height:16px}
+  /* slightly smaller icons so the ring rim stays grabable; long-press also drops them behind the wheel */
+  #nav .node{width:30px;height:24px;margin:-12px 0 0 -15px;font-size:6.5px;padding-bottom:1px;border-radius:5px;z-index:2;transition:opacity .15s}
+  #nav .node canvas{width:26px;height:13px}
+  #nav.drag-through .node{pointer-events:none;opacity:.55;z-index:0}
   #navlabel{top:44px;font-size:9px;padding:0 4px;line-height:1.15}
   #navlabel small{font-size:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   #handle{width:12px;height:12px;margin:-6px 0 0 -6px}
@@ -477,7 +479,7 @@ function buildNav(){ syncNavGeom();
   MAPS.forEach((m,k)=>{
     const d = document.createElement('div'); d.className='node'; const [x,y]=nodePos(k); d.style.left=x+'px'; d.style.top=y+'px';
     const c = document.createElement('canvas'); c.width=120; c.height=68; d.appendChild(c); d.appendChild(document.createTextNode(m.name));
-    d.onclick = e=>{ e.stopPropagation(); animateTo(k); setTimeout(()=>writeURL(true), 50); };
+    d.onclick = e=>{ e.stopPropagation(); if (nav.dataset.suppressNodeClick === '1') { delete nav.dataset.suppressNodeClick; return; } animateTo(k); setTimeout(()=>writeURL(true), 50); };
     nav.appendChild(d); m.el=d; thumb(c, m);
   });
 }
@@ -500,9 +502,61 @@ function navFromEvent(e){
   const dx=e.clientX-r.left-CX, dy=e.clientY-r.top-CY;
   if (!Number.isFinite(dx) || !Number.isFinite(dy)) return navT;
   let a = Math.atan2(dy,dx)+Math.PI/2; if(a<0)a+=2*Math.PI; return BrowseState.sanitizeNavT(a/(2*Math.PI)*MAPS.length, MAPS.length); }
-nav.addEventListener('pointerdown', e=>{ if(e.target.closest('.node')) return; dragging=true; nav.setPointerCapture(e.pointerId); navT=navFromEvent(e); draw(); });
-nav.addEventListener('pointermove', e=>{ if(!dragging) return; navT=navFromEvent(e); draw(); });
-nav.addEventListener('pointerup', ()=>{ dragging=false; });
+// Phones: a short tap on a .node still opens that map; a ~300ms press drops the
+// icons behind the wheel (pointer-events:none) so the drag turns the ring.
+let nodeHold = null;
+function clearNodeHold(){
+  if (nodeHold) { clearTimeout(nodeHold.timer); nodeHold = null; }
+  nav.classList.remove('drag-through');
+}
+nav.addEventListener('pointerdown', e=>{
+  const node = e.target.closest && e.target.closest('.node');
+  const phone = matchMedia('(max-width:768px)').matches || e.pointerType === 'touch';
+  if (node && phone) {
+    clearNodeHold();
+    const ptr = e.pointerId;
+    nodeHold = {
+      ptr,
+      origin: {x: e.clientX, y: e.clientY},
+      timer: setTimeout(()=>{
+        if (!nodeHold || nodeHold.ptr !== ptr) return;
+        nodeHold.armed = true;
+        nav.classList.add('drag-through');
+        dragging = true;
+        try { nav.setPointerCapture(ptr); } catch (_) {}
+        navT = navFromEvent({clientX: nodeHold.origin.x, clientY: nodeHold.origin.y}); draw();
+      }, 300)
+    };
+    return;
+  }
+  if (node) return;
+  dragging=true; nav.setPointerCapture(e.pointerId); navT=navFromEvent(e); draw();
+});
+nav.addEventListener('pointermove', e=>{
+  if (nodeHold && !nodeHold.armed && nodeHold.origin) {
+    const ox = nodeHold.origin.x, oy = nodeHold.origin.y;
+    if (Math.hypot(e.clientX - ox, e.clientY - oy) > 10) {
+      // Finger moved before the long-press fired: start a ring drag and drop the icons.
+      clearTimeout(nodeHold.timer);
+      nodeHold.armed = true;
+      nav.classList.add('drag-through');
+      dragging = true;
+      try { nav.setPointerCapture(e.pointerId); } catch (_) {}
+    } else {
+      return;
+    }
+  }
+  if(!dragging) return; navT=navFromEvent(e); draw();
+});
+nav.addEventListener('pointerup', e=>{
+  const wasHold = nodeHold;
+  const armed = wasHold && wasHold.armed;
+  if (armed) nav.dataset.suppressNodeClick = '1';
+  clearNodeHold();
+  dragging=false;
+  // Short tap on a node: existing node.onclick still fires and opens that map.
+});
+nav.addEventListener('pointercancel', ()=>{ clearNodeHold(); dragging=false; });
 let animId = 0;
 function animateTo(k, durMs){ const n=MAPS.length; navT=BrowseState.sanitizeNavT(navT,n); k=BrowseState.sanitizeNavT(k,n); let from=navT, d=((k-from)%n+n)%n; if(d>n/2) d-=n; const t0=performance.now(), dur=durMs||900+Math.abs(d)*250, my=++animId;
   (function step(now){ if (my!==animId) return; const f=Math.min(1,(now-t0)/dur), e=durMs? 1-(1-f)**3 : f; navT=from+d*e; draw(); if(f<1) requestAnimationFrame(step); else { navT=((k%n)+n)%n; draw(); writeURL(false); } })(t0); }

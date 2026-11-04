@@ -57,6 +57,13 @@ html,body{height:auto;overflow-x:hidden;background:var(--ink)}
 #copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,4.4vw,54px);line-height:1.14;margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.95),0 0 42px rgba(0,0,0,.7)}
 #copy h1 em{font-style:normal;color:var(--gold)}
 #copy p.tag{font-size:clamp(15px,1.7vw,19px);color:#d8d1c3;margin:0 0 26px;text-shadow:0 1px 12px #000}
+@media (max-width:768px){
+  /* a little more air between the tagline and the search box on phones */
+  #copy p.tag{margin:0 0 40px}
+  /* omit the partial Browse chrome (map-of-maps navbar) that appears after a tap */
+  #navbar, body.user #navbar{display:none!important;opacity:0!important;pointer-events:none!important}
+  body.user #maplabel{bottom:28px}
+}
 #copy p.tag b{color:var(--gold);font-weight:500}
 #sform{display:flex;max-width:520px;margin:0 auto;background:rgba(18,20,26,.85);border:1px solid #33404f;border-radius:999px;padding:5px;backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
 #sform input{flex:1;min-width:0;background:transparent;border:0;outline:0;padding:10px 18px;font-size:16px;color:var(--text)}
@@ -315,7 +322,7 @@ function takeControl(){if(user)return;user=true;fade=1;if(touring&&!P.has('t')){
 function animateTo(k){const n=MAPS.length;let from=navT,d=((k-from)%n+n)%n;if(d>n/2)d-=n;const t0=performance.now(),dur=1100+Math.abs(d)*300;
   (function st(now){const f=Math.min(1,(now-t0)/dur),e=f<.5?2*f*f:1-2*(1-f)*(1-f);navT=from+d*e;if(f<1)requestAnimationFrame(st);else navT=((k%n)+n)%n})(t0)}
 const heroEl=document.getElementById('hero');
-heroEl.addEventListener('pointerdown',e=>{if(!D||e.target.closest('#copy,#navbar,#topnav,#brand'))return;takeControl()});
+heroEl.addEventListener('pointerdown',e=>{if(!D||e.target.closest('#copy,#navbar,#topnav,#brand'))return;if(matchMedia('(max-width:768px)').matches)return;takeControl()});
 let dragX=null;heroEl.addEventListener('pointermove',e=>{if(!user||e.buttons!==1||e.target.closest('#navbar'))return;if(dragX!=null){navT+=(e.clientX-dragX)/-400;}dragX=e.clientX});
 heroEl.addEventListener('pointerup',()=>dragX=null);
 addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){takeControl();animateTo(Math.round(navT)+(e.key==='ArrowRight'?1:-1))}});

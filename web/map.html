@@ -51,6 +51,10 @@
         if (p.get("mode")) open = true;
         if (f === "open" || f === "1") open = true;
         if (f === "closed" || f === "0") open = false;
+        // Phones: always start collapsed (Filters button still opens it). Desktop keeps the remembered choice.
+        try {
+          if (matchMedia("(max-width:768px)").matches && f !== "open" && f !== "1") open = false;
+        } catch (e) {}
         document.documentElement.classList.toggle("sidebar-collapsed", !open);
       })();
     </script>
