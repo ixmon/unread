@@ -57,13 +57,6 @@ html,body{height:auto;overflow-x:hidden;background:var(--ink)}
 #copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,4.4vw,54px);line-height:1.14;margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.95),0 0 42px rgba(0,0,0,.7)}
 #copy h1 em{font-style:normal;color:var(--gold)}
 #copy p.tag{font-size:clamp(15px,1.7vw,19px);color:#d8d1c3;margin:0 0 26px;text-shadow:0 1px 12px #000}
-@media (max-width:768px){
-  /* a little more air between the tagline and the search box on phones */
-  #copy p.tag{margin:0 0 40px}
-  /* omit the partial Browse chrome (map-of-maps navbar) that appears after a tap */
-  #navbar, body.user #navbar{display:none!important;opacity:0!important;pointer-events:none!important}
-  body.user #maplabel{bottom:28px}
-}
 #copy p.tag b{color:var(--gold);font-weight:500}
 #sform{display:flex;max-width:520px;margin:0 auto;background:rgba(18,20,26,.85);border:1px solid #33404f;border-radius:999px;padding:5px;backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
 #sform input{flex:1;min-width:0;background:transparent;border:0;outline:0;padding:10px 18px;font-size:16px;color:var(--text)}
@@ -75,11 +68,23 @@ html,body{height:auto;overflow-x:hidden;background:var(--ink)}
 body.user #copy h1, body.user #copy p.tag, body.user #hints{opacity:0;max-height:0;margin:0;overflow:hidden;pointer-events:none;transition:opacity .5s,max-height .5s}
 body.user #copy{top:76px;transform:translate(-50%,0)}
 body.user #sform{pointer-events:auto;opacity:1}
-@media (max-width:640px){
-  #sform{position:fixed;left:12px;right:12px;top:58px;z-index:9;max-width:none;margin:0;transition:opacity .25s,transform .25s}
+@media (max-width:768px){
+  /* More air under the "...never been translated" headline, then the search box.
+     Avoid position:fixed on #sform here: #copy uses transform, so fixed was trapped
+     and the search overlapped the headline. Keep search in normal flow instead. */
+  #copy h1{margin:0 0 18px}
+  #copy p.tag{margin:0 0 22px}
+  #sform{
+    position:relative; left:auto; right:auto; top:auto;
+    max-width:none; width:100%; margin:0 auto; z-index:9;
+    transition:opacity .25s,transform .25s;
+  }
   body.scrolled-down #sform{opacity:0;transform:translateY(-12px);pointer-events:none}
   body.scrolled-top #sform, body:not(.scrolled-down) #sform{opacity:1;transform:none;pointer-events:auto}
-  body.user #copy{top:118px}
+  body.user #copy{top:76px}
+  /* omit the partial Browse chrome (map-of-maps navbar) that appears after a tap */
+  #navbar, body.user #navbar{display:none!important;opacity:0!important;pointer-events:none!important}
+  body.user #maplabel{bottom:28px}
 }
 #legend{position:absolute;left:28px;bottom:28px;z-index:6;background:rgba(14,16,21,.78);border:1px solid #2a2e38;border-radius:10px;padding:10px 13px;font-size:12px;line-height:1.7;backdrop-filter:blur(4px);max-width:290px}
 #legend:empty{display:none}
