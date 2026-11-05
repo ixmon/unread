@@ -68,12 +68,46 @@
     });
   }
 
+  /** Phones (<=760px): a Menu button like map.html's, opening the nav as a dropdown. */
+  function addToggle(nav) {
+    const header = nav.closest(".static-header");
+    if (!header || header.querySelector(".nav-toggle")) return;
+    if (!nav.id) nav.id = "header-nav";
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "nav-toggle";
+    btn.setAttribute("aria-controls", nav.id);
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-label", "Menu");
+    btn.innerHTML = '<span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span>';
+    header.insertBefore(btn, nav);
+    header.classList.add("has-nav-toggle");
+    const set = (open) => {
+      btn.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("open", open);
+    };
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = btn.getAttribute("aria-expanded") !== "true";
+      set(open);
+      if (open) { const a = nav.querySelector(".nav-link"); if (a) a.focus(); }
+    });
+    nav.addEventListener("click", (e) => { if (e.target.closest(".nav-link")) set(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") { set(false); btn.focus(); }
+    });
+    document.addEventListener("click", (e) => {
+      if (btn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target) && e.target !== btn) set(false);
+    });
+  }
+
   function boot() {
     document.querySelectorAll("nav[data-ua-nav]").forEach(fill);
+    document.querySelectorAll("nav[data-ua-nav]").forEach(addToggle);
     ensureBrand(document);
   }
 
-  global.UA_SITE_NAV = { ITEMS, SITE_NAME, SITE_TAGLINE, fill, ensureBrand, boot };
+  global.UA_SITE_NAV = { ITEMS, SITE_NAME, SITE_TAGLINE, fill, ensureBrand, addToggle, boot };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })(typeof window !== "undefined" ? window : globalThis);

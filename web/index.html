@@ -158,7 +158,7 @@ noscript p{position:absolute;bottom:30px;width:100%;text-align:center;z-index:6;
     <p class="tag" id="subline">Explore all <b data-stat="tablets">462,298</b> of them here.</p>
     <!-- ============================================ /HEADLINE ============================================ -->
     <form id="sform" action="map.html" role="search"><input id="q" name="q" placeholder="barley" aria-label="Search the corpus" autocomplete="off" /><button type="submit">Search</button></form>
-    <div id="hints">try <a href="browse.html?q=barley">barley</a><a href="browse.html?q=silver">silver</a><a href="browse.html?q=sheep">sheep</a><a href="map.html">the map</a><a href="#" id="rand1">a random tablet</a></div>
+    <div id="hints">try <a href="map.html?view=list&amp;q=barley">barley</a><a href="map.html?view=list&amp;q=silver">silver</a><a href="map.html?view=list&amp;q=sheep">sheep</a><a href="map.html">the map</a><a href="#" id="rand1">a random tablet</a></div>
   </div>
   <div id="legend"></div>
   <div id="maplabel"></div>
@@ -333,7 +333,7 @@ heroEl.addEventListener('pointerup',()=>dragX=null);
 addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){takeControl();animateTo(Math.round(navT)+(e.key==='ArrowRight'?1:-1))}});
 // Search: the three sampled preset words open the browse view; anything else goes to the corpus search page (search API).
 const PRESETS=['barley','silver','sheep'];
-// Always open the Search page with the typed query (presets stay as browse.html links in #hints).
+// Always open the Search page with the typed query (the #hints presets also open the List view).
 document.getElementById('sform').onsubmit=e=>{e.preventDefault();const v=document.getElementById('q').value.trim()||'barley';
   location.href=`map.html?view=list&q=${encodeURIComponent(v)}`;};
 // Phones: hide the fixed search while scrolling down the page; restore when scrolling up / near top.
