@@ -502,7 +502,7 @@ function setTrParam(text) {
     u.searchParams.delete("tr");
     if (cols.length && !(cols.length === 1 && cols[0] === text.tr_default)) u.searchParams.set("tr", cols.join(","));
     const next = u.toString().replace(/%2C/gi, ",");
-    if (next !== location.href) history.pushState({ tr: cols.join(",") }, "", next);
+    if (next !== location.href) history.pushState({ tr: cols.join(","), uaDepth: (history.state && history.state.uaDepth) || 0 }, "", next);
   } catch (_) {
     /* ignore */
   }
@@ -541,8 +541,9 @@ function syncUrl(view, id, mode) {
   const next = viewUrl(view, id);
   if (next === location.href) return;
   try {
-    if (mode === "replace") history.replaceState({ view, id: id || null }, "", next);
-    else history.pushState({ view, id: id || null }, "", next);
+    const depth = (history.state && history.state.uaDepth) || 0;
+    if (mode === "replace") history.replaceState({ view, id: id || null, uaDepth: depth }, "", next);
+    else history.pushState({ view, id: id || null, uaDepth: depth + 1 }, "", next);
   } catch (_) {
     /* ignore */
   }
@@ -1288,7 +1289,9 @@ function renderPreview(item, loading, text) {
     ? item.math_blurb || "Mathematical / metrological tablet."
     : "";
 
+  el.classList.remove("is-closed");
   el.innerHTML = `
+    <button type="button" class="preview-close" id="btn-preview-close" aria-label="Close preview" title="Close">✕</button>
     <div class="preview-head">
       <div>
         <div class="preview-id">${item.id}</div>
@@ -1322,7 +1325,34 @@ function renderPreview(item, loading, text) {
     ${snip ? `<pre class="preview-atf-snip">${escapeHtml(snip)}</pre>` : ""}
   `;
   $("#btn-open-reader")?.addEventListener("click", () => openReader(item.id));
+  $("#btn-preview-close")?.addEventListener("click", closePreview);
+  bindPreviewSwipe(el);
 }
+/** Map dot preview pane: X, Esc or a swipe down hides it until the next dot is picked. */
+function closePreview() {
+  const el = $("#preview-panel");
+  if (el) el.classList.add("is-closed");
+}
+function bindPreviewSwipe(el) {
+  if (el._swipeBound) return;
+  el._swipeBound = true;
+  let y0 = null, x0 = 0;
+  el.addEventListener("touchstart", (e) => {
+    y0 = el.scrollTop <= 0 && e.touches.length === 1 ? e.touches[0].clientY : null;
+    x0 = e.touches[0].clientX;
+  }, { passive: true });
+  el.addEventListener("touchend", (e) => {
+    if (y0 == null) return;
+    const t = e.changedTouches[0], dy = t.clientY - y0, dx = Math.abs(t.clientX - x0);
+    y0 = null;
+    if (dy > 60 && dy > dx * 1.5 && el.querySelector("#btn-preview-close")) closePreview();
+  }, { passive: true });
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape" || state.view !== "map" || $("#font-modal")) return;
+  const el = $("#preview-panel");
+  if (el && !el.classList.contains("is-closed") && el.querySelector("#btn-preview-close")) closePreview();
+});
 
 // ─── Reader ───
 // Search opens the reader as map.html?id=<text>&find=<query>. `find` (not `q`: that drives the
@@ -1521,7 +1551,7 @@ async function openReader(id, hist = "push") {
   state.fontRule = FontMap.ruleFor(fontItem);
   state.font = FontMap.override() || state.fontAuto;
   text.font = state.font;
-  $("#font-select").value = FontMap.override();
+  updateFontLabel();
   maybePreferFindColumn(text);
   renderReader();
 }
@@ -2133,15 +2163,62 @@ function fontDescription() {
   return `${f.family} (${f.label}) by ${f.author}; ${why}`;
 }
 
-function fillFontPicker() {
-  const sel = $("#font-select");
-  if (!sel) return;
-  const opts = [`<option value="">Auto (by period)</option>`].concat(
-    Object.entries(FontMap.fonts()).map(([id, f]) => `<option value="${escapeAttr(id)}">${escapeHtml(f.family)}: ${escapeHtml(f.label)}</option>`)
-  );
-  sel.innerHTML = opts.join("");
-  sel.value = FontMap.override();
+/** Cuneiform column header: current face in small text (full name, abbreviation when narrow). */
+function fontAbbr(name) {
+  const w = String(name || "").replace(/[()]/g, " ").split(/[\s_-]+/).filter(Boolean);
+  return w.length > 1 ? w.map((x) => x[0]).join("").toUpperCase().slice(0, 4) : String(name || "").slice(0, 4);
 }
+function updateFontLabel() {
+  const host = $("#cu-font-name");
+  if (!host) return;
+  const ov = FontMap.override();
+  const f = FontMap.info(state.font) || {};
+  const fam = f.family || state.font || "";
+  const full = ov ? fam : fam ? `Auto · ${fam}` : "Auto";
+  host.querySelector(".cu-font-full").textContent = full;
+  host.querySelector(".cu-font-abbr").textContent = ov ? fontAbbr(fam) : "Auto";
+  host.title = ov ? `Font: ${fam}${f.label ? ` (${f.label})` : ""}` : `Font: automatic by period — ${fam}`;
+}
+function applyFontChoice(id) {
+  FontMap.setOverride(id); // session only, as before
+  state.font = id || state.fontAuto || "NotoSansCuneiform";
+  updateFontLabel();
+  if (state.currentText) {
+    state.currentText.font = state.font;
+    renderCuneiformCol(state.currentText);
+    if (state.readerPanels.meta) renderMetaCol(state.currentText);
+  }
+}
+function closeFontModal() {
+  const m = $("#font-modal");
+  if (!m) return;
+  m.remove();
+  $("#btn-font-cog")?.focus();
+}
+function openFontModal() {
+  closeFontModal();
+  const cur = FontMap.override();
+  const auto = FontMap.info(state.fontAuto) || {};
+  const opt = (id, name, sub) =>
+    `<label class="font-opt"><input type="radio" name="ua-font" value="${escapeAttr(id)}"${id === cur ? " checked" : ""}><span class="font-opt-name">${escapeHtml(name)}</span><span class="font-opt-sub">${escapeHtml(sub || "")}</span></label>`;
+  const rows = [opt("", "Auto", `by period${auto.family ? ` — ${auto.family}` : ""}`)].concat(
+    Object.entries(FontMap.fonts()).map(([id, f]) => opt(id, f.family, [f.label, f.author].filter(Boolean).join(" · ")))
+  );
+  const m = document.createElement("div");
+  m.id = "font-modal";
+  m.className = "font-modal-backdrop";
+  m.innerHTML = `<div class="font-modal" role="dialog" aria-modal="true" aria-labelledby="font-modal-h">
+      <div class="font-modal-head"><h3 id="font-modal-h">Cuneiform font</h3><button type="button" class="font-modal-x" aria-label="Close">✕</button></div>
+      <div class="font-modal-body" role="radiogroup" aria-labelledby="font-modal-h">${rows.join("")}</div>
+      <p class="font-modal-note">Auto picks a face by period (eBL converter fonts). Your choice lasts for this session. <a href="credits.html#fonts">Font credits</a></p>
+    </div>`;
+  document.body.appendChild(m);
+  m.addEventListener("click", (e) => { if (e.target === m) closeFontModal(); });
+  m.querySelector(".font-modal-x").addEventListener("click", closeFontModal);
+  m.querySelectorAll('input[name="ua-font"]').forEach((r) => r.addEventListener("change", () => { applyFontChoice(r.value); closeFontModal(); }));
+  (m.querySelector("input:checked") || m.querySelector("input"))?.focus();
+}
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#font-modal")) { e.stopPropagation(); closeFontModal(); } }, true);
 
 async function renderCuneiformCol(text) {
   const body = $("#cuneiform-body");
@@ -2225,20 +2302,9 @@ function highlightLine(i, e) {
   });
 }
 
-// ─── Column preambles: ⓘ popover per column + one global "show inline" toggle (localStorage, default hidden) ───
-const PREAMBLE_KEY = "unread.showPreambles";
-function applyPreambles() {
-  const on = localStorage.getItem(PREAMBLE_KEY) === "1";
-  document.body.classList.toggle("show-preambles", on);
-  $$(".preamble-toggle").forEach((b) => {
-    b.setAttribute("aria-pressed", String(on));
-    b.classList.toggle("on", on);
-  });
-}
-function setPreambles(on) {
-  localStorage.setItem(PREAMBLE_KEY, on ? "1" : "0");
-  applyPreambles();
-}
+// ─── Column notes: one ⓘ popover per column header (tap on phones, click on desktop). The old
+// "Notes" chip / show-inline-at-the-top option is gone; clear its saved setting.
+try { localStorage.removeItem("unread.showPreambles"); } catch (_) {}
 function closeColumnInfo() {
   const pop = $("#lg-pop");
   if (pop) pop.remove();
@@ -2257,7 +2323,7 @@ function bindColumnInfo(container) {
       pop.className = "lg-pop";
       pop._btn = btn;
       pop.setAttribute("role", "dialog");
-      pop.innerHTML = src.innerHTML + `<label class="lg-pop-opt"><input type="checkbox" class="lg-pop-inline"${localStorage.getItem(PREAMBLE_KEY) === "1" ? " checked" : ""}> Show these notes at the top of every column</label>`;
+      pop.innerHTML = src.innerHTML;
       document.body.appendChild(pop);
       const r = btn.getBoundingClientRect();
       const w = Math.min(340, window.innerWidth - 16);
@@ -2265,19 +2331,13 @@ function bindColumnInfo(container) {
       pop.style.left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)) + "px";
       pop.style.top = r.bottom + 6 + "px";
       pop.addEventListener("click", (e) => e.stopPropagation());
-      pop.querySelector(".lg-pop-inline").addEventListener("change", (e) => setPreambles(e.target.checked));
     });
   });
 }
 document.addEventListener("click", closeColumnInfo);
 document.addEventListener("keydown", (e) => e.key === "Escape" && closeColumnInfo());
 window.addEventListener("scroll", (e) => { if (!(e.target.closest && e.target.closest("#lg-pop"))) closeColumnInfo(); }, true);
-function initPreambles() {
-  applyPreambles();
-  $$(".preamble-toggle").forEach((b) => b.addEventListener("click", () => setPreambles(localStorage.getItem(PREAMBLE_KEY) !== "1")));
-}
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPreambles);
-else initPreambles();
+
 
 // ─── Map ───
 function initMap() {
@@ -3545,15 +3605,7 @@ function bindEvents() {
     }
   });
 
-  $("#font-select").addEventListener("change", (e) => {
-    FontMap.setOverride(e.target.value); // session only
-    state.font = e.target.value || state.fontAuto || "NotoSansCuneiform";
-    if (state.currentText) {
-      state.currentText.font = state.font;
-      renderCuneiformCol(state.currentText);
-      if (state.readerPanels.meta) renderMetaCol(state.currentText);
-    }
-  });
+  $("#btn-font-cog")?.addEventListener("click", (e) => { e.stopPropagation(); openFontModal(); });
 
   $$("#reader-chips [data-panel]").forEach((btn) => btn.addEventListener("click", () => onChip(btn)));
   let slideRaf = 0;
@@ -3563,7 +3615,15 @@ function bindEvents() {
   }, { passive: true });
   initNavToggle();
 
-  $("#btn-back-explore")?.addEventListener("click", () => setView("explore"));
+  // Reader back arrow: return to wherever the reader was opened from (an in-app view, or another
+  // page on this site); opened directly (shared link / new tab), fall back to Search › Explore.
+  $("#btn-back-explore")?.addEventListener("click", () => {
+    let sameOrigin = false;
+    try { sameOrigin = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (_) {}
+    const inApp = ((history.state && history.state.uaDepth) || 0) > 0;
+    if ((inApp || sameOrigin) && history.length > 1) history.back();
+    else setView("explore");
+  });
 
 }
 
@@ -3631,7 +3691,7 @@ async function main() {
 
   try {
     await loadCatalog();
-    fillFontPicker();
+    updateFontLabel();
     toast(`Loaded ${state.catalog.count} catalog works`);
     // Deep link ?id=P285108 → reader. Otherwise leave map with no tablet selected
     // (preview pane stays on its empty state until the user picks a pin/card).
